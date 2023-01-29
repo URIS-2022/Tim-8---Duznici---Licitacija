@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  gateway.api:
+    container_name: Gateway.API
+    image: ${DOCKER_REGISTRY-}gatewayapi
+    build:
+      context: .
+      dockerfile: Gateway.API/Dockerfile
+    depends_on:
+      - auth.api
+      - payment.api
+
+  auth.api:
+    container_name: Auth.API
+    image: ${DOCKER_REGISTRY-}authapi
+    build:
+      context: .
+      dockerfile: Auth.API/Dockerfile
+    depends_on: 
+      - auth.db
+
+  payment.api:
+    container_name: Payment.API
+    image: ${DOCKER_REGISTRY-}paymentapi
+    build:
+      context: .
+      dockerfile: Payment.API/Dockerfile
+    depends_on:
+      - rabbitmq

@@ -1,0 +1,65 @@
+version: '3.4'
+
+services:
+  gateway.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - SERVICE_ENDPOINT_AUTH_API=http://auth.api:80
+    ports:
+      - "80"
+      - "8000:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - auth.api
+
+  rabbitmq:
+    container_name: Rabbitmq
+    image: rabbitmq:3.11.7-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=duznici
+      - RABBITMQ_DEFAULT_PASS=R4881TMQ_3
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+
+  auth.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__DefaultConnection=Server=auth.db;Database=master;User ID=SA;Password=M55QL_4UTH;TrustServerCertificate=True;
+    ports:
+      - "80"
+      - "8010:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  auth.db:
+    container_name: Auth.DB
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - "8011:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=M55QL_4UTH
+      - MSSQL_PID=Express
+
+  payment.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USER=duznici
+      - RABBITMQ_PASSWORD=R4881TMQ_3
+    ports:
+      - "80"
+      - "8020:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
