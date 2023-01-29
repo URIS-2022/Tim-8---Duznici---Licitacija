@@ -29,5 +29,23 @@ namespace Gateway.API.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("GetOutside")]
+        public async Task<IActionResult> GetOutside()
+        {
+            using HttpClient httpClient = new();
+
+            HttpResponseMessage response = await httpClient.GetAsync("https://api2.binance.com/api/v3/ticker/24hr");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok(response.Content);
+            }
+            else
+            {
+                string error = await response.Content.ReadAsStringAsync();
+                return BadRequest(error);
+            }
+        }
     }
 }

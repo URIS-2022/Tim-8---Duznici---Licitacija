@@ -1,26 +1,25 @@
 ﻿using RabbitMQ.Client;
 
-namespace Shared
+namespace Shared;
+
+internal class MQConnection
 {
-    internal class MQConnection
+    private readonly ConnectionFactory factory;
+    public Exception? GetException { get; private set; }
+
+    public MQConnection(IConfiguration configuration)
     {
-        private readonly ConnectionFactory factory;
-        public Exception? GetException { get; private set; }
-
-        public MQConnection(IConfiguration configuration)
+        factory = new ConnectionFactory
         {
-            factory = new ConnectionFactory
-            {
-                UserName = configuration["RABBITMQ_USER"],
-                Password = configuration["RABBITMQ_PASSWORD"],
-                HostName = configuration["RABBITMQ_HOST"]
-            };
-        }
+            UserName = configuration["RABBITMQ_USER"],
+            Password = configuration["RABBITMQ_PASSWORD"],
+            HostName = configuration["RABBITMQ_HOST"]
+        };
+    }
 
-        public void Open(string clientProvidedName)
-        {
-            IConnection connection = factory.CreateConnection(clientProvidedName);
-            _ = connection.CreateModel();
-        }
+    public void Open(string clientProvidedName)
+    {
+        IConnection connection = factory.CreateConnection(clientProvidedName);
+        _ = connection.CreateModel();
     }
 }

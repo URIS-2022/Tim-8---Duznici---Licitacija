@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.API", "Payment.API\Payment.API.csproj", "{4D428986-4321-490D-BF81-496FA7152A8B}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{D221A59A-F0F2-4664-9693-D6B08BD9340E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,5 +48,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A21EF37D-1528-4E6A-9C69-991567DD78D9}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\Shared.projitems*{4d428986-4321-490d-bf81-496fa7152a8b}*SharedItemsImports = 5
+		Shared\Shared.projitems*{d221a59a-f0f2-4664-9693-d6b08bd9340e}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
