@@ -2,6 +2,10 @@
 
 Upravljanje razvojem informacionih sistema 2022/23 IIS
 
+## Badges
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
 ## Meet the team
 
 | Student ID | Student name        | GitHub username                                          |
@@ -14,9 +18,8 @@ Upravljanje razvojem informacionih sistema 2022/23 IIS
 | IT70/2019  | _Andrea Ilić_       | [@andreailic](https://github.com/andreailic)             |
 | IT78/2019  | _Sandra Stojanov_   | [@sandralexis](https://github.com/sandralexis)           |
 
-## Badges
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+## Postman Workspace
+[https://postman.com/uris-duznici/workspace/uris-8-dunici](https://www.postman.com/uris-duznici/workspace/uris-8-dunici)
 
 ## Tech Stack
 
