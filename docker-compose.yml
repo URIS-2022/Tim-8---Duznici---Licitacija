@@ -28,3 +28,10 @@ services:
       dockerfile: Payment.API/Dockerfile
     depends_on:
       - rabbitmq
+
+  administration.api:
+    image: ${DOCKER_REGISTRY-}administrationapi
+    build:
+      context: .
+      dockerfile: Administration.API/Dockerfile
+

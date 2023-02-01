@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.API", "Payment.API\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{D221A59A-F0F2-4664-9693-D6B08BD9340E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Administration.API", "Administration.API\Administration.API.csproj", "{29C1D8A9-F4A6-4F88-B528-E88493327035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{4D428986-4321-490D-BF81-496FA7152A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D428986-4321-490D-BF81-496FA7152A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D428986-4321-490D-BF81-496FA7152A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C1D8A9-F4A6-4F88-B528-E88493327035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C1D8A9-F4A6-4F88-B528-E88493327035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C1D8A9-F4A6-4F88-B528-E88493327035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C1D8A9-F4A6-4F88-B528-E88493327035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{7735AB2B-849B-49BC-803A-213E269A4A71} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
 		{AC852D8F-6493-46C2-807B-6A86344B835F} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
 		{4D428986-4321-490D-BF81-496FA7152A8B} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
+		{29C1D8A9-F4A6-4F88-B528-E88493327035} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A21EF37D-1528-4E6A-9C69-991567DD78D9}
