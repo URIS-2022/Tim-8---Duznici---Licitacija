@@ -4,10 +4,17 @@ using System.Text.Json;
 
 namespace Gateway.API.Controllers
 {
+    /// <summary>
+    /// Test Controller for Gatevay to Auth communication
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class PingAuthApiController : ControllerBase
     {
+        /// <summary>
+        /// Test method for proxy get request
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "PingGetWeatherForecast")]
         public async Task<IActionResult> GetTestAsync()
         {
@@ -22,7 +29,7 @@ namespace Gateway.API.Controllers
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                IEnumerable<WeatherForecast>? forecasts = JsonSerializer.Deserialize<IEnumerable<WeatherForecast>>(content);
+                IEnumerable<object>? forecasts = JsonSerializer.Deserialize<IEnumerable<object>>(content);
                 return Ok(forecasts);
             }
             else
