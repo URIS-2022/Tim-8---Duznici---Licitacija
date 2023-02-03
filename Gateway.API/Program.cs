@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Security.Claims;
+using System.Text;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -83,12 +87,54 @@ builder.Services.AddSwaggerGen(options =>
             },
             TermsOfService = new Uri("https://opensource.org/licenses/MIT")
         });
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] {}
+                }
+            });
 
     string xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
     string xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
 
     options.IncludeXmlComments(xmlCommentsPath);
+});
+
+byte[] key = Encoding.ASCII.GetBytes("H+MbQeThWmZq4t7w");
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        RoleClaimType = ClaimTypes.Role
+    };
 });
 
 WebApplication app = builder.Build();
@@ -114,7 +160,11 @@ else // Ukoliko se nalazimo u Production modu postavljamo default poruku za gre�
     });
 }
 
+app.UseRouting();
+
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

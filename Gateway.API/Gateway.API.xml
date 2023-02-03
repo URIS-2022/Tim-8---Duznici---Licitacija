@@ -4,16 +4,5 @@
         <name>Gateway.API</name>
     </assembly>
     <members>
-        <member name="T:Gateway.API.Controllers.PingAuthApiController">
-            <summary>
-            Test Controller for Gatevay to Auth communication
-            </summary>
-        </member>
-        <member name="M:Gateway.API.Controllers.PingAuthApiController.GetTestAsync">
-            <summary>
-            Test method for proxy get request
-            </summary>
-            <returns></returns>
-        </member>
     </members>
 </doc>
