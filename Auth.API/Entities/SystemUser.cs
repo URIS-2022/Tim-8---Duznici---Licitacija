@@ -1,7 +1,7 @@
 ﻿using Auth.API.Enums;
 using System.Text.Json.Serialization;
 
-namespace Auth.API.Models;
+namespace Auth.API.Entities;
 
 public class SystemUser
 {
