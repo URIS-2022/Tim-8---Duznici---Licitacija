@@ -35,3 +35,10 @@ services:
       context: .
       dockerfile: Administration.API/Dockerfile
 
+
+  person.api:
+    image: ${DOCKER_REGISTRY-}personapi
+    build:
+      context: .
+      dockerfile: Person.API/Dockerfile
+
