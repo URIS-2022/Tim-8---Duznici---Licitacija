@@ -26,7 +26,7 @@ public class TokenController : ControllerBase
     [HttpPost("generate")]
     public async Task<IActionResult> GenerateToken([FromBody] JwtTokenRequestModel userParam)
     {
-        SystemUser user = await systemUserRepository.GetSystemUserByCredentials(userParam.Username, userParam.Password);
+        SystemUser user = await systemUserRepository.GetByCredentials(userParam.Username, userParam.Password);
 
         if (user == null)
         {
@@ -77,7 +77,7 @@ public class TokenController : ControllerBase
             return BadRequest("JWT Claims are not valid");
         }
 
-        SystemUser systemUser = await systemUserRepository.GetSystemUserByGuid(Guid.Parse(nameClaim.Value));
+        SystemUser systemUser = await systemUserRepository.GetByGuid(Guid.Parse(nameClaim.Value));
 
         var response = mapper.Map<SystemUserResponseModel>(systemUser);
 
