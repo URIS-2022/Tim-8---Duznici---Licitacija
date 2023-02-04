@@ -7,6 +7,8 @@
     <UserSecretsId>14fe13c7-5a1f-4e1f-9aa1-76a767266469</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>Auth.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
