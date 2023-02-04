@@ -1,6 +1,4 @@
 ﻿using Auth.API.Enums;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Text.Json.Serialization;
 
 namespace Auth.API.Models;

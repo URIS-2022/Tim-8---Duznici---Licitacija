@@ -71,7 +71,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1",
         new OpenApiInfo()
         {
-            Title = "Licitation Service API Gateway",
+            Title = "Licitation Inforamtion System API Gateway",
             Version = "v1.0.0",
             Description = "API Gateway acts as a bridge between different microservices and their consumers. It provides a single entry point for external requests and acts as a security barrier, handling authentication, authorization, and rate-limiting. The API Gateway also performs various tasks such as load balancing, request routing, and caching to improve the overall performance of the microservice architecture.",
             Contact = new OpenApiContact
