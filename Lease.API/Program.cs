@@ -1,12 +1,8 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using System.Security.Claims;
-using System.Text;
 
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -72,7 +68,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1",
         new OpenApiInfo()
         {
-            Title = "Licitation Inforamtion System API Lease",
+            Title = "Lease Service API",
             Version = "v1.0.0",
             Description = "The microservice lease refers to a specific module or component that handles the process of leasing an item or resource. It deals with which buyer lease which landlot.",
             Contact = new OpenApiContact
@@ -88,28 +84,6 @@ builder.Services.AddSwaggerGen(options =>
             },
             TermsOfService = new Uri("https://opensource.org/licenses/MIT")
         });
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    new string[] {}
-                }
-            });
 
     string xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
@@ -146,10 +120,6 @@ else // Ukoliko se nalazimo u Production modu postavljamo default poruku za gre�
 app.UseRouting();
 
 app.UseHttpsRedirection();
-
-app.UseAuthentication();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
