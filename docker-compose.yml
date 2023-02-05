@@ -55,3 +55,10 @@ services:
       context: .
       dockerfile: Landlot.API/Dockerfile
 
+
+  complaint.api:
+    image: ${DOCKER_REGISTRY-}complaintapi
+    build:
+      context: .
+      dockerfile: Complaint.API/Dockerfile
+

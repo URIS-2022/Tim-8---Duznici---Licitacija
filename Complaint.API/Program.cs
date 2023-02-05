@@ -74,9 +74,9 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1",
         new OpenApiInfo()
         {
-            Title = "Administration Service API",
+            Title = "Complaint Service API",
             Version = "v1.0.0",
-            Description = "Administration.API is a microservice that works with committees, their members, documents, and yearly plans. It provides management and organization for committees, including tracking member information and handling important documents. The primary focus of this microservice is the yearly plan, which it helps to create, track, and implement. This microservice plays a vital role in ensuring efficient and effective administration for the committees it supports.",
+            Description = "Complaint.API is a microservice that manages the creation and management of buyer complaints for public bidding and announcements. It allows for the creation and tracking of complaints, as well as providing necessary information for resolution. This microservice plays a crucial role in ensuring fair and transparent resolution of complaints in the public bidding and announcement process.",
             Contact = new OpenApiContact
             {
                 Name = "Sandra Stojanov",
