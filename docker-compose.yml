@@ -42,3 +42,10 @@ services:
       context: .
       dockerfile: Person.API/Dockerfile
 
+
+  landlot.api:
+    image: ${DOCKER_REGISTRY-}landlotapi
+    build:
+      context: .
+      dockerfile: Landlot.API/Dockerfile
+
