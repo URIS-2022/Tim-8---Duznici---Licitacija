@@ -1,4 +1,4 @@
-﻿namespace Person.API.Data
+﻿namespace Person.API.Data.Repository
 {
     public class AddressRepository
     {
