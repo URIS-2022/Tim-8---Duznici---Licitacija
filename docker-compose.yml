@@ -42,3 +42,10 @@ services:
       context: .
       dockerfile: Person.API/Dockerfile
 
+
+  lease.api:
+    image: ${DOCKER_REGISTRY-}leaseapi
+    build:
+      context: .
+      dockerfile: Lease.API/Dockerfile
+
