@@ -39,7 +39,7 @@ public class TokenController : ControllerBase
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.Name, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Guid.ToString()),
                 new Claim(ClaimTypes.Role, user.Role.ToString())
             }),
             Expires = DateTime.UtcNow.AddDays(7),
@@ -77,7 +77,11 @@ public class TokenController : ControllerBase
             return BadRequest("JWT Claims are not valid");
         }
 
-        SystemUser systemUser = await systemUserRepository.GetByGuid(Guid.Parse(nameClaim.Value));
+        SystemUser? systemUser = await systemUserRepository.GetByGuid(Guid.Parse(nameClaim.Value));
+        if (systemUser == null)
+        {
+            return BadRequest();
+        }
 
         var response = mapper.Map<SystemUserResponseModel>(systemUser);
 
