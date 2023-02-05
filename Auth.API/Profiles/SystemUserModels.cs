@@ -1,4 +1,5 @@
-﻿using Auth.API.Models;
+﻿using Auth.API.Entities;
+using Auth.API.Models;
 using AutoMapper;
 
 namespace Auth.API.Profiles

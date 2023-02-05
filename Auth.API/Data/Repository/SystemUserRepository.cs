@@ -1,14 +1,13 @@
-﻿using Auth.API.Data;
-using Auth.API.Models;
+﻿using Auth.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Auth.API.Services;
+namespace Auth.API.Data.Repository;
 
-public class AuthService : IAuthService
+public class SystemUserRepository : ISystemUserRepository
 {
     private readonly AuthDbContext _context;
 
-    public AuthService(AuthDbContext context)
+    public SystemUserRepository(AuthDbContext context)
     {
         _context = context;
     }

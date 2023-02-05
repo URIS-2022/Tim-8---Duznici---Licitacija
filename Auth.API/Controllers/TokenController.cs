@@ -1,5 +1,6 @@
-﻿using Auth.API.Models;
-using Auth.API.Services;
+﻿using Auth.API.Data.Repository;
+using Auth.API.Entities;
+using Auth.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -13,19 +14,19 @@ namespace Auth.API.Controllers;
 [ApiController]
 public class TokenController : ControllerBase
 {
-    private readonly IAuthService authService;
+    private readonly ISystemUserRepository systemUserRepository;
     private readonly IMapper mapper;
 
-    public TokenController(IAuthService authService, IMapper mapper)
+    public TokenController(ISystemUserRepository systemUserRepository, IMapper mapper)
     {
-        this.authService = authService;
+        this.systemUserRepository = systemUserRepository;
         this.mapper = mapper;
     }
 
     [HttpPost("generate")]
     public async Task<IActionResult> GenerateToken([FromBody] JwtTokenRequestModel userParam)
     {
-        SystemUser user = await authService.GetSystemUserByCredentials(userParam.Username, userParam.Password);
+        SystemUser user = await systemUserRepository.GetSystemUserByCredentials(userParam.Username, userParam.Password);
 
         if (user == null)
         {
@@ -76,7 +77,7 @@ public class TokenController : ControllerBase
             return BadRequest("JWT Claims are not valid");
         }
 
-        SystemUser systemUser = await authService.GetSystemUserByGuid(Guid.Parse(nameClaim.Value));
+        SystemUser systemUser = await systemUserRepository.GetSystemUserByGuid(Guid.Parse(nameClaim.Value));
 
         var response = mapper.Map<SystemUserResponseModel>(systemUser);
 
