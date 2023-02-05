@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>220358f2-c75f-46bc-8361-cddf449df4e3</UserSecretsId>
+    <UserSecretsId>7f8c9a7d-987a-4995-b464-8a72dc17e518</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
@@ -29,10 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
-    <Folder Include="Migrations\" />
+    <Folder Include="Data\Repository\" />
+    <Folder Include="Entities\" />
     <Folder Include="Enums\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="Profiles\" />
   </ItemGroup>
 
 </Project>
