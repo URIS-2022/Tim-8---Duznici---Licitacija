@@ -4,6 +4,79 @@
         <name>Auth.API</name>
     </assembly>
     <members>
+        <member name="T:Auth.API.Controllers.SystemUsersController">
+            <summary>
+            SystemUsersController class provides REST API for handling System Users
+            </summary>
+        </member>
+        <member name="M:Auth.API.Controllers.SystemUsersController.#ctor(Auth.API.Data.Repository.ISystemUserRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the SystemUsersController class
+            </summary>
+            <param name="systemUserRepository">An instance of ISystemUserRepository to handle the System Users</param>
+            <param name="mapper">An instance of IMapper to map between System User entities and models</param>
+        </member>
+        <member name="M:Auth.API.Controllers.SystemUsersController.GetSystemUsers">
+            <summary>
+            Returns a list of System Users
+            </summary>
+            <returns>A list of System User models, or No Content if no System User found</returns>
+        </member>
+        <member name="M:Auth.API.Controllers.SystemUsersController.GetSystemUser(System.String)">
+            <summary>
+            Returns a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to retrieve</param>
+            <returns>The System User model, or Not Found if the System User is not found</returns>
+        </member>
+        <member name="M:Auth.API.Controllers.SystemUsersController.PutSystemUser(System.String,Auth.API.Models.SystemUserUpdateModel)">
+            <summary>
+            Updates a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to update</param>
+            <param name="systemUserUpdate">The updated System User information</param>
+            <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
+        </member>
+        <member name="M:Auth.API.Controllers.SystemUsersController.PostSystemUser(Auth.API.Models.SystemUserRequestModel)">
+            <summary>
+            Creates a new System User
+            </summary>
+            <param name="requestModel">The new System User information</param>
+            <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
+        </member>
+        <member name="M:Auth.API.Controllers.SystemUsersController.DeleteSystemUser(System.String)">
+            <summary>
+            Deletes a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to delete</param>
+            <returns>No Content if the System User is deleted successfully, or Not Found if the System User is not found</returns>
+        </member>
+        <member name="T:Auth.API.Controllers.TokenController">
+            <summary>
+            TokenController class is responsible for generating and introspecting JWT tokens.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Controllers.TokenController.#ctor(Auth.API.Data.Repository.ISystemUserRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor for TokenController class.
+            </summary>
+            <param name="systemUserRepository">Reference to ISystemUserRepository instance.</param>
+            <param name="mapper">Reference to IMapper instance.</param>
+        </member>
+        <member name="M:Auth.API.Controllers.TokenController.GenerateToken(Auth.API.Models.JwtTokenRequestModel)">
+            <summary>
+            Generates JWT token based on the given username and password.
+            </summary>
+            <param name="userParam">Model containing username and password.</param>
+            <returns>JWT token response model if the authentication is successful, otherwise returns Bad Request.</returns>
+        </member>
+        <member name="M:Auth.API.Controllers.TokenController.IntrospectToken(Auth.API.Models.IntrospectionRequestModel)">
+            <summary>
+            Introspects the given JWT token.
+            </summary>
+            <param name="requestModel">Model containing the token to be introspected.</param>
+            <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
+        </member>
         <member name="T:Auth.API.Data.Repository.ISystemUserRepository">
             <summary>
             Repository for managing SystemUser entities.
