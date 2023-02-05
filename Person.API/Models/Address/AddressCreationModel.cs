@@ -8,20 +8,14 @@ using System.Threading.Tasks;
 namespace Person.API.Models.Address
 {
     /// <summary>
-    /// DTO za update adrese
+    /// DTO za kreiranje adrese
     /// </summary>
-    public class AddressUpdateDto
+    public class AddressCreationModel
     {
-        /// <summary>
-        /// ID adrese
-        /// </summary>
-        [Required(ErrorMessage = "Obavezno je uneti id adrese")]
-        public Guid AddressID { get; set; }
-
         /// <summary>
         /// DrzavA
         /// </summary>
-        [Required(ErrorMessage = "Obavezno je naziv drzave")]
+        [Required(ErrorMessage = "Obavezno je uneti naziv drzave")]
         public string Country { get; set; }
 
         /// <summary>
@@ -48,6 +42,6 @@ namespace Person.API.Models.Address
         [Required(ErrorMessage = "Obavezno je uneti postanski broj")]
         public string ZipCode { get; set; }
 
-        
+      
     }
 }

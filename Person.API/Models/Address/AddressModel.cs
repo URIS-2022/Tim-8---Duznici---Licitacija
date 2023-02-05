@@ -9,7 +9,7 @@ namespace Person.API.Models.Address
     /// <summary>
     /// Dto za adresu
     /// </summary>
-    public class AddressDto
+    public class AddressModel
     {
         /// <summary>
         /// Drzava
