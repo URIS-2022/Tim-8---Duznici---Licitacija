@@ -62,3 +62,10 @@ services:
       context: .
       dockerfile: Complaint.API/Dockerfile
 
+
+  preparation.api:
+    image: ${DOCKER_REGISTRY-}preparationapi
+    build:
+      context: .
+      dockerfile: Preparation.API/Dockerfile
+
