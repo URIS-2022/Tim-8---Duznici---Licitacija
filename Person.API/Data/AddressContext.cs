@@ -1,4 +1,4 @@
-﻿namespace Person.API.Entities
+﻿namespace Person.API.Data
 {
     public class AddressContext
     {

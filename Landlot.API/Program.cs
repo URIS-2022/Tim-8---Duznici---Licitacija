@@ -13,9 +13,9 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1",
         new OpenApiInfo()
         {
-            Title = "Person Service API",
+            Title = "Landlot Service API",
             Version = "v1.0.0",
-            Description = "Person.API ​​is a microservice that provides person management services. It allows you to create, update, and delete faces, as well as generate JSON Web Tokens (JVTs) for use in securing subsequent API requests. It is possible to track whether the person is legal or physical, whether he has a contact person and from which address he applied.",
+            Description = "Landlot.API is a microservice that provides auction lot management services. It allows you to create, update, and delete parcels, as well as generate JSON Web Tokens (JVTs) for use in securing subsequent API requests.",
             Contact = new OpenApiContact
             {
                 Name = "Andrea Ilić",
@@ -39,8 +39,8 @@ builder.Services.AddSwaggerGen(options =>
 
 WebApplication app = builder.Build();
 
-// Configure the HTTP request pipeline.
 
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     _ = app.UseSwagger();

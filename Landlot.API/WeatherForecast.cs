@@ -1,4 +1,4 @@
-namespace Administration.API
+namespace Landlot.API
 {
     public class WeatherForecast
     {
