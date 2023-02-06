@@ -15,12 +15,12 @@ builder.Services.AddSwaggerGen(options =>
         {
             Title = "Preparation Service API",
             Version = "v1.0.0",
-            Description = "Preparation.API is a microservice that provides user management and JWT authentication services. It allows you to create, update, and delete users, as well as authenticate users and generate JSON Web Tokens (JWT) for use in securing subsequent API requests. This microservice is crucial in ensuring the security and access control of the system.",
+            Description = "Preparation.API is a microservice that provides announcements and documents management. It allows you to create, update and delete documents as well as announcements. This microservice is the key in collecting and providing valid documents and preparing announcements based on those documents for the further licitation process.",
             Contact = new OpenApiContact
             {
                 Name = "Dejan Petrov",
                 Email = "petrov.it40.2019@uns.ac.rs",
-                Url = new Uri("https://draganovik.com")
+                Url = new Uri("http://ftn.uns.ac.rs/691618389/fakultet-tehnickih-nauka")
             },
             License = new OpenApiLicense
             {
