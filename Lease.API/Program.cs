@@ -1,22 +1,16 @@
-﻿using Auth.API.Data;
-using Auth.API.Data.Repository;
-using Auth.API.Enums;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
-        .AddJsonOptions(options =>
-        options.JsonSerializerOptions.Converters.Add(new SystemUserRoleConverter()))
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
@@ -65,13 +59,7 @@ builder.Services.AddControllers(setup =>
             };
         });
 
-builder.Services.AddDbContext<AuthDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddControllers();
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-builder.Services.AddScoped<ISystemUserRepository, SystemUserRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -80,14 +68,14 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1",
         new OpenApiInfo()
         {
-            Title = "Auth Service API",
+            Title = "Lease Service API",
             Version = "v1.0.0",
-            Description = "Auth.API is a microservice that provides user management and JWT authentication services. It allows you to create, update, and delete users, as well as authenticate users and generate JSON Web Tokens (JWT) for use in securing subsequent API requests. This microservice is crucial in ensuring the security and access control of the system.",
+            Description = "The microservice lease refers to a specific module or component that handles the process of leasing an item or resource. It deals with which buyer lease which landlot.",
             Contact = new OpenApiContact
             {
-                Name = "Mladen Draganović",
-                Email = "draganovic.it68.2019@uns.ac.rs",
-                Url = new Uri("https://draganovik.com")
+                Name = "Marko Rakić",
+                Email = "rakic.it6.2019@uns.ac.rs",
+                Url = new Uri("https://www.linkedin.com/in/markorakic/")
             },
             License = new OpenApiLicense
             {
@@ -104,6 +92,8 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlCommentsPath);
 });
 
+
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -115,6 +105,21 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     });
 }
+else // Ukoliko se nalazimo u Production modu postavljamo default poruku za greške koje nastaju na servisu
+{
+    _ = app.UseExceptionHandler(appBuilder =>
+    {
+        appBuilder.Run(async context =>
+        {
+            context.Response.StatusCode = 500;
+            await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
+        });
+    });
+}
+
+app.UseRouting();
+
+app.UseHttpsRedirection();
 
 app.MapControllers();
 

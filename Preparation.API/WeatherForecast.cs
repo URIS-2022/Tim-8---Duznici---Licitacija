@@ -1,4 +1,4 @@
-namespace Administration.API
+namespace Preparation.API
 {
     public class WeatherForecast
     {

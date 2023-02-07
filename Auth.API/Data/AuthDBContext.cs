@@ -9,7 +9,7 @@ public class AuthDbContext : DbContext
     : base(options)
     { }
 
-    public DbSet<SystemUser> SystemUser { get; set; }
+    public DbSet<SystemUser> SystemUsers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -18,5 +18,8 @@ public class AuthDbContext : DbContext
         modelBuilder.Entity<SystemUser>()
             .HasIndex(u => u.Username)
             .IsUnique();
+
+        modelBuilder.Entity<SystemUser>()
+            .HasKey(u => u.Guid);
     }
 }

@@ -43,9 +43,29 @@ services:
       dockerfile: Person.API/Dockerfile
 
 
+  lease.api:
+    image: ${DOCKER_REGISTRY-}leaseapi
+    build:
+      context: .
+      dockerfile: Lease.API/Dockerfile
+      
   landlot.api:
     image: ${DOCKER_REGISTRY-}landlotapi
     build:
       context: .
       dockerfile: Landlot.API/Dockerfile
+
+
+  complaint.api:
+    image: ${DOCKER_REGISTRY-}complaintapi
+    build:
+      context: .
+      dockerfile: Complaint.API/Dockerfile
+
+
+  preparation.api:
+    image: ${DOCKER_REGISTRY-}preparationapi
+    build:
+      context: .
+      dockerfile: Preparation.API/Dockerfile
 
