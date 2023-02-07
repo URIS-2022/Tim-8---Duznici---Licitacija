@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Person.API.Models.ContactPerson
 {
-
     /// <summary>
-    /// Dto Create kontakt osoba
+    /// Dto Update kontakt osoba
     /// </summary>
-    public class ContactPersonCreateDto
+    public class ContactPersonUpdateModel
     {
         /// <summary>
-        /// Ime kontakt osobae
+        /// Ime kontakt osobe
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti ime!")]
         public string FirstName { get; set; }
@@ -26,7 +25,7 @@ namespace Person.API.Models.ContactPerson
         public string LastName { get; set; }
 
         /// <summary>
-        /// Funkcija kontakt osobe
+        /// Funckija kontakt osobe
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti funkciju!")]
         public string Function { get; set; }
