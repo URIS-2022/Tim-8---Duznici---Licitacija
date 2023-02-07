@@ -1,22 +1,16 @@
-﻿using Auth.API.Data;
-using Auth.API.Data.Repository;
-using Auth.API.Enums;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
-        .AddJsonOptions(options =>
-        options.JsonSerializerOptions.Converters.Add(new SystemUserRoleConverter()))
+                                                   //.AddJsonOptions(options =>
+                                                   //options.JsonSerializerOptions.Converters.Add())
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
@@ -65,13 +59,13 @@ builder.Services.AddControllers(setup =>
             };
         });
 
-builder.Services.AddDbContext<AuthDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddDbContext<DbContext>(options =>
+//        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<ISystemUserRepository, SystemUserRepository>();
+//builder.Services.AddScoped<IRepository, Repository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -80,14 +74,13 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1",
         new OpenApiInfo()
         {
-            Title = "Auth Service API",
+            Title = "Complaint Service API",
             Version = "v1.0.0",
-            Description = "Auth.API is a microservice that provides user management and JWT authentication services. It allows you to create, update, and delete users, as well as authenticate users and generate JSON Web Tokens (JWT) for use in securing subsequent API requests. This microservice is crucial in ensuring the security and access control of the system.",
+            Description = "Complaint.API is a microservice that manages the creation and management of buyer complaints for public bidding and announcements. It allows for the creation and tracking of complaints, as well as providing necessary information for resolution. This microservice plays a crucial role in ensuring fair and transparent resolution of complaints in the public bidding and announcement process.",
             Contact = new OpenApiContact
             {
-                Name = "Mladen Draganović",
-                Email = "draganovic.it68.2019@uns.ac.rs",
-                Url = new Uri("https://draganovik.com")
+                Name = "Sandra Stojanov",
+                Email = "stojanov.it78.2019@uns.ac.rs",
             },
             License = new OpenApiLicense
             {
