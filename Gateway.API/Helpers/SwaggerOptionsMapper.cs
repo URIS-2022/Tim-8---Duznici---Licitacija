@@ -23,7 +23,7 @@ namespace Gateway.API.Helpers
             GenerateEndpoint(options);
             GenerateEndpoint(options, "Administration");
             GenerateEndpoint(options, "Auth");
-            //GenerateEndpoint(options, "Bidding");
+           // GenerateEndpoint(options, "Bidding");
             GenerateEndpoint(options, "Complaint");
             GenerateEndpoint(options, "Landlot");
             GenerateEndpoint(options, "Lease");
