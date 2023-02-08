@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Complaint.API", "Complaint.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Preparation.API", "Preparation.API\Preparation.API.csproj", "{89E5DD1B-7BB6-4C80-957E-2E3A06BBD207}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bidding.API", "Bidding.API\Bidding.API.csproj", "{34C47DB4-F58D-43B7-9AF5-2DA55451EB63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{89E5DD1B-7BB6-4C80-957E-2E3A06BBD207}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89E5DD1B-7BB6-4C80-957E-2E3A06BBD207}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89E5DD1B-7BB6-4C80-957E-2E3A06BBD207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C47DB4-F58D-43B7-9AF5-2DA55451EB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C47DB4-F58D-43B7-9AF5-2DA55451EB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C47DB4-F58D-43B7-9AF5-2DA55451EB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C47DB4-F58D-43B7-9AF5-2DA55451EB63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{0E2A3923-F44B-4FD0-A322-A953D369FE34} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
 		{44A240B4-AA43-4BE5-A2D8-B205E52ADDCF} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
 		{89E5DD1B-7BB6-4C80-957E-2E3A06BBD207} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
+		{34C47DB4-F58D-43B7-9AF5-2DA55451EB63} = {CACFA276-AEF6-40CB-978C-D5BCBA25E58F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A21EF37D-1528-4E6A-9C69-991567DD78D9}
