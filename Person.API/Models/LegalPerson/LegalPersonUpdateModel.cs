@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Person.API.Models.ContactPerson;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Person.API.Models.LegalPerson
 {

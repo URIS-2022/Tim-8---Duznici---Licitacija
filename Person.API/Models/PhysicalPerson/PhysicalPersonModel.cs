@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Person.API.Models.PhysicalPerson
+﻿namespace Person.API.Models.PhysicalPerson
 {
     /// <summary>
     /// Dto fizicko lice

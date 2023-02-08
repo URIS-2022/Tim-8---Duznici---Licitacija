@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -9,6 +10,8 @@ using System.Security.Claims;
 using System.Text;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHttpClient();
 
 // Add services to the container.
 builder.Services.AddControllers(setup =>
@@ -68,25 +71,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1",
-        new OpenApiInfo()
-        {
-            Title = "Licitation Inforamtion System API Gateway",
-            Version = "v1.0.0",
-            Description = "API Gateway acts as a bridge between different microservices and their consumers. It provides a single entry point for external requests and acts as a security barrier, handling authentication, authorization, and rate-limiting. The API Gateway also performs various tasks such as load balancing, request routing, and caching to improve the overall performance of the microservice architecture.",
-            Contact = new OpenApiContact
-            {
-                Name = "Mladen Draganović",
-                Email = "draganovic.it68.2019@uns.ac.rs",
-                Url = new Uri("https://draganovik.com")
-            },
-            License = new OpenApiLicense
-            {
-                Name = "MIT licence",
-                Url = new Uri("https://opensource.org/licenses/MIT")
-            },
-            TermsOfService = new Uri("https://opensource.org/licenses/MIT")
-        });
+    SwaggerOptionsMapper.AddSwaggerDocs(options);
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -106,7 +91,7 @@ builder.Services.AddSwaggerGen(options =>
                             Id = "Bearer"
                         }
                     },
-                    new string[] {}
+                    Array.Empty<string>()
                 }
             });
 
@@ -143,10 +128,7 @@ WebApplication app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     _ = app.UseSwagger();
-    _ = app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-    });
+    _ = app.UseSwaggerUI(SwaggerOptionsMapper.AddSwaggerEndpoints);
 }
 else // Ukoliko se nalazimo u Production modu postavljamo default poruku za greške koje nastaju na servisu
 {

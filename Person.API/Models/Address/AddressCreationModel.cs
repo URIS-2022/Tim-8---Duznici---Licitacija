@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 
 namespace Person.API.Models.Address
@@ -42,6 +38,6 @@ namespace Person.API.Models.Address
         [Required(ErrorMessage = "Obavezno je uneti postanski broj")]
         public string ZipCode { get; set; }
 
-      
+
     }
 }

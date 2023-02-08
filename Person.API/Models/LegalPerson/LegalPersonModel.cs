@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Person.API.Models.ContactPerson;
+﻿using Person.API.Models.ContactPerson;
 
 
 namespace Person.API.Models.LegalPerson
