@@ -1,8 +1,8 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-	<assembly>
-		<name>Bidding.API</name>
-	</assembly>
-	<members>
-	</members>
+    <assembly>
+        <name>Bidding.API</name>
+    </assembly>
+    <members>
+    </members>
 </doc>
