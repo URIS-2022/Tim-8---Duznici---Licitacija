@@ -21,9 +21,9 @@ namespace Gateway.API.Helpers
         public static void AddSwaggerEndpoints(SwaggerUIOptions options)
         {
             GenerateEndpoint(options);
-            GenerateEndpoint(options, "Administration");
+            GenerateExternalEndpoint(options, Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_ADMINISTRATION"), "v1", "Administration");
             GenerateEndpoint(options, "Auth");
-           // GenerateEndpoint(options, "Bidding");
+            GenerateEndpoint(options, "Bidding");
             GenerateEndpoint(options, "Complaint");
             GenerateEndpoint(options, "Landlot");
             GenerateEndpoint(options, "Lease");
@@ -32,6 +32,10 @@ namespace Gateway.API.Helpers
             GenerateEndpoint(options, "Person");
             GenerateEndpoint(options, "Preparation");
             options.SwaggerEndpoint($"https://localhost:7020/swagger/v1/swagger.json", $"Auth Service API");
+        }
+        private static void GenerateExternalEndpoint(SwaggerUIOptions options, string baseUri, string version, string? serviceName = null)
+        {
+            options.SwaggerEndpoint($"{baseUri}/swagger/{version}/swagger.json", $"{serviceName} Service API {version}");
         }
         private static void GenerateEndpoint(SwaggerUIOptions options, string? serviceName = null)
         {

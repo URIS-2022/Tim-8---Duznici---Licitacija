@@ -5,7 +5,16 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SERVICE_ENDPOINT_ADMINISTRATION": "https://localhost:7010",
+        "SERVICE_ENDPOINT_AUTH": "https://localhost:7020",
+        "SERVICE_ENDPOINT_BIDDING": "https://localhost:7030",
+        "SERVICE_ENDPOINT_COMPLAINT": "https://localhost:7040",
+        "SERVICE_ENDPOINT_LANDLOT": "https://localhost:7050",
+        "SERVICE_ENDPOINT_LEASE": "https://localhost:7060",
+        "SERVICE_ENDPOINT_PAYMENT": "https://localhost:7070",
+        "SERVICE_ENDPOINT_PERSON": "https://localhost:7080",
+        "SERVICE_ENDPOINT_PREPARATION": "https://localhost:7090"
       },
       "dotnetRunMessages": false,
       "applicationUrl": "https://localhost:7000;http://localhost:5000"

@@ -15,7 +15,7 @@ public class SystemUserController : ControllerBase
     public async Task<IActionResult> GetWeatherForecast()
     {
         using HttpClient httpClient = new();
-        string? endpoint = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_AUTH_API");
+        string? endpoint = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_AUTH");
         httpClient.DefaultRequestHeaders.Accept.Clear();
         httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
