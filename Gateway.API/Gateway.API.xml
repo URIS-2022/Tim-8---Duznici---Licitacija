@@ -4,5 +4,19 @@
         <name>Gateway.API</name>
     </assembly>
     <members>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.GenerateToken(System.Object)">
+            <summary>
+            Generates JWT token based on the given username and password.
+            </summary>
+            <param name="userParam">Model containing username and password.</param>
+            <returns>JWT token response model if the authentication is successful, otherwise returns Bad Request.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.IntrospectToken(System.Object)">
+            <summary>
+            Introspects the given JWT token.
+            </summary>
+            <param name="requestModel">Model containing the token to be introspected.</param>
+            <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
+        </member>
     </members>
 </doc>

@@ -8,7 +8,6 @@ namespace Gateway.API.Helpers
     {
         public static void AddSwaggerDocs(SwaggerGenOptions options)
         {
-            AddGatewaySwaggerDoc(options);
             AddAdministrationSwaggerDoc(options);
             AddAuthSwaggerDoc(options);
             AddComplaintSwaggerDoc(options);
@@ -22,7 +21,6 @@ namespace Gateway.API.Helpers
         }
         public static void AddSwaggerEndpoints(SwaggerUIOptions options)
         {
-            GenerateEndpoint(options);
             GenerateEndpoint(options, "Administration");
             GenerateEndpoint(options, "Auth");
             GenerateEndpoint(options, "Bidding");
@@ -34,31 +32,9 @@ namespace Gateway.API.Helpers
             GenerateEndpoint(options, "Person");
             GenerateEndpoint(options, "Preparation");
         }
-        private static void GenerateEndpoint(SwaggerUIOptions options, string? serviceName = null)
+        private static void GenerateEndpoint(SwaggerUIOptions options, string serviceName)
         {
-            options.SwaggerEndpoint($"/swagger/{serviceName ?? "Gateway"}/swagger.json", $"Gateway {serviceName} Service API");
-        }
-        private static void AddGatewaySwaggerDoc(SwaggerGenOptions options)
-        {
-            options.SwaggerDoc("Gateway",
-                new OpenApiInfo()
-                {
-                    Title = "Licitation Inforamtion System API Gateway",
-                    Version = "v1.0.0",
-                    Description = "API Gateway acts as a bridge between different microservices and their consumers. It provides a single entry point for external requests and acts as a security barrier, handling authentication, authorization, and rate-limiting. The API Gateway also performs various tasks such as load balancing, request routing, and caching to improve the overall performance of the microservice architecture.",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Mladen Draganović",
-                        Email = "draganovic.it68.2019@uns.ac.rs",
-                        Url = new Uri("https://draganovik.com")
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "MIT licence",
-                        Url = new Uri("https://opensource.org/licenses/MIT")
-                    },
-                    TermsOfService = new Uri("https://opensource.org/licenses/MIT")
-                });
+            options.SwaggerEndpoint($"/swagger/{serviceName}/swagger.json", $"Gateway {serviceName} Service API");
         }
         private static void AddAdministrationSwaggerDoc(SwaggerGenOptions options)
         {

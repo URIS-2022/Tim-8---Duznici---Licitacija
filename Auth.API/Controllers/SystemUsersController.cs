@@ -69,7 +69,7 @@ public class SystemUsersController : ControllerBase
     /// <param name="systemUserUpdate">The updated System User information</param>
     /// <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
     [HttpPatch("{username}")]
-    public async Task<IActionResult> PutSystemUser(string username, SystemUserUpdateModel systemUserUpdate)
+    public async Task<IActionResult> PatchSystemUser(string username, SystemUserUpdateModel systemUserUpdate)
     {
         var systemUser = await systemUserRepository.GetByUsername(username);
         if (systemUser == null || systemUserUpdate == null)

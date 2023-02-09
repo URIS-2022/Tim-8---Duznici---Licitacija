@@ -1,39 +1,34 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http.Headers;
-using System.Text.Json;
 
 namespace Gateway.API.Controllers.Auth;
 
+[ApiExplorerSettings(GroupName = "Auth")]
 [Route("api/[controller]")]
 [ApiController]
-public class SystemUserController : ControllerBase
+public class SystemUsersController : ControllerBase
 {
-
-    [HttpGet("WeatherForecast")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> GetWeatherForecast()
+    HttpServiceProxy serviceProxy;
+    public SystemUsersController(HttpClient httpClient)
     {
-        using HttpClient httpClient = new();
-        string? endpoint = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_AUTH");
-        httpClient.DefaultRequestHeaders.Accept.Clear();
-        httpClient.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-        HttpResponseMessage response = await httpClient.GetAsync($"{endpoint}/WeatherForecast");
-        if (!response.IsSuccessStatusCode)
-        {
-            return BadRequest();
-        }
-        if (response.IsSuccessStatusCode)
-        {
-            string content = await response.Content.ReadAsStringAsync();
-            IEnumerable<object>? forecasts = JsonSerializer.Deserialize<IEnumerable<object>>(content);
-            return Ok(forecasts);
-        }
-        else
-        {
-            string error = await response.Content.ReadAsStringAsync();
-            return BadRequest(error);
-        }
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_AUTH")}/api/SystemUsers");
     }
+
+    [HttpDelete("{username}")]
+    [Authorize(Roles = "Admin")]
+    public Task<IActionResult> DeleteSystemUser(string username) => serviceProxy.Delete(username);
+
+    [HttpGet("{username}")]
+    public Task<IActionResult> GetSystemUser(string username) => serviceProxy.GetById(username);
+
+    [HttpGet]
+    public Task<IActionResult> GetSystemUsers() => serviceProxy.Get();
+
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public Task<IActionResult> PostSystemUser(object requestModel) => serviceProxy.Post(requestModel);
+
+    [HttpPatch("{username}")]
+    [Authorize(Roles = "Admin")]
+    public Task<IActionResult> PatchSystemUser(string username, object systemUserUpdate) => serviceProxy.Patch(username, systemUserUpdate);
 }

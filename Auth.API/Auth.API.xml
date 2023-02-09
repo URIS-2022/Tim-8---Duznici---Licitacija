@@ -29,7 +29,7 @@
             <param name="username">The username of the System User to retrieve</param>
             <returns>The System User model, or Not Found if the System User is not found</returns>
         </member>
-        <member name="M:Auth.API.Controllers.SystemUsersController.PutSystemUser(System.String,Auth.API.Models.SystemUserUpdateModel)">
+        <member name="M:Auth.API.Controllers.SystemUsersController.PatchSystemUser(System.String,Auth.API.Models.SystemUserUpdateModel)">
             <summary>
             Updates a specific System User based on the username
             </summary>
