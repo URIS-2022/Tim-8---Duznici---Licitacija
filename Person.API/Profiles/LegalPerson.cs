@@ -1,6 +1,15 @@
-﻿namespace Person.API.Profiles
+﻿using AutoMapper;
+using Person.API.Entities;
+using Person.API.Models.LegalPerson;
+
+
+namespace Person.API.Profiles
 {
-    public class LegalPerson
+    public class LegalPersonProfile : Profile
     {
+        public LegalPersonProfile()
+        {
+            CreateMap<LegalPerson, LegalPersonModel>();
+        }
     }
 }

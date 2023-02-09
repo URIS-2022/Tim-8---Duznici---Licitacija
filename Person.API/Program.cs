@@ -33,7 +33,7 @@ builder.Services.AddSwaggerGen(options =>
 
     string xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
 
-    //  options.IncludeXmlComments(xmlCommentsPath);
+    options.IncludeXmlComments(xmlCommentsPath);
 
 });
 
