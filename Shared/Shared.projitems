@@ -9,6 +9,11 @@
     <Import_RootNamespace>Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)MQConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RabbitMq\MQConnection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)RabbitMq\" />
   </ItemGroup>
 </Project>
