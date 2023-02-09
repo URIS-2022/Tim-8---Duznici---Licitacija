@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>ff75468c-d021-488a-93e8-e2e98094866b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>Licitation.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
