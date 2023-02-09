@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>e0f622a8-487a-4471-8443-c38bb73da5da</UserSecretsId>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>Payment.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
