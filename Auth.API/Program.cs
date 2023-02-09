@@ -1,5 +1,6 @@
 ﻿using Auth.API.Data;
 using Auth.API.Data.Repository;
+using Auth.API.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -14,6 +15,8 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
+        .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new SystemUserRoleConverter()))
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
@@ -72,6 +75,14 @@ builder.Services.AddScoped<ISystemUserRepository, SystemUserRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder.WithOrigins("https://localhost:7000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1",
@@ -102,6 +113,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 WebApplication app = builder.Build();
+
+app.UseCors("CorsPolicy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
