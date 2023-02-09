@@ -16,9 +16,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+<<<<<<< Updated upstream
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+=======
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+>>>>>>> Stashed changes
 
 app.MapControllers();
 
