@@ -12,8 +12,10 @@ namespace Gateway.API.Helpers
             AddAdministrationSwaggerDoc(options);
             AddAuthSwaggerDoc(options);
             AddComplaintSwaggerDoc(options);
+            AddBiddingSwaggerDoc(options);
             AddLandlotSwaggerDoc(options);
             AddLeaseSwaggerDoc(options);
+            AddLicitationSwaggerDoc(options);
             AddPaymentSwaggerDoc(options);
             AddPersonSwaggerDoc(options);
             AddPreparationsSwaggerDoc(options);
@@ -21,21 +23,16 @@ namespace Gateway.API.Helpers
         public static void AddSwaggerEndpoints(SwaggerUIOptions options)
         {
             GenerateEndpoint(options);
-            GenerateExternalEndpoint(options, Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_ADMINISTRATION"), "v1", "Administration");
+            GenerateEndpoint(options, "Administration");
             GenerateEndpoint(options, "Auth");
             GenerateEndpoint(options, "Bidding");
             GenerateEndpoint(options, "Complaint");
             GenerateEndpoint(options, "Landlot");
             GenerateEndpoint(options, "Lease");
-            //GenerateEndpoint(options, "Licitation");
+            GenerateEndpoint(options, "Licitation");
             GenerateEndpoint(options, "Payment");
             GenerateEndpoint(options, "Person");
             GenerateEndpoint(options, "Preparation");
-            options.SwaggerEndpoint($"https://localhost:7020/swagger/v1/swagger.json", $"Auth Service API");
-        }
-        private static void GenerateExternalEndpoint(SwaggerUIOptions options, string baseUri, string version, string? serviceName = null)
-        {
-            options.SwaggerEndpoint($"{baseUri}/swagger/{version}/swagger.json", $"{serviceName} Service API {version}");
         }
         private static void GenerateEndpoint(SwaggerUIOptions options, string? serviceName = null)
         {
@@ -127,6 +124,28 @@ namespace Gateway.API.Helpers
                     TermsOfService = new Uri("https://opensource.org/licenses/MIT")
                 });
         }
+        private static void AddBiddingSwaggerDoc(SwaggerGenOptions options)
+        {
+            options.SwaggerDoc("Bidding",
+                new OpenApiInfo()
+                {
+                    Title = "Bidding Service API",
+                    Version = "v1.0.0",
+                    Description = "The microservice lease refers to a specific module or component that handles the process of bidding an lot or landlot.",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Mladen Krsmanović",
+                        Email = "krsmanovic.it37.2019@uns.ac.rs",
+                        Url = new Uri("https://www.linkedin.com/in/mladen-krsmanovi%C4%87-78060b1bb/")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "MIT licence",
+                        Url = new Uri("https://opensource.org/licenses/MIT")
+                    },
+                    TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                });
+        }
         private static void AddLandlotSwaggerDoc(SwaggerGenOptions options)
         {
             options.SwaggerDoc("Landlot",
@@ -170,7 +189,27 @@ namespace Gateway.API.Helpers
                     TermsOfService = new Uri("https://opensource.org/licenses/MIT")
                 });
         }
-        // Not completed
+        private static void AddLicitationSwaggerDoc(SwaggerGenOptions options)
+        {
+            options.SwaggerDoc("Licitation",
+                new OpenApiInfo()
+                {
+                    Title = "Licitation Service API",
+                    Version = "v1.0.0",
+                    Description = "Licitation.API is a microservice developed in C# programming language that manages the process of bidding for contracts or tenders. It provides a platform for organizations to create, manage, and participate in licitations. The service generates a JSON token that serves as a secure means of identifying and accessing the information related to a specific licitation process.",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Aleksandra Vrekić",
+                        Email = "vrekic.it25.2019@uns.ac.rs"
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "MIT licence",
+                        Url = new Uri("https://opensource.org/licenses/MIT")
+                    },
+                    TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                });
+        }
         private static void AddPaymentSwaggerDoc(SwaggerGenOptions options)
         {
             options.SwaggerDoc("Payment",
@@ -178,12 +217,11 @@ namespace Gateway.API.Helpers
                 {
                     Title = "Payment Service API",
                     Version = "v1.0.0",
-                    Description = "The microservice lease refers to a specific module or component that handles the process of leasing an item or resource. It deals with which buyer lease which landlot.",
+                    Description = "Payment.API is a microservice implemented in C# that facilitates the process of making and receiving payments. The service allows for the creation and management of payment transactions and provides secure access to payment information through the generation of a JSON token. This token can be used to authenticate and authorize payment transactions, ensuring that sensitive financial information is protected.",
                     Contact = new OpenApiContact
                     {
-                        Name = "Marko Rakić",
-                        Email = "rakic.it6.2019@uns.ac.rs",
-                        Url = new Uri("https://www.linkedin.com/in/markorakic/")
+                        Name = "Aleksandra Vrekić",
+                        Email = "vrekic.it25.2019@uns.ac.rs"
                     },
                     License = new OpenApiLicense
                     {
