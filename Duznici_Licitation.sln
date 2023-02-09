@@ -23,7 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Landlot.API", "Landlot.API\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Complaint.API", "Complaint.API\Complaint.API.csproj", "{44A240B4-AA43-4BE5-A2D8-B205E52ADDCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licitation.API", "Licitation.API\Licitation.API.csproj", "{0CD50D97-A786-4725-B988-90C143D635BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licitation.API", "Licitation.API\Licitation.API.csproj", "{0CD50D97-A786-4725-B988-90C143D635BD}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Preparation.API", "Preparation.API\Preparation.API.csproj", "{89E5DD1B-7BB6-4C80-957E-2E3A06BBD207}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bidding.API", "Bidding.API\Bidding.API.csproj", "{34C47DB4-F58D-43B7-9AF5-2DA55451EB63}"

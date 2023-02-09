@@ -16,7 +16,7 @@
         "SERVICE_ENDPOINT_PERSON": "https://localhost:7080",
         "SERVICE_ENDPOINT_PREPARATION": "https://localhost:7090"
       },
-      "dotnetRunMessages": false,
+      "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7000;http://localhost:5000"
     }
   },
