@@ -58,11 +58,16 @@ builder.Services.AddControllers(setup =>
                 };
             };
         });
-
-
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddEndpointsApiExplorer(); // zagrada iznad
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",  builder => builder.WithOrigins("https://localhost:7000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1",
@@ -92,9 +97,12 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlCommentsPath);
 });
 
-
-
 WebApplication app = builder.Build();
+app.UseCors("CorsPolicy");
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
