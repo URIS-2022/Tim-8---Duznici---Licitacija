@@ -91,7 +91,11 @@ public class SystemUsersController : ControllerBase
     public async Task<ActionResult<SystemUserResponseModel>> PostSystemUser(SystemUserRequestModel requestModel)
     {
         SystemUser requestedSystemUser = mapper.Map<SystemUser>(requestModel);
-        SystemUser createdSystemUser = await systemUserRepository.Add(requestedSystemUser);
+        SystemUser? createdSystemUser = await systemUserRepository.Add(requestedSystemUser);
+        if (createdSystemUser == null)
+        {
+            return BadRequest();
+        }
         SystemUserResponseModel responseModel = mapper.Map<SystemUserResponseModel>(createdSystemUser);
         return CreatedAtAction("GetSystemUser", new { username = responseModel.Username }, responseModel);
     }

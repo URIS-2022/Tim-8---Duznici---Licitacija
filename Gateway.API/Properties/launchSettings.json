@@ -1,39 +1,23 @@
 {
   "profiles": {
-    "http": {
+    "Default": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SERVICE_ENDPOINT_ADMINISTRATION": "https://localhost:7010",
+        "SERVICE_ENDPOINT_AUTH": "https://localhost:7020",
+        "SERVICE_ENDPOINT_BIDDING": "https://localhost:7030",
+        "SERVICE_ENDPOINT_COMPLAINT": "https://localhost:7040",
+        "SERVICE_ENDPOINT_LANDLOT": "https://localhost:7050",
+        "SERVICE_ENDPOINT_LEASE": "https://localhost:7060",
+        "SERVICE_ENDPOINT_PAYMENT": "https://localhost:7070",
+        "SERVICE_ENDPOINT_PERSON": "https://localhost:7080",
+        "SERVICE_ENDPOINT_PREPARATION": "https://localhost:7090"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5046"
-    },
-    "https": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7233;http://localhost:5046"
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "publishAllPorts": true,
-      "useSSL": true
+      "applicationUrl": "https://localhost:7000;http://localhost:5000"
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",

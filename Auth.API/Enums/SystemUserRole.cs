@@ -32,7 +32,7 @@ public class SystemUserRoleConverter : JsonConverter<SystemUserRole>
 
     public override SystemUserRole Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        string roleString = reader.GetString() ?? "Ne dodeljeno";
+        string roleString = reader.GetString() ?? "Nije dodeljeno";
         foreach (var roleMapping in _roleMapping)
         {
             if (roleMapping.Value == roleString)
