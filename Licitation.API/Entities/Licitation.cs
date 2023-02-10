@@ -7,13 +7,13 @@ public partial class Licitation : IValidatableObject
 {
     public Guid LicitationGuid { get; set; }
     public int Stage { get; set; }
-    public DateOnly Date { get; set; }
+    public DateTime Date { get; set; }
     public int Year { get; set; }
     public int Constarint { get; set; }
     public int BidIncrement { get; set; }
-    public DateOnly ApplicationDeadline { get; set; }
+    public DateTime ApplicationDeadline { get; set; }
 
-    public Licitation(Guid licitationGuid, int stage, DateOnly date, int year, int constraint, int bidIncrement, DateOnly applicationDeadline)
+    public Licitation(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
     {
         LicitationGuid = licitationGuid;
         Stage = stage;
@@ -25,7 +25,7 @@ public partial class Licitation : IValidatableObject
 
     }
 
-    public Licitation(int stage, DateOnly date, int year, int constraint, int bidIncrement, DateOnly applicationDeadline)
+    public Licitation(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
     {
         LicitationGuid = Guid.NewGuid();
         Stage = stage;

@@ -4,5 +4,40 @@
         <name>Licitation.API</name>
     </assembly>
     <members>
+        <member name="T:Licitation.API.Models.Licitation.LicitationCreate">
+            <summary>
+            DTO za kreiranje licitacije
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Stage">
+            <summary>
+            Broj licitacije
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Date">
+            <summary>
+            Datum licitacije
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Yaer">
+            <summary>
+            Godina
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Constraint">
+            <summary>
+            Ogranicenje
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.BidIncrement">
+            <summary>
+            Korak cene
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.ApplicationDeadline">
+            <summary>
+            Rok za prijavu, datum i vreme
+            </summary>
+        </member>
     </members>
 </doc>

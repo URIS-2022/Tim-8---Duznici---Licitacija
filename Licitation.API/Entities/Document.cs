@@ -13,31 +13,31 @@ namespace Licitation.API.Entities
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
         public int ReferenceNumber { get; set; }
-        public DateOnly DateSubmissed { get; set; }
-        public DateOnly DateSertified { get; set; }
+        public DateTime DateSubmitted { get; set; }
+        public DateTime DateSertified { get; set; }
         public string Template { get; set; }
 
 
-        public Document(Guid id, Licitation licitation, DocumentType documentType, int referenceNumber, DateOnly dateSubmissed, DateOnly dateSertified, string template)
+        public Document(Guid id, Licitation licitation, DocumentType documentType, int referenceNumber, DateTime dateSubmitted, DateTime dateSertified, string template)
         {
             DocumentGuid = id;
             this.licitation = licitation;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
-            DateSubmissed = dateSubmissed;
+            DateSubmitted = dateSubmitted;
             DateSertified = dateSertified;
             Template = template;
         }
 
 
 
-        public Document(Licitation licitation, DocumentType documentType, int referenceNumber, DateOnly dateSubmissed, DateOnly dateSertified, string template)
+        public Document(Licitation licitation, DocumentType documentType, int referenceNumber, DateTime dateSubmitted, DateTime dateSertified, string template)
         {
             DocumentGuid = Guid.NewGuid();
             this.licitation = licitation;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
-            DateSubmissed = dateSubmissed;
+            DateSubmitted = dateSubmitted;
             DateSertified = dateSertified;
             Template = template;
         }
@@ -61,8 +61,8 @@ namespace Licitation.API.Entities
             if (ReferenceNumber <= 0)
                 results.Add(new ValidationResult("Reference number must be greater than zero.", new[] { nameof(ReferenceNumber) }));
 
-            if (DateSubmissed == null)
-                results.Add(new ValidationResult("Date submissed cannot be null.", new[] { nameof(DateSubmissed) }));
+            if (DateSubmitted == null)
+                results.Add(new ValidationResult("Date submitted cannot be null.", new[] { nameof(DateSubmitted) }));
 
             if (DateSertified == null)
                 results.Add(new ValidationResult("Date sertified cannot be null.", new[] { nameof(DateSertified) }));
