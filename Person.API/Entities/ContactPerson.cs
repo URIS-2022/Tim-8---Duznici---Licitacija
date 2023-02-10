@@ -1,6 +1,11 @@
-﻿namespace Person.API.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
+
+
+namespace Person.API.Entities
 {
-    public class ContactPerson
+    public class ContactPerson 
     {
         public Guid ContactPersonId { get; set; }
         public string FirstName { get; set; }
