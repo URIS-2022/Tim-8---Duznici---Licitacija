@@ -1,6 +1,18 @@
-﻿namespace Person.API.Data.Repository
+﻿using Person.API.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Person.API.Data.Repository
 {
-    public class ILegalPersonRepository
+    public interface ILegalPersonRepository
     {
+        Task<List<LegalPerson>> GetAllLegalPersons();
+        Task<LegalPerson> GetLegalPersonsByGuid(Guid LegalPersonId);
+        Task<LegalPerson> CreateLegalPersons(LegalPerson legalPerson);
+        Task DeleteLegalPersons(Guid LegalPersonId);
+        Task UpdateLegalPersons(LegalPerson legalPerson);
+
     }
 }

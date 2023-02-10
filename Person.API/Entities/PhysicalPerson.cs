@@ -2,7 +2,7 @@
 {
     public class PhysicalPerson
     {
-        public Guid PhysicalPersonID { get; set; }
+        public Guid PhysicalPersonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Jmbg { get; set; }
