@@ -8,7 +8,7 @@ namespace Person.API.Data.Repository
 {
     public interface IAddressRepository
     {
-        Task<List<Address>> GetAllAddresses();
+        Task<IEnumerable<Address>> GetAllAddresses();
         Task<Address> GetAddressByGuid(Guid AddressId);
         Task<Address?> GetAddressByZipCode(string zipCode);
         Task<Address> CreateAddress(Address address);

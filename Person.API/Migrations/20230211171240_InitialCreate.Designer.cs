@@ -12,7 +12,7 @@ using Person.API.Data;
 namespace Person.API.Migrations
 {
     [DbContext(typeof(PersonDbContext))]
-    [Migration("20230210220337_InitialCreate")]
+    [Migration("20230211171240_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

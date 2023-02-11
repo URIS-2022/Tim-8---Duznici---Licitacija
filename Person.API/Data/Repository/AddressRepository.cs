@@ -16,11 +16,11 @@ namespace Person.API.Data.Repository
 
         public AddressRepository (PersonDbContext context)
         {
-            context = context;
+            this.context = context;
 
         }
 
-        public async Task<List<Address>> GetAllAddresses()
+        public async Task<IEnumerable<Address>> GetAllAddresses()
         {
             return await context.Addresses
                 .ToListAsync();

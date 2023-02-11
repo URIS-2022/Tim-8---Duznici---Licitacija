@@ -17,7 +17,7 @@ namespace Person.API.Data.Repository
 
         public LegalPersonRepository(PersonDbContext context)
         {
-            context = context;
+            this.context = context;
 
         }
         public async Task<List<LegalPerson>> GetAllLegalPersons()
