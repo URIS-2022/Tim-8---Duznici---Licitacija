@@ -10,6 +10,8 @@ namespace Person.API.Profiles
         public AddressProfile()
         {
             CreateMap<Address, AddressModel>();
+            CreateMap<AddressCreationModel, Address>();
+            CreateMap<AddressUpdateModel, Address>();
         }
     }
 }
