@@ -4,5 +4,84 @@
         <name>Complaint.API</name>
     </assembly>
     <members>
+        <member name="T:Complaint.API.Data.Repository.ComplaintRepository">
+            <summary>
+            Implementation of the IComplaintRepository
+            interface for managing Complaint entities in the database.
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.#ctor(Complaint.API.Data.ComplaintDbContext)">
+            <summary>
+            Initializes a new instance of the ComplaintRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.GetComplaints">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaints"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.GetComplaint(System.Guid)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaint(System.Guid)"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.UpdateComplaint(System.Guid,Complaint.API.Entities.Complaint)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.UpdateComplaint(System.Guid,Complaint.API.Entities.Complaint)"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.DeleteComplaint(System.Guid)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.DeleteComplaint(System.Guid)"/>
+        </member>
+        <member name="T:Complaint.API.Data.Repository.IComplaintRepository">
+            <summary>
+            The interface for complaint repository, provides methods for getting, updating, adding and deleting a complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaints">
+            <summary>
+            Gets a list of all complaints.
+            </summary>
+            <returns>A list of complaints.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaint(System.Guid)">
+            <summary>
+            Gets a specific complaint by its identifier.
+            </summary>
+            <param name="id">The identifier of the complaint.</param>
+            <returns>The complaint with the specified identifier.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.UpdateComplaint(System.Guid,Complaint.API.Entities.Complaint)">
+            <summary>
+            Updates a specific complaint.
+            </summary>
+            <param name="id">The identifier of the complaint to update.</param>
+            <param name="patchDocument">The updated values for the complaint.</param>
+            <returns>The updated complaint.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)">
+            <summary>
+            Adds a new complaint.
+            </summary>
+            <param name="complaint">The complaint to add.</param>
+            <returns>The added complaint.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.DeleteComplaint(System.Guid)">
+            <summary>
+            Deletes a specific complaint.
+            </summary>
+            <param name="id">The identifier of the complaint to delete.</param>
+            <returns>The deleted complaint.</returns>
+        </member>
+        <member name="T:Complaint.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Complaint.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Complaint.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Complaint.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
