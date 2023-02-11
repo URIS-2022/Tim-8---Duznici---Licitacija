@@ -60,7 +60,7 @@ public class AddressController : ControllerBase
             return BadRequest();
         }
         AddressModel responseModel = mapper.Map<AddressModel>(createdAddress);
-        return CreatedAtAction("GetAddresses", new { street = responseModel.Street }, responseModel);
+        return CreatedAtAction("GetAddresses", new { addressId = createdAddress.AddressId }, responseModel);
     }
 
 
