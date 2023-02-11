@@ -72,7 +72,7 @@ namespace Landlot.API.Models
 
 
         /// <summary>
-        /// Navodnjavanje
+        /// Drenaza
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti odgovarajuću vrstu drenaže.")]
         public string Drainage { get; set; }

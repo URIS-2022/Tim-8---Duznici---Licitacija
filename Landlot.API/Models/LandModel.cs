@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 namespace Landlot.API.Models
 {
     public class LandModel
-    {
+
+    {    /// <summary>
+         /// Id parcele
+         /// </summary>
+        public Guid LandId { get; set; }
+
         /// <summary>
         /// Povrsina parcele
         /// </summary>
