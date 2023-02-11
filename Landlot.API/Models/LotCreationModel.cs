@@ -1,6 +1,6 @@
 ﻿namespace Landlot.API.Models
 {
-    public class LandResponseModel
+    public class LotCreationModel
     {
     }
 }
