@@ -23,7 +23,7 @@ namespace Bidding.API.Entities
         public Guid BestBuyerGuid { get; set; }
         [JsonConverter(typeof(PublicBiddingTypeConverter))]
         public PublicBiddingType public_bidding_type { get; set; }
-        public Address AddresGuid { get; set; }
+        public Guid AddresGuid { get; set; }
         public int LeasePeriod { get; set; }
         public int DepositReplenishmentAmount { get; set; }
          
@@ -44,7 +44,7 @@ namespace Bidding.API.Entities
          int auctionedPrice,
          Guid bestBuyerGuid,
          PublicBiddingType public_bidding_type,
-         Address addressGuid,
+         Guid addressGuid,
          int leasePeriod,
          int depositReplenishmentAmount,
          Guid round,
@@ -79,7 +79,7 @@ namespace Bidding.API.Entities
          int auctionedPrice,
          Guid bestBuyerGuid,
          PublicBiddingType public_bidding_type,
-         Address addressGuid,
+         Guid addressGuid,
          int leasePeriod,
          int depositReplenishmentAmount,
          Guid round,
@@ -153,9 +153,9 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("public_bidding_type must not be null."));
             }
 
-            if (AddresGuid == null)
+            if (AddresGuid == Guid.Empty)
             {
-                results.Add(new ValidationResult("AddresGuid must not be null."));
+                results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
             if (biddingStatus == null)

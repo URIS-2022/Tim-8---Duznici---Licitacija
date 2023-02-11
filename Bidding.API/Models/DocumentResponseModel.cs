@@ -14,7 +14,7 @@ namespace Bidding.API.Models
         
 
         [DataMember]
-        public PublicBidding publicBidding { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
 
         [DataMember(Name ="documentType")]
@@ -33,10 +33,10 @@ namespace Bidding.API.Models
         [DataMember]
         public string Template { get; set; }
 
-        public DocumentResponseModel(PublicBidding publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
+        public DocumentResponseModel(Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
             
-            this.publicBidding = publicBidding;
+            this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmited = dateSubmited;

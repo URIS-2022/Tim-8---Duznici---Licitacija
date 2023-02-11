@@ -10,7 +10,7 @@ namespace Bidding.API.Entities
     {
         public Guid Guid { get; set; }
         public Guid LotGuid { get; set; }
-        public Guid PublicBidding { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
         public int LotNumber { get; set; }
 
         public PublicBiddingLot() { }
@@ -19,7 +19,7 @@ namespace Bidding.API.Entities
         {
             Guid = publicBiddingLotGuid;
             LotGuid = lotGuid;
-            PublicBidding = publicBidding;
+            PublicBiddingGuid = publicBidding;
             LotNumber = lotNumber;
         }
 
@@ -27,7 +27,7 @@ namespace Bidding.API.Entities
         {
             Guid =Guid.NewGuid();
             LotGuid = lotGuid;
-            PublicBidding = publicBidding;
+            PublicBiddingGuid = publicBidding;
             LotNumber = lotNumber;
         }
 
@@ -48,7 +48,7 @@ namespace Bidding.API.Entities
             {
                 errors.Add(new ValidationResult("Lot GUID cannot be empty."));
             }
-            if (PublicBidding == Guid.Empty)
+            if (PublicBiddingGuid == Guid.Empty)
             {
                 errors.Add(new ValidationResult("Public bidding GUID cannot be empty."));
             }

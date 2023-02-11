@@ -10,7 +10,7 @@ namespace Bidding.API.Models
         
 
         
-        public Representative RepresentativeGuid { get; set; }
+        public Guid RepresentativeGuid { get; set; }
 
         
         public int? Amount { get; set; }
@@ -18,7 +18,7 @@ namespace Bidding.API.Models
         
         
 
-        public BuyerApplicationUpdateModel(Representative representativeGuid, int amount)
+        public BuyerApplicationUpdateModel(Guid representativeGuid, int amount)
         {
             
             RepresentativeGuid = representativeGuid;

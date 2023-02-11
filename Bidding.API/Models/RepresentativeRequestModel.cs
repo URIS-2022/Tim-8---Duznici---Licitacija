@@ -14,12 +14,12 @@ namespace Bidding.API.Models
 
         public int NumberOfBoard { get; set; }
 
-        public PublicBidding publicBidding { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
 
-        public List<BuyerApplication> BuyerRepresentatives { get; set; }
+       // public List<BuyerApplication> BuyerRepresentatives { get; set; }
 
         public RepresentativeRequestModel(string firstName, string lastName, string identificationNumber,
-                         Address address, int numberOfBoard, PublicBidding publicBidding, List<BuyerApplication> buyerRepresentatives)
+                         Address address, int numberOfBoard, Guid publicBidding)
         {
             
             FirstName = firstName;
@@ -27,8 +27,8 @@ namespace Bidding.API.Models
             IdentificationNumber = identificationNumber;
             this.address = address;
             NumberOfBoard = numberOfBoard;
-            this.publicBidding = publicBidding;
-            BuyerRepresentatives = buyerRepresentatives;
+            this.PublicBiddingGuid = publicBidding;
+            
         }
     }
 }

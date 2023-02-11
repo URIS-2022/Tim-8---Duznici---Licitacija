@@ -10,19 +10,19 @@ namespace Bidding.API.Models
     {
        
 
-        public Representative RepresentativeGuid { get; set; }
+        public Guid RepresentativeGuid { get; set; }
 
         public int Amount { get; set; }
 
-        public Representative representative { get; set; }
+       // public Guid representative { get; set; }
 
 
-        public BuyerApplicationRequestModel( Representative representativeGuid, int amount,Representative representative)
+        public BuyerApplicationRequestModel( Guid representativeGuid, int amount)
         {
             
             RepresentativeGuid = representativeGuid;
             Amount = amount;
-            this.representative = representative;
+           // this.representative = representative;
         }
     }
 }

@@ -9,8 +9,8 @@ namespace Bidding.API.Entities
     {
         
         public Guid Guid { get; set; }
-        public Representative RepresentativeGuid { get; set; }
-        public PublicBidding PublicBiddingGuid { get; set; }
+        public Guid RepresentativeGuid { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
         public DateTime Date { get; set; }
         public float Offer { get; set; }
 
@@ -18,7 +18,7 @@ namespace Bidding.API.Entities
 
         public BiddingOffer() { }
 
-        public BiddingOffer(Guid biddingOfferGuid, Representative representativeGuid, PublicBidding publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
+        public BiddingOffer(Guid biddingOfferGuid, Guid representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
             Guid = biddingOfferGuid;
             RepresentativeGuid = representativeGuid;
@@ -28,7 +28,7 @@ namespace Bidding.API.Entities
             BuyerGuid = buyerGuid;
         }
 
-        public BiddingOffer(Representative representativeGuid, PublicBidding publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
+        public BiddingOffer(Guid representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
             Guid = Guid.NewGuid();
             RepresentativeGuid = representativeGuid;
@@ -51,13 +51,15 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (RepresentativeGuid == null)
+            if (RepresentativeGuid == Guid.Empty)
             {
-                results.Add(new ValidationResult("Representative cannot be null."));
+                results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (PublicBiddingGuid == null)
-                results.Add(new ValidationResult("Public bidding cannot be null."));
+            if (PublicBiddingGuid == Guid.Empty)
+            {
+                results.Add(new ValidationResult("Guid cannot be empty."));
+            }
 
             if (Offer <= 0)
             {

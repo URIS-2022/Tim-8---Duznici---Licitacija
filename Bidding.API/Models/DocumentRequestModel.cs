@@ -7,16 +7,16 @@ namespace Bidding.API.Models
 {
     public class DocumentRequestModel
     {
-        public PublicBidding publicBidding { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
         public string ReferenceNumber { get; set; }
         public string Template { get; set; }
 
-        public DocumentRequestModel(PublicBidding publicBidding, DocumentType documentType, string referenceNumber,string template)
+        public DocumentRequestModel(Guid publicBidding, DocumentType documentType, string referenceNumber,string template)
         {
             
-            this.publicBidding = publicBidding;
+            this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber; // U entitetu dokument popraviti svuda da reference number bude string a ne int
             Template = template;

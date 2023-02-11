@@ -30,7 +30,7 @@ namespace Bidding.API.Models
        
         public PublicBiddingType? public_bidding_type { get; set; }
         
-        public Address? Addres { get; set; }
+        public Address Addres { get; set; }
         
         public int? LeasePeriod { get; set; }
         
@@ -41,8 +41,8 @@ namespace Bidding.API.Models
         [JsonConverter(typeof(BiddingStatusConverter))]
         
         public BiddingStatus? biddingStatus { get; set; }
-         
-        
+
+        public List<PublicBiddingLot> PublicBiddingLot { get; set; }
 
         public PublicBiddingUpdateModel(
        
@@ -55,12 +55,13 @@ namespace Bidding.API.Models
        int? auctionedPrice,
        Guid bestBuyerGuid,
        PublicBiddingType? public_bidding_type,
-       Address? address,
+       Address address,
        int? leasePeriod,
        int? depositReplenishmentAmount,
        Guid round,
-       BiddingStatus? biddingStatus
-       
+       BiddingStatus? biddingStatus,
+       List<PublicBiddingLot> publicBiddingLot
+
         )
         {
             
@@ -78,7 +79,7 @@ namespace Bidding.API.Models
             DepositReplenishmentAmount = depositReplenishmentAmount;
             this.Round = round;
             this.biddingStatus = biddingStatus;
-            
+            PublicBiddingLot = publicBiddingLot;
         }
     }
 }

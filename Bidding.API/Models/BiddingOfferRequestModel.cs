@@ -9,13 +9,13 @@ namespace Bidding.API.Models
     {
         
         public Representative RepresentativeGuid { get; set; }
-        public PublicBidding PublicBiddingGuid { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
         public DateTime Date { get; set; }
         public float Offer { get; set; }
 
         public Guid BuyerGuid { get; set; }
 
-        public BiddingOfferRequestModel(Representative representativeGuid, PublicBidding publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
+        public BiddingOfferRequestModel(Representative representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
             
             RepresentativeGuid = representativeGuid;

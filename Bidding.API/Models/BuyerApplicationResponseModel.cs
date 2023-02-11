@@ -13,7 +13,7 @@ namespace Bidding.API.Models
         
 
         [DataMember]
-        public Representative RepresentativeGuid { get; set; }
+        public Guid RepresentativeGuid { get; set; }
 
         [DataMember]
         public int Amount { get; set; }
@@ -21,7 +21,7 @@ namespace Bidding.API.Models
         [DataMember]
         public Representative representative { get; set; }
 
-        public BuyerApplicationResponseModel( Representative representativeGuid, int amount, Representative representative)
+        public BuyerApplicationResponseModel( Guid representativeGuid, int amount, Representative representative)
         {
             
             RepresentativeGuid = representativeGuid;

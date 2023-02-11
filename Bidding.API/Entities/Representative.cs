@@ -11,17 +11,17 @@ namespace Bidding.API.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string IdentificationNumber { get; set; }
-        public Address AddressGuid { get; set; }
+        public Guid AddressGuid { get; set; }
 
         public int NumberOfBoard { get; set; }
 
-        public PublicBidding PublicBiddingGuid { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
 
         public Representative() { }
 
 
         public Representative(Guid representative_Guid, string firstName, string lastName, string identificationNumber,
-                         Address addressGuid, int numberOfBoard, PublicBidding publicBiddingGuid)
+                         Guid addressGuid, int numberOfBoard, Guid publicBiddingGuid)
         {
             Guid = representative_Guid;
             FirstName = firstName;
@@ -33,7 +33,7 @@ namespace Bidding.API.Entities
         }
 
         public Representative(string firstName, string lastName, string identificationNumber,
-                         Address addressGuid, int numberOfBoard, PublicBidding publicBiddingGuid)
+                         Guid addressGuid, int numberOfBoard, Guid publicBiddingGuid)
         {
             Guid = Guid.NewGuid();
             FirstName = firstName;
@@ -67,17 +67,17 @@ namespace Bidding.API.Entities
             {
                 errors.Add(new ValidationResult("Identification number cannot be empty."));
             }
-            if (AddressGuid == null)
+            if (AddressGuid == Guid.Empty)
             {
-                errors.Add(new ValidationResult("Address GUID cannot be null."));
+                errors.Add(new ValidationResult("Guid cannot be empty."));
             }
             if (NumberOfBoard <= 0)
             {
                 errors.Add(new ValidationResult("Number of board must be greater than 0."));
             }
-            if (PublicBiddingGuid == null)
+            if (PublicBiddingGuid == Guid.Empty)
             {
-                errors.Add(new ValidationResult("Public bidding GUID cannot be null."));
+                errors.Add(new ValidationResult("Guid cannot be empty."));
             }
             return errors;
         }

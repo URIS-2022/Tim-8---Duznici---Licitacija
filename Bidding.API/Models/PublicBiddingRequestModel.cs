@@ -19,7 +19,7 @@ namespace Bidding.API.Models
         public Guid BestBuyerGuid { get; set; }
         [JsonConverter(typeof(PublicBiddingTypeConverter))]
         public PublicBiddingType public_bidding_type { get; set; }
-        public Address AddresGuid { get; set; }
+        public Guid AddresGuid { get; set; }
         public int LeasePeriod { get; set; }
         public int DepositReplenishmentAmount { get; set; }
 
@@ -39,7 +39,7 @@ namespace Bidding.API.Models
         int auctionedPrice,
         Guid bestBuyerGuid,
         PublicBiddingType public_bidding_type,
-        Address addressGuid,
+        Guid addressGuid,
         int leasePeriod,
         int depositReplenishmentAmount,
         Guid round,

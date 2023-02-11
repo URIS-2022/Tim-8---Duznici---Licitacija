@@ -10,7 +10,7 @@ namespace Bidding.API.Entities
     {
 
         public Guid Guid { get; set; }
-        public Country country { get; set; }
+        public string Country { get; set; }
         public string Street { get; set; }
         public string StreetNumber { get; set; }
         public string Place { get; set; }
@@ -18,20 +18,20 @@ namespace Bidding.API.Entities
 
         public Address() { }
 
-        public Address(Guid id,Country country, string street, string streetNumber, string place, string zipCode)
+        public Address(Guid id,string country, string street, string streetNumber, string place, string zipCode)
         {
             Guid = id;
-            this.country = country;
+            Country = country;
             Street = street;
             StreetNumber = streetNumber;
             Place = place;
             ZipCode = zipCode;
         }
 
-        public Address(Country country, string street, string streetNumber, string place, string zipCode)
+        public Address(string country, string street, string streetNumber, string place, string zipCode)
         {
             Guid = Guid.NewGuid();
-            this.country = country;
+            Country = country;
             Street = street;
             StreetNumber = streetNumber;
             Place = place;
@@ -48,8 +48,8 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (country == null)
-                results.Add(new ValidationResult("Country cannot be null."));
+            if (string.IsNullOrWhiteSpace(Country))
+                results.Add(new ValidationResult("Country cannot be empty or whitespace."));
 
             if (string.IsNullOrWhiteSpace(Street))
                 results.Add(new ValidationResult("Street cannot be empty or whitespace."));

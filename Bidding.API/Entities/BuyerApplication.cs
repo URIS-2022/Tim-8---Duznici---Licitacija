@@ -9,20 +9,20 @@ namespace Bidding.API.Entities
     {
         public Guid Guid { get; set; }
 
-        public Representative RepresentativeGuid { get; set; }
+        public Guid RepresentativeGuid { get; set; }
 
         public int Amount { get; set; }
 
         public BuyerApplication() { }
 
-        public BuyerApplication(Guid buyerGuid, Representative representativeGuid, int amount)
+        public BuyerApplication(Guid buyerGuid, Guid representativeGuid, int amount)
         {
             Guid = buyerGuid;
             RepresentativeGuid = representativeGuid;
             Amount = amount;
         }
 
-        public BuyerApplication(Representative representativeGuid, int amount)
+        public BuyerApplication(Guid representativeGuid, int amount)
         {
             Guid = Guid.NewGuid();
             RepresentativeGuid = representativeGuid;
@@ -37,9 +37,9 @@ namespace Bidding.API.Entities
             {
                 errors.Add(new ValidationResult("Buyer GUID cannot be empty."));
             }
-            if (RepresentativeGuid == null)
+            if (RepresentativeGuid == Guid.Empty)
             {
-                errors.Add(new ValidationResult("Representative GUID cannot be null."));
+                errors.Add(new ValidationResult("Representative GUID cannot be empty."));
             }
             if (Amount <= 0)
             {

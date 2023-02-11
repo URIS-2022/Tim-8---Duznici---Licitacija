@@ -10,7 +10,7 @@ namespace Bidding.API.Entities
     {
        
         public Guid Guid { get; set; }
-        public PublicBidding publicBidding { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
         public string ReferenceNumber { get; set; }
@@ -24,10 +24,10 @@ namespace Bidding.API.Entities
         public Document() { }
 
 
-        public Document(Guid id,PublicBidding publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
+        public Document(Guid id,Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
             Guid = id;
-            this.publicBidding = publicBidding;
+            this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmited = dateSubmited;
@@ -37,10 +37,10 @@ namespace Bidding.API.Entities
 
 
 
-        public Document(PublicBidding publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
+        public Document(Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
             Guid = Guid.NewGuid();
-            this.publicBidding = publicBidding;
+            this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmited = dateSubmited;
@@ -58,8 +58,10 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (publicBidding == null)
-                results.Add(new ValidationResult("Public bidding cannot be null.", new[] { nameof(publicBidding) }));
+            if (PublicBiddingGuid == Guid.Empty)
+            {
+                results.Add(new ValidationResult("Guid cannot be empty."));
+            }
 
             if (documentType == null)
                 results.Add(new ValidationResult("Document type cannot be null.", new[] { nameof(documentType) }));

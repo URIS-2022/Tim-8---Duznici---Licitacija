@@ -23,10 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="Data\Repository\" />
     <Folder Include="Migrations\" />
     <Folder Include="Services\" />
-    <Folder Include="Profiles\" />
   </ItemGroup>
 
 </Project>
