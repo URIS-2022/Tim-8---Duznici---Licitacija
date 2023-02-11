@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Preparation.API.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
@@ -8,9 +9,9 @@ namespace Preparation.API.Entities
     {
         public Guid Guid { get; set; }
         public Announcement Announcement { get; set; }
-        //[JsonConverter(typeof(DocumentTypeConverter))]
+        [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType DocumentType { get; set; }
-        //[JsonConverter(typeof(DocumentStatusConverter))]
+        [JsonConverter(typeof(DocumentStatusConverter))]
         public DocumentStatus DocumentStatus { get; set; }
         public string ReferenceNumber { get; set; }
         public DateTime DateSubmitted { get; set; }
