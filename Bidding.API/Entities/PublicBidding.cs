@@ -10,11 +10,11 @@ namespace Bidding.API.Entities
 {
     public partial class PublicBidding : IValidatableObject
     {
-        public Guid PublicBiddingGuid { get; set; }
+        public Guid Guid { get; set; }
 
-        public DateOnly Date { get; set; }
-        public DateOnly StartDate { get; set; }
-        public DateOnly EndDate { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public int StartPricePerHectar { get; set; }
         public string Expected { get; set; }
         [JsonConverter(typeof(MunicipalityConverter))]
@@ -32,12 +32,12 @@ namespace Bidding.API.Entities
 
         public BiddingStatus biddingStatus { get; set; }
 
-        
-              public PublicBidding(
+        public PublicBidding() { }
+        public PublicBidding(
          Guid publicBiddingGuid,
-         DateOnly date,
-         DateOnly startDate,
-         DateOnly endDate,
+         DateTime date,
+         DateTime startDate,
+         DateTime endDate,
          int startPricePerHectar,
          string expected,
          Municipality municipality,
@@ -51,7 +51,7 @@ namespace Bidding.API.Entities
          BiddingStatus biddingStatus
           )
         {
-            PublicBiddingGuid = publicBiddingGuid;
+            Guid = publicBiddingGuid;
             Date = date;
             StartDate = startDate;
             EndDate = endDate;
@@ -70,9 +70,9 @@ namespace Bidding.API.Entities
 
          public PublicBidding(
 
-         DateOnly date,
-         DateOnly startDate,
-         DateOnly endDate,
+         DateTime date,
+         DateTime startDate,
+         DateTime endDate,
          int startPricePerHectar,
          string expected,
          Municipality municipality,
@@ -86,7 +86,7 @@ namespace Bidding.API.Entities
          BiddingStatus biddingStatus
           )
         {
-            PublicBiddingGuid =Guid.NewGuid();
+            Guid =Guid.NewGuid();
             Date = date;
             StartDate = startDate;
             EndDate = endDate;
@@ -107,7 +107,7 @@ namespace Bidding.API.Entities
         {
             List<ValidationResult> results = new List<ValidationResult>();
 
-            if (PublicBiddingGuid == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }

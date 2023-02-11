@@ -9,39 +9,41 @@ namespace Bidding.API.Entities
     public partial class Document : IValidatableObject
     {
        
-        public Guid DocumentGuid { get; set; }
+        public Guid Guid { get; set; }
         public PublicBidding publicBidding { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
-        public int ReferenceNumber { get; set; }
+        public string ReferenceNumber { get; set; }
 
-        public DateOnly DateSubmissed { get; set; }
+        public DateTime DateSubmited { get; set; }
 
-        public DateOnly DateSertified { get; set; }
+        public DateTime DateSertified { get; set; }
 
         public string Template { get; set; }
 
+        public Document() { }
 
-        public Document(Guid id,PublicBidding publicBidding, DocumentType documentType, int referenceNumber, DateOnly dateSubmissed, DateOnly dateSertified, string template)
+
+        public Document(Guid id,PublicBidding publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
-            DocumentGuid = id;
+            Guid = id;
             this.publicBidding = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
-            DateSubmissed = dateSubmissed;
+            DateSubmited = dateSubmited;
             DateSertified = dateSertified;
             Template = template;
         }
 
 
 
-        public Document(PublicBidding publicBidding, DocumentType documentType, int referenceNumber, DateOnly dateSubmissed, DateOnly dateSertified, string template)
+        public Document(PublicBidding publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
-            DocumentGuid = Guid.NewGuid();
+            Guid = Guid.NewGuid();
             this.publicBidding = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
-            DateSubmissed = dateSubmissed;
+            DateSubmited = dateSubmited;
             DateSertified = dateSertified;
             Template = template;
         }
@@ -51,7 +53,7 @@ namespace Bidding.API.Entities
         {
             List<ValidationResult> results = new List<ValidationResult>();
 
-            if (DocumentGuid == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
@@ -62,11 +64,11 @@ namespace Bidding.API.Entities
             if (documentType == null)
                 results.Add(new ValidationResult("Document type cannot be null.", new[] { nameof(documentType) }));
 
-            if (ReferenceNumber <= 0)
-                results.Add(new ValidationResult("Reference number must be greater than zero.", new[] { nameof(ReferenceNumber) }));
+            if (string.IsNullOrWhiteSpace(ReferenceNumber))
+                results.Add(new ValidationResult("ReferenceNumber cannot be empty or whitespace.", new[] { nameof(ReferenceNumber) }));
 
-            if (DateSubmissed == null)
-                results.Add(new ValidationResult("Date submissed cannot be null.", new[] { nameof(DateSubmissed) }));
+            if (DateSubmited == null)
+                results.Add(new ValidationResult("Date submissed cannot be null.", new[] { nameof(DateSubmited) }));
 
             if (DateSertified == null)
                 results.Add(new ValidationResult("Date sertified cannot be null.", new[] { nameof(DateSertified) }));

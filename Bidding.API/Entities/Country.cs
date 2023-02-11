@@ -10,19 +10,21 @@ namespace Bidding.API.Entities
     public partial class Country : IValidatableObject
     {
 
-        public Guid Country_id { get; set; }
+        public Guid Guid { get; set; }
         public string Name { get; set; }
+
+        public Country() { }
 
         public Country(Guid id, string name)
         {
-            Country_id = id;
+            Guid = id;
             Name = name;
             
         }
 
         public Country( string name)
         {
-            Country_id = Guid.NewGuid();
+            Guid = Guid.NewGuid();
             Name = name;
 
         }
@@ -32,7 +34,7 @@ namespace Bidding.API.Entities
         {
             var results = new List<ValidationResult>();
 
-            if (Country_id == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }

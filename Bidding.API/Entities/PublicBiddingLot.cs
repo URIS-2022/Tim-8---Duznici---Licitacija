@@ -8,14 +8,16 @@ namespace Bidding.API.Entities
 {
     public partial class PublicBiddingLot : IValidatableObject
     {
-        public Guid PublicBiddingLotGuid { get; set; }
+        public Guid Guid { get; set; }
         public Guid LotGuid { get; set; }
         public Guid PublicBidding { get; set; }
         public int LotNumber { get; set; }
 
+        public PublicBiddingLot() { }
+
         public PublicBiddingLot(Guid publicBiddingLotGuid, Guid lotGuid, Guid publicBidding, int lotNumber)
         {
-            PublicBiddingLotGuid = publicBiddingLotGuid;
+            Guid = publicBiddingLotGuid;
             LotGuid = lotGuid;
             PublicBidding = publicBidding;
             LotNumber = lotNumber;
@@ -23,7 +25,7 @@ namespace Bidding.API.Entities
 
         public PublicBiddingLot( Guid lotGuid, Guid publicBidding, int lotNumber)
         {
-            PublicBiddingLotGuid =Guid.NewGuid();
+            Guid =Guid.NewGuid();
             LotGuid = lotGuid;
             PublicBidding = publicBidding;
             LotNumber = lotNumber;
@@ -38,7 +40,7 @@ namespace Bidding.API.Entities
             {
                 errors.Add(new ValidationResult("Lot number must be greater than 0."));
             }
-            if (PublicBiddingLotGuid == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 errors.Add(new ValidationResult("Public bidding lot GUID cannot be empty."));
             }

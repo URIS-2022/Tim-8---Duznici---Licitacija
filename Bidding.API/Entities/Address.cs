@@ -9,16 +9,18 @@ namespace Bidding.API.Entities
     public partial class Address : IValidatableObject
     {
 
-        public Guid AddressGuid { get; set; }
+        public Guid Guid { get; set; }
         public Country country { get; set; }
         public string Street { get; set; }
         public string StreetNumber { get; set; }
         public string Place { get; set; }
         public string ZipCode { get; set; }
 
+        public Address() { }
+
         public Address(Guid id,Country country, string street, string streetNumber, string place, string zipCode)
         {
-            AddressGuid = id;
+            Guid = id;
             this.country = country;
             Street = street;
             StreetNumber = streetNumber;
@@ -28,7 +30,7 @@ namespace Bidding.API.Entities
 
         public Address(Country country, string street, string streetNumber, string place, string zipCode)
         {
-            AddressGuid = Guid.NewGuid();
+            Guid = Guid.NewGuid();
             this.country = country;
             Street = street;
             StreetNumber = streetNumber;
@@ -41,7 +43,7 @@ namespace Bidding.API.Entities
         {
             List<ValidationResult> results = new List<ValidationResult>();
 
-            if (AddressGuid == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }

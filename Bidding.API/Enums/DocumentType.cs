@@ -9,9 +9,8 @@ namespace Bidding.API.Enums
     public enum DocumentType
     {
         None = 0,
-        Adopted,
-        Rejected,
-        Open
+        Report
+        
 
     }
     public class DocumentTypeConverter : JsonConverter<DocumentType>
@@ -19,9 +18,8 @@ namespace Bidding.API.Enums
         private readonly Dictionary<DocumentType, string> _documentTypeMapping = new Dictionary<DocumentType, string>
         {
          { DocumentType.None, "Nije dodeljeno" },
-         { DocumentType.Adopted, "Usvojen" },
-         { DocumentType.Rejected, "Odbijen" },
-         { DocumentType.Open, "Otvoren" },
+         { DocumentType.Report, "Izvještaj" },
+         
 
         };
 

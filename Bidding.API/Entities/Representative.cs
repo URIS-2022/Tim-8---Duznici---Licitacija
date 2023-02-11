@@ -7,7 +7,7 @@ namespace Bidding.API.Entities
 {
     public partial class Representative : IValidatableObject
     {
-        public Guid Representative_Guid { get; set; }
+        public Guid Guid { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string IdentificationNumber { get; set; }
@@ -17,11 +17,13 @@ namespace Bidding.API.Entities
 
         public PublicBidding PublicBiddingGuid { get; set; }
 
+        public Representative() { }
+
 
         public Representative(Guid representative_Guid, string firstName, string lastName, string identificationNumber,
                          Address addressGuid, int numberOfBoard, PublicBidding publicBiddingGuid)
         {
-            Representative_Guid = representative_Guid;
+            Guid = representative_Guid;
             FirstName = firstName;
             LastName = lastName;
             IdentificationNumber = identificationNumber;
@@ -33,7 +35,7 @@ namespace Bidding.API.Entities
         public Representative(string firstName, string lastName, string identificationNumber,
                          Address addressGuid, int numberOfBoard, PublicBidding publicBiddingGuid)
         {
-            Representative_Guid = Guid.NewGuid();
+            Guid = Guid.NewGuid();
             FirstName = firstName;
             LastName = lastName;
             IdentificationNumber = identificationNumber;
@@ -48,7 +50,7 @@ namespace Bidding.API.Entities
         {
             var errors = new List<ValidationResult>();
 
-            if (Representative_Guid == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 errors.Add(new ValidationResult("Guid cannot be empty."));
             }

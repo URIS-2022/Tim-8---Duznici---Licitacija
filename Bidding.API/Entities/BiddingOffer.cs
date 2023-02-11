@@ -8,17 +8,19 @@ namespace Bidding.API.Entities
     public partial class BiddingOffer : IValidatableObject
     {
         
-        public Guid BiddingOfferGuid { get; set; }
+        public Guid Guid { get; set; }
         public Representative RepresentativeGuid { get; set; }
         public PublicBidding PublicBiddingGuid { get; set; }
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
         public float Offer { get; set; }
 
         public Guid BuyerGuid { get; set; }
 
-        public BiddingOffer(Guid biddingOfferGuid, Representative representativeGuid, PublicBidding publicBiddingGuid, DateOnly date, float offer, Guid buyerGuid)
+        public BiddingOffer() { }
+
+        public BiddingOffer(Guid biddingOfferGuid, Representative representativeGuid, PublicBidding publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
-            BiddingOfferGuid = biddingOfferGuid;
+            Guid = biddingOfferGuid;
             RepresentativeGuid = representativeGuid;
             PublicBiddingGuid = publicBiddingGuid;
             Date = date;
@@ -26,9 +28,9 @@ namespace Bidding.API.Entities
             BuyerGuid = buyerGuid;
         }
 
-        public BiddingOffer(Representative representativeGuid, PublicBidding publicBiddingGuid, DateOnly date, float offer, Guid buyerGuid)
+        public BiddingOffer(Representative representativeGuid, PublicBidding publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
-            BiddingOfferGuid = Guid.NewGuid();
+            Guid = Guid.NewGuid();
             RepresentativeGuid = representativeGuid;
             PublicBiddingGuid = publicBiddingGuid;
             Date = date;
@@ -40,7 +42,7 @@ namespace Bidding.API.Entities
         {
             List<ValidationResult> results = new List<ValidationResult>();
 
-            if (BiddingOfferGuid == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }

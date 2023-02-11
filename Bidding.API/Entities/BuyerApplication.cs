@@ -7,22 +7,24 @@ namespace Bidding.API.Entities
 {
     public partial class BuyerApplication : IValidatableObject
     {
-        public Guid BuyerGuid { get; set; }
+        public Guid Guid { get; set; }
 
         public Representative RepresentativeGuid { get; set; }
 
         public int Amount { get; set; }
 
+        public BuyerApplication() { }
+
         public BuyerApplication(Guid buyerGuid, Representative representativeGuid, int amount)
         {
-            BuyerGuid = buyerGuid;
+            Guid = buyerGuid;
             RepresentativeGuid = representativeGuid;
             Amount = amount;
         }
 
         public BuyerApplication(Representative representativeGuid, int amount)
         {
-            BuyerGuid = Guid.NewGuid();
+            Guid = Guid.NewGuid();
             RepresentativeGuid = representativeGuid;
             Amount = amount;
         }
@@ -31,7 +33,7 @@ namespace Bidding.API.Entities
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var errors = new List<ValidationResult>();
-            if (BuyerGuid == Guid.Empty)
+            if (Guid == Guid.Empty)
             {
                 errors.Add(new ValidationResult("Buyer GUID cannot be empty."));
             }
