@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Licitation.API.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.OpenApi.Models;
@@ -61,8 +62,8 @@ builder.Services.AddControllers(setup =>
             };
         });
 
-//builder.Services.AddDbContext<AuthDbContext>(options =>
-//        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<LicitationDBContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

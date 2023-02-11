@@ -3,9 +3,9 @@ using System.Data;
 
 namespace Licitation.API.Entities;
 
-public partial class Licitation : IValidatableObject
+public partial class LicitationEntity : IValidatableObject
 {
-    public Guid LicitationGuid { get; set; }
+    public Guid Guid { get; set; }
     public int Stage { get; set; }
     public DateTime Date { get; set; }
     public int Year { get; set; }
@@ -13,9 +13,9 @@ public partial class Licitation : IValidatableObject
     public int BidIncrement { get; set; }
     public DateTime ApplicationDeadline { get; set; }
 
-    public Licitation(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
+    public LicitationEntity(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
     {
-        LicitationGuid = licitationGuid;
+        Guid = licitationGuid;
         Stage = stage;
         Date = date;
         Year = year;
@@ -25,9 +25,9 @@ public partial class Licitation : IValidatableObject
 
     }
 
-    public Licitation(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
+    public LicitationEntity(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
     {
-        LicitationGuid = Guid.NewGuid();
+        Guid = Guid.NewGuid();
         Stage = stage;
         Date = date;
         Year = year;
@@ -39,7 +39,7 @@ public partial class Licitation : IValidatableObject
     {
         var results = new List<ValidationResult>();
 
-        if (LicitationGuid == Guid.Empty)
+        if (Guid == Guid.Empty)
         {
             results.Add(new ValidationResult("LicitationGuid cannot be empty."));
         }
@@ -64,9 +64,14 @@ public partial class Licitation : IValidatableObject
             results.Add(new ValidationResult("BidIncrement must be greater than 0."));
         }
 
+        if (Date < DateTime.Now)
+        {
+            results.Add(new ValidationResult("Date cannot be in the past"));
+        }
+
         if (ApplicationDeadline > Date)
         {
-            results.Add(new ValidationResult("ApplicationDeadline cannot be greater than Date."));
+            results.Add(new ValidationResult("ApplicationDeadline cannot be after Date."));
         }
 
         return results;
