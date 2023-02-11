@@ -12,10 +12,10 @@ namespace Person.API.Data.Repository
 {
     public class LegalPersonRepository : ILegalPersonRepository
     { 
-        private readonly PersonContext context;
+        private readonly PersonDbContext context;
 
 
-        public LegalPersonRepository(PersonContext context)
+        public LegalPersonRepository(PersonDbContext context)
         {
             context = context;
 
@@ -30,6 +30,19 @@ namespace Person.API.Data.Repository
             return await context.LegalPersons.FirstOrDefaultAsync(pp => pp.LegalPersonId == LegalPersonId);
         }
 
+        public async Task<LegalPerson?> GetLegalPersonsByName(string name)
+        {
+            LegalPerson? legalPerson = await context.LegalPersons.SingleOrDefaultAsync(x => x.Name == name);
+
+            return legalPerson;
+        }
+
+        public async Task<LegalPerson?> GetLegalPersonsByIdentificationNumber(string identificatioNnumber)
+        {
+            LegalPerson? legalPerson = await context.LegalPersons.SingleOrDefaultAsync(x => x.IdentificationNumber == identificatioNnumber);
+
+            return legalPerson;
+        }
         public async Task<LegalPerson> CreateLegalPersons(LegalPerson legalPerson)
         {
             context.LegalPersons.Add(legalPerson);

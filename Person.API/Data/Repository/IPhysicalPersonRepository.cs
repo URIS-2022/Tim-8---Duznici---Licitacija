@@ -10,6 +10,9 @@ namespace Person.API.Data.Repository
     {
         Task<List<PhysicalPerson>> GetAllPhysicalPersons();
         Task<PhysicalPerson> GetPhysicalPersonsByGuid(Guid PhysicalPersonId);
+        Task<PhysicalPerson?> GetPhysicalPersonsByJmbg(string jmbg);
+        Task<PhysicalPerson?> GetPhysicalPersonsByFirstName(string firstName);
+        Task<PhysicalPerson?> GetPhysicalPersonsByLastName(string lastName);
         Task<PhysicalPerson> CreatePhysicalPersons(PhysicalPerson physicalPerson);
         Task DeletePhysicalPersons(Guid PhysicalPersonId);
         Task UpdatePhysicalPersons(PhysicalPerson physicalPerson);

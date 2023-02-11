@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Person.API.Models.ContactPerson;
 
-namespace Auth.API.Controllers;
+namespace Person.API.Controllers;
 
 
 [Route("api/[controller]")]
@@ -25,7 +25,7 @@ public class ContactPersonController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ContactPerson>>> GetContactPersons()
+    public async Task<ActionResult<IEnumerable<ContactPerson?>>> GetContactPersons()
     {
         var contactPersons = await contactPersonRepository.GetAllContactPersons();
         if (!contactPersons.Any())
@@ -39,7 +39,7 @@ public class ContactPersonController : ControllerBase
    
 
     [HttpPatch("{username}")]
-    public async Task<IActionResult> PutContactPerson(string firstName, ContactPersonUpdateModel contactPersonUpdate)
+    public async Task<IActionResult> PatchContactPerson(string firstName, ContactPersonUpdateModel contactPersonUpdate)
     {
         var contactPerson = await contactPersonRepository.GetContactPersonsByFirstName(firstName);
         if (contactPerson == null || contactPersonUpdate == null)
@@ -53,16 +53,16 @@ public class ContactPersonController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<ContactPersonCreationModel>> PostContactPerson(ContactPerson ContactPerson)
+    public async Task<ActionResult<ContactPersonModel>> PostContactPerson(ContactPersonCreationModel requestContactPerson)
     {
-        ContactPerson requestedContactPerson = mapper.Map<ContactPerson>(ContactPerson);
-        ContactPerson? createdContactPerson = await ContactPersonRepository.CreateContactPerson(ContactPerson);
-        if (ContactPerson == null)
+        ContactPerson contactPerson = mapper.Map<ContactPerson>(requestContactPerson);
+        ContactPerson? createdContactPerson = await contactPersonRepository.CreateContactPerson(contactPerson);
+        if (contactPerson == null)
         {
             return BadRequest();
         }
-        ContactPersonCreationModel responseModel = mapper.Map<ContactPersonCreationModel>(createdContactPerson);
-        return CreatedAtAction("GetSystemUser", new { username = responseModel.FirstName }, responseModel);
+        ContactPersonModel responseModel = mapper.Map<ContactPersonModel>(createdContactPerson);
+        return CreatedAtAction("GetContactPersons", new { firstname = responseModel.FirstName }, responseModel);
     }
 
    

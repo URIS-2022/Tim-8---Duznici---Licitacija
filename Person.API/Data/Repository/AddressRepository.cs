@@ -11,10 +11,10 @@ namespace Person.API.Data.Repository
 {
     public class AddressRepository : IAddressRepository
     {
-        private readonly PersonContext context;
+        private readonly PersonDbContext context;
 
 
-        public AddressRepository (PersonContext context)
+        public AddressRepository (PersonDbContext context)
         {
             context = context;
 
@@ -30,6 +30,14 @@ namespace Person.API.Data.Repository
         {
             return await context.Addresses.FirstOrDefaultAsync(a => a.AddressId == AddressId);
         }
+
+        public async Task<Address?> GetAddressByZipCode(string zipCode)
+        {
+            Address? address = await context.Addresses.SingleOrDefaultAsync(x => x.ZipCode == zipCode);
+
+            return address;
+        }
+
         public async Task<Address> CreateAddress(Address address)
         {
             context.Addresses.Add(address);
@@ -39,7 +47,7 @@ namespace Person.API.Data.Repository
 
         public async Task DeleteAddresses(Guid AddressId)
         {
-            var address = await GetAddressById(AddressId);
+            var address = await GetAddressByGuid(AddressId);
             context.Addresses.Remove(address);
             await context.SaveChangesAsync();
         }

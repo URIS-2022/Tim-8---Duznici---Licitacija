@@ -12,10 +12,10 @@ namespace Person.API.Data.Repository
 {
     public class PhysicalPersonRepository : IPhysicalPersonRepository
     {
-        private readonly PersonContext context;
+        private readonly PersonDbContext context;
 
 
-        public PhysicalPersonRepository(PersonContext context)
+        public PhysicalPersonRepository(PersonDbContext context)
         {
             context = context;
 
@@ -28,6 +28,27 @@ namespace Person.API.Data.Repository
         public async Task<PhysicalPerson> GetPhysicalPersonsByGuid(Guid PhysicalPersonId)
         {
             return await context.PhysicalPersons.FirstOrDefaultAsync(pp => pp.PhysicalPersonId == PhysicalPersonId);
+        }
+
+        public async Task<PhysicalPerson?> GetPhysicalPersonsByJmbg(string jmbg)
+        {
+            PhysicalPerson? physicalPerson = await context.PhysicalPersons.SingleOrDefaultAsync(x => x.Jmbg == jmbg);
+
+            return physicalPerson;
+        }
+
+        public async Task<PhysicalPerson?> GetPhysicalPersonsByFirstName(string firstName)
+        {
+            PhysicalPerson? physicalPerson = await context.PhysicalPersons.SingleOrDefaultAsync(x => x.FirstName == firstName);
+
+            return physicalPerson;
+        }
+
+        public async Task<PhysicalPerson?> GetPhysicalPersonsByLastName(string lastName)
+        {
+            PhysicalPerson? physicalPerson = await context.PhysicalPersons.SingleOrDefaultAsync(x => x.LastName == lastName);
+
+            return physicalPerson;
         }
 
         public async Task<PhysicalPerson> CreatePhysicalPersons(PhysicalPerson physicalPerson)

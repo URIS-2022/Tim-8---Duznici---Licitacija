@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Person.API.Data
 {
-    public class PersonContext : DbContext
+    public class PersonDbContext : DbContext
     {
 
 
         private readonly IConfiguration Configuration;
 
-        public PersonContext(DbContextOptions options, IConfiguration configuration) : base(options)
+        public PersonDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             this.Configuration = configuration;
         }
@@ -30,11 +30,6 @@ namespace Person.API.Data
         public DbSet<ContactPerson> ContactPersons { get; set; }
 
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("PersonDB"));
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

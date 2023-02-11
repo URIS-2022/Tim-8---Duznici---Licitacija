@@ -10,6 +10,7 @@ namespace Person.API.Data.Repository
     {
         Task<List<Address>> GetAllAddresses();
         Task<Address> GetAddressByGuid(Guid AddressId);
+        Task<Address?> GetAddressByZipCode(string zipCode);
         Task<Address> CreateAddress(Address address);
         Task DeleteAddresses(Guid AddressId);
         Task UpdateAddresses(Address address);

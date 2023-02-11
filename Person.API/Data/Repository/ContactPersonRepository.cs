@@ -11,16 +11,16 @@ namespace Person.API.Data.Repository
 {
     public class ContactPersonRepository : IContactPersonRepository
     {
-        private readonly PersonContext context;
+        private readonly PersonDbContext context;
 
 
-        public ContactPersonRepository (PersonContext context)
+        public ContactPersonRepository (PersonDbContext context)
         {
-            context = context;
+            this.context = context;
 
         }
 
-        public async Task<List<ContactPerson>> GetAllContactPersons()
+        public async Task<IEnumerable<ContactPerson>> GetAllContactPersons()
         {
             return await context.ContactPersons
                 .ToListAsync();
