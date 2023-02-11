@@ -5,9 +5,9 @@ namespace Complaint.API.Enums;
 
 public enum ComplaintAction
 {
+    NoSecondRound = 0,
     SecondRoundNewConditions,
-    SecondRoundSameConditions,
-    NoSecondRound
+    SecondRoundSameConditions
 }
 
 public class ComplaintActionConverter : JsonConverter<ComplaintAction>

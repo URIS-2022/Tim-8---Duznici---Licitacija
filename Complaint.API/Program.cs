@@ -1,5 +1,6 @@
 ﻿using Complaint.API.Data;
 using Complaint.API.Data.Repository;
+using Complaint.API.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -12,8 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
-                                                   //.AddJsonOptions(options =>
-                                                   //options.JsonSerializerOptions.Converters.Add())
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new ComplaintTypeConverter());
+            options.JsonSerializerOptions.Converters.Add(new ComplaintActionConverter());
+            options.JsonSerializerOptions.Converters.Add(new ComplaintStatusConverter());
+        }
+        )
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>

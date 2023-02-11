@@ -8,7 +8,7 @@ namespace Complaint.API.Data.Repository;
 /// </summary>
 public class ComplaintRepository : IComplaintRepository
 {
-    private readonly ComplaintDbContext _context;
+    private readonly ComplaintDbContext context;
 
     /// <summary>
     /// Initializes a new instance of the ComplaintRepository class.
@@ -16,54 +16,52 @@ public class ComplaintRepository : IComplaintRepository
     /// <param name="context">The database context to use for data access.</param>
     public ComplaintRepository(ComplaintDbContext context)
     {
-        _context = context;
+        this.context = context;
     }
 
     /// <inheritdoc cref="IComplaintRepository.GetComplaints"/>
     public async Task<IEnumerable<Entities.Complaint>> GetComplaints()
     {
-        return await _context.Complaints.ToListAsync();
+        return await context.Complaints.ToListAsync();
     }
 
     /// <inheritdoc cref="IComplaintRepository.GetComplaint"/>
     public async Task<Entities.Complaint?> GetComplaint(Guid id)
     {
-        return await _context.Complaints.FindAsync(id);
+        return await context.Complaints.FindAsync(id);
     }
 
     /// <inheritdoc cref="IComplaintRepository.UpdateComplaint"/>
     public async Task<Entities.Complaint?> UpdateComplaint(Guid id, Entities.Complaint updateModel)
     {
-        var complaint = await _context.Complaints.FirstOrDefaultAsync(c => c.Guid == id);
+        var complaint = await context.Complaints.FirstOrDefaultAsync(c => c.Guid == id);
         if (complaint == null)
         {
             return null;
         }
-        _context.Entry(complaint).CurrentValues.SetValues(updateModel);
-        await _context.SaveChangesAsync();
+        context.Entry(complaint).CurrentValues.SetValues(updateModel);
+        await context.SaveChangesAsync();
         return complaint;
     }
 
     /// <inheritdoc cref="IComplaintRepository.AddComplaint"/>
     public async Task<Entities.Complaint?> AddComplaint(Entities.Complaint complaint)
     {
-        var created = _context.Complaints.Add(complaint);
-        await _context.SaveChangesAsync();
+        var created = context.Complaints.Add(complaint);
+        await context.SaveChangesAsync();
         return created.Entity;
     }
 
     /// <inheritdoc cref="IComplaintRepository.DeleteComplaint"/>
-    public async Task<Entities.Complaint?> DeleteComplaint(Guid id)
+    public async Task DeleteComplaint(Guid id)
     {
-        var complaint = await _context.Complaints.FindAsync(id);
-        if (complaint == null)
+        var systemUser = await context.Complaints.FindAsync(id);
+        if (systemUser == null)
         {
-            return null;
+            throw new InvalidOperationException("Compalint not found");
         }
-
-        _context.Complaints.Remove(complaint);
-        await _context.SaveChangesAsync();
-        return complaint;
+        context.Complaints.Remove(systemUser);
+        await context.SaveChangesAsync();
     }
 }
 

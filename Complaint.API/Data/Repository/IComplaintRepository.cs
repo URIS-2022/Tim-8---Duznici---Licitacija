@@ -38,5 +38,5 @@ public interface IComplaintRepository
     /// </summary>
     /// <param name="id">The identifier of the complaint to delete.</param>
     /// <returns>The deleted complaint.</returns>
-    Task<Entities.Complaint?> DeleteComplaint(Guid id);
+    Task DeleteComplaint(Guid id);
 }

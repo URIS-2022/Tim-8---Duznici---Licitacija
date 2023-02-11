@@ -1,4 +1,6 @@
-﻿using Complaint.API.Data.Repository;
+﻿using AutoMapper;
+using Complaint.API.Data.Repository;
+using Complaint.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Complaint.API.Controllers;
@@ -10,41 +12,43 @@ namespace Complaint.API.Controllers;
 public class ComplaintsController : ControllerBase
 {
     private readonly IComplaintRepository _complaintRepository;
+    private readonly IMapper mapper;
 
-    public ComplaintsController(IComplaintRepository complaintRepository)
+    public ComplaintsController(IComplaintRepository complaintRepository, IMapper mapper)
     {
         _complaintRepository = complaintRepository;
+        this.mapper = mapper;
     }
 
     // GET: api/Complaints
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Entities.Complaint>>> GetComplaint()
+    public async Task<ActionResult<IEnumerable<ComplaintGetResponseModel>>> GetComplaint()
     {
         var complaints = await _complaintRepository.GetComplaints();
         if (!complaints.Any())
         {
             return NoContent();
         }
-
-        return Ok(complaints.ToList());
+        var responseModel = mapper.Map<IEnumerable<ComplaintGetResponseModel>>(complaints);
+        return Ok(responseModel);
     }
 
     // GET: api/Complaints/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Entities.Complaint>> GetComplaint(Guid id)
+    public async Task<ActionResult<ComplaintGetResponseModel>> GetComplaint(Guid id)
     {
         var complaint = await _complaintRepository.GetComplaint(id);
         if (complaint == null)
         {
             return NotFound();
         }
-
-        return complaint;
+        var responseModel = mapper.Map<ComplaintGetResponseModel>(complaint);
+        return responseModel;
     }
 
     // PATCH: api/Complaints/5
     [HttpPatch("{id}")]
-    public async Task<IActionResult> PatchComplaint(Guid id, [FromBody] Entities.Complaint patchModel)
+    public async Task<ActionResult<ComplaintPatchResponseModel>> PatchComplaint(Guid id, [FromBody] ComplaintPatchRequestModel patchModel)
     {
         var complaint = await _complaintRepository.GetComplaint(id);
         if (complaint == null)
@@ -52,38 +56,43 @@ public class ComplaintsController : ControllerBase
             return NotFound();
         }
 
+        mapper.Map(patchModel, complaint);
+
         var updated = await _complaintRepository.UpdateComplaint(id, complaint);
-        if (updated != null)
+        if (updated == null)
         {
             return BadRequest();
         }
 
-        return NoContent();
+        var responseModel = mapper.Map<ComplaintPatchResponseModel>(updated);
+
+        return Ok(responseModel);
     }
 
     // POST: api/Complaints
     [HttpPost]
-    public async Task<ActionResult<Entities.Complaint>> PostComplaint(Entities.Complaint complaint)
+    public async Task<ActionResult<ComplaintPostResponseModel>> PostComplaint(ComplaintPostRequestModel postModel)
     {
-        var created = await _complaintRepository.AddComplaint(complaint);
-        if (created != null)
+        var complaint = mapper.Map<Entities.Complaint>(postModel);
+        Entities.Complaint? created = await _complaintRepository.AddComplaint(complaint);
+        if (created == null)
         {
             return BadRequest();
         }
-
-        return CreatedAtAction("GetComplaint", new { id = created.Guid }, created);
+        var responseModel = mapper.Map<ComplaintPostResponseModel>(created);
+        return CreatedAtAction("GetComplaint", new { id = created.Guid }, responseModel);
     }
 
     // DELETE: api/Complaints/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteComplaint(Guid id)
     {
-        var deleted = _complaintRepository.DeleteComplaint(id);
-
-        if (deleted == null)
+        var complaint = await _complaintRepository.GetComplaint(id);
+        if (complaint == null)
         {
             return NotFound();
         }
+        await _complaintRepository.DeleteComplaint(complaint.Guid);
 
         return NoContent();
     }
