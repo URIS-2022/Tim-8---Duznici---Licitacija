@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Complaint.API.Data;
+using Complaint.API.Data.Repository;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -59,9 +62,9 @@ builder.Services.AddControllers(setup =>
             };
         });
 
-//builder.Services.AddDbContext<DbContext>(options =>
-//        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddControllers();
+builder.Services.AddDbContext<ComplaintDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'ComplaintDbContext' not found.")));
+builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
