@@ -36,7 +36,7 @@
             ID opstine
             </summary>
         </member>
-        <member name="P:Landlot.API.Models.LandCreationModel.NameOfTheMunicipality">
+        <member name="P:Landlot.API.Models.LandCreationModel.Municipality">
             <summary>
             Naziv opstine
             </summary>
@@ -87,7 +87,7 @@
             ID opstine
             </summary>
         </member>
-        <member name="P:Landlot.API.Models.LandModel.NameOfTheMunicipality">
+        <member name="P:Landlot.API.Models.LandModel.Municipality">
             <summary>
             Naziv opstine
             </summary>
@@ -137,7 +137,7 @@
             ID opstine
             </summary>
         </member>
-        <member name="P:Landlot.API.Models.LandUpdateModel.NameOfTheMunicipality">
+        <member name="P:Landlot.API.Models.LandUpdateModel.Municipality">
             <summary>
             Naziv opstine
             </summary>

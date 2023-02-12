@@ -25,7 +25,7 @@ namespace Landlot.API.Models
         /// <summary>
         /// Naziv opstine
         /// </summary>
-        public string NameOfTheMunicipality { get; set; }
+        public string Municipality { get; set; }
 
         /// <summary>
         /// Lista nepokretnosti

@@ -35,16 +35,18 @@ namespace Landlot.API.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<LandModel>> GetComplaint(Guid id)
+
+
+        [HttpGet("{LandGuid}")]
+        public async Task<ActionResult<LandModel>> GetComplaint(Guid LandGuid)
         {
-            var land = await landRepository.GetLand(id);
+            Land? land = await landRepository.GetLand(LandGuid);
             if (land == null)
             {
                 return NotFound();
             }
             var responseModel = mapper.Map<LandModel>(land);
-            return responseModel;
+            return Ok(responseModel);
         }
 
         [HttpPatch("{id}")]
@@ -70,27 +72,31 @@ namespace Landlot.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<LandCreationModel>> PostLand(LandModel postModel)
+        public async Task<ActionResult<LandModel>> PostLand(LandCreationModel postModel)
         {
             var land = mapper.Map<Land>(postModel);
-            Land? created = await landRepository.AddLand(land);
-            if (created == null)
+            Land? createdLand = await landRepository.AddLand(land);
+            if (createdLand == null)
             {
                 return BadRequest();
             }
-            var responseModel = mapper.Map<LandCreationModel>(created);
-            return CreatedAtAction("GetLand", new { id = created.LandGuid }, responseModel);
+            var responseModel = mapper.Map<Land>(createdLand);
+            return CreatedAtAction("GetLand", new { id = createdLand.LandGuid }, responseModel);
         }
+
+       
+       
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLand(Guid id)
         {
-            var land = await landRepository.GetLand(id);
+            Land? land = await landRepository.GetLand(id);
             if (land == null)
             {
                 return NotFound();
             }
-            await landRepository.GetLand(land.LandGuid);
+            await landRepository.DeleteLand(land.LandGuid);
 
             return NoContent();
         }

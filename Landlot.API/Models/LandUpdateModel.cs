@@ -25,7 +25,7 @@ namespace Landlot.API.Models
         /// Naziv opstine
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti naziv odgovarajuće opštine.")]
-        public string NameOfTheMunicipality { get; set; }
+        public string Municipality { get; set; }
 
         /// <summary>
         /// Lista nepokretnosti
