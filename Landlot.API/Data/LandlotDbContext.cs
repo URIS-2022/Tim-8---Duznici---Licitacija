@@ -35,7 +35,7 @@ namespace Landlot.API.Data
                 table.LotGuid
             });
 
-            modelBuilder.Entity<Lot>().HasOne(v => v.LandGuid).WithMany().HasForeignKey(v => v.LandGuid);
+           modelBuilder.Entity<Lot>().HasOne(v => v.LandGuid).WithMany().HasForeignKey(v => v.LandGuid);
 
             modelBuilder.Entity<Land>() 
                 .HasData(new
@@ -69,8 +69,6 @@ namespace Landlot.API.Data
                     ProtectedZoneState = "II",
                     DrainageState = "Good"
                 });
-
-
 
 
         }
