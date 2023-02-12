@@ -13,6 +13,8 @@ namespace Bidding.API.Entities
 
         public int Amount { get; set; }
 
+        public Representative representative { get; set; }
+
         public BuyerApplication() { }
 
         public BuyerApplication(Guid buyerGuid, Guid representativeGuid, int amount)

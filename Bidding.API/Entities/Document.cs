@@ -21,6 +21,8 @@ namespace Bidding.API.Entities
 
         public string Template { get; set; }
 
+        public PublicBidding PublicBidding { get; set; }
+
         public Document() { }
 
 

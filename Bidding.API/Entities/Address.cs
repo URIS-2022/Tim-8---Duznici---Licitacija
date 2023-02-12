@@ -16,6 +16,10 @@ namespace Bidding.API.Entities
         public string Place { get; set; }
         public string ZipCode { get; set; }
 
+        public List<Representative> Representatives { get; set; }
+
+        public ICollection<PublicBidding> PublicBiddings { get; set; }
+
         public Address() { }
 
         public Address(Guid id,string country, string street, string streetNumber, string place, string zipCode)

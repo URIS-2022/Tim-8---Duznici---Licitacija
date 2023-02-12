@@ -16,6 +16,10 @@ namespace Bidding.API.Entities
 
         public Guid BuyerGuid { get; set; }
 
+        public  Representative Representative { get; set; }
+
+        public PublicBidding publicBidding { get; set; }
+
         public BiddingOffer() { }
 
         public BiddingOffer(Guid biddingOfferGuid, Guid representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)

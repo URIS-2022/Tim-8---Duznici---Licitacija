@@ -13,6 +13,8 @@ namespace Bidding.API.Entities
         public Guid PublicBiddingGuid { get; set; }
         public int LotNumber { get; set; }
 
+        public PublicBidding PublicBidding { get; set; }
+
         public PublicBiddingLot() { }
 
         public PublicBiddingLot(Guid publicBiddingLotGuid, Guid lotGuid, Guid publicBidding, int lotNumber)

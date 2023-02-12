@@ -32,6 +32,16 @@ namespace Bidding.API.Entities
 
         public BiddingStatus biddingStatus { get; set; }
 
+        public List<Representative> Representatives { get; set; }
+
+        public Address Address { get; set; }
+
+        public ICollection<PublicBiddingLot> PublicBiddingLots { get; set; }
+
+        public ICollection<Document> Documents { get; set; }
+
+        public ICollection<BiddingOffer> BiddingOffers { get; set; }
+
         public PublicBidding() { }
         public PublicBidding(
          Guid publicBiddingGuid,

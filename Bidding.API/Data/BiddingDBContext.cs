@@ -155,7 +155,10 @@ namespace Bidding.API.Data
             modelBuilder.Entity<Address>()
             .HasKey(u => u.Guid);
 
-            
+            modelBuilder.Entity<Address>()
+            .HasMany(r => r.Representatives)
+            .WithOne(a => a.address)
+            .HasForeignKey(a => a.AddressGuid);
 
 
 
@@ -163,6 +166,11 @@ namespace Bidding.API.Data
             modelBuilder.Entity<Document>()
             .HasIndex(u => u.ReferenceNumber)
             .IsUnique();
+
+            modelBuilder.Entity<Document>()
+           .HasOne(d => d.PublicBidding)
+           .WithMany(pb => pb.Documents)
+           .HasForeignKey(d => d.PublicBiddingGuid);
 
             modelBuilder.Entity<Document>()
             .HasKey(u => u.Guid);
@@ -173,13 +181,36 @@ namespace Bidding.API.Data
             modelBuilder.Entity<BuyerApplication>()
             .HasKey(u => new { u.Guid, u.RepresentativeGuid });
 
+            modelBuilder.Entity<BuyerApplication>()
+           .HasOne(b => b.representative)
+           .WithMany(r => r.buyerApplications)
+           .HasForeignKey(b => b.RepresentativeGuid);
+
             modelBuilder.Entity<PublicBidding>()
             .HasKey(p => new { p.Guid, p.Round });
 
-            
+            modelBuilder.Entity<PublicBidding>()
+            .HasMany(p => p.Representatives)
+            .WithOne(r => r.publicBidding)
+            .HasForeignKey(r => r.PublicBiddingGuid);
+
+            modelBuilder.Entity<PublicBidding>()
+            .HasOne(p => p.Address)
+            .WithMany(a => a.PublicBiddings)
+            .HasForeignKey(p => p.AddresGuid);
+
+            modelBuilder.Entity<PublicBidding>()
+           .HasMany(p => p.BiddingOffers)
+           .WithOne(b => b.publicBidding)
+           .HasForeignKey(b => b.PublicBiddingGuid);
 
             modelBuilder.Entity<PublicBiddingLot>()
             .HasKey(u => u.Guid);
+
+            modelBuilder.Entity<PublicBiddingLot>()
+           .HasOne(pl => pl.PublicBidding)
+           .WithMany(pb => pb.PublicBiddingLots)
+           .HasForeignKey(pl => pl.PublicBiddingGuid);
 
             modelBuilder.Entity<Representative>()
             .HasIndex(u => u.IdentificationNumber)
@@ -187,6 +218,11 @@ namespace Bidding.API.Data
 
             modelBuilder.Entity<Representative>()
             .HasKey(u => u.Guid);
+
+            modelBuilder.Entity<Representative>()
+           .HasMany(r => r.BiddingOffers)
+          .WithOne(bo => bo.Representative)
+          .HasForeignKey(bo => bo.RepresentativeGuid);
 
 
         }

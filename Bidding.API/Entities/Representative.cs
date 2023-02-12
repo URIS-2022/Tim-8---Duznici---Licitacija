@@ -17,6 +17,13 @@ namespace Bidding.API.Entities
 
         public Guid PublicBiddingGuid { get; set; }
 
+        public Address address { get; set; }
+        public PublicBidding publicBidding { get; set; }
+
+        public List<BuyerApplication> buyerApplications { get; set; }
+
+        public  ICollection<BiddingOffer> BiddingOffers { get; set; }
+
         public Representative() { }
 
 
