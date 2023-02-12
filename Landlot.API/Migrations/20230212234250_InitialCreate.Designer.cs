@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Landlot.API.Migrations
 {
     [DbContext(typeof(LandlotDbContext))]
-    [Migration("20230212053255_InitialCreate")]
+    [Migration("20230212234250_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -51,9 +51,6 @@ namespace Landlot.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("MunicipalityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("PropertyType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,25 +74,35 @@ namespace Landlot.API.Migrations
                         new
                         {
                             LandGuid = new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
-                            Drainage = "Excellent",
-                            LandClass = "1",
-                            LandCulture = "Field",
-                            LandProcessing = "Arable",
+                            Drainage = "Odvodnjavanje",
+                            LandClass = "III",
+                            LandCulture = "Vrtovi",
+                            LandProcessing = "Ostalo",
                             Municipality = "Bajmok",
-                            MunicipalityId = new Guid("aa3f2265-7182-4424-ba83-2eed388ce748"),
-                            PropertyType = "Private",
-                            ProtectedZone = "III",
-                            RealEstateNumber = "2",
+                            PropertyType = "Drugi oblivi",
+                            ProtectedZone = "3",
+                            RealEstateNumber = "22",
                             TotalArea = 3000
+                        },
+                        new
+                        {
+                            LandGuid = new Guid("3f14c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
+                            Drainage = "Odvodnjavanje",
+                            LandClass = "I",
+                            LandCulture = "Livade",
+                            LandProcessing = "Ostalo",
+                            Municipality = "Bikovo",
+                            PropertyType = "Privatna svojina",
+                            ProtectedZone = "4",
+                            RealEstateNumber = "1234",
+                            TotalArea = 111
                         });
                 });
 
             modelBuilder.Entity("Landlot.API.Entities.Lot", b =>
                 {
-                    b.Property<Guid>("LandGuid")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("LotGuid")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DrainageState")
@@ -105,6 +112,9 @@ namespace Landlot.API.Migrations
                     b.Property<string>("LandCultureState")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LandGuid")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LandProcessingState")
                         .IsRequired()
@@ -124,23 +134,53 @@ namespace Landlot.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("LandGuid", "LotGuid");
+                    b.HasKey("LotGuid");
+
+                    b.HasIndex("LandGuid");
 
                     b.ToTable("Lots");
 
                     b.HasData(
                         new
                         {
-                            LandGuid = new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
                             LotGuid = new Guid("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
-                            DrainageState = "Good",
-                            LandCultureState = "Field",
-                            LandProcessingState = "Arable",
+                            DrainageState = "Odvodnjavanje",
+                            LandCultureState = "Vrtovi",
+                            LandGuid = new Guid("3a84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
+                            LandProcessingState = "Ostalo",
                             LotArea = 1234,
                             LotNumber = 1,
                             LotUser = "John Doe",
-                            ProtectedZoneState = "II"
+                            ProtectedZoneState = "1"
+                        },
+                        new
+                        {
+                            LotGuid = new Guid("61e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
+                            DrainageState = "Odvodnjavanje",
+                            LandCultureState = "Njive",
+                            LandGuid = new Guid("3c84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
+                            LandProcessingState = "Obradivo",
+                            LotArea = 4321,
+                            LotNumber = 13,
+                            LotUser = "Julia Roberts ",
+                            ProtectedZoneState = "4"
                         });
+                });
+
+            modelBuilder.Entity("Landlot.API.Entities.Lot", b =>
+                {
+                    b.HasOne("Landlot.API.Entities.Land", "Land")
+                        .WithMany("Lots")
+                        .HasForeignKey("LandGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Land");
+                });
+
+            modelBuilder.Entity("Landlot.API.Entities.Land", b =>
+                {
+                    b.Navigation("Lots");
                 });
 #pragma warning restore 612, 618
         }

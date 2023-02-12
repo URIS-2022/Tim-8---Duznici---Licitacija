@@ -8,8 +8,6 @@ namespace Landlot.API.Entities
 
         public int TotalArea { get; set; }
 
-        public Guid MunicipalityId { get; set; }
-
         public string Municipality { get; set; }
 
         public string RealEstateNumber { get; set; }
