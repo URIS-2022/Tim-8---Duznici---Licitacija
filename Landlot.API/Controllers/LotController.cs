@@ -23,24 +23,35 @@ namespace Landlot.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Lot>>> GetLot()
+        public async Task<ActionResult<IEnumerable<LotGetResponseModel>>> GetLot()
         {
             var lots = await lotRepository.GetLots();
             if (!lots.Any())
             {
                 return NoContent();
             }
-            IEnumerable<Lot> responseModel = mapper.Map<IEnumerable<Lot>>(lots);
+            var responseModel = mapper.Map<IEnumerable<LotGetResponseModel>>(lots);
             return Ok(responseModel);
         }
 
-      
+        [HttpGet("{LotGuid}")]
+        public async Task<ActionResult<LotGetResponseModel>> GetLot(Guid LotGuid)
+        {
+            var lot = await lotRepository.GetLot(LotGuid);
+            if (lot == null)
+            {
+                return NotFound();
+            }
+            var responseModel = mapper.Map<LotGetResponseModel>(lot);
+            return responseModel;
+        }
+
 
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<LotUpdateModel>> PatchLot(Guid id, LotUpdateModel patchModel)
+        public async Task<ActionResult<LotPatchResponseModel>> PatchLot(Guid id,[FromBody] LotPatchRequestModel patchModel)
         {
-            Lot? lot = await lotRepository.GetLot(id);
+            var lot = await lotRepository.GetLot(id);
             if (lot == null)
             {
                 return NotFound();
@@ -48,34 +59,34 @@ namespace Landlot.API.Controllers
 
             mapper.Map(patchModel, lot);
 
-            Lot updated = await lotRepository.UpdateLot(id, lot);
+            var updated = await lotRepository.UpdateLot(id, lot);
             if (updated == null)
             {
                 return BadRequest();
             }
 
-            LotUpdateModel responseModel = mapper.Map<LotUpdateModel>(lot);
+            var responseModel = mapper.Map<LotPatchResponseModel>(updated);
 
             return Ok(responseModel);
         }
 
         [HttpPost]
-        public async Task<ActionResult<LotModel>> PostLot(LotCreationModel postModel)
+        public async Task<ActionResult<LotPostResponseModel>> PostLot(LotPostRequestModel postModel)
         {
             var lot = mapper.Map<Lot>(postModel);
-            Lot? createdLot = await lotRepository.AddLot(lot);
-            if (createdLot == null)
+            Lot? created = await lotRepository.AddLot(lot);
+            if (created == null)
             {
                 return BadRequest();
             }
-            var responseModel = mapper.Map<Lot>(createdLot);
-            return CreatedAtAction("GetLot", new { id = createdLot.LotGuid }, responseModel);
+            var responseModel = mapper.Map<LotPostResponseModel>(created);
+            return CreatedAtAction("GetLot", new { id = created.LotGuid }, responseModel);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLot(Guid id)
         {
-            Lot? lot = await lotRepository.GetLot(id);
+            var lot = await lotRepository.GetLot(id);
             if (lot == null)
             {
                 return NotFound();
