@@ -1,4 +1,5 @@
 ﻿using Bidding.API.Data;
+using Bidding.API.Data.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -63,8 +64,14 @@ builder.Services.AddControllers(setup =>
 
 builder.Services.AddDbContext<BiddingDBContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
+builder.Services.AddScoped<IBiddingOfferRepository, BiddingOfferRepository>();
+builder.Services.AddScoped<IRepresentativeRepository, RepresentativeRepository>();
+builder.Services.AddScoped<IPublicBiddingRepository, PublicBiddingRepository>();
+builder.Services.AddScoped<IBuyerApplicationRepository, BuyerApplicationRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
