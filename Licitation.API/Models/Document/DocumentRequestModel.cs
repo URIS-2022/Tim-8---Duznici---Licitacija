@@ -6,16 +6,16 @@ namespace Licitation.API.Models.Document
 {
     public class DocumentRequestModel
     {
-        public LicitationEntity licitation { get; set; }
+        public Guid LicitationGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
         public string ReferenceNumber { get; set; }
         public string Template { get; set; }
 
-        public DocumentRequestModel(LicitationEntity licitation, DocumentType documentType, string referenceNumber, string template)
+        public DocumentRequestModel(Guid licitation, DocumentType documentType, string referenceNumber, string template)
         {
 
-            this.licitation = licitation;
+            this.LicitationGuid = licitation;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
             Template = template;

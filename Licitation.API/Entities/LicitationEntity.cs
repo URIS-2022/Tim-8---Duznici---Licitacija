@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 
 namespace Licitation.API.Entities;
@@ -12,8 +13,21 @@ public partial class LicitationEntity : IValidatableObject
     public int Constarint { get; set; }
     public int BidIncrement { get; set; }
     public DateTime ApplicationDeadline { get; set; }
+    public List<Guid> LandGuids { get; set; }
+    public List<Guid> PublicBiddingGuids { get; set; }
+    public List<LicitationLand> LicitationLands { get; set; }
+    public List<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
+    public ICollection<Document> Documents { get; set; }
 
-    public LicitationEntity(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
+    //public LicitationLand LicitationLand { get; set; }
+    //public LicitationPublicBidding LicitationPublicBidding { get; set; }
+    //public ICollection<Document> Documents { get; set; }
+
+    public LicitationEntity()
+    { 
+    }
+
+    public LicitationEntity(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, List<Guid> landGuids, List<Guid> publicBiddingGuids)
     {
         Guid = licitationGuid;
         Stage = stage;
@@ -22,10 +36,12 @@ public partial class LicitationEntity : IValidatableObject
         Constarint = constraint;
         BidIncrement = bidIncrement;
         ApplicationDeadline = applicationDeadline;
+        LandGuids = landGuids;
+        PublicBiddingGuids = publicBiddingGuids;
 
     }
 
-    public LicitationEntity(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline)
+    public LicitationEntity(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, List<Guid> landGuids, List<Guid> publicBiddingGuids)
     {
         Guid = Guid.NewGuid();
         Stage = stage;
@@ -34,6 +50,8 @@ public partial class LicitationEntity : IValidatableObject
         Constarint = constraint;
         BidIncrement = bidIncrement;
         ApplicationDeadline = applicationDeadline;
+        LandGuids = landGuids;
+        PublicBiddingGuids = publicBiddingGuids;
     }
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

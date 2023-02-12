@@ -6,7 +6,8 @@ namespace Licitation.API.Models.Document
 {
     public class DocumentUpdateModel
     {
-        public LicitationEntity licitation { get; set; }
+        public Guid LicitationGuid { get; set; }
+
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType? documentType { get; set; }
         public string? ReferenceNumber { get; set; }
@@ -17,10 +18,10 @@ namespace Licitation.API.Models.Document
 
         public string? Template { get; set; }
 
-        public DocumentUpdateModel(LicitationEntity licitation, DocumentType? documentType, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
+        public DocumentUpdateModel(Guid licitation, DocumentType? documentType, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
         {
 
-            this.licitation = licitation;
+            this.LicitationGuid = licitation;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmitted = dateSubmitted;

@@ -1,9 +1,14 @@
 ﻿using Licitation.API.Data;
+using Licitation.API.Data.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Licitation.API.Enums;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +17,8 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
-        //.AddJsonOptions(options =>
-        //options.JsonSerializerOptions.Converters.Add(new SystemUserRoleConverter()))
+        .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new DocumentTypeConverter()))
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
@@ -66,9 +71,9 @@ builder.Services.AddDbContext<LicitationDBContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 
-//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-//builder.Services.AddScoped<ISystemUserRepository, SystemUserRepository>();
+//builder.Services.AddScoped<ILicitationRepository, LicitationRepository>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -108,7 +113,7 @@ builder.Services.AddSwaggerGen(options =>
 
     string xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
 
-    //  options.IncludeXmlComments(xmlCommentsPath);
+    options.IncludeXmlComments(xmlCommentsPath);
 
 });
 
@@ -125,8 +130,6 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     });
 }
-
-app.UseRouting();
 
 app.UseHttpsRedirection();
 

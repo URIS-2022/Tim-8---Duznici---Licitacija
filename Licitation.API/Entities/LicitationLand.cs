@@ -5,6 +5,17 @@ public partial class LicitationLand : IValidatableObject
 {
     public Guid Licitation { get; set; }
     public Guid LandGuid { get; set; }
+    public LicitationEntity licitationEntity { get; set; }
+
+    //public object LicitationEntities { get; internal set; }
+    //public object LicitationEntity { get; internal set; }
+
+    //public object LicitationEntities { get; internal set; }
+
+    public LicitationLand()
+    {
+
+    }
 
     public LicitationLand(Guid licitation, Guid landGuid)
     {

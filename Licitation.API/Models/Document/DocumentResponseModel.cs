@@ -11,7 +11,8 @@ namespace Licitation.API.Models.Document
     {
 
             [DataMember]
-            public LicitationEntity licitation { get; set; }
+            public Guid LicitationGuid { get; set; }
+
             [JsonConverter(typeof(DocumentTypeConverter))]
 
             [DataMember(Name = "documentType")]
@@ -30,10 +31,10 @@ namespace Licitation.API.Models.Document
             [DataMember]
             public string Template { get; set; }
 
-            public DocumentResponseModel(LicitationEntity licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+            public DocumentResponseModel(Guid licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
             {
 
-                this.licitation = licitation;
+                this.LicitationGuid = licitation;
                 this.documentType = documentType;
                 ReferenceNumber = referenceNumber;
                 DateSubmitted = dateSubmitted;
@@ -43,6 +44,6 @@ namespace Licitation.API.Models.Document
 
 
 
-        }
+        
     }
 }

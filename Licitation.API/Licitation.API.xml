@@ -4,40 +4,104 @@
         <name>Licitation.API</name>
     </assembly>
     <members>
-        <member name="T:Licitation.API.Models.Licitation.LicitationCreate">
+        <member name="M:Licitation.API.Controllers.LicitationController.#ctor(Licitation.API.Data.Repository.ILicitationRepository,AutoMapper.IMapper)">
             <summary>
-            DTO za kreiranje licitacije
+            Initializes a new instance of the LicitacionController class
+            </summary>
+            <param name="licitationRepository">An instance of ILicitacionRepository to handle the Licitacions</param>
+            <param name="mapper">An instance of IMapper to map between Licitacion entities and models</param>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.GetLicitations">
+            <summary>
+            Returns a list of Licitacions
+            </summary>
+            <returns>A list of Licitacion models, or No Content if no Licitacion found</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.PostLicitation(Licitation.API.Models.Licitation.LicitationRequestModel)">
+            <summary>
+            Creates a new Licitation
+            </summary>
+            <param name="requestModel">The new Licitation information</param>
+            <returns>The created Licitation model, with a location header pointing to the URL of the newly created Licitation</returns>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.ILicitationRepository">
+            <summary>
+            Repository for managing Licitation entities.
             </summary>
         </member>
-        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Stage">
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.GetAll">
             <summary>
-            Broj licitacije
+            Gets all Licitations from the database.
+            </summary>
+            <returns>An asynchronous task that returns an enumerable of Licitations entities.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.GetByGuid(System.Guid)">
+            <summary>
+            Gets a Licitation by its Guid identifier.
+            </summary>
+            <param name="id">The Guid identifier of the Licitation.</param>
+            <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)">
+            <summary>
+            Deletes a Licitation from the database by its Guid identifier.
+            </summary>
+            <param name="id">The Guid identifier of the Licitation to delete.</param>
+            <returns>An asynchronous task that represents the operation.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.LicitationEntity)">
+            <summary>
+            Adds a new Licitation to the database.
+            </summary>
+            <param name="licitation">The Licitation entity to add to the database.</param>
+            <returns>An asynchronous task that returns the added Licitation entity.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.LicitationEntity)">
+            <summary>
+            Updates a specific licitation.
+            </summary>
+            <param name="id">The identifier of the licitation to update.</param>
+            <param name="patchDocument">The updated values for the licitation.</param>
+            <returns>The updated licitation.</returns>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.LicitationRepository">
+            <summary>
+            Implementation of the ISystemUserRepository
+            interface for managing SystemUser entities in the database.
             </summary>
         </member>
-        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Date">
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
             <summary>
-            Datum licitacije
+            Initializes a new instance of the LicitationRepository class.
             </summary>
+            <param name="context">The database context to use for data access.</param>
         </member>
-        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Yaer">
-            <summary>
-            Godina
-            </summary>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetAll">
+            <inheritdoc cref="!:IComplaintRepository.GetAll"/>
         </member>
-        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.Constraint">
-            <summary>
-            Ogranicenje
-            </summary>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetByGuid(System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetByGuid(System.Guid)"/>
         </member>
-        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.BidIncrement">
-            <summary>
-            Korak cene
-            </summary>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.Delete(System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)"/>
         </member>
-        <member name="P:Licitation.API.Models.Licitation.LicitationCreate.ApplicationDeadline">
-            <summary>
-            Rok za prijavu, datum i vreme
-            </summary>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.AddLicitation(Licitation.API.Entities.LicitationEntity)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.LicitationEntity)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.LicitationEntity)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.LicitationEntity)"/>
+        </member>
+        <member name="T:Licitation.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Licitation.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Licitation.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Licitation.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
         </member>
     </members>
 </doc>

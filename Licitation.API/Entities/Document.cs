@@ -8,23 +8,29 @@ namespace Licitation.API.Entities
     public partial class Document : IValidatableObject
     {
         public Guid Guid { get; set; }
-        public LicitationEntity licitation { get; set; }
+        public Guid LicitationGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
         public string ReferenceNumber { get; set; }
         public DateTime DateSubmitted { get; set; }
         public DateTime DateCertified { get; set; }
         public string Template { get; set; }
+        public LicitationEntity licitationEntity { get; set; }
+        public DateTime DateSubmited { get; internal set; }
+
+        //public object DocumentType { get; internal set; }
+        //public LicitationEntity LicitationEntity { get; internal set; }
+        //public object LicitationGuid { get; internal set; }
 
         public Document()
         {
 
         }
 
-        public Document(Guid id, LicitationEntity licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateSertified, string template)
+        public Document(Guid id, Guid licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateSertified, string template)
         {
             Guid = id;
-            this.licitation = licitation;
+            this.LicitationGuid = licitation;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmitted = dateSubmitted;
@@ -34,10 +40,10 @@ namespace Licitation.API.Entities
 
 
 
-        public Document(LicitationEntity licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateSertified, string template)
+        public Document(Guid licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateSertified, string template)
         {
             Guid = Guid.NewGuid();
-            this.licitation = licitation;
+            this.LicitationGuid = licitation;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmitted = dateSubmitted;
@@ -55,8 +61,10 @@ namespace Licitation.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (licitation == null)
-                results.Add(new ValidationResult("Licitation cannot be null."));
+            if (LicitationGuid == Guid.Empty)
+            {
+                results.Add(new ValidationResult("LicitationGuid cannot be empty."));
+            }
 
             if (documentType == null)
                 results.Add(new ValidationResult("Document type cannot be null."));

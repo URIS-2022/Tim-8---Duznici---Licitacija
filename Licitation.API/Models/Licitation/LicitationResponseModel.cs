@@ -1,4 +1,7 @@
-﻿using System.Runtime.Serialization;
+﻿using Licitation.API.Entities;
+using Licitation.API.Models.LicitationLands;
+using Licitation.API.Models.LicitationPBResponse;
+using System.Runtime.Serialization;
 using System.Xml.Linq;
 
 namespace Licitation.API.Models.Licitation
@@ -6,6 +9,8 @@ namespace Licitation.API.Models.Licitation
     [DataContract(Name = "Licitation", Namespace = "")]
     public class LicitationResponseModel
     {
+        [DataMember]
+        public Guid Guid { get; set; }
         [DataMember]
         public int Stage { get; set; }
         [DataMember]
@@ -19,9 +24,12 @@ namespace Licitation.API.Models.Licitation
         [DataMember]
         public DateTime ApplicationDeadline { get; set; }
         [DataMember]
-        public Guid LandGuids { get; set; }
+        public List<LicitationLandResponse> LandGuids { get; set; }
 
-        public LicitationResponseModel(int stage, DateTime date, int year, int constarint, int bidIncrement, DateTime applicationDeadline, Guid landGuids)
+        [DataMember]
+        public List<LicitationPublicBiddingResponse> PublicBiddingGuids { get; set; }
+
+        public LicitationResponseModel(int stage, DateTime date, int year, int constarint, int bidIncrement, DateTime applicationDeadline, List<LicitationLandResponse> landGuids, List<LicitationPublicBiddingResponse> publicBiddingGuids)
         {
             Stage = stage;
             Date = date;
@@ -30,6 +38,7 @@ namespace Licitation.API.Models.Licitation
             BidIncrement = bidIncrement;
             ApplicationDeadline = applicationDeadline;
             LandGuids = landGuids;
+            PublicBiddingGuids = publicBiddingGuids;
         }
     }
 }
