@@ -65,7 +65,7 @@ namespace Landlot.API.Controllers
                 return BadRequest();
             }
 
-            LandUpdateModel responseModel = mapper.Map<LandUpdateModel>(land);
+            LandModel responseModel = mapper.Map<LandModel>(land);
 
             return Ok(responseModel);
         }
