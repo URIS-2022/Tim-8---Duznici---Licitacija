@@ -24,10 +24,11 @@ namespace Landlot.API.Data
             modelBuilder.Entity<Land>()
               .HasKey(l => l.LandGuid);
 
-            modelBuilder.Entity<Lot>().HasKey(table => new {
-                table.LandGuid,
-                table.LotGuid
-            });
+              modelBuilder.Entity<Lot>()
+                .HasOne(p => p.Land)
+                .WithMany(a => a.Lots)
+                .HasForeignKey(p => p.LandGuid);
+
 
 
             modelBuilder.Entity<Land>() 
