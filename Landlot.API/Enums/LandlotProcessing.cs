@@ -5,14 +5,14 @@ namespace Landlot.API.Enums
 {
     public enum LandlotProcessing
     {
-        Oradivo,
+        Obradivo,
         Ostalo
     }
     public class LandlotProcessingConverter : JsonConverter<LandlotProcessing>
     {
         private readonly Dictionary<LandlotProcessing, string> _processingMapping = new()
     {
-        { LandlotProcessing.Oradivo, "Oradivo" },
+        { LandlotProcessing.Obradivo, "Obradivo" },
         { LandlotProcessing.Ostalo, "Ostalo" }
     };
 
