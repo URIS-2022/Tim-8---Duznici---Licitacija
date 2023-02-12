@@ -7,8 +7,8 @@ namespace Landlot.API.Entities
     {
 
         public Guid LotGuid { get; set; }
-        public Land LandGuid { get; set; }
-        public DateAndTime ExpiryDate { get; set; }
+        public Guid LandGuid { get; set; }
+        public DateTime ExpiryDate { get; set; }
 
         public int LotArea { get; set; }
 
@@ -23,6 +23,8 @@ namespace Landlot.API.Entities
         public string ProtectedZoneState { get; set; }
 
         public string DrainageState { get; set; }
+
+        
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Landlot.API.Entities;
+using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Landlot.API.Models
@@ -14,7 +15,7 @@ namespace Landlot.API.Models
         /// Datum isteka
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti datum isteka!")]
-        public DateAndTime ExpiryDate { get; set; }
+        public DateTime ExpiryDate { get; set; }
 
         /// <summary>
         /// Povrsina dela parcele

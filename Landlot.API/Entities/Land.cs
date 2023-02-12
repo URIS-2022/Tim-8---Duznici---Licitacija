@@ -26,6 +26,8 @@ namespace Landlot.API.Entities
 
         public Guid Drainage { get; set; }
 
+       
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();

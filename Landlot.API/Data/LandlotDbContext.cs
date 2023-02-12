@@ -1,10 +1,5 @@
 ﻿using Landlot.API.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Landlot.API.Data
 {
@@ -20,11 +15,6 @@ namespace Landlot.API.Data
         public DbSet<Land> Lands { get; set; }
         public DbSet<Lot> Lots { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("LandlotDB"));
-        }
-
         /// <summary>
         /// Popunjavanje baze sa nekim test podacima
         /// </summary>
@@ -35,7 +25,6 @@ namespace Landlot.API.Data
                 table.LotGuid
             });
 
-           modelBuilder.Entity<Lot>().HasOne(v => v.LandGuid).WithMany().HasForeignKey(v => v.LandGuid);
 
             modelBuilder.Entity<Land>() 
                 .HasData(new

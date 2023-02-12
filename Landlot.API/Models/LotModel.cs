@@ -6,14 +6,19 @@ namespace Landlot.API.Models
     public class LotModel
     {
         /// <summary>
-        /// Lot id
+        /// Lot guid
         /// </summary>
         public Guid LotId { get; set; }
 
         /// <summary>
+        /// Guid parcele
+        /// </summary>
+        public Guid LandGuid { get; set; }
+
+        /// <summary>
         /// Datum isteka
         /// </summary>
-        public DateAndTime ExpiryDate { get; set; }
+        public DateTime ExpiryDate { get; set; }
 
 
         /// <summary>
