@@ -35,12 +35,10 @@ namespace Landlot.API.Controllers
         }
 
 
-
-
         [HttpGet("{LandGuid}")]
-        public async Task<ActionResult<LandModel>> GetComplaint(Guid LandGuid)
+        public async Task<ActionResult<LandModel>> GetLand(Guid LandGuid)
         {
-            Land? land = await landRepository.GetLand(LandGuid);
+            var land = await landRepository.GetLand(LandGuid);
             if (land == null)
             {
                 return NotFound();
@@ -49,10 +47,11 @@ namespace Landlot.API.Controllers
             return Ok(responseModel);
         }
 
+
         [HttpPatch("{id}")]
-        public async Task<ActionResult<LandUpdateModel>> PatchLand(Guid id, [FromBody] LandUpdateModel patchModel)
+        public async Task<ActionResult<LandUpdateModel>> PatchLand(Guid id, LandUpdateModel patchModel)
         {
-            var land = await landRepository.GetLand(id);
+            Land? land = await landRepository.GetLand(id);
             if (land == null)
             {
                 return NotFound();
@@ -60,13 +59,13 @@ namespace Landlot.API.Controllers
 
             mapper.Map(patchModel, land);
 
-            var updated = await landRepository.UpdateLand(id, land);
+            Land updated = await landRepository.UpdateLand(id, land);
             if (updated == null)
             {
                 return BadRequest();
             }
 
-            var responseModel = mapper.Map<LandUpdateModel>(updated);
+            LandUpdateModel responseModel = mapper.Map<LandUpdateModel>(land);
 
             return Ok(responseModel);
         }
@@ -85,8 +84,6 @@ namespace Landlot.API.Controllers
         }
 
        
-       
-
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLand(Guid id)

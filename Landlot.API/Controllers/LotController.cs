@@ -18,7 +18,7 @@ namespace Landlot.API.Controllers
 
         public LotController(ILotRepository lotRepository, IMapper mapper)
         {
-            lotRepository = lotRepository;
+            this.lotRepository = lotRepository;
             this.mapper = mapper;
         }
 
@@ -31,6 +31,28 @@ namespace Landlot.API.Controllers
                 return NoContent();
             }
             IEnumerable<Lot> responseModel = mapper.Map<IEnumerable<Lot>>(lots);
+            return Ok(responseModel);
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<ActionResult<LotUpdateModel>> PatchLot(Guid id, LotUpdateModel patchModel)
+        {
+            Lot? lot = await lotRepository.GetLot(id);
+            if (lot == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(patchModel, lot);
+
+            Lot updated = await lotRepository.UpdateLot(id, lot);
+            if (updated == null)
+            {
+                return BadRequest();
+            }
+
+            LotUpdateModel responseModel = mapper.Map<LotUpdateModel>(lot);
+
             return Ok(responseModel);
         }
 
