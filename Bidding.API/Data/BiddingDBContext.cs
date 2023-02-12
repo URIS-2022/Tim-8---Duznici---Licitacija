@@ -59,7 +59,7 @@ namespace Bidding.API.Data
                 new Document
                 {
                     Guid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
-                    PublicBiddingGuid = Guid.Parse("8de0c01b - b7b0 - 4df2 - 9009 - 3df21b91a0bb"),
+                    PublicBiddingGuid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                     documentType =DocumentType.Report ,
                     ReferenceNumber = "34",
                     DateSubmited = new DateTime(2021, 2, 11),
@@ -115,7 +115,7 @@ namespace Bidding.API.Data
                       AddresGuid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                       LeasePeriod = 5,
                       DepositReplenishmentAmount = 1000,
-                      Round = Guid.Parse("Prvi"),
+                      Round = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                       biddingStatus = BiddingStatus.FirstRound
                   }
 
@@ -187,12 +187,14 @@ namespace Bidding.API.Data
            .HasForeignKey(b => b.RepresentativeGuid);
 
             modelBuilder.Entity<PublicBidding>()
-            .HasKey(p => new { p.Guid, p.Round });
+              .HasKey(u => u.Guid);
+            //.HasKey(p => new { p.Guid, p.Round });
 
             modelBuilder.Entity<PublicBidding>()
             .HasMany(p => p.Representatives)
             .WithOne(r => r.publicBidding)
             .HasForeignKey(r => r.PublicBiddingGuid);
+           // .OnDelete(DeleteBehavior.NoAction); // dodato kasnije zbog problema sa bazom,mozda treba izbrisati
 
             modelBuilder.Entity<PublicBidding>()
             .HasOne(p => p.Address)
@@ -218,7 +220,13 @@ namespace Bidding.API.Data
 
             modelBuilder.Entity<Representative>()
             .HasKey(u => u.Guid);
-
+          /*
+            modelBuilder.Entity<Representative>() // ovo je dodato kasnije zbog problema sa bazom,mozda ne treba
+            .HasOne(r => r.publicBidding) 
+            .WithMany(p => p.Representatives)
+            .HasForeignKey(r => r.PublicBiddingGuid)
+            .OnDelete(DeleteBehavior.NoAction);
+          */
             modelBuilder.Entity<Representative>()
            .HasMany(r => r.BiddingOffers)
           .WithOne(bo => bo.Representative)

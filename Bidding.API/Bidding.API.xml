@@ -24,6 +24,42 @@
             </code>
             </remarks>
         </member>
+        <member name="T:Bidding.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Bidding.API.Migrations.UpdateDBContext">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.UpdateDBContext.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.UpdateDBContext.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.UpdateDBContext.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Bidding.API.Migrations.SecondUpdateDBContext">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.SecondUpdateDBContext.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.SecondUpdateDBContext.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bidding.API.Migrations.SecondUpdateDBContext.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:System.Text.RegularExpressions.Generated.usernameValidationRegex_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the usernameValidationRegex method.</summary>
         </member>
