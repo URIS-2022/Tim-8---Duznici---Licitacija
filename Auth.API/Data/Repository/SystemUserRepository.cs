@@ -58,31 +58,31 @@ public class SystemUserRepository : ISystemUserRepository
     }
 
     /// <inheritdoc cref="ISystemUserRepository.GetByCredentials(string, string)"/>
-    public async Task<SystemUser> GetByCredentials(string username, string password)
+    public async Task<SystemUser?> GetByCredentials(string username, string password)
     {
-        SystemUser? user = await context.SystemUsers.SingleOrDefaultAsync(x => x.Username == username && x.Password == password);
+        var systemUser = await context.SystemUsers.SingleOrDefaultAsync(x => x.Username == username && x.Password == password);
 
-        return user ?? throw new InvalidOperationException("The requested SystemUser was not found.");
+        return systemUser;
     }
 
     /// <inheritdoc cref="ISystemUserRepository.GetByGuid(Guid)"/>
     public async Task<SystemUser?> GetByGuid(Guid guid)
     {
-        SystemUser? user = await context.SystemUsers.SingleOrDefaultAsync(x => x.Guid == guid);
+        var systemUser = await context.SystemUsers.SingleOrDefaultAsync(x => x.Guid == guid);
 
-        return user;
+        return systemUser;
     }
 
     /// <inheritdoc cref="ISystemUserRepository.GetByUsername(string)"/>
     public async Task<SystemUser?> GetByUsername(string username)
     {
-        SystemUser? user = await context.SystemUsers.SingleOrDefaultAsync(x => x.Username == username);
+        SystemUser? systemUser = await context.SystemUsers.SingleOrDefaultAsync(x => x.Username == username);
 
-        return user;
+        return systemUser;
     }
 
     /// <inheritdoc cref="ISystemUserRepository.Update(SystemUser)"/>
-    public async Task<SystemUser> Update(SystemUser systemUser)
+    public async Task<SystemUser?> Update(SystemUser systemUser)
     {
         var existingSystemUser = await context.SystemUsers.FindAsync(systemUser.Guid);
         if (existingSystemUser == null)

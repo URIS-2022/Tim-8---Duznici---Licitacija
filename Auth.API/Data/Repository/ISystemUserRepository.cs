@@ -11,7 +11,7 @@ public interface ISystemUserRepository
     /// Gets all SystemUsers from the database.
     /// </summary>
     /// <returns>An asynchronous task that returns an enumerable of SystemUser entities.</returns>
-    Task<IEnumerable<SystemUser?>> GetAll();
+    Task<IEnumerable<SystemUser>> GetAll();
 
     /// <summary>
     /// Gets a SystemUser by its Guid identifier.
