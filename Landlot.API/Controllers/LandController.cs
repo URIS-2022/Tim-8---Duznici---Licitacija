@@ -73,7 +73,7 @@ namespace Landlot.API.Controllers
         public async Task<ActionResult<LandCreationModel>> PostLand(LandModel postModel)
         {
             var land = mapper.Map<Land>(postModel);
-            Entities.Land? created = await landRepository.AddLand(land);
+            Land? created = await landRepository.AddLand(land);
             if (created == null)
             {
                 return BadRequest();
