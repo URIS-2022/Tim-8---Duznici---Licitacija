@@ -26,7 +26,7 @@ namespace Landlot.API.Entities
 
         public string Drainage { get; set; }
 
-       
+       public List<Lot> Lots { get; set; }  
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

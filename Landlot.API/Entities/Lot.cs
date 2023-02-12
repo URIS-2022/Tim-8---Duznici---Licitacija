@@ -23,7 +23,7 @@ namespace Landlot.API.Entities
 
         public string DrainageState { get; set; }
 
-        
+        public Land Land { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
