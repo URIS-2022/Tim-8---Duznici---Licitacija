@@ -7,15 +7,15 @@ public enum LandlotMunicipality
 {
     Bikovo,
     Bajmok,
-    Palić,
+    Palic,
     StariGrad,
     NoviGrad,
     DonjiGrad,
-    Žednik,
-    Đurđin,
+    Zednik,
+    Djurdjin,
     Tavankut,
-    BačkiVinogradi,
-    Čantavir
+    BackiVinogradi,
+    Cantavir
 }
 
 public class LandlotMunicipalityConverter : JsonConverter<LandlotMunicipality>
@@ -24,15 +24,15 @@ public class LandlotMunicipalityConverter : JsonConverter<LandlotMunicipality>
 {
     { LandlotMunicipality.Bikovo, " Opština Bikovo" },
     { LandlotMunicipality.Bajmok, "Opština Bajmok" },
-    { LandlotMunicipality.Palić, "Opština Palić" },
+    { LandlotMunicipality.Palic, "Opština Palić" },
     { LandlotMunicipality.StariGrad, "Opština Stari grad" },
     { LandlotMunicipality.NoviGrad, "Opština Novi grad" },
     { LandlotMunicipality.DonjiGrad, "Opština Donji grad" },
-    { LandlotMunicipality.Žednik, "Opština Žednik" },
-    { LandlotMunicipality.Đurđin, "Opština Đurđin" },
+    { LandlotMunicipality.Zednik, "Opština Žednik" },
+    { LandlotMunicipality.Djurdjin, "Opština Đurđin" },
     { LandlotMunicipality.Tavankut, "Opština Tavankut" },
-    { LandlotMunicipality.BačkiVinogradi, "Opština Bački Vinogradi" },
-    { LandlotMunicipality.Čantavir, "Opština Čantavir" }
+    { LandlotMunicipality.BackiVinogradi, "Opština Bački Vinogradi" },
+    { LandlotMunicipality.Cantavir, "Opština Čantavir" }
 };
 
     public override LandlotMunicipality Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
