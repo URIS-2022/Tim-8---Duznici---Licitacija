@@ -23,35 +23,35 @@ namespace Landlot.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Land>>> GetLand()
+        public async Task<ActionResult<IEnumerable<LandGetResponseModel>>> GetLand()
         {
             var lands = await landRepository.GetLands();
             if (!lands.Any())
             {
                 return NoContent();
             }
-            IEnumerable<Land> responseModel = mapper.Map<IEnumerable<Land>>(lands);
+            var responseModel = mapper.Map<IEnumerable<LandGetResponseModel>>(lands);
             return Ok(responseModel);
         }
 
 
         [HttpGet("{LandGuid}")]
-        public async Task<ActionResult<LandModel>> GetLand(Guid LandGuid)
+        public async Task<ActionResult<LandGetResponseModel>> GetLand(Guid LandGuid)
         {
             var land = await landRepository.GetLand(LandGuid);
             if (land == null)
             {
                 return NotFound();
             }
-            var responseModel = mapper.Map<LandModel>(land);
-            return Ok(responseModel);
+            var responseModel = mapper.Map<LandGetResponseModel>(land);
+            return responseModel;
         }
 
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<LandUpdateModel>> PatchLand(Guid id, LandUpdateModel patchModel)
+        public async Task<ActionResult<LandPatchResponseModel>> PatchLand(Guid id,[FromBody] LandPatchRequestModel patchModel)
         {
-            Land? land = await landRepository.GetLand(id);
+            var land = await landRepository.GetLand(id);
             if (land == null)
             {
                 return NotFound();
@@ -59,28 +59,28 @@ namespace Landlot.API.Controllers
 
             mapper.Map(patchModel, land);
 
-            Land updated = await landRepository.UpdateLand(id, land);
+            var updated = await landRepository.UpdateLand(id, land);
             if (updated == null)
             {
                 return BadRequest();
             }
 
-            LandModel responseModel = mapper.Map<LandModel>(land);
+            var responseModel = mapper.Map<LandPatchResponseModel>(updated);
 
             return Ok(responseModel);
         }
 
         [HttpPost]
-        public async Task<ActionResult<LandModel>> PostLand(LandCreationModel postModel)
+        public async Task<ActionResult<LandPostResponseModel>> PostLand(LandPostRequestModel postModel)
         {
             var land = mapper.Map<Land>(postModel);
-            Land? createdLand = await landRepository.AddLand(land);
-            if (createdLand == null)
+            Land? created = await landRepository.AddLand(land);
+            if (created == null)
             {
                 return BadRequest();
             }
-            var responseModel = mapper.Map<Land>(createdLand);
-            return CreatedAtAction("GetLand", new { id = createdLand.LandGuid }, responseModel);
+            var responseModel = mapper.Map<LandPostResponseModel>(created);
+            return CreatedAtAction("GetLand", new { id = created.LandGuid }, responseModel);
         }
 
        
@@ -88,7 +88,7 @@ namespace Landlot.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLand(Guid id)
         {
-            Land? land = await landRepository.GetLand(id);
+            var land = await landRepository.GetLand(id);
             if (land == null)
             {
                 return NotFound();
