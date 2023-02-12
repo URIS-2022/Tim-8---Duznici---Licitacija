@@ -8,10 +8,10 @@ Upravljanje razvojem informacionih sistema 2022/23 IIS
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8---Duznici---Licitacija)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8---Duznici---Licitacija)
 
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=bugs)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8---Duznici---Licitacija)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8---Duznici---Licitacija)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8---Duznici---Licitacija)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=URIS-2022_Tim-8---Duznici---Licitacija&metric=bugs)](https://sonarcloud.io/summary/new_code?id=URIS-2022_Tim-8---Duznici---Licitacija)
 
 ## Meet the team
 
