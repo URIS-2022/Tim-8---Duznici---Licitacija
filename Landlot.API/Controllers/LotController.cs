@@ -34,6 +34,9 @@ namespace Landlot.API.Controllers
             return Ok(responseModel);
         }
 
+      
+
+
         [HttpPatch("{id}")]
         public async Task<ActionResult<LotUpdateModel>> PatchLot(Guid id, LotUpdateModel patchModel)
         {
