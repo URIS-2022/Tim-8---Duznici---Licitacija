@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Landlot.API.Migrations
 {
     [DbContext(typeof(LandlotDbContext))]
-    [Migration("20230212031014_InitialCreate")]
+    [Migration("20230212053255_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

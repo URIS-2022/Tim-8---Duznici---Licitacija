@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Landlot.API.Data.Repository;
+using Landlot.API.Entities;
 using Landlot.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,16 +23,17 @@ namespace Landlot.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LandModel>>> GetLand()
+        public async Task<ActionResult<IEnumerable<Land>>> GetLand()
         {
             var lands = await _landRepository.GetLands();
             if (!lands.Any())
             {
                 return NoContent();
             }
-            var responseModel = mapper.Map<IEnumerable<LandModel>>(lands);
+            IEnumerable<Land> responseModel = mapper.Map<IEnumerable<Land>>(lands);
             return Ok(responseModel);
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<LandModel>> GetComplaint(Guid id)
