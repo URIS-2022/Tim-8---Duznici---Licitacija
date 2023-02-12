@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Lease.API.Enums;
@@ -15,6 +16,7 @@ public enum DocumentType
     Admin
 }
 
+[NotMapped]
 public class DocumentTypeConverter : JsonConverter<DocumentType>
 {
     private readonly Dictionary<DocumentType, string> _roleMapping = new Dictionary<DocumentType, string>

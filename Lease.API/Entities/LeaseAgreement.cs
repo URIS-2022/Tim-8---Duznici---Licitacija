@@ -1,36 +1,37 @@
 ﻿
 using Lease.API.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 namespace Lease.API.Entities;
 
 public partial class LeaseAgreement : IValidatableObject
 {
-    public Guid LeaseAgreementGuid { get; set; }
+    public Guid Guid { get; set; }
 
     [JsonConverter(typeof(GuaranteeTypeConverter))]
     public GuaranteeTypeConverter GuaranteeType { get; set; }
     public string ReferenceNumber { get; set; }
-    public DateOnly DateRecording { get; set; }
+    public DateTime DateRecording { get; set; }
     public Guid MinisterGuid { get; set; }
-    public DateOnly DeadlineLandReturn { get; set; }
+    public DateTime DeadlineLandReturn { get; set; }
     public string PlaceOfSigning { get; set; }
-    public DateOnly DateOfSigning { get; set; }
+    public DateTime DateOfSigning { get; set; }
     public Guid BiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
+    public Buyer Buyer { get; set; }
+
     [JsonConverter(typeof(DocumentStatusConverter))]
     public  DocumentStatusConverter DocumentStatus {get; set; }
+    public DueDate DueDate { get; set; }
 
+    public ICollection<Document> Documents { get; set; }
 
-
-
-    public LeaseAgreement(Guid LeaseAgreementGuid, GuaranteeTypeConverter GuaranteeType, string ReferenceNumber, DateOnly DateRecording, Guid MinisterGuid, DateOnly DeadlineLandReturn, string PlaceOfSigning, DateOnly DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatusConverter DocumentStatus)
+    public LeaseAgreement() { }
+    public LeaseAgreement(Guid Guid, GuaranteeTypeConverter GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatusConverter DocumentStatus, DueDate dueDate)
     {
-        this.LeaseAgreementGuid = LeaseAgreementGuid;
+        this.Guid = Guid;
         this.GuaranteeType = GuaranteeType;
         this.ReferenceNumber = ReferenceNumber;
         this.DateRecording = DateRecording;
@@ -41,11 +42,13 @@ public partial class LeaseAgreement : IValidatableObject
         this.BiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
+        this.DueDate = dueDate;
+
     }
 
-    public LeaseAgreement(GuaranteeTypeConverter GuaranteeType, string ReferenceNumber, DateOnly DateRecording, Guid MinisterGuid, DateOnly DeadlineLandReturn, string PlaceOfSigning, DateOnly DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatusConverter DocumentStatus)
+    public LeaseAgreement(GuaranteeTypeConverter GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatusConverter DocumentStatus, DueDate DueDate)
     {
-        this.LeaseAgreementGuid = Guid.NewGuid();
+        this.Guid = Guid.NewGuid();
         this.GuaranteeType = GuaranteeType;
         this.ReferenceNumber = ReferenceNumber;
         this.DateRecording = DateRecording;
@@ -56,13 +59,15 @@ public partial class LeaseAgreement : IValidatableObject
         this.BiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
-    }
+        this.DueDate = DueDate;
+        
+}
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         var results = new List<ValidationResult>();
 
-        if (LeaseAgreementGuid == Guid.Empty)
+        if (Guid == Guid.Empty)
         {
             results.Add(new ValidationResult("Lease Agreement Guid cannot be empty."));
         }

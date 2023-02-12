@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lease.API.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -68,6 +70,9 @@ builder.Services.AddCors(options =>
             .AllowCredentials());
 });
 
+
+
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1",
@@ -90,6 +95,12 @@ builder.Services.AddSwaggerGen(options =>
             TermsOfService = new Uri("https://opensource.org/licenses/MIT")
         });
 
+    
+
+   
+   // builder.Services.AddControllersWithViews();
+
+
     string xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
     string xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
@@ -97,7 +108,12 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlCommentsPath);
 });
 
+builder.Services.AddDbContext<LeaseDbContext>(options =>
+       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 WebApplication app = builder.Build();
+
 app.UseCors("CorsPolicy");
 
 
@@ -124,6 +140,7 @@ else // Ukoliko se nalazimo u Production modu postavljamo default poruku za gre�
         });
     });
 }
+
 
 app.UseRouting();
 

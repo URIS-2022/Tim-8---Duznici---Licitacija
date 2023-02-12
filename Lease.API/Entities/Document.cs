@@ -12,21 +12,24 @@ namespace Lease.API.Entities;
 
 public partial class Document : IValidatableObject
 {
-    public Guid DocumentGuid { get; set; }
+    public Guid Guid { get; set; }
     public string ReferenceNumber { get; set; }
-    public DateOnly DateSubmissed { get; set; }
-    public DateOnly DateCertified { get; set; }
+    public DateTime DateSubmissed { get; set; }
+    public DateTime DateCertified { get; set; }
     public string Template { get; set; }
 
     [JsonConverter(typeof(DocumentTypeConverter))]
     public DocumentTypeConverter DocumentType { get; set; }
     public Guid LeaseAgreementGuid { get; set; }
 
+    public LeaseAgreement LeaseAgreement { get; set; }
 
 
-    public Document(Guid documentGuid, string referenceNumber, DateOnly dateSubmissed, DateOnly dateCertified, string template, DocumentTypeConverter documentType, Guid leaseAgreementGuid)
+    public Document() { }
+
+    public Document(Guid Guid, string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentTypeConverter documentType, Guid leaseAgreementGuid)
     {
-        DocumentGuid = documentGuid;
+        Guid = Guid;
         ReferenceNumber = referenceNumber;
         DateSubmissed = dateSubmissed;
         DateCertified = dateCertified;
@@ -36,9 +39,9 @@ public partial class Document : IValidatableObject
     }
 
 
-    public Document(string referenceNumber, DateOnly dateSubmissed, DateOnly dateCertified, string template, DocumentTypeConverter documentType, Guid leaseAgreementGuid)
+    public Document(string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentTypeConverter documentType, Guid leaseAgreementGuid)
     {
-        DocumentGuid = Guid.NewGuid();
+        Guid = Guid.NewGuid();
         ReferenceNumber = referenceNumber;
         DateSubmissed = dateSubmissed;
         DateCertified = dateCertified;
@@ -53,7 +56,7 @@ public partial class Document : IValidatableObject
     {
         var results = new List<ValidationResult>();
 
-        if (DocumentGuid == Guid.Empty)
+        if (Guid == Guid.Empty)
         {
             results.Add(new ValidationResult("Document Guid cannot be empty."));
         }
@@ -77,5 +80,5 @@ public partial class Document : IValidatableObject
         return results;
     }
 
-
+    //LeaseAgreement  instanca nije napisan u konstruktorima
 }

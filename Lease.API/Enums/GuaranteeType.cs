@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Lease.API.Enums;
@@ -13,6 +14,7 @@ public enum GuaranteeType
     Payment
 }
 
+[NotMapped]
 public class GuaranteeTypeConverter : JsonConverter<GuaranteeType>
 {
     private readonly Dictionary<GuaranteeType, string> _guaranteeTypeMapping = new Dictionary<GuaranteeType, string>

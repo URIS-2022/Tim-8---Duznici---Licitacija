@@ -10,23 +10,28 @@ namespace Lease.API.Entities;
 
 public partial class Buyer : IValidatableObject
 {
-    public Guid BuyerGuid { get; set; }
+    public Guid Guid { get; set; }
     public int RealisedArea { get; set; }
     public Guid PaymentGuid { get; set; }
-    public string Ban { get; set; }
-    public DateOnly StartDateOfBan { get; set; }
+    public bool Ban { get; set; }
+    public DateTime StartDateOfBan { get; set; }
     public int BanDuration { get; set; }
-    public DateOnly BanEndDate { get; set; }
+    public DateTime BanEndDate { get; set; }
     public Guid BiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
+    [JsonConverter(typeof(PriorityTypeConverter))]
+
+    public List<PriorityTypeConverter> PriorityTypes { get; set; }
+
+    public LeaseAgreement LeaseAgreement { get; set; }
 
 
 
 
-    public Buyer(Guid buyerGuid, int realisedArea, Guid paymentGuid, string ban, DateOnly startDateOfBan, int banDuration, DateOnly banEndDate, Guid biddingGuid, Guid personGuid)
+    public Buyer(Guid guid, int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityTypeConverter> priorityTypes)
     {
-        buyerGuid = buyerGuid;
+        Guid = guid;
         RealisedArea = realisedArea;
         PaymentGuid = paymentGuid;
         Ban = ban;
@@ -35,12 +40,14 @@ public partial class Buyer : IValidatableObject
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
+        PriorityTypes = priorityTypes;
+
     }
 
-    
-    public Buyer(int realisedArea, Guid paymentGuid, string ban, DateOnly startDateOfBan, int banDuration, DateOnly banEndDate, Guid biddingGuid, Guid personGuid)
+    public Buyer() { }
+    public Buyer(int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityTypeConverter> priorityTypes )
     {
-        BuyerGuid = Guid.NewGuid();
+        Guid = Guid.NewGuid();
         RealisedArea = realisedArea;
         PaymentGuid = paymentGuid;
         Ban = ban;
@@ -49,6 +56,7 @@ public partial class Buyer : IValidatableObject
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
+        PriorityTypes = priorityTypes;
     }
 
 
@@ -56,7 +64,7 @@ public partial class Buyer : IValidatableObject
     {
         var results = new List<ValidationResult>();
 
-        if (BuyerGuid == Guid.Empty)
+        if (Guid == Guid.Empty)
         {
             results.Add(new ValidationResult("Buyer Guid cannot be empty."));
         }
@@ -76,10 +84,7 @@ public partial class Buyer : IValidatableObject
             results.Add(new ValidationResult("Person Guid cannot be empty."));
         }
 
-        if (string.IsNullOrWhiteSpace(Ban))
-        {
-            results.Add(new ValidationResult("Ban cannot be empty."));
-        }
+        
 
 
 

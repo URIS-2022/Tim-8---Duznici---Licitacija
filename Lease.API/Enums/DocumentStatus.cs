@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Lease.API.Enums;
@@ -11,6 +12,7 @@ public enum DocumentStatus
     Approved
 }
 
+[NotMapped]
 public class DocumentStatusConverter : JsonConverter<DocumentStatus>
 {
     private readonly Dictionary<DocumentStatus, string> _documentStatusMapping = new Dictionary<DocumentStatus, string>
