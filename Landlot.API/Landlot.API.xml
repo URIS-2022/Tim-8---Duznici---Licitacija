@@ -1,7 +1,300 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-	<assembly>
-		<name>Landlot.API</name>
-	</assembly>
-	
+    <assembly>
+        <name>Landlot.API</name>
+    </assembly>
+    <members>
+        <member name="M:Landlot.API.Data.LandlotDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjavanje baze sa nekim test podacima
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.LandGuid">
+            <summary>
+            Guid parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.TotalArea">
+            <summary>
+            Povrsina parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.MunicipalityId">
+            <summary>
+            ID opstine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.NameOfTheMunicipality">
+            <summary>
+            Naziv opstine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.RealEstateNumber">
+            <summary>
+            Lista nepokretnosti
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.LandCulture">
+            <summary>
+            Kultura 
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.LandClass">
+            <summary>
+            Klasa 
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.LandProcessing">
+            <summary>
+            Obradivnost zemljista
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Landlot.API.Models.LandCreationModel.ProtectedZone" -->
+        <member name="P:Landlot.API.Models.LandCreationModel.PropertyType">
+            <summary>
+            Tip svojine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandCreationModel.Drainage">
+            <summary>
+            Drenaza
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.LandGuid">
+            <summary>
+            Guid parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.TotalArea">
+            <summary>
+            Povrsina parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.MunicipalityId">
+            <summary>
+            ID opstine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.NameOfTheMunicipality">
+            <summary>
+            Naziv opstine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.RealEstateNumber">
+            <summary>
+            Lista nepokretnosti
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.LandCulture">
+            <summary>
+            Kultura
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.LandClass">
+            <summary>
+            Klasa 
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.LandProcessing">
+            <summary>
+            Obradivnost zemljista 
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.ProtectedZone">
+            <summary>
+            Zasticena zona 
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.PropertyType">
+            <summary>
+            Tip svojine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandModel.Drainage">
+            <summary>
+            Navodnjavanje
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.TotalArea">
+            <summary>
+            Povrsina parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.MunicipalityId">
+            <summary>
+            ID opstine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.NameOfTheMunicipality">
+            <summary>
+            Naziv opstine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.RealEstateNumber">
+            <summary>
+            Lista nepokretnosti
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.LandCulture">
+            <summary>
+            Kultura 
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.LandClass">
+            <summary>
+            Klasa 
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.LandProcessing">
+            <summary>
+            Obradivnost zemljista
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Landlot.API.Models.LandUpdateModel.ProtectedZone" -->
+        <member name="P:Landlot.API.Models.LandUpdateModel.PropertyType">
+            <summary>
+            Tip svojine
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandUpdateModel.Drainage">
+            <summary>
+            Navodnjavanje
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotCreationModel.LotGuid">
+            <summary>
+            Lot guid
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotCreationModel.LandGuid">
+            <summary>
+            Guid parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotCreationModel.LotArea">
+            <summary>
+            Povrsina dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotCreationModel.LotUser">
+            <summary>
+            Korisnik dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotCreationModel.LotNumber">
+            <summary>
+            Broj dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotCreationModel.LandCultureState">
+            <summary>
+            Kultura stvarno stanje
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotCreationModel.LandProcessingState">
+            <summary>
+            Obradivnost zemljista stvarno stanje
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Landlot.API.Models.LotCreationModel.ProtectedZoneState" -->
+        <member name="P:Landlot.API.Models.LotCreationModel.DrainageState">
+            <summary>
+            Drenaza stvarno stanje
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.LotId">
+            <summary>
+            Lot guid
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.LandGuid">
+            <summary>
+            Guid parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.ExpiryDate">
+            <summary>
+            Datum isteka
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.LotArea">
+            <summary>
+            Povrsina dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.LotUser">
+            <summary>
+            Korisnik dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.LotNumber">
+            <summary>
+            Broj dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.LandCultureState">
+            <summary>
+            Kultura stvarno stanje
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotModel.LandProcessingState">
+            <summary>
+            Obradivnost zemljista stvarno stanje
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Landlot.API.Models.LotModel.ProtectedZoneState" -->
+        <member name="P:Landlot.API.Models.LotModel.DrainageState">
+            <summary>
+            Drenaza stvarno stanje
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotUpdateModel.LandGuid">
+            <summary>
+            Guid parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotUpdateModel.LotArea">
+            <summary>
+            Povrsina dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotUpdateModel.LotUser">
+            <summary>
+            Korisnik dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotUpdateModel.LotNumber">
+            <summary>
+            Broj dela parcele
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotUpdateModel.LandCultureState">
+            <summary>
+            Kultura stvarno stanje
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotUpdateModel.LandProcessingState">
+            <summary>
+            Obradivnost zemljista stvarno stanje
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Landlot.API.Models.LotUpdateModel.ProtectedZoneState" -->
+        <member name="P:Landlot.API.Models.LotUpdateModel.DrainageState">
+            <summary>
+            Drenaza stvarno stanje
+            </summary>
+        </member>
+    </members>
 </doc>
