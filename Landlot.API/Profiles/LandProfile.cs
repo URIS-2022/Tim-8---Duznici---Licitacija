@@ -8,10 +8,14 @@ namespace Landlot.API.Profiles
     {
         public LandProfile() 
         {
-            CreateMap<Land, LandModel>();
-            CreateMap<LandCreationModel, Land>();
-            CreateMap<LandUpdateModel, Land>();
-
+            CreateMap<Land, LandGetResponseModel>();
+            CreateMap<Land, LandPostResponseModel>();
+            CreateMap<Land, LandPatchResponseModel>();
+            CreateMap<LandPostRequestModel, Land>();
+            CreateMap<LandPatchRequestModel, Land>()
+            .ForMember(dest => dest.TotalArea, opt => opt.Condition(src => src.TotalArea != null))
+            .ForMember(dest => dest.Municipality, opt => opt.Condition(src => src.Municipality != null))
+            .ForMember(dest => dest.RealEstateNumber, opt => opt.Condition(src => src.RealEstateNumber != null));
         }
     }
 }
