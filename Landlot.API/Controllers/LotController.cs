@@ -13,19 +13,19 @@ namespace Landlot.API.Controllers
     [Consumes("application/json", "application/xml")]
     public class LotController : ControllerBase
     {
-        private readonly ILotRepository _lotRepository;
+        private readonly ILotRepository lotRepository;
         private readonly IMapper mapper;
 
         public LotController(ILotRepository lotRepository, IMapper mapper)
         {
-            _lotRepository = lotRepository;
+            lotRepository = lotRepository;
             this.mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lot>>> GetLot()
         {
-            var lots = await _lotRepository.GetLots();
+            var lots = await lotRepository.GetLots();
             if (!lots.Any())
             {
                 return NoContent();
@@ -33,5 +33,32 @@ namespace Landlot.API.Controllers
             IEnumerable<Lot> responseModel = mapper.Map<IEnumerable<Lot>>(lots);
             return Ok(responseModel);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<LotModel>> PostLot(LotCreationModel postModel)
+        {
+            var lot = mapper.Map<Lot>(postModel);
+            Lot? createdLot = await lotRepository.AddLot(lot);
+            if (createdLot == null)
+            {
+                return BadRequest();
+            }
+            var responseModel = mapper.Map<Lot>(createdLot);
+            return CreatedAtAction("GetLot", new { id = createdLot.LotGuid }, responseModel);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteLot(Guid id)
+        {
+            Lot? lot = await lotRepository.GetLot(id);
+            if (lot == null)
+            {
+                return NotFound();
+            }
+            await lotRepository.DeleteLot(lot.LotGuid);
+
+            return NoContent();
+        }
+
     }
 }
