@@ -20,6 +20,10 @@ namespace Landlot.API.Data
         /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Land>()
+              .HasKey(l => l.LandGuid);
+
             modelBuilder.Entity<Lot>().HasKey(table => new {
                 table.LandGuid,
                 table.LotGuid
@@ -32,7 +36,7 @@ namespace Landlot.API.Data
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
                     TotalArea = 3000,
                     MunicipalityId = Guid.Parse("aa3f2265-7182-4424-ba83-2eed388ce748"),
-                    RealEstateListNumber = "2",
+                    RealEstateNumber = "2",
                     LandCulture = "Field",
                     ProtectedZone = "III",
                     Drainage = "Excellent",
@@ -46,12 +50,11 @@ namespace Landlot.API.Data
             modelBuilder.Entity<Lot>()
                 .HasData(new
                 {
-                    LotGuid = Guid.Parse("\"67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
+                    LotGuid = Guid.Parse("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
-                    ExpiryDate = "2023-01-31T12:00:00Z",
                     LotArea = 1234,
                     LotUser = "John Doe",
-                    LotNumber = "001",
+                    LotNumber = 1,
                     LandCultureState= "Field",
                     LandClassState = "2",
                     LandProcessingState= "Arable",

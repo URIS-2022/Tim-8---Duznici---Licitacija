@@ -8,11 +8,10 @@ namespace Landlot.API.Entities
 
         public Guid LotGuid { get; set; }
         public Guid LandGuid { get; set; }
-        public DateTime ExpiryDate { get; set; }
 
         public int LotArea { get; set; }
 
-        public int LotUser { get; set; }
+        public string LotUser { get; set; }
 
         public int LotNumber { get; set; }
 
@@ -30,11 +29,6 @@ namespace Landlot.API.Entities
         {
                 var results = new List<ValidationResult>();
 
-                // Validate ExpiryDate
-                if (ExpiryDate == null)
-                {
-                    results.Add(new ValidationResult("ExpiryDate is required"));
-                }
 
                 // Validate LotArea
                 if (LotArea <= 0)
@@ -43,9 +37,9 @@ namespace Landlot.API.Entities
                 }
 
                 // Validate LotUser
-                if (LotUser <= 0)
+                if (string.IsNullOrWhiteSpace(LotUser))
                 {
-                    results.Add(new ValidationResult("LotUser must be greater than 0"));
+                    results.Add(new ValidationResult("LotUser mis required"));
                 }
 
                 // Validate LotNumber

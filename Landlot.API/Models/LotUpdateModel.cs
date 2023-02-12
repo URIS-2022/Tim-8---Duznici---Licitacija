@@ -11,11 +11,6 @@ namespace Landlot.API.Models
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti id parcele!")]
         public Guid LandGuid { get; set; }
-        /// <summary>
-        /// Datum isteka
-        /// </summary>
-        [Required(ErrorMessage = "Obavezno je uneti datum isteka!")]
-        public DateTime ExpiryDate { get; set; }
 
         /// <summary>
         /// Povrsina dela parcele
@@ -27,7 +22,7 @@ namespace Landlot.API.Models
         /// Korisnik dela parcele
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti korisnika dela parcele.")]
-        public int LotUser { get; set; }
+        public string LotUser { get; set; }
 
         /// <summary>
         /// Broj dela parcele

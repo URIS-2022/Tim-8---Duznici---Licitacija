@@ -8,9 +8,9 @@ namespace Landlot.API.Entities
 
         public int TotalArea { get; set; }
 
-        public string MunicipalityId { get; set; }
+        public Guid MunicipalityId { get; set; }
 
-        public string NameOfTheMunicipality { get; set; }
+        public string Municipality { get; set; }
 
         public string RealEstateNumber { get; set; }
 
@@ -24,7 +24,7 @@ namespace Landlot.API.Entities
 
         public string PropertyType { get; set; }
 
-        public Guid Drainage { get; set; }
+        public string Drainage { get; set; }
 
        
 
@@ -38,22 +38,14 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("TotalArea must be greater than 0"));
             }
 
-            // Validate MunicipalityId
-            if (string.IsNullOrWhiteSpace(MunicipalityId))
-            {
-                results.Add(new ValidationResult("MunicipalityId is required"));
-            }
-            else if (MunicipalityId.Length > 50)
-            {
-                results.Add(new ValidationResult("MunicipalityId cannot be longer than 50 characters"));
-            }
+            
 
             // Validate NameOfTheMunicipality
-            if (string.IsNullOrWhiteSpace(NameOfTheMunicipality))
+            if (string.IsNullOrWhiteSpace(Municipality))
             {
                 results.Add(new ValidationResult("NameOfTheMunicipality is required"));
             }
-            else if (NameOfTheMunicipality.Length > 50)
+            else if (Municipality.Length > 50)
             {
                 results.Add(new ValidationResult("NameOfTheMunicipality cannot be longer than 50 characters"));
             }
@@ -119,7 +111,7 @@ namespace Landlot.API.Entities
             }
 
             // Validate Drainage
-            if (Drainage == Guid.Empty)
+            if (string.IsNullOrWhiteSpace(Drainage))
             {
                 results.Add(new ValidationResult("Drainage is required"));
             }
