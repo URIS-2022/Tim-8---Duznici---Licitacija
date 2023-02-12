@@ -6,8 +6,8 @@ namespace Landlot.API.Entities
     public class Lot : IValidatableObject
     {
 
-        public Guid LotId { get; set; }
-
+        public Guid LotGuid { get; set; }
+        public Land LandGuid { get; set; }
         public DateAndTime ExpiryDate { get; set; }
 
         public int LotArea { get; set; }

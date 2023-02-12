@@ -4,7 +4,7 @@ namespace Landlot.API.Entities
 {
     public class Land : IValidatableObject
     {
-        public Guid LandId { get; set; }
+        public Guid LandGuid { get; set; }
 
         public int TotalArea { get; set; }
 

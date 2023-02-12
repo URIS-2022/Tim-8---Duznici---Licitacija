@@ -9,10 +9,10 @@ namespace Landlot.API.Models
     public class LandCreationModel
     {
         /// <summary>
-        /// Land id
+        /// Guid parcele
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti id parcele!")]
-        public Guid LandId { get; set; }
+        public Guid LandGuid { get; set; }
 
         /// <summary>
         /// Povrsina parcele

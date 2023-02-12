@@ -8,9 +8,9 @@ namespace Landlot.API.Models
     public class LandModel
 
     {    /// <summary>
-         /// Id parcele
+         /// Guid parcele
          /// </summary>
-        public Guid LandId { get; set; }
+        public Guid LandGuid { get; set; }
 
         /// <summary>
         /// Povrsina parcele

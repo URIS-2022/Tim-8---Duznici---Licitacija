@@ -5,7 +5,11 @@ namespace Landlot.API.Models
 {
     public class LotUpdateModel
     {
-
+        /// <summary>
+        /// Guid parcele
+        /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti id parcele!")]
+        public Guid LandGuid { get; set; }
         /// <summary>
         /// Datum isteka
         /// </summary>

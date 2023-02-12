@@ -6,10 +6,16 @@ namespace Landlot.API.Models
     public class LotCreationModel
     {
         /// <summary>
-        /// Lot id
+        /// Lot guid
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti id dela parcele!")]
-        public Guid LotId { get; set; }
+        public Guid LotGuid { get; set; }
+
+        /// <summary>
+        /// Guid parcele
+        /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti id parcele!")]
+        public Guid LandGuid { get; set; }
 
         /// <summary>
         /// Datum isteka
