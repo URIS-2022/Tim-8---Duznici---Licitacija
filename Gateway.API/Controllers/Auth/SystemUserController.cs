@@ -1,39 +1,71 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http.Headers;
-using System.Text.Json;
 
 namespace Gateway.API.Controllers.Auth;
 
+/// <summary>
+/// Controller for managing System Users
+/// </summary>
+[ApiExplorerSettings(GroupName = "Auth")]
 [Route("api/[controller]")]
 [ApiController]
-public class SystemUserController : ControllerBase
+[Produces("application/json", "application/xml")]
+[Consumes("application/json", "application/xml")]
+public class SystemUsersController : ControllerBase
 {
+    private readonly HttpServiceProxy serviceProxy;
 
-    [HttpGet("WeatherForecast")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> GetWeatherForecast()
+    /// <summary>
+    /// Constructor for SystemUsersController
+    /// </summary>
+    /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+    public SystemUsersController(HttpClient httpClient)
     {
-        using HttpClient httpClient = new();
-        string? endpoint = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_AUTH");
-        httpClient.DefaultRequestHeaders.Accept.Clear();
-        httpClient.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-        HttpResponseMessage response = await httpClient.GetAsync($"{endpoint}/WeatherForecast");
-        if (!response.IsSuccessStatusCode)
-        {
-            return BadRequest();
-        }
-        if (response.IsSuccessStatusCode)
-        {
-            string content = await response.Content.ReadAsStringAsync();
-            IEnumerable<object>? forecasts = JsonSerializer.Deserialize<IEnumerable<object>>(content);
-            return Ok(forecasts);
-        }
-        else
-        {
-            string error = await response.Content.ReadAsStringAsync();
-            return BadRequest(error);
-        }
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_AUTH")}/api/SystemUsers");
     }
+
+    /// <summary>
+    /// Deletes a system user
+    /// </summary>
+    /// <param name="username">Username of the user to be deleted</param>
+    /// <returns>IActionResult indicating the status of the operation</returns>
+    [HttpDelete("{username}")]
+    [Authorize(Roles = "Admin")]
+    public Task<IActionResult> DeleteSystemUser(string username) => serviceProxy.Delete(username);
+
+    /// <summary>
+    /// Gets a system user
+    /// </summary>
+    /// <param name="username">Username of the user to retrieve</param>
+    /// <returns>IActionResult indicating the status of the operation</returns>
+    [HttpGet("{username}")]
+    public Task<IActionResult> GetSystemUser(string username) => serviceProxy.GetById(username);
+
+    /// <summary>
+    /// Gets a list of all system users
+    /// </summary>
+    /// <returns>IActionResult indicating the status of the operation</returns>
+    [HttpGet]
+    [Produces("application/json", "application/xml")]
+    public Task<IActionResult> GetSystemUsers() => serviceProxy.Get();
+
+    /// <summary>
+    /// Adds a new system user
+    /// </summary>
+    /// <param name="requestModel">Request body with user information</param>
+    /// <returns>IActionResult indicating the status of the operation</returns>
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public Task<IActionResult> PostSystemUser(object requestModel) => serviceProxy.Post(requestModel);
+
+    /// <summary>
+    /// Patches a system user
+    /// </summary>
+    /// <param name="username">Username of the user to update</param>
+    /// <param name="systemUserUpdate">Request body with updated user information</param>
+    /// <returns>IActionResult indicating the status of the operation</returns>
+    [HttpPatch("{username}")]
+    [Authorize(Roles = "Admin")]
+    public Task<IActionResult> PatchSystemUser(string username, object systemUserUpdate) => serviceProxy.Patch(username, systemUserUpdate);
 }
