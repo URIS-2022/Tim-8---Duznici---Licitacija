@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.API.Controllers.Auth;
@@ -6,6 +7,8 @@ namespace Gateway.API.Controllers.Auth;
 [ApiExplorerSettings(GroupName = "Auth")]
 [Route("api/[controller]")]
 [ApiController]
+[Produces("application/json", "application/xml")]
+[Consumes("application/json", "application/xml")]
 public class SystemUsersController : ControllerBase
 {
     HttpServiceProxy serviceProxy;
@@ -22,6 +25,7 @@ public class SystemUsersController : ControllerBase
     public Task<IActionResult> GetSystemUser(string username) => serviceProxy.GetById(username);
 
     [HttpGet]
+    [Produces("application/json", "application/xml")]
     public Task<IActionResult> GetSystemUsers() => serviceProxy.Get();
 
     [HttpPost]
