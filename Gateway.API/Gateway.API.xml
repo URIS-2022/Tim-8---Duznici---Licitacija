@@ -4,6 +4,63 @@
         <name>Gateway.API</name>
     </assembly>
     <members>
+        <member name="T:Gateway.API.Controllers.Auth.SystemUsersController">
+            <summary>
+            Controller for managing System Users
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for SystemUsersController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.DeleteSystemUser(System.String)">
+            <summary>
+            Deletes a system user
+            </summary>
+            <param name="username">Username of the user to be deleted</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUser(System.String)">
+            <summary>
+            Gets a system user
+            </summary>
+            <param name="username">Username of the user to retrieve</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUsers">
+            <summary>
+            Gets a list of all system users
+            </summary>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.PostSystemUser(System.Object)">
+            <summary>
+            Adds a new system user
+            </summary>
+            <param name="requestModel">Request body with user information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.PatchSystemUser(System.String,System.Object)">
+            <summary>
+            Patches a system user
+            </summary>
+            <param name="username">Username of the user to update</param>
+            <param name="systemUserUpdate">Request body with updated user information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="T:Gateway.API.Controllers.Auth.TokenController">
+            <summary>
+            Controller for managing JWT resources
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for TokenController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
         <member name="M:Gateway.API.Controllers.Auth.TokenController.GenerateToken(System.Object)">
             <summary>
             Generates JWT token based on the given username and password.
@@ -104,6 +161,11 @@
             <param name="endpoint">The endpoint of the external service to send the request to, including the identifier.</param>
             <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
             <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="T:Gateway.API.Helpers.SwaggerOptionsMapper">
+            <summary>
+            This class maps SwaggerOptions to generate Swagger documentation and UI for different APIs.
+            </summary>
         </member>
     </members>
 </doc>
