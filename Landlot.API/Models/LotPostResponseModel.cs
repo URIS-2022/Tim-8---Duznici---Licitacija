@@ -20,25 +20,25 @@ namespace Landlot.API.Models
         public int LotNumber { get; set; }
 
         [JsonConverter(typeof(LandlotCultureConverter))]
-        [DataMember]
+        [DataMember(Name = "CultureState")]
         public LandlotCulture CultureState { get; set; }
 
         [JsonConverter(typeof(LandlotClassConverter))]
-        [DataMember]
+        [DataMember(Name = "ClassState")]
         public LandlotClass ClassState { get; set; }
 
 
         [JsonConverter(typeof(LandlotProcessingConverter))]
-        [DataMember]
+        [DataMember(Name = "ProcessingState")]
         public LandlotProcessing ProcessingState { get; set; }
 
 
         [JsonConverter(typeof(LandlotProtectedZoneConverter))]
-        [DataMember]
+        [DataMember(Name = "ProtectedZoneState")]
         public LandlotProtectedZone ProtectedZoneState { get; set; }
 
         [JsonConverter(typeof(LandlotDrainageConverter))]
-        [DataMember]
+        [DataMember(Name = "DrainageState")]
         public LandlotDrainage DrainageState { get; set; }
 
         public LotPostResponseModel(Guid landGuid, decimal lotArea, Guid lotUser, int lotNumber, LandlotCulture cultureState, LandlotClass classState, LandlotProcessing processingState, LandlotProtectedZone protectedZoneState, LandlotDrainage drainageState)

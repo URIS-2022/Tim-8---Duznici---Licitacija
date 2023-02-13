@@ -13,35 +13,35 @@ namespace Landlot.API.Models
         public decimal TotalArea { get; set; }
 
         [JsonConverter(typeof(LandlotMunicipalityConverter))]
-        [DataMember]
+        [DataMember(Name = "Municipality")]
         public LandlotMunicipality Municipality { get; set; }
 
         [DataMember]
         public string RealEstateNumber { get; set; }
 
         [JsonConverter(typeof(LandlotCultureConverter))]
-        [DataMember]
+        [DataMember(Name = "Culture")]
 
         public LandlotCulture Culture { get; set; }
 
         [JsonConverter(typeof(LandlotClassConverter))]
-        [DataMember]
+        [DataMember(Name = "LandClass")]
         public LandlotClass LandClass { get; set; }
 
         [JsonConverter(typeof(LandlotProcessingConverter))]
-        [DataMember]
+        [DataMember(Name = "Processing")]
         public LandlotProcessing Processing { get; set; }
 
         [JsonConverter(typeof(LandlotProtectedZoneConverter))]
-        [DataMember]
+        [DataMember(Name = "Zone")]
         public LandlotProtectedZone Zone { get; set; }
 
         [JsonConverter(typeof(LandlotPropertyTypeConverter))]
-        [DataMember]
+        [DataMember(Name = "Property")]
         public LandlotPropertyType Property { get; set; }
 
         [JsonConverter(typeof(LandlotDrainageConverter))]
-        [DataMember]
+        [DataMember(Name = "Drainage")]
         public LandlotDrainage Drainage { get; set; }
 
         public LandPostResponseModel (decimal totalArea, LandlotMunicipality municipality, string realEstateNumber, LandlotCulture culture, LandlotClass landClass, LandlotProcessing processing, LandlotProtectedZone zone, LandlotPropertyType property, LandlotDrainage drainage)
