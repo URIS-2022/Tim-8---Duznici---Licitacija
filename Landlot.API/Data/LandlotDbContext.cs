@@ -35,30 +35,31 @@ namespace Landlot.API.Data
                 .HasData(new
                 {
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
-                    TotalArea = 300,
-                    Municipality = "Bajmok",
+                    TotalArea = 300M,
+                    Municipality = Enums.LandlotMunicipality.Bajmok,
                     RealEstateNumber = "22",
-                    Culture = "Vrtovi",
-                    Zone = "3",
-                    Drainage = "Odvodnjavanje",
-                    LandClass = "III",
-                    Processing = "Ostalo",
-                    Property = "Drugi oblici"
-                });
+                    Culture = Enums.LandlotCulture.Vrtovi,
+                    Zone = Enums.LandlotProtectedZone.Zone3,
+                    Drainage = Enums.LandlotDrainage.Odvodnjavanje,
+                    LandClass = Enums.LandlotClass.III,
+                    Processing = Enums.LandlotProcessing.Ostalo,
+                    Property = Enums.LandlotPropertyType.DrugiOblici
+                }
+                );
 
             modelBuilder.Entity<Land>()
                 .HasData(new
                 {
                     LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
-                    TotalArea = 111.25,
-                    Municipality = "Bikovo",
+                    TotalArea = 1111M,
+                    Municipality = Enums.LandlotMunicipality.Bikovo,
                     RealEstateNumber = "1234",
-                    Culture = "Livade",
-                    Zone = "4",
-                    Drainage = "Odvodnjavanje",
-                    LandClass = "I",
-                    Processing = "Ostalo",
-                    Property = "Privatna svojina"
+                    Culture = Enums.LandlotCulture.Livade,
+                    Zone = Enums.LandlotProtectedZone.Zone4,
+                    Drainage = Enums.LandlotDrainage.Odvodnjavanje,
+                    LandClass = Enums.LandlotClass.I,
+                    Processing = Enums.LandlotProcessing.Ostalo,
+                    Property = Enums.LandlotPropertyType.PrivatnaSvojina
                 });
 
             modelBuilder.Entity<Lot>()
@@ -66,29 +67,29 @@ namespace Landlot.API.Data
                 {
                     LotGuid = Guid.Parse("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
-                    LotArea = 1234,
+                    LotArea = 1234.56M,
                     LotUser = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2bc"),
                     LotNumber = 1,
-                    CultureState = "Vrtovi",
-                    ClassState = "II",
-                    ProcessingState = "Ostalo",
-                    ProtectedZoneState = "1",
-                    DrainageState = "Odvodnjavanje"
+                    CultureState = Enums.LandlotCulture.Vrtovi,
+                    ClassState = Enums.LandlotClass.II,
+                    ProcessingState = Enums.LandlotProcessing.Ostalo,
+                    ProtectedZoneState = Enums.LandlotProtectedZone.Zone1,
+                    DrainageState = Enums.LandlotDrainage.Odvodnjavanje
                 });
 
             modelBuilder.Entity<Lot>()
-                .HasData(new
+                .HasData(new 
                 {
                     LotGuid = Guid.Parse("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
-                    LotArea = 4321.56,
+                    LotArea = 4321.12M,
                     LotUser = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
                     LotNumber = 13,
-                    CultureState = "Njive",
-                    LandClassState = "III",
-                    ProcessingState = "Obradivo",
-                    ProtectedZoneState = "4",
-                    DrainageState = "Odvodnjavanje"
+                    CultureState = Enums.LandlotCulture.Njive,
+                    ClassState = Enums.LandlotClass.III,
+                    ProcessingState = Enums.LandlotProcessing.Obradivo,
+                    ProtectedZoneState = Enums.LandlotProtectedZone.Zone4,
+                    DrainageState = Enums.LandlotDrainage.Odvodnjavanje
                 });
         }
     }

@@ -27,7 +27,7 @@ namespace Landlot.API.Entities
         public LandlotClass ClassState { get; set; }
 
         [JsonConverter(typeof(LandlotProcessingConverter))]
-        public LandlotProcessing ProcessingSate { get; set; }
+        public LandlotProcessing ProcessingState { get; set; }
 
         [JsonConverter(typeof(LandlotProtectedZoneConverter))]
         public LandlotProtectedZone ProtectedZoneSate { get; set; }
@@ -60,9 +60,9 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("Class state cannot be null.", new[] { "ClassState" }));
             }
 
-            if (ProcessingSate == null)
+            if (ProcessingState == null)
             {
-                results.Add(new ValidationResult("Processing state cannot be null.", new[] { "ProcessingSate" }));
+                results.Add(new ValidationResult("Processing state cannot be null.", new[] { "ProcessingState" }));
             }
 
             if (ProtectedZoneSate == null)

@@ -2,10 +2,12 @@
 using Landlot.API.Data;
 using Landlot.API.Data.Repository;
 using Landlot.API.Entities;
+using Landlot.API.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -16,6 +18,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
+         .AddJsonOptions(options =>
+         {
+             options.JsonSerializerOptions.Converters.Add(new LandlotClassConverter());
+             options.JsonSerializerOptions.Converters.Add(new LandlotCultureConverter());
+             options.JsonSerializerOptions.Converters.Add(new LandlotDrainageConverter());
+             options.JsonSerializerOptions.Converters.Add(new LandlotMunicipalityConverter());
+             options.JsonSerializerOptions.Converters.Add(new LandlotProcessingConverter());
+             options.JsonSerializerOptions.Converters.Add(new LandlotPropertyTypeConverter());
+             options.JsonSerializerOptions.Converters.Add(new LandlotProtectedZoneConverter());
+         }
+          ) 
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
