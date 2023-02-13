@@ -43,7 +43,7 @@ namespace Payment.API.Controllers
 
         // GET: api/PaymentWarrants/referenceNumber
         [HttpGet("{referenceNumber}")]
-        public async Task<ActionResult<PaymentWarrantResponseModel>> GetPaymentWarrantByGuid(string referenceNumber)
+        public async Task<ActionResult<PaymentWarrantResponseModel>> GetByReferenceNumber(string referenceNumber)
         {
             PaymentWarrant? paymentWarrant = await _paymentWarrantRepository.GetByReferenceNumber(referenceNumber);
             if (paymentWarrant == null)
@@ -67,7 +67,7 @@ namespace Payment.API.Controllers
             return responseModel;
         }
 
-        //GET: api/PaymentWarrants/referenceNumber
+        /*//GET: api/PaymentWarrants/referenceNumber
         [HttpGet("{referenceNumber}")]
         public async Task<ActionResult<PaymentWarrantResponseModel>> GetByReferenceNumber(string referenceNumber)
         {
@@ -78,7 +78,7 @@ namespace Payment.API.Controllers
             }
             PaymentWarrantResponseModel responseModel = mapper.Map<PaymentWarrantResponseModel>(paymentWarrant);
             return Ok(responseModel);
-        }
+        }*/
 
         // PUT: api/PaymentWarrants/referenceNumber
         [HttpPatch("{referenceNumber}")]
