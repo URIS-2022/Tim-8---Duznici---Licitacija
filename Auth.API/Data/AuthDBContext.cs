@@ -6,7 +6,7 @@ namespace Auth.API.Data;
 /// <summary>
 /// AuthDbContext is a class that inherits from DbContext. 
 /// It represents the database context for the authentication system.
-
+/// </summary>
 public class AuthDbContext : DbContext
 {
 
