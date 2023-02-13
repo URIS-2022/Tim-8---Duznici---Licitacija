@@ -22,7 +22,7 @@ public class LandlotMunicipalityConverter : JsonConverter<LandlotMunicipality>
 {
     private readonly Dictionary<LandlotMunicipality, string> _municipalityMapping = new()
 {
-    { LandlotMunicipality.Bikovo, " Opština Bikovo" },
+    { LandlotMunicipality.Bikovo, "Opština Bikovo" },
     { LandlotMunicipality.Bajmok, "Opština Bajmok" },
     { LandlotMunicipality.Palic, "Opština Palić" },
     { LandlotMunicipality.StariGrad, "Opština Stari grad" },

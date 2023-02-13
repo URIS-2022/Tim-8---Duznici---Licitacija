@@ -14,7 +14,7 @@ namespace Landlot.API.Enums
             string value = reader.GetString();
             return value switch
             {
-                "odvodnjavanje" => LandlotDrainage.Odvodnjavanje,
+                "Odvodnjavanje" => LandlotDrainage.Odvodnjavanje,
                 _ => throw new JsonException($"Unexpected value '{value}' for {typeof(LandlotDrainage)}"),
             };
         }

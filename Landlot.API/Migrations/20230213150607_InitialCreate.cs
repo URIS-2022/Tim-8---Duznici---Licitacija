@@ -65,7 +65,7 @@ namespace Landlot.API.Migrations
                 values: new object[,]
                 {
                     { new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), 4, 0, 0, 0, 1, 0, "1234", 1111m, 4 },
-                    { new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), 1, 0, 2, 1, 1, 6, "22", 300m, 3 }
+                    { new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), 1, 0, 2, 1, 1, 2, "22", 300m, 3 }
                 });
 
             migrationBuilder.InsertData(

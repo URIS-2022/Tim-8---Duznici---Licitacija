@@ -43,7 +43,7 @@ namespace Landlot.API.Data
                     Drainage = Enums.LandlotDrainage.Odvodnjavanje,
                     LandClass = Enums.LandlotClass.III,
                     Processing = Enums.LandlotProcessing.Ostalo,
-                    Property = Enums.LandlotPropertyType.DrugiOblici
+                    Property = Enums.LandlotPropertyType.DrzavnaSvojinaRS
                 }
                 );
 

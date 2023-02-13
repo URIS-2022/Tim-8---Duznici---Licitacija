@@ -69,7 +69,7 @@ namespace Landlot.API.Migrations
                             LandClass = 2,
                             Municipality = 1,
                             Processing = 1,
-                            Property = 6,
+                            Property = 2,
                             RealEstateNumber = "22",
                             TotalArea = 300m,
                             Zone = 3
