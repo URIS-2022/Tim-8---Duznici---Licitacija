@@ -29,7 +29,7 @@
             <param name="username">The username of the System User to retrieve</param>
             <returns>The System User model, or Not Found if the System User is not found</returns>
         </member>
-        <member name="M:Auth.API.Controllers.SystemUsersController.PutSystemUser(System.String,Auth.API.Models.SystemUserUpdateModel)">
+        <member name="M:Auth.API.Controllers.SystemUsersController.PatchSystemUser(System.String,Auth.API.Models.SystemUserPatchRequestModel)">
             <summary>
             Updates a specific System User based on the username
             </summary>
@@ -37,7 +37,7 @@
             <param name="systemUserUpdate">The updated System User information</param>
             <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
         </member>
-        <member name="M:Auth.API.Controllers.SystemUsersController.PostSystemUser(Auth.API.Models.SystemUserRequestModel)">
+        <member name="M:Auth.API.Controllers.SystemUsersController.PostSystemUser(Auth.API.Models.SystemUserPostRequestModel)">
             <summary>
             Creates a new System User
             </summary>
@@ -76,6 +76,29 @@
             </summary>
             <param name="requestModel">Model containing the token to be introspected.</param>
             <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
+        </member>
+        <member name="T:Auth.API.Data.AuthDbContext">
+            <summary>
+            AuthDbContext is a class that inherits from DbContext. 
+            It represents the database context for the authentication system.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Data.AuthDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Auth.API.Data.AuthDbContext})">
+            <summary>
+            Initializes a new instance of the AuthDbContext class.
+            </summary>
+            <param name="options">The options to be used by a DbContext.</param>
+        </member>
+        <member name="P:Auth.API.Data.AuthDbContext.SystemUsers">
+            <summary>
+            A DbSet of SystemUser entities.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Data.AuthDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Overrides OnModelCreating method to configure the model creating process.
+            </summary>
+            <param name="modelBuilder">The ModelBuilder instance to be used for model creating.</param>
         </member>
         <member name="T:Auth.API.Data.Repository.ISystemUserRepository">
             <summary>
@@ -174,6 +197,76 @@
         <member name="M:Auth.API.Data.Repository.SystemUserRepository.Update(Auth.API.Entities.SystemUser)">
             <inheritdoc cref="M:Auth.API.Data.Repository.ISystemUserRepository.Update(Auth.API.Entities.SystemUser)"/>
         </member>
+        <member name="T:Auth.API.Entities.SystemUser">
+            <summary>
+            SystemUser is a partial class that represents a user in the system.
+            It implements IValidatableObject for data validation.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Entities.SystemUser.Guid">
+            <summary>
+            Gets or sets the Guid property.
+            Represents the unique identifier of the SystemUser.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Entities.SystemUser.FirstName">
+            <summary>
+            Gets or sets the FirstName property.
+            Represents the first name of the SystemUser.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Entities.SystemUser.LastName">
+            <summary>
+            Gets or sets the LastName property.
+            Represents the last name of the SystemUser.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Entities.SystemUser.Username">
+            <summary>
+            Gets or sets the Username property.
+            Represents the username of the SystemUser.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Entities.SystemUser.Password">
+            <summary>
+            Gets or sets the Password property.
+            Represents the password of the SystemUser.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Entities.SystemUser.Role">
+            <summary>
+            Gets or sets the Role property.
+            Represents the role of the SystemUser.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Entities.SystemUser.#ctor(System.Guid,System.String,System.String,System.String,System.String,Auth.API.Enums.SystemUserRole)">
+            <summary>
+            Initializes a new instance of the SystemUser class with the given parameters.
+            </summary>
+            <param name="id">The Guid value to be assigned to Guid property.</param>
+            <param name="firstName">The string value to be assigned to FirstName property.</param>
+            <param name="lastName">The string value to be assigned to LastName property.</param>
+            <param name="username">The string value to be assigned to Username property.</param>
+            <param name="password">The string value to be assigned to Password property.</param>
+            <param name="role">The SystemUserRole value to be assigned to Role property. The default value is SystemUserRole.None.</param>
+        </member>
+        <member name="M:Auth.API.Entities.SystemUser.#ctor(System.String,System.String,System.String,System.String,Auth.API.Enums.SystemUserRole)">
+            <summary>
+            Initializes a new instance of the SystemUser class with the given parameters.
+            </summary>
+            <param name="firstName">The string value to be assigned to FirstName property.</param>
+            <param name="lastName">The string value to be assigned to LastName property.</param>
+            <param name="username">The string value to be assigned to Username property.</param>
+            <param name="password">The string value to be assigned to Password property.</param>
+            <param name="role">The SystemUserRole value to be assigned to Role property. The default value is SystemUserRole.None.</param>
+        </member>
+        <member name="M:Auth.API.Entities.SystemUser.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the properties of the `SystemUser` object to ensure they meet certain criteria.
+            </summary>
+            <param name="validationContext">The context in which validation is being performed.</param>
+            <returns>A collection of validation results indicating any errors or issues with the properties.</returns>
+        </member>
         <member name="M:Auth.API.Entities.SystemUser.usernameValidationRegex">
             <remarks>
             Pattern explanation:<br/>
@@ -183,6 +276,78 @@
             ○ Match if at the end of the string or if before an ending newline.<br/>
             </code>
             </remarks>
+        </member>
+        <member name="T:Auth.API.Enums.SystemUserRole">
+            <summary>
+            The SystemUserRole enumeration defines the different roles a user can have in the system.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.None">
+            <summary>
+            The user has no role assigned.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.Operator">
+            <summary>
+            The user is an operator.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.TechSecretary">
+            <summary>
+            The user is a technical secretary.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.FirstCommission">
+            <summary>
+            The user is a member of the first commission.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.Superuser">
+            <summary>
+            The user is a superuser.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.BiddingOperator">
+            <summary>
+            The user is a bidding operator.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.Bidder">
+            <summary>
+            The user is a bidder.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.Manager">
+            <summary>
+            The user is a manager.
+            </summary>
+        </member>
+        <member name="F:Auth.API.Enums.SystemUserRole.Admin">
+            <summary>
+            The user is an administrator.
+            </summary>
+        </member>
+        <member name="T:Auth.API.Enums.SystemUserRoleConverter">
+            <summary>
+            The SystemUserRoleConverter class provides a custom implementation for converting the SystemUserRole enum to and from JSON.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Enums.SystemUserRoleConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the SystemUserRole value from a JSON reader.
+            </summary>
+            <param name="reader">The JSON reader to read from.</param>
+            <param name="typeToConvert">The type to convert to.</param>
+            <param name="options">The JSON serializer options.</param>
+            <returns>The SystemUserRole value read from the JSON reader.</returns>
+        </member>
+        <member name="M:Auth.API.Enums.SystemUserRoleConverter.Write(System.Text.Json.Utf8JsonWriter,Auth.API.Enums.SystemUserRole,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the SystemUserRole value to a JSON writer.
+            </summary>
+            <param name="writer">The JSON writer to write to.</param>
+            <param name="value">The SystemUserRole value to write.</param>
+            <param name="options">The JSON serializer options.</param>
         </member>
         <member name="T:Auth.API.Migrations.InitialCreate">
             <inheritdoc />
@@ -195,6 +360,202 @@
         </member>
         <member name="M:Auth.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:Auth.API.Models.IntrospectionRequestModel">
+            <summary>
+            IntrospectionRequestModel is a model class used to represent a request for introspection of a JSON Web Token (JWT).
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.IntrospectionRequestModel.Token">
+            <summary>
+            Gets or sets the token string.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Models.IntrospectionRequestModel.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the IntrospectionRequestModel class.
+            </summary>
+            <param name="token">The token string.</param>
+        </member>
+        <member name="T:Auth.API.Models.JwtTokenRequestModel">
+            <summary>
+            JwtTokenRequestModel is a model class used to represent a request for a JSON Web Token (JWT).
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.JwtTokenRequestModel.Username">
+            <summary>
+            Gets or sets the username string.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.JwtTokenRequestModel.Password">
+            <summary>
+            Gets or sets the password string.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Models.JwtTokenRequestModel.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the JwtTokenRequestModel class.
+            </summary>
+            <param name="username">The username string.</param>
+            <param name="password">The password string.</param>
+        </member>
+        <member name="T:Auth.API.Models.JwtTokenResponseModel">
+            <summary>
+            JwtTokenResponseModel is a model class used to represent a JSON Web Token (JWT) response.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.JwtTokenResponseModel.Token">
+            <summary>
+            Gets or sets the token string.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.JwtTokenResponseModel.TokenType">
+            <summary>
+            Gets or sets the token type string, which is typically "Bearer".
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.JwtTokenResponseModel.ExpiresIn">
+            <summary>
+            Gets or sets the number of seconds until the token expires.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.JwtTokenResponseModel.IssuedAt">
+            <summary>
+            Gets or sets the date and time when the token was issued.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Models.JwtTokenResponseModel.#ctor(System.String,System.Int32,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the JwtTokenResponseModel class.
+            </summary>
+            <param name="token">The token string.</param>
+            <param name="expiresIn">The number of seconds until the token expires.</param>
+            <param name="issuedAt">The date and time when the token was issued.</param>
+            <param name="tokenType">The token type string, which is typically "Bearer".</param>
+        </member>
+        <member name="T:Auth.API.Models.SystemUserPatchRequestModel">
+            <summary>
+            The DTO class for updating system user information.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPatchRequestModel.FirstName">
+            <summary>
+            Gets or sets the last name of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPatchRequestModel.LastName">
+            <summary>
+            Gets or sets the first name of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPatchRequestModel.Username">
+            <summary>
+            Gets or sets the username of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPatchRequestModel.Password">
+            <summary>
+            Gets or sets the password of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPatchRequestModel.Role">
+            <summary>
+            Gets or sets the role of the system user.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Models.SystemUserPatchRequestModel.#ctor(System.String,System.String,System.String,System.String,System.Nullable{Auth.API.Enums.SystemUserRole})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Auth.API.Models.SystemUserPatchRequestModel"/> class.
+            </summary>
+            <param name="firstName">The first name of the system user.</param>
+            <param name="lastName">The last name of the system user.</param>
+            <param name="username">The username of the system user.</param>
+            <param name="password">The password of the system user.</param>
+            <param name="role">The role of the system user.</param>
+        </member>
+        <member name="T:Auth.API.Models.SystemUserPostRequestModel">
+            <summary>
+            The DTO class for creating new system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPostRequestModel.FirstName">
+            <summary>
+            Gets or sets the last name of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPostRequestModel.LastName">
+            <summary>
+            Gets or sets the first name of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPostRequestModel.Username">
+            <summary>
+            Gets or sets the username of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPostRequestModel.Password">
+            <summary>
+            Gets or sets the password of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserPostRequestModel.Role">
+            <summary>
+            Gets or sets the role of the system user.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Models.SystemUserPostRequestModel.#ctor(System.String,System.String,System.String,System.String,Auth.API.Enums.SystemUserRole)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Auth.API.Models.SystemUserPostRequestModel"/> class.
+            </summary>
+            <param name="firstName">The first name of the system user.</param>
+            <param name="lastName">The last name of the system user.</param>
+            <param name="username">The username of the system user.</param>
+            <param name="password">The password of the system user.</param>
+            <param name="role">The role of the system user.</param>
+        </member>
+        <member name="T:Auth.API.Models.SystemUserResponseModel">
+            <summary>
+            SystemUserResponseModel is a model class used to represent a response for a system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserResponseModel.FirstName">
+            <summary>
+            Gets or sets the last name of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserResponseModel.LastName">
+            <summary>
+            Gets or sets the last name of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserResponseModel.Username">
+            <summary>
+            Gets or sets the username of the system user.
+            </summary>
+        </member>
+        <member name="P:Auth.API.Models.SystemUserResponseModel.Role">
+            <summary>
+            Gets or sets the role of the system user.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Models.SystemUserResponseModel.#ctor(System.String,System.String,System.String,Auth.API.Enums.SystemUserRole)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Auth.API.Models.SystemUserResponseModel"/> class.
+            </summary>
+            <param name="firstName">The first name of the system user.</param>
+            <param name="lastName">The last name of the system user.</param>
+            <param name="username">The username of the system user.</param>
+            <param name="role">The role of the system user.</param>
+        </member>
+        <member name="T:Auth.API.Profiles.SystemUserProfile">
+            <summary>
+            SystemUserProfile is a class derived from the `Profile` class used to configure mapping between the `SystemUser` model and other related models.
+            </summary>
+        </member>
+        <member name="M:Auth.API.Profiles.SystemUserProfile.#ctor">
+            <summary>
+            Initializes a new instance of the SystemUserProfile class.
+            </summary>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.usernameValidationRegex_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the usernameValidationRegex method.</summary>

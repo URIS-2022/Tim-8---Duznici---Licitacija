@@ -39,7 +39,7 @@ public class TokenController : ControllerBase
     [HttpPost("generate")]
     public async Task<IActionResult> GenerateToken([FromBody] JwtTokenRequestModel userParam)
     {
-        SystemUser user = await systemUserRepository.GetByCredentials(userParam.Username, userParam.Password);
+        SystemUser? user = await systemUserRepository.GetByCredentials(userParam.Username, userParam.Password);
 
         if (user == null)
         {
