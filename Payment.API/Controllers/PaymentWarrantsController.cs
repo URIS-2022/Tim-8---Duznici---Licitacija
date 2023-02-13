@@ -42,7 +42,7 @@ namespace Payment.API.Controllers
         }
 
         // GET: api/PaymentWarrants/referenceNumber
-        [HttpGet("{referenceNumber}")]
+        [HttpGet("reference/{referenceNumber}")]
         public async Task<ActionResult<PaymentWarrantResponseModel>> GetByReferenceNumber(string referenceNumber)
         {
             PaymentWarrant? paymentWarrant = await _paymentWarrantRepository.GetByReferenceNumber(referenceNumber);
@@ -106,7 +106,7 @@ namespace Payment.API.Controllers
                 return BadRequest();
             }
             PaymentWarrantResponseModel responseModel = mapper.Map<PaymentWarrantResponseModel>(createdPaymentWarrant);
-            return CreatedAtAction("GetPaymentWarrant", new { referenceNumber = responseModel.ReferenceNumber }, responseModel);
+            return CreatedAtAction("GetPaymentWarrantByGuid", new { id = createdPaymentWarrant.Guid }, responseModel);
         }
 
 

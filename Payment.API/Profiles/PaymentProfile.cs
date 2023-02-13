@@ -9,9 +9,9 @@ public class PaymentProfile : Profile
 {
     public PaymentProfile()
     {
-        CreateMap<PaymentEntity, PaymentResponseModel>();
-        CreateMap<PaymentRequestModel, PaymentEntity>();
-        CreateMap<PaymentUpdateModel, PaymentEntity>()
+        CreateMap<Entities.Payment, PaymentResponseModel>();
+        CreateMap<PaymentRequestModel, Entities.Payment>();
+        CreateMap<PaymentUpdateModel, Entities.Payment>()
             .ForMember(dest => dest.AccountNumber, opt => opt.Condition(src => src.AccountNumber != null))
             .ForMember(dest => dest.ReferenceNumber, opt => opt.Condition(src => src.ReferenceNumber != null))
             .ForMember(dest => dest.TotalAmount, opt => opt.Condition(src => src.TotalAmount != null))

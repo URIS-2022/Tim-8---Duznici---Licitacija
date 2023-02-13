@@ -11,15 +11,15 @@ public class PaymentRepository : IPaymentRepository
     {
         this.context = context;
     }
-    public async Task<IEnumerable<PaymentEntity>> GetAllPayments()
+    public async Task<IEnumerable<Entities.Payment>> GetAllPayments()
     {
         return await context.Payments.ToListAsync();
     }
-    public async Task<PaymentEntity> GetPaymentByGuid(Guid guid)
+    public async Task<Entities.Payment> GetPaymentByGuid(Guid guid)
     {
         return await context.Payments.FindAsync(guid);
     }
-    public async Task<PaymentEntity> AddPayment(PaymentEntity paymentEntity)
+    public async Task<Entities.Payment> AddPayment(Entities.Payment paymentEntity)
     {
         context.Payments.Add(paymentEntity);
         await context.SaveChangesAsync();
@@ -37,7 +37,7 @@ public class PaymentRepository : IPaymentRepository
         await context.SaveChangesAsync();
     }
 
-    public async Task<PaymentEntity?> UpdatePayment(PaymentEntity paymentEntity)
+    public async Task<Entities.Payment?> UpdatePayment(Entities.Payment paymentEntity)
     {
         var existingPayment = await context.Payments.FindAsync(paymentEntity.Guid);
         if (existingPayment == null)

@@ -75,7 +75,7 @@ public class PaymentWarrantRepository : IPaymentWarrantRepository
     /// <inheritdoc cref="IPaymentWarrantRepository.UpdatePaymentWarrant(PaymentWarrant)"/>
     public async Task<PaymentWarrant?> UpdatePaymentWarrant(PaymentWarrant paymentWarrant)
     {
-        var existingPaymentWarrant = await context.PaymentWarrants.FindAsync(paymentWarrant.Guid);
+        var existingPaymentWarrant = await context.PaymentWarrants.FirstOrDefaultAsync(c => c.Guid== paymentWarrant.Guid);
         if (existingPaymentWarrant == null)
         {
             throw new InvalidOperationException($"The PaymentWarrant with ID '{paymentWarrant.Guid}' was not found.");

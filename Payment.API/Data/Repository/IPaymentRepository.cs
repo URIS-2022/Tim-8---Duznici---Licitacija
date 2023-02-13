@@ -4,10 +4,10 @@ namespace Payment.API.Data.Repository;
 
 public interface IPaymentRepository
 {
-    Task<IEnumerable<PaymentEntity>> GetAllPayments();
-    Task<PaymentEntity?> GetPaymentByGuid(Guid guid);
-    Task<PaymentEntity?> AddPayment(PaymentEntity paymentEntity);
-    Task<PaymentEntity?> UpdatePayment(PaymentEntity paymentEntity);
+    Task<IEnumerable<Entities.Payment>> GetAllPayments();
+    Task<Entities.Payment?> GetPaymentByGuid(Guid guid);
+    Task<Entities.Payment?> AddPayment(Entities.Payment paymentEntity);
+    Task<Entities.Payment?> UpdatePayment(Entities.Payment paymentEntity);
     Task DeletePayment(Guid guid);
 
     //Task DeletePaymentByReferenceNumber(string referenceNumber);

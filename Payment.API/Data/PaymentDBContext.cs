@@ -11,7 +11,7 @@ public class PaymentDBContext : DbContext
         this.Configuration = configuration;
     }
 
-    public DbSet<PaymentEntity> Payments { get; set; }
+    public DbSet<Entities.Payment> Payments { get; set; }
 
     public DbSet<PaymentWarrant> PaymentWarrants { get; set; }
 
@@ -50,7 +50,7 @@ public class PaymentDBContext : DbContext
            );
         */
 
-    modelBuilder.Entity<PaymentEntity>(entity =>
+    modelBuilder.Entity<Entities.Payment>(entity =>
         {
             entity.HasKey(e => e.Guid);
             entity.Property(e => e.AccountNumber).IsRequired();

@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Payment.API.Data;
 using Microsoft.EntityFrameworkCore;
-using Nest;
 using Payment.API.Data.Repository;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);

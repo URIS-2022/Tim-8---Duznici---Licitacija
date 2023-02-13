@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Payment.API.Entities
 {
-    public class PaymentEntity : IValidatableObject
+    public class Payment : IValidatableObject
     {
         public Guid Guid { get; set; }
         public string AccountNumber { get; set; }
@@ -18,11 +18,11 @@ namespace Payment.API.Entities
 
         //public object PaymentWarrant { get; set; }
 
-        public PaymentEntity()
+        public Payment()
         {
         }
 
-        public PaymentEntity(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, Guid paymentWarrantGuid)
+        public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, Guid paymentWarrantGuid)
         {
             Guid = paymentGuid;
             AccountNumber = accountNumber;
@@ -35,7 +35,7 @@ namespace Payment.API.Entities
             PaymentWarrantGuid = paymentWarrantGuid;
         }
 
-        public PaymentEntity(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, Guid paymentWarrantGuid)
+        public Payment(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, Guid paymentWarrantGuid)
         {
             Guid = Guid.NewGuid();
             AccountNumber = accountNumber;

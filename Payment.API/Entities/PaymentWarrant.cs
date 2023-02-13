@@ -9,7 +9,7 @@ namespace Payment.API.Entities
         public Guid PayerGuid { get; set; }
         public decimal TotalAmount { get; set; }
         public Guid PublicBiddingGuid { get; set; }
-        public ICollection<PaymentEntity> payments { get; internal set; }
+        public ICollection<Payment> payments { get; internal set; }
 
         public PaymentWarrant()
         {
@@ -26,7 +26,7 @@ namespace Payment.API.Entities
 
         public PaymentWarrant(string referenceNumber, Guid payerGuid, decimal totalAmount, Guid publicBiddingGuid)
         {
-            Guid = Guid.NewGuid(); ;
+            Guid = Guid.NewGuid();
             ReferenceNumber = referenceNumber;
             PayerGuid = payerGuid;
             TotalAmount = totalAmount;

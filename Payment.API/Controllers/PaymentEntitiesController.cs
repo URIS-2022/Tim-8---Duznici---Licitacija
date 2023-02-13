@@ -60,8 +60,8 @@ namespace Payment.API.Controllers
         [HttpPost]
         public async Task<ActionResult<PaymentResponseModel>> PostPayment(PaymentRequestModel requestModel)
         {
-            PaymentEntity requestedPayment = mapper.Map<PaymentEntity>(requestModel);
-            PaymentEntity? createdPayment = await _paymentRepository.AddPayment(requestedPayment);
+            var requestedPayment = mapper.Map<Entities.Payment>(requestModel);
+            Entities.Payment? createdPayment = await _paymentRepository.AddPayment((Entities.Payment)requestedPayment);
             if (createdPayment == null)
             {
                 return BadRequest();
@@ -74,7 +74,7 @@ namespace Payment.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePayment(Guid id)
         {
-            PaymentEntity? payment = await _paymentRepository.GetPaymentByGuid(id);
+            Entities.Payment? payment = await _paymentRepository.GetPaymentByGuid(id);
             if (payment == null)
             {
                 return NotFound();
