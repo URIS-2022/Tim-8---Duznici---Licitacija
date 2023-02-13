@@ -28,39 +28,32 @@ namespace Landlot.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Drainage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Culture")
+                        .HasColumnType("int");
 
-                    b.Property<string>("LandClass")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Drainage")
+                        .HasColumnType("int");
 
-                    b.Property<string>("LandCulture")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("LandClass")
+                        .HasColumnType("int");
 
-                    b.Property<string>("LandProcessing")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Municipality")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Municipality")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Processing")
+                        .HasColumnType("int");
 
-                    b.Property<string>("PropertyType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProtectedZone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Property")
+                        .HasColumnType("int");
 
                     b.Property<string>("RealEstateNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TotalArea")
+                    b.Property<decimal>("TotalArea")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Zone")
                         .HasColumnType("int");
 
                     b.HasKey("LandGuid");
@@ -71,28 +64,28 @@ namespace Landlot.API.Migrations
                         new
                         {
                             LandGuid = new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
-                            Drainage = "Odvodnjavanje",
-                            LandClass = "III",
-                            LandCulture = "Vrtovi",
-                            LandProcessing = "Ostalo",
-                            Municipality = "Bajmok",
-                            PropertyType = "Drugi oblici",
-                            ProtectedZone = "3",
+                            Culture = 1,
+                            Drainage = 0,
+                            LandClass = 2,
+                            Municipality = 1,
+                            Processing = 1,
+                            Property = 6,
                             RealEstateNumber = "22",
-                            TotalArea = 3000
+                            TotalArea = 300m,
+                            Zone = 3
                         },
                         new
                         {
                             LandGuid = new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
-                            Drainage = "Odvodnjavanje",
-                            LandClass = "I",
-                            LandCulture = "Livade",
-                            LandProcessing = "Ostalo",
-                            Municipality = "Bikovo",
-                            PropertyType = "Privatna svojina",
-                            ProtectedZone = "4",
+                            Culture = 4,
+                            Drainage = 0,
+                            LandClass = 0,
+                            Municipality = 0,
+                            Processing = 1,
+                            Property = 0,
                             RealEstateNumber = "1234",
-                            TotalArea = 111
+                            TotalArea = 1111m,
+                            Zone = 4
                         });
                 });
 
@@ -102,34 +95,32 @@ namespace Landlot.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("DrainageState")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ClassState")
+                        .HasColumnType("int");
 
-                    b.Property<string>("LandCultureState")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CultureState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DrainageState")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("LandGuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("LandProcessingState")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LotArea")
-                        .HasColumnType("int");
+                    b.Property<decimal>("LotArea")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("LotNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("LotUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("LotUser")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ProtectedZoneState")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProcessingState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProtectedZoneState")
+                        .HasColumnType("int");
 
                     b.HasKey("LotGuid");
 
@@ -141,26 +132,28 @@ namespace Landlot.API.Migrations
                         new
                         {
                             LotGuid = new Guid("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
-                            DrainageState = "Odvodnjavanje",
-                            LandCultureState = "Vrtovi",
+                            ClassState = 1,
+                            CultureState = 1,
+                            DrainageState = 0,
                             LandGuid = new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
-                            LandProcessingState = "Ostalo",
-                            LotArea = 1234,
+                            LotArea = 1234.56m,
                             LotNumber = 1,
-                            LotUser = "John Doe",
-                            ProtectedZoneState = "1"
+                            LotUser = new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2bc"),
+                            ProcessingState = 1,
+                            ProtectedZoneState = 1
                         },
                         new
                         {
                             LotGuid = new Guid("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"),
-                            DrainageState = "Odvodnjavanje",
-                            LandCultureState = "Njive",
+                            ClassState = 2,
+                            CultureState = 0,
+                            DrainageState = 0,
                             LandGuid = new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
-                            LandProcessingState = "Obradivo",
-                            LotArea = 4321,
+                            LotArea = 4321.12m,
                             LotNumber = 13,
-                            LotUser = "Julia Roberts ",
-                            ProtectedZoneState = "4"
+                            LotUser = new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
+                            ProcessingState = 0,
+                            ProtectedZoneState = 4
                         });
                 });
 

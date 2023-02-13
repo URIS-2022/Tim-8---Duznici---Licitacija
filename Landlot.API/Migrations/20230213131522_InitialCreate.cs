@@ -18,15 +18,15 @@ namespace Landlot.API.Migrations
                 columns: table => new
                 {
                     LandGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TotalArea = table.Column<int>(type: "int", nullable: false),
-                    Municipality = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalArea = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Municipality = table.Column<int>(type: "int", nullable: false),
                     RealEstateNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LandCulture = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LandClass = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LandProcessing = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProtectedZone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PropertyType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Drainage = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Culture = table.Column<int>(type: "int", nullable: false),
+                    LandClass = table.Column<int>(type: "int", nullable: false),
+                    Processing = table.Column<int>(type: "int", nullable: false),
+                    Zone = table.Column<int>(type: "int", nullable: false),
+                    Property = table.Column<int>(type: "int", nullable: false),
+                    Drainage = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,13 +39,14 @@ namespace Landlot.API.Migrations
                 {
                     LotGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LandGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LotArea = table.Column<int>(type: "int", nullable: false),
-                    LotUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LotArea = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LotUser = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LotNumber = table.Column<int>(type: "int", nullable: false),
-                    LandCultureState = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LandProcessingState = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProtectedZoneState = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DrainageState = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CultureState = table.Column<int>(type: "int", nullable: false),
+                    ClassState = table.Column<int>(type: "int", nullable: false),
+                    ProcessingState = table.Column<int>(type: "int", nullable: false),
+                    ProtectedZoneState = table.Column<int>(type: "int", nullable: false),
+                    DrainageState = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,20 +61,20 @@ namespace Landlot.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Lands",
-                columns: new[] { "LandGuid", "Drainage", "LandClass", "LandCulture", "LandProcessing", "Municipality", "PropertyType", "ProtectedZone", "RealEstateNumber", "TotalArea" },
+                columns: new[] { "LandGuid", "Culture", "Drainage", "LandClass", "Municipality", "Processing", "Property", "RealEstateNumber", "TotalArea", "Zone" },
                 values: new object[,]
                 {
-                    { new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), "Odvodnjavanje", "I", "Livade", "Ostalo", "Bikovo", "Privatna svojina", "4", "1234", 111 },
-                    { new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Odvodnjavanje", "III", "Vrtovi", "Ostalo", "Bajmok", "Drugi oblici", "3", "22", 3000 }
+                    { new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), 4, 0, 0, 0, 1, 0, "1234", 1111m, 4 },
+                    { new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), 1, 0, 2, 1, 1, 6, "22", 300m, 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Lots",
-                columns: new[] { "LotGuid", "DrainageState", "LandCultureState", "LandGuid", "LandProcessingState", "LotArea", "LotNumber", "LotUser", "ProtectedZoneState" },
+                columns: new[] { "LotGuid", "ClassState", "CultureState", "DrainageState", "LandGuid", "LotArea", "LotNumber", "LotUser", "ProcessingState", "ProtectedZoneState" },
                 values: new object[,]
                 {
-                    { new Guid("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"), "Odvodnjavanje", "Njive", new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), "Obradivo", 4321, 13, "Julia Roberts ", "4" },
-                    { new Guid("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"), "Odvodnjavanje", "Vrtovi", new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Ostalo", 1234, 1, "John Doe", "1" }
+                    { new Guid("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"), 2, 0, 0, new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), 4321.12m, 13, new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), 0, 4 },
+                    { new Guid("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"), 1, 1, 0, new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), 1234.56m, 1, new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2bc"), 1, 1 }
                 });
 
             migrationBuilder.CreateIndex(
