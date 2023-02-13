@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Landlot.API.Migrations
 {
     [DbContext(typeof(LandlotDbContext))]
-    [Migration("20230212234250_InitialCreate")]
+    [Migration("20230213093751_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -79,14 +79,14 @@ namespace Landlot.API.Migrations
                             LandCulture = "Vrtovi",
                             LandProcessing = "Ostalo",
                             Municipality = "Bajmok",
-                            PropertyType = "Drugi oblivi",
+                            PropertyType = "Drugi oblici",
                             ProtectedZone = "3",
                             RealEstateNumber = "22",
                             TotalArea = 3000
                         },
                         new
                         {
-                            LandGuid = new Guid("3f14c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
+                            LandGuid = new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
                             Drainage = "Odvodnjavanje",
                             LandClass = "I",
                             LandCulture = "Livade",
@@ -146,7 +146,7 @@ namespace Landlot.API.Migrations
                             LotGuid = new Guid("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
                             DrainageState = "Odvodnjavanje",
                             LandCultureState = "Vrtovi",
-                            LandGuid = new Guid("3a84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
+                            LandGuid = new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
                             LandProcessingState = "Ostalo",
                             LotArea = 1234,
                             LotNumber = 1,
@@ -155,10 +155,10 @@ namespace Landlot.API.Migrations
                         },
                         new
                         {
-                            LotGuid = new Guid("61e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
+                            LotGuid = new Guid("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"),
                             DrainageState = "Odvodnjavanje",
                             LandCultureState = "Njive",
-                            LandGuid = new Guid("3c84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
+                            LandGuid = new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
                             LandProcessingState = "Obradivo",
                             LotArea = 4321,
                             LotNumber = 13,

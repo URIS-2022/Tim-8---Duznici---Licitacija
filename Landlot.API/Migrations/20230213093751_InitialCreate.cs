@@ -63,8 +63,8 @@ namespace Landlot.API.Migrations
                 columns: new[] { "LandGuid", "Drainage", "LandClass", "LandCulture", "LandProcessing", "Municipality", "PropertyType", "ProtectedZone", "RealEstateNumber", "TotalArea" },
                 values: new object[,]
                 {
-                    { new Guid("3f14c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Odvodnjavanje", "I", "Livade", "Ostalo", "Bikovo", "Privatna svojina", "4", "1234", 111 },
-                    { new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Odvodnjavanje", "III", "Vrtovi", "Ostalo", "Bajmok", "Drugi oblivi", "3", "22", 3000 }
+                    { new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), "Odvodnjavanje", "I", "Livade", "Ostalo", "Bikovo", "Privatna svojina", "4", "1234", 111 },
+                    { new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Odvodnjavanje", "III", "Vrtovi", "Ostalo", "Bajmok", "Drugi oblici", "3", "22", 3000 }
                 });
 
             migrationBuilder.InsertData(
@@ -72,8 +72,8 @@ namespace Landlot.API.Migrations
                 columns: new[] { "LotGuid", "DrainageState", "LandCultureState", "LandGuid", "LandProcessingState", "LotArea", "LotNumber", "LotUser", "ProtectedZoneState" },
                 values: new object[,]
                 {
-                    { new Guid("61e0bcc7-db55-4726-8b3d-ee0dabed6de3"), "Odvodnjavanje", "Njive", new Guid("3c84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Obradivo", 4321, 13, "Julia Roberts ", "4" },
-                    { new Guid("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"), "Odvodnjavanje", "Vrtovi", new Guid("3a84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Ostalo", 1234, 1, "John Doe", "1" }
+                    { new Guid("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"), "Odvodnjavanje", "Njive", new Guid("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"), "Obradivo", 4321, 13, "Julia Roberts ", "4" },
+                    { new Guid("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"), "Odvodnjavanje", "Vrtovi", new Guid("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"), "Ostalo", 1234, 1, "John Doe", "1" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -20,11 +20,18 @@ namespace Landlot.API.Data
         /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-                modelBuilder.Entity<Land>()
-                 .HasKey(l => l.LandGuid);
+            modelBuilder.Entity<Land>()
+                .HasKey(l => l.LandGuid);
 
+            modelBuilder.Entity<Lot>()
+                .HasKey(l => l.LotGuid);
 
-            modelBuilder.Entity<Land>() 
+            modelBuilder.Entity<Land>()
+                .HasMany(p => p.Lots)
+                .WithOne(a => a.Land)
+                .HasForeignKey(p => p.LandGuid);
+
+            modelBuilder.Entity<Land>()
                 .HasData(new
                 {
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
@@ -54,16 +61,6 @@ namespace Landlot.API.Data
                     PropertyType = "Privatna svojina"
                 });
 
-         
-                    modelBuilder.Entity<Lot>()
-                   .HasKey(l => l.LotGuid);
-
-                    modelBuilder.Entity<Lot>()
-                        .HasOne(p => p.Land)
-                       .WithMany(a => a.Lots)
-                        .HasForeignKey(p => p.LandGuid);
-
-
             modelBuilder.Entity<Lot>()
                 .HasData(new
                 {
@@ -72,9 +69,9 @@ namespace Landlot.API.Data
                     LotArea = 1234,
                     LotUser = "John Doe",
                     LotNumber = 1,
-                    LandCultureState= "Vrtovi",
+                    LandCultureState = "Vrtovi",
                     LandClassState = "II",
-                    LandProcessingState= "Ostalo",
+                    LandProcessingState = "Ostalo",
                     ProtectedZoneState = "1",
                     DrainageState = "Odvodnjavanje"
                 });
@@ -93,10 +90,6 @@ namespace Landlot.API.Data
                     ProtectedZoneState = "4",
                     DrainageState = "Odvodnjavanje"
                 });
-
-            
-              
-
         }
     }
 }

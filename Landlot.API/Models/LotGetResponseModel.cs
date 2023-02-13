@@ -42,6 +42,8 @@ namespace Landlot.API.Models
         [DataMember]
         public LandlotDrainage DrainageState { get; set; }
 
+        public LotGetResponseModel() { }
+
         public LotGetResponseModel(Guid lotGuid, Guid landGuid, int lotArea, int lotUser, int lotNumber, LandlotCulture cultureState, LandlotProcessing processingSate, LandlotProtectedZone protectedZoneSate, LandlotDrainage drainageState)
         {
             LotGuid = lotGuid;
