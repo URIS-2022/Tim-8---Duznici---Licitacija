@@ -33,6 +33,8 @@ namespace Bidding.API.Models
         [DataMember]
         public string Template { get; set; }
 
+        public DocumentResponseModel() { }
+
         public DocumentResponseModel(Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
             

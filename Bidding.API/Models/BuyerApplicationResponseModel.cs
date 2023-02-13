@@ -21,6 +21,8 @@ namespace Bidding.API.Models
         [DataMember]
         public Representative representative { get; set; }
 
+        public BuyerApplicationResponseModel() { }
+
         public BuyerApplicationResponseModel( Guid representativeGuid, int amount, Representative representative)
         {
             

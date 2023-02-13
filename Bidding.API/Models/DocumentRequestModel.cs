@@ -13,6 +13,8 @@ namespace Bidding.API.Models
         public string ReferenceNumber { get; set; }
         public string Template { get; set; }
 
+        public DocumentRequestModel() { }
+
         public DocumentRequestModel(Guid publicBidding, DocumentType documentType, string referenceNumber,string template)
         {
             

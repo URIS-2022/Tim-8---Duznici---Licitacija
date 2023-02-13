@@ -27,6 +27,8 @@ namespace Bidding.API.Models
         [DataMember]
         public Guid BuyerGuid { get; set; }
 
+        public BiddingOfferResponseModel() { }
+
         public BiddingOfferResponseModel( Representative representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
             

@@ -42,7 +42,9 @@ namespace Bidding.API.Models
         
         public BiddingStatus? biddingStatus { get; set; }
 
-        public List<PublicBiddingLot> PublicBiddingLot { get; set; }
+        //public List<PublicBiddingLot> PublicBiddingLot { get; set; }
+
+        public PublicBiddingUpdateModel() { }
 
         public PublicBiddingUpdateModel(
        
@@ -59,8 +61,8 @@ namespace Bidding.API.Models
        int? leasePeriod,
        int? depositReplenishmentAmount,
        Guid round,
-       BiddingStatus? biddingStatus,
-       List<PublicBiddingLot> publicBiddingLot
+       BiddingStatus? biddingStatus
+       
 
         )
         {
@@ -79,7 +81,7 @@ namespace Bidding.API.Models
             DepositReplenishmentAmount = depositReplenishmentAmount;
             this.Round = round;
             this.biddingStatus = biddingStatus;
-            PublicBiddingLot = publicBiddingLot;
+            
         }
     }
 }

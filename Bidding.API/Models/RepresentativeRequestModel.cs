@@ -16,7 +16,9 @@ namespace Bidding.API.Models
 
         public Guid PublicBiddingGuid { get; set; }
 
-       // public List<BuyerApplication> BuyerRepresentatives { get; set; }
+        // public List<BuyerApplication> BuyerRepresentatives { get; set; }
+
+        public RepresentativeRequestModel() { }
 
         public RepresentativeRequestModel(string firstName, string lastName, string identificationNumber,
                          Address address, int numberOfBoard, Guid publicBidding)

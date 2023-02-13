@@ -45,6 +45,8 @@ namespace Bidding.API.Models
         [DataMember] // mozda ne treba za ovu listu ispod
         public List<PublicBiddingLot> PublicBiddingLot { get; set; }
 
+        public PublicBiddingResponseModel() { }
+
         public PublicBiddingResponseModel(
        
        DateTime date,

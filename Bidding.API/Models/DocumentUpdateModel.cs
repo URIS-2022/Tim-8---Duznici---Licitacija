@@ -19,6 +19,8 @@ namespace Bidding.API.Models
 
         public string? Template { get; set; }
 
+        public DocumentUpdateModel() { }
+
         public DocumentUpdateModel(Guid publicBidding, DocumentType? documentType, string? referenceNumber, DateTime? dateSubmited, DateTime? dateSertified, string? template)
         {
             

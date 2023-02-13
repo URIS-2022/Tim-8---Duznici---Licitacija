@@ -14,9 +14,9 @@ namespace Bidding.API.Models
 
         public int Amount { get; set; }
 
-       // public Guid representative { get; set; }
+        // public Guid representative { get; set; }
 
-
+        public BuyerApplicationRequestModel() { }
         public BuyerApplicationRequestModel( Guid representativeGuid, int amount)
         {
             

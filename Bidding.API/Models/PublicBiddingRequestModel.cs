@@ -28,6 +28,8 @@ namespace Bidding.API.Models
 
         public BiddingStatus biddingStatus { get; set; }
 
+        public PublicBiddingRequestModel() { }
+
         public PublicBiddingRequestModel(
 
         DateTime date,

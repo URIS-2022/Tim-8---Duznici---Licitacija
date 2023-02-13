@@ -1,6 +1,23 @@
-﻿namespace Bidding.API.Profiles
+﻿using Bidding.API.Entities;
+using Bidding.API.Models;
+using AutoMapper;
+
+namespace Bidding.API.Profiles
 {
-    public class DocumentProfile
+    public class DocumentProfile : Profile
     {
+        public DocumentProfile()
+        {
+            CreateMap<Document, DocumentResponseModel>();
+            CreateMap<DocumentRequestModel, Document>();
+            CreateMap<DocumentUpdateModel,Document>()
+                .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty))
+                .ForMember(dest => dest.documentType, opt => opt.Condition(src => src.documentType.HasValue))
+                .ForMember(dest => dest.ReferenceNumber, opt => opt.Condition(src => !string.IsNullOrEmpty(src.ReferenceNumber)))
+                .ForMember(dest => dest.DateSubmited, opt => opt.Condition(src => src.DateSubmited.HasValue))
+                .ForMember(dest => dest.DateSertified, opt => opt.Condition(src => src.DateSertified.HasValue))
+                .ForMember(dest => dest.Template, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Template)))
+                .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType!.Value));
+        }
     }
 }

@@ -29,6 +29,8 @@ namespace Bidding.API.Models
         [DataMember]
         public List<BuyerApplication> BuyerRepresentatives { get; set; }
 
+        public RepresentativeResponseModel() { }
+
         public RepresentativeResponseModel(string firstName, string lastName, string identificationNumber,
                          Address address, int numberOfBoard, PublicBidding publicBidding, List<BuyerApplication> buyerRepresentatives)
         {

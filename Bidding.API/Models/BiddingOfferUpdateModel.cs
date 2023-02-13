@@ -14,6 +14,8 @@ namespace Bidding.API.Models
 
         public Guid BuyerGuid { get; set; }
 
+        public BiddingOfferUpdateModel() { }
+
         public BiddingOfferUpdateModel( Representative representativeGuid, Guid publicBiddingGuid, DateTime? date, float? offer, Guid buyerGuid)
         {
             
