@@ -30,7 +30,6 @@
     <Folder Include="Entities\" />
     <Folder Include="Enums\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Profiles\" />
   </ItemGroup>
