@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Complaint.API.Data;
+using Complaint.API.Data.Repository;
+using Complaint.API.Enums;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -9,8 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
-                                                   //.AddJsonOptions(options =>
-                                                   //options.JsonSerializerOptions.Converters.Add())
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new ComplaintTypeConverter());
+            options.JsonSerializerOptions.Converters.Add(new ComplaintActionConverter());
+            options.JsonSerializerOptions.Converters.Add(new ComplaintStatusConverter());
+        }
+        )
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
@@ -59,9 +68,9 @@ builder.Services.AddControllers(setup =>
             };
         });
 
-//builder.Services.AddDbContext<DbContext>(options =>
-//        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddControllers();
+builder.Services.AddDbContext<ComplaintDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'ComplaintDbContext' not found.")));
+builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -110,5 +119,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+
+app.UseHttpsRedirection();
 
 app.Run();
