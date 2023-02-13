@@ -35,30 +35,30 @@ namespace Landlot.API.Data
                 .HasData(new
                 {
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
-                    TotalArea = 3000,
+                    TotalArea = 300,
                     Municipality = "Bajmok",
                     RealEstateNumber = "22",
-                    LandCulture = "Vrtovi",
-                    ProtectedZone = "3",
+                    Culture = "Vrtovi",
+                    Zone = "3",
                     Drainage = "Odvodnjavanje",
                     LandClass = "III",
-                    LandProcessing = "Ostalo",
-                    PropertyType = "Drugi oblici"
+                    Processing = "Ostalo",
+                    Property = "Drugi oblici"
                 });
 
             modelBuilder.Entity<Land>()
                 .HasData(new
                 {
                     LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
-                    TotalArea = 111,
+                    TotalArea = 111.25,
                     Municipality = "Bikovo",
                     RealEstateNumber = "1234",
-                    LandCulture = "Livade",
-                    ProtectedZone = "4",
+                    Culture = "Livade",
+                    Zone = "4",
                     Drainage = "Odvodnjavanje",
                     LandClass = "I",
-                    LandProcessing = "Ostalo",
-                    PropertyType = "Privatna svojina"
+                    Processing = "Ostalo",
+                    Property = "Privatna svojina"
                 });
 
             modelBuilder.Entity<Lot>()
@@ -67,11 +67,11 @@ namespace Landlot.API.Data
                     LotGuid = Guid.Parse("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
                     LotArea = 1234,
-                    LotUser = "John Doe",
+                    LotUser = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2bc"),
                     LotNumber = 1,
-                    LandCultureState = "Vrtovi",
-                    LandClassState = "II",
-                    LandProcessingState = "Ostalo",
+                    CultureState = "Vrtovi",
+                    ClassState = "II",
+                    ProcessingState = "Ostalo",
                     ProtectedZoneState = "1",
                     DrainageState = "Odvodnjavanje"
                 });
@@ -81,12 +81,12 @@ namespace Landlot.API.Data
                 {
                     LotGuid = Guid.Parse("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
-                    LotArea = 4321,
-                    LotUser = "Julia Roberts ",
+                    LotArea = 4321.56,
+                    LotUser = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
                     LotNumber = 13,
-                    LandCultureState = "Njive",
+                    CultureState = "Njive",
                     LandClassState = "III",
-                    LandProcessingState = "Obradivo",
+                    ProcessingState = "Obradivo",
                     ProtectedZoneState = "4",
                     DrainageState = "Odvodnjavanje"
                 });

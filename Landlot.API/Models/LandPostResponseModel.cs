@@ -10,7 +10,7 @@ namespace Landlot.API.Models
 
     {
         [DataMember]
-        public int TotalArea { get; set; }
+        public decimal TotalArea { get; set; }
 
         [JsonConverter(typeof(LandlotMunicipalityConverter))]
         [DataMember]
@@ -44,7 +44,7 @@ namespace Landlot.API.Models
         [DataMember]
         public LandlotDrainage Drainage { get; set; }
 
-        public LandPostResponseModel (int totalArea, LandlotMunicipality municipality, string realEstateNumber, LandlotCulture culture, LandlotClass landClass, LandlotProcessing processing, LandlotProtectedZone zone, LandlotPropertyType property, LandlotDrainage drainage)
+        public LandPostResponseModel (decimal totalArea, LandlotMunicipality municipality, string realEstateNumber, LandlotCulture culture, LandlotClass landClass, LandlotProcessing processing, LandlotProtectedZone zone, LandlotPropertyType property, LandlotDrainage drainage)
         {
             TotalArea = totalArea;
             Municipality = municipality;

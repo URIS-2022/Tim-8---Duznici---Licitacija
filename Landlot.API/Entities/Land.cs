@@ -1,120 +1,92 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Landlot.API.Entities;
+using Landlot.API.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Landlot.API.Entities
 {
     public class Land : IValidatableObject
     {
+        [Key]
         public Guid LandGuid { get; set; }
 
-        public int TotalArea { get; set; }
+        public decimal TotalArea { get; set; }
 
-        public string Municipality { get; set; }
+        [JsonConverter(typeof(LandlotMunicipalityConverter))]
+        public LandlotMunicipality Municipality { get; set; }
 
         public string RealEstateNumber { get; set; }
 
-        public string LandCulture { get; set; }
+        [JsonConverter(typeof(LandlotCultureConverter))]
+        public LandlotCulture Culture { get; set; }
 
-        public string LandClass { get; set; }
+        [JsonConverter(typeof(LandlotClassConverter))]
+        public LandlotClass LandClass { get; set; }
 
-        public string LandProcessing { get; set; }
+        [JsonConverter(typeof(LandlotProcessingConverter))]
+        public LandlotProcessing Processing { get; set; }
 
-        public string ProtectedZone { get; set; }
+        [JsonConverter(typeof(LandlotProtectedZoneConverter))]
+        public LandlotProtectedZone Zone { get; set; }
 
-        public string PropertyType { get; set; }
+        [JsonConverter(typeof(LandlotPropertyTypeConverter))]
+        public LandlotPropertyType Property { get; set; }
 
-        public string Drainage { get; set; }
+        [JsonConverter(typeof(LandlotDrainageConverter))]
+        public LandlotDrainage Drainage { get; set; }
 
-       public List<Lot> Lots { get; set; }  
+        public List<Lot> Lots { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();
 
-            // Validate TotalArea
-            if (TotalArea <= 0)
+            if (TotalArea < 0)
             {
-                results.Add(new ValidationResult("TotalArea must be greater than 0"));
+                results.Add(new ValidationResult("TotalArea must be a positive value."));
             }
 
-            // Validate NameOfTheMunicipality
-            if (string.IsNullOrWhiteSpace(Municipality))
+            if (Municipality == null)
             {
-                results.Add(new ValidationResult("NameOfTheMunicipality is required"));
-            }
-            else if (Municipality.Length > 50)
-            {
-                results.Add(new ValidationResult("NameOfTheMunicipality cannot be longer than 50 characters"));
+                results.Add(new ValidationResult("Municipality is required."));
             }
 
-            // Validate RealEstateNumber
-            if (string.IsNullOrWhiteSpace(RealEstateNumber))
+            if (Culture == null)
             {
-                results.Add(new ValidationResult("RealEstateNumber is required"));
-            }
-            else if (RealEstateNumber.Length > 50)
-            {
-                results.Add(new ValidationResult("RealEstateNumber cannot be longer than 50 characters"));
+                results.Add(new ValidationResult("Culture is required."));
             }
 
-            // Validate LandCulture
-            if (string.IsNullOrWhiteSpace(LandCulture))
+            if (LandClass == null)
             {
-                results.Add(new ValidationResult("LandCulture is required"));
-            }
-            else if (LandCulture.Length > 50)
-            {
-                results.Add(new ValidationResult("LandCulture cannot be longer than 50 characters"));
+                results.Add(new ValidationResult("LandClass is required."));
             }
 
-            // Validate LandClass
-            if (string.IsNullOrWhiteSpace(LandClass))
+            if (Processing == null)
             {
-                results.Add(new ValidationResult("LandClass is required"));
-            }
-            else if (LandClass.Length > 50)
-            {
-                results.Add(new ValidationResult("LandClass cannot be longer than 50 characters"));
+                results.Add(new ValidationResult("Processing is required."));
             }
 
-            // Validate LandProcessing
-            if (string.IsNullOrWhiteSpace(LandProcessing))
+            if (Zone == null)
             {
-                results.Add(new ValidationResult("LandProcessing is required"));
-            }
-            else if (LandProcessing.Length > 50)
-            {
-                results.Add(new ValidationResult("LandProcessing cannot be longer than 50 characters"));
+                results.Add(new ValidationResult("Protected zone is required."));
             }
 
-            // Validate ProtectedZone
-            if (string.IsNullOrWhiteSpace(ProtectedZone))
+            if (Property == null)
             {
-                results.Add(new ValidationResult("ProtectedZone is required"));
-            }
-            else if (ProtectedZone.Length > 50)
-            {
-                results.Add(new ValidationResult("ProtectedZone cannot be longer than 50 characters"));
+                results.Add(new ValidationResult("Property type is required."));
             }
 
-            // Validate PropertyType
-            if (string.IsNullOrWhiteSpace(PropertyType))
+            if (Drainage == null)
             {
-                results.Add(new ValidationResult("PropertyType is required"));
-            }
-            else if (PropertyType.Length > 50)
-            {
-                results.Add(new ValidationResult("PropertyType cannot be longer than 50 characters"));
-            }
-
-            // Validate Drainage
-            if (string.IsNullOrWhiteSpace(Drainage))
-            {
-                results.Add(new ValidationResult("Drainage is required"));
+                results.Add(new ValidationResult("Drainage state is required."));
             }
 
             return results;
         }
 
-
     }
 }
+
+
+    

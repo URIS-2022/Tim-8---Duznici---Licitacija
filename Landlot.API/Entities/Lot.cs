@@ -1,96 +1,88 @@
-﻿using Microsoft.VisualBasic;
+﻿using Landlot.API.Enums;
+using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Landlot.API.Entities
 {
     public class Lot : IValidatableObject
     {
-
+        [Key]
         public Guid LotGuid { get; set; }
+
         public Guid LandGuid { get; set; }
 
-        public int LotArea { get; set; }
+        public decimal LotArea { get; set; }
 
-        public string LotUser { get; set; }
+        public Guid LotUser { get; set; }
 
         public int LotNumber { get; set; }
 
-        public string LandCultureState { get; set; }
+        [JsonConverter(typeof(LandlotCultureConverter))]
+        public LandlotCulture CultureState { get; set; }
 
-        public string LandProcessingState { get; set; }
+        [JsonConverter(typeof(LandlotClassConverter))]
+        public LandlotClass ClassState { get; set; }
 
-        public string ProtectedZoneState { get; set; }
+        [JsonConverter(typeof(LandlotProcessingConverter))]
+        public LandlotProcessing ProcessingSate { get; set; }
 
-        public string DrainageState { get; set; }
+        [JsonConverter(typeof(LandlotProtectedZoneConverter))]
+        public LandlotProtectedZone ProtectedZoneSate { get; set; }
+
+        [JsonConverter(typeof(LandlotDrainageConverter))]
+        public LandlotDrainage DrainageState { get; set; }
 
         public Land Land { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-                var results = new List<ValidationResult>();
+            var results = new List<ValidationResult>();
 
-
-                // Validate LotArea
-                if (LotArea <= 0)
-                {
-                    results.Add(new ValidationResult("LotArea must be greater than 0"));
-                }
-
-                // Validate LotUser
-                if (string.IsNullOrWhiteSpace(LotUser))
-                {
-                    results.Add(new ValidationResult("LotUser mis required"));
-                }
-
-                // Validate LotNumber
-                if (LotNumber <= 0)
-                {
-                    results.Add(new ValidationResult("LotNumber must be greater than 0"));
-                }
-
-                // Validate LandCultureState
-                if (string.IsNullOrWhiteSpace(LandCultureState))
-                {
-                    results.Add(new ValidationResult("LandCultureState is required"));
-                }
-                else if (LandCultureState.Length > 50)
-                {
-                    results.Add(new ValidationResult("LandCultureState cannot be longer than 50 characters"));
-                }
-
-                // Validate LandProcessingState
-                if (string.IsNullOrWhiteSpace(LandProcessingState))
-                {
-                    results.Add(new ValidationResult("LandProcessingState is required"));
-                }
-                else if (LandProcessingState.Length > 50)
-                {
-                    results.Add(new ValidationResult("LandProcessingState cannot be longer than 50 characters"));
-                }
-
-                // Validate ProtectedZoneState
-                if (string.IsNullOrWhiteSpace(ProtectedZoneState))
-                {
-                    results.Add(new ValidationResult("ProtectedZoneState is required"));
-                }
-                else if (ProtectedZoneState.Length > 50)
-                {
-                    results.Add(new ValidationResult("ProtectedZoneState cannot be longer than 50 characters"));
-                }
-
-                // Validate DrainageState
-                if (string.IsNullOrWhiteSpace(DrainageState))
-                {
-                    results.Add(new ValidationResult("DrainageState is required"));
-                }
-                else if (DrainageState.Length > 50)
-                {
-                    results.Add(new ValidationResult("DrainageState cannot be longer than 50 characters"));
-                }
-
-                return results;
+            if (LotArea <= 0)
+            {
+                results.Add(new ValidationResult("Lot area must be greater than 0.", new[] { "LotArea" }));
             }
 
+            if (LotNumber <= 0)
+            {
+                results.Add(new ValidationResult("Lot number must be greater than 0.", new[] { "LotNumber" }));
+            }
+
+            if (CultureState == null)
+            {
+                results.Add(new ValidationResult("Culture state cannot be null.", new[] { "CultureState" }));
+            }
+            if (ClassState == null)
+            {
+                results.Add(new ValidationResult("Class state cannot be null.", new[] { "ClassState" }));
+            }
+
+            if (ProcessingSate == null)
+            {
+                results.Add(new ValidationResult("Processing state cannot be null.", new[] { "ProcessingSate" }));
+            }
+
+            if (ProtectedZoneSate == null)
+            {
+                results.Add(new ValidationResult("Protected zone state cannot be null.", new[] { "ProtectedZoneSate" }));
+            }
+
+            if (DrainageState == null)
+            {
+                results.Add(new ValidationResult("Drainage state cannot be null.", new[] { "DrainageState" }));
+            }
+
+            if (Land == null)
+            {
+                results.Add(new ValidationResult("Land cannot be null.", new[] { "Land" }));
+            }
+
+            return results;
         }
+
     }
+}
 

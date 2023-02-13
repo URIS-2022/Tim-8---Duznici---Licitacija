@@ -12,7 +12,7 @@ namespace Landlot.API.Models
         public Guid LandGuid { get; set; }
 
         [DataMember]
-        public int TotalArea { get; set; }
+        public decimal TotalArea { get; set; }
 
         [JsonConverter(typeof(LandlotMunicipalityConverter))]
         [DataMember]
@@ -47,7 +47,7 @@ namespace Landlot.API.Models
         public LandlotDrainage Drainage { get; set; }
 
 
-        public LandPatchResponseModel(Guid guid, int area, LandlotMunicipality municipality, string estateNumber, LandlotCulture culture,
+        public LandPatchResponseModel(Guid guid, decimal area, LandlotMunicipality municipality, string estateNumber, LandlotCulture culture,
                                    LandlotClass landclass, LandlotProcessing processing, LandlotProtectedZone zone,
                                    LandlotPropertyType property, LandlotDrainage drainage)
         {
