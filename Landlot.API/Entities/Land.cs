@@ -36,8 +36,6 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("TotalArea must be greater than 0"));
             }
 
-            
-
             // Validate NameOfTheMunicipality
             if (string.IsNullOrWhiteSpace(Municipality))
             {

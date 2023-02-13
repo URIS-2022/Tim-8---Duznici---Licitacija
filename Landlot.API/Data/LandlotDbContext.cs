@@ -23,15 +23,7 @@ namespace Landlot.API.Data
 
             modelBuilder.Entity<Land>()
               .HasKey(l => l.LandGuid);
-
-            modelBuilder.Entity<Lot>()
-             .HasKey(l => l.LotGuid);
-
-            modelBuilder.Entity<Lot>()
-                .HasOne(p => p.Land)
-                .WithMany(a => a.Lots)
-                .HasForeignKey(p => p.LandGuid);
-
+              
 
 
             modelBuilder.Entity<Land>() 
@@ -52,7 +44,7 @@ namespace Landlot.API.Data
             modelBuilder.Entity<Land>()
                 .HasData(new
                 {
-                    LandGuid = Guid.Parse("3f14c3a3-34c2-48a0-93a1-f00af6c9b2bb"),
+                    LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
                     TotalArea = 111,
                     Municipality = "Bikovo",
                     RealEstateNumber = "1234",
@@ -64,12 +56,22 @@ namespace Landlot.API.Data
                     PropertyType = "Privatna svojina"
                 });
 
+         
+
+                    modelBuilder.Entity<Lot>()
+                   .HasKey(l => l.LotGuid);
+
+                    modelBuilder.Entity<Lot>()
+                        .HasOne(p => p.Land)
+                        .WithMany(a => a.Lots)
+                        .HasForeignKey(p => p.LandGuid);
+
 
             modelBuilder.Entity<Lot>()
                 .HasData(new
                 {
                     LotGuid = Guid.Parse("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
-                    LandGuid = Guid.Parse("3f14c3a3-34c2-48a0-93a1-f00af6c9b2bb"),
+                    LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
                     LotArea = 1234,
                     LotUser = "John Doe",
                     LotNumber = 1,
@@ -83,8 +85,8 @@ namespace Landlot.API.Data
             modelBuilder.Entity<Lot>()
                 .HasData(new
                 {
-                    LotGuid = Guid.Parse("61e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
-                    LandGuid = Guid.Parse("3f14c3a3-34c2-48a0-93a1-f00af6c9b2bb"),
+                    LotGuid = Guid.Parse("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"),
+                    LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
                     LotArea = 4321,
                     LotUser = "Julia Roberts ",
                     LotNumber = 13,
