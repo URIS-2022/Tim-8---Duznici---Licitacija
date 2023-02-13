@@ -20,10 +20,8 @@ namespace Landlot.API.Data
         /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            modelBuilder.Entity<Land>()
-              .HasKey(l => l.LandGuid);
-              
+                modelBuilder.Entity<Land>()
+                 .HasKey(l => l.LandGuid);
 
 
             modelBuilder.Entity<Land>() 
@@ -57,13 +55,12 @@ namespace Landlot.API.Data
                 });
 
          
-
                     modelBuilder.Entity<Lot>()
                    .HasKey(l => l.LotGuid);
 
                     modelBuilder.Entity<Lot>()
                         .HasOne(p => p.Land)
-                        .WithMany(a => a.Lots)
+                       .WithMany(a => a.Lots)
                         .HasForeignKey(p => p.LandGuid);
 
 
@@ -97,6 +94,8 @@ namespace Landlot.API.Data
                     DrainageState = "Odvodnjavanje"
                 });
 
+            
+              
 
         }
     }
