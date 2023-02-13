@@ -18,7 +18,7 @@ namespace Landlot.API.Migrations
                 columns: table => new
                 {
                     LandGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TotalArea = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalArea = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     Municipality = table.Column<int>(type: "int", nullable: false),
                     RealEstateNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Culture = table.Column<int>(type: "int", nullable: false),
@@ -39,7 +39,7 @@ namespace Landlot.API.Migrations
                 {
                     LotGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LandGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LotArea = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LotArea = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     LotUser = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LotNumber = table.Column<int>(type: "int", nullable: false),
                     CultureState = table.Column<int>(type: "int", nullable: false),

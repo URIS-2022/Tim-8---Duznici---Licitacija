@@ -16,31 +16,36 @@ namespace Landlot.API.Enums
 
     public class LandlotPropertyTypeConverter : JsonConverter<LandlotPropertyType>
     {
+        private readonly Dictionary<LandlotPropertyType, string> _landlotPropertyTypeMapping = new()
+{
+            { LandlotPropertyType.PrivatnaSvojina, "Privatna svojina" },
+            { LandlotPropertyType.DrzavnaSvojina, "Drzavna svojina" },
+            { LandlotPropertyType.DrzavnaSvojinaRS, "Drzavna svojina RS" },
+            { LandlotPropertyType.DrustvenaSvojina, "Opština Stari grad" },
+            { LandlotPropertyType.ZadruznaSvojina, "Zadruzna svojina" },
+            { LandlotPropertyType.MesovitaSvojina, "Mesovita svojina" },
+            { LandlotPropertyType.DrugiOblici, "Drugi oblici" }
+        
+     };
+
         public override LandlotPropertyType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            string value = reader.GetString();
-            if (string.IsNullOrEmpty(value))
+            string propertyString = reader.GetString();
+            foreach (var property in _landlotPropertyTypeMapping)
             {
-                return LandlotPropertyType.PrivatnaSvojina;
+                if (property.Value == propertyString)
+                {
+                    return property.Key;
+                }
             }
 
-            return value switch
-            {
-                "Privatna svojina" => LandlotPropertyType.PrivatnaSvojina,
-                "Državna svojina" => LandlotPropertyType.DrzavnaSvojina,
-                "Državna svojina RS" => LandlotPropertyType.DrzavnaSvojinaRS,
-                "Društvena svojina" => LandlotPropertyType.DrustvenaSvojina,
-                "Zadružna svojina" => LandlotPropertyType.ZadruznaSvojina,
-                "Mešovita svojina" => LandlotPropertyType.MesovitaSvojina,
-                "Drugi oblici" => LandlotPropertyType.DrugiOblici,
-                _ => throw new JsonException($"Unknown value '{value}' for enum type {typeof(LandlotPropertyType).Name}.")
-            };
+            throw new JsonException($"Unable to map property string '{propertyString}' to LandlotMunicipality value.");
         }
-
         public override void Write(Utf8JsonWriter writer, LandlotPropertyType value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value.ToString().Replace("Svojina", " svojina"));
+            writer.WriteStringValue(_landlotPropertyTypeMapping[value]);
         }
+
     }
 
 }

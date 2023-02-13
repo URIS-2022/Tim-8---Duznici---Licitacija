@@ -36,15 +36,15 @@ namespace Landlot.API.Models
         [JsonConverter(typeof(LandlotDrainageConverter))]
         public LandlotDrainage? Drainage { get; set; }
 
-        public LandPatchRequestModel(decimal? area, LandlotMunicipality? municipality, string? estateNumber, LandlotCulture? culture,
-                                    LandlotClass? landclass, LandlotProcessing? processing, LandlotProtectedZone? zone,
+        public LandPatchRequestModel(decimal? totalArea, LandlotMunicipality? municipality, string? realEstateNumber, LandlotCulture? culture,
+                                    LandlotClass? landClass, LandlotProcessing? processing, LandlotProtectedZone? zone,
                                     LandlotPropertyType? property, LandlotDrainage? drainage)
         {
-            TotalArea = area;
+            TotalArea = totalArea;
             Municipality = municipality;
-            RealEstateNumber = estateNumber;
+            RealEstateNumber = realEstateNumber;
             Culture = culture;
-            LandClass = landclass;
+            LandClass = landClass;
             Processing = processing;
             Zone = zone;
             Property = property;

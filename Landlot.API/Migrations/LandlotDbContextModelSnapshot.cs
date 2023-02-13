@@ -51,6 +51,7 @@ namespace Landlot.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TotalArea")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Zone")
@@ -108,6 +109,7 @@ namespace Landlot.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("LotArea")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("LotNumber")

@@ -32,6 +32,17 @@ namespace Landlot.API.Data
                 .HasForeignKey(p => p.LandGuid);
 
             modelBuilder.Entity<Land>()
+               .Property(l => l.TotalArea)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Lot>()
+              .Property(l => l.LotArea)
+               .HasPrecision(18, 2);
+
+
+
+
+            modelBuilder.Entity<Land>()
                 .HasData(new
                 {
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),

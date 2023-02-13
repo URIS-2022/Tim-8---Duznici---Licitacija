@@ -15,48 +15,49 @@ namespace Landlot.API.Models
         public decimal TotalArea { get; set; }
 
         [JsonConverter(typeof(LandlotMunicipalityConverter))]
-        [DataMember(Name = "Municipality")]
+        [DataMember]
         public LandlotMunicipality Municipality { get; set; }
 
         [DataMember]
         public string RealEstateNumber { get; set; }
 
         [JsonConverter(typeof(LandlotCultureConverter))]
-        [DataMember(Name = "Culture")]
+        [DataMember]
 
         public LandlotCulture Culture { get; set; }
 
         [JsonConverter(typeof(LandlotClassConverter))]
-        [DataMember(Name = "LandClass")]
+        [DataMember]
         public LandlotClass LandClass { get; set; }
 
         [JsonConverter(typeof(LandlotProcessingConverter))]
-        [DataMember(Name = "Processing")]
+        [DataMember]
         public LandlotProcessing Processing { get; set; }
 
         [JsonConverter(typeof(LandlotProtectedZoneConverter))]
-        [DataMember(Name = "Zone")]
+        [DataMember]
         public LandlotProtectedZone Zone { get; set; }
 
         [JsonConverter(typeof(LandlotPropertyTypeConverter))]
-        [DataMember(Name = "Property")]
+        [DataMember]
         public LandlotPropertyType Property { get; set; }
 
         [JsonConverter(typeof(LandlotDrainageConverter))]
-        [DataMember(Name = "Drainage")]
+        [DataMember]
         public LandlotDrainage Drainage { get; set; }
 
 
-        public LandPatchResponseModel(Guid guid, decimal area, LandlotMunicipality municipality, string estateNumber, LandlotCulture culture,
-                                   LandlotClass landclass, LandlotProcessing processing, LandlotProtectedZone zone,
+
+    public LandPatchResponseModel(Guid landGuid, decimal totalArea, LandlotMunicipality municipality, string realEstateNumber, LandlotCulture culture,
+                                   LandlotClass landClass, LandlotProcessing processing, LandlotProtectedZone zone,
                                    LandlotPropertyType property, LandlotDrainage drainage)
         {
-            LandGuid = guid;
-            TotalArea = area;
+            LandGuid = landGuid;
+            TotalArea = totalArea;
             Municipality = municipality;
-            RealEstateNumber = estateNumber;
+            RealEstateNumber = realEstateNumber;
             Culture = culture;
-            LandClass = landclass;
+            LandClass = landClass;
             Processing = processing;
             Zone = zone;
             Property = property;
