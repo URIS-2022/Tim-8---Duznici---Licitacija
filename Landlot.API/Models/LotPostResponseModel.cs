@@ -35,13 +35,13 @@ namespace Landlot.API.Models
 
         [JsonConverter(typeof(LandlotProtectedZoneConverter))]
         [DataMember]
-        public LandlotProtectedZone ProtectedZoneSate { get; set; }
+        public LandlotProtectedZone ProtectedZoneState { get; set; }
 
         [JsonConverter(typeof(LandlotDrainageConverter))]
         [DataMember]
         public LandlotDrainage DrainageState { get; set; }
 
-        public LotPostResponseModel(Guid landGuid, decimal lotArea, Guid lotUser, int lotNumber, LandlotCulture cultureState, LandlotClass classState, LandlotProcessing processingState, LandlotProtectedZone protectedZoneSate, LandlotDrainage drainageState)
+        public LotPostResponseModel(Guid landGuid, decimal lotArea, Guid lotUser, int lotNumber, LandlotCulture cultureState, LandlotClass classState, LandlotProcessing processingState, LandlotProtectedZone protectedZoneState, LandlotDrainage drainageState)
         {
             LandGuid = landGuid;
             LotArea = lotArea;
@@ -50,7 +50,7 @@ namespace Landlot.API.Models
             CultureState = cultureState;
             ClassState = classState;
             ProcessingState = processingState;
-            ProtectedZoneSate = protectedZoneSate;
+            ProtectedZoneState = protectedZoneState;
             DrainageState = drainageState;
         }
     }

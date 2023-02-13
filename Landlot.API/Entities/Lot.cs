@@ -30,7 +30,7 @@ namespace Landlot.API.Entities
         public LandlotProcessing ProcessingState { get; set; }
 
         [JsonConverter(typeof(LandlotProtectedZoneConverter))]
-        public LandlotProtectedZone ProtectedZoneSate { get; set; }
+        public LandlotProtectedZone ProtectedZoneState { get; set; }
 
         [JsonConverter(typeof(LandlotDrainageConverter))]
         public LandlotDrainage DrainageState { get; set; }
@@ -65,9 +65,9 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("Processing state cannot be null.", new[] { "ProcessingState" }));
             }
 
-            if (ProtectedZoneSate == null)
+            if (ProtectedZoneState == null)
             {
-                results.Add(new ValidationResult("Protected zone state cannot be null.", new[] { "ProtectedZoneSate" }));
+                results.Add(new ValidationResult("Protected zone state cannot be null.", new[] { "ProtectedZoneState" }));
             }
 
             if (DrainageState == null)
