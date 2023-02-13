@@ -1,35 +1,45 @@
-﻿namespace Person.API.Models.Address
+﻿using System.Runtime.Serialization;
+
+namespace Person.API.Models
 {
-    /// <summary>
-    /// Dto za adresu
-    /// </summary>
-    public class AddressModel
+    [DataContract (Name = "Address", Namespace ="")]
+    public class AddressResponseModel
     {
         /// <summary>
         /// Drzava
         /// </summary>
+        [DataMember]
         public string Country { get; set; }
 
         /// <summary>
         /// Ulica adrese
         /// </summary>
+        [DataMember] 
         public string Street { get; set; }
 
         /// <summary>
         /// Broj adrese
         /// </summary>
+        [DataMember] 
         public string StreetNumber { get; set; }
 
         /// <summary>
         /// Mesto adrese
         /// </summary>
+        [DataMember] 
         public string Place { get; set; }
 
         /// <summary>
         /// Postanski broj adrese
         /// </summary>
+        [DataMember] 
         public string ZipCode { get; set; }
 
+
+        public AddressResponseModel()
+        {
+
+        }
 
     }
 }

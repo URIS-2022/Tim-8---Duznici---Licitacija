@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace Person.API.Models.Address
+namespace Person.API.Models
 {
     /// <summary>
     /// DTO za kreiranje adrese
     /// </summary>
-    public class AddressCreationModel
+    public class AddressRequestModel
     {
         /// <summary>
         /// DrzavA
@@ -38,6 +38,11 @@ namespace Person.API.Models.Address
         [Required(ErrorMessage = "Obavezno je uneti postanski broj")]
         public string ZipCode { get; set; }
 
+
+        public AddressRequestModel()
+        {
+
+        }
 
     }
 }

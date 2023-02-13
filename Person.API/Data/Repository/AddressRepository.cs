@@ -20,7 +20,7 @@ namespace Person.API.Data.Repository
 
         }
 
-        public async Task<IEnumerable<Address>> GetAllAddresses()
+        public async Task<IEnumerable<Address>> GetAllAddress()
         {
             return await context.Addresses
                 .ToListAsync();
@@ -31,13 +31,6 @@ namespace Person.API.Data.Repository
             return await context.Addresses.FirstOrDefaultAsync(a => a.AddressId == AddressId);
         }
 
-        public async Task<Address?> GetAddressByZipCode(string zipCode)
-        {
-            Address? address = await context.Addresses.SingleOrDefaultAsync(x => x.ZipCode == zipCode);
-
-            return address;
-        }
-
         public async Task<Address> CreateAddress(Address address)
         {
             context.Addresses.Add(address);
@@ -45,14 +38,14 @@ namespace Person.API.Data.Repository
             return address;
         }
 
-        public async Task DeleteAddresses(Guid AddressId)
+        public async Task DeleteAddress(Guid AddressId)
         {
             var address = await GetAddressByGuid(AddressId);
             context.Addresses.Remove(address);
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateAddresses(Address address)
+        public async Task UpdateAddress(Address address)
         {
             await context.SaveChangesAsync();
         }

@@ -1,10 +1,10 @@
-﻿namespace Person.API.Models.ContactPerson
+﻿namespace Person.API.Models
 
 {
     /// <summary>
     /// Dto kontakt osoba
     /// </summary>
-    public class ContactPersonModel
+    public class ContactPersonResponseModel
     {
         /// <summary>
         /// Ime kontakt osobe

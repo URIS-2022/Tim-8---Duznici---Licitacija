@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Person.API.Entities;
-using Person.API.Models.Address;
+using Person.API.Models;
 
 
 namespace Person.API.Profiles
@@ -9,8 +9,8 @@ namespace Person.API.Profiles
     {
         public AddressProfile()
         {
-            CreateMap<Address, AddressModel>();
-            CreateMap<AddressCreationModel, Address>();
+            CreateMap<Address, AddressResponseModel>();
+            CreateMap<AddressRequestModel, Address>();
             CreateMap<AddressUpdateModel, Address>();
         }
     }

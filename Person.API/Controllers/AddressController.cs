@@ -2,7 +2,7 @@
 using Person.API.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Person.API.Models.Address;
+using Person.API.Models;
 
 namespace Person.API.Controllers;
 
@@ -23,9 +23,9 @@ public class AddressController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Address?>>> GetAddresses()
+    public async Task<ActionResult<IEnumerable<Address?>>> GetAddress()
     {
-        var addresses = await addressRepository.GetAllAddresses();
+        var addresses = await addressRepository.GetAllAddress();
         if (!addresses.Any())
         {
             return NoContent();
@@ -39,19 +39,19 @@ public class AddressController : ControllerBase
     [HttpPatch("{zipcode}")]
     public async Task<IActionResult> PatchAddress(string zipCode, AddressUpdateModel addressUpdate)
     {
-        var address = await addressRepository.GetAddressByZipCode(zipCode);
+        var address = await addressRepository.GetAddressB(zipCode);
         if (address == null || addressUpdate == null)
         {
             return BadRequest();
         }
         mapper.Map(addressUpdate, address);
 
-        await addressRepository.UpdateAddresses(address);
+        await addressRepository.UpdateAddress(address);
         return NoContent();
     }
 
     [HttpPost]
-    public async Task<ActionResult<AddressModel>> PostAddress(AddressCreationModel requestAddress)
+    public async Task<ActionResult<AddressResponseModel>> PostAddress(AddressRequestModel requestAddress)
     {
         Address address = mapper.Map<Address>(requestAddress);
         Address? createdAddress = await addressRepository.CreateAddress(address);
@@ -59,7 +59,7 @@ public class AddressController : ControllerBase
         {
             return BadRequest();
         }
-        AddressModel responseModel = mapper.Map<AddressModel>(createdAddress);
+        AddressResponseModel responseModel = mapper.Map<AddressResponseModel>(createdAddress);
         return CreatedAtAction("GetAddresses", new { addressId = createdAddress.AddressId }, responseModel);
     }
 

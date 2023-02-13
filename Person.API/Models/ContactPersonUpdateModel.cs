@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace Person.API.Models.ContactPerson
+namespace Person.API.Models
 {
     /// <summary>
     /// Dto Update kontakt osoba

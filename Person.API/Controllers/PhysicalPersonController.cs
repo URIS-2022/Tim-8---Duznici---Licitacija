@@ -3,8 +3,6 @@ using Person.API.Entities;
 using Person.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Person.API.Models.PhysicalPerson;
-using LiceWebAPI.Models.Lice.FizickoLice;
 
 namespace Person.API.Controllers;
 
@@ -53,7 +51,7 @@ public class PhysicalPersonController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<PhysicalPersonModel>> PostPhysicalPerson(PhysicalPersonCreationModel requestPhysicalPerson)
+    public async Task<ActionResult<PhysicalPersonResponseModel>> PostPhysicalPerson(PhysicalPersonRequestModel requestPhysicalPerson)
     {
         PhysicalPerson physicalPerson = mapper.Map<PhysicalPerson>(requestPhysicalPerson);
         PhysicalPerson? createdPhysicalPerson = await physicalPersonRepository.CreatePhysicalPersons(physicalPerson);
@@ -61,7 +59,7 @@ public class PhysicalPersonController : ControllerBase
         {
             return BadRequest();
         }
-        PhysicalPersonModel responseModel = mapper.Map<PhysicalPersonModel>(createdPhysicalPerson);
+        PhysicalPersonResponseModel responseModel = mapper.Map<PhysicalPersonResponseModel>(createdPhysicalPerson);
         return CreatedAtAction("GetPhysicalPersons", new { firstname = responseModel.FirstName }, responseModel);
     }
 

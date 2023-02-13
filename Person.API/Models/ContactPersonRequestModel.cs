@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace Person.API.Models.ContactPerson
+namespace Person.API.Models
 {
 
     /// <summary>
     /// Dto Create kontakt osoba
     /// </summary>
-    public class ContactPersonCreationModel
+    public class ContactPersonRequestModel
     {
         /// <summary>
         /// Ime kontakt osobae

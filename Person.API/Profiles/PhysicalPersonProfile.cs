@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using LiceWebAPI.Models.Lice.FizickoLice;
 using Person.API.Entities;
+using Person.API.Models;
 using Person.API.Models.ContactPerson;
-using Person.API.Models.PhysicalPerson;
 
 
 namespace Person.API.Profiles
@@ -11,8 +10,8 @@ namespace Person.API.Profiles
     {
         public PhysicalPersonProfile()
         {
-            CreateMap<PhysicalPerson, PhysicalPersonModel>();
-            CreateMap<PhysicalPersonCreationModel, PhysicalPerson>();
+            CreateMap<PhysicalPerson, PhysicalPersonResponseModel>();
+            CreateMap<PhysicalPersonRequestModel, PhysicalPerson>();
             CreateMap<PhysicalPersonUpdateModel, PhysicalPerson>();
         }
     }

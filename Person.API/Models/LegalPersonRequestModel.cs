@@ -1,30 +1,29 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LiceWebAPI.Models.Lice.FizickoLice
+namespace Person.API.Models
 {
     /// <summary>
-    /// Dto Create fizičko lice
+    /// Dto Create pravno lice
     /// </summary>
-    public class PhysicalPersonCreationModel
+    public class LegalPersonRequestModel
     {
         /// <summary>
-        /// Ime fizičkog lica
+        /// Kontakt osoba id
         /// </summary>
-        [Required(ErrorMessage = "Obavezno je uneti ime!")]
-        public string FirstName { get; set; }
+        [Required(ErrorMessage = "Obavezno je uneti id kontakt osobe!")]
+        public Guid ContactPersonId { get; set; }
 
         /// <summary>
-        /// Prezime fizičkog lica
+        /// Naziv pravnog lica
         /// </summary>
-        [Required(ErrorMessage = "Obavezno je uneti prezime!")]
-        public string LastName { get; set; }
+        [Required(ErrorMessage = "Obavezno je uneti naziv!")]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Jmbg fizičkog lica
+        /// Matični broj pravnog lica
         /// </summary>
-        [Required(ErrorMessage = "Obavezno je uneti jmbg!")]
-        public string Jmbg { get; set; }
-
+        [Required(ErrorMessage = "Obavezno je uneti matični broj!")]
+        public string IdentificationNumber { get; set; }
 
         /// <summary>
         /// Adresa id
@@ -32,30 +31,35 @@ namespace LiceWebAPI.Models.Lice.FizickoLice
         [Required(ErrorMessage = "Obavezno je uneti id adrese!")]
         public Guid AddressId { get; set; }
 
-
         /// <summary>
-        /// Broj telefona fizičkog lica
+        /// Broj telefona pravnog lica
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti broj telefona 1!")]
         public string PhoneNumber1 { get; set; }
 
         /// <summary>
-        /// Broj telefona 2 fizičkog lica
+        /// Broj telefona 2 pravnog lica
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti broj telefona 2!")]
         public string PhoneNumber2 { get; set; }
 
         /// <summary>
-        /// Email fizičkog lica
+        /// Faks pravnog lica
+        /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti faks!")]
+        public string Fax { get; set; }
+
+
+        /// <summary>
+        /// Email pravnog lica
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti email!")]
         public string Email { get; set; }
 
         /// <summary>
-        /// Broj računa fizičkog lica
+        /// Broj računa pravnog lica
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti broj računa!")]
         public string AccountNumber { get; set; }
     }
 }
-

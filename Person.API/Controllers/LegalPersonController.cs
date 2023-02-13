@@ -2,7 +2,7 @@
 using Person.API.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Person.API.Models.LegalPerson;
+using Person.API.Models;
 
 namespace Person.API.Controllers;
 
@@ -51,7 +51,7 @@ public class LegalPersonController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<LegalPersonModel>> PostLegalPerson(LegalPersonCreationModel requestLegalPerson)
+    public async Task<ActionResult<LegalPersonResponseModel>> PostLegalPerson(LegalPersonRequestModel requestLegalPerson)
     {
         LegalPerson legalPerson = mapper.Map<LegalPerson>(requestLegalPerson);
         LegalPerson? createdLegalPerson = await legalPersonRepository.CreateLegalPersons(legalPerson);
@@ -59,7 +59,7 @@ public class LegalPersonController : ControllerBase
         {
             return BadRequest();
         }
-        LegalPersonModel responseModel = mapper.Map<LegalPersonModel>(createdLegalPerson);
+        LegalPersonResponseModel responseModel = mapper.Map<LegalPersonResponseModel>(createdLegalPerson);
         return CreatedAtAction("GetLegalPersons", new { name = responseModel.Name }, responseModel);
     }
 
