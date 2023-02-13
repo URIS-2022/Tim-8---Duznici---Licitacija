@@ -2,8 +2,8 @@
   "profiles": {
     "Default": {
       "commandName": "Project",
-      "launchBrowser": false,
       "launchUrl": "swagger",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -4,5 +4,92 @@
         <name>Payment.API</name>
     </assembly>
     <members>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetAllPaymentWarrants">
+            <summary>
+            Gets all PaymentWarrants from the database.
+            </summary>
+            <returns>An asynchronous task that returns an enumerable of SystemUser entities.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetPaymentWarrantByGuid(System.Guid)">
+            <summary>
+            Gets a PaymentWarrant by its Guid identifier.
+            </summary>
+            <param name="guid">The Guid identifier of the PaymentWarrant.</param>
+            <returns>An asynchronous task that returns the PaymentWarrant entity with the specified Guid identifier, or null if no such entity exists.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetByReferenceNumber(System.String)">
+            <summary>
+            Gets a PaymantWarrant by its referenceNumber.
+            </summary>
+            <param name="referenceNumber">The referenceNumber of the PaymantWarrant.</param>
+            <returns>An asynchronous task that returns the PaymantWarrant entity with the specified referenceNumber, or null if no such entity exists.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.AddPaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <summary>
+            Adds a new PaymentWarrant to the database.
+            </summary>
+            <param name="paymentWarrant">The PaymentWarrant entity to add to the database.</param>
+            <returns>An asynchronous task that returns the added PaymantWarrant entity.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.UpdatePaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <summary>
+            Updates an existing PaymentWarrant in the database.
+            </summary>
+            <param name="paymentWarrant">The PaymentWarrant entity to update in the database.</param>
+            <returns>An asynchronous task that returns the updated PaymntWarrant entity.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrant(System.Guid)">
+            <summary>
+            Deletes a PaymentWarrant from the database by its Guid identifier.
+            </summary>
+            <param name="guid">The Guid identifier of the PaymentWarrant to delete.</param>
+            <returns>An asynchronous task that represents the operation.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(System.String)">
+            <summary>
+            Deletes a PaymentWarrant from the database by its username.
+            </summary>
+            <param name="referenceNumber">The referenceNumber of the PaymentWarrant to delete.</param>
+            <returns>An asynchronous task that represents the operation.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.#ctor(Payment.API.Data.PaymentDBContext)">
+            <summary>
+            Initializes a new instance of the PaymentWarrantRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.GetAllPaymentWarrants">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetAllPaymentWarrants"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.AddPaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <inheritdoc cref="!:IPaymentWarrantRepository.AddPaymetWarrant"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.DeletePaymentWarrant(System.Guid)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrant(System.Guid)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(System.String)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(System.String)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.GetPaymentWarrantByGuid(System.Guid)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetPaymentWarrantByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.GetByReferenceNumber(System.String)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetByReferenceNumber(System.String)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.UpdatePaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.UpdatePaymentWarrant(Payment.API.Entities.PaymentWarrant)"/>
+        </member>
+        <member name="T:Payment.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Payment.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Payment.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Payment.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
