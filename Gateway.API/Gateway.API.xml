@@ -4,5 +4,168 @@
         <name>Gateway.API</name>
     </assembly>
     <members>
+        <member name="T:Gateway.API.Controllers.Auth.SystemUsersController">
+            <summary>
+            Controller for managing System Users
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for SystemUsersController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.DeleteSystemUser(System.String)">
+            <summary>
+            Deletes a system user
+            </summary>
+            <param name="username">Username of the user to be deleted</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUser(System.String)">
+            <summary>
+            Gets a system user
+            </summary>
+            <param name="username">Username of the user to retrieve</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUsers">
+            <summary>
+            Gets a list of all system users
+            </summary>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.PostSystemUser(System.Object)">
+            <summary>
+            Adds a new system user
+            </summary>
+            <param name="requestModel">Request body with user information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.PatchSystemUser(System.String,System.Object)">
+            <summary>
+            Patches a system user
+            </summary>
+            <param name="username">Username of the user to update</param>
+            <param name="systemUserUpdate">Request body with updated user information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="T:Gateway.API.Controllers.Auth.TokenController">
+            <summary>
+            Controller for managing JWT resources
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for TokenController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.GenerateToken(System.Object)">
+            <summary>
+            Generates JWT token based on the given username and password.
+            </summary>
+            <param name="userParam">Model containing username and password.</param>
+            <returns>JWT token response model if the authentication is successful, otherwise returns Bad Request.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.IntrospectToken(System.Object)">
+            <summary>
+            Introspects the given JWT token.
+            </summary>
+            <param name="requestModel">Model containing the token to be introspected.</param>
+            <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
+        </member>
+        <member name="T:Gateway.API.Helpers.HttpServiceProxy">
+            <summary>
+            Implementation of the IComplaintRepository
+            interface for managing Complaint entities in the database.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.#ctor(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gateway.API.Helpers.HttpServiceProxy"/> class.
+            </summary>
+            <param name="httpClient">The <see cref="T:System.Net.Http.HttpClient"/> used to make HTTP requests to the downstream service.</param>
+            <param name="downstreamServiceUrl">The URL of the downstream service to proxy requests to.</param>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Get(System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Get(System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.GetById(System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.GetById(System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Post(System.Object,System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Post(System.Object,System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Patch(System.String,System.Object,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Patch(System.String,System.Object,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Delete(System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Delete(System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Put(System.String,System.Object,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Put(System.String,System.Object,System.String)"/>
+        </member>
+        <member name="T:Gateway.API.Helpers.IHttpServiceProxy">
+            <summary>
+            A interface for proxy service that handles communication between an API and an external HTTP service.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Get(System.String,System.String)">
+            <summary>
+            Sends a GET request to the specified endpoint of the external service.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to. If empty, the base URL of the external service is used.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.GetById(System.String,System.String)">
+            <summary>
+            Sends a GET request to the specified endpoint of the external service with a unique identifier.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to, including the identifier.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Post(System.Object,System.String,System.String)">
+            <summary>
+            Sends a POST request to the specified endpoint of the external service with the specified request body.
+            </summary>
+            <param name="requestBody">The request body to send in the request.</param>
+            <param name="endpoint">The endpoint of the external service to send the request to. If empty, the base URL of the external service is used.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Patch(System.String,System.Object,System.String)">
+            <summary>
+            Sends a PATCH request to the specified endpoint of the external service with the specified request body.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to. If empty, the base URL of the external service is used.</param>
+            <param name="requestBody">The request body to send in the request.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Put(System.String,System.Object,System.String)">
+            <summary>
+            Sends a PUT request to the specified endpoint of the external service.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to, including the identifier.</param>
+            <param name="requestBody">The request body to send in the request.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Delete(System.String,System.String)">
+            <summary>
+            Sends a DELETE request to the specified endpoint of the external service.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to, including the identifier.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="T:Gateway.API.Helpers.SwaggerOptionsMapper">
+            <summary>
+            This class maps SwaggerOptions to generate Swagger documentation and UI for different APIs.
+            </summary>
+        </member>
     </members>
 </doc>
