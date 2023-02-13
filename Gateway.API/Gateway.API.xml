@@ -47,7 +47,7 @@
             Patches a system user
             </summary>
             <param name="username">Username of the user to update</param>
-            <param name="systemUserUpdate">Request body with updated user information</param>
+            <param name="requestModel">Request body with updated user information</param>
             <returns>IActionResult indicating the status of the operation</returns>
         </member>
         <member name="T:Gateway.API.Controllers.Auth.TokenController">
@@ -74,6 +74,52 @@
             </summary>
             <param name="requestModel">Model containing the token to be introspected.</param>
             <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
+        </member>
+        <member name="T:Gateway.API.Controllers.Complaint.ComplaintsController">
+            <summary>
+            Controller for managing Complaints
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for ComplaintController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.DeleteSystemUser(System.String)">
+            <summary>
+            Deletes a complaint
+            </summary>
+            <param name="id">id of the complaint to be deleted</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.GetComplaint(System.String)">
+            <summary>
+            Gets a complaint
+            </summary>
+            <param name="id">Id of the complaint to retrieve</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.GetComplaints">
+            <summary>
+            Gets a list of all complaints
+            </summary>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.PostComplaint(System.Object)">
+            <summary>
+            Adds a new complaint
+            </summary>
+            <param name="requestModel">Request body with complaint information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.PatchComplaint(System.String,System.Object)">
+            <summary>
+            Patches a system user
+            </summary>
+            <param name="id">id of the user to update</param>
+            <param name="requestModel">Request body with updated complaint information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
         </member>
         <member name="T:Gateway.API.Helpers.HttpServiceProxy">
             <summary>
