@@ -26,19 +26,19 @@ public class HttpServiceProxy : ControllerBase, IHttpServiceProxy
     }
 
     /// <inheritdoc cref="IHttpServiceProxy.Get"/>
-    public async Task<IActionResult> Get(string endpoint = "", string? acceptHeader = null)
+    public async Task<IActionResult> Get(string endpoint = "", string? acceptHeader = "application/json")
         => await SendRequest(HttpMethod.Get, endpoint, null, acceptHeader);
 
     /// <inheritdoc cref="IHttpServiceProxy.GetById"/>
-    public async Task<IActionResult> GetById(string endpoint, string? acceptHeader = null)
+    public async Task<IActionResult> GetById(string endpoint, string? acceptHeader = "application/json")
         => await SendRequest(HttpMethod.Get, endpoint, null, acceptHeader);
 
     /// <inheritdoc cref="IHttpServiceProxy.Post"/>
-    public async Task<IActionResult> Post(object requestBody, string endpoint = "", string? acceptHeader = null)
+    public async Task<IActionResult> Post(object requestBody, string endpoint = "", string? acceptHeader = "application/json")
         => await SendRequest(HttpMethod.Post, endpoint, requestBody, acceptHeader);
 
     /// <inheritdoc cref="IHttpServiceProxy.Patch"/>
-    public async Task<IActionResult> Patch(string endpoint, object requestBody, string? acceptHeader = null)
+    public async Task<IActionResult> Patch(string endpoint, object requestBody, string? acceptHeader = "application/json")
         => await SendRequest(HttpMethod.Patch, endpoint, requestBody, acceptHeader);
 
     /// <inheritdoc cref="IHttpServiceProxy.Delete"/>

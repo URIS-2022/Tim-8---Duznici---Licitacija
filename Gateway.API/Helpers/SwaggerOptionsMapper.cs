@@ -4,8 +4,13 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Gateway.API.Helpers;
 
-public class SwaggerOptionsMapper
+/// <summary>
+/// This class maps SwaggerOptions to generate Swagger documentation and UI for different APIs.
+/// </summary>
+static class SwaggerOptionsMapper
 {
+    private static readonly string licenseUri = "https://opensource.org/licenses/MIT";
+    private static readonly string termsUri = "https://opensource.org/licenses/MIT";
     public static void AddSwaggerDocs(SwaggerGenOptions options)
     {
         AddAdministrationSwaggerDoc(options);
@@ -52,9 +57,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddAuthSwaggerDoc(SwaggerGenOptions options)
@@ -74,9 +79,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddComplaintSwaggerDoc(SwaggerGenOptions options)
@@ -95,9 +100,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddBiddingSwaggerDoc(SwaggerGenOptions options)
@@ -117,9 +122,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddLandlotSwaggerDoc(SwaggerGenOptions options)
@@ -138,9 +143,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddLeaseSwaggerDoc(SwaggerGenOptions options)
@@ -160,9 +165,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddLicitationSwaggerDoc(SwaggerGenOptions options)
@@ -181,9 +186,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddPaymentSwaggerDoc(SwaggerGenOptions options)
@@ -202,9 +207,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddPersonSwaggerDoc(SwaggerGenOptions options)
@@ -214,7 +219,7 @@ public class SwaggerOptionsMapper
             {
                 Title = "Person Service API",
                 Version = "v1.0.0",
-                Description = "Person.API ​​is a microservice that provides person management services. It allows you to create, update, and delete faces, as well as generate JSON Web Tokens (JVTs) for use in securing subsequent API requests. It is possible to track whether the person is legal or physical, whether he has a contact person and from which address he applied.",
+                Description = "Person.API is a microservice that provides person management services. It allows you to create, update, and delete faces, as well as generate JSON Web Tokens (JVTs) for use in securing subsequent API requests. It is possible to track whether the person is legal or physical, whether he has a contact person and from which address he applied.",
                 Contact = new OpenApiContact
                 {
                     Name = "Andrea Ilić",
@@ -223,9 +228,9 @@ public class SwaggerOptionsMapper
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
     private static void AddPreparationsSwaggerDoc(SwaggerGenOptions options)
@@ -239,15 +244,14 @@ public class SwaggerOptionsMapper
                 Contact = new OpenApiContact
                 {
                     Name = "Dejan Petrov",
-                    Email = "petrov.it40.2019@uns.ac.rs",
-                    Url = new Uri("http://ftn.uns.ac.rs/691618389/fakultet-tehnickih-nauka")
+                    Email = "petrov.it40.2019@uns.ac.rs"
                 },
                 License = new OpenApiLicense
                 {
                     Name = "MIT licence",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
+                    Url = new Uri(licenseUri)
                 },
-                TermsOfService = new Uri("https://opensource.org/licenses/MIT")
+                TermsOfService = new Uri(termsUri)
             });
     }
 }

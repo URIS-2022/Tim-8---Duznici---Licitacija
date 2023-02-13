@@ -3,12 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.API.Controllers.Auth;
 
+/// <summary>
+/// Controller for managing JWT resources
+/// </summary>
 [ApiExplorerSettings(GroupName = "Auth")]
 [Route("api/[controller]")]
 [ApiController]
 public class TokenController : ControllerBase
 {
-    HttpServiceProxy serviceProxy;
+    private readonly HttpServiceProxy serviceProxy;
+    /// <summary>
+    /// Constructor for TokenController
+    /// </summary>
+    /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
     public TokenController(HttpClient httpClient)
     {
         serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_AUTH")}/api/Token");
