@@ -36,7 +36,7 @@ namespace Landlot.API.Data
                     Drainage = "Odvodnjavanje",
                     LandClass = "III",
                     LandProcessing = "Ostalo",
-                    PropertyType = "Drugi oblivi"
+                    PropertyType = "Drugi oblici"
                 });
 
             modelBuilder.Entity<Land>()
