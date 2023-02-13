@@ -10,6 +10,7 @@
     <Import_RootNamespace>Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Configs\SharedApiBehaviorOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RabbitMq\MQConnection.cs" />
   </ItemGroup>
   <ItemGroup>
