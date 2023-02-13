@@ -14,7 +14,6 @@ namespace Landlot.API.Profiles
             CreateMap<LandPostRequestModel, Land>();
             CreateMap<LandPatchRequestModel, Land>()
             .ForMember(dest => dest.TotalArea, opt => opt.Condition(src => src.TotalArea != null))
-            .ForMember(dest => dest.Municipality, opt => opt.Condition(src => src.Municipality != null))
             .ForMember(dest => dest.RealEstateNumber, opt => opt.Condition(src => src.RealEstateNumber != null));
         }
     }

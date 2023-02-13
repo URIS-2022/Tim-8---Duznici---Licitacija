@@ -9,37 +9,27 @@ namespace Landlot.API.Models
 {
     public class LotPatchRequestModel
     {
-        [DataMember]
         public Guid? LandGuid { get; set; }
 
-        [DataMember]
         public decimal? LotArea { get; set; }
 
-        [DataMember]
         public Guid? LotUser { get; set; }
 
-        [DataMember]
         public int? LotNumber { get; set; }
 
         [JsonConverter(typeof(LandlotCultureConverter))]
-        [DataMember]
         public LandlotCulture? CultureState { get; set; }
 
         [JsonConverter(typeof(LandlotClassConverter))]
-        [DataMember]
         public LandlotClass? ClassState { get; set; }
 
         [JsonConverter(typeof(LandlotProcessingConverter))]
-        [DataMember]
         public LandlotProcessing? ProcessingState { get; set; }
 
-
         [JsonConverter(typeof(LandlotProtectedZoneConverter))]
-        [DataMember]
         public LandlotProtectedZone? ProtectedZoneState { get; set; }
 
         [JsonConverter(typeof(LandlotDrainageConverter))]
-        [DataMember]
         public LandlotDrainage? DrainageState { get; set; }
 
 
