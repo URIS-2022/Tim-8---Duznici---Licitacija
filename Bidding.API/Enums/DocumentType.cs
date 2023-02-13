@@ -8,7 +8,7 @@ namespace Bidding.API.Enums
 
     public enum DocumentType
     {
-        None = 0,
+       // None = 0,
         Report
         
 
@@ -17,7 +17,7 @@ namespace Bidding.API.Enums
     {
         private readonly Dictionary<DocumentType, string> _documentTypeMapping = new Dictionary<DocumentType, string>
         {
-         { DocumentType.None, "Nije dodeljeno" },
+        // { DocumentType.None, "Nije dodeljeno" },
          { DocumentType.Report, "Izvještaj" },
          
 

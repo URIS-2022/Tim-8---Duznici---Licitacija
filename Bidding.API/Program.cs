@@ -1,5 +1,6 @@
 ﻿using Bidding.API.Data;
 using Bidding.API.Data.Repository;
+using Bidding.API.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -14,6 +15,14 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
+        .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new DocumentTypeConverter()))
+        .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new BiddingStatusConverter()))
+        .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new MunicipalityConverter()))
+        .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new PublicBiddingTypeConverter()))
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
