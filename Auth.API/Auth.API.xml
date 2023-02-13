@@ -77,7 +77,12 @@
             <param name="requestModel">Model containing the token to be introspected.</param>
             <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Auth.API.Data.AuthDbContext" -->
+        <member name="T:Auth.API.Data.AuthDbContext">
+            <summary>
+            AuthDbContext is a class that inherits from DbContext. 
+            It represents the database context for the authentication system.
+            </summary>
+        </member>
         <member name="M:Auth.API.Data.AuthDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Auth.API.Data.AuthDbContext})">
             <summary>
             Initializes a new instance of the AuthDbContext class.
