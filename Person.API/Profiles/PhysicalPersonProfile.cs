@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Person.API.Entities;
 using Person.API.Models;
-using Person.API.Models;
 
 
 namespace Person.API.Profiles
