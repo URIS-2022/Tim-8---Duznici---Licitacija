@@ -78,8 +78,8 @@ public class LicitationController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<LicitationResponseModel>> PostLicitation(LicitationRequestModel requestModel)
     {
-        LicitationEntity requestedLicitation = mapper.Map<LicitationEntity>(requestModel);
-        LicitationEntity? createdLicitation = await licitationRepository.AddLicitation(requestedLicitation);
+        Entities.Licitation requestedLicitation = mapper.Map<Entities.Licitation>(requestModel);
+        Entities.Licitation? createdLicitation = await licitationRepository.AddLicitation((Entities.Licitation)requestedLicitation);
         if (createdLicitation == null)
         {
             return BadRequest();

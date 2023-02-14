@@ -2,7 +2,7 @@
 
 namespace Licitation.API.Models.LicitationLands;
 
-[DataContract(Name = "LicitationLands", Namespace = "")]
+[DataContract(Name = "LicitationLand", Namespace = "")]
 public class LicitationLandResponse
 {
     [DataMember]

@@ -9,6 +9,7 @@ namespace Licitation.API.Models.Document
     [DataContract(Name = "Document", Namespace = "")]
     public class DocumentResponseModel
     {
+            public Guid Guid { get; set; }
 
             [DataMember]
             public Guid LicitationGuid { get; set; }
@@ -34,6 +35,7 @@ namespace Licitation.API.Models.Document
             public DocumentResponseModel(Guid licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
             {
 
+                Guid = Guid.NewGuid();
                 this.LicitationGuid = licitation;
                 this.documentType = documentType;
                 ReferenceNumber = referenceNumber;

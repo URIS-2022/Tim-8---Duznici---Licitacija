@@ -24,15 +24,15 @@ public class LicitationDBContext : DbContext
     {
         this.Configuration = configuration;
     }
-    public DbSet<LicitationEntity> LicitationEntities { get; set; }
+    public DbSet<Entities.Licitation> LicitationEntities { get; set; }
     public DbSet<Document> Documents { get; set; }
-    public DbSet<LicitationLand> LicitationLands { get; set; }
+    //public DbSet<LicitationLand> LicitationLands { get; set; }
     public DbSet<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
+        /*
         modelBuilder.Entity<LicitationEntity>()
             .HasData(
                new LicitationEntity
@@ -81,10 +81,10 @@ public class LicitationDBContext : DbContext
 
 
 
+        */
 
 
-
-        modelBuilder.Entity<LicitationEntity>(entity =>
+        modelBuilder.Entity<Entities.Licitation>(entity =>
         {
             entity.HasKey(e => e.Guid);
             entity.Property(e => e.Stage).IsRequired();
@@ -95,15 +95,25 @@ public class LicitationDBContext : DbContext
             entity.Property(e => e.ApplicationDeadline).IsRequired();
         });
 
-        modelBuilder.Entity<LicitationEntity>().HasMany(l => l.LicitationLands)
+        modelBuilder.Entity<Entities.Licitation>().HasMany(l => l.LicitationLands)
             .WithOne(ll => ll.licitationEntity)
             .HasForeignKey(l => l.Licitation);
-        modelBuilder.Entity<LicitationEntity>().HasMany(l => l.LicitationPublicBiddings)
+        modelBuilder.Entity<Entities.Licitation>().HasMany(l => l.LicitationPublicBiddings)
             .WithOne(lpb => lpb.licitationEntity)
             .HasForeignKey(l => l.Licitation);
-        modelBuilder.Entity<LicitationEntity>().HasMany(l => l.Documents)
+        modelBuilder.Entity<Entities.Licitation>().HasMany(l => l.Documents)
             .WithOne(d => d.licitationEntity)
             .HasForeignKey(d => d.LicitationGuid);
+
+        modelBuilder.Entity<LicitationLand>().HasOne(ll => ll.Licitation)
+        .WithMany(l => l.)
+        .HasForeignKey(l => l.Licitation);
+
+        modelBuilder.Entity<LicitationLand>()
+        .HasOne(ll => ll.Licitation)
+        .WithMany(l => l.LicitationLands)
+        .HasForeignKey(ll => ll.LicitationGuid);
+
 
         modelBuilder.Entity<LicitationLand>(entity =>
         {

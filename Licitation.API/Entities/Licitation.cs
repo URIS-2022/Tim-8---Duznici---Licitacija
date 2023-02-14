@@ -1,10 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using Licitation.API.Models.LicitationLands;
+using Licitation.API.Models.LicitationPB;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 
 namespace Licitation.API.Entities;
 
-public partial class LicitationEntity : IValidatableObject
+public partial class Licitation : IValidatableObject
 {
     public Guid Guid { get; set; }
     public int Stage { get; set; }
@@ -13,21 +15,26 @@ public partial class LicitationEntity : IValidatableObject
     public int Constarint { get; set; }
     public int BidIncrement { get; set; }
     public DateTime ApplicationDeadline { get; set; }
-    public List<Guid> LandGuids { get; set; }
-    public List<Guid> PublicBiddingGuids { get; set; }
-    public List<LicitationLand> LicitationLands { get; set; }
-    public List<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
-    public ICollection<Document> Documents { get; set; }
 
-    //public LicitationLand LicitationLand { get; set; }
+    //public object LicitationLands { get; internal set; }
+
+    public ICollection<LicitationLand> LicitationLands { get; set; }
+    public ICollection<LicitationPublicBidding> PublicBidding { get; set; }
+    public object Documents { get; internal set; }
+
+    //public List<LicitationLand> LicitationLands { get; set; }
+    //public List<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
+    //public ICollection<Document> Documents { get; set; }
+
+    //public LicitationLand LicitationLands { get; set; }
     //public LicitationPublicBidding LicitationPublicBidding { get; set; }
     //public ICollection<Document> Documents { get; set; }
 
-    public LicitationEntity()
+    public Licitation()
     { 
     }
 
-    public LicitationEntity(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, List<Guid> landGuids, List<Guid> publicBiddingGuids)
+    public Licitation(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
     {
         Guid = licitationGuid;
         Stage = stage;
@@ -36,12 +43,12 @@ public partial class LicitationEntity : IValidatableObject
         Constarint = constraint;
         BidIncrement = bidIncrement;
         ApplicationDeadline = applicationDeadline;
-        LandGuids = landGuids;
-        PublicBiddingGuids = publicBiddingGuids;
+        //LandGuids = landGuids;
+        //PublicBiddingGuids = publicBiddingGuids;
 
     }
 
-    public LicitationEntity(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, List<Guid> landGuids, List<Guid> publicBiddingGuids)
+    public Licitation(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
     {
         Guid = Guid.NewGuid();
         Stage = stage;
@@ -50,8 +57,8 @@ public partial class LicitationEntity : IValidatableObject
         Constarint = constraint;
         BidIncrement = bidIncrement;
         ApplicationDeadline = applicationDeadline;
-        LandGuids = landGuids;
-        PublicBiddingGuids = publicBiddingGuids;
+        //LandGuids = landGuids;
+        //PublicBiddingGuids = publicBiddingGuids;
     }
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

@@ -24,12 +24,16 @@ namespace Licitation.API.Models.Licitation
         [DataMember]
         public DateTime ApplicationDeadline { get; set; }
         [DataMember]
-        public List<LicitationLandResponse> LandGuids { get; set; }
+        public List<LicitationLand> LandGuids { get; set; }
 
         [DataMember]
-        public List<LicitationPublicBiddingResponse> PublicBiddingGuids { get; set; }
+        public List<LicitationPublicBidding> PublicBiddingGuids { get; set; }
 
-        public LicitationResponseModel(int stage, DateTime date, int year, int constarint, int bidIncrement, DateTime applicationDeadline, List<LicitationLandResponse> landGuids, List<LicitationPublicBiddingResponse> publicBiddingGuids)
+        public LicitationResponseModel()
+        {
+
+        }
+        public LicitationResponseModel(int stage, DateTime date, int year, int constarint, int bidIncrement, DateTime applicationDeadline, List<LicitationLand> landGuids, List<LicitationPublicBidding> publicBiddingGuids)
         {
             Stage = stage;
             Date = date;

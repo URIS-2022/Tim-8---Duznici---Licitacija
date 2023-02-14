@@ -49,14 +49,14 @@
             <param name="id">The Guid identifier of the Licitation to delete.</param>
             <returns>An asynchronous task that represents the operation.</returns>
         </member>
-        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.LicitationEntity)">
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.Licitation)">
             <summary>
             Adds a new Licitation to the database.
             </summary>
             <param name="licitation">The Licitation entity to add to the database.</param>
             <returns>An asynchronous task that returns the added Licitation entity.</returns>
         </member>
-        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.LicitationEntity)">
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.Licitation)">
             <summary>
             Updates a specific licitation.
             </summary>
@@ -85,11 +85,11 @@
         <member name="M:Licitation.API.Data.Repository.LicitationRepository.Delete(System.Guid)">
             <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)"/>
         </member>
-        <member name="M:Licitation.API.Data.Repository.LicitationRepository.AddLicitation(Licitation.API.Entities.LicitationEntity)">
-            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.LicitationEntity)"/>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.AddLicitation(Licitation.API.Entities.Licitation)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.Licitation)"/>
         </member>
-        <member name="M:Licitation.API.Data.Repository.LicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.LicitationEntity)">
-            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.LicitationEntity)"/>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.Licitation)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.Licitation)"/>
         </member>
         <member name="T:Licitation.API.Migrations.InitialCreate">
             <inheritdoc />

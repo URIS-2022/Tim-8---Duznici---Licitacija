@@ -9,14 +9,16 @@ namespace Licitation.API.Entities
     {
         public Guid Guid { get; set; }
         public Guid LicitationGuid { get; set; }
+
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
         public string ReferenceNumber { get; set; }
         public DateTime DateSubmitted { get; set; }
         public DateTime DateCertified { get; set; }
         public string Template { get; set; }
-        public LicitationEntity licitationEntity { get; set; }
-        public DateTime DateSubmited { get; internal set; }
+
+        //public Entities.Licitation licitationEntity { get; set; }
+        //public DateTime DateSubmited { get; internal set; }
 
         //public object DocumentType { get; internal set; }
         //public LicitationEntity LicitationEntity { get; internal set; }

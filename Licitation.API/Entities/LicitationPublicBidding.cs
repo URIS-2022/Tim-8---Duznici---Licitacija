@@ -7,7 +7,10 @@ public class LicitationPublicBidding : IValidatableObject
 
     public Guid PublicBiddingGuid { get; set; }
     public Guid Licitation { get; set; }
-    public LicitationEntity licitationEntity { get; set; }
+
+    //public Entities.Licitation licitationEntity { get; set; }
+
+    //public object LicitationEntity { get; internal set; }
 
     //public object LicitationEntity { get; internal set; }
 

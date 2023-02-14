@@ -21,13 +21,13 @@ public class LicitationRepository : ILicitationRepository
     }
 
     /// <inheritdoc cref="IComplaintRepository.GetAll"/>
-    public async Task<IEnumerable<Entities.LicitationEntity>> GetAll()
+    public async Task<IEnumerable<Entities.Licitation>> GetAll()
     {
         return await context.LicitationEntities.ToListAsync();
     }
 
     /// <inheritdoc cref="ILicitationRepository.GetByGuid"/>
-    public async Task<LicitationEntity?> GetByGuid(Guid id)
+    public async Task<Entities.Licitation?> GetByGuid(Guid id)
     {
         return await context.LicitationEntities.FindAsync(id);
     }
@@ -45,7 +45,7 @@ public class LicitationRepository : ILicitationRepository
     }
 
     /// <inheritdoc cref="ILicitationRepository.AddLicitation"/>
-    public async Task<Entities.LicitationEntity?> AddLicitation(Entities.LicitationEntity licitation)
+    public async Task<Entities.Licitation?> AddLicitation(Entities.Licitation licitation)
     {
         var created = context.LicitationEntities.Add(licitation);
         await context.SaveChangesAsync();
@@ -53,7 +53,7 @@ public class LicitationRepository : ILicitationRepository
     }
 
     /// <inheritdoc cref="ILicitationRepository.UpdateLicitation"/>
-    public async Task<Entities.LicitationEntity?> UpdateLicitation(Guid id, Entities.LicitationEntity updateModel)
+    public async Task<Entities.Licitation?> UpdateLicitation(Guid id, Entities.Licitation updateModel)
     {
         var licitation = await context.LicitationEntities.FirstOrDefaultAsync(c => c.Guid == id);
         if (licitation == null)

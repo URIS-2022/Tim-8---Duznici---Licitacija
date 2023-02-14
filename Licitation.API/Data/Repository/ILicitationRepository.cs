@@ -11,14 +11,14 @@ namespace Licitation.API.Data.Repository
         /// Gets all Licitations from the database.
         /// </summary>
         /// <returns>An asynchronous task that returns an enumerable of Licitations entities.</returns>
-        Task<IEnumerable<LicitationEntity>> GetAll();
+        Task<IEnumerable<Entities.Licitation>> GetAll();
 
         /// <summary>
         /// Gets a Licitation by its Guid identifier.
         /// </summary>
         /// <param name="id">The Guid identifier of the Licitation.</param>
         /// <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
-        Task<LicitationEntity?> GetByGuid(Guid id);
+        Task<Entities.Licitation?> GetByGuid(Guid id);
 
         /// <summary>
         /// Deletes a Licitation from the database by its Guid identifier.
@@ -32,7 +32,7 @@ namespace Licitation.API.Data.Repository
         /// </summary>
         /// <param name="licitation">The Licitation entity to add to the database.</param>
         /// <returns>An asynchronous task that returns the added Licitation entity.</returns>
-        Task<LicitationEntity?> AddLicitation(Entities.LicitationEntity licitation);
+        Task<Entities.Licitation?> AddLicitation(Entities.Licitation licitation);
 
         /// <summary>
         /// Updates a specific licitation.
@@ -40,7 +40,7 @@ namespace Licitation.API.Data.Repository
         /// <param name="id">The identifier of the licitation to update.</param>
         /// <param name="patchDocument">The updated values for the licitation.</param>
         /// <returns>The updated licitation.</returns>
-        Task<Entities.LicitationEntity?> UpdateLicitation(Guid id, Entities.LicitationEntity patchDocument);
+        Task<Entities.Licitation?> UpdateLicitation(Guid id, Entities.Licitation patchDocument);
 
 
         /* /// <summary>

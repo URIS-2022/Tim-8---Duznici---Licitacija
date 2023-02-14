@@ -73,8 +73,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-//builder.Services.AddScoped<ILicitationRepository, LicitationRepository>();
+builder.Services.AddScoped<ILicitationRepository, LicitationRepository>();
 
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 

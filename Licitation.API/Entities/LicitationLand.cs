@@ -3,12 +3,17 @@
 namespace Licitation.API.Entities;
 public partial class LicitationLand : IValidatableObject
 {
-    public Guid Licitation { get; set; }
-    public Guid LandGuid { get; set; }
-    public LicitationEntity licitationEntity { get; set; }
+     internal object licitationEntity { get; set; }
 
+    public Guid LicitationGuid { get; set; }
+    public Guid LandGuid { get; set; }
+    public object Licitation { get; internal set; }
+    public object Licitations { get; internal set; }
+
+    //public LicitationEntity licitationEntity { get; set; }
     //public object LicitationEntities { get; internal set; }
-    //public object LicitationEntity { get; internal set; }
+    //public object Licitation { get; set; }
+    //public object Land { get; internal set; }
 
     //public object LicitationEntities { get; internal set; }
 
@@ -19,14 +24,15 @@ public partial class LicitationLand : IValidatableObject
 
     public LicitationLand(Guid licitation, Guid landGuid)
     {
-        Licitation = licitation;
+        LicitationGuid = licitation;
         LandGuid = landGuid;
     }
+
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         var results = new List<ValidationResult>();
 
-        if (Licitation == Guid.Empty)
+        if (LicitationGuid == Guid.Empty)
         {
             results.Add(new ValidationResult("LicitationGuid cannot be empty."));
         }
