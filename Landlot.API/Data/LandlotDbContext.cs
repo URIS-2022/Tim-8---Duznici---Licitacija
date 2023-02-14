@@ -19,11 +19,17 @@ namespace Landlot.API.Data
         /// <summary>
         /// Gets or sets the DbSet of lands in the database.
         /// </summary>
+        /// <remarks>
+        /// This DbSet is used to interact with the "Lands" table in the database.
+        /// </remarks>
         public DbSet<Land> Lands { get; set; }
 
         /// <summary>
         /// Gets or sets the DbSet of lots in the database.
         /// </summary>
+        /// <remarks>
+        /// This DbSet is used to interact with the "Lots" table in the database.
+        /// </remarks>
         public DbSet<Lot> Lots { get; set; }
 
         /// <summary>
