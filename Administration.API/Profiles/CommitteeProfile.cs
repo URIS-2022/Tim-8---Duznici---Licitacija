@@ -10,7 +10,7 @@ public class CommitteeProfile : Profile
     {
         CreateMap<Committee, CommitteeGetResponseModel>()
             .ForMember(dest => dest.CommitteeMembers, opt => opt.MapFrom(src => src.CommitteeMembers));
-        CreateMap<CommitteeMember, CommitteeMemberNestedResponseModel>()
+        CreateMap<CommitteeMember, CommitteeMemberCommitteeGetResponseModel>()
             .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Member.Guid))
             .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.Member.FirstName))
             .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.Member.LastName))
