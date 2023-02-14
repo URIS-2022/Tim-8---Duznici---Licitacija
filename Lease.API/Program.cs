@@ -1,4 +1,5 @@
 ﻿using Lease.API.Data;
+using Lease.API.Data.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -114,6 +115,8 @@ builder.Services.AddDbContext<LeaseDbContext>(options =>
 builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<ILeaseAgreementRepository, LeaseAgreementRepository>();
 
 
 WebApplication app = builder.Build();
