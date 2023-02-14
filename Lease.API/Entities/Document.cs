@@ -19,7 +19,7 @@ public partial class Document : IValidatableObject
     public string Template { get; set; }
 
     [JsonConverter(typeof(DocumentTypeConverter))]
-    public DocumentTypeConverter DocumentType { get; set; }
+    public DocumentType DocumentType { get; set; }
     public Guid LeaseAgreementGuid { get; set; }
 
     public LeaseAgreement LeaseAgreement { get; set; }
@@ -27,7 +27,7 @@ public partial class Document : IValidatableObject
 
     public Document() { }
 
-    public Document(Guid Guid, string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentTypeConverter documentType, Guid leaseAgreementGuid)
+    public Document(Guid Guid, string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentType documentType, Guid leaseAgreementGuid)
     {
         Guid = Guid;
         ReferenceNumber = referenceNumber;
@@ -39,7 +39,7 @@ public partial class Document : IValidatableObject
     }
 
 
-    public Document(string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentTypeConverter documentType, Guid leaseAgreementGuid)
+    public Document(string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentType documentType, Guid leaseAgreementGuid)
     {
         Guid = Guid.NewGuid();
         ReferenceNumber = referenceNumber;

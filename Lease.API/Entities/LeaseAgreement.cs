@@ -10,7 +10,7 @@ public partial class LeaseAgreement : IValidatableObject
     public Guid Guid { get; set; }
 
     [JsonConverter(typeof(GuaranteeTypeConverter))]
-    public GuaranteeTypeConverter GuaranteeType { get; set; }
+    public GuaranteeType GuaranteeType { get; set; }
     public string ReferenceNumber { get; set; }
     public DateTime DateRecording { get; set; }
     public Guid MinisterGuid { get; set; }
@@ -23,13 +23,13 @@ public partial class LeaseAgreement : IValidatableObject
     public Buyer Buyer { get; set; }
 
     [JsonConverter(typeof(DocumentStatusConverter))]
-    public  DocumentStatusConverter DocumentStatus {get; set; }
+    public  DocumentStatus DocumentStatus {get; set; }
     public DueDate DueDate { get; set; }
 
     public ICollection<Document> Documents { get; set; }
 
     public LeaseAgreement() { }
-    public LeaseAgreement(Guid Guid, GuaranteeTypeConverter GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatusConverter DocumentStatus, DueDate dueDate)
+    public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, DueDate dueDate)
     {
         this.Guid = Guid;
         this.GuaranteeType = GuaranteeType;
@@ -46,7 +46,7 @@ public partial class LeaseAgreement : IValidatableObject
 
     }
 
-    public LeaseAgreement(GuaranteeTypeConverter GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatusConverter DocumentStatus, DueDate DueDate)
+    public LeaseAgreement(GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, DueDate DueDate)
     {
         this.Guid = Guid.NewGuid();
         this.GuaranteeType = GuaranteeType;

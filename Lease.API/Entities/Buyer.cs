@@ -22,14 +22,14 @@ public partial class Buyer : IValidatableObject
 
     [JsonConverter(typeof(PriorityTypeConverter))]
 
-    public List<PriorityTypeConverter> PriorityTypes { get; set; }
+    public List<PriorityType> PriorityTypes { get; set; }
 
     public LeaseAgreement LeaseAgreement { get; set; }
 
 
 
 
-    public Buyer(Guid guid, int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityTypeConverter> priorityTypes)
+    public Buyer(Guid guid, int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorityTypes)
     {
         Guid = guid;
         RealisedArea = realisedArea;
@@ -45,7 +45,7 @@ public partial class Buyer : IValidatableObject
     }
 
     public Buyer() { }
-    public Buyer(int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityTypeConverter> priorityTypes )
+    public Buyer(int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorityTypes )
     {
         Guid = Guid.NewGuid();
         RealisedArea = realisedArea;
