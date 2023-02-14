@@ -3,6 +3,7 @@ using Landlot.API.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Landlot.API.Entities
 {
@@ -52,7 +53,7 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("Municipality is required."));
             }
 
-            if (Culture == null)
+            if (!Enum.IsDefined(typeof(LandlotCulture), Culture) || Culture.Equals(default(LandlotCulture)))
             {
                 results.Add(new ValidationResult("Culture is required."));
             }
