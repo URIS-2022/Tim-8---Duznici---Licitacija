@@ -51,26 +51,26 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("Lot number must be greater than 0.", new[] { "LotNumber" }));
             }
 
-            if (CultureState == null)
+            if (!Enum.IsDefined(typeof(LandlotCulture), CultureState) || CultureState.Equals(default(LandlotCulture)))
             {
                 results.Add(new ValidationResult("Culture state cannot be null.", new[] { "CultureState" }));
             }
-            if (ClassState == null)
+            if (!Enum.IsDefined(typeof(LandlotClass), ClassState) || ClassState.Equals(default(LandlotClass)))
             {
                 results.Add(new ValidationResult("Class state cannot be null.", new[] { "ClassState" }));
             }
 
-            if (ProcessingState == null)
+            if (!Enum.IsDefined(typeof(LandlotProcessing), ProcessingState) || ProcessingState.Equals(default(LandlotProcessing)))
             {
                 results.Add(new ValidationResult("Processing state cannot be null.", new[] { "ProcessingState" }));
             }
 
-            if (ProtectedZoneState == null)
+            if (!Enum.IsDefined(typeof(LandlotProtectedZone), ProtectedZoneState) || ProtectedZoneState.Equals(default(LandlotProtectedZone)))
             {
                 results.Add(new ValidationResult("Protected zone state cannot be null.", new[] { "ProtectedZoneState" }));
             }
 
-            if (DrainageState == null)
+            if (!Enum.IsDefined(typeof(LandlotDrainage), DrainageState) || DrainageState.Equals(default(LandlotDrainage)))
             {
                 results.Add(new ValidationResult("Drainage state cannot be null.", new[] { "DrainageState" }));
             }
