@@ -5,14 +5,14 @@ using System.Text.Json.Serialization;
 
 namespace Lease.API.Enums;
 
+    public enum PriorityType
+    {
+        None = 0,
+        LeaseProposition,
+        LeaseDecision
+    }
 
 
-public enum PriorityType
-{
-    None = 0,
-    LeaseProposition,
-    LeaseDecision
-}
 
 [NotMapped]
 public class PriorityTypeConverter : JsonConverter<PriorityType>

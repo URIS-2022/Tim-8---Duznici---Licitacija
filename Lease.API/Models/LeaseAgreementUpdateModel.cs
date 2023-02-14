@@ -9,7 +9,7 @@ public class LeaseAgreementUpdateModel
     public string? ReferenceNumber { get; set; }
 
     [JsonConverter(typeof(GuaranteeTypeConverter))]
-    public GuaranteeTypeConverter? GuaranteeType { get; set; }
+    public GuaranteeType? GuaranteeType { get; set; }
     public DateTime? DateRecording { get; set; }
     public Guid? MinisterGuid { get; set; }
     public DateTime? DeadlineLandReturn { get; set; }
@@ -19,15 +19,15 @@ public class LeaseAgreementUpdateModel
     public Guid? PersonGuid { get; set;}
 
     [JsonConverter(typeof(DocumentStatusConverter))]
-    public DocumentStatusConverter? DocumentStatus { get; set; }
+    public DocumentStatus? DocumentStatus { get; set; }
 
     public DueDate? DueDate {get;set;}
 
 
-    public LeaseAgreementUpdateModel(string referenceNumber, GuaranteeTypeConverter guaranteeType,  DateTime dateRecording,
+    public LeaseAgreementUpdateModel(string referenceNumber, GuaranteeType guaranteeType,  DateTime dateRecording,
     Guid ministerGuid,
         DateTime deadlineLandReturn, string placeOfSigning, DateTime dateOfSigning, Guid publicBiddingGuid,
-        Guid personGuid, DocumentStatusConverter documentStatus, DueDate dueDate)
+        Guid personGuid, DocumentStatus documentStatus, DueDate dueDate)
     {
         ReferenceNumber = referenceNumber;
         GuaranteeType = guaranteeType;

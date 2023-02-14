@@ -1,5 +1,6 @@
 ﻿
 using Lease.API.Entities;
+using Lease.API.Enums;
 using Microsoft.EntityFrameworkCore;
 namespace Lease.API.Data;
 
@@ -48,6 +49,8 @@ public class LeaseDbContext : DbContext
            modelBuilder.Entity<DueDate>()
              .HasKey(u => u.Id);
 
+        
+
 
 
 
@@ -70,6 +73,10 @@ public class LeaseDbContext : DbContext
                .WithOne(x => x.LeaseAgreement)
                .HasForeignKey<Buyer>(x => x.PersonGuid)
                .IsRequired();
+
+
+        modelBuilder.Entity <List<PriorityType>>()
+               .HasNoKey();
 
 
 

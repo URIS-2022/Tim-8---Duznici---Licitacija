@@ -7,8 +7,8 @@ public class LeaseAgreementResponseModel
 {
     public Guid Guid { get; set; }
 
-    [JsonConverter(typeof(GuaranteeTypeConverter))]
-    public GuaranteeTypeConverter GuaranteeType { get; set; }
+    [JsonConverter(typeof(GuaranteeType))]
+    public GuaranteeType GuaranteeType { get; set; }
     public string ReferenceNumber { get; set; }
     public DateTime DateRecording { get; set; }
     public Guid MinisterGuid { get; set; }
@@ -23,7 +23,7 @@ public class LeaseAgreementResponseModel
     public DueDate DueDate { get; set; }
 
 
-    public LeaseAgreementResponseModel(Guid Guid, GuaranteeTypeConverter guaranteeType, string referenceNumber,
+    public LeaseAgreementResponseModel(Guid Guid, GuaranteeType guaranteeType, string referenceNumber,
         DateTime dateRecording, Guid ministerGuid, DateTime deadlineLandReturn, string placeOfSigning,
         DateTime dateOfSigning, Guid publicBiddingGuid, Guid personGuid, DocumentStatusConverter documentStatus, DueDate dueDate)
     {
