@@ -35,21 +35,40 @@ public class ContactPersonController : ControllerBase
         return Ok(responseModels);
     }
 
-   
-
-    [HttpPatch("{username}")]
-    public async Task<IActionResult> PatchContactPerson(string firstName, ContactPersonUpdateModel contactPersonUpdate)
+    [HttpGet("{ContactPersonGuid}")]
+    public async Task<ActionResult<ContactPersonResponseModel>> GetContactPerson(Guid ContactPersonGuid)
     {
-        var contactPerson = await contactPersonRepository.GetContactPersonsByFirstName(firstName);
-        if (contactPerson == null || contactPersonUpdate == null)
+        var person = await contactPersonRepository.GetContactPersonByGuid(ContactPersonGuid);
+        if (person == null)
+        {
+            return NotFound();
+        }
+        var responseModel = mapper.Map<ContactPersonResponseModel>(person);
+        return responseModel;
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<ContactPersonResponseModel>> PatchContactPerson(Guid id, [FromBody] ContactPersonRequestModel patchModel)
+    {
+        var person = await contactPersonRepository.GetContactPersonByGuid(id);
+        if (person == null)
+        {
+            return NotFound();
+        }
+
+        mapper.Map(patchModel, person);
+
+        var updated = await contactPersonRepository.UpdateContactPerson(id, person);
+        if (updated == null)
         {
             return BadRequest();
         }
-        mapper.Map(contactPersonUpdate, contactPerson);
 
-        await contactPersonRepository.UpdateContactPersons(contactPerson);
-        return NoContent();
+        var responseModel = mapper.Map<ContactPersonResponseModel>(updated);
+
+        return Ok(responseModel);
     }
+
 
     [HttpPost]
     public async Task<ActionResult<ContactPersonResponseModel>> PostContactPerson(ContactPersonRequestModel requestContactPerson)
@@ -65,10 +84,10 @@ public class ContactPersonController : ControllerBase
     }
 
    
-    [HttpDelete("{firstname}")]
-    public async Task<IActionResult> DeleteContactPerson (string firstname)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteContactPerson (Guid id)
     {
-        ContactPerson? contactPerson = await contactPersonRepository.GetContactPersonsByFirstName(firstname);
+        var contactPerson = await contactPersonRepository.GetContactPersonByGuid(id);
         if (contactPerson == null)
         {
             return NotFound();

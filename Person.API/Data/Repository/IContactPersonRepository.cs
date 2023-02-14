@@ -10,12 +10,8 @@ namespace Person.API.Data.Repository
     {
         Task<IEnumerable<ContactPerson>> GetAllContactPersons();
         Task<ContactPerson?> GetContactPersonByGuid(Guid ContactPersonId);
-        Task<ContactPerson?> GetContactPersonsByFunction(string function);
-        Task<ContactPerson?> GetContactPersonsByFirstName(string firstName);
-        Task<ContactPerson?> GetContactPersonsByLastName(string lastName);
         Task<ContactPerson?> CreateContactPerson(ContactPerson? contactPerson);
         Task DeleteContactPersons(Guid ContactPersonId);
-        Task UpdateContactPersons(ContactPerson? contactPerson);
-        Task<bool> IsValidContactPerson(string phoneNumber);
+        Task<ContactPerson?> UpdateContactPerson(Guid id, ContactPerson contactPerson);
     }
 }

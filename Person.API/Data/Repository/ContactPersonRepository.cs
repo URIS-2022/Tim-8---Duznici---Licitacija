@@ -31,26 +31,6 @@ namespace Person.API.Data.Repository
             return await context.ContactPersons.FirstOrDefaultAsync(ko => ko.ContactPersonId == ContactPersonId);
         }
 
-        public async Task<ContactPerson?> GetContactPersonsByFunction(string function)
-        {
-            ContactPerson? contactPerson = await context.ContactPersons.SingleOrDefaultAsync(x => x.Function == function);
-
-            return contactPerson;
-        }
-
-        public async Task<ContactPerson?> GetContactPersonsByFirstName(string firstName)
-        {
-            ContactPerson? contactPerson = await context.ContactPersons.SingleOrDefaultAsync(x => x.FirstName == firstName);
-
-            return contactPerson;
-        }
-
-        public async Task<ContactPerson?> GetContactPersonsByLastName(string lastName)
-        {
-            ContactPerson? contactPerson = await context.ContactPersons.SingleOrDefaultAsync(x => x.LastName == lastName);
-
-            return contactPerson;
-        }
 
 
         public async Task<ContactPerson> CreateContactPerson(ContactPerson contactPerson)
@@ -67,9 +47,16 @@ namespace Person.API.Data.Repository
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateContactPersons(ContactPerson contactPerson)
+       public async Task<ContactPerson?> UpdateContactPerson(Guid id,ContactPerson updateModel)
         {
+            var contactPerson = await context.ContactPersons.FirstOrDefaultAsync(c => c.ContactPersonId == id);
+            if (contactPerson == null)
+            {
+                return null;
+            }
+            context.Entry(contactPerson).CurrentValues.SetValues(updateModel);
             await context.SaveChangesAsync();
+            return contactPerson;
         }
 
         public async Task<bool> IsValidContactPerson(string phoneNumber)

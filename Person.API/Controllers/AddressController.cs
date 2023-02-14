@@ -52,7 +52,7 @@ public class AddressController : ControllerBase
     }
 
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{addressId}")]
     public async Task<IActionResult> DeleteAddress(Guid addressId)
     {
         Address? address = await addressRepository.GetAddressByGuid(addressId);
