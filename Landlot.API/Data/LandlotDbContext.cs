@@ -16,8 +16,14 @@ namespace Landlot.API.Data
         {
             
         }
-
+        /// <summary>
+        /// Gets or sets the DbSet of lands in the database.
+        /// </summary>
         public DbSet<Land> Lands { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DbSet of lots in the database.
+        /// </summary>
         public DbSet<Lot> Lots { get; set; }
 
         /// <summary>
