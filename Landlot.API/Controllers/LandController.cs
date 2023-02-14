@@ -23,11 +23,6 @@ namespace Landlot.API.Controllers
         /// <param name="mapper">The mapper.</param>
         public LandController(ILandRepository landRepository, IMapper mapper)
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LandController"/> class.
-        /// </summary>
-        /// <param name="landRepository">The land repository used for retrieving land data.</param>
-        /// <param name="mapper">The mapper used for mapping land data to view models.</param>
         {
             this.landRepository = landRepository;
             this.mapper = mapper;
