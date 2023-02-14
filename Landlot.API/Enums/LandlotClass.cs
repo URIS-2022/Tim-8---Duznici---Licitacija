@@ -46,7 +46,7 @@ namespace Landlot.API.Enums
         public override void Write(Utf8JsonWriter writer, LandlotClass value, JsonSerializerOptions options)
         {
             string classString;
-            if (_classMapping.TryGetValue(value, out classString))
+            if (_classMapping.TryGetValue(value, out classString!))
             {
                 writer.WriteStringValue(classString);
             }
