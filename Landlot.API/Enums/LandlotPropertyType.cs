@@ -43,7 +43,7 @@ namespace Landlot.API.Enums
         }
         public override void Write(Utf8JsonWriter writer, LandlotPropertyType value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(_landlotPropertyTypeMapping[value]);
+            writer.WriteStringValue(_landlotPropertyTypeMapping[value]!);
         }
 
     }

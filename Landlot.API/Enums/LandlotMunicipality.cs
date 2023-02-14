@@ -50,7 +50,7 @@ public class LandlotMunicipalityConverter : JsonConverter<LandlotMunicipality>
     }
     public override void Write(Utf8JsonWriter writer, LandlotMunicipality value, JsonSerializerOptions options)
     {
-        writer.WriteStringValue(_municipalityMapping[value]);
+        writer.WriteStringValue(_municipalityMapping[value]!);
     }
 
 }

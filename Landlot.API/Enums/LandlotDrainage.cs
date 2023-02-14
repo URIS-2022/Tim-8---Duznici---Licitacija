@@ -21,7 +21,7 @@ namespace Landlot.API.Enums
 
         public override void Write(Utf8JsonWriter writer, LandlotDrainage value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value.ToString());
+            writer.WriteStringValue(value.ToString()!);
         }
     }
 

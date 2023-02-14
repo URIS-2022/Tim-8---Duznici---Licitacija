@@ -21,7 +21,7 @@ namespace Landlot.API.Enums
 
         public override void Write(Utf8JsonWriter writer, LandlotProtectedZone value, JsonSerializerOptions options)
         {
-            writer.WriteNumberValue((int)value);
+            writer.WriteNumberValue((int)value!);
         }
     }
 

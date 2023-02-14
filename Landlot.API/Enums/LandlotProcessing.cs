@@ -32,7 +32,7 @@ namespace Landlot.API.Enums
 
         public override void Write(Utf8JsonWriter writer, LandlotProcessing value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(_processingMapping[value]);
+            writer.WriteStringValue(_processingMapping[value]!);
         }
     }
 

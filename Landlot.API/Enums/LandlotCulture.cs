@@ -44,7 +44,7 @@ namespace Landlot.API.Enums
 
         public override void Write(Utf8JsonWriter writer, LandlotCulture value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(_cultureMapping[value]);
+            writer.WriteStringValue(_cultureMapping[value]!);
         }
     }
 
