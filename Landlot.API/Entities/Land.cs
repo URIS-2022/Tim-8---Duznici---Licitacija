@@ -48,7 +48,7 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("TotalArea must be a positive value."));
             }
 
-            if (Municipality == null)
+            if (!Enum.IsDefined(typeof(LandlotMunicipality), Municipality) || Municipality.Equals(default(LandlotMunicipality)))
             {
                 results.Add(new ValidationResult("Municipality is required."));
             }
@@ -58,27 +58,27 @@ namespace Landlot.API.Entities
                 results.Add(new ValidationResult("Culture is required."));
             }
 
-            if (LandClass == null)
+            if (!Enum.IsDefined(typeof(LandlotClass), LandClass) || LandClass.Equals(default(LandlotClass)))
             {
                 results.Add(new ValidationResult("LandClass is required."));
             }
 
-            if (Processing == null)
+            if (!Enum.IsDefined(typeof(LandlotProcessing), Processing) || Processing.Equals(default(LandlotProcessing)))
             {
                 results.Add(new ValidationResult("Processing is required."));
             }
 
-            if (Zone == null)
+            if (!Enum.IsDefined(typeof(LandlotProtectedZone), Zone) || Zone.Equals(default(LandlotProtectedZone)))
             {
                 results.Add(new ValidationResult("Protected zone is required."));
             }
 
-            if (Property == null)
+            if (!Enum.IsDefined(typeof(LandlotPropertyType), Property) || Property.Equals(default(LandlotPropertyType)))
             {
                 results.Add(new ValidationResult("Property type is required."));
             }
 
-            if (Drainage == null)
+            if (!Enum.IsDefined(typeof(LandlotDrainage), Drainage) || Drainage.Equals(default(LandlotDrainage)))
             {
                 results.Add(new ValidationResult("Drainage state is required."));
             }
