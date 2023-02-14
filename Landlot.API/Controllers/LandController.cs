@@ -16,12 +16,26 @@ namespace Landlot.API.Controllers
         private readonly ILandRepository landRepository;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LandController"/> class.
+        /// </summary>
+        /// <param name="landRepository">The land repository.</param>
+        /// <param name="mapper">The mapper.</param>
         public LandController(ILandRepository landRepository, IMapper mapper)
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LandController"/> class.
+        /// </summary>
+        /// <param name="landRepository">The land repository used for retrieving land data.</param>
+        /// <param name="mapper">The mapper used for mapping land data to view models.</param>
         {
             this.landRepository = landRepository;
             this.mapper = mapper;
         }
-
+        /// <summary>
+        /// Retrieves a list of land objects from the land repository.
+        /// </summary>
+        /// <returns> A list of land view models.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LandGetResponseModel>>> GetLand()
         {
@@ -33,7 +47,11 @@ namespace Landlot.API.Controllers
             var responseModel = mapper.Map<IEnumerable<LandGetResponseModel>>(lands);
             return Ok(responseModel);
         }
-
+        /// <summary>
+        /// Retrieves a land object with the specified ID from the land repository.
+        /// </summary>
+        /// <param name="id">The ID of the land object to retrieve.</param>
+        /// <returns>A land view model.</returns>
 
         [HttpGet("{LandGuid}")]
         public async Task<ActionResult<LandGetResponseModel>> GetLand(Guid LandGuid)
@@ -47,6 +65,12 @@ namespace Landlot.API.Controllers
             return responseModel;
         }
 
+        /// <summary>
+        /// Updates a land object with the specified ID in the land repository.
+        /// </summary>
+        /// <param name="id">The ID of the land object to update.</param>
+        /// <param name="patchRequest">A <see cref="LandPatchRequestModel"/> that contains the updated land data.</param>
+        /// <returns>An <see cref="IActionResult"/> representing the result of the update operation.</returns>
 
         [HttpPatch("{id}")]
         public async Task<ActionResult<LandPatchResponseModel>> PatchLand(Guid id,[FromBody] LandPatchRequestModel patchModel)
@@ -70,6 +94,11 @@ namespace Landlot.API.Controllers
             return Ok(responseModel);
         }
 
+        /// <summary>
+        /// Creates a new land object in the land repository.
+        /// </summary>
+        /// <param name="postRequest">A <see cref="LandPostRequestModel"/> that contains the data for the new land object.</param>
+        /// <returns>An <see cref="IActionResult"/> representing the result of the create operation.</returns>
         [HttpPost]
         public async Task<ActionResult<LandPostResponseModel>> PostLand(LandPostRequestModel postModel)
         {
@@ -83,7 +112,11 @@ namespace Landlot.API.Controllers
             return CreatedAtAction("GetLand", new { id = created.LandGuid }, responseModel);
         }
 
-       
+        /// <summary>
+        /// Deletes a land object with the specified ID from the land repository.
+        /// </summary>
+        /// <param name="id">The ID of the land object to delete.</param>
+        /// <returns>An <see cref="IActionResult"/> representing the result of the delete operation.</returns>
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLand(Guid id)
