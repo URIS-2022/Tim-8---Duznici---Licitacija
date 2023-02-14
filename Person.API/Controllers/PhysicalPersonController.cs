@@ -34,27 +34,46 @@ public class PhysicalPersonController : ControllerBase
         return Ok(responseModels);
     }
 
-
-
-    [HttpPatch("{firstname}")]
-    public async Task<IActionResult> PatchPhysicalPerson(string name, PhysicalPersonUpdateModel physicalPersonUpdate)
+    [HttpGet("{PhysicalPersonGuid}")]
+    public async Task<ActionResult<PhysicalPersonResponseModel>> GetPhysicalPerson(Guid PhysicalPersonGuid)
     {
-        var physicalPerson = await physicalPersonRepository.GetPhysicalPersonsByFirstName(name);
-        if (physicalPerson == null || physicalPersonUpdate == null)
+        var person = await physicalPersonRepository.GetPhysicalPersonByGuid(PhysicalPersonGuid);
+        if (person == null)
+        {
+            return NotFound();
+        }
+        var responseModel = mapper.Map<PhysicalPersonResponseModel>(person);
+        return responseModel;
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<PhysicalPersonResponseModel>> PatchPhysicalPerson(Guid id, [FromBody] PhysicalPersonRequestModel patchModel)
+    {
+        var person = await physicalPersonRepository.GetPhysicalPersonByGuid(id);
+        if (person == null)
+        {
+            return NotFound();
+        }
+
+        mapper.Map(patchModel, person);
+
+        var updated = await physicalPersonRepository.UpdatePhysicalPerson(id, person);
+        if (updated == null)
         {
             return BadRequest();
         }
-        mapper.Map(physicalPersonUpdate, physicalPerson);
 
-        await physicalPersonRepository.UpdatePhysicalPersons(physicalPerson);
-        return NoContent();
+        var responseModel = mapper.Map<PhysicalPersonResponseModel>(updated);
+
+        return Ok(responseModel);
     }
+
 
     [HttpPost]
     public async Task<ActionResult<PhysicalPersonResponseModel>> PostPhysicalPerson(PhysicalPersonRequestModel requestPhysicalPerson)
     {
         PhysicalPerson physicalPerson = mapper.Map<PhysicalPerson>(requestPhysicalPerson);
-        PhysicalPerson? createdPhysicalPerson = await physicalPersonRepository.CreatePhysicalPersons(physicalPerson);
+        PhysicalPerson? createdPhysicalPerson = await physicalPersonRepository.CreatePhysicalPerson(physicalPerson);
         if (physicalPerson == null)
         {
             return BadRequest();
@@ -64,15 +83,15 @@ public class PhysicalPersonController : ControllerBase
     }
 
 
-    [HttpDelete("{firstname}")]
-    public async Task<IActionResult> DeletePhysicalPerson(string firstName)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePhysicalPerson(Guid id)
     {
-        PhysicalPerson? physicalPerson = await physicalPersonRepository.GetPhysicalPersonsByFirstName(firstName);
+        var physicalPerson = await physicalPersonRepository.GetPhysicalPersonByGuid(id);
         if (physicalPerson == null)
         {
             return NotFound();
         }
-        await physicalPersonRepository.DeletePhysicalPersons(physicalPerson.PhysicalPersonId);
+        await physicalPersonRepository.DeletePhysicalPerson(physicalPerson.PhysicalPersonId);
 
         return NoContent();
     }

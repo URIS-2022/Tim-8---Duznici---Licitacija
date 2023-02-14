@@ -23,9 +23,9 @@ public class AddressController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Address?>>> GetAddress()
+    public async Task<ActionResult<IEnumerable<Address?>>> GetAddresses()
     {
-        var addresses = await addressRepository.GetAllAddress();
+        var addresses = await addressRepository.GetAllAddresses();
         if (!addresses.Any())
         {
             return NoContent();
@@ -34,11 +34,42 @@ public class AddressController : ControllerBase
         return Ok(responseModels);
     }
 
+    [HttpGet("{AddressId}")]
+    public async Task<ActionResult<AddressResponseModel>> GetAddress(Guid AddressId)
+    {
+        var address = await addressRepository.GetAddressByGuid(AddressId);
+        if (address == null)
+        {
+            return NotFound();
+        }
+        var responseModel = mapper.Map<AddressResponseModel>(address);
+        return responseModel;
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<AddressResponseModel>> PatchAddress(Guid id, [FromBody] AddressRequestModel patchModel)
+    {
+        var address = await addressRepository.GetAddressByGuid(id);
+        if (address == null)
+        {
+            return NotFound();
+        }
+
+        mapper.Map(patchModel, address);
+
+        var updated = await addressRepository.UpdateAddress(id, address);
+        if (updated == null)
+        {
+            return BadRequest();
+        }
+
+        var responseModel = mapper.Map<AddressResponseModel>(updated);
+
+        return Ok(responseModel);
+    }
 
 
-
-
-        [HttpPost]
+    [HttpPost]
     public async Task<ActionResult<AddressResponseModel>> PostAddress(AddressRequestModel requestAddress)
     {
         Address address = mapper.Map<Address>(requestAddress);
@@ -48,14 +79,14 @@ public class AddressController : ControllerBase
             return BadRequest();
         }
         AddressResponseModel responseModel = mapper.Map<AddressResponseModel>(createdAddress);
-        return CreatedAtAction("GetAddresses", new { addressId = createdAddress.AddressId }, responseModel);
+        return CreatedAtAction("GetAddresses", new { street = responseModel.Street }, responseModel);
     }
 
 
-    [HttpDelete("{addressId}")]
-    public async Task<IActionResult> DeleteAddress(Guid addressId)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAddress(Guid id)
     {
-        Address? address = await addressRepository.GetAddressByGuid(addressId);
+        var address = await addressRepository.GetAddressByGuid(id);
         if (address == null)
         {
             return NotFound();

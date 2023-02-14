@@ -34,28 +34,48 @@ public class LegalPersonController : ControllerBase
         return Ok(responseModels);
     }
 
-
-
-    [HttpPatch("{name}")]
-    public async Task<IActionResult> PatchLegalPerson(string name, LegalPersonUpdateModel legalPersonUpdate)
+    [HttpGet("{legalPersonGuid}")]
+    public async Task<ActionResult<LegalPersonResponseModel>> GetLegalPerson(Guid legalPersonGuid)
     {
-        var legalPerson = await legalPersonRepository.GetLegalPersonsByName(name);
-        if (legalPerson == null || legalPersonUpdate == null)
+        var legalPerson = await legalPersonRepository.GetLegalPersonByGuid(legalPersonGuid);
+        if (legalPerson == null)
+        {
+            return NotFound();
+        }
+        var responseModel = mapper.Map<LegalPersonResponseModel>(legalPerson);
+        return responseModel;
+    }
+
+
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<LegalPersonResponseModel>> PatchLegalPerson(Guid id, [FromBody] LegalPersonRequestModel patchModel)
+    {
+        var person = await legalPersonRepository.GetLegalPersonByGuid(id);
+        if (person == null)
+        {
+            return NotFound();
+        }
+
+        mapper.Map(patchModel, person);
+
+        var updated = await legalPersonRepository.UpdateLegalPerson(id, person);
+        if (updated == null)
         {
             return BadRequest();
         }
-        mapper.Map(legalPersonUpdate, legalPerson);
 
-        await legalPersonRepository.UpdateLegalPersons(legalPerson);
-        return NoContent();
+        var responseModel = mapper.Map<LegalPersonResponseModel>(updated);
+
+        return Ok(responseModel);
     }
+
 
     [HttpPost]
     public async Task<ActionResult<LegalPersonResponseModel>> PostLegalPerson(LegalPersonRequestModel requestLegalPerson)
     {
         LegalPerson legalPerson = mapper.Map<LegalPerson>(requestLegalPerson);
-        LegalPerson? createdLegalPerson = await legalPersonRepository.CreateLegalPersons(legalPerson);
-        if (legalPerson == null)
+        LegalPerson? createdLegalPerson = await legalPersonRepository.CreateLegalPerson(legalPerson);
+        if (createdLegalPerson == null)
         {
             return BadRequest();
         }
@@ -64,15 +84,15 @@ public class LegalPersonController : ControllerBase
     }
 
 
-    [HttpDelete("{name}")]
-    public async Task<IActionResult> DeleteLegalPerson(string name)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteLegalPerson(Guid id)
     {
-        LegalPerson? legalPerson = await legalPersonRepository.GetLegalPersonsByName(name);
+        var legalPerson = await legalPersonRepository.GetLegalPersonByGuid(id);
         if (legalPerson == null)
         {
             return NotFound();
         }
-        await legalPersonRepository.DeleteLegalPersons(legalPerson.LegalPersonId);
+        await legalPersonRepository.DeleteLegalPerson(legalPerson.LegalPersonId);
 
         return NoContent();
     }

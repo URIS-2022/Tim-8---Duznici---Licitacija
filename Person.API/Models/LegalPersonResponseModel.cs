@@ -60,6 +60,7 @@ namespace Person.API.Models
         [DataMember]
         public string AccountNumber { get; set; }
 
+        public LegalPersonResponseModel() { }
         public LegalPersonResponseModel(ContactPersonResponseModel contactPerson, string name, string identificationNumber, Guid addressId, string phoneNumber1, string phoneNumber2, string fax, string email, string accountNumber)
         {
             ContactPerson = contactPerson;
