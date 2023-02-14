@@ -18,12 +18,12 @@ namespace Payment.API.Controllers
     [ApiController]
     [Produces("application/json", "application/xml")]
     [Consumes("application/json", "application/xml")]
-    public class PaymentEntitiesController : ControllerBase
+    public class PaymentsController : ControllerBase
     {
         private readonly IPaymentRepository _paymentRepository;
         private readonly IMapper mapper;
 
-        public PaymentEntitiesController(IPaymentRepository paymentRepository, IMapper mapper)
+        public PaymentsController(IPaymentRepository paymentRepository, IMapper mapper)
         {
             _paymentRepository = paymentRepository;
             this.mapper = mapper;
@@ -56,9 +56,9 @@ namespace Payment.API.Controllers
         }
 
 
-
+        // POST: api/Payments
         [HttpPost]
-        public async Task<ActionResult<PaymentResponseModel>> PostPayment(PaymentRequestModel requestModel)
+        public async Task<ActionResult<PaymentResponseModel>> AddPayment(PaymentRequestModel requestModel)
         {
             var requestedPayment = mapper.Map<Entities.Payment>(requestModel);
             Entities.Payment? createdPayment = await _paymentRepository.AddPayment((Entities.Payment)requestedPayment);
@@ -66,8 +66,8 @@ namespace Payment.API.Controllers
             {
                 return BadRequest();
             }
-            PaymentResponseModel responseModel = mapper.Map<PaymentResponseModel>(createdPayment);
-            return CreatedAtAction("GetPayments", new { referenceNumber = responseModel.ReferenceNumber }, responseModel);
+            var responseModel = mapper.Map<PaymentResponseModel>(createdPayment);
+            return CreatedAtAction("GetPaymentByGuid", new { id = createdPayment.Guid }, responseModel);
         }
 
 

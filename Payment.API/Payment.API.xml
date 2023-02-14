@@ -52,6 +52,9 @@
             <param name="referenceNumber">The referenceNumber of the PaymentWarrant to delete.</param>
             <returns>An asynchronous task that represents the operation.</returns>
         </member>
+        <member name="M:Payment.API.Data.Repository.PaymentRepository.AddPayment(Payment.API.Entities.Payment)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentRepository.AddPayment(Payment.API.Entities.Payment)"/>
+        </member>
         <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.#ctor(Payment.API.Data.PaymentDBContext)">
             <summary>
             Initializes a new instance of the PaymentWarrantRepository class.

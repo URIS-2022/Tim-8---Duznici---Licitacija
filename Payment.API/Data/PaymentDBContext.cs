@@ -50,7 +50,7 @@ public class PaymentDBContext : DbContext
            );
         */
 
-    modelBuilder.Entity<Entities.Payment>(entity =>
+        modelBuilder.Entity<Entities.Payment>(entity =>
         {
             entity.HasKey(e => e.Guid);
             entity.Property(e => e.AccountNumber).IsRequired();
@@ -64,17 +64,17 @@ public class PaymentDBContext : DbContext
             /*entity.HasOne(p => p.paymentWarrant)
             .WithMany(pw => pw.payments)
             .HasForeignKey(pw => pw.ReferenceNumber);*/
-  
-            entity.HasOne(e => e.paymentWarrant)
-                .WithMany(e => e.payments)
-                .HasForeignKey(e => e.ReferenceNumber)
-                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(e => e.PaymentWarrant)
+                .WithMany(pw => pw.Payments)
+                .HasForeignKey(e => e.ReferenceNumber);
         });
 
         modelBuilder.Entity<PaymentWarrant>(entity =>
         {
             entity.HasKey(e => e.ReferenceNumber);
-            entity.HasIndex(e => e.ReferenceNumber).IsUnique();
+            entity.HasAlternateKey(e => e.ReferenceNumber);
+            //entity.HasIndex(e => e.ReferenceNumber).IsUnique();
             entity.Property(e => e.ReferenceNumber).IsRequired();
             entity.Property(e => e.TotalAmount).HasColumnType("decimal(18,2)");
         });

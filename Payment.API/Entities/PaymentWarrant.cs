@@ -9,7 +9,9 @@ namespace Payment.API.Entities
         public Guid PayerGuid { get; set; }
         public decimal TotalAmount { get; set; }
         public Guid PublicBiddingGuid { get; set; }
-        public ICollection<Payment> payments { get; internal set; }
+        public ICollection<Payment> Payments { get; set; }
+
+        //public Payment Payments { get; set; }
 
         public PaymentWarrant()
         {

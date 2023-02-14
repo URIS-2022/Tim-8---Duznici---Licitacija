@@ -111,10 +111,24 @@ namespace Payment.API.Controllers
 
 
         // DELETE: api/PaymentWarrants/referenceNumber
-        [HttpDelete("{referenceNumber}")]
+        [HttpDelete("reference/{referenceNumber}")]
         public async Task<IActionResult> DeletePaymentWarrantByReferenceNumber(string referenceNumber)
         {
             PaymentWarrant? paymentWarrant = await _paymentWarrantRepository.GetByReferenceNumber(referenceNumber);
+            if (paymentWarrant == null)
+            {
+                return NotFound();
+            }
+            await _paymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(paymentWarrant.ReferenceNumber);
+
+            return NoContent();
+        }
+
+        // DELETE: api/PaymentWarrants/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePaymentWarrant(Guid id)
+        {
+            var paymentWarrant = await _paymentWarrantRepository.GetPaymentWarrantByGuid(id);
             if (paymentWarrant == null)
             {
                 return NotFound();
@@ -123,7 +137,6 @@ namespace Payment.API.Controllers
 
             return NoContent();
         }
-
 
         /*private bool PaymentWarrantExists(string id)
         {

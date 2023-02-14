@@ -31,10 +31,10 @@ public class PaymentWarrantRepository : IPaymentWarrantRepository
         return paymentWarrant;
     }
 
-    /// <inheritdoc cref="IPaymentWarrantRepository.DeletePaymentWarrant(Guid)"/>
+    /// <inheritdoc cref="IPaymentWarrantRepository.DeletePaymentWarrant"/>
     public async Task DeletePaymentWarrant(Guid guid)
     {
-        var paymentWarrant = await context.PaymentWarrants.FindAsync(guid);
+        var paymentWarrant = await context.PaymentWarrants.SingleOrDefaultAsync(x => x.Guid == guid);
         if (paymentWarrant == null)
         {
             throw new InvalidOperationException("PaymentWarrant not found");

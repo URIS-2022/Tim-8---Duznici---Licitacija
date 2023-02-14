@@ -4,9 +4,11 @@ using System.Runtime.Serialization;
 
 namespace Payment.API.Models.PaymentModels;
 
-[DataContract(Name = "PaymentEntity", Namespace = "")]
+[DataContract(Name = "Payment", Namespace = "")]
 public class PaymentResponseModel
 {
+    [DataMember]
+    public Guid Guid { get; set; }
     [DataMember]
     public string AccountNumber { get; set; }
     [DataMember]
@@ -26,6 +28,7 @@ public class PaymentResponseModel
 
     public PaymentResponseModel(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrantResponseModel paymentWarrant)
     {
+        Guid = Guid.NewGuid();
         AccountNumber = accountNumber;
         ReferenceNumber = referenceNumber;
         TotalAmount = totalAmount;

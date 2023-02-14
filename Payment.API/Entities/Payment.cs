@@ -5,6 +5,8 @@ namespace Payment.API.Entities
 {
     public class Payment : IValidatableObject
     {
+        internal object paymentWarrant;
+
         public Guid Guid { get; set; }
         public string AccountNumber { get; set; }
         public string ReferenceNumber { get; set; }
@@ -14,7 +16,7 @@ namespace Payment.API.Entities
         public DateTime PaymentDate { get; set; }
         public Guid PublicBiddingGuid { get; set; }
         public Guid PaymentWarrantGuid { get; set; }
-        public PaymentWarrant paymentWarrant { get; internal set; }
+        public PaymentWarrant PaymentWarrant { get; set; }
 
         //public object PaymentWarrant { get; set; }
 

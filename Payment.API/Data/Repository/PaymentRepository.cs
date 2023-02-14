@@ -19,11 +19,13 @@ public class PaymentRepository : IPaymentRepository
     {
         return await context.Payments.FindAsync(guid);
     }
+
+    /// <inheritdoc cref="IPaymentRepository.AddPayment"/>
     public async Task<Entities.Payment> AddPayment(Entities.Payment paymentEntity)
     {
-        context.Payments.Add(paymentEntity);
+        var created = context.Payments.Add(paymentEntity);
         await context.SaveChangesAsync();
-        return paymentEntity;
+        return created.Entity;
     }
 
     public async Task DeletePayment(Guid guid)
