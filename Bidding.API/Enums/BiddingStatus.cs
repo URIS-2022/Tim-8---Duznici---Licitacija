@@ -8,7 +8,7 @@ namespace Bidding.API.Enums
 
     public enum BiddingStatus
     {
-       // None = 0,// Mozda treba izbaciti None kod svih Enuma
+        None = 0,// Mozda treba izbaciti None kod svih Enuma
         FirstRound,
         SecondRoundOldConditions,
         SecondRoundNewConditions
@@ -18,7 +18,7 @@ namespace Bidding.API.Enums
     {
         private readonly Dictionary<BiddingStatus, string> _biddingStatusMapping = new Dictionary<BiddingStatus, string>
         {
-        // { BiddingStatus.None, "Nije dodeljeno" },
+         { BiddingStatus.None, "Nije dodeljeno" },
          { BiddingStatus.FirstRound, "Prvi krug" },
          { BiddingStatus.SecondRoundOldConditions, "Drugi krug sa starim uslovima" },
          { BiddingStatus.SecondRoundNewConditions, "Drugi krug sa novim uslovima" },

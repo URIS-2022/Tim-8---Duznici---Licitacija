@@ -16,14 +16,14 @@ namespace Bidding.API.Models
 
         public string? IdentificationNumber { get; set; }
 
-        public Address? address { get; set; }
+        public Address address { get; set; }
 
 
 
         public int? NumberOfBoard { get; set; }
 
 
-        public PublicBidding PublicBidding { get; set; }
+        public Guid PublicBidding { get; set; }
 
         public RepresentativeUpdateModel() { }
 
@@ -31,7 +31,7 @@ namespace Bidding.API.Models
         // public List<BuyerApplication> BuyerRepresentatives { get; set; }
 
         public RepresentativeUpdateModel(string? firstName, string? lastName, string? identificationNumber,
-                         Address? address, int? numberOfBoard, PublicBidding publicBidding)
+                         Address address, int? numberOfBoard, Guid publicBidding)
         {
             
             FirstName = firstName;

@@ -5,7 +5,7 @@ namespace Bidding.API.Enums
 {
     public enum PublicBiddingType
     {
-       // None = 0,
+        None = 0,
         PublicLicitation,
         OpeningOfSealedBids
         
@@ -15,7 +15,7 @@ namespace Bidding.API.Enums
     {
         private readonly Dictionary<PublicBiddingType, string> _biddingTypeMapping = new Dictionary<PublicBiddingType, string>
         {
-        // { PublicBiddingType.None, "Nije dodeljeno" },
+         { PublicBiddingType.None, "Nije dodeljeno" },
          { PublicBiddingType.PublicLicitation, "Javna licitacija" },
          { PublicBiddingType.OpeningOfSealedBids, "Otvaranje zatvorenih ponuda" },
          

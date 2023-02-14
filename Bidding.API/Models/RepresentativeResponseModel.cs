@@ -23,7 +23,7 @@ namespace Bidding.API.Models
 
         public int NumberOfBoard { get; set; }
         
-        [DataMember]
+       [DataMember]
         public PublicBidding publicBidding { get; set; }
 
         [DataMember]

@@ -10,7 +10,8 @@ namespace Bidding.API.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string IdentificationNumber { get; set; }
-        public Address address { get; set; }
+        //public Address address { get; set; }
+        public Guid address { get; set; }
 
         public int NumberOfBoard { get; set; }
 
@@ -21,7 +22,7 @@ namespace Bidding.API.Models
         public RepresentativeRequestModel() { }
 
         public RepresentativeRequestModel(string firstName, string lastName, string identificationNumber,
-                         Address address, int numberOfBoard, Guid publicBidding)
+                         Guid address, int numberOfBoard, Guid publicBidding)
         {
             
             FirstName = firstName;

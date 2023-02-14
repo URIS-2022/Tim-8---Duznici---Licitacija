@@ -7,7 +7,7 @@ namespace Bidding.API.Enums
 
     public enum Municipality
     {
-      //  None = 0,
+        None = 0,
         Cantavir,
         BackiVinogradi,
         Bikovo,
@@ -24,7 +24,7 @@ namespace Bidding.API.Enums
     {
         private readonly Dictionary<Municipality, string> _muncipalityMapping = new Dictionary<Municipality, string>
         {
-        // { Municipality.None, "Nije dodeljeno" },
+         { Municipality.None, "Nije dodeljeno" },
          { Municipality.Cantavir, "Čantavir" },
          { Municipality.BackiVinogradi, "Bački Vinogradi" },
          { Municipality.Bikovo, "Bikovo" },

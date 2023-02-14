@@ -16,8 +16,8 @@ namespace Bidding.API.Profiles
            .ForMember(dest => dest.IdentificationNumber, opt => opt.Condition(src => src.IdentificationNumber != null))
            .ForMember(dest => dest.address, opt => opt.Condition(src => src.address != null))
            .ForMember(dest => dest.NumberOfBoard, opt => opt.Condition(src => src.NumberOfBoard.HasValue))
-           .ForMember(dest => dest.publicBidding, opt => opt.Condition(src => src.PublicBidding != null));
-          // .ForMember(dest => dest.BuyerRepresentatives, opt => opt.Condition(src => src.BuyerRepresentatives != null));
+           .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBidding != Guid.Empty));
+           //.ForMember(dest => dest.BuyerRepresentatives, opt => opt.Condition(src => src.BuyerRepresentatives != null))
         }
     }
 }

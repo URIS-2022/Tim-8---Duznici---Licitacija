@@ -7,7 +7,7 @@ namespace Bidding.API.Models
     public class BiddingOfferUpdateModel
     {
         
-        public Representative RepresentativeGuid { get; set; }
+        public Guid RepresentativeGuid { get; set; }
         public Guid PublicBiddingGuid { get; set; }
         public DateTime? Date { get; set; }
         public float? Offer { get; set; }
@@ -16,7 +16,7 @@ namespace Bidding.API.Models
 
         public BiddingOfferUpdateModel() { }
 
-        public BiddingOfferUpdateModel( Representative representativeGuid, Guid publicBiddingGuid, DateTime? date, float? offer, Guid buyerGuid)
+        public BiddingOfferUpdateModel( Guid representativeGuid, Guid publicBiddingGuid, DateTime? date, float? offer, Guid buyerGuid)
         {
             
             RepresentativeGuid = representativeGuid;
