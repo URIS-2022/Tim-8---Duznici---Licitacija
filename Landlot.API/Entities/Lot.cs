@@ -35,7 +35,7 @@ namespace Landlot.API.Entities
         [JsonConverter(typeof(LandlotDrainageConverter))]
         public LandlotDrainage DrainageState { get; set; }
 
-        public Land Land { get; set; }
+        public Land? Land { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
