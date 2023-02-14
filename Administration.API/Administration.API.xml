@@ -4,5 +4,129 @@
         <name>Administration.API</name>
     </assembly>
     <members>
+        <member name="T:Administration.API.Data.AdministrationDbContext">
+            <summary>
+            AdministrationDbContext is a class that inherits from DbContext. 
+            It represents the database context for the administrationentication system.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.AdministrationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Administration.API.Data.AdministrationDbContext})">
+            <summary>
+            Initializes a new instance of the AdministrationDbContext class.
+            </summary>
+            <param name="options">The options to be used by a DbContext.</param>
+        </member>
+        <member name="P:Administration.API.Data.AdministrationDbContext.CommitteeMembers">
+            <summary>
+            A DbSet of SystemUser entities.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.AdministrationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Overrides OnModelCreating method to configure the model creating process.
+            </summary>
+            <param name="modelBuilder">The ModelBuilder instance to be used for model creating.</param>
+        </member>
+        <member name="T:Administration.API.Data.Repository.CommitteeRepository">
+            <summary>
+            Implementation of the ICommitteeRepository
+            interface for managing Committee entities in the database.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeRepository.#ctor(Administration.API.Data.AdministrationDbContext)">
+            <summary>
+            Initializes a new instance of the CommitteeRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeRepository.GetCommittees">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeRepository.GetCommittees"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeRepository.GetCommittee(System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeRepository.GetCommittee(System.Guid)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeRepository.UpdateCommittee(System.Guid,Administration.API.Entities.Committee)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeRepository.UpdateCommittee(System.Guid,Administration.API.Entities.Committee)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeRepository.AddCommittee(Administration.API.Entities.Committee)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeRepository.AddCommittee(Administration.API.Entities.Committee)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeRepository.DeleteCommittee(System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeRepository.DeleteCommittee(System.Guid)"/>
+        </member>
+        <member name="T:Administration.API.Data.Repository.ICommitteeRepository">
+            <summary>
+            The interface for committee repository, provides methods for getting, updating, adding and deleting a committee
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeRepository.GetCommittees">
+            <summary>
+            Gets a list of all committees.
+            </summary>
+            <returns>A list of committees.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeRepository.GetCommittee(System.Guid)">
+            <summary>
+            Gets a specific committee by its identifier.
+            </summary>
+            <param name="id">The identifier of the committee.</param>
+            <returns>The committee with the specified identifier.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeRepository.UpdateCommittee(System.Guid,Administration.API.Entities.Committee)">
+            <summary>
+            Updates a specific committee.
+            </summary>
+            <param name="id">The identifier of the committee to update.</param>
+            <param name="patchDocument">The updated values for the committee.</param>
+            <returns>The updated committee.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeRepository.AddCommittee(Administration.API.Entities.Committee)">
+            <summary>
+            Adds a new committee.
+            </summary>
+            <param name="committee">The committee to add.</param>
+            <returns>The added committee.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeRepository.DeleteCommittee(System.Guid)">
+            <summary>
+            Deletes a specific committee.
+            </summary>
+            <param name="id">The identifier of the committee to delete.</param>
+            <returns>The deleted committee.</returns>
+        </member>
+        <member name="T:Administration.API.Enums.DocumentTypeConverter">
+            <summary>
+            The DocumentTypeConverter class provides a custom implementation for converting the DocumentType enum to and from JSON.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Enums.DocumentTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the DocumentType value from a JSON reader.
+            </summary>
+            <param name="reader">The JSON reader to read from.</param>
+            <param name="typeToConvert">The type to convert to.</param>
+            <param name="options">The JSON serializer options.</param>
+            <returns>The DocumentType value read from the JSON reader.</returns>
+        </member>
+        <member name="M:Administration.API.Enums.DocumentTypeConverter.Write(System.Text.Json.Utf8JsonWriter,Administration.API.Enums.DocumentType,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the DocumentType value to a JSON writer.
+            </summary>
+            <param name="writer">The JSON writer to write to.</param>
+            <param name="value">The DocumentType value to write.</param>
+            <param name="options">The JSON serializer options.</param>
+        </member>
+        <member name="T:Administration.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Administration.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Administration.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Administration.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
