@@ -20,46 +20,42 @@ namespace Person.API.Data.Repository
             this.context = context;
 
         }
-        public async Task<List<LegalPerson>> GetAllLegalPersons()
+        public async Task<IEnumerable<LegalPerson>> GetAllLegalPersons()
         {
             return await context.LegalPersons
                 .ToListAsync();
         }
-        public async Task<LegalPerson> GetLegalPersonsByGuid(Guid LegalPersonId)
+
+        public async Task<LegalPerson> GetLegalPersonByGuid(Guid LegalPersonId)
         {
-            return await context.LegalPersons.FirstOrDefaultAsync(pp => pp.LegalPersonId == LegalPersonId);
+            return await context.LegalPersons.FirstOrDefaultAsync(o => o.LegalPersonId == LegalPersonId);
         }
 
-        public async Task<LegalPerson?> GetLegalPersonsByName(string name)
-        {
-            LegalPerson? legalPerson = await context.LegalPersons.SingleOrDefaultAsync(x => x.Name == name);
-
-            return legalPerson;
-        }
-
-        public async Task<LegalPerson?> GetLegalPersonsByIdentificationNumber(string identificatioNnumber)
-        {
-            LegalPerson? legalPerson = await context.LegalPersons.SingleOrDefaultAsync(x => x.IdentificationNumber == identificatioNnumber);
-
-            return legalPerson;
-        }
-        public async Task<LegalPerson> CreateLegalPersons(LegalPerson legalPerson)
+        public async Task<LegalPerson> CreateLegalPerson(LegalPerson legalPerson)
         {
             context.LegalPersons.Add(legalPerson);
             await context.SaveChangesAsync();
             return legalPerson;
         }
 
-        public async Task DeleteLegalPersons(Guid LegalPersonId)
+        public async Task DeleteLegalPerson(Guid LegalPersonId)
         {
-            var legalPerson = await GetLegalPersonsByGuid(LegalPersonId);
+            var legalPerson = await GetLegalPersonByGuid(LegalPersonId);
             context.LegalPersons.Remove(legalPerson);
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateLegalPersons(LegalPerson legalPerson)
+        public async Task<LegalPerson?> UpdateLegalPerson(Guid id, LegalPerson updateModel)
         {
+            var legalPerson = await context.LegalPersons.FirstOrDefaultAsync(c => c.LegalPersonId == id);
+            if (legalPerson == null)
+            {
+                return null;
+            }
+            context.Entry(legalPerson).CurrentValues.SetValues(updateModel);
             await context.SaveChangesAsync();
+            return legalPerson;
         }
+
     }
 }

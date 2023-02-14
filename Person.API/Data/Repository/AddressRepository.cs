@@ -20,36 +20,44 @@ namespace Person.API.Data.Repository
 
         }
 
-        public async Task<IEnumerable<Address>> GetAllAddress()
+        public async Task<IEnumerable<Address>> GetAllAddresses()
         {
             return await context.Addresses.ToListAsync();
         }
 
-        public async Task<Address?> GetAddressByGuid(Guid addressId)
+        public async Task<Address?> GetAddressByGuid(Guid AddressId)
         {
-            return await context.Addresses.FindAsync(addressId);
+            return await context.Addresses.FirstOrDefaultAsync(a => a.AddressId == AddressId);
         }
 
-        public async Task<Address?> CreateAddress(Address address)
+        public async Task<Address> CreateAddress(Address address)
         {
-            var created = context.Addresses.Add(address);
+            context.Addresses.Add(address);
             await context.SaveChangesAsync();
-            return created.Entity;
+            return address;
         }
 
-        
-        public async Task DeleteAddress(Guid addressId)
+
+        public async Task DeleteAddress(Guid AddressId)
         {
-            var address = await context.Addresses.FindAsync(addressId);
-            if (address == null)
-            {
-                throw new InvalidOperationException("Address not found");
-            }
+            var address = await GetAddressByGuid(AddressId);
             context.Addresses.Remove(address);
             await context.SaveChangesAsync();
         }
 
-        
+        public async Task<Address?> UpdateAddress(Guid id, Address updateModel)
+        {
+            var address = await context.Addresses.FirstOrDefaultAsync(a => a.AddressId == id);
+            if (address == null)
+            {
+                return null;
+            }
+            context.Entry(address).CurrentValues.SetValues(updateModel);
+            await context.SaveChangesAsync();
+            return address;
+        }
+
+
     }
 }
 

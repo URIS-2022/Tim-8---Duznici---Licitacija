@@ -32,7 +32,6 @@ namespace Person.API.Data.Repository
         }
 
 
-
         public async Task<ContactPerson> CreateContactPerson(ContactPerson contactPerson)
         {
             context.ContactPersons.Add(contactPerson);
@@ -59,11 +58,7 @@ namespace Person.API.Data.Repository
             return contactPerson;
         }
 
-        public async Task<bool> IsValidContactPerson(string phoneNumber)
-        {
-            var listOfContactPersons = await context.ContactPersons.Where(cp => cp.PhoneNumber == phoneNumber).ToListAsync();
-            return listOfContactPersons.Count == 0;
-        }
+        
     }
 }
 
