@@ -61,5 +61,20 @@ namespace Person.API.Models
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti broj računa!")]
         public string AccountNumber { get; set; }
+
+        public LegalPersonRequestModel(Guid contactPersonId,string name, string identificationNumber, Guid addressId, string phoneNumber1,
+                                           string phoneNumber2, string fax, string email, string accountNumber)
+        {
+            ContactPersonId = contactPersonId;
+            Name = name;
+            IdentificationNumber = identificationNumber;     
+            AddressId = addressId;
+            PhoneNumber1 = phoneNumber1;
+            PhoneNumber2 = phoneNumber2;
+            Fax = fax;
+            Email = email;
+            AccountNumber = accountNumber;
+
+        }
     }
 }

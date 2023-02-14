@@ -39,8 +39,13 @@ namespace Person.API.Models
         public string ZipCode { get; set; }
 
 
-        public AddressRequestModel()
+        public AddressRequestModel(string country,string street,string streetNumber,string place,string zipCode)
         {
+            Country = country;  
+            Street = street;
+            StreetNumber = streetNumber;
+            Place = place;
+            ZipCode = zipCode;
 
         }
 

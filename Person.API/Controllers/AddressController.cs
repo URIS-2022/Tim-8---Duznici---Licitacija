@@ -36,21 +36,9 @@ public class AddressController : ControllerBase
 
 
 
-    [HttpPatch("{zipcode}")]
-    public async Task<IActionResult> PatchAddress(string zipCode, AddressUpdateModel addressUpdate)
-    {
-        var address = await addressRepository.GetAddressB(zipCode);
-        if (address == null || addressUpdate == null)
-        {
-            return BadRequest();
-        }
-        mapper.Map(addressUpdate, address);
 
-        await addressRepository.UpdateAddress(address);
-        return NoContent();
-    }
 
-    [HttpPost]
+        [HttpPost]
     public async Task<ActionResult<AddressResponseModel>> PostAddress(AddressRequestModel requestAddress)
     {
         Address address = mapper.Map<Address>(requestAddress);
@@ -64,15 +52,15 @@ public class AddressController : ControllerBase
     }
 
 
-    [HttpDelete("{zipCode}")]
-    public async Task<IActionResult> DeleteAddress(string zipCode)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAddress(Guid addressId)
     {
-        Address? address = await addressRepository.GetAddressByZipCode(zipCode);
+        Address? address = await addressRepository.GetAddressByGuid(addressId);
         if (address == null)
         {
             return NotFound();
         }
-        await addressRepository.DeleteAddresses(address.AddressId);
+        await addressRepository.DeleteAddress(address.AddressId);
 
         return NoContent();
     }

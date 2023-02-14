@@ -22,31 +22,30 @@ namespace Person.API.Data.Repository
 
         public async Task<IEnumerable<Address>> GetAllAddress()
         {
-            return await context.Addresses
-                .ToListAsync();
+            return await context.Addresses.ToListAsync();
         }
 
-        public async Task<Address> GetAddressByGuid(Guid AddressId)
+        public async Task<Address?> GetAddressByGuid(Guid addressId)
         {
-            return await context.Addresses.FirstOrDefaultAsync(a => a.AddressId == AddressId);
+            return await context.Addresses.FindAsync(addressId);
         }
 
-        public async Task<Address> CreateAddress(Address address)
+        public async Task<Address?> CreateAddress(Address address)
         {
-            context.Addresses.Add(address);
+            var created = context.Addresses.Add(address);
             await context.SaveChangesAsync();
-            return address;
+            return created.Entity;
         }
 
-        public async Task DeleteAddress(Guid AddressId)
+        
+        public async Task DeleteAddress(Guid addressId)
         {
-            var address = await GetAddressByGuid(AddressId);
+            var address = await context.Addresses.FindAsync(addressId);
+            if (address == null)
+            {
+                throw new InvalidOperationException("Address not found");
+            }
             context.Addresses.Remove(address);
-            await context.SaveChangesAsync();
-        }
-
-        public async Task UpdateAddress(Address address)
-        {
             await context.SaveChangesAsync();
         }
 

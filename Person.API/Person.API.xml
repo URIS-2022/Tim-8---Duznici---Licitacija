@@ -16,453 +16,438 @@
         <member name="M:Person.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:Person.API.Models.Address.AddressCreationModel">
+        <member name="T:Person.API.Models.AddressRequestModel">
             <summary>
             DTO za kreiranje adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressCreationModel.Country">
+        <member name="P:Person.API.Models.AddressRequestModel.Country">
             <summary>
             DrzavA
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressCreationModel.Street">
+        <member name="P:Person.API.Models.AddressRequestModel.Street">
             <summary>
             Ulica adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressCreationModel.StreetNumber">
+        <member name="P:Person.API.Models.AddressRequestModel.StreetNumber">
             <summary>
             Broj adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressCreationModel.Place">
+        <member name="P:Person.API.Models.AddressRequestModel.Place">
             <summary>
             Mesto adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressCreationModel.ZipCode">
+        <member name="P:Person.API.Models.AddressRequestModel.ZipCode">
             <summary>
             Postanski broj adrese
             </summary>
         </member>
-        <member name="T:Person.API.Models.Address.AddressModel">
-            <summary>
-            Dto za adresu
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.Address.AddressModel.Country">
+        <member name="P:Person.API.Models.AddressResponseModel.Country">
             <summary>
             Drzava
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressModel.Street">
+        <member name="P:Person.API.Models.AddressResponseModel.Street">
             <summary>
             Ulica adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressModel.StreetNumber">
+        <member name="P:Person.API.Models.AddressResponseModel.StreetNumber">
             <summary>
             Broj adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressModel.Place">
+        <member name="P:Person.API.Models.AddressResponseModel.Place">
             <summary>
             Mesto adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressModel.ZipCode">
+        <member name="P:Person.API.Models.AddressResponseModel.ZipCode">
             <summary>
             Postanski broj adrese
             </summary>
         </member>
-        <member name="T:Person.API.Models.Address.AddressUpdateModel">
+        <member name="T:Person.API.Models.AddressUpdateModel">
             <summary>
             DTO za update adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressUpdateModel.AddressID">
+        <member name="P:Person.API.Models.AddressUpdateModel.Country">
             <summary>
-            ID adrese
+            Drzava
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressUpdateModel.Country">
-            <summary>
-            DrzavA
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.Address.AddressUpdateModel.Street">
+        <member name="P:Person.API.Models.AddressUpdateModel.Street">
             <summary>
             Ulica adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressUpdateModel.StreetNumber">
+        <member name="P:Person.API.Models.AddressUpdateModel.StreetNumber">
             <summary>
             Broj adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressUpdateModel.Place">
+        <member name="P:Person.API.Models.AddressUpdateModel.Place">
             <summary>
             Mesto adrese
             </summary>
         </member>
-        <member name="P:Person.API.Models.Address.AddressUpdateModel.ZipCode">
+        <member name="P:Person.API.Models.AddressUpdateModel.ZipCode">
             <summary>
             Postanski broj adrese
             </summary>
         </member>
-        <member name="T:Person.API.Models.ContactPerson.ContactPersonCreationModel">
+        <member name="T:Person.API.Models.ContactPersonRequestModel">
             <summary>
             Dto Create kontakt osoba
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonCreationModel.FirstName">
+        <member name="P:Person.API.Models.ContactPersonRequestModel.FirstName">
             <summary>
             Ime kontakt osobae
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonCreationModel.LastName">
+        <member name="P:Person.API.Models.ContactPersonRequestModel.LastName">
             <summary>
             Prezime kontakt osobe
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonCreationModel.Function">
+        <member name="P:Person.API.Models.ContactPersonRequestModel.Function">
             <summary>
             Funkcija kontakt osobe
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonCreationModel.PhoneNumber">
+        <member name="P:Person.API.Models.ContactPersonRequestModel.PhoneNumber">
             <summary>
             Telefon kontakt osobe
             </summary>
         </member>
-        <member name="T:Person.API.Models.ContactPerson.ContactPersonModel">
-            <summary>
-            Dto kontakt osoba
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonModel.FirstName">
+        <member name="P:Person.API.Models.ContactPersonResponseModel.FirstName">
             <summary>
             Ime kontakt osobe
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonModel.LastName">
+        <member name="P:Person.API.Models.ContactPersonResponseModel.LastName">
             <summary>
             Prezime kontakt osobe
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonModel.Function">
+        <member name="P:Person.API.Models.ContactPersonResponseModel.Function">
             <summary>
             Funkcija kontakt osoba
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonModel.PhoneNumber">
+        <member name="P:Person.API.Models.ContactPersonResponseModel.PhoneNumber">
             <summary>
             Telefon kontakt osobe
             </summary>
         </member>
-        <member name="T:Person.API.Models.ContactPerson.ContactPersonUpdateModel">
+        <member name="T:Person.API.Models.ContactPersonUpdateModel">
             <summary>
             Dto Update kontakt osoba
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonUpdateModel.FirstName">
+        <member name="P:Person.API.Models.ContactPersonUpdateModel.FirstName">
             <summary>
             Ime kontakt osobe
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonUpdateModel.LastName">
+        <member name="P:Person.API.Models.ContactPersonUpdateModel.LastName">
             <summary>
             Prezime kontakt osobe
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonUpdateModel.Function">
+        <member name="P:Person.API.Models.ContactPersonUpdateModel.Function">
             <summary>
             Funckija kontakt osobe
             </summary>
         </member>
-        <member name="P:Person.API.Models.ContactPerson.ContactPersonUpdateModel.PhoneNumber">
+        <member name="P:Person.API.Models.ContactPersonUpdateModel.PhoneNumber">
             <summary>
             Telefon kontakt osobe
             </summary>
         </member>
-        <member name="T:Person.API.Models.LegalPerson.LegalPersonCreationModel">
+        <member name="T:Person.API.Models.LegalPersonRequestModel">
             <summary>
             Dto Create pravno lice
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.ContactPersonId">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.ContactPersonId">
             <summary>
             Kontakt osoba id
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.Name">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.Name">
             <summary>
             Naziv pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.IdentificationNumber">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.IdentificationNumber">
             <summary>
             Matični broj pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.AddressId">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.AddressId">
             <summary>
             Adresa id
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.PhoneNumber1">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.PhoneNumber1">
             <summary>
             Broj telefona pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.PhoneNumber2">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.PhoneNumber2">
             <summary>
             Broj telefona 2 pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.Fax">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.Fax">
             <summary>
             Faks pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.Email">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.Email">
             <summary>
             Email pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonCreationModel.AccountNumber">
+        <member name="P:Person.API.Models.LegalPersonRequestModel.AccountNumber">
             <summary>
             Broj računa pravnog lica
             </summary>
         </member>
-        <member name="T:Person.API.Models.LegalPerson.LegalPersonModel">
+        <member name="T:Person.API.Models.LegalPersonResponseModel">
             <summary>
             Dto pravno lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.Name">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.Name">
             <summary>
             Naziv pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.IdentificationNumber">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.IdentificationNumber">
             <summary>
             Matični broj pravnog lica
             </summary>
             
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.AddressId">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.AddressId">
             <summary>
             Adresa id
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.PhoneNumber1">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.PhoneNumber1">
             <summary>
             Broj telefona pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.PhoneNumber2">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.PhoneNumber2">
             <summary>
             Broj telefona 2 pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.Fax">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.Fax">
             <summary>
             Faks pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.Email">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.Email">
             <summary>
             Email pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonModel.AccountNumber">
+        <member name="P:Person.API.Models.LegalPersonResponseModel.AccountNumber">
             <summary>
             Broj računa pravnog lica
             </summary>
         </member>
-        <member name="T:Person.API.Models.LegalPerson.LegalPersonUpdateModel">
+        <member name="T:Person.API.Models.LegalPersonUpdateModel">
             <summary>
              Dto Update pravno lice
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.ContactPersonId">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.ContactPersonId">
             <summary>
             Kontakt osoba
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.Name">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.Name">
             <summary>
             Naziv pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.IdentificationNumber">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.IdentificationNumber">
             <summary>
             Matični broj pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.AddressId">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.AddressId">
             <summary>
             Adresa id
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.PhoneNumber1">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.PhoneNumber1">
             <summary>
             Broj telefona pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.PhoneNumber2">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.PhoneNumber2">
             <summary>
             Broj telefona 2 pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.Fax">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.Fax">
             <summary>
             Faks pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.Email">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.Email">
             <summary>
             Email pravnog lica
             </summary>
         </member>
-        <member name="P:Person.API.Models.LegalPerson.LegalPersonUpdateModel.AccountNumber">
+        <member name="P:Person.API.Models.LegalPersonUpdateModel.AccountNumber">
             <summary>
             Broj računa pravnog lica
             </summary>
         </member>
-        <member name="T:Person.API.Models.PhysicalPerson.PhysicalPersonModel">
-            <summary>
-            Dto fizicko lice
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.FirstName">
-            <summary>
-            Ime fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.LastName">
-            <summary>
-            Prezime fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.Jmbg">
-            <summary>
-            Jmbg fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.AddressId">
-            <summary>
-            Adresa id
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.PhoneNumber1">
-            <summary>
-            Broj telefona fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.PhoneNumber2">
-            <summary>
-            Broj telefona 2 fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.Email">
-            <summary>
-            Email fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonModel.AccountNumber">
-            <summary>
-            Broj računa fizičkog lica
-            </summary>
-        </member>
-        <member name="T:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel">
-            <summary>
-            Dto Update fizičko lice
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.FirstName">
-            <summary>
-            Ime fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.LastName">
-            <summary>
-            Prezime fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.Jmbg">
-            <summary>
-            Jmbg fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.AddressId">
-            <summary>
-            Adresa id
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.PhoneNumber1">
-            <summary>
-            Broj telefona fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.PhoneNumber2">
-            <summary>
-            Broj telefona 2 fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.Email">
-            <summary>
-            Email fizičkog lica
-            </summary>
-        </member>
-        <member name="P:Person.API.Models.PhysicalPerson.PhysicalPersonUpdateModel.AccountNumber">
-            <summary>
-            Broj računa fizičkog lica
-            </summary>
-        </member>
-        <member name="T:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel">
+        <member name="T:Person.API.Models.PhysicalPersonRequestModel">
             <summary>
             Dto Create fizičko lice
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.FirstName">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.FirstName">
             <summary>
             Ime fizičkog lica
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.LastName">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.LastName">
             <summary>
             Prezime fizičkog lica
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.Jmbg">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.Jmbg">
             <summary>
             Jmbg fizičkog lica
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.AddressId">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.AddressId">
             <summary>
             Adresa id
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.PhoneNumber1">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.PhoneNumber1">
             <summary>
             Broj telefona fizičkog lica
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.PhoneNumber2">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.PhoneNumber2">
             <summary>
             Broj telefona 2 fizičkog lica
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.Email">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.Email">
             <summary>
             Email fizičkog lica
             </summary>
         </member>
-        <member name="P:LiceWebAPI.Models.Lice.FizickoLice.PhysicalPersonCreationModel.AccountNumber">
+        <member name="P:Person.API.Models.PhysicalPersonRequestModel.AccountNumber">
+            <summary>
+            Broj računa fizičkog lica
+            </summary>
+        </member>
+        <member name="T:Person.API.Models.PhysicalPersonResponseModel">
+            <summary>
+            Dto fizicko lice
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.FirstName">
+            <summary>
+            Ime fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.LastName">
+            <summary>
+            Prezime fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.Jmbg">
+            <summary>
+            Jmbg fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.AddressId">
+            <summary>
+            Adresa id
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.PhoneNumber1">
+            <summary>
+            Broj telefona fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.PhoneNumber2">
+            <summary>
+            Broj telefona 2 fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.Email">
+            <summary>
+            Email fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.AccountNumber">
+            <summary>
+            Broj računa fizičkog lica
+            </summary>
+        </member>
+        <member name="T:Person.API.Models.PhysicalPersonUpdateModel">
+            <summary>
+            Dto Update fizičko lice
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.FirstName">
+            <summary>
+            Ime fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.LastName">
+            <summary>
+            Prezime fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.Jmbg">
+            <summary>
+            Jmbg fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.AddressId">
+            <summary>
+            Adresa id
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.PhoneNumber1">
+            <summary>
+            Broj telefona fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.PhoneNumber2">
+            <summary>
+            Broj telefona 2 fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.Email">
+            <summary>
+            Email fizičkog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.PhysicalPersonUpdateModel.AccountNumber">
             <summary>
             Broj računa fizičkog lica
             </summary>

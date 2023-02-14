@@ -32,5 +32,14 @@ namespace Person.API.Models
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti telefon!")]
         public string PhoneNumber { get; set; }
+
+
+        public ContactPersonRequestModel(string firstName, string lastName, string function, string phoneNumber)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Function = function;
+            PhoneNumber = phoneNumber;
+        }
     }
 }

@@ -40,9 +40,15 @@ namespace Person.API.Models
         public string? ZipCode { get; set; }
 
 
-        public AddressUpdateModel()
+        public AddressUpdateModel(string? country, string? street, string? streetNumber, string? place, string? zipCode)
+
         {
-               
+            Country = country;
+            Street = street;
+            StreetNumber = streetNumber;
+            Place = place;
+            ZipCode = zipCode;
+
         }
 
 

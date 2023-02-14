@@ -12,7 +12,5 @@ namespace Person.API.Data.Repository
         Task<Address> GetAddressByGuid(Guid AddressId);
         Task<Address> CreateAddress(Address address);
         Task DeleteAddress(Guid AddressId);
-        Task UpdateAddress(Address address);
-
     }
 }
