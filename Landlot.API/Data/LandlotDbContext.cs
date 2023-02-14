@@ -7,9 +7,14 @@ namespace Landlot.API.Data
     {
         private readonly IConfiguration configuration;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LandlotDbContext"/> class.
+        /// </summary>
+        /// <param name="options">The DbContext options.</param>
+        /// <param name="configuration">The application configuration.</param>
         public LandlotDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
-            //this.configuration = configuration;
+            
         }
 
         public DbSet<Land> Lands { get; set; }
