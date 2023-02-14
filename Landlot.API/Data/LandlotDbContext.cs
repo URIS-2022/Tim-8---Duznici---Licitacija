@@ -9,7 +9,7 @@ namespace Landlot.API.Data
 
         public LandlotDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
-            this.configuration = configuration;
+            //this.configuration = configuration;
         }
 
         public DbSet<Land> Lands { get; set; }

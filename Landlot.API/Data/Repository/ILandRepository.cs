@@ -9,7 +9,7 @@ namespace Landlot.API.Data.Repository
 
         Task<Land?> GetLand(Guid id);
 
-        Task<Land?> UpdateLand(Guid id, Land land);
+        Task<Land?> UpdateLand(Guid id, Land updateModel);
 
         Task<Land?> AddLand(Land land);
 
