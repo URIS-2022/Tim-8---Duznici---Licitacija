@@ -58,5 +58,17 @@
         <member name="M:Lease.API.Migrations.pushModelToDataBase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Lease.API.Migrations.newPushModelToDatabase">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.newPushModelToDatabase.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.newPushModelToDatabase.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.newPushModelToDatabase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

@@ -111,6 +111,10 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<LeaseDbContext>(options =>
        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddControllers();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 WebApplication app = builder.Build();
 
