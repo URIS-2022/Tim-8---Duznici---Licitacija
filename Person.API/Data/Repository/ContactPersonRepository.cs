@@ -40,7 +40,7 @@ namespace Person.API.Data.Repository
             return contactPerson;
         }
 
-        public async Task DeleteContactPersons(Guid ContactPersonId)
+        public async Task DeleteContactPerson(Guid ContactPersonId)
         {
             var contactPerson = await GetContactPersonByGuid(ContactPersonId);
             context.ContactPersons.Remove(contactPerson);

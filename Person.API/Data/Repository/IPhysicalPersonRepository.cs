@@ -8,14 +8,11 @@ namespace Person.API.Data.Repository
 {
     public interface IPhysicalPersonRepository
     {
-        Task<List<PhysicalPerson>> GetAllPhysicalPersons();
-        Task<PhysicalPerson> GetPhysicalPersonsByGuid(Guid PhysicalPersonId);
-        Task<PhysicalPerson?> GetPhysicalPersonsByJmbg(string jmbg);
-        Task<PhysicalPerson?> GetPhysicalPersonsByFirstName(string firstName);
-        Task<PhysicalPerson?> GetPhysicalPersonsByLastName(string lastName);
-        Task<PhysicalPerson> CreatePhysicalPersons(PhysicalPerson physicalPerson);
-        Task DeletePhysicalPersons(Guid PhysicalPersonId);
-        Task UpdatePhysicalPersons(PhysicalPerson physicalPerson);
+        Task<IEnumerable<PhysicalPerson>> GetAllPhysicalPersons();
+        Task<PhysicalPerson?> GetPhysicalPersonByGuid(Guid PhysicalPersonId);
+        Task<PhysicalPerson?> CreatePhysicalPerson(PhysicalPerson? physicalPerson);
+        Task DeletePhysicalPerson(Guid PhysicalPersonId);
+        Task<PhysicalPerson?> UpdatePhysicalPerson(Guid id, PhysicalPerson physicalPerson);
 
     }
 }

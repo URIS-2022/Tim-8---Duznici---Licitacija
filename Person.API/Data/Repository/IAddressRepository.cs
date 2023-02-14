@@ -8,9 +8,10 @@ namespace Person.API.Data.Repository
 {
     public interface IAddressRepository
     {
-        Task<IEnumerable<Address>> GetAllAddress();
-        Task<Address> GetAddressByGuid(Guid AddressId);
-        Task<Address> CreateAddress(Address address);
+        Task<IEnumerable<Address>> GetAllAddresses();
+        Task<Address?> GetAddressByGuid(Guid AddressId);
+        Task<Address?> CreateAddress(Address? address);
         Task DeleteAddress(Guid AddressId);
+        Task<Address?> UpdateAddress(Guid id, Address address);
     }
 }

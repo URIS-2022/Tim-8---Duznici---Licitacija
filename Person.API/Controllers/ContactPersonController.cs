@@ -92,7 +92,7 @@ public class ContactPersonController : ControllerBase
         {
             return NotFound();
         }
-        await contactPersonRepository.DeleteContactPersons(contactPerson.ContactPersonId);
+        await contactPersonRepository.DeleteContactPerson(contactPerson.ContactPersonId);
 
         return NoContent();
     }

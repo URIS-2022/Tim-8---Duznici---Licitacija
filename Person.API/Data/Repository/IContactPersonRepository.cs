@@ -11,7 +11,7 @@ namespace Person.API.Data.Repository
         Task<IEnumerable<ContactPerson>> GetAllContactPersons();
         Task<ContactPerson?> GetContactPersonByGuid(Guid ContactPersonId);
         Task<ContactPerson?> CreateContactPerson(ContactPerson? contactPerson);
-        Task DeleteContactPersons(Guid ContactPersonId);
+        Task DeleteContactPerson(Guid ContactPersonId);
         Task<ContactPerson?> UpdateContactPerson(Guid id, ContactPerson contactPerson);
     }
 }
