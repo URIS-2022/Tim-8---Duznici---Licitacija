@@ -31,11 +31,12 @@ public partial class LeaseAgreement : IValidatableObject
     public virtual DueDate DueDate { get; set; }
 
     public virtual ICollection<Document> Documents { get; set; }
-    public int DueDateId { get; internal set; }
+
+    public Guid DueDateGuid { get; internal set; }
 
     public LeaseAgreement() {  }
 
-    public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, int dueDateId)
+    public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, Guid dueDateguid)
     {
         this.Guid = Guid;
         this.GuaranteeType = GuaranteeType;
@@ -48,12 +49,12 @@ public partial class LeaseAgreement : IValidatableObject
         this.BiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
-        DueDateId=dueDateId;
+        DueDateGuid=dueDateguid;
         
 
     }
 
-    public LeaseAgreement(GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, int dueDateId)
+    public LeaseAgreement(GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, Guid dueDateGuid)
     {
         this.Guid = Guid.NewGuid();
         this.GuaranteeType = GuaranteeType;
@@ -66,7 +67,7 @@ public partial class LeaseAgreement : IValidatableObject
         this.BiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
-        DueDateId = dueDateId;
+        DueDateGuid = dueDateGuid;
 
     }
 

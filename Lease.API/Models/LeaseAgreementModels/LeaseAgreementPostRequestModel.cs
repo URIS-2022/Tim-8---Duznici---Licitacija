@@ -2,9 +2,9 @@
 using Lease.API.Enums;
 using System.Text.Json.Serialization;
 
-namespace Lease.API.Models;
+namespace Lease.API.Models.LeaseAgreementModels;
 
-public class LeaseAgreementRequestModel
+public class LeaseAgreementPostRequestModel
 {
     public string ReferenceNumber { get; set; }
 
@@ -22,12 +22,12 @@ public class LeaseAgreementRequestModel
     [JsonConverter(typeof(DocumentStatusConverter))]
     public DocumentStatus DocumentStatus { get; set; }
 
-    public int DueDateId { get; set; }
+    public Guid DueDateGuid { get; set; }
 
 
-    public LeaseAgreementRequestModel(string referenceNumber, GuaranteeType guaranteeType, DateTime dateRecording, Guid ministerGuid,
+    public LeaseAgreementPostRequestModel(string referenceNumber, GuaranteeType guaranteeType, DateTime dateRecording, Guid ministerGuid,
         DateTime deadlineLandReturn, string placeOfSigning, DateTime dateOfSigning, Guid publicBiddingGuid,
-        Guid personGuid, DocumentStatus documentStatus, int dueDateId)
+        Guid personGuid, DocumentStatus documentStatus, Guid dueDateGuid)
     {
         ReferenceNumber = referenceNumber;
         GuaranteeType = guaranteeType;
@@ -39,7 +39,7 @@ public class LeaseAgreementRequestModel
         PublicBiddingGuid = publicBiddingGuid;
         PersonGuid = personGuid;
         DocumentStatus = documentStatus;
-        DueDateId= dueDateId;
+        DueDateGuid = dueDateGuid;
     }
 
 }

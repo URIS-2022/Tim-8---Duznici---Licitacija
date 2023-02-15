@@ -3,8 +3,8 @@ using Lease.API.Enums;
 using Microsoft.VisualBasic;
 using System.Text.Json.Serialization;
 
-namespace Lease.API.Models;
-public class LeaseAgreementResponseModel
+namespace Lease.API.Models.LeaseAgreementModels;
+public class LeaseAgreementGetResponseModel
 {
     public Guid Guid { get; set; }
 
@@ -21,12 +21,12 @@ public class LeaseAgreementResponseModel
 
     [JsonConverter(typeof(DocumentStatusConverter))]
     public DocumentStatus DocumentStatus { get; set; }
-    public int DueDateId { get; set; }
+    public Guid DueDateGuid { get; set; }
 
-    public LeaseAgreementResponseModel() { }
-    public LeaseAgreementResponseModel(Guid Guid, GuaranteeType guaranteeType, string referenceNumber,
+    public LeaseAgreementGetResponseModel() { }
+    public LeaseAgreementGetResponseModel(Guid Guid, GuaranteeType guaranteeType, string referenceNumber,
         DateTime dateRecording, Guid ministerGuid, DateTime deadlineLandReturn, string placeOfSigning,
-        DateTime dateOfSigning, Guid publicBiddingGuid, Guid personGuid, DocumentStatus documentStatus, int dueDateId)
+        DateTime dateOfSigning, Guid publicBiddingGuid, Guid personGuid, DocumentStatus documentStatus, Guid dueDateGuid)
     {
         this.Guid = Guid;
         GuaranteeType = guaranteeType;
@@ -39,6 +39,6 @@ public class LeaseAgreementResponseModel
         PublicBiddingGuid = publicBiddingGuid;
         PersonGuid = personGuid;
         DocumentStatus = documentStatus;
-        DueDateId = dueDateId;
+        DueDateGuid = dueDateGuid;
     }
 }

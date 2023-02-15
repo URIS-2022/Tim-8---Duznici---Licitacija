@@ -1,8 +1,11 @@
-﻿using Lease.API.Data.Repository;
-using Lease.API.Models;
-using Lease.API.Entities;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+
 using AutoMapper;
+using Lease.API.Data.Repository;
+using Lease.API.Models;
+using Microsoft.AspNetCore.Mvc;
+using Lease.API.Models.LeaseAgreementModels;
 
 namespace Lease.API.Controllers;
 
@@ -10,103 +13,90 @@ namespace Lease.API.Controllers;
 [ApiController]
 [Produces("application/json", "application/xml")]
 [Consumes("application/json", "application/xml")]
-public class LeaseAgreementsController : ControllerBase
+public class LeaseAgreementController : ControllerBase
 {
-    private readonly ILeaseAgreementRepository LeaseAgreementRepository;
+    private readonly ILeaseAgreementRepository _LeaseAgreementRepository;
     private readonly IMapper mapper;
 
-    /// <summary>
-    /// Initializes a new instance of the LeaseAgreementsController class
-    /// </summary>
-    /// <param name="LeaseAgreementRepository">An instance of ILeaseAgreementRepository to handle the System Users</param>
-    /// <param name="mapper">An instance of IMapper to map between System User entities and models</param>
-    public LeaseAgreementsController(ILeaseAgreementRepository LeaseAgreementRepository, IMapper mapper)
+    public LeaseAgreementController(ILeaseAgreementRepository LeaseAgreementRepository, IMapper mapper)
     {
-        this.LeaseAgreementRepository = LeaseAgreementRepository;
+        _LeaseAgreementRepository = LeaseAgreementRepository;
         this.mapper = mapper;
     }
 
-    /// <summary>
-    /// Returns a list of System Users
-    /// </summary>
-    /// <returns>A list of System User models, or No Content if no System User found</returns>
+    // GET: api/LeaseAgreements
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<LeaseAgreementResponseModel>>> GetLeaseAgreements()
+    public async Task<ActionResult<IEnumerable<LeaseAgreementGetResponseModel>>> GetLeaseAgreement()
     {
-        var LeaseAgreements = await LeaseAgreementRepository.GetAll();
+        var LeaseAgreements = await _LeaseAgreementRepository.GetAll();
         if (!LeaseAgreements.Any())
         {
             return NoContent();
         }
-        IEnumerable<LeaseAgreementResponseModel> responseModels = mapper.Map<IEnumerable<LeaseAgreementResponseModel>>(LeaseAgreements);
-        return Ok(responseModels);
-    }
-
-    /// <summary>
-    /// Returns a specific System User based on the username
-    /// </summary>
-    /// <returns>The System User model, or Not Found if the System User is not found</returns>
-    /// 
-    [HttpGet("referenceNumber")]
-    public async Task<ActionResult<LeaseAgreementResponseModel>> GetLeaseAgreement(string referenceNumber)
-    {
-        LeaseAgreement? LeaseAgreement = await LeaseAgreementRepository.GetByReferenceNumber(referenceNumber);
-        if (LeaseAgreement == null)
-        {
-            return NotFound();
-        }
-        LeaseAgreementResponseModel responseModel = mapper.Map<LeaseAgreementResponseModel>(LeaseAgreement);
+        var responseModel = mapper.Map<IEnumerable<LeaseAgreementGetResponseModel>>(LeaseAgreements);
         return Ok(responseModel);
     }
 
-    /// <summary>
-    /// Updates a specific System User based on the username
-    /// </summary>
-    /// <param name="username">The username of the System User to update</param>
-    /// <param name="LeaseAgreementUpdate">The updated System User information</param>
-    /// <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
-    [HttpPatch("{guid}")]
-    public async Task<IActionResult> PutLeaseAgreement(Guid guid, LeaseAgreementUpdateModel LeaseAgreementUpdate)
+    // GET: api/LeaseAgreements/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<LeaseAgreementGetResponseModel>> GetLeaseAgreement(Guid id)
     {
-        var LeaseAgreement = await LeaseAgreementRepository.GetByGuid(guid);
-        if (LeaseAgreement == null || LeaseAgreementUpdate == null)
-        {
-            return BadRequest();
-        }
-        mapper.Map(LeaseAgreementUpdate, LeaseAgreement);
-
-        await LeaseAgreementRepository.Update(LeaseAgreement);
-        return NoContent();
-    }
-
-    /// <summary>
-    /// Creates a new System User
-    /// </summary>
-    /// <param name="requestModel">The new System User information</param>
-    /// <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
-    [HttpPost]
-    public async Task<ActionResult<LeaseAgreementResponseModel>> PostLeaseAgreement(LeaseAgreementRequestModel requestModel)
-    {
-        LeaseAgreement requestedLeaseAgreement = mapper.Map<LeaseAgreement>(requestModel);
-        LeaseAgreement createdLeaseAgreement = await LeaseAgreementRepository.Add(requestedLeaseAgreement);
-        LeaseAgreementResponseModel responseModel = mapper.Map<LeaseAgreementResponseModel>(createdLeaseAgreement);
-        return CreatedAtAction("GetLeaseAgreement", new { guid = responseModel.Guid }, responseModel);
-    }
-
-    /// <summary>
-    /// Deletes a specific System User based on the username
-    /// </summary>
-    /// <param name="guid">The username of the System User to delete</param>
-    /// <returns>No Content if the System User is deleted successfully, or Not Found if the System User is not found</returns>
-    [HttpDelete("{guid}")]
-    public async Task<IActionResult> DeleteLeaseAgreement(Guid guid)
-    {
-        LeaseAgreement? LeaseAgreement = await LeaseAgreementRepository.GetByGuid(guid);
+        var LeaseAgreement = await _LeaseAgreementRepository.GetByGuid(id);
         if (LeaseAgreement == null)
         {
             return NotFound();
         }
-        await LeaseAgreementRepository.Delete(LeaseAgreement.Guid);
+        var responseModel = mapper.Map<LeaseAgreementGetResponseModel>(LeaseAgreement);
+        return responseModel;
+    }
+
+    // PATCH: api/LeaseAgreements/5
+    [HttpPatch("{guid}")]
+    public async Task<ActionResult<LeaseAgreementPatchResponseModel>> PatchGuid(Guid guid, [FromBody] LeaseAgreementPatchRequestModel patchModel)
+    {
+        var LeaseAgreement = await _LeaseAgreementRepository.GetByGuid(guid);
+        if (LeaseAgreement == null)
+        {
+            return NotFound();
+        }
+
+        mapper.Map(patchModel, LeaseAgreement);
+
+        var updated = await _LeaseAgreementRepository.Update(LeaseAgreement);
+        if (updated == null)
+        {
+            return BadRequest();
+        }
+
+        var responseModel = mapper.Map<LeaseAgreementPatchResponseModel>(updated);
+
+        return Ok(responseModel);
+    }
+
+    // POST: api/LeaseAgreements
+    [HttpPost]
+    public async Task<ActionResult<LeaseAgreementPostResponseModel>> PostLeaseAgreement(LeaseAgreementPostRequestModel postModel)
+    {
+        var LeaseAgreement = mapper.Map<Entities.LeaseAgreement>(postModel);
+        Entities.LeaseAgreement? created = await _LeaseAgreementRepository.Add(LeaseAgreement);
+        if (created == null)
+        {
+            return BadRequest();
+        }
+        var responseModel = mapper.Map<LeaseAgreementPostResponseModel>(created);
+        return CreatedAtAction("GetLeaseAgreement", new { id = created.Guid }, responseModel);
+    }
+
+    // DELETE: api/LeaseAgreements/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var LeaseAgreement = await _LeaseAgreementRepository.GetByGuid(id);
+        if (LeaseAgreement == null)
+        {
+            return NotFound();
+        }
+        await _LeaseAgreementRepository.Delete(LeaseAgreement.Guid);
 
         return NoContent();
     }

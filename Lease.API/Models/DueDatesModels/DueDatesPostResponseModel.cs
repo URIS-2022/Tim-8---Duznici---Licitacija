@@ -8,16 +8,16 @@ namespace Lease.API.Models;
 public class DueDatePostResponseModel
 {
     [DataMember]
-    public int Id { get; set; }
+    public Guid Guid { get; set; }
 
     [DataMember]
     public DateTime Date { get; set; }
 
 
 
-    public DueDatePostResponseModel(int id,DateTime date)
+    public DueDatePostResponseModel(Guid guid,DateTime date)
     {
-        Id= id;
+        Guid= guid;
         Date = date;
     }
 }

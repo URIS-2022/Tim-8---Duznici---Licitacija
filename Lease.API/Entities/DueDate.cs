@@ -12,9 +12,9 @@ namespace Lease.API.Entities;
 public partial class DueDate //: IValidatableObject
 {
 
-    public int Id { get; set; }
+    public Guid Guid { get; set; }
 
- //   public Guid LeaseAgreementGuid { get; set; }
+    public Guid DueDateGuid;
     
 
     public virtual List<LeaseAgreement> LeaseAgreements { get; set; }
@@ -23,12 +23,13 @@ public partial class DueDate //: IValidatableObject
 
     public DueDate() { }
 
-     public DueDate(int id) /*List<LeaseAgreement> leaseAgreements,*/ 
+     public DueDate(Guid guid, Guid dueDateGuid) /*List<LeaseAgreement> leaseAgreements,*/ 
     {
-        Id = id;
+        Guid = guid;
       // LeaseAgreementGuid = leaseAgreementGuid;
        // LeaseAgreements= leaseAgreements;
         Date = DateTime.Now.AddYears(2);
+        DueDateGuid = dueDateGuid;
     }
 
 

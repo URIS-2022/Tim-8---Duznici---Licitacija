@@ -49,7 +49,7 @@ public class LeaseDbContext : DbContext
                .HasKey(u => u.Guid);
         
            modelBuilder.Entity<DueDate>()
-             .HasKey(u => u.Id);
+             .HasKey(u => u.Guid);
 
 
 
@@ -59,7 +59,7 @@ public class LeaseDbContext : DbContext
         modelBuilder.Entity<DueDate>()
               .HasMany(dd => dd.LeaseAgreements)
               .WithOne(la => la.DueDate)
-              .HasForeignKey(la => la.DueDateId);
+              .HasForeignKey(la => la.DueDateGuid);
 
 
 

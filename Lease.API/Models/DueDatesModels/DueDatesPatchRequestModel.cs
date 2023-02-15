@@ -6,17 +6,17 @@ namespace Lease.API.Models;
 [DataContract(Name = "Lease", Namespace = "")]
 public class DueDatePatchRequestModel
 {
-    [DataMember]
-    public int? Id { get; set; }
+    
+    public Guid? Guid { get; set; }
 
-    [DataMember]
+    
     public DateTime? Date { get; set; }
 
+    public DueDatePatchRequestModel() { }
 
-
-    public DueDatePatchRequestModel(int id, DateTime date)
+    public DueDatePatchRequestModel(Guid guid, DateTime date)
     {
-        Id = id;
+        Guid = guid;
         Date = date;
     }
 }

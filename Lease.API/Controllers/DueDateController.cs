@@ -38,9 +38,9 @@ public class DueDateController : ControllerBase
 
     // GET: api/DueDates/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<DueDateGetResponseModel>> GetDueDate(int id)
+    public async Task<ActionResult<DueDateGetResponseModel>> GetDueDate(Guid id)
     {
-        var DueDate = await _DueDateRepository.GetById(id);
+        var DueDate = await _DueDateRepository.GetByGuid(id);
         if (DueDate == null)
         {
             return NotFound();
@@ -50,10 +50,10 @@ public class DueDateController : ControllerBase
     }
 
     // PATCH: api/DueDates/5
-    [HttpPatch("{date}")]
-    public async Task<ActionResult<DueDatePatchResponseModel>> PatchDueDate(DateTime date, [FromBody] DueDatePatchRequestModel patchModel)
+    [HttpPatch("{guid}")]
+    public async Task<ActionResult<DueDatePatchResponseModel>> PatchGuid(Guid guid, [FromBody] DueDatePatchRequestModel patchModel)
     {
-        var DueDate = await _DueDateRepository.GetByDate(date);
+        var DueDate = await _DueDateRepository.GetByGuid(guid);
         if (DueDate == null)
         {
             return NotFound();
@@ -83,19 +83,19 @@ public class DueDateController : ControllerBase
             return BadRequest();
         }
         var responseModel = mapper.Map<DueDatePostResponseModel>(created);
-        return CreatedAtAction("GetDueDate", new { id = created.Id }, responseModel);
+        return CreatedAtAction("GetDueDate", new { id = created.Guid }, responseModel);
     }
 
     // DELETE: api/DueDates/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(Guid id)
     {
-        var DueDate = await _DueDateRepository.GetById(id);
+        var DueDate = await _DueDateRepository.GetByGuid(id);
         if (DueDate == null)
         {
             return NotFound();
         }
-        await _DueDateRepository.Delete(DueDate.Id);
+        await _DueDateRepository.Delete(DueDate.Guid);
 
         return NoContent();
     }
