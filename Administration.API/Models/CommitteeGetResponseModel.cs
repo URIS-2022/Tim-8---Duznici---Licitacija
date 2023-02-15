@@ -8,7 +8,7 @@ public class CommitteeGetResponseModel
     [DataMember]
     public DateTime DateAssembled { get; set; }
     [DataMember]
-    public ICollection<CommitteeMemberNestedResponseModel> CommitteeMembers { get; set; }
+    public ICollection<CommitteeMemberCommitteeGetResponseModel> CommitteeMembers { get; set; }
 
     public CommitteeGetResponseModel() { }
 }

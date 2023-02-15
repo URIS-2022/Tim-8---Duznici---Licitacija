@@ -3,7 +3,7 @@
 namespace Administration.API.Models;
 
 [DataContract(Name = "CommitteeMember", Namespace = "")]
-public class CommitteeMemberNestedResponseModel
+public class CommitteeMemberCommitteeGetResponseModel
 {
     [DataMember]
     public Guid Guid { get; set; }
