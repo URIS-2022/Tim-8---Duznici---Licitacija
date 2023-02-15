@@ -9,9 +9,11 @@ namespace Preparation.API.Profiles
     {
         public AnnouncementProfile()
         {
-            CreateMap<Announcement, AnnouncementResponseModel>();
-            CreateMap<Announcement, AnnouncementRequestModel>();
-            CreateMap<Announcement, AnnouncementUpdateModel>();
+            CreateMap<Entities.Announcement, AnnouncementGetResponseModel>();
+            CreateMap<Entities.Announcement, AnnouncementPostResponseModel>();
+            CreateMap<Entities.Announcement, AnnouncementPatchResponseModel>();
+            CreateMap<AnnouncementPostRequestModel, Entities.Announcement>();
+            CreateMap<AnnouncementPatchRequestModel, Entities.Announcement>();
         }
     }
 }

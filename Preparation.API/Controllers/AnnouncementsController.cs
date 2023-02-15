@@ -12,17 +12,17 @@ namespace Preparation.API.Controllers
     [Consumes("application/json", "application/xml")]
     public class AnnouncementsController : ControllerBase
     {
-        private readonly IAnnouncementRepository announcementRepository;
+        private readonly IAnnouncementRepository _announcementRepository;
         private readonly IMapper mapper;
 
         /// <summary>
-        /// Initializes a new instance of the SystemUsersController class
+        /// Initializes a new instance of the AnnouncementsController class
         /// </summary>
-        /// <param name="systemUserRepository">An instance of ISystemUserRepository to handle the System Users</param>
-        /// <param name="mapper">An instance of IMapper to map between System User entities and models</param>
+        /// <param name="announcementRepository">An instance of IAnnouncementRepository to handle the Announcements</param>
+        /// <param name="mapper">An instance of IMapper to map between Announcement entities and models</param>
         public AnnouncementsController(IAnnouncementRepository announcementRepository, IMapper mapper)
         {
-            this.announcementRepository = announcementRepository;
+            _announcementRepository = announcementRepository;
             this.mapper = mapper;
         }
 
@@ -31,82 +31,77 @@ namespace Preparation.API.Controllers
         /// </summary>
         /// <returns>A list of System User models, or No Content if no System User found</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnnouncementResponseModel>>> GetAnnouncements()
+        public async Task<ActionResult<IEnumerable<AnnouncementGetResponseModel>>> GetAnnouncements()
         {
-            var announcements = await announcementRepository.GetAll();
+            var announcements = await _announcementRepository.GetAnnouncements();
             if (!announcements.Any())
             {
                 return NoContent();
             }
-            IEnumerable<AnnouncementResponseModel> responseModels = mapper.Map<IEnumerable<AnnouncementResponseModel>>(announcements);
+            IEnumerable<AnnouncementGetResponseModel> responseModels = mapper.Map<IEnumerable<AnnouncementGetResponseModel>>(announcements);
             return Ok(responseModels);
         }
 
-        /// <summary>
-        /// Returns a specific System User based on the username
-        /// </summary>
-        /// <param name="username">The username of the System User to retrieve</param>
-        /// <returns>The System User model, or Not Found if the System User is not found</returns>
-        [HttpGet("{licitation}")]
-        public async Task<ActionResult<AnnouncementResponseModel>> GetByLicitation(Guid LicitationGuid)
+        /// GET: api/Announcements/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AnnouncementGetResponseModel>> GetAnnouncement(Guid id)
         {
-            Announcement? announcement = await announcementRepository.GetByLicitation(LicitationGuid);
+            var announcement = await _announcementRepository.GetAnnouncement(id);
             if (announcement == null)
             {
                 return NotFound();
             }
-            AnnouncementResponseModel responseModel = mapper.Map<AnnouncementResponseModel>(announcement);
+            var responseModel = mapper.Map<AnnouncementGetResponseModel>(announcement);
+            return responseModel;
+        }
+
+        // PATCH: api/Announcements/5
+        [HttpPatch("{id}")]
+        public async Task<ActionResult<AnnouncementPatchResponseModel>> PatchAnnouncement(Guid id, [FromBody] AnnouncementPatchRequestModel patchModel)
+        {
+            var announcement = await _announcementRepository.GetAnnouncement(id);
+            if (announcement == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(patchModel, announcement);
+
+            var updated = await _announcementRepository.UpdateAnnouncement(id, announcement);
+            if (updated == null)
+            {
+                return BadRequest();
+            }
+
+            var responseModel = mapper.Map<AnnouncementPatchResponseModel>(updated);
+
             return Ok(responseModel);
         }
 
-        /// <summary>
-        /// Updates a specific System User based on the username
-        /// </summary>
-        /// <param name="username">The username of the System User to update</param>
-        /// <param name="systemUserUpdate">The updated System User information</param>
-        /// <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
-        [HttpPatch("{Guid}")]
-        public async Task<IActionResult> PutAnnouncement(Guid Guid, AnnouncementUpdateModel announcementUpdate)
-        {
-            var announcement = await announcementRepository.GetByGuid(Guid);
-            if (announcement == null || announcementUpdate == null)
-            {
-                return BadRequest();
-            }
-            mapper.Map(announcementUpdate, announcement);
-
-            await announcementRepository.Update(announcement);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Creates a new System User
-        /// </summary>
-        /// <param name="requestModel">The new System User information</param>
-        /// <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
+        // POST: api/Announcements
         [HttpPost]
-        public async Task<ActionResult<AnnouncementResponseModel>> PostAnnouncement(AnnouncementRequestModel requestModel)
+        public async Task<ActionResult<AnnouncementPostResponseModel>> PostAnnouncement(AnnouncementPostRequestModel postModel)
         {
-            Announcement requestedAnnouncement = mapper.Map<Announcement>(requestModel);
-            Announcement? createdAnnouncement = await announcementRepository.Add(requestedAnnouncement);
-            if (createdAnnouncement == null)
+            var announcement = mapper.Map<Entities.Announcement>(postModel);
+            Entities.Announcement? created = await _announcementRepository.AddAnnouncement(announcement);
+            if (created == null)
             {
                 return BadRequest();
             }
-            AnnouncementResponseModel responseModel = mapper.Map<AnnouncementResponseModel>(createdAnnouncement);
-            return CreatedAtAction("GetAnnaouncement", new { guid = responseModel.LicitationGuid }, responseModel);
+            var responseModel = mapper.Map<AnnouncementPostResponseModel>(created);
+            return CreatedAtAction("GetAnnouncement", new { id = created.Guid }, responseModel);
         }
 
-
-        [HttpDelete("{Guid}")]
-        public async Task<IActionResult> DeleteAnnouncement(Guid Guid)
+        // DELETE: api/Announcements/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAnnouncement(Guid id)
         {
-            Announcement? announcement = await announcementRepository.GetByGuid(Guid);
+            var announcement = await _announcementRepository.GetAnnouncement(id);
             if (announcement == null)
             {
                 return NotFound();
             }
-            await announcementRepository.Delete(announcement.Guid);
+            await _announcementRepository.DeleteAnnouncement(announcement.Guid);
 
             return NoContent();
         }

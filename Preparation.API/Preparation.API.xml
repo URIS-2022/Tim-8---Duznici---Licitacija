@@ -6,10 +6,10 @@
     <members>
         <member name="M:Preparation.API.Controllers.AnnouncementsController.#ctor(Preparation.API.Data.Repository.IAnnouncementRepository,AutoMapper.IMapper)">
             <summary>
-            Initializes a new instance of the SystemUsersController class
+            Initializes a new instance of the AnnouncementsController class
             </summary>
-            <param name="systemUserRepository">An instance of ISystemUserRepository to handle the System Users</param>
-            <param name="mapper">An instance of IMapper to map between System User entities and models</param>
+            <param name="announcementRepository">An instance of IAnnouncementRepository to handle the Announcements</param>
+            <param name="mapper">An instance of IMapper to map between Announcement entities and models</param>
         </member>
         <member name="M:Preparation.API.Controllers.AnnouncementsController.GetAnnouncements">
             <summary>
@@ -17,27 +17,8 @@
             </summary>
             <returns>A list of System User models, or No Content if no System User found</returns>
         </member>
-        <member name="M:Preparation.API.Controllers.AnnouncementsController.GetByLicitation(System.Guid)">
-            <summary>
-            Returns a specific System User based on the username
-            </summary>
-            <param name="username">The username of the System User to retrieve</param>
-            <returns>The System User model, or Not Found if the System User is not found</returns>
-        </member>
-        <member name="M:Preparation.API.Controllers.AnnouncementsController.PutAnnouncement(System.Guid,Preparation.API.Models.AnnouncementUpdateModel)">
-            <summary>
-            Updates a specific System User based on the username
-            </summary>
-            <param name="username">The username of the System User to update</param>
-            <param name="systemUserUpdate">The updated System User information</param>
-            <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
-        </member>
-        <member name="M:Preparation.API.Controllers.AnnouncementsController.PostAnnouncement(Preparation.API.Models.AnnouncementRequestModel)">
-            <summary>
-            Creates a new System User
-            </summary>
-            <param name="requestModel">The new System User information</param>
-            <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.GetAnnouncement(System.Guid)">
+            GET: api/Announcements/5
         </member>
         <member name="M:Preparation.API.Controllers.DocumentsController.#ctor(Preparation.API.Data.Repository.IDocumentRepository,AutoMapper.IMapper)">
             <summary>
@@ -59,33 +40,30 @@
         </member>
         <member name="T:Preparation.API.Data.Repository.AnnouncementRepository">
             <summary>
-            Implementation of the ISystemUserRepository
-            interface for managing SystemUser entities in the database.
+            Implementation of the IAnnouncementRepository
+            interface for managing Announcement entities in the database.
             </summary>
         </member>
         <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.#ctor(Preparation.API.Data.PreparationDBContext)">
             <summary>
-            Initializes a new instance of the SystemUserRepository class.
+            Initializes a new instance of the AnnouncementRepository class.
             </summary>
             <param name="context">The database context to use for data access.</param>
         </member>
-        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.Add(Preparation.API.Entities.Announcement)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAll"/>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetAnnouncements">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncements"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.Delete(System.Guid)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.Delete(System.Guid)"/>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetAnnouncement(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncement(System.Guid)"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetAll">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAll"/>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.UpdateAnnouncement(System.Guid,Preparation.API.Entities.Announcement)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.UpdateAnnouncement(System.Guid,Preparation.API.Entities.Announcement)"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetByGuid(System.Guid)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetByGuid(System.Guid)"/>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.AddAnnouncement(Preparation.API.Entities.Announcement)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.AddAnnouncement(Preparation.API.Entities.Announcement)"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetByLicitation(System.Guid)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetByLicitation(System.Guid)"/>
-        </member>
-        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.Update(Preparation.API.Entities.Announcement)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.Update(Preparation.API.Entities.Announcement)"/>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.DeleteAnnouncement(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.DeleteAnnouncement(System.Guid)"/>
         </member>
         <member name="T:Preparation.API.Data.Repository.DocumentRepository">
             <summary>
@@ -113,6 +91,46 @@
         </member>
         <member name="M:Preparation.API.Data.Repository.DocumentRepository.DeleteDocument(System.Guid)">
             <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)"/>
+        </member>
+        <member name="T:Preparation.API.Data.Repository.IAnnouncementRepository">
+            <summary>
+            The interface for announcement repository, provides methods for getting, updating, adding and deleting a announcement
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncements">
+            <summary>
+            Gets a list of all announcements.
+            </summary>
+            <returns>A list of announcements.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncement(System.Guid)">
+            <summary>
+            Gets a specific announcement by its identifier.
+            </summary>
+            <param name="id">The identifier of the announcement.</param>
+            <returns>The announcement with the specified identifier.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.UpdateAnnouncement(System.Guid,Preparation.API.Entities.Announcement)">
+            <summary>
+            Updates a specific announcement.
+            </summary>
+            <param name="id">The identifier of the announcement to update.</param>
+            <param name="patchAnnouncement">The updated values for the announcement.</param>
+            <returns>The updated announcement.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.AddAnnouncement(Preparation.API.Entities.Announcement)">
+            <summary>
+            Adds a new announcement.
+            </summary>
+            <param name="announcement">The announcement to add.</param>
+            <returns>The added announcement.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.DeleteAnnouncement(System.Guid)">
+            <summary>
+            Deletes a specific announcement.
+            </summary>
+            <param name="id">The identifier of the announcement to delete.</param>
+            <returns>The deleted announcement.</returns>
         </member>
         <member name="T:Preparation.API.Data.Repository.IDocumentRepository">
             <summary>

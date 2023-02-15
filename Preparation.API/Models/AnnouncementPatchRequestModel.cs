@@ -1,10 +1,10 @@
 ﻿namespace Preparation.API.Models
 {
-    public class AnnouncementUpdateModel
+    public class AnnouncementPatchRequestModel
     {
         public Guid? LicitationGuid { get; set; }
 
-        public AnnouncementUpdateModel(Guid? licitationGuid)
+        public AnnouncementPatchRequestModel(Guid? licitationGuid)
         {
             LicitationGuid = licitationGuid;
         }

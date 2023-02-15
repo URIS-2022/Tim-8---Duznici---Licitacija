@@ -42,7 +42,7 @@ namespace Preparation.API.Controllers
             return Ok(responseModels);
         }
 
-        // GET: api/Complaints/5
+        // GET: api/Documents/5
         [HttpGet("{id}")]
         public async Task<ActionResult<DocumentGetResponseModel>> GetDocument(Guid id)
         {
@@ -55,7 +55,7 @@ namespace Preparation.API.Controllers
             return responseModel;
         }
 
-        // PATCH: api/Complaints/5
+        // PATCH: api/Documents/5
         [HttpPatch("{id}")]
         public async Task<ActionResult<DocumentPatchResponseModel>> PatchDocument(Guid id, [FromBody] DocumentPatchRequestModel patchModel)
         {
@@ -78,7 +78,7 @@ namespace Preparation.API.Controllers
             return Ok(responseModel);
         }
 
-        // POST: api/Complaints
+        // POST: api/Documents
         [HttpPost]
         public async Task<ActionResult<DocumentPostResponseModel>> PostDocument(DocumentPostRequestModel postModel)
         {
@@ -92,7 +92,7 @@ namespace Preparation.API.Controllers
             return CreatedAtAction("GetDocument", new { id = created.Guid }, responseModel);
         }
 
-        // DELETE: api/Complaints/5
+        // DELETE: api/Documents/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDocument(Guid id)
         {

@@ -2,19 +2,45 @@
 
 namespace Preparation.API.Data.Repository
 {
+    /// <summary>
+    /// The interface for announcement repository, provides methods for getting, updating, adding and deleting a announcement
+    /// </summary>
     public interface IAnnouncementRepository
     {
-        Task<IEnumerable<Announcement>> GetAll();
+        /// <summary>
+        /// Gets a list of all announcements.
+        /// </summary>
+        /// <returns>A list of announcements.</returns>
+        Task<IEnumerable<Entities.Announcement>> GetAnnouncements();
 
-        Task<Announcement?> GetByGuid(Guid Guid);
+        /// <summary>
+        /// Gets a specific announcement by its identifier.
+        /// </summary>
+        /// <param name="id">The identifier of the announcement.</param>
+        /// <returns>The announcement with the specified identifier.</returns>
+        Task<Entities.Announcement?> GetAnnouncement(Guid id);
 
-        Task<Announcement?> GetByLicitation(Guid LicitationGuid);
+        /// <summary>
+        /// Updates a specific announcement.
+        /// </summary>
+        /// <param name="id">The identifier of the announcement to update.</param>
+        /// <param name="patchAnnouncement">The updated values for the announcement.</param>
+        /// <returns>The updated announcement.</returns>
+        Task<Entities.Announcement?> UpdateAnnouncement(Guid id, Entities.Announcement patchAnnouncement);
 
-        Task<Announcement?> Add(Announcement Announcement);
+        /// <summary>
+        /// Adds a new announcement.
+        /// </summary>
+        /// <param name="announcement">The announcement to add.</param>
+        /// <returns>The added announcement.</returns>
+        Task<Entities.Announcement?> AddAnnouncement(Entities.Announcement announcement);
 
-        Task<Announcement?> Update(Announcement Announcement);
-
-        Task Delete(Guid Guid);
+        /// <summary>
+        /// Deletes a specific announcement.
+        /// </summary>
+        /// <param name="id">The identifier of the announcement to delete.</param>
+        /// <returns>The deleted announcement.</returns>
+        Task DeleteAnnouncement(Guid id);
 
     }
 }

@@ -4,15 +4,17 @@ namespace Preparation.API.Entities
 {
     public partial class Announcement : IValidatableObject
     {
+        [Key]
         public Guid Guid { get; set; }
         public Guid LicitationGuid { get; set; }
 
         //public List<Document> Documents { get; set; }
 
+        //public Announcement() { }
 
-        public Announcement(Guid announcementGuid, Guid licitationGuid)
+        public Announcement(Guid id, Guid licitationGuid)
         {
-            Guid = announcementGuid;
+            Guid = id;
             LicitationGuid = licitationGuid;
         }
 
