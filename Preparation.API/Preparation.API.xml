@@ -4,6 +4,173 @@
         <name>Preparation.API</name>
     </assembly>
     <members>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.#ctor(Preparation.API.Data.Repository.IAnnouncementRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the SystemUsersController class
+            </summary>
+            <param name="systemUserRepository">An instance of ISystemUserRepository to handle the System Users</param>
+            <param name="mapper">An instance of IMapper to map between System User entities and models</param>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.GetAnnouncements">
+            <summary>
+            Returns a list of System Users
+            </summary>
+            <returns>A list of System User models, or No Content if no System User found</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.GetByLicitation(System.Guid)">
+            <summary>
+            Returns a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to retrieve</param>
+            <returns>The System User model, or Not Found if the System User is not found</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.PutAnnouncement(System.Guid,Preparation.API.Models.AnnouncementUpdateModel)">
+            <summary>
+            Updates a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to update</param>
+            <param name="systemUserUpdate">The updated System User information</param>
+            <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.PostAnnouncement(Preparation.API.Models.AnnouncementRequestModel)">
+            <summary>
+            Creates a new System User
+            </summary>
+            <param name="requestModel">The new System User information</param>
+            <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.#ctor(Preparation.API.Data.Repository.IDocumentRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the SystemUsersController class
+            </summary>
+            <param name="systemUserRepository">An instance of ISystemUserRepository to handle the System Users</param>
+            <param name="mapper">An instance of IMapper to map between System User entities and models</param>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.GetDocuments">
+            <summary>
+            Returns a list of System Users
+            </summary>
+            <returns>A list of System User models, or No Content if no System User found</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.GetByNumber(System.String)">
+            <summary>
+            Returns a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to retrieve</param>
+            <returns>The System User model, or Not Found if the System User is not found</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.PutDocument(System.String,Preparation.API.Models.DocumentUpdateModel)">
+            <summary>
+            Updates a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to update</param>
+            <param name="systemUserUpdate">The updated System User information</param>
+            <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.PostDocument(Preparation.API.Models.DocumentRequestModel)">
+            <summary>
+            Creates a new System User
+            </summary>
+            <param name="requestModel">The new System User information</param>
+            <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.DeleteDocument(System.String)">
+            <summary>
+            Deletes a specific System User based on the username
+            </summary>
+            <param name="username">The username of the System User to delete</param>
+            <returns>No Content if the System User is deleted successfully, or Not Found if the System User is not found</returns>
+        </member>
+        <member name="M:Preparation.API.Data.PreparationDBContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjavanje baze sa nekim test podacima
+            </summary>
+        </member>
+        <member name="T:Preparation.API.Data.Repository.AnnouncementRepository">
+            <summary>
+            Implementation of the ISystemUserRepository
+            interface for managing SystemUser entities in the database.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.#ctor(Preparation.API.Data.PreparationDBContext)">
+            <summary>
+            Initializes a new instance of the SystemUserRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.Add(Preparation.API.Entities.Announcement)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAll"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.Delete(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.Delete(System.Guid)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetAll">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAll"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetByGuid(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetByLicitation(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetByLicitation(System.Guid)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.Update(Preparation.API.Entities.Announcement)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.Update(Preparation.API.Entities.Announcement)"/>
+        </member>
+        <member name="T:Preparation.API.Data.Repository.DocumentRepository">
+            <summary>
+            Implementation of the ISystemUserRepository
+            interface for managing SystemUser entities in the database.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.#ctor(Preparation.API.Data.PreparationDBContext)">
+            <summary>
+            Initializes a new instance of the SystemUserRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Add(Preparation.API.Entities.Document)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetAll"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Delete(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.Delete(System.Guid)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Delete(System.String)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.Delete(System.String)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetAll">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetAll"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetByGuid(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetByNumber(System.String)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetByNumber(System.String)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Update(Preparation.API.Entities.Document)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.Update(Preparation.API.Entities.Document)"/>
+        </member>
+        <member name="T:Preparation.API.Enums.DocumentTypeConverter">
+            <summary>
+            The DocumentTypeConverter class provides a custom implementation for converting the DocumentType enum to and from JSON.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Enums.DocumentTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the DocumentType value from a JSON reader.
+            </summary>
+            <param name="reader">The JSON reader to read from.</param>
+            <param name="typeToConvert">The type to convert to.</param>
+            <param name="options">The JSON serializer options.</param>
+            <returns>The DocumentType value read from the JSON reader.</returns>
+        </member>
+        <member name="M:Preparation.API.Enums.DocumentTypeConverter.Write(System.Text.Json.Utf8JsonWriter,Preparation.API.Enums.DocumentType,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the DocumentType value to a JSON writer.
+            </summary>
+            <param name="writer">The JSON writer to write to.</param>
+            <param name="value">The DocumentType value to write.</param>
+            <param name="options">The JSON serializer options.</param>
+        </member>
         <member name="T:Preparation.API.Migrations.InitialCreate">
             <inheritdoc />
         </member>

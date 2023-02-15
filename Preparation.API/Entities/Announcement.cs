@@ -7,6 +7,9 @@ namespace Preparation.API.Entities
         public Guid Guid { get; set; }
         public Guid LicitationGuid { get; set; }
 
+        //public List<Document> Documents { get; set; }
+
+
         public Announcement(Guid announcementGuid, Guid licitationGuid)
         {
             Guid = announcementGuid;

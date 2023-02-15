@@ -1,14 +1,14 @@
 ﻿using Preparation.API.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 namespace Preparation.API.Entities
 {
     public partial class Document : IValidatableObject
     {
+        [Key]
         public Guid Guid { get; set; }
-        public Announcement Announcement { get; set; }
+        public Guid AnnouncementGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType DocumentType { get; set; }
         [JsonConverter(typeof(DocumentStatusConverter))]
@@ -18,13 +18,15 @@ namespace Preparation.API.Entities
         public DateTime DateCertified { get; set; }
         public string Template { get; set; }
 
+        //public Announcement Announcement { get; set; }
+
         public Document() { }
 
 
-        public Document(Guid id, Announcement announcement, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+        public Document(Guid id, Guid announcementGuid, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
         {
             Guid = id;
-            Announcement = announcement;
+            AnnouncementGuid = announcementGuid;
             DocumentType = documentType;
             DocumentStatus = documentStatus;
             ReferenceNumber = referenceNumber;
@@ -35,10 +37,10 @@ namespace Preparation.API.Entities
 
 
 
-        public Document(Announcement announcement, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+        public Document(Guid announcementGuid, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
         {
             Guid = Guid.NewGuid();
-            Announcement = announcement;
+            AnnouncementGuid = announcementGuid;
             DocumentType = documentType;
             DocumentStatus = documentStatus;
             ReferenceNumber = referenceNumber;
@@ -57,7 +59,7 @@ namespace Preparation.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (Announcement == null)
+            if (AnnouncementGuid == null)
                 results.Add(new ValidationResult("Announcement cannot be null."/*, new[] { nameof(publicBidding) }*/));
 
             if (DocumentType == null)

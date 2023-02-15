@@ -9,7 +9,9 @@ namespace Preparation.API.Models
     public class DocumentResponseModel
     {
         [DataMember]
-        public Announcement Announcement { get; set; }
+        public Guid Guid { get; set; }
+        [DataMember]
+        public Guid AnnouncementGuid { get; set; }
 
         [JsonConverter(typeof(DocumentTypeConverter))]
         [DataMember(Name = "DocumentType")]
@@ -26,10 +28,10 @@ namespace Preparation.API.Models
         [DataMember]
         public string Template { get; set; }
 
-        public DocumentResponseModel(Announcement announcement, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+        public DocumentResponseModel(Guid guid,Guid announcementGuid, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
         {
-
-            Announcement = announcement;
+            Guid = guid;
+            AnnouncementGuid = announcementGuid;
             DocumentType = documentType;
             DocumentStatus = documentStatus;
             ReferenceNumber = referenceNumber;

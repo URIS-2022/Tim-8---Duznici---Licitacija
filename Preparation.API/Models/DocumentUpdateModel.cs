@@ -6,7 +6,7 @@ namespace Preparation.API.Models
 {
     public class DocumentUpdateModel
     {
-        public Announcement? Announcement { get; set; }
+        public Guid? AnnouncementGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType? DocumentType { get; set; }
         [JsonConverter(typeof(DocumentStatusConverter))]
@@ -16,10 +16,10 @@ namespace Preparation.API.Models
         public DateTime? DateCertified { get; set; }
         public string? Template { get; set; }
 
-        public DocumentUpdateModel(Announcement? announcement, DocumentType? documentType, DocumentStatus? documentStatus, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
+        public DocumentUpdateModel(Guid? announcementGuid, DocumentType? documentType, DocumentStatus? documentStatus, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
         {
 
-            Announcement = announcement;
+            AnnouncementGuid = announcementGuid;
             DocumentType = documentType;
             DocumentStatus = documentStatus;
             ReferenceNumber = referenceNumber;
