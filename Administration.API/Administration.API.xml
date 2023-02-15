@@ -94,6 +94,73 @@
             <param name="id">The identifier of the committee to delete.</param>
             <returns>The deleted committee.</returns>
         </member>
+        <member name="T:Administration.API.Data.Repository.IMemberRepository">
+            <summary>
+            The interface for member repository, provides methods for getting, updating, adding and deleting a member
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IMemberRepository.GetMembers">
+            <summary>
+            Gets a list of all members.
+            </summary>
+            <returns>A list of members.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IMemberRepository.GetMember(System.Guid)">
+            <summary>
+            Gets a specific member by its identifier.
+            </summary>
+            <param name="id">The identifier of the member.</param>
+            <returns>The member with the specified identifier.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IMemberRepository.UpdateMember(System.Guid,Administration.API.Entities.Member)">
+            <summary>
+            Updates a specific member.
+            </summary>
+            <param name="id">The identifier of the member to update.</param>
+            <param name="patchDocument">The updated values for the member.</param>
+            <returns>The updated member.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IMemberRepository.AddMember(Administration.API.Entities.Member)">
+            <summary>
+            Adds a new member.
+            </summary>
+            <param name="member">The member to add.</param>
+            <returns>The added member.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IMemberRepository.DeleteMember(System.Guid)">
+            <summary>
+            Deletes a specific member.
+            </summary>
+            <param name="id">The identifier of the member to delete.</param>
+            <returns>The deleted member.</returns>
+        </member>
+        <member name="T:Administration.API.Data.Repository.MemberRepository">
+            <summary>
+            Implementation of the IMemberRepository
+            interface for managing Member entities in the database.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.MemberRepository.#ctor(Administration.API.Data.AdministrationDbContext)">
+            <summary>
+            Initializes a new instance of the MemberRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Administration.API.Data.Repository.MemberRepository.GetMembers">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IMemberRepository.GetMembers"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.MemberRepository.GetMember(System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IMemberRepository.GetMember(System.Guid)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.MemberRepository.UpdateMember(System.Guid,Administration.API.Entities.Member)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IMemberRepository.UpdateMember(System.Guid,Administration.API.Entities.Member)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.MemberRepository.AddMember(Administration.API.Entities.Member)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IMemberRepository.AddMember(Administration.API.Entities.Member)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.MemberRepository.DeleteMember(System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IMemberRepository.DeleteMember(System.Guid)"/>
+        </member>
         <member name="T:Administration.API.Enums.DocumentTypeConverter">
             <summary>
             The DocumentTypeConverter class provides a custom implementation for converting the DocumentType enum to and from JSON.
