@@ -1,5 +1,7 @@
 ﻿
 using Lease.API.Enums;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -23,13 +25,17 @@ public partial class LeaseAgreement : IValidatableObject
     public Buyer Buyer { get; set; }
 
     [JsonConverter(typeof(DocumentStatusConverter))]
-    public  DocumentStatus DocumentStatus {get; set; }
-    public DueDate DueDate { get; set; }
+    public DocumentStatus DocumentStatus { get; set; }
 
-    public ICollection<Document> Documents { get; set; }
+    
+    public virtual DueDate DueDate { get; set; }
 
-    public LeaseAgreement() { }
-    public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, DueDate dueDate)
+    public virtual ICollection<Document> Documents { get; set; }
+    public int DueDateId { get; internal set; }
+
+    public LeaseAgreement() {  }
+
+    public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, int dueDateId)
     {
         this.Guid = Guid;
         this.GuaranteeType = GuaranteeType;
@@ -42,11 +48,12 @@ public partial class LeaseAgreement : IValidatableObject
         this.BiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
-        this.DueDate = dueDate;
+        DueDateId=dueDateId;
+        
 
     }
 
-    public LeaseAgreement(GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, DueDate DueDate)
+    public LeaseAgreement(GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, int dueDateId)
     {
         this.Guid = Guid.NewGuid();
         this.GuaranteeType = GuaranteeType;
@@ -59,9 +66,9 @@ public partial class LeaseAgreement : IValidatableObject
         this.BiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
-        this.DueDate = DueDate;
-        
-}
+        DueDateId = dueDateId;
+
+    }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

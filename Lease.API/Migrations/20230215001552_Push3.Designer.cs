@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lease.API.Migrations
 {
     [DbContext(typeof(LeaseDbContext))]
-    [Migration("20230212000930_pushModelToDataBase")]
-    partial class pushModelToDataBase
+    [Migration("20230215001552_Push3")]
+    partial class Push3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,6 +75,9 @@ namespace Lease.API.Migrations
                     b.Property<DateTime>("DateSubmissed")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DocumentType")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("LeaseAgreementGuid")
                         .HasColumnType("uniqueidentifier");
 
@@ -107,13 +110,7 @@ namespace Lease.API.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("LeaseAgreementGuid")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("LeaseAgreementGuid")
-                        .IsUnique();
 
                     b.ToTable("DueDates");
                 });
@@ -136,6 +133,15 @@ namespace Lease.API.Migrations
                     b.Property<DateTime>("DeadlineLandReturn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DocumentStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DueDateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GuaranteeType")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("MinisterGuid")
                         .HasColumnType("uniqueidentifier");
 
@@ -152,10 +158,48 @@ namespace Lease.API.Migrations
 
                     b.HasKey("Guid");
 
+                    b.HasIndex("DueDateId");
+
                     b.HasIndex("ReferenceNumber")
                         .IsUnique();
 
                     b.ToTable("LeaseAgreements");
+                });
+
+            modelBuilder.Entity("Lease.API.Entities.PriorityBuyer", b =>
+                {
+                    b.Property<Guid>("BuyerGuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("PriorityTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("BuyerGuid", "PriorityTypeId");
+
+                    b.HasIndex("PriorityTypeId");
+
+                    b.ToTable("PriorityBuyers");
+                });
+
+            modelBuilder.Entity("Lease.API.Entities.PriorityTypeEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("PriorityTypeEntityId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PriorityTypeEntityId");
+
+                    b.ToTable("PriorityTypes");
                 });
 
             modelBuilder.Entity("Lease.API.Entities.Buyer", b =>
@@ -180,15 +224,51 @@ namespace Lease.API.Migrations
                     b.Navigation("LeaseAgreement");
                 });
 
-            modelBuilder.Entity("Lease.API.Entities.DueDate", b =>
+            modelBuilder.Entity("Lease.API.Entities.LeaseAgreement", b =>
                 {
-                    b.HasOne("Lease.API.Entities.LeaseAgreement", "LeaseAgreement")
-                        .WithOne("DueDate")
-                        .HasForeignKey("Lease.API.Entities.DueDate", "LeaseAgreementGuid")
+                    b.HasOne("Lease.API.Entities.DueDate", "DueDate")
+                        .WithMany("LeaseAgreements")
+                        .HasForeignKey("DueDateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("LeaseAgreement");
+                    b.Navigation("DueDate");
+                });
+
+            modelBuilder.Entity("Lease.API.Entities.PriorityBuyer", b =>
+                {
+                    b.HasOne("Lease.API.Entities.Buyer", "Buyer")
+                        .WithMany("PriorityBuyers")
+                        .HasForeignKey("BuyerGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Lease.API.Entities.PriorityTypeEntity", "PriorityType")
+                        .WithMany("PriorityBuyers")
+                        .HasForeignKey("PriorityTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Buyer");
+
+                    b.Navigation("PriorityType");
+                });
+
+            modelBuilder.Entity("Lease.API.Entities.PriorityTypeEntity", b =>
+                {
+                    b.HasOne("Lease.API.Entities.PriorityTypeEntity", null)
+                        .WithMany("PriorityTypes")
+                        .HasForeignKey("PriorityTypeEntityId");
+                });
+
+            modelBuilder.Entity("Lease.API.Entities.Buyer", b =>
+                {
+                    b.Navigation("PriorityBuyers");
+                });
+
+            modelBuilder.Entity("Lease.API.Entities.DueDate", b =>
+                {
+                    b.Navigation("LeaseAgreements");
                 });
 
             modelBuilder.Entity("Lease.API.Entities.LeaseAgreement", b =>
@@ -197,9 +277,13 @@ namespace Lease.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Documents");
+                });
 
-                    b.Navigation("DueDate")
-                        .IsRequired();
+            modelBuilder.Entity("Lease.API.Entities.PriorityTypeEntity", b =>
+                {
+                    b.Navigation("PriorityBuyers");
+
+                    b.Navigation("PriorityTypes");
                 });
 #pragma warning restore 612, 618
         }

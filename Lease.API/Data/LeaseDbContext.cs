@@ -18,6 +18,8 @@ public class LeaseDbContext : DbContext
     public DbSet<Buyer> Buyers { get; set; }
     public DbSet<Document> Documents { get; set; }
 
+    public DbSet<PriorityTypeEntity> PriorityTypes { get; set; }
+    public DbSet<PriorityBuyer> PriorityBuyers { get; set; }
     public DbSet<DueDate> DueDates { get; set; }
 
 
@@ -49,15 +51,15 @@ public class LeaseDbContext : DbContext
            modelBuilder.Entity<DueDate>()
              .HasKey(u => u.Id);
 
-        
+
 
 
 
 
         modelBuilder.Entity<DueDate>()
-              .HasOne(dd => dd.LeaseAgreement)
+              .HasMany(dd => dd.LeaseAgreements)
               .WithOne(la => la.DueDate)
-              .HasForeignKey<DueDate>(dd => dd.LeaseAgreementGuid);
+              .HasForeignKey(la => la.DueDateId);
 
 
 
@@ -74,9 +76,31 @@ public class LeaseDbContext : DbContext
                .HasForeignKey<Buyer>(x => x.PersonGuid)
                .IsRequired();
 
+        modelBuilder.Entity<PriorityBuyer>()
+                .HasKey(pb => new { pb.BuyerGuid, pb.PriorityTypeId });
 
-        modelBuilder.Entity <List<PriorityType>>()
-               .HasNoKey();
+        modelBuilder.Entity<PriorityBuyer>()
+        .HasOne(pb => pb.Buyer)
+        .WithMany(b => b.PriorityBuyers)
+        .HasForeignKey(pb => pb.BuyerGuid);
+
+        modelBuilder.Entity<PriorityBuyer>()
+            .HasOne(pb => pb.PriorityType)
+            .WithMany(pt => pt.PriorityBuyers)
+            .HasForeignKey(pb => pb.PriorityTypeId);
+
+        modelBuilder.Entity<Buyer>()
+             .HasMany(b => b.PriorityBuyers)
+             .WithOne(pb => pb.Buyer)
+             .HasForeignKey(pb => pb.BuyerGuid);
+
+        modelBuilder.Entity<PriorityTypeEntity>()
+             .HasKey(pt=>pt.Id);
+
+        modelBuilder.Entity<PriorityTypeEntity>()
+            .HasMany(pt => pt.PriorityBuyers)
+            .WithOne(pb => pb.PriorityType)
+            .HasForeignKey(pb => pb.PriorityTypeId);
 
 
 

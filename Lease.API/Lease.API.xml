@@ -46,18 +46,6 @@
             <param name="guid">The username of the System User to delete</param>
             <returns>No Content if the System User is deleted successfully, or Not Found if the System User is not found</returns>
         </member>
-        <member name="T:Lease.API.Migrations.pushModelToDataBase">
-            <inheritdoc />
-        </member>
-        <member name="M:Lease.API.Migrations.pushModelToDataBase.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Lease.API.Migrations.pushModelToDataBase.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Lease.API.Migrations.pushModelToDataBase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
         <member name="T:Lease.API.Migrations.newPushModelToDatabase">
             <inheritdoc />
         </member>
@@ -68,6 +56,18 @@
             <inheritdoc />
         </member>
         <member name="M:Lease.API.Migrations.newPushModelToDatabase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Lease.API.Migrations.Push3">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.Push3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.Push3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.Push3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

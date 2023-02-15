@@ -27,9 +27,9 @@ public partial class Document : IValidatableObject
 
     public Document() { }
 
-    public Document(Guid Guid, string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentType documentType, Guid leaseAgreementGuid)
+    public Document(Guid guid, string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentType documentType, Guid leaseAgreementGuid)
     {
-        Guid = Guid;
+        Guid = guid;
         ReferenceNumber = referenceNumber;
         DateSubmissed = dateSubmissed;
         DateCertified = dateCertified;

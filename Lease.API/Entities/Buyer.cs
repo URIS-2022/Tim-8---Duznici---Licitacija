@@ -22,11 +22,10 @@ public partial class Buyer : IValidatableObject
 
     [JsonConverter(typeof(PriorityTypeConverter))]
 
-    public List<PriorityType> PriorityTypes { get; set; }
 
     public LeaseAgreement LeaseAgreement { get; set; }
 
-
+    public ICollection<PriorityBuyer> PriorityBuyers { get; set; }
 
 
     public Buyer(Guid guid, int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorityTypes)
@@ -40,9 +39,11 @@ public partial class Buyer : IValidatableObject
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-        PriorityTypes = priorityTypes;
+           
+    //    PriorityTypes = priorityTypes;
 
-    }
+
+}
 
     public Buyer() { }
     public Buyer(int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorityTypes )
@@ -56,7 +57,7 @@ public partial class Buyer : IValidatableObject
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-        PriorityTypes = priorityTypes;
+     //   PriorityTypes = priorityTypes;
     }
 
 

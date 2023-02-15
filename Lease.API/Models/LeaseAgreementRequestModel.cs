@@ -11,7 +11,7 @@ public class LeaseAgreementRequestModel
     [JsonConverter(typeof(GuaranteeTypeConverter))]
     public GuaranteeType GuaranteeType { get; set; }
 
-    public DateTime? DateRecording { get; set; }
+    public DateTime DateRecording { get; set; }
     public Guid MinisterGuid { get; set; }
     public DateTime DeadlineLandReturn { get; set; }
     public string PlaceOfSigning { get; set; }
@@ -20,14 +20,14 @@ public class LeaseAgreementRequestModel
     public Guid PersonGuid { get; set; }
 
     [JsonConverter(typeof(DocumentStatusConverter))]
-    public DocumentStatusConverter DocumentStatus { get; set; }
+    public DocumentStatus DocumentStatus { get; set; }
 
-    public DueDate DueDate { get; set; }
+    public int DueDateId { get; set; }
 
 
     public LeaseAgreementRequestModel(string referenceNumber, GuaranteeType guaranteeType, DateTime dateRecording, Guid ministerGuid,
         DateTime deadlineLandReturn, string placeOfSigning, DateTime dateOfSigning, Guid publicBiddingGuid,
-        Guid personGuid, DocumentStatusConverter documentStatus, DueDate dueDate)
+        Guid personGuid, DocumentStatus documentStatus, int dueDateId)
     {
         ReferenceNumber = referenceNumber;
         GuaranteeType = guaranteeType;
@@ -39,7 +39,7 @@ public class LeaseAgreementRequestModel
         PublicBiddingGuid = publicBiddingGuid;
         PersonGuid = personGuid;
         DocumentStatus = documentStatus;
-        DueDate = dueDate; 
+        DueDateId= dueDateId;
     }
 
 }

@@ -2,40 +2,37 @@
 using Lease.API.Enums;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace Lease.API.Entities;
 
-public partial class DueDate : IValidatableObject
+public partial class DueDate //: IValidatableObject
 {
 
     public int Id { get; set; }
 
-    public Guid LeaseAgreementGuid { get; set; }
+ //   public Guid LeaseAgreementGuid { get; set; }
+    
 
-    public LeaseAgreement LeaseAgreement { get; set; }
+    public virtual List<LeaseAgreement> LeaseAgreements { get; set; }
 
     public DateTime Date { get; set; }
 
-    public DueDate(int id, Guid leaseAgreementGuid, DateTime date)
+    public DueDate() { }
+
+     public DueDate(int id) /*List<LeaseAgreement> leaseAgreements,*/ 
     {
         Id = id;
-        LeaseAgreementGuid = leaseAgreementGuid;
-        Date = date;
-       
+      // LeaseAgreementGuid = leaseAgreementGuid;
+       // LeaseAgreements= leaseAgreements;
+        Date = DateTime.Now.AddYears(2);
     }
 
 
-     public DueDate(Guid leaseAgreementGuid, DateTime date)
-    {
-        LeaseAgreementGuid = leaseAgreementGuid;
-        Date = date;
-    }
-
-
-
+    /*
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         var results = new List<ValidationResult>();
@@ -47,5 +44,6 @@ public partial class DueDate : IValidatableObject
 
         return results;
     }
+    */
 }
 
