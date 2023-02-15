@@ -1,13 +1,4 @@
-﻿
-using Lease.API.Enums;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-
-namespace Lease.API.Entities;
+﻿namespace Lease.API.Entities;
 
 public partial class DueDate //: IValidatableObject
 {

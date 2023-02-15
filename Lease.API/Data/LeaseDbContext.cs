@@ -2,6 +2,8 @@
 using Lease.API.Entities;
 using Lease.API.Enums;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+
 namespace Lease.API.Data;
 
 public class LeaseDbContext : DbContext
@@ -51,8 +53,16 @@ public class LeaseDbContext : DbContext
            modelBuilder.Entity<DueDate>()
              .HasKey(u => u.Guid);
 
+           
 
 
+
+        /*modelBuilder.Entity<Buyer>()
+        .Property(e => e.PaymentGuid)
+        .HasConversion(
+            v => JsonConvert.SerializeObject(v),
+            v => JsonConvert.DeserializeObject<List<Guid>>(v))
+        .HasColumnType("jsonb");*/
 
 
 

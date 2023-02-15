@@ -8,7 +8,6 @@ public class BuyerPatchRequestModel
 {
 
     public int RealisedArea { get; set; }
-    public Guid PaymentGuid { get; set; }
     public bool Ban { get; set; }
 
     public DateTime StartDateOfBan { get; set; }
@@ -20,10 +19,10 @@ public class BuyerPatchRequestModel
 
     
 
-    public BuyerPatchRequestModel(int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
+    public BuyerPatchRequestModel(int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
     {
         RealisedArea = realisedArea;
-        PaymentGuid = paymentGuid;
+  
         Ban = ban;
         StartDateOfBan = startDateOfBan;
         BanDuration = banDuration;

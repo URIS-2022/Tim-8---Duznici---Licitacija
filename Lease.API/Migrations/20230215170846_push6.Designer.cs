@@ -4,6 +4,7 @@ using Lease.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lease.API.Migrations
 {
     [DbContext(typeof(LeaseDbContext))]
-    partial class LeaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230215170846_push6")]
+    partial class push6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,6 +42,10 @@ namespace Lease.API.Migrations
 
                     b.Property<Guid>("BiddingGuid")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PaymentGuid")
+                        .IsRequired()
+                        .HasColumnType("jsonb");
 
                     b.Property<Guid>("PersonGuid")
                         .HasColumnType("uniqueidentifier");

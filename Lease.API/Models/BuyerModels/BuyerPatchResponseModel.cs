@@ -11,8 +11,7 @@ public class BuyerPatchResponseModel
     [DataMember]
     public int? RealisedArea { get; set; }
     [DataMember]
-    public Guid? PaymentGuid { get; set; }
-    [DataMember]
+
     public bool? Ban { get; set; }
     [DataMember]
     public DateTime? StartDateOfBan { get; set; }
@@ -27,11 +26,10 @@ public class BuyerPatchResponseModel
 
 
 
-    public BuyerPatchResponseModel(Guid? guid, int? realisedArea, Guid? paymentGuid, bool? ban, DateTime? startDateOfBan, int? banDuration, DateTime? banEndDate, Guid? biddingGuid, Guid? personGuid)
+    public BuyerPatchResponseModel(Guid? guid, int? realisedArea, bool? ban, DateTime? startDateOfBan, int? banDuration, DateTime? banEndDate, Guid? biddingGuid, Guid? personGuid)
     {
         Guid = guid;
         RealisedArea = realisedArea;
-        PaymentGuid = paymentGuid;
         Ban = ban;
         StartDateOfBan = startDateOfBan;
         BanDuration = banDuration;

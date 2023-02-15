@@ -14,7 +14,7 @@ public class BuyerGetResponseModel
 
     public int RealisedArea { get; set; }
     
-    public Guid PaymentGuid { get; set; }
+    
  
     public bool Ban { get; set; }
 
@@ -30,11 +30,11 @@ public class BuyerGetResponseModel
 
 
 
-    public BuyerGetResponseModel(Guid guid, int realisedArea, Guid paymentGuid, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
+    public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
     {
         Guid = guid;
         RealisedArea = realisedArea;
-        PaymentGuid = paymentGuid;
+       
         Ban = ban;
         StartDateOfBan = startDateOfBan;
         BanDuration = banDuration;
