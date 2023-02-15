@@ -41,45 +41,16 @@
         </member>
         <member name="M:Preparation.API.Controllers.DocumentsController.#ctor(Preparation.API.Data.Repository.IDocumentRepository,AutoMapper.IMapper)">
             <summary>
-            Initializes a new instance of the SystemUsersController class
+            Initializes a new instance of the DocumentsController class
             </summary>
-            <param name="systemUserRepository">An instance of ISystemUserRepository to handle the System Users</param>
-            <param name="mapper">An instance of IMapper to map between System User entities and models</param>
+            <param name="documentRepository">An instance of IDocumentRepository to handle the Documents</param>
+            <param name="mapper">An instance of IMapper to map between Document entities and models</param>
         </member>
         <member name="M:Preparation.API.Controllers.DocumentsController.GetDocuments">
             <summary>
             Returns a list of System Users
             </summary>
             <returns>A list of System User models, or No Content if no System User found</returns>
-        </member>
-        <member name="M:Preparation.API.Controllers.DocumentsController.GetByNumber(System.String)">
-            <summary>
-            Returns a specific System User based on the username
-            </summary>
-            <param name="username">The username of the System User to retrieve</param>
-            <returns>The System User model, or Not Found if the System User is not found</returns>
-        </member>
-        <member name="M:Preparation.API.Controllers.DocumentsController.PutDocument(System.String,Preparation.API.Models.DocumentUpdateModel)">
-            <summary>
-            Updates a specific System User based on the username
-            </summary>
-            <param name="username">The username of the System User to update</param>
-            <param name="systemUserUpdate">The updated System User information</param>
-            <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
-        </member>
-        <member name="M:Preparation.API.Controllers.DocumentsController.PostDocument(Preparation.API.Models.DocumentRequestModel)">
-            <summary>
-            Creates a new System User
-            </summary>
-            <param name="requestModel">The new System User information</param>
-            <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
-        </member>
-        <member name="M:Preparation.API.Controllers.DocumentsController.DeleteDocument(System.String)">
-            <summary>
-            Deletes a specific System User based on the username
-            </summary>
-            <param name="username">The username of the System User to delete</param>
-            <returns>No Content if the System User is deleted successfully, or Not Found if the System User is not found</returns>
         </member>
         <member name="M:Preparation.API.Data.PreparationDBContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
@@ -118,36 +89,70 @@
         </member>
         <member name="T:Preparation.API.Data.Repository.DocumentRepository">
             <summary>
-            Implementation of the ISystemUserRepository
-            interface for managing SystemUser entities in the database.
+            Implementation of the IDocumentRepository
+            interface for managing Document entities in the database.
             </summary>
         </member>
         <member name="M:Preparation.API.Data.Repository.DocumentRepository.#ctor(Preparation.API.Data.PreparationDBContext)">
             <summary>
-            Initializes a new instance of the SystemUserRepository class.
+            Initializes a new instance of the DocumentRepository class.
             </summary>
             <param name="context">The database context to use for data access.</param>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Add(Preparation.API.Entities.Document)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetAll"/>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetDocuments">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocuments"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Delete(System.Guid)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.Delete(System.Guid)"/>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetDocument(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Delete(System.String)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.Delete(System.String)"/>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.UpdateDocument(System.Guid,Preparation.API.Entities.Document)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Preparation.API.Entities.Document)"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetAll">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetAll"/>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.AddDocument(Preparation.API.Entities.Document)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.AddDocument(Preparation.API.Entities.Document)"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetByGuid(System.Guid)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetByGuid(System.Guid)"/>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.DeleteDocument(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)"/>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetByNumber(System.String)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetByNumber(System.String)"/>
+        <member name="T:Preparation.API.Data.Repository.IDocumentRepository">
+            <summary>
+            The interface for document repository, provides methods for getting, updating, adding and deleting a document
+            </summary>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.Update(Preparation.API.Entities.Document)">
-            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.Update(Preparation.API.Entities.Document)"/>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocuments">
+            <summary>
+            Gets a list of all documents.
+            </summary>
+            <returns>A list of documents.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)">
+            <summary>
+            Gets a specific document by its identifier.
+            </summary>
+            <param name="id">The identifier of the document.</param>
+            <returns>The document with the specified identifier.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Preparation.API.Entities.Document)">
+            <summary>
+            Updates a specific document.
+            </summary>
+            <param name="id">The identifier of the document to update.</param>
+            <param name="patchDocument">The updated values for the document.</param>
+            <returns>The updated document.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.AddDocument(Preparation.API.Entities.Document)">
+            <summary>
+            Adds a new document.
+            </summary>
+            <param name="document">The document to add.</param>
+            <returns>The added document.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a specific document.
+            </summary>
+            <param name="id">The identifier of the document to delete.</param>
+            <returns>The deleted document.</returns>
         </member>
         <member name="T:Preparation.API.Enums.DocumentTypeConverter">
             <summary>

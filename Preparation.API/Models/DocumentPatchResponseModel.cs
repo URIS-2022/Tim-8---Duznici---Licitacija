@@ -1,12 +1,11 @@
-﻿using Preparation.API.Entities;
-using Preparation.API.Enums;
+﻿using Preparation.API.Enums;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 namespace Preparation.API.Models
 {
     [DataContract(Name = "Document", Namespace = "")]
-    public class DocumentResponseModel
+    public class DocumentPatchResponseModel
     {
         [DataMember]
         public Guid Guid { get; set; }
@@ -28,7 +27,7 @@ namespace Preparation.API.Models
         [DataMember]
         public string Template { get; set; }
 
-        public DocumentResponseModel(Guid guid,Guid announcementGuid, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+        public DocumentPatchResponseModel(Guid guid, Guid announcementGuid, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
         {
             Guid = guid;
             AnnouncementGuid = announcementGuid;

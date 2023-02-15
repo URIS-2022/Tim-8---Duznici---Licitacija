@@ -2,21 +2,44 @@
 
 namespace Preparation.API.Data.Repository
 {
+    /// <summary>
+    /// The interface for document repository, provides methods for getting, updating, adding and deleting a document
+    /// </summary>
     public interface IDocumentRepository
     {
-        
-        Task<IEnumerable<Document>> GetAll();
+        /// <summary>
+        /// Gets a list of all documents.
+        /// </summary>
+        /// <returns>A list of documents.</returns>
+        Task<IEnumerable<Entities.Document>> GetDocuments();
 
-        Task<Document?> GetByGuid(Guid Guid);
+        /// <summary>
+        /// Gets a specific document by its identifier.
+        /// </summary>
+        /// <param name="id">The identifier of the document.</param>
+        /// <returns>The document with the specified identifier.</returns>
+        Task<Entities.Document?> GetDocument(Guid id);
 
-        Task<Document?> GetByNumber(string ReferenceNumber);
+        /// <summary>
+        /// Updates a specific document.
+        /// </summary>
+        /// <param name="id">The identifier of the document to update.</param>
+        /// <param name="patchDocument">The updated values for the document.</param>
+        /// <returns>The updated document.</returns>
+        Task<Entities.Document?> UpdateDocument(Guid id, Entities.Document patchDocument);
 
-        Task<Document?> Add(Document Document);
+        /// <summary>
+        /// Adds a new document.
+        /// </summary>
+        /// <param name="document">The document to add.</param>
+        /// <returns>The added document.</returns>
+        Task<Entities.Document?> AddDocument(Entities.Document document);
 
-        Task<Document?> Update(Document Document);
-
-        Task Delete(Guid Guid);
-
-        Task Delete(string ReferenceNumber);
+        /// <summary>
+        /// Deletes a specific document.
+        /// </summary>
+        /// <param name="id">The identifier of the document to delete.</param>
+        /// <returns>The deleted document.</returns>
+        Task DeleteDocument(Guid id);
     }
 }

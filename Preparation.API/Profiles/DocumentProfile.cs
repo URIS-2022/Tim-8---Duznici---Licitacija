@@ -9,9 +9,12 @@ namespace Preparation.API.Profiles
     {
         public DocumentProfile()
         {
-            CreateMap<Document, DocumentResponseModel>();
-            CreateMap<Document, DocumentRequestModel>();
-            CreateMap<Document, DocumentUpdateModel>();
+            CreateMap<Entities.Document, DocumentGetResponseModel>();
+            CreateMap<Entities.Document, DocumentPostResponseModel>();
+            CreateMap<Entities.Document, DocumentPatchResponseModel>();
+            CreateMap<DocumentPostRequestModel, Entities.Document>();
+            CreateMap<DocumentPatchRequestModel, Entities.Document>();
+            
         }
     }
 }

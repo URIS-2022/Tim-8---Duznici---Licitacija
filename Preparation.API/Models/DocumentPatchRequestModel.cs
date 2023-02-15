@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Preparation.API.Models
 {
-    public class DocumentUpdateModel
+    public class DocumentPatchRequestModel
     {
         public Guid? AnnouncementGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
@@ -16,7 +16,7 @@ namespace Preparation.API.Models
         public DateTime? DateCertified { get; set; }
         public string? Template { get; set; }
 
-        public DocumentUpdateModel(Guid? announcementGuid, DocumentType? documentType, DocumentStatus? documentStatus, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
+        public DocumentPatchRequestModel(Guid? announcementGuid, DocumentType? documentType, DocumentStatus? documentStatus, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
         {
 
             AnnouncementGuid = announcementGuid;
