@@ -118,7 +118,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<ILeaseAgreementRepository, LeaseAgreementRepository>();
 builder.Services.AddScoped<IDueDateRepository, DueDateRepository>();
-
+builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
 
 WebApplication app = builder.Build();
 
