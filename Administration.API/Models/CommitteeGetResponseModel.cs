@@ -6,9 +6,11 @@ namespace Administration.API.Models;
 public class CommitteeGetResponseModel
 {
     [DataMember]
+    public Guid Guid { get; set; }
+    [DataMember]
     public DateTime DateAssembled { get; set; }
     [DataMember]
-    public ICollection<CommitteeMemberCommitteeGetResponseModel> CommitteeMembers { get; set; }
+    public IEnumerable<CommitteeMemberCommitteeGetResponseModel> CommitteeMembers { get; set; }
 
     public CommitteeGetResponseModel() { }
 }

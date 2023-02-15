@@ -7,7 +7,7 @@ public class Committee
     [Key]
     public Guid Guid { get; set; }
     public DateTime DateAssembled { get; set; }
-    public ICollection<CommitteeMember>? CommitteeMembers { get; set; }
+    public IEnumerable<CommitteeMember> CommitteeMembers { get; set; }
 
     public Committee(Guid guid, DateTime dateAssembled, ICollection<CommitteeMember>? committeeMembers = null)
     {
@@ -16,10 +16,8 @@ public class Committee
         CommitteeMembers = committeeMembers ?? new HashSet<CommitteeMember>();
     }
 
-    public Committee(DateTime dateAssembled)
+    public Committee()
     {
-        Guid = Guid.NewGuid();
-        DateAssembled = dateAssembled;
         CommitteeMembers = new HashSet<CommitteeMember>();
     }
 

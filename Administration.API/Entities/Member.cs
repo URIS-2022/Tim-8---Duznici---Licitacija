@@ -9,7 +9,7 @@ public class Member
     public string FirstName { get; set; }
     public string LastName { get; set; }
 
-    public ICollection<CommitteeMember> CommitteeMembers { get; set; }
+    public IEnumerable<CommitteeMember> CommitteeMembers { get; set; }
 
     public Member(Guid guid, string firstName, string lastName, ICollection<CommitteeMember>? committeeMembers = null)
     {

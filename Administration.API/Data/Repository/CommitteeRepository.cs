@@ -31,13 +31,17 @@ public class CommitteeRepository : ICommitteeRepository
     /// <inheritdoc cref="ICommitteeRepository.GetCommittee"/>
     public async Task<Committee?> GetCommittee(Guid id)
     {
-        return await context.Committees.FindAsync(id);
+        return await context.Committees.Include(c => c.CommitteeMembers)
+                               .ThenInclude(cm => cm.Member)
+                               .FirstOrDefaultAsync(c => c.Guid == id);
     }
 
     /// <inheritdoc cref="ICommitteeRepository.UpdateCommittee"/>
     public async Task<Committee?> UpdateCommittee(Guid id, Committee updateModel)
     {
-        var committee = await context.Committees.FirstOrDefaultAsync(c => c.Guid == id);
+        var committee = await context.Committees.Include(c => c.CommitteeMembers)
+                               .ThenInclude(cm => cm.Member)
+                               .FirstOrDefaultAsync(c => c.Guid == id);
         if (committee == null)
         {
             return null;
