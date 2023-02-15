@@ -32,7 +32,8 @@ namespace Person.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<PhysicalPerson>()
+               .HasKey(p => p.PhysicalPersonId);
 
             modelBuilder.Entity<PhysicalPerson>()
                 .HasData(
@@ -53,10 +54,21 @@ namespace Person.API.Data
             );
 
             modelBuilder.Entity<LegalPerson>()
+             .HasKey(lp => lp.LegalPersonId);
+
+
+            modelBuilder.Entity<ContactPerson>()
+                .HasMany(cp => cp.LegalPersons)
+                .WithOne(lp => lp.ContactPerson)
+                .HasForeignKey(lp => lp.ContactPersonId);
+
+
+            modelBuilder.Entity<LegalPerson>()
                 .HasData(
                     new LegalPerson
                     {
                         LegalPersonId = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
+                        ContactPersonId = Guid.Parse("a43a31f7-ffad-4aff-a199-1a6d31a8b850"),
                         Name = "Vaskons",
                         IdentificationNumber = "16050",
                         AddressId = Guid.Parse("8de0c01b-b7b0-4df2-9234-3df21b91a0bb"),
@@ -70,6 +82,10 @@ namespace Person.API.Data
             );
 
             modelBuilder.Entity<ContactPerson>()
+              .HasKey(p => p.ContactPersonId);
+
+
+            modelBuilder.Entity<ContactPerson>()
                 .HasData(
                     new ContactPerson
                     {
@@ -80,6 +96,11 @@ namespace Person.API.Data
                         PhoneNumber = "0639444271"
                     }
             );
+
+
+            modelBuilder.Entity<Address>()
+              .HasKey(a => a.AddressId);
+
 
             modelBuilder.Entity<Address>()
                 .HasData(

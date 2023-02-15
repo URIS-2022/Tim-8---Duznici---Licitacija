@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Person.API.Data.Repository;
+using Person.API.Entities;
 
 namespace Person.API.Models
 {
@@ -62,6 +64,7 @@ namespace Person.API.Models
         [Required(ErrorMessage = "Obavezno je uneti broj računa!")]
         public string AccountNumber { get; set; }
 
+
         public LegalPersonRequestModel(Guid contactPersonId,string name, string identificationNumber, Guid addressId, string phoneNumber1,
                                            string phoneNumber2, string fax, string email, string accountNumber)
         {
@@ -74,6 +77,7 @@ namespace Person.API.Models
             Fax = fax;
             Email = email;
             AccountNumber = accountNumber;
+            
 
         }
     }

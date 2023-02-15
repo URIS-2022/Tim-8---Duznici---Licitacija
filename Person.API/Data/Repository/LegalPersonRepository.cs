@@ -29,6 +29,7 @@ namespace Person.API.Data.Repository
         public async Task<LegalPerson> GetLegalPersonByGuid(Guid LegalPersonId)
         {
             return await context.LegalPersons.FirstOrDefaultAsync(o => o.LegalPersonId == LegalPersonId);
+            
         }
 
         public async Task<LegalPerson> CreateLegalPerson(LegalPerson legalPerson)

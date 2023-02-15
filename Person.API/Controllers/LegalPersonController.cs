@@ -37,6 +37,7 @@ public class LegalPersonController : ControllerBase
     [HttpGet("{legalPersonGuid}")]
     public async Task<ActionResult<LegalPersonResponseModel>> GetLegalPerson(Guid legalPersonGuid)
     {
+
         var legalPerson = await legalPersonRepository.GetLegalPersonByGuid(legalPersonGuid);
         if (legalPerson == null)
         {

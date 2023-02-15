@@ -5,7 +5,9 @@ namespace Person.API.Entities
 {
     public class LegalPerson : IValidatableObject
     {
+        [Key]
         public Guid LegalPersonId { get; set; }
+        public Guid ContactPersonId { get; set; }
         public string Name { get; set; }
         public string IdentificationNumber { get; set; }
         public Guid AddressId { get; set; }
@@ -14,6 +16,7 @@ namespace Person.API.Entities
         public string Fax { get; set; }
         public string Email { get; set; }
         public string AccountNumber { get; set; }
+        public ContactPerson? ContactPerson { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

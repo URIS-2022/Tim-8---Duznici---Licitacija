@@ -12,7 +12,7 @@ using Person.API.Data;
 namespace Person.API.Migrations
 {
     [DbContext(typeof(PersonDbContext))]
-    [Migration("20230211175538_InitialCreate")]
+    [Migration("20230215131139_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -117,6 +117,9 @@ namespace Person.API.Migrations
                     b.Property<Guid>("AddressId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("ContactPersonId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -143,6 +146,8 @@ namespace Person.API.Migrations
 
                     b.HasKey("LegalPersonId");
 
+                    b.HasIndex("ContactPersonId");
+
                     b.ToTable("LegalPersons");
 
                     b.HasData(
@@ -151,6 +156,7 @@ namespace Person.API.Migrations
                             LegalPersonId = new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                             AccountNumber = "7654321",
                             AddressId = new Guid("8de0c01b-b7b0-4df2-9234-3df21b91a0bb"),
+                            ContactPersonId = new Guid("a43a31f7-ffad-4aff-a199-1a6d31a8b850"),
                             Email = "vaskons@yahoo.com",
                             Fax = "1110222",
                             IdentificationNumber = "16050",
@@ -214,6 +220,22 @@ namespace Person.API.Migrations
                             PhoneNumber1 = "0652632633",
                             PhoneNumber2 = "0622402001"
                         });
+                });
+
+            modelBuilder.Entity("Person.API.Entities.LegalPerson", b =>
+                {
+                    b.HasOne("Person.API.Entities.ContactPerson", "ContactPerson")
+                        .WithMany("LegalPersons")
+                        .HasForeignKey("ContactPersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ContactPerson");
+                });
+
+            modelBuilder.Entity("Person.API.Entities.ContactPerson", b =>
+                {
+                    b.Navigation("LegalPersons");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Person.API.Entities;
+using System.Runtime.Serialization;
 
 namespace Person.API.Models
 {
@@ -10,7 +11,9 @@ namespace Person.API.Models
     public class LegalPersonResponseModel
     {
         [DataMember]
-        public ContactPersonResponseModel ContactPerson { get; set; }
+        public Guid ContactPersonId { get; set; }
+
+
         /// <summary>
         /// Naziv pravnog lica
         /// </summary>
@@ -54,16 +57,20 @@ namespace Person.API.Models
         [DataMember]
         public string Email { get; set; }
 
+
+
         /// <summary>
         /// Broj računa pravnog lica
         /// </summary>
         [DataMember]
         public string AccountNumber { get; set; }
 
+      
+
         public LegalPersonResponseModel() { }
-        public LegalPersonResponseModel(ContactPersonResponseModel contactPerson, string name, string identificationNumber, Guid addressId, string phoneNumber1, string phoneNumber2, string fax, string email, string accountNumber)
+        public LegalPersonResponseModel(Guid contactPersonId,  string name, string identificationNumber, Guid addressId, string phoneNumber1, string phoneNumber2, string fax, string email, string accountNumber)
         {
-            ContactPerson = contactPerson;
+            ContactPersonId = contactPersonId;
             Name = name;
             IdentificationNumber = identificationNumber;
             AddressId = addressId;
@@ -72,6 +79,7 @@ namespace Person.API.Models
             Fax = fax;
             Email = email;
             AccountNumber = accountNumber;
+            
         }
     }
 
