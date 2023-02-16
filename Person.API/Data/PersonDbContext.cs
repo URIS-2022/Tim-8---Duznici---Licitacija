@@ -14,6 +14,15 @@ namespace Person.API.Data
     /// </summary>
     public class PersonDbContext : DbContext
     {
+
+
+        private readonly IConfiguration Configuration;
+
+        public PersonDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
+        {
+            this.Configuration = configuration;
+        }
+
         /// <summary>
         /// Gets or sets the DbSet of physical persons in the database.
         /// </summary>

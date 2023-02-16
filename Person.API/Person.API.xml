@@ -192,6 +192,48 @@
             <param name="id">The ID of the physical person to delete.</param>
             <returns>NoContent if the physical person is deleted successfully, or NotFound if no such physical person exists.</returns>
         </member>
+        <member name="T:Person.API.Data.PersonDbContext">
+            <summary>
+            Represents the database context for managing person entities.
+            </summary>
+        </member>
+        <member name="P:Person.API.Data.PersonDbContext.PhysicalPersons">
+            <summary>
+            Gets or sets the DbSet of physical persons in the database.
+            </summary>
+            <remarks>
+            This DbSet is used to interact with the "PhysicalPersons" table in the database.
+            </remarks>
+        </member>
+        <member name="P:Person.API.Data.PersonDbContext.Addresses">
+            <summary>
+            Gets or sets the DbSet of addresses in the database.
+            </summary>
+            <remarks>
+            This DbSet is used to interact with the "Addresses" table in the database.
+            </remarks>
+        </member>
+        <member name="P:Person.API.Data.PersonDbContext.LegalPersons">
+            <summary>
+            Gets or sets the DbSet of legal persons in the database.
+            </summary>
+            <remarks>
+            This DbSet is used to interact with the "LegalPersons" table in the database.
+            </remarks>
+        </member>
+        <member name="P:Person.API.Data.PersonDbContext.ContactPersons">
+            <summary>
+            Gets or sets the DbSet of contact persons in the database.
+            </summary>
+            <remarks>
+            This DbSet is used to interact with the "ContactPersons" table in the database.
+            </remarks>
+        </member>
+        <member name="M:Person.API.Data.PersonDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjavanje baze sa test podacima
+            </summary>
+        </member>
         <member name="T:Person.API.Data.Repository.AddressRepository">
             <summary>
             Provides CRUD operations for the Address entity.
