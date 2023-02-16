@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Administration.API.Models.CommitteeMember;
+using System.Runtime.Serialization;
 
 namespace Administration.API.Models.Committee;
 

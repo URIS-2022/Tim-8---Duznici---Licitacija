@@ -78,6 +78,33 @@
         <member name="M:Administration.API.Data.Repository.CommitteeRepository.DeleteCommittee(System.Guid)">
             <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeRepository.DeleteCommittee(System.Guid)"/>
         </member>
+        <member name="T:Administration.API.Data.Repository.DocumentRepository">
+            <summary>
+            Implementation of the IDocumentRepository
+            interface for managing Document entities in the database.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.DocumentRepository.#ctor(Administration.API.Data.AdministrationDbContext)">
+            <summary>
+            Initializes a new instance of the DocumentRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Administration.API.Data.Repository.DocumentRepository.GetDocuments">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IDocumentRepository.GetDocuments"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.DocumentRepository.GetDocument(System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.DocumentRepository.UpdateDocument(System.Guid,Administration.API.Entities.Document)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Administration.API.Entities.Document)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.DocumentRepository.AddDocument(Administration.API.Entities.Document)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IDocumentRepository.AddDocument(Administration.API.Entities.Document)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.DocumentRepository.DeleteDocument(System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)"/>
+        </member>
         <member name="T:Administration.API.Data.Repository.ICommitteeMemberRepository">
             <summary>
             The interface for committee member repository, provides methods for getting, updating, adding and deleting a committee member
@@ -152,6 +179,46 @@
             </summary>
             <param name="id">The identifier of the committee to delete.</param>
             <returns>The deleted committee.</returns>
+        </member>
+        <member name="T:Administration.API.Data.Repository.IDocumentRepository">
+            <summary>
+            The interface for document repository, provides methods for getting, updating, adding and deleting a document
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IDocumentRepository.GetDocuments">
+            <summary>
+            Gets a list of all documents.
+            </summary>
+            <returns>A list of documents.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)">
+            <summary>
+            Gets a specific document by its identifier.
+            </summary>
+            <param name="id">The identifier of the document.</param>
+            <returns>The document with the specified identifier.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Administration.API.Entities.Document)">
+            <summary>
+            Updates a specific document.
+            </summary>
+            <param name="id">The identifier of the document to update.</param>
+            <param name="patchDocument">The updated values for the document.</param>
+            <returns>The updated document.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IDocumentRepository.AddDocument(Administration.API.Entities.Document)">
+            <summary>
+            Adds a new document.
+            </summary>
+            <param name="document">The document to add.</param>
+            <returns>The added document.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a specific document.
+            </summary>
+            <param name="id">The identifier of the document to delete.</param>
+            <returns>The deleted document.</returns>
         </member>
         <member name="T:Administration.API.Data.Repository.IMemberRepository">
             <summary>
