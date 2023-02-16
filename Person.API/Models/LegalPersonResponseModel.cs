@@ -65,10 +65,10 @@ namespace Person.API.Models
         [DataMember]
         public string AccountNumber { get; set; }
 
-      
+        public ContactLegalResponseModel ContactLegalPerson { get; set; }
 
         public LegalPersonResponseModel() { }
-        public LegalPersonResponseModel(Guid contactPersonId,  string name, string identificationNumber, Guid addressId, string phoneNumber1, string phoneNumber2, string fax, string email, string accountNumber)
+        public LegalPersonResponseModel(Guid contactPersonId, ContactLegalResponseModel contactLegalPerson, string name, string identificationNumber, Guid addressId, string phoneNumber1, string phoneNumber2, string fax, string email, string accountNumber)
         {
             ContactPersonId = contactPersonId;
             Name = name;
@@ -79,6 +79,7 @@ namespace Person.API.Models
             Fax = fax;
             Email = email;
             AccountNumber = accountNumber;
+            ContactLegalPerson = contactLegalPerson;
             
         }
     }

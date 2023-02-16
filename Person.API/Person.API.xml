@@ -101,6 +101,26 @@
             Postanski broj adrese
             </summary>
         </member>
+        <member name="P:Person.API.Models.ContactLegalResponseModel.FirstName">
+            <summary>
+            Ime kontakt osobe
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.ContactLegalResponseModel.LastName">
+            <summary>
+            Prezime kontakt osobe
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.ContactLegalResponseModel.Function">
+            <summary>
+            Funkcija kontakt osoba
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.ContactLegalResponseModel.PhoneNumber">
+            <summary>
+            Telefon kontakt osobe
+            </summary>
+        </member>
         <member name="T:Person.API.Models.ContactPersonRequestModel">
             <summary>
             Dto Create kontakt osoba

@@ -57,10 +57,10 @@ namespace Person.API.Data
              .HasKey(lp => lp.LegalPersonId);
 
 
-            modelBuilder.Entity<ContactPerson>()
-                .HasMany(cp => cp.LegalPersons)
-                .WithOne(lp => lp.ContactPerson)
-                .HasForeignKey(lp => lp.ContactPersonId);
+            modelBuilder.Entity<LegalPerson>()
+               .HasOne(lp => lp.ContactPerson)
+               .WithMany()
+               .HasForeignKey(lp => lp.ContactPersonId);
 
 
             modelBuilder.Entity<LegalPerson>()

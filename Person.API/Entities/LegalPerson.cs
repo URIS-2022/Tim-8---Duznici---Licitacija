@@ -16,7 +16,7 @@ namespace Person.API.Entities
         public string Fax { get; set; }
         public string Email { get; set; }
         public string AccountNumber { get; set; }
-        public ContactPerson? ContactPerson { get; set; }
+        public ContactPerson ContactPerson { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

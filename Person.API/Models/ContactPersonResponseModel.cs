@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Person.API.Entities;
+using System.Runtime.Serialization;
 
 namespace Person.API.Models
 
@@ -11,6 +12,7 @@ namespace Person.API.Models
         /// </summary>
         [DataMember] 
         public string FirstName { get; set; }
+
 
         /// <summary>
         /// Prezime kontakt osobe
@@ -36,6 +38,7 @@ namespace Person.API.Models
             LastName = lastName;
             Function = function;
             PhoneNumber = phoneNumber;
+
         }
     }
 }

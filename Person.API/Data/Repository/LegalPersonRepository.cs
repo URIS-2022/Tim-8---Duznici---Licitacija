@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace Person.API.Data.Repository
 
@@ -22,13 +24,23 @@ namespace Person.API.Data.Repository
         }
         public async Task<IEnumerable<LegalPerson>> GetAllLegalPersons()
         {
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve
+            };
+
             return await context.LegalPersons
+               .Include(c => c.ContactPerson)
                 .ToListAsync();
+
+            
         }
 
         public async Task<LegalPerson> GetLegalPersonByGuid(Guid LegalPersonId)
         {
-            return await context.LegalPersons.FirstOrDefaultAsync(o => o.LegalPersonId == LegalPersonId);
+            return await context.LegalPersons
+                .Include(c => c.ContactPerson)
+                .FirstOrDefaultAsync(o => o.LegalPersonId == LegalPersonId);
             
         }
 

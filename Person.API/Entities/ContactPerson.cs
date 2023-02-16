@@ -13,7 +13,18 @@ namespace Person.API.Entities
         public string Function { get; set; }
         public string PhoneNumber { get; set; }
 
-        public List<LegalPerson> LegalPersons { get; set; }
+
+        public ContactPerson(string firstName, string lastName, string function, string phoneNumber)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Function = function;
+            PhoneNumber = phoneNumber;
+
+        }
+
+        public ContactPerson() { }
+
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

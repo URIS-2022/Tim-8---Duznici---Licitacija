@@ -28,7 +28,8 @@ namespace Person.API.Data.Repository
 
         public async Task<ContactPerson> GetContactPersonByGuid(Guid ContactPersonId)
         {
-            return await context.ContactPersons.FirstOrDefaultAsync(ko => ko.ContactPersonId == ContactPersonId);
+            return await context.ContactPersons
+                .FirstOrDefaultAsync(ko => ko.ContactPersonId == ContactPersonId);
         }
 
 
