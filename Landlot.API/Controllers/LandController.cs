@@ -5,7 +5,9 @@ using Landlot.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Landlot.API.Controllers
-{
+{/// <summary>
+ /// Controller for managing lands.
+ /// </summary>
 
     [Route("api/[controller]")]
     [ApiController]

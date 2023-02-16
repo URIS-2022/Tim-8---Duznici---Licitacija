@@ -6,7 +6,6 @@ namespace Landlot.API.Enums
     /// <summary>
     /// Represents the class state of a landlot, which reflects its agricultural productivity potential.
     /// </summary>
-    /// <remarks>
     public enum LandlotClass
     {
         /// <summary>
