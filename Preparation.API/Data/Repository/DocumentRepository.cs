@@ -33,14 +33,14 @@ namespace Preparation.API.Data.Repository
         }
 
         /// <inheritdoc cref="IDocumentRepository.UpdateDocument"/>
-        public async Task<Entities.Document?> UpdateDocument(Guid id, Entities.Document updateModel)
+        public async Task<Entities.Document?> UpdateDocument(Guid id, Entities.Document patchDocument)
         {
             var document = await context.Documents.FirstOrDefaultAsync(c => c.Guid == id);
             if (document == null)
             {
                 return null;
             }
-            context.Entry(document).CurrentValues.SetValues(updateModel);
+            context.Entry(document).CurrentValues.SetValues(patchDocument);
             await context.SaveChangesAsync();
             return document;
         }

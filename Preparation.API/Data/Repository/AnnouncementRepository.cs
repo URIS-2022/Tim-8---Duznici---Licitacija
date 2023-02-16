@@ -33,14 +33,14 @@ namespace Preparation.API.Data.Repository
         }
 
         /// <inheritdoc cref="IAnnouncementRepository.UpdateAnnouncement"/>
-        public async Task<Entities.Announcement?> UpdateAnnouncement(Guid id, Entities.Announcement updateModel)
+        public async Task<Entities.Announcement?> UpdateAnnouncement(Guid id, Entities.Announcement patchAnnouncement)
         {
             var announcement = await context.Announcements.FirstOrDefaultAsync(c => c.Guid == id);
             if (announcement == null)
             {
                 return null;
             }
-            context.Entry(announcement).CurrentValues.SetValues(updateModel);
+            context.Entry(announcement).CurrentValues.SetValues(patchAnnouncement);
             await context.SaveChangesAsync();
             return announcement;
         }
