@@ -9,7 +9,7 @@ namespace Bidding.API.Models
     {
 
 
-        public Guid Guid { get; set; }
+       // public Guid Guid { get; set; }
         public Guid RepresentativeGuid { get; set; }
 
         

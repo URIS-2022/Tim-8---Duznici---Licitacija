@@ -9,7 +9,7 @@ namespace Bidding.API.Models
     {
 
 
-        public Guid Guid { get; set; }
+       // public Guid Guid { get; set; }
         public DateTime? Date { get; set; }
         
         public DateTime? StartDate { get; set; }
@@ -30,7 +30,7 @@ namespace Bidding.API.Models
        
         public PublicBiddingType? public_bidding_type { get; set; }
         
-        public Address Addres { get; set; }
+        public Guid AddressGuid { get; set; }
         
         public int? LeasePeriod { get; set; }
         
@@ -57,7 +57,7 @@ namespace Bidding.API.Models
        int? auctionedPrice,
        Guid bestBuyerGuid,
        PublicBiddingType? public_bidding_type,
-       Address address,
+       Guid addressGuid,
        int? leasePeriod,
        int? depositReplenishmentAmount,
        Guid round,
@@ -76,7 +76,7 @@ namespace Bidding.API.Models
             AuctionedPrice = auctionedPrice;
             BestBuyerGuid = bestBuyerGuid;
             this.public_bidding_type = public_bidding_type;
-            Addres = address;
+            AddressGuid = addressGuid;
             LeasePeriod = leasePeriod;
             DepositReplenishmentAmount = depositReplenishmentAmount;
             this.Round = round;

@@ -7,7 +7,7 @@ namespace Bidding.API.Models
     public class PublicBiddingRequestModel
     {
 
-        public Guid Guid { get; set; }
+        //public Guid Guid { get; set; }
         public DateTime Date { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -19,7 +19,7 @@ namespace Bidding.API.Models
         public Guid BestBuyerGuid { get; set; }
         [JsonConverter(typeof(PublicBiddingTypeConverter))]
         public PublicBiddingType public_bidding_type { get; set; }
-        public Guid AddresGuid { get; set; }
+        public Guid AddressGuid { get; set; }
         public int LeasePeriod { get; set; }
         public int DepositReplenishmentAmount { get; set; }
 
@@ -58,10 +58,10 @@ namespace Bidding.API.Models
             AuctionedPrice = auctionedPrice;
             BestBuyerGuid = bestBuyerGuid;
             this.public_bidding_type = public_bidding_type;
-            AddresGuid = addressGuid;
+            AddressGuid = addressGuid;
             LeasePeriod = leasePeriod;
             DepositReplenishmentAmount = depositReplenishmentAmount;
-            this.Round = round;
+            Round = round;
             this.biddingStatus = biddingStatus;
         }
     }
