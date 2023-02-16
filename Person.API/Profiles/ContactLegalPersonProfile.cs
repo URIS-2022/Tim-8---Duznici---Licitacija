@@ -4,9 +4,15 @@ using Person.API.Models;
 
 namespace Person.API.Profiles
 {
+    /// <summary>
+    /// Represents a profile that contains information specific to a contact person of legal person.
+    /// </summary>
     public class ContactLegalPersonProfile : Profile
 
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContactLegalPersonProfile"/> class.
+        /// </summary>
         public ContactLegalPersonProfile()
 
         {

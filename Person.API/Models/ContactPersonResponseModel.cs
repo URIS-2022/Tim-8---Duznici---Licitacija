@@ -4,6 +4,9 @@ using System.Runtime.Serialization;
 namespace Person.API.Models
 
 {
+    /// <summary>
+    /// Represents a response model for a contact person record.
+    /// </summary>
     [DataContract(Name = "ContactPerson", Namespace = "")]
     public class ContactPersonResponseModel
     {

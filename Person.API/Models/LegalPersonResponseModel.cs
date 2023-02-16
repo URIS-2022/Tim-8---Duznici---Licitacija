@@ -3,10 +3,11 @@ using System.Runtime.Serialization;
 
 namespace Person.API.Models
 {
+
     /// <summary>
-    /// Dto pravno lica
+    /// Represents a response model for a legal person record.
     /// </summary>
-    
+
     [DataContract(Name = "ContactPerson", Namespace = "")]
     public class LegalPersonResponseModel
     {

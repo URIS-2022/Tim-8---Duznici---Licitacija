@@ -6,8 +6,14 @@ using Person.API.Models;
 
 namespace Person.API.Profiles
 {
+    /// <summary>
+    /// Represents a profile that contains information specific to a contact person.
+    /// </summary>
     public class ContactPersonProfile : Profile
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContactPersonProfile"/> class.
+        /// </summary>
         public ContactPersonProfile()
         {
             CreateMap<ContactPerson, ContactPersonResponseModel>();

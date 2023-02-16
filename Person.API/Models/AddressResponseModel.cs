@@ -2,6 +2,10 @@
 
 namespace Person.API.Models
 {
+
+    /// <summary>
+    /// Represents a response model for a address record.
+    /// </summary>
     [DataContract (Name = "Address", Namespace ="")]
     public class AddressResponseModel
     {

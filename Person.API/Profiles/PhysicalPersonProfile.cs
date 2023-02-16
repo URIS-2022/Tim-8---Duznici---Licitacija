@@ -4,9 +4,16 @@ using Person.API.Models;
 
 
 namespace Person.API.Profiles
+
 {
+    /// <summary>
+    /// Represents a profile that contains information specific to a physical person.
+    /// </summary>
     public class PhysicalPersonProfile : Profile
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicalPersonProfile"/> class.
+        /// </summary>
         public PhysicalPersonProfile()
         {
             CreateMap<PhysicalPerson, PhysicalPersonResponseModel>();

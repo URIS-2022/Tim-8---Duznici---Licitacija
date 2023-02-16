@@ -5,8 +5,14 @@ using Person.API.Models;
 
 namespace Person.API.Profiles
 {
+    /// <summary>
+    /// Represents a profile that contains information specific to a legal person.
+    /// </summary>
     public class LegalPersonProfile : Profile
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LegalPersonProfile"/> class.
+        /// </summary>
         public LegalPersonProfile()
         {
             CreateMap<LegalPerson, LegalPersonResponseModel>();

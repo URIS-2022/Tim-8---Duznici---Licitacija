@@ -2,8 +2,9 @@
 
 namespace Person.API.Models
 {
+
     /// <summary>
-    /// Dto fizicko lice
+    /// Represents a response model for a physical person record.
     /// </summary>
 
     [DataContract(Name = "PhysicalPerson", Namespace = "")]

@@ -3,9 +3,11 @@ using Person.API.Entities;
 
 namespace Person.API.Models
 {
-    
-    
-        [DataContract(Name = "ContactLegalResponseModel", Namespace = "")]
+    /// <summary>
+    /// Represents a response model for a contact person object in legal person record.
+    /// </summary>
+
+    [DataContract(Name = "ContactLegalResponseModel", Namespace = "")]
         public class ContactLegalResponseModel
         {
             /// <summary>
