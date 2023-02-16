@@ -7,9 +7,9 @@ namespace Bidding.API.Models
 {
     public class BuyerApplicationUpdateModel
     {
-        
 
-        
+
+        public Guid Guid { get; set; }
         public Guid RepresentativeGuid { get; set; }
 
         

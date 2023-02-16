@@ -8,7 +8,9 @@ namespace Bidding.API.Profiles
     {
         public PublicBiddingProfile()
         {
-            CreateMap<PublicBidding, PublicBiddingResponseModel>();
+            CreateMap<PublicBidding, PublicBiddingResponseModel>()
+            .ForMember(dest => dest.PublicBiddingLots, opt => opt.MapFrom(src => src.PublicBiddingLots))
+            .ForMember(dest => dest.Addres, opt => opt.MapFrom(src => src.Address));
             CreateMap<PublicBiddingRequestModel, PublicBidding>();
             CreateMap<PublicBiddingUpdateModel, PublicBidding>()
     .ForMember(dest => dest.Date, opt => opt.Condition(src => src.Date != null))

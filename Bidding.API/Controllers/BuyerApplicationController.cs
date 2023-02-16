@@ -44,7 +44,7 @@ namespace Bidding.API.Controllers
             BuyerApplicationResponseModel responseModel = _mapper.Map<BuyerApplicationResponseModel>(buyerApplication);
             return Ok(responseModel);
         }
-
+        /*
         [HttpGet("{amount}")]
         public async Task<ActionResult<BuyerApplicationResponseModel>> GetBuyerApplicationByAmount(int amount)
         {
@@ -56,7 +56,7 @@ namespace Bidding.API.Controllers
             BuyerApplicationResponseModel responseModel = _mapper.Map<BuyerApplicationResponseModel>(buyerApplication);
             return Ok(responseModel);
         }
-
+        */
         [HttpPost]
         public async Task<ActionResult<BuyerApplicationResponseModel>> PostBuyerApplication(BuyerApplicationRequestModel requestModel)
         {

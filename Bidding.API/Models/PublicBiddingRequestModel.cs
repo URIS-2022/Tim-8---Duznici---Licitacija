@@ -6,8 +6,8 @@ namespace Bidding.API.Models
 {
     public class PublicBiddingRequestModel
     {
-        
 
+        public Guid Guid { get; set; }
         public DateTime Date { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

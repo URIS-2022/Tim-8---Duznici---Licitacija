@@ -1,5 +1,6 @@
 ﻿using Bidding.API.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Bidding.API.Data.Repository
 {
@@ -14,22 +15,35 @@ namespace Bidding.API.Data.Repository
 
         public async Task<IEnumerable<Representative>> GetAllRepresentatives()
         {
-            return await _context.Representatives.ToListAsync();
+            return await _context.Representatives
+                .Include(c=>c.address)
+                .Include(c => c.publicBidding)
+                .Include(c => c.BuyerApplications)
+                .ToListAsync();
+
+
         }
 
         public async Task<Representative> GetRepresentativeByGuid(Guid guid)
         {
-            return await _context.Representatives.FindAsync(guid);
+            var representative= await _context.Representatives
+                .Include(c => c.address)
+                .Include(c => c.publicBidding)
+                .Include(c => c.BuyerApplications).SingleOrDefaultAsync(x => x.Guid == guid);
+            return representative;
         }
 
         public async Task<Representative?> GetRepresentativeByIdentificationNumber(string identificationNumber)
         {
-            return await _context.Representatives.FirstOrDefaultAsync(x => x.IdentificationNumber == identificationNumber);
+            return await _context.Representatives.Include(c => c.address)
+                .Include(c => c.publicBidding)
+                .Include(c => c.BuyerApplications).FirstOrDefaultAsync(x => x.IdentificationNumber == identificationNumber);
         }
 
         public async Task<Representative> AddRepresentative(Representative representative)
         {
             _context.Representatives.Add(representative);
+            //_context.Adresses.Add(representative.address); //ako ne bude radilo izbaciti address
             await _context.SaveChangesAsync();
             return representative;
         }
@@ -47,7 +61,7 @@ namespace Bidding.API.Data.Repository
 
         public async Task<Representative?> UpdateRepresentative(Representative representative)
         {
-            var existingRepresentative = await _context.Representatives.FindAsync(representative.Guid);
+            var existingRepresentative = await _context.Representatives.SingleOrDefaultAsync(x => x.Guid == representative.Guid); // ako ne bude radilo izbaciti address
             if (existingRepresentative == null)
             {
                 throw new InvalidOperationException($"The Representative with ID '{representative.Guid}' was not found.");

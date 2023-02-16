@@ -11,7 +11,8 @@ namespace Bidding.API.Models
     [DataContract(Name = "Document", Namespace = "")]
     public class DocumentResponseModel
     {
-        
+        [DataMember]
+       public  Guid Guid { get; set; }
 
         [DataMember]
         public Guid PublicBiddingGuid { get; set; }
@@ -35,9 +36,9 @@ namespace Bidding.API.Models
 
         public DocumentResponseModel() { }
 
-        public DocumentResponseModel(Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
+        public DocumentResponseModel(Guid guid,Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
-            
+            Guid = guid;
             this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;

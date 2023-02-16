@@ -15,9 +15,9 @@ namespace Bidding.API.Entities
         public DocumentType documentType { get; set; }
         public string ReferenceNumber { get; set; }
 
-        public DateTime DateSubmited { get; set; }
+        public DateTime? DateSubmited { get; set; }
 
-        public DateTime DateSertified { get; set; }
+        public DateTime? DateSertified { get; set; }
 
         public string Template { get; set; }
 

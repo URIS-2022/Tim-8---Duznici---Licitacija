@@ -9,8 +9,8 @@ namespace Bidding.API.Models
     [DataContract(Name = "BuyerApplication", Namespace = "")]
     public class BuyerApplicationResponseModel
     {
-
-        
+        [DataMember]
+        public Guid Guid { get; set; }
 
         [DataMember]
         public Guid RepresentativeGuid { get; set; }
@@ -19,16 +19,17 @@ namespace Bidding.API.Models
         public int Amount { get; set; }
 
         [DataMember]
-        public Representative representative { get; set; }
+        public BuyerApplicationRepresentativeResponseModel representative { get; set; }
 
         public BuyerApplicationResponseModel() { }
 
-        public BuyerApplicationResponseModel( Guid representativeGuid, int amount, Representative representative)
+        public BuyerApplicationResponseModel( Guid representativeGuid, int amount, BuyerApplicationRepresentativeResponseModel representative)
         {
             
             RepresentativeGuid = representativeGuid;
             Amount = amount;
             this.representative = representative;
+
         }
     }
 }

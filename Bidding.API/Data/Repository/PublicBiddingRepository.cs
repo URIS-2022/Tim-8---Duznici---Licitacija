@@ -15,6 +15,7 @@ namespace Bidding.API.Data.Repository
         public async Task<PublicBidding> AddPublicBidding(PublicBidding publicBidding)
         {
             context.PublicBiddings.Add(publicBidding);
+           // context.Adresses.Add(publicBidding.Address); //ako ne bude radilo izbaciti address,ovdje je bilo Async,takodje i kod representative
             await context.SaveChangesAsync();
             return publicBidding;
         }
@@ -32,26 +33,35 @@ namespace Bidding.API.Data.Repository
 
         public async Task<IEnumerable<PublicBidding>> GetAllPublicBiddings()
         {
-            return await context.PublicBiddings.ToListAsync();
+            return await context.PublicBiddings
+                .Include(c => c.Address)
+                .Include(c => c.PublicBiddingLots)
+                .ToListAsync();
         }
 
         public async Task<PublicBidding?> GetPublicBiddingByAuctionedPrice(int auctionedPrice)
         {
-            var publicBidding = await context.PublicBiddings.SingleOrDefaultAsync(x => x.AuctionedPrice == auctionedPrice);
+            var publicBidding = await context.PublicBiddings
+                .Include(c => c.Address)
+                .Include(c => c.PublicBiddingLots)
+                .SingleOrDefaultAsync(x => x.AuctionedPrice == auctionedPrice);
 
             return publicBidding;
         }
 
         public async Task<PublicBidding> GetPublicBiddingByGuid(Guid guid)
         {
-            var publicBidding = await context.PublicBiddings.SingleOrDefaultAsync(x => x.Guid == guid);
+            var publicBidding = await context.PublicBiddings
+                .Include(c => c.Address)
+                .Include(c => c.PublicBiddingLots)
+                .SingleOrDefaultAsync(x => x.Guid == guid);
 
             return publicBidding;
         }
 
         public async Task<PublicBidding?> UpdatePublicBidding(PublicBidding publicBidding)
         {
-            var existingPublicBidding = await context.PublicBiddings.FindAsync(publicBidding.Guid);
+            var existingPublicBidding = await context.PublicBiddings.SingleOrDefaultAsync(x => x.Guid == publicBidding.Guid); // ako ne bude radilo izbaciti address,ovdje je bilo Async
             if (existingPublicBidding == null)
             {
                 throw new InvalidOperationException($"The PublicBidding with ID '{publicBidding.Guid}' was not found.");

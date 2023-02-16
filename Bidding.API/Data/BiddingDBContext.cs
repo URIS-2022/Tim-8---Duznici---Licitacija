@@ -183,7 +183,7 @@ namespace Bidding.API.Data
 
             modelBuilder.Entity<BuyerApplication>()
            .HasOne(b => b.representative)
-           .WithMany(r => r.buyerApplications)
+           .WithMany(r => r.BuyerApplications)
            .HasForeignKey(b => b.RepresentativeGuid);
 
             modelBuilder.Entity<PublicBidding>()

@@ -8,7 +8,8 @@ namespace Bidding.API.Profiles
     {
         public BuyerApplicationProfile()
         {
-            CreateMap<BuyerApplication, BuyerApplicationResponseModel>();
+            CreateMap<BuyerApplication, BuyerApplicationResponseModel>()
+                .ForMember(dest => dest.representative, opt => opt.MapFrom(src => src.representative));
             CreateMap<BuyerApplicationRequestModel, BuyerApplication>();
             CreateMap<BuyerApplicationUpdateModel, BuyerApplication>()
            .ForMember(dest => dest.RepresentativeGuid, opt => opt.Condition(src => src.RepresentativeGuid != Guid.Empty))

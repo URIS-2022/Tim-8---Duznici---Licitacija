@@ -44,7 +44,7 @@ namespace Bidding.API.Controllers
             RepresentativeResponseModel responseModel = _mapper.Map<RepresentativeResponseModel>(representative);
             return Ok(responseModel);
         }
-
+        /*
         [HttpGet("{identificationNumber}")]
         public async Task<ActionResult<RepresentativeResponseModel>> GetRepresentativeByIdentificationNumber(string identificationNumber)
         {
@@ -56,7 +56,7 @@ namespace Bidding.API.Controllers
             RepresentativeResponseModel responseModel = _mapper.Map<RepresentativeResponseModel>(representative);
             return Ok(responseModel);
         }
-
+        */
         [HttpPost]
         public async Task<ActionResult<RepresentativeResponseModel>> PostRepresentative(RepresentativeRequestModel requestModel)
         {

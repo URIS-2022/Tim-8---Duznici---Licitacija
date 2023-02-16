@@ -7,9 +7,9 @@ namespace Bidding.API.Models
 {
     public class PublicBiddingUpdateModel
     {
-        
-       
-        
+
+
+        public Guid Guid { get; set; }
         public DateTime? Date { get; set; }
         
         public DateTime? StartDate { get; set; }

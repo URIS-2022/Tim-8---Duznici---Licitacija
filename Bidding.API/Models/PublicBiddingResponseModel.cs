@@ -9,7 +9,9 @@ namespace Bidding.API.Models
     [DataContract(Name = "PublicBidding", Namespace = "")]
     public class PublicBiddingResponseModel
     {
-        
+        [DataMember]
+        public Guid Guid { get; set; }
+
         [DataMember]
         public DateTime Date { get; set; }
         [DataMember]
@@ -31,7 +33,7 @@ namespace Bidding.API.Models
         [DataMember(Name = "public_bidding_type")]
         public PublicBiddingType public_bidding_type { get; set; }
         [DataMember]
-        public Address Addres { get; set; }
+        public AdressResponseModel Addres { get; set; }
         [DataMember]
         public int LeasePeriod { get; set; }
         [DataMember]
@@ -43,7 +45,7 @@ namespace Bidding.API.Models
         [DataMember(Name ="biddingStatus")]
         public BiddingStatus biddingStatus { get; set; }
         [DataMember] // mozda ne treba za ovu listu ispod
-        public List<PublicBiddingLot> PublicBiddingLot { get; set; }
+        public List<PublicBiddingLotResponseModel> PublicBiddingLots { get; set; }
 
         public PublicBiddingResponseModel() { }
 
@@ -58,12 +60,12 @@ namespace Bidding.API.Models
        int auctionedPrice,
        Guid bestBuyerGuid,
        PublicBiddingType public_bidding_type,
-       Address address,
+       AdressResponseModel address,
        int leasePeriod,
        int depositReplenishmentAmount,
        Guid round,
        BiddingStatus biddingStatus,
-       List<PublicBiddingLot> publicBiddingLot
+       List<PublicBiddingLotResponseModel> publicBiddingLot
         )
         {
             
@@ -81,7 +83,7 @@ namespace Bidding.API.Models
             DepositReplenishmentAmount = depositReplenishmentAmount;
             this.Round = round;
             this.biddingStatus = biddingStatus;
-            PublicBiddingLot = publicBiddingLot;
+            PublicBiddingLots = publicBiddingLot;
         }
     }
 }

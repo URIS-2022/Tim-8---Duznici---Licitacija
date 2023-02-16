@@ -14,17 +14,19 @@ namespace Bidding.API.Data.Repository
 
         public async Task<IEnumerable<BuyerApplication>> GetAllBuyerApplications()
         {
-            return await _context.BuyerApplications.ToListAsync();
+            return await _context.BuyerApplications.Include(c => c.representative).ToListAsync();
         }
 
         public async Task<BuyerApplication> GetBuyerApplicationByGuid(Guid guid)
         {
-            return await _context.BuyerApplications.FindAsync(guid);
+            return await _context.BuyerApplications
+                .Include(c => c.representative)
+                .SingleOrDefaultAsync(x => x.Guid == guid);
         }
 
         public async Task<BuyerApplication?> GetBuyerApplicationByAmount(int amount)
         {
-            return await _context.BuyerApplications.FirstOrDefaultAsync(ba => ba.Amount == amount);
+            return await _context.BuyerApplications.Include(c => c.representative).FirstOrDefaultAsync(ba => ba.Amount == amount);
         }
 
         public async Task<BuyerApplication> AddBuyerApplication(BuyerApplication buyerApplication)

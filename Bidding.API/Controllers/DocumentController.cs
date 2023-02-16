@@ -44,7 +44,7 @@ namespace Bidding.API.Controllers
             DocumentResponseModel responseModel = _mapper.Map<DocumentResponseModel>(document);
             return Ok(responseModel);
         }
-
+        /*
         [HttpGet("{referenceNumber}")]
         public async Task<ActionResult<DocumentResponseModel>> GetDocumentByReferenceNumber(string referenceNumber)
         {
@@ -56,7 +56,7 @@ namespace Bidding.API.Controllers
             DocumentResponseModel responseModel = _mapper.Map<DocumentResponseModel>(document);
             return Ok(responseModel);
         }
-
+        */
         [HttpPost]
         public async Task<ActionResult<DocumentResponseModel>> PostDocument(DocumentRequestModel requestModel)
         {

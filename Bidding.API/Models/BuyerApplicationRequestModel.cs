@@ -8,8 +8,8 @@ namespace Bidding.API.Models
 {
     public class BuyerApplicationRequestModel
     {
-       
 
+        public Guid Guid { get; set; }
         public Guid RepresentativeGuid { get; set; }
 
         public int Amount { get; set; }

@@ -8,8 +8,14 @@ namespace Bidding.API.Profiles
     {
         public DocumentProfile()
         {
-            CreateMap<Document, DocumentResponseModel>();
-            CreateMap<DocumentRequestModel, Document>();
+            CreateMap<Document, DocumentResponseModel>()
+                .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid != Guid.Empty))
+                 .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType)); 
+            CreateMap<DocumentRequestModel, Document>()
+                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid != Guid.Empty))
+                 .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
+
+
             CreateMap<DocumentUpdateModel,Document>()
                 .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty))
                 .ForMember(dest => dest.documentType, opt => opt.Condition(src => src.documentType.HasValue))

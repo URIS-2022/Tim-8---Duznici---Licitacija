@@ -20,7 +20,7 @@ namespace Bidding.API.Entities
         public Address address { get; set; }
         public PublicBidding publicBidding { get; set; }
 
-        public List<BuyerApplication> buyerApplications { get; set; }
+        public IEnumerable<BuyerApplication> BuyerApplications { get; set; }
 
         public  ICollection<BiddingOffer> BiddingOffers { get; set; }
 
@@ -37,6 +37,7 @@ namespace Bidding.API.Entities
             AddressGuid = addressGuid;
             NumberOfBoard = numberOfBoard;
             PublicBiddingGuid = publicBiddingGuid;
+           // BuyerApplications = buyerApplications ?? new HashSet<BuyerApplication>();
         }
 
         public Representative(string firstName, string lastName, string identificationNumber,
@@ -49,6 +50,7 @@ namespace Bidding.API.Entities
             AddressGuid = addressGuid;
             NumberOfBoard = numberOfBoard;
             PublicBiddingGuid = publicBiddingGuid;
+           // BuyerApplications = buyerApplications ?? new HashSet<BuyerApplication>();
         }
 
 

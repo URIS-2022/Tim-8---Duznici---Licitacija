@@ -10,7 +10,8 @@ namespace Bidding.API.Models
     [DataContract(Name = "BiddingOffer", Namespace = "")]
     public class BiddingOfferResponseModel
     {
-       
+        [DataMember]
+        public Guid Guid { get; set; }
 
         [DataMember]
         public Guid RepresentativeGuid { get; set; }
