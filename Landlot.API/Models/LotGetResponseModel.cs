@@ -9,7 +9,7 @@ namespace Landlot.API.Models
         /// <summary>
         /// Represents a response model for a lot.
         /// </summary>
-    [DataContract(Name = "Lot", Namespace = "")]
+      [DataContract(Name = "Lot", Namespace = "")]
       public class LotGetResponseModel
         {
         /// <summary>
