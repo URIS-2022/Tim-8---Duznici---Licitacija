@@ -45,7 +45,7 @@ namespace Bidding.API.Models
         [DataMember(Name ="biddingStatus")]
         public BiddingStatus biddingStatus { get; set; }
         [DataMember] // mozda ne treba za ovu listu ispod
-        public List<PublicBiddingLotResponseModel> PublicBiddingLots { get; set; }
+        public IEnumerable<PublicBiddingLotResponseModel> PublicBiddingLots { get; set; }
 
         public PublicBiddingResponseModel() { }
 
@@ -65,7 +65,7 @@ namespace Bidding.API.Models
        int depositReplenishmentAmount,
        Guid round,
        BiddingStatus biddingStatus,
-       List<PublicBiddingLotResponseModel> publicBiddingLot
+       IEnumerable<PublicBiddingLotResponseModel> publicBiddingLot
         )
         {
             

@@ -81,6 +81,8 @@ builder.Services.AddScoped<IBiddingOfferRepository, BiddingOfferRepository>();
 builder.Services.AddScoped<IRepresentativeRepository, RepresentativeRepository>();
 builder.Services.AddScoped<IPublicBiddingRepository, PublicBiddingRepository>();
 builder.Services.AddScoped<IBuyerApplicationRepository, BuyerApplicationRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<IPublicBiddingLotRepository, PublicBiddingLotRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

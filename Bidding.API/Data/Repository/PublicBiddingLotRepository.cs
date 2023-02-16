@@ -14,19 +14,19 @@ namespace Bidding.API.Data.Repository
 
         
 
-        public async Task<IEnumerable<PublicBiddingLot>> GetAllPublicBiddingLots()
+        public async Task<IEnumerable<PublicBiddingLot>> GetAllBiddingLots()
         {
             return await context.PublicBiddingLots.ToListAsync();
         }
 
-        public async Task<PublicBiddingLot> AddPublicBiddingLot(PublicBiddingLot publicBiddingLot)
+        public async Task<PublicBiddingLot> AddBiddingLot(PublicBiddingLot publicBiddingLot)
         {
             context.PublicBiddingLots.Add(publicBiddingLot);
             await context.SaveChangesAsync();
             return publicBiddingLot;
         }
 
-        public async Task DeletePublicBiddingLot(Guid guid)
+        public async Task DeleteBiddingLot(Guid guid)
         {
             var publicBiddingLot = await context.PublicBiddingLots.FindAsync(guid);
             if (publicBiddingLot == null)
@@ -42,7 +42,7 @@ namespace Bidding.API.Data.Repository
             return await context.PublicBiddingLots.FindAsync(guid);
         }
 
-        public async Task<PublicBiddingLot?> UpdatePublicBiddingLot(PublicBiddingLot publicBiddingLot)
+        public async Task<PublicBiddingLot?> UpdateBiddingLot(PublicBiddingLot publicBiddingLot)
         {
             var existingPublicBiddingLot = await GetPublicBiddingLotByGuid(publicBiddingLot.Guid);
             if (existingPublicBiddingLot == null)
