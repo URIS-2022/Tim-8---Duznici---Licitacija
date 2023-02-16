@@ -5,7 +5,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Person.API.Controllers;
-
+/// <summary>
+/// Controller for managing physical persons.
+/// </summary>
 
 [Route("api/[controller]")]
 [ApiController]
@@ -15,13 +17,21 @@ public class PhysicalPersonController : ControllerBase
 {
     private readonly IPhysicalPersonRepository physicalPersonRepository;
     private readonly IMapper mapper;
-
+    /// <summary>
+    /// Constructor for the PhysicalPersonController.
+    /// </summary>
+    /// <param name="physicalPersonRepository">The repository for managing physical persons.</param>
+    /// <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
     public PhysicalPersonController(IPhysicalPersonRepository physicalPersonRepository, IMapper mapper)
     {
         this.physicalPersonRepository = physicalPersonRepository;
         this.mapper = mapper;
     }
 
+    /// <summary>
+    /// Gets all physical persons.
+    /// </summary>
+    /// <returns>A collection of physical persons.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<PhysicalPerson?>>> GetPhysicalPersons()
     {
@@ -34,6 +44,11 @@ public class PhysicalPersonController : ControllerBase
         return Ok(responseModels);
     }
 
+    /// <summary>
+    /// Gets an physical person by its ID.
+    /// </summary>
+    /// <param name="PhysicalPersonGuid">The ID of the physical person to get.</param>
+    /// <returns>The physical person with the specified ID, or NotFound if no such physical person exists.</returns>
     [HttpGet("{PhysicalPersonGuid}")]
     public async Task<ActionResult<PhysicalPersonResponseModel>> GetPhysicalPerson(Guid PhysicalPersonGuid)
     {
@@ -46,6 +61,12 @@ public class PhysicalPersonController : ControllerBase
         return responseModel;
     }
 
+    /// <summary>
+    /// Updates an physical person with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the physical person to update.</param>
+    /// <param name="patchModel">The physical person information to update.</param>
+    /// <returns>The updated physical person, or NotFound if no such physical person exists, or BadRequest if the update fails.</returns>
     [HttpPatch("{id}")]
     public async Task<ActionResult<PhysicalPersonResponseModel>> PatchPhysicalPerson(Guid id, [FromBody] PhysicalPersonRequestModel patchModel)
     {
@@ -68,7 +89,11 @@ public class PhysicalPersonController : ControllerBase
         return Ok(responseModel);
     }
 
-
+    /// <summary>
+    /// Creates a new physical person.
+    /// </summary>
+    /// <param name="requestPhysicalPerson">The information for the new physical person.</param>
+    /// <returns>The newly created physical person, or BadRequest if the physical person creation fails.</returns>
     [HttpPost]
     public async Task<ActionResult<PhysicalPersonResponseModel>> PostPhysicalPerson(PhysicalPersonRequestModel requestPhysicalPerson)
     {
@@ -83,6 +108,12 @@ public class PhysicalPersonController : ControllerBase
     }
 
 
+    /// <summary>
+    /// Deletes the physical person with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the physical person to delete.</param>
+    /// <returns>NoContent if the physical person is deleted successfully, or NotFound if no such physical person exists.</returns>
+    /// 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePhysicalPerson(Guid id)
     {

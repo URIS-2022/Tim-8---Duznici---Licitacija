@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Person.API.Models;
 
 namespace Person.API.Controllers;
-
+    /// <summary>
+    /// Controller for managing legal persons.
+    /// </summary>
 
 [Route("api/[controller]")]
 [ApiController]
@@ -16,12 +18,21 @@ public class LegalPersonController : ControllerBase
     private readonly ILegalPersonRepository legalPersonRepository;
     private readonly IMapper mapper;
 
+    /// <summary>
+    /// Constructor for the LegalPersonController.
+    /// </summary>
+    /// <param name="legalPersonRepository">The repository for managing legal persons.</param>
+    /// <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
     public LegalPersonController(ILegalPersonRepository legalPersonRepository, IMapper mapper)
     {
         this.legalPersonRepository = legalPersonRepository;
         this.mapper = mapper;
     }
 
+    /// <summary>
+    /// Gets all legal persons.
+    /// </summary>
+    /// <returns>A collection of legal persons.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<LegalPerson?>>> GetLegalPersons()
     {
@@ -34,6 +45,11 @@ public class LegalPersonController : ControllerBase
         return Ok(responseModels);
     }
 
+    /// <summary>
+    /// Gets an legal person by its ID.
+    /// </summary>
+    /// <param name="legalPersonGuid">The ID of the legal person to get.</param>
+    /// <returns>The legal person with the specified ID, or NotFound if no such legal person exists.</returns>
     [HttpGet("{legalPersonGuid}")]
     public async Task<ActionResult<LegalPersonResponseModel>> GetLegalPerson(Guid legalPersonGuid)
     {
@@ -47,6 +63,12 @@ public class LegalPersonController : ControllerBase
         return responseModel;
     }
 
+    /// <summary>
+    /// Updates an legal person with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the legal person to update.</param>
+    /// <param name="patchModel">The legal person information to update.</param>
+    /// <returns>The updated legal person, or NotFound if no such legal person exists, or BadRequest if the update fails.</returns>
 
     [HttpPatch("{id}")]
     public async Task<ActionResult<LegalPersonResponseModel>> PatchLegalPerson(Guid id, [FromBody] LegalPersonRequestModel patchModel)
@@ -70,6 +92,11 @@ public class LegalPersonController : ControllerBase
         return Ok(responseModel);
     }
 
+    /// <summary>
+    /// Creates a new legal person.
+    /// </summary>
+    /// <param name="requestLegalPerson">The information for the new legal person.</param>
+    /// <returns>The newly created legal person, or BadRequest if the legal person creation fails.</returns>
 
     [HttpPost]
     public async Task<ActionResult<LegalPersonResponseModel>> PostLegalPerson(LegalPersonRequestModel requestLegalPerson)
@@ -84,6 +111,11 @@ public class LegalPersonController : ControllerBase
         return CreatedAtAction("GetLegalPersons", new { name = responseModel.Name }, responseModel);
     }
 
+    /// <summary>
+    /// Deletes the legal person with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the legal person to delete.</param>
+    /// <returns>NoContent if the legal person is deleted successfully, or NotFound if no such legal person exists.</returns>
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteLegalPerson(Guid id)

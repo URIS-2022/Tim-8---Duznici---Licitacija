@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Person.API.Models;
 
 namespace Person.API.Controllers;
-
+/// <summary>
+/// Controller for managing addresses.
+/// </summary>
 
 [Route("api/[controller]")]
 [ApiController]
@@ -16,12 +18,21 @@ public class AddressController : ControllerBase
     private readonly IAddressRepository addressRepository;
     private readonly IMapper mapper;
 
+    /// <summary>
+    /// Constructor for the AddressController.
+    /// </summary>
+    /// <param name="addressRepository">The repository for managing addresses.</param>
+    /// <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
     public AddressController(IAddressRepository addressRepository, IMapper mapper)
     {
         this.addressRepository = addressRepository;
         this.mapper = mapper;
     }
 
+    /// <summary>
+    /// Gets all addresses.
+    /// </summary>
+    /// <returns>A collection of addresses.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Address?>>> GetAddresses()
     {
@@ -34,6 +45,11 @@ public class AddressController : ControllerBase
         return Ok(responseModels);
     }
 
+    /// <summary>
+    /// Gets an address by its ID.
+    /// </summary>
+    /// <param name="AddressId">The ID of the address to get.</param>
+    /// <returns>The address with the specified ID, or NotFound if no such address exists.</returns>
     [HttpGet("{AddressId}")]
     public async Task<ActionResult<AddressResponseModel>> GetAddress(Guid AddressId)
     {
@@ -46,6 +62,12 @@ public class AddressController : ControllerBase
         return responseModel;
     }
 
+    /// <summary>
+    /// Updates an address with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the address to update.</param>
+    /// <param name="patchModel">The address information to update.</param>
+    /// <returns>The updated address, or NotFound if no such address exists, or BadRequest if the update fails.</returns>
     [HttpPatch("{id}")]
     public async Task<ActionResult<AddressResponseModel>> PatchAddress(Guid id, [FromBody] AddressRequestModel patchModel)
     {
@@ -67,8 +89,11 @@ public class AddressController : ControllerBase
 
         return Ok(responseModel);
     }
-
-
+    /// <summary>
+    /// Creates a new address.
+    /// </summary>
+    /// <param name="requestAddress">The information for the new address.</param>
+    /// <returns>The newly created address, or BadRequest if the address creation fails.</returns>
     [HttpPost]
     public async Task<ActionResult<AddressResponseModel>> PostAddress(AddressRequestModel requestAddress)
     {
@@ -82,7 +107,11 @@ public class AddressController : ControllerBase
         return CreatedAtAction("GetAddresses", new { street = responseModel.Street }, responseModel);
     }
 
-
+    /// <summary>
+    /// Deletes the address with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the address to delete.</param>
+    /// <returns>NoContent if the address is deleted successfully, or NotFound if no such address exists.</returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAddress(Guid id)
     {
@@ -95,4 +124,5 @@ public class AddressController : ControllerBase
 
         return NoContent();
     }
+
 }
