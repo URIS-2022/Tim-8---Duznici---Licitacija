@@ -56,7 +56,7 @@ namespace Preparation.API.Entities
         /// <summary>
         /// Gets or sets the announcement related to this document.
         /// </summary>
-        public Announcement Announcement { get; set; }
+        public virtual Announcement? Announcement { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Document"/> class.
@@ -84,6 +84,7 @@ namespace Preparation.API.Entities
             DateSubmitted = dateSubmitted;
             DateCertified = dateCertified;
             Template = template;
+            Announcement = null;
         }
 
         /// <summary>
@@ -106,6 +107,7 @@ namespace Preparation.API.Entities
             DateSubmitted = dateSubmitted;
             DateCertified = dateCertified;
             Template = template;
+            Announcement = null;
         }
 
         /// <summary>
