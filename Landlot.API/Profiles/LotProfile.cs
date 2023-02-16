@@ -4,8 +4,14 @@ using Landlot.API.Models;
 
 namespace Landlot.API.Profiles
 {
+    /// <summary>
+    /// Represents a profile that contains information specific to a lot.
+    /// </summary>
     public class LotProfile : Profile
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LotProfile"/> class.
+        /// </summary>
         public LotProfile() 
         {
             CreateMap<Lot, LotGetResponseModel>();

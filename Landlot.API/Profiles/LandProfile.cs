@@ -4,8 +4,15 @@ using Landlot.API.Models;
 
 namespace Landlot.API.Profiles
 {
+    /// <summary>
+    /// Represents a profile that contains information specific to a land.
+    /// </summary>
     public class LandProfile : Profile
     {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LandProfile"/> class.
+        /// </summary>
         public LandProfile() 
         {
             CreateMap<Land, LandGetResponseModel>();
