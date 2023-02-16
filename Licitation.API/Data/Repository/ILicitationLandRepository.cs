@@ -2,14 +2,14 @@
 
 public interface ILicitationLandRepository
 {
-    /*
+    
     /// <summary>
     /// Gets a specific committee member by its identifier.
     /// </summary>
     /// <param name="licitationId">The identifier of the Committee.</param>
     /// /// <param name="licitationLandId">The id of member to add.</param>
     /// <returns>The member with the specified identifier.</returns>
-    Task<Entities.Licitation?> GetLicitationLand(Guid licitationId, Guid licitationLandId);*/
+    Task<Entities.LicitationLand?> GetLicitationLand(Guid licitationId, Guid licitationLandId);
 
     /// <summary>
     /// Adds a new member to committee.

@@ -15,12 +15,12 @@ public class LicitationLandRepository : ILicitationLandRepository
     {
         this.context = context;
     }
-    /*
+    
     /// <inheritdoc cref="ILicitationLandRepository.GetLicitationLand"/>
     public async Task<LicitationLand?> GetLicitationLand(Guid licitationId, Guid licitationLandId)
     {
         return await context.LicitationLands.FirstOrDefaultAsync(c => c.LandGuid == licitationLandId && c.LicitationGuid == licitationId);
-    }*/
+    }
 
     /// <inheritdoc cref="ILicitationLandRepository.AddLicitationLand"/>
     /// 

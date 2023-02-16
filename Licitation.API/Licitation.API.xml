@@ -17,7 +17,7 @@
             </summary>
             <returns>A list of System User models, or No Content if no System User found</returns>
         </member>
-        <member name="M:Licitation.API.Controllers.LicitationController.#ctor(Licitation.API.Data.Repository.ILicitationRepository,AutoMapper.IMapper)">
+        <member name="M:Licitation.API.Controllers.LicitationController.#ctor(Licitation.API.Data.Repository.ILicitationRepository,Licitation.API.Data.Repository.ILicitationLandRepository,AutoMapper.IMapper)">
             <summary>
             Initializes a new instance of the LicitacionController class
             </summary>
@@ -104,6 +104,14 @@
             <param name="id">The identifier of the document to delete.</param>
             <returns>The deleted document.</returns>
         </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.GetLicitationLand(System.Guid,System.Guid)">
+            <summary>
+            Gets a specific committee member by its identifier.
+            </summary>
+            <param name="licitationId">The identifier of the Committee.</param>
+            /// <param name="licitationLandId">The id of member to add.</param>
+            <returns>The member with the specified identifier.</returns>
+        </member>
         <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)">
             <summary>
             Adds a new member to committee.
@@ -164,6 +172,9 @@
             Initializes a new instance of the CommitteeMemberRepository class.
             </summary>
             <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.GetLicitationLand(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.GetLicitationLand(System.Guid,System.Guid)"/>
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)">
             <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)"/>

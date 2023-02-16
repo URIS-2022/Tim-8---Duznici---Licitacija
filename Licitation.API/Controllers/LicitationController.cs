@@ -24,11 +24,13 @@ public class LicitationController : ControllerBase
     /// </summary>
     /// <param name="licitationRepository">An instance of ILicitacionRepository to handle the Licitacions</param>
     /// <param name="mapper">An instance of IMapper to map between Licitacion entities and models</param>
-    public LicitationController(ILicitationRepository licitationRepository, IMapper mapper)
+    public LicitationController(ILicitationRepository licitationRepository, ILicitationLandRepository llRepository, IMapper mapper)
     {
         this.licitationRepository = licitationRepository;
+        this.llRepository = llRepository;
         this.mapper = mapper;
     }
+
 
     /// <summary>
     /// Returns a list of Licitacions
@@ -130,7 +132,7 @@ public class LicitationController : ControllerBase
     }
 
     // DELETE: api/Licitaion/5
-    /*[HttpDelete("{id}/licitationLands/{licitationLandId}")]
+    [HttpDelete("{id}/licitationLands/{licitationLandId}")]
     public async Task<IActionResult> DeleteLicitationLand(Guid id, Guid licitationLandId)
     {
         var licitation = await llRepository.GetLicitationLand(id, licitationLandId);
@@ -138,9 +140,9 @@ public class LicitationController : ControllerBase
         {
             return NotFound();
         }
-        await llRepository.DeleteLicitationLand(licitation.LicitationGuid, licitation.LandGuid);
+        await llRepository.DeleteLicitationLand(id, licitationLandId);
         return NoContent();
-    }*/
+    }
 
     /* // POST: api/Licitation
      [HttpPost]
