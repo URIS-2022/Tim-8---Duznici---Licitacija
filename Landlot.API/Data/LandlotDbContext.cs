@@ -8,8 +8,14 @@ namespace Landlot.API.Data
     /// </summary>
     public class LandlotDbContext : DbContext
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LandlotDbContext"/> class using the specified options.
+        /// </summary>
+        /// <param name="options">The options for configuring this database context.</param>
+        public LandlotDbContext(DbContextOptions<LandlotDbContext> options)
+        : base(options)
+        { }
 
-       
         /// <summary>
         /// Gets or sets the DbSet of lands in the database.
         /// </summary>
