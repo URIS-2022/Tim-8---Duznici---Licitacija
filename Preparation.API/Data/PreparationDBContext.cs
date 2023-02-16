@@ -10,12 +10,24 @@ namespace Preparation.API.Data
     public class PreparationDbContext : DbContext
     {
         private readonly IConfiguration configuration;
+
+        /// <summary>
+        /// Initializes a new instance of the PreparationDbContext class.
+        /// </summary>
+        /// <param name="options">The options for this context.</param>
+        /// <param name="configuration">The configuration for this context.</param>
         public PreparationDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             this.configuration = configuration;
         }
 
+        /// <summary>
+        /// Gets or sets the set of announcements in the database.
+        /// </summary>
         public DbSet<Announcement> Announcements { get; set; }
+        /// <summary>
+        /// Gets or sets the set of documents in the database.
+        /// </summary>
         public DbSet<Document> Documents { get; set; }
 
         /// <summary>

@@ -108,6 +108,23 @@
             DbContext za rad sa bazom podataka.
             </summary>
         </member>
+        <member name="M:Preparation.API.Data.PreparationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the PreparationDbContext class.
+            </summary>
+            <param name="options">The options for this context.</param>
+            <param name="configuration">The configuration for this context.</param>
+        </member>
+        <member name="P:Preparation.API.Data.PreparationDbContext.Announcements">
+            <summary>
+            Gets or sets the set of announcements in the database.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Data.PreparationDbContext.Documents">
+            <summary>
+            Gets or sets the set of documents in the database.
+            </summary>
+        </member>
         <member name="M:Preparation.API.Data.PreparationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Metoda za definisanje strukture baze i njenih relacija.
@@ -252,9 +269,19 @@
             Represents an announcement made for a licitation.
             </summary>
         </member>
+        <member name="P:Preparation.API.Entities.Announcement.Guid">
+            <summary>
+            Gets or sets the unique identifier for the announcement.
+            </summary>
+        </member>
         <member name="P:Preparation.API.Entities.Announcement.LicitationGuid">
             <summary>
             Gets or sets the unique identifier for the licitation to which the announcement belongs.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Announcement.Documents">
+            <summary>
+            Gets or sets the collection of documents associated with the announcement.
             </summary>
         </member>
         <member name="M:Preparation.API.Entities.Announcement.#ctor(System.Guid,System.Guid)">
@@ -369,6 +396,21 @@
             Represents the possible status values for a document.
             </summary>
         </member>
+        <member name="F:Preparation.API.Enums.DocumentStatus.Approved">
+            <summary>
+            The document has been approved.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentStatus.Rejected">
+            <summary>
+            The document has been rejected.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentStatus.Opened">
+            <summary>
+            The document is currently open.
+            </summary>
+        </member>
         <member name="T:Preparation.API.Enums.DocumentStatusConverter">
             <summary>
             Converts between <see cref="T:Preparation.API.Enums.DocumentStatus"/> enum and JSON string representation of the status.
@@ -379,6 +421,31 @@
         </member>
         <member name="M:Preparation.API.Enums.DocumentStatusConverter.Write(System.Text.Json.Utf8JsonWriter,Preparation.API.Enums.DocumentStatus,System.Text.Json.JsonSerializerOptions)">
             <inheritdoc />
+        </member>
+        <member name="T:Preparation.API.Enums.DocumentType">
+            <summary>
+            Represents the type of a document.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Determining">
+            <summary>
+            A document used to determine the outcome of a licitation process.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Request">
+            <summary>
+            A document used to request information or proposals for a licitation process.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Proposal">
+            <summary>
+            A document containing a proposal for a licitation process.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Decision">
+            <summary>
+            A document containing a decision about a licitation process.
+            </summary>
         </member>
         <member name="T:Preparation.API.Enums.DocumentTypeConverter">
             <summary>
