@@ -48,19 +48,6 @@ public class Member
     /// </summary>
     /// <param name="firstName">The first name of the member.</param>
     /// <param name="lastName">The last name of the member.</param>
-    public Member(string firstName, string lastName)
-    {
-        Guid = Guid.NewGuid();
-        FirstName = firstName;
-        LastName = lastName;
-        CommitteeMembers = new HashSet<CommitteeMember>();
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Member"/> class with the specified parameters.
-    /// </summary>
-    /// <param name="firstName">The first name of the member.</param>
-    /// <param name="lastName">The last name of the member.</param>
     /// <param name="committeeMembers">The committee members associated with the member.</param>
     public Member(string firstName, string lastName, ICollection<CommitteeMember>? committeeMembers = null)
     {

@@ -24,9 +24,9 @@ public interface IMemberRepository
     /// Updates a specific member.
     /// </summary>
     /// <param name="id">The identifier of the member to update.</param>
-    /// <param name="patchDocument">The updated values for the member.</param>
+    /// <param name="updateModel">The updated values for the member.</param>
     /// <returns>The updated member.</returns>
-    Task<Member?> UpdateMember(Guid id, Member patchDocument);
+    Task<Member?> UpdateMember(Guid id, Member updateModel);
 
     /// <summary>
     /// Adds a new member.

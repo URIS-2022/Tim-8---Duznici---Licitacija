@@ -24,9 +24,9 @@ public interface IDocumentRepository
     /// Updates a specific document.
     /// </summary>
     /// <param name="id">The identifier of the document to update.</param>
-    /// <param name="patchDocument">The updated values for the document.</param>
+    /// <param name="updateModel">The updated values for the document.</param>
     /// <returns>The updated document.</returns>
-    Task<Document?> UpdateDocument(Guid id, Document patchDocument);
+    Task<Document?> UpdateDocument(Guid id, Document updateModel);
 
     /// <summary>
     /// Adds a new document.

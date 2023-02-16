@@ -24,9 +24,9 @@ public interface ICommitteeRepository
     /// Updates a specific committee.
     /// </summary>
     /// <param name="id">The identifier of the committee to update.</param>
-    /// <param name="patchDocument">The updated values for the committee.</param>
+    /// <param name="updateModel">The updated values for the committee.</param>
     /// <returns>The updated committee.</returns>
-    Task<Committee?> UpdateCommittee(Guid id, Committee patchDocument);
+    Task<Committee?> UpdateCommittee(Guid id, Committee updateModel);
 
     /// <summary>
     /// Adds a new committee.

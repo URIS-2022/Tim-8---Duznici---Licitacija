@@ -25,9 +25,9 @@ public interface ICommitteeMemberRepository
     /// <summary>
     /// Updates a specific commitee member.
     /// </summary>
-    /// <param name="patchDocument">The updated values for the member.</param>
+    /// <param name="updateModel">The updated values for the member.</param>
     /// <returns>The updated commitee member.</returns>
-    Task<CommitteeMember?> UpdateCommitteeMember(CommitteeMember patchDocument);
+    Task<CommitteeMember?> UpdateCommitteeMember(CommitteeMember updateModel);
 
     /// <summary>
     /// Removes a specific member from committee.
