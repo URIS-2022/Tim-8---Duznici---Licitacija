@@ -39,7 +39,7 @@ partial class AdministrationDbContextModelSnapshot : ModelSnapshot
                     new
                     {
                         Guid = new Guid("42afdb31-0568-4a14-92e1-9430d7c819c9"),
-                        DateAssembled = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Local)
+                        DateAssembled = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Local)
                     });
             });
 
@@ -66,7 +66,7 @@ partial class AdministrationDbContextModelSnapshot : ModelSnapshot
                     {
                         CommitteeGuid = new Guid("42afdb31-0568-4a14-92e1-9430d7c819c9"),
                         MemberGuid = new Guid("9eab25c2-0a43-47d7-bf7b-912871e76df6"),
-                        Role = "ab"
+                        Role = "Member"
                     });
             });
 
@@ -76,14 +76,14 @@ partial class AdministrationDbContextModelSnapshot : ModelSnapshot
                     .ValueGeneratedOnAdd()
                     .HasColumnType("uniqueidentifier");
 
+                b.Property<Guid>("CommitteeGuid")
+                    .HasColumnType("uniqueidentifier");
+
                 b.Property<DateTime>("DateCertified")
                     .HasColumnType("datetime2");
 
                 b.Property<DateTime>("DateSubbmitted")
                     .HasColumnType("datetime2");
-
-                b.Property<Guid>("DocumentGuid")
-                    .HasColumnType("uniqueidentifier");
 
                 b.Property<string>("ReferenceNumber")
                     .IsRequired()
@@ -98,7 +98,21 @@ partial class AdministrationDbContextModelSnapshot : ModelSnapshot
 
                 b.HasKey("Guid");
 
+                b.HasIndex("CommitteeGuid");
+
                 b.ToTable("Documents");
+
+                b.HasData(
+                    new
+                    {
+                        Guid = new Guid("73d71612-5714-4ef1-b01b-96ce427307e9"),
+                        CommitteeGuid = new Guid("42afdb31-0568-4a14-92e1-9430d7c819c9"),
+                        DateCertified = new DateTime(2023, 2, 16, 18, 47, 57, 392, DateTimeKind.Local).AddTicks(837),
+                        DateSubbmitted = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Local),
+                        ReferenceNumber = "AD898DSA89S79",
+                        Template = "Usal document",
+                        Type = 0
+                    });
             });
 
         modelBuilder.Entity("Administration.API.Entities.Member", b =>
@@ -147,9 +161,22 @@ partial class AdministrationDbContextModelSnapshot : ModelSnapshot
                 b.Navigation("Member");
             });
 
+        modelBuilder.Entity("Administration.API.Entities.Document", b =>
+            {
+                b.HasOne("Administration.API.Entities.Committee", "Committee")
+                    .WithMany("Documents")
+                    .HasForeignKey("CommitteeGuid")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Committee");
+            });
+
         modelBuilder.Entity("Administration.API.Entities.Committee", b =>
             {
                 b.Navigation("CommitteeMembers");
+
+                b.Navigation("Documents");
             });
 
         modelBuilder.Entity("Administration.API.Entities.Member", b =>

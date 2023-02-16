@@ -1,4 +1,5 @@
 ﻿using Administration.API.Entities;
+using Administration.API.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Administration.API.Data;
@@ -50,6 +51,11 @@ public class AdministrationDbContext : DbContext
             .WithMany(m => m.CommitteeMembers)
             .HasForeignKey(cm => cm.MemberGuid);
 
+        modelBuilder.Entity<Document>()
+            .HasOne(d => d.Committee)
+            .WithMany(cm => cm.Documents)
+            .HasForeignKey(d => d.CommitteeGuid);
+
         var committee = new Committee(
             guid: Guid.Parse("42afdb31-0568-4a14-92e1-9430d7c819c9"),
             dateAssembled: DateTime.Today);
@@ -58,10 +64,21 @@ public class AdministrationDbContext : DbContext
             guid: Guid.Parse("9eab25c2-0a43-47d7-bf7b-912871e76df6"),
             firstName: "Mike", lastName: "Joa");
 
+        var document = new Document(
+            guid: Guid.Parse("73d71612-5714-4ef1-b01b-96ce427307e9"),
+            type: DocumentType.CommitteePlan,
+            committeeGuid: Guid.Parse("42afdb31-0568-4a14-92e1-9430d7c819c9"),
+            dateSubbmitted: DateTime.Today,
+            dateCertified: DateTime.Now,
+            template: "Usal document",
+            referenceNumber: "AD898DSA89S79");
+
         modelBuilder.Entity<Committee>().HasData(committee);
+
+        modelBuilder.Entity<Document>().HasData(document);
 
         modelBuilder.Entity<Member>().HasData(member);
 
-        modelBuilder.Entity<CommitteeMember>().HasData(new CommitteeMember(committeeGuid: committee.Guid, memberGuid: member.Guid, role: "ab"));
+        modelBuilder.Entity<CommitteeMember>().HasData(new CommitteeMember(committeeGuid: committee.Guid, memberGuid: member.Guid, role: "Member"));
     }
 }

@@ -17,7 +17,7 @@ public class DocumentTypeConverter : JsonConverter<DocumentType>
 {
     private readonly Dictionary<DocumentType, string> _typeMapping = new()
     {
-    { DocumentType.CommitteePlan, "Rešenje o obrayovanju komisije" },
+    { DocumentType.CommitteePlan, "Rešenje o obrazovanju komisije" },
     { DocumentType.YearPlanDraft, "Predlog plana godišnjeg programa" },
     { DocumentType.YearPlanFinal, "Plan godišnjeg programa" }
 };
@@ -31,7 +31,7 @@ public class DocumentTypeConverter : JsonConverter<DocumentType>
     /// <returns>The DocumentType value read from the JSON reader.</returns>
     public override DocumentType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        string typeString = reader.GetString() ?? "Rešenje o obrayovanju komisije";
+        string typeString = reader.GetString() ?? "Rešenje o obrazovanju komisije";
         foreach (var typeMapping in _typeMapping)
         {
             if (typeMapping.Value == typeString)

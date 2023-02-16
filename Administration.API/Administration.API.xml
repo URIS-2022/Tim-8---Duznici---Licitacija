@@ -4,6 +4,53 @@
         <name>Administration.API</name>
     </assembly>
     <members>
+        <member name="T:Administration.API.Controllers.DocumentsController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Controllers.DocumentsController.#ctor(Administration.API.Data.Repository.IDocumentRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="documentRepository">An instance of IDocumentRepository to handle the Documents</param>
+            <param name="mapper">An instance of IMapper to map between Document entities and models</param>
+        </member>
+        <member name="M:Administration.API.Controllers.DocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.DocumentsController.GetDocument(System.Guid)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.DocumentsController.PatchDocument(System.Guid,Administration.API.Models.Document.DocumentPatchRequestModel)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="patchModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.DocumentsController.PostDocument(Administration.API.Models.Document.DocumentPostRequestModel)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="postModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.DocumentsController.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a Document by ID
+            </summary>
+            <param name="id">The ID of the Document to delete</param>
+            <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
+        </member>
         <member name="T:Administration.API.Data.AdministrationDbContext">
             <summary>
             AdministrationDbContext is a class that inherits from DbContext. 
