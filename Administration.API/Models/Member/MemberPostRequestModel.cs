@@ -1,9 +1,23 @@
-﻿namespace Administration.API.Models.Member;
+﻿using System.Runtime.Serialization;
+
+namespace Administration.API.Models.Member;
 
 public class MemberPostRequestModel
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    /// <summary>
+    /// Gets or sets the first name of the member.
+    /// </summary>
+    [DataMember]
+    public string? FirstName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the last name of the member.
+    /// </summary>
+    [DataMember]
+    public string? LastName { get; set; }
+
+    /// <summary>
+    /// Initializes a new instance of the MemberPatchRequestModel class.
+    /// </summary>
     public MemberPostRequestModel() { }
 }

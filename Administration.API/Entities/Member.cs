@@ -16,12 +16,14 @@ public class Member
     /// <summary>
     /// Gets or sets the first name of the member.
     /// </summary>
-    public string FirstName { get; set; }
+    [Required]
+    public string? FirstName { get; set; }
 
     /// <summary>
     /// Gets or sets the last name of the member.
     /// </summary>
-    public string LastName { get; set; }
+    [Required]
+    public string? LastName { get; set; }
 
     /// <summary>
     /// Gets or sets the committee members associated with the member.
@@ -35,9 +37,9 @@ public class Member
     /// <param name="firstName">The first name of the member.</param>
     /// <param name="lastName">The last name of the member.</param>
     /// <param name="committeeMembers">The committee members associated with the member.</param>
-    public Member(Guid guid, string firstName, string lastName, ICollection<CommitteeMember>? committeeMembers = null)
+    public Member(string firstName, string lastName, Guid? guid = null, ICollection<CommitteeMember>? committeeMembers = null)
     {
-        Guid = guid;
+        Guid = guid ?? Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
         CommitteeMembers = committeeMembers ?? new HashSet<CommitteeMember>();
@@ -46,14 +48,8 @@ public class Member
     /// <summary>
     /// Initializes a new instance of the <see cref="Member"/> class with the specified parameters.
     /// </summary>
-    /// <param name="firstName">The first name of the member.</param>
-    /// <param name="lastName">The last name of the member.</param>
-    /// <param name="committeeMembers">The committee members associated with the member.</param>
-    public Member(string firstName, string lastName, ICollection<CommitteeMember>? committeeMembers = null)
+    public Member()
     {
-        Guid = Guid.NewGuid();
-        FirstName = firstName;
-        LastName = lastName;
-        CommitteeMembers = committeeMembers ?? new HashSet<CommitteeMember>();
+        CommitteeMembers = new HashSet<CommitteeMember>();
     }
 }

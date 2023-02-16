@@ -47,17 +47,4 @@ public class CommitteeMember
         MemberGuid = memberGuid;
         Role = role;
     }
-
-    /// <summary>
-    /// Initializes a new instance of the CommitteeMember class with the specified committee, member, and role.
-    /// </summary>
-    /// <param name="committee">The committee this member belongs to.</param>
-    /// <param name="member">The member who is a part of the committee.</param>
-    /// <param name="role">The role of the member in the committee.</param>
-    public CommitteeMember(Committee committee, Member member, string role)
-    {
-        Committee = committee;
-        Member = member;
-        Role = role;
-    }
 }

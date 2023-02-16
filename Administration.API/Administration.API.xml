@@ -310,7 +310,7 @@
             <summary>
             Updates a specific commitee member.
             </summary>
-            <param name="patchDocument">The updated values for the member.</param>
+            <param name="updateModel">The updated values for the member.</param>
             <returns>The updated commitee member.</returns>
         </member>
         <member name="M:Administration.API.Data.Repository.ICommitteeMemberRepository.DeleteCommitteeMember(System.Guid,System.Guid)">
@@ -344,7 +344,7 @@
             Updates a specific committee.
             </summary>
             <param name="id">The identifier of the committee to update.</param>
-            <param name="patchDocument">The updated values for the committee.</param>
+            <param name="updateModel">The updated values for the committee.</param>
             <returns>The updated committee.</returns>
         </member>
         <member name="M:Administration.API.Data.Repository.ICommitteeRepository.AddCommittee(Administration.API.Entities.Committee)">
@@ -384,7 +384,7 @@
             Updates a specific document.
             </summary>
             <param name="id">The identifier of the document to update.</param>
-            <param name="patchDocument">The updated values for the document.</param>
+            <param name="updateModel">The updated values for the document.</param>
             <returns>The updated document.</returns>
         </member>
         <member name="M:Administration.API.Data.Repository.IDocumentRepository.AddDocument(Administration.API.Entities.Document)">
@@ -424,7 +424,7 @@
             Updates a specific member.
             </summary>
             <param name="id">The identifier of the member to update.</param>
-            <param name="patchDocument">The updated values for the member.</param>
+            <param name="updateModel">The updated values for the member.</param>
             <returns>The updated member.</returns>
         </member>
         <member name="M:Administration.API.Data.Repository.IMemberRepository.AddMember(Administration.API.Entities.Member)">
@@ -493,7 +493,7 @@
             Gets or sets the committee members associated with the committee.
             </summary>
         </member>
-        <member name="M:Administration.API.Entities.Committee.#ctor(System.Guid,System.DateTime,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember},System.Collections.Generic.IEnumerable{Administration.API.Entities.Document})">
+        <member name="M:Administration.API.Entities.Committee.#ctor(System.DateTime,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember},System.Collections.Generic.IEnumerable{Administration.API.Entities.Document},System.Nullable{System.Guid})">
             <summary>
             Initializes a new instance of the Committee class with the specified unique identifier, date assembled, committee members and documents.
             </summary>
@@ -506,14 +506,6 @@
             <summary>
             Initializes a new instance of the Committee class with default values.
             </summary>
-        </member>
-        <member name="M:Administration.API.Entities.Committee.#ctor(System.DateTime,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember},System.Collections.Generic.IEnumerable{Administration.API.Entities.Document})">
-            <summary>
-            Initializes a new instance of the Committee class with the specified date assembled, committee members and documents. The unique identifier will be generated automatically.
-            </summary>
-            <param name="dateAssembled">The date when the committee was assembled.</param>
-            <param name="committeeMembers">The committee members associated with the committee. Defaults to an empty collection if not provided.</param>
-            <param name="documents">The documents associated with the committee. Defaults to an empty collection if not provided.</param>
         </member>
         <member name="T:Administration.API.Entities.CommitteeMember">
             <summary>
@@ -556,14 +548,6 @@
             </summary>
             <param name="committeeGuid">The GUID of the committee this member belongs to.</param>
             <param name="memberGuid">The GUID of the member who is a part of the committee.</param>
-            <param name="role">The role of the member in the committee.</param>
-        </member>
-        <member name="M:Administration.API.Entities.CommitteeMember.#ctor(Administration.API.Entities.Committee,Administration.API.Entities.Member,System.String)">
-            <summary>
-            Initializes a new instance of the CommitteeMember class with the specified committee, member, and role.
-            </summary>
-            <param name="committee">The committee this member belongs to.</param>
-            <param name="member">The member who is a part of the committee.</param>
             <param name="role">The role of the member in the committee.</param>
         </member>
         <member name="T:Administration.API.Entities.Document">
@@ -611,7 +595,7 @@
             The template used to create this document, if any.
             </summary>
         </member>
-        <member name="M:Administration.API.Entities.Document.#ctor(System.Guid,Administration.API.Enums.DocumentType,System.Guid,System.String,System.DateTime,System.DateTime,System.String)">
+        <member name="M:Administration.API.Entities.Document.#ctor(Administration.API.Enums.DocumentType,System.Guid,System.String,System.DateTime,System.DateTime,System.String,System.Nullable{System.Guid})">
             <summary>
             Creates a new Document object with the specified properties.
             </summary>
@@ -623,16 +607,10 @@
             <param name="dateCertified">The date on which this document was certified.</param>
             <param name="template">The template used to create this document.</param>
         </member>
-        <member name="M:Administration.API.Entities.Document.#ctor(Administration.API.Enums.DocumentType,System.Guid,System.String,System.DateTime,System.DateTime,System.String)">
+        <member name="M:Administration.API.Entities.Document.#ctor">
             <summary>
             Creates a new Document object with the specified properties, generating a new unique identifier.
             </summary>
-            <param name="type">The type of document.</param>
-            <param name="committeeGuid">The unique identifier of the committee that this document belongs to.</param>
-            <param name="referenceNumber">The reference number for this document.</param>
-            <param name="dateSubbmitted">The date on which this document was submitted.</param>
-            <param name="dateCertified">The date on which this document was certified.</param>
-            <param name="template">The template used to create this document.</param>
         </member>
         <member name="T:Administration.API.Entities.Member">
             <summary>
@@ -659,7 +637,7 @@
             Gets or sets the committee members associated with the member.
             </summary>
         </member>
-        <member name="M:Administration.API.Entities.Member.#ctor(System.Guid,System.String,System.String,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember})">
+        <member name="M:Administration.API.Entities.Member.#ctor(System.String,System.String,System.Nullable{System.Guid},System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember})">
             <summary>
             Initializes a new instance of the <see cref="T:Administration.API.Entities.Member"/> class with the specified parameters.
             </summary>
@@ -668,20 +646,10 @@
             <param name="lastName">The last name of the member.</param>
             <param name="committeeMembers">The committee members associated with the member.</param>
         </member>
-        <member name="M:Administration.API.Entities.Member.#ctor(System.String,System.String)">
+        <member name="M:Administration.API.Entities.Member.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Administration.API.Entities.Member"/> class with the specified parameters.
             </summary>
-            <param name="firstName">The first name of the member.</param>
-            <param name="lastName">The last name of the member.</param>
-        </member>
-        <member name="M:Administration.API.Entities.Member.#ctor(System.String,System.String,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember})">
-            <summary>
-            Initializes a new instance of the <see cref="T:Administration.API.Entities.Member"/> class with the specified parameters.
-            </summary>
-            <param name="firstName">The first name of the member.</param>
-            <param name="lastName">The last name of the member.</param>
-            <param name="committeeMembers">The committee members associated with the member.</param>
         </member>
         <member name="T:Administration.API.Enums.DocumentType">
             <summary>
@@ -736,6 +704,316 @@
         </member>
         <member name="M:Administration.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:Administration.API.Models.Document.DocumentGetResponseModel">
+            <summary>
+            Represents a get response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentGetResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentGetResponseModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentGetResponseModel.CommitteeGuid">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentGetResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentGetResponseModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentGetResponseModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentGetResponseModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Document.DocumentGetResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentGetResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Document.DocumentPatchRequestModel">
+            <summary>
+            Represents a patch request model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchRequestModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchRequestModel.CommitteeGuid">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchRequestModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchRequestModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchRequestModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Document.DocumentPatchRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPatchRequestModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Document.DocumentPatchResponseModel">
+            <summary>
+            Represents a patch response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchResponseModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchResponseModel.CommitteeGuid">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchResponseModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchResponseModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPatchResponseModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Document.DocumentPatchResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPatchResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Document.DocumentPostRequestModel">
+            <summary>
+            Represents a post request model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostRequestModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostRequestModel.CommitteeGuid">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostRequestModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostRequestModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostRequestModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Document.DocumentPostRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPostRequestModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Document.DocumentPostResponseModel">
+            <summary>
+            Represents a post response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostResponseModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostResponseModel.CommitteeGuid">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostResponseModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostResponseModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Document.DocumentPostResponseModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Document.DocumentPostResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPostResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Member.MemberGetResponseModel">
+            <summary>
+            Represents a get response model for the member retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberGetResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberGetResponseModel.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberGetResponseModel.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberGetResponseModel.MemberCommittees">
+            <summary>
+            Gets or sets the list of committees that the member belongs to.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Member.MemberGetResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the MemberGetResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Member.MemberPatchRequestModel">
+            <summary>
+            Represents a patch request model for the member retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPatchRequestModel.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPatchRequestModel.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Member.MemberPatchRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the MemberPatchRequestModel class.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPatchResponseModel.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPatchResponseModel.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPatchResponseModel.MemberCommittees">
+            <summary>
+            Gets or sets the list of committees that the member belongs to.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Member.MemberPatchResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the MemberPatchRequestModel class.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPostRequestModel.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPostRequestModel.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Member.MemberPostRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the MemberPatchRequestModel class.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPostResponseModel.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPostResponseModel.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Member.MemberPostResponseModel.MemberCommittees">
+            <summary>
+            Gets or sets the list of committees that the member belongs to.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Member.MemberPostResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the MemberPostResponseModel class.
+            </summary>
         </member>
         <member name="T:Administration.API.Profiles.CommitteeMemberProfile">
             <summary>
