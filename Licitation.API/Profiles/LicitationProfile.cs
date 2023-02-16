@@ -8,7 +8,8 @@ public class LicitationProfile : Profile
 {
     public LicitationProfile()
     {
-        CreateMap<Entities.Licitation, LicitationResponseModel>();
+        CreateMap<Entities.Licitation, LicitationResponseModel>()
+            .ForMember(dest => dest.LicitationLands, opt => opt.MapFrom(src => src.LicitationLands)); ;
         CreateMap<LicitationRequestModel, Entities.Licitation>();
         CreateMap<LicitationUpdateModel, Entities.Licitation>()
             .ForMember(dest => dest.Stage, opt => opt.Condition(src => src.Stage != null))

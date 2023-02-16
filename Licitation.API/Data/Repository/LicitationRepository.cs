@@ -23,15 +23,15 @@ public class LicitationRepository : ILicitationRepository
     /// <inheritdoc cref="IComplaintRepository.GetAll"/>
     public async Task<IEnumerable<Entities.Licitation>> GetAll()
     {
-        return await context.LicitationEntities.ToListAsync();
+        return await context.LicitationEntities.Include(l => l.LicitationLands).ToListAsync();
     }
 
-    /// <inheritdoc cref="ILicitationRepository.GetByGuid"/>
+    /// <inheritdoc cref="ILicitationRepository.GetByGuid "/>
     public async Task<Entities.Licitation?> GetByGuid(Guid id)
     {
-        return await context.LicitationEntities.FindAsync(id);
+        return await context.LicitationEntities.Include(l => l.LicitationLands).FirstOrDefaultAsync(c => c.Guid == id);
     }
-
+   
     /// <inheritdoc cref="ILicitationRepository.Delete"/>
     public async Task Delete(Guid id)
     {

@@ -6,100 +6,102 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Licitation.API.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json", "application/xml")]
     [Consumes("application/json", "application/xml")]
-    public class DocumentController : ControllerBase
+    public class DocumentsController : ControllerBase
     {
         private readonly IDocumentRepository _documentRepository;
-        private readonly IMapper _mapper;
+        private readonly IMapper mapper;
 
-        public DocumentController(IDocumentRepository documentRepository, IMapper mapper)
+        /// <summary>
+        /// Initializes a new instance of the DocumentsController class
+        /// </summary>
+        /// <param name="documentRepository">An instance of IDocumentRepository to handle the Documents</param>
+        /// <param name="mapper">An instance of IMapper to map between Document entities and models</param>
+        public DocumentsController(IDocumentRepository documentRepository, IMapper mapper)
         {
             _documentRepository = documentRepository;
-            _mapper = mapper;
+            this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Returns a list of System Users
+        /// </summary>
+        /// <returns>A list of System User models, or No Content if no System User found</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DocumentResponseModel>>> GetDocuments()
+        public async Task<ActionResult<IEnumerable<DocumentGetResponseModel>>> GetDocuments()
         {
-            var documents = await _documentRepository.GetAllDocuments();
+            var documents = await _documentRepository.GetDocuments();
             if (!documents.Any())
             {
                 return NoContent();
             }
-            IEnumerable<DocumentResponseModel> responseModels = _mapper.Map<IEnumerable<DocumentResponseModel>>(documents);
+            IEnumerable<DocumentGetResponseModel> responseModels = mapper.Map<IEnumerable<DocumentGetResponseModel>>(documents);
             return Ok(responseModels);
         }
 
-        [HttpGet("{guid}")]
-        public async Task<ActionResult<DocumentResponseModel>> GetDocument(Guid guid)
+        // GET: api/Documents/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DocumentGetResponseModel>> GetDocument(Guid id)
         {
-            Document document = await _documentRepository.GetDocumentByGuid(guid);
+            var document = await _documentRepository.GetDocument(id);
             if (document == null)
             {
                 return NotFound();
             }
-            DocumentResponseModel responseModel = _mapper.Map<DocumentResponseModel>(document);
-            return Ok(responseModel);
+            var responseModel = mapper.Map<DocumentGetResponseModel>(document);
+            return responseModel;
         }
 
-        [HttpGet("{referenceNumber}")]
-        public async Task<ActionResult<DocumentResponseModel>> GetDocumentByReferenceNumber(string referenceNumber)
+        // PATCH: api/Documents/5
+        [HttpPatch("{id}")]
+        public async Task<ActionResult<DocumentPatchResponseModel>> PatchDocument(Guid id, [FromBody] DocumentPatchRequestModel patchModel)
         {
-            Document document = await _documentRepository.GetDocumentByReferenceNumber(referenceNumber);
+            var document = await _documentRepository.GetDocument(id);
             if (document == null)
             {
                 return NotFound();
             }
-            DocumentResponseModel responseModel = _mapper.Map<DocumentResponseModel>(document);
+
+            mapper.Map(patchModel, document);
+
+            var updated = await _documentRepository.UpdateDocument(id, document);
+            if (updated == null)
+            {
+                return BadRequest();
+            }
+
+            var responseModel = mapper.Map<DocumentPatchResponseModel>(updated);
+
             return Ok(responseModel);
         }
 
+        // POST: api/Documents
         [HttpPost]
-        public async Task<ActionResult<DocumentResponseModel>> PostDocument(DocumentRequestModel requestModel)
+        public async Task<ActionResult<DocumentPostResponseModel>> PostDocument(DocumentPostRequestModel postModel)
         {
-            Document document = _mapper.Map<Document>(requestModel);
-            Document createdDocument = await _documentRepository.AddDocument(document);
-            if (createdDocument == null)
+            var document = mapper.Map<Entities.Document>(postModel);
+            Entities.Document? created = await _documentRepository.AddDocument(document);
+            if (created == null)
             {
                 return BadRequest();
             }
-            DocumentResponseModel responseModel = _mapper.Map<DocumentResponseModel>(createdDocument);
-            return CreatedAtAction("GetDocument", new { guid = createdDocument.Guid }, responseModel);
+            var responseModel = mapper.Map<DocumentPostResponseModel>(created);
+            return CreatedAtAction("GetDocument", new { id = created.Guid }, responseModel);
         }
 
-        [HttpPatch("{guid}")]
-        public async Task<IActionResult> PatchDocument(Guid guid, DocumentUpdateModel documentUpdate)
+        // DELETE: api/Documents/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDocument(Guid id)
         {
-            var document = await _documentRepository.GetDocumentByGuid(guid);
-            if (document == null || documentUpdate == null)
-            {
-                return BadRequest();
-            }
-            _mapper.Map(documentUpdate, document);
-
-            var updatedDocument = await _documentRepository.UpdateDocument(document);
-            if (updatedDocument == null)
-            {
-                return BadRequest();
-            }
-
-            return NoContent();
-        }
-
-        [HttpDelete("{guid}")]
-        public async Task<IActionResult> DeleteDocument(Guid guid)
-        {
-            var document = await _documentRepository.GetDocumentByGuid(guid);
+            var document = await _documentRepository.GetDocument(id);
             if (document == null)
             {
                 return NotFound();
             }
-
-            await _documentRepository.DeleteDocument(guid);
+            await _documentRepository.DeleteDocument(document.Guid);
 
             return NoContent();
         }

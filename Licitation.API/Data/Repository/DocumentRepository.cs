@@ -1,63 +1,68 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Licitation.API.Data.Repository;
+using Microsoft.EntityFrameworkCore;
 
-namespace Licitation.API.Data.Repository;
-
-public class DocumentRepository : IDocumentRepository
+namespace Licitation.API.Data.Repository
 {
-    private readonly LicitationDBContext _context;
-
-    public DocumentRepository(LicitationDBContext context)
+    /// <summary>
+    /// Implementation of the IDocumentRepository
+    /// interface for managing Document entities in the database.
+    /// </summary>
+    public class DocumentRepository : IDocumentRepository
     {
-        _context = context;
-    }
+        private readonly LicitationDBContext context;
 
-    public async Task<IEnumerable<Entities.Document>> GetAllDocuments()
-    {
-        return await _context.Documents.ToListAsync();
-    }
-
-    public async Task<Entities.Document> GetDocumentByGuid(Guid guid)
-    {
-        return await _context.Documents.FindAsync(guid);
-    }
-
-    public async Task<Entities.Document?> GetDocumentByReferenceNumber(string referenceNumber)
-    {
-        return await _context.Documents.FirstOrDefaultAsync(d => d.ReferenceNumber == referenceNumber);
-    }
-
-    public async Task<Entities.Document> AddDocument(Entities.Document document)
-    {
-        _context.Documents.Add(document);
-        await _context.SaveChangesAsync();
-        return document;
-    }
-
-    public async Task DeleteDocument(Guid guid)
-    {
-        var document = await GetDocumentByGuid(guid);
-        if (document == null)
+        /// <summary>
+        /// Initializes a new instance of the DocumentRepository class.
+        /// </summary>
+        /// <param name="context">The database context to use for data access.</param>
+        public DocumentRepository(LicitationDBContext context)
         {
-            throw new InvalidOperationException($"The document with ID '{guid}' was not found.");
+            this.context = context;
         }
 
-        _context.Documents.Remove(document);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task<Entities.Document?> UpdateDocument(Entities.Document document)
-    {
-        var existingDocument = await GetDocumentByGuid(document.Guid);
-        if (existingDocument == null)
+        /// <inheritdoc cref="IDocumentRepository.GetDocuments"/>
+        public async Task<IEnumerable<Entities.Document>> GetDocuments()
         {
-            throw new InvalidOperationException($"The document with ID '{document.Guid}' was not found.");
+            return await context.Documents.ToListAsync();
         }
 
-        _context.Entry(existingDocument).CurrentValues.SetValues(document);
-        await _context.SaveChangesAsync();
+        /// <inheritdoc cref="IDocumentRepository.GetDocument"/>
+        public async Task<Entities.Document?> GetDocument(Guid id)
+        {
+            return await context.Documents.FindAsync(id);
+        }
 
-        return existingDocument;
+        /// <inheritdoc cref="IDocumentRepository.UpdateDocument"/>
+        public async Task<Entities.Document?> UpdateDocument(Guid id, Entities.Document updateModel)
+        {
+            var document = await context.Documents.FirstOrDefaultAsync(c => c.Guid == id);
+            if (document == null)
+            {
+                return null;
+            }
+            context.Entry(document).CurrentValues.SetValues(updateModel);
+            await context.SaveChangesAsync();
+            return document;
+        }
+
+        /// <inheritdoc cref="IDocumentRepository.AddDocument"/>
+        public async Task<Entities.Document?> AddDocument(Entities.Document document)
+        {
+            var created = context.Documents.Add(document);
+            await context.SaveChangesAsync();
+            return created.Entity;
+        }
+
+        /// <inheritdoc cref="IDocumentRepository.DeleteDocument"/>
+        public async Task DeleteDocument(Guid id)
+        {
+            var systemUser = await context.Documents.FindAsync(id);
+            if (systemUser == null)
+            {
+                throw new InvalidOperationException("Document not found");
+            }
+            context.Documents.Remove(systemUser);
+            await context.SaveChangesAsync();
+        }
     }
 }
-
-

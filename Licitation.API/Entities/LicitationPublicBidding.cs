@@ -6,13 +6,15 @@ public class LicitationPublicBidding : IValidatableObject
 {
 
     public Guid PublicBiddingGuid { get; set; }
-    public Guid Licitation { get; set; }
+    public Guid LicitationGuid { get; set; }
 
     //public Entities.Licitation licitationEntity { get; set; }
 
     //public object LicitationEntity { get; internal set; }
 
     //public object LicitationEntity { get; internal set; }
+
+    public Licitation licitation { get; set; }
 
     public LicitationPublicBidding()
     {
@@ -21,7 +23,7 @@ public class LicitationPublicBidding : IValidatableObject
     public LicitationPublicBidding(Guid publicBiddingGuid, Guid licitation)
     {
         PublicBiddingGuid= publicBiddingGuid;
-        Licitation= licitation;
+        LicitationGuid= licitation;
     }
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
@@ -32,7 +34,7 @@ public class LicitationPublicBidding : IValidatableObject
             results.Add(new ValidationResult("PublicBiddingGuid cannot be empty."));
         }
 
-        if (Licitation == Guid.Empty)
+        if (LicitationGuid == Guid.Empty)
         {
             results.Add(new ValidationResult("LicitationGuid cannot be empty."));
         }

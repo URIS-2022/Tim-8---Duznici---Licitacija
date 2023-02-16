@@ -85,7 +85,7 @@ public class LicitationController : ControllerBase
             return BadRequest();
         }
         LicitationResponseModel responseModel = mapper.Map<LicitationResponseModel>(createdLicitation);
-        return CreatedAtAction("GetLicitation", new { id = responseModel.Guid }, responseModel);
+        return CreatedAtAction("GetByGuid", new { id = createdLicitation.Guid }, responseModel);
     }
 
     // PATCH: api/LicitationEntities/5

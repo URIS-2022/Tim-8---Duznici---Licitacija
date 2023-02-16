@@ -1,12 +1,9 @@
-﻿using Licitation.API.Entities;
-using Licitation.API.Enums;
-using System.Diagnostics.Metrics;
+﻿using Licitation.API.Enums;
 using System.Text.Json.Serialization;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Licitation.API.Models.Document
 {
-    public class DocumentRequestModel
+    public class DocumentPostRequestModel
     {
         public Guid LicitationGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
@@ -16,19 +13,14 @@ namespace Licitation.API.Models.Document
         public DateTime DateCertified { get; set; }
         public string Template { get; set; }
 
-        public DocumentRequestModel(Guid licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+        public DocumentPostRequestModel(Guid licitationGuid, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
         {
-
-            LicitationGuid = licitation;
+            LicitationGuid = licitationGuid;
             DocumentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmitted = dateSubmitted;
             DateCertified = dateCertified;
             Template = template;
         }
-
-
     }
-
-
 }

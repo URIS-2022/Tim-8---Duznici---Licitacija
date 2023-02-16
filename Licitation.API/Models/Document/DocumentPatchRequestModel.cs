@@ -1,27 +1,23 @@
-﻿using Licitation.API.Entities;
-using Licitation.API.Enums;
+﻿using Licitation.API.Enums;
 using System.Text.Json.Serialization;
 
 namespace Licitation.API.Models.Document
 {
-    public class DocumentUpdateModel
+    public class DocumentPatchRequestModel
     {
-        public Guid LicitationGuid { get; set; }
-
+        public Guid? LicitationGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType? DocumentType { get; set; }
+
         public string? ReferenceNumber { get; set; }
-
         public DateTime? DateSubmitted { get; set; }
-
         public DateTime? DateCertified { get; set; }
-
         public string? Template { get; set; }
 
-        public DocumentUpdateModel(Guid licitation, DocumentType? documentType, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
+        public DocumentPatchRequestModel(Guid? licitationGuid, DocumentType? documentType, string? referenceNumber, DateTime? dateSubmitted, DateTime? dateCertified, string? template)
         {
 
-            this.LicitationGuid = licitation;
+            LicitationGuid = licitationGuid;
             DocumentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmitted = dateSubmitted;

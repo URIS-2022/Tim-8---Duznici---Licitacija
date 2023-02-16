@@ -1,34 +1,35 @@
-﻿using Licitation.API.Entities;
-using Licitation.API.Enums;
-using System.Diagnostics.Metrics;
+﻿using Licitation.API.Enums;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Licitation.API.Models.Document
 {
-    public class DocumentRequestModel
+    [DataContract(Name = "Document", Namespace = "")]
+    public class DocumentPostResponseModel
     {
+        [DataMember]
         public Guid LicitationGuid { get; set; }
+
         [JsonConverter(typeof(DocumentTypeConverter))]
+        [DataMember(Name = "DocumentType")]
         public DocumentType DocumentType { get; set; }
+        [DataMember]
         public string ReferenceNumber { get; set; }
+        [DataMember]
         public DateTime DateSubmitted { get; set; }
+        [DataMember]
         public DateTime DateCertified { get; set; }
+        [DataMember]
         public string Template { get; set; }
 
-        public DocumentRequestModel(Guid licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+        public DocumentPostResponseModel(Guid licitationGuid, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
         {
-
-            LicitationGuid = licitation;
+            LicitationGuid = licitationGuid;
             DocumentType = documentType;
             ReferenceNumber = referenceNumber;
             DateSubmitted = dateSubmitted;
             DateCertified = dateCertified;
             Template = template;
         }
-
-
     }
-
-
 }
