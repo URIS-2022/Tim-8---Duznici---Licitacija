@@ -45,7 +45,7 @@ namespace Landlot.API.Controllers
         /// <summary>
         /// Retrieves a land object with the specified ID from the land repository.
         /// </summary>
-        /// <param name="id">The ID of the land object to retrieve.</param>
+        /// <param name="LandGuid">The ID of the land object to retrieve.</param>
         /// <returns>A land view model.</returns>
 
         [HttpGet("{LandGuid}")]
@@ -64,7 +64,7 @@ namespace Landlot.API.Controllers
         /// Updates a land object with the specified ID in the land repository.
         /// </summary>
         /// <param name="id">The ID of the land object to update.</param>
-        /// <param name="patchRequest">A <see cref="LandPatchRequestModel"/> that contains the updated land data.</param>
+        /// <param name="patchModel">A <see cref="LandPatchRequestModel"/> that contains the updated land data.</param>
         /// <returns>An <see cref="IActionResult"/> representing the result of the update operation.</returns>
 
         [HttpPatch("{id}")]
@@ -92,7 +92,7 @@ namespace Landlot.API.Controllers
         /// <summary>
         /// Creates a new land object in the land repository.
         /// </summary>
-        /// <param name="postRequest">A <see cref="LandPostRequestModel"/> that contains the data for the new land object.</param>
+        /// <param name="postModel">A <see cref="LandPostRequestModel"/> that contains the data for the new land object.</param>
         /// <returns>An <see cref="IActionResult"/> representing the result of the create operation.</returns>
         [HttpPost]
         public async Task<ActionResult<LandPostResponseModel>> PostLand(LandPostRequestModel postModel)
