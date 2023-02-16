@@ -4,6 +4,229 @@
         <name>Person.API</name>
     </assembly>
     <members>
+        <member name="T:Person.API.Data.Repository.AddressRepository">
+            <summary>
+            Provides CRUD operations for the Address entity.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.AddressRepository.#ctor(Person.API.Data.PersonDbContext)">
+            <summary>
+            Creates a new instance of the AddressRepository class.
+            </summary>
+            <param name="context">The PersonDbContext object.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.AddressRepository.GetAllAddresses">
+            <summary>
+            Retrieves all addresses from the database.
+            </summary>
+            <returns>An IEnumerable collection of Address objects.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.AddressRepository.GetAddressByGuid(System.Guid)">
+            <summary>
+            Retrieves an address from the database by its ID.
+            </summary>
+            <param name="AddressId">The ID of the address to retrieve.</param>
+            <returns>The Address object with the specified ID, or null if no such address exists.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.AddressRepository.CreateAddress(Person.API.Entities.Address)">
+            <summary>
+            Adds a new address to the database.
+            </summary>
+            <param name="address">The Address object to be added.</param>
+            <returns>The Address object that was added to the database.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.AddressRepository.DeleteAddress(System.Guid)">
+            <summary>
+            Deletes an address from the database by its ID.
+            </summary>
+            <param name="AddressId">The ID of the address to delete.</param>
+            <returns>A Task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.AddressRepository.UpdateAddress(System.Guid,Person.API.Entities.Address)">
+            <summary>
+            Updates an existing address in the database.
+            </summary>
+            <param name="id">The ID of the address to update.</param>
+            <param name="updateModel">The updated Address object.</param>
+            <returns>The Address object that was updated in the database, or null if no such address exists.</returns>
+        </member>
+        <member name="T:Person.API.Data.Repository.ContactPersonRepository">
+            <summary>
+            Provides CRUD operations for the Contact person entity.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.ContactPersonRepository.#ctor(Person.API.Data.PersonDbContext)">
+            <summary>
+            Creates a new instance of the ContactPersonRepository class.
+            </summary>
+            <param name="context">The PersonDbContext object.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.ContactPersonRepository.GetAllContactPersons">
+            <summary>
+            Retrieves all contact persons from the database.
+            </summary>
+            <returns>An IEnumerable collection of ContactPerson objects.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.ContactPersonRepository.GetContactPersonByGuid(System.Guid)">
+            <summary>
+            Retrieves an contact person from the database by its ID.
+            </summary>
+            <param name="ContactPersonId">The ID of the contact person to retrieve.</param>
+            <returns>The ContactPerson object with the specified ID, or null if no such contact person exists.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.ContactPersonRepository.CreateContactPerson(Person.API.Entities.ContactPerson)">
+            <summary>
+            Adds a new contact person to the database.
+            </summary>
+            <param name="contactPerson">The ContactPerson object to be added.</param>
+            <returns>The ContactPerson object that was added to the database.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.ContactPersonRepository.DeleteContactPerson(System.Guid)">
+            <summary>
+            Deletes an contact person from the database by its ID.
+            </summary>
+            <param name="ContactPersonId">The ID of the contact person to delete.</param>
+            <returns>A Task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.ContactPersonRepository.UpdateContactPerson(System.Guid,Person.API.Entities.ContactPerson)">
+            <summary>
+            Updates an existing contact person in the database.
+            </summary>
+            <param name="id">The ID of the contact person to update.</param>
+            <param name="updateModel">The updated ContactPerson object.</param>
+            <returns>The ContactPerson object that was updated in the database, or null if no such contact person exists.</returns>
+        </member>
+        <member name="T:Person.API.Data.Repository.IAddressRepository">
+            <summary>
+            Interface for managing addresses in the database.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.IAddressRepository.GetAllAddresses">
+            <summary>
+            Gets all addresses from the database.
+            </summary>
+            <returns>An IEnumerable of Address.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IAddressRepository.GetAddressByGuid(System.Guid)">
+            <summary>
+            Gets an address by its unique identifier.
+            </summary>
+            <param name="addressId">The unique identifier of the address.</param>
+            <returns>An Address object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IAddressRepository.CreateAddress(Person.API.Entities.Address)">
+            <summary>
+            Creates a new address in the database.
+            </summary>
+            <param name="address">The address to be created.</param>
+            <returns>The newly created Address object.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IAddressRepository.DeleteAddress(System.Guid)">
+            <summary>
+            Deletes an address from the database.
+            </summary>
+            <param name="AddressId">The unique identifier of the address to be deleted.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.IAddressRepository.UpdateAddress(System.Guid,Person.API.Entities.Address)">
+            <summary>
+            Updates an existing address in the database.
+            </summary>
+            <param name="id">The unique identifier of the address to be updated.</param>
+            <param name="address">The updated address data.</param>
+            <returns>The updated Address object if successful; otherwise, null.</returns>
+        </member>
+        <member name="T:Person.API.Data.Repository.LegalPersonRepository">
+            <summary>
+            Provides CRUD operations for the LegalPerson entity.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.LegalPersonRepository.#ctor(Person.API.Data.PersonDbContext)">
+            <summary>
+            Creates a new instance of the LegalPersonRepository class.
+            </summary>
+            <param name="context">The PersonDbContext object.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.LegalPersonRepository.GetAllLegalPersons">
+            <summary>
+            Retrieves all legal persons from the database.
+            </summary>
+            <returns>An IEnumerable collection of LegalPerson objects.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.LegalPersonRepository.GetLegalPersonByGuid(System.Guid)">
+            <summary>
+            Retrieves an legal person from the database by its ID.
+            </summary>
+            <param name="LegalPersonId">The ID of the legal person to retrieve.</param>
+            <returns>The LegalPerson object with the specified ID, or null if no such legal person exists.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.LegalPersonRepository.CreateLegalPerson(Person.API.Entities.LegalPerson)">
+            <summary>
+            Adds a new legal person to the database.
+            </summary>
+            <param name="legalPerson">The LegalPerson object to be added.</param>
+            <returns>The LegalPerson object that was added to the database.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.LegalPersonRepository.DeleteLegalPerson(System.Guid)">
+            <summary>
+            Deletes an legal person from the database by its ID.
+            </summary>
+            <param name="LegalPersonId">The ID of the legal person to delete.</param>
+            <returns>A Task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.LegalPersonRepository.UpdateLegalPerson(System.Guid,Person.API.Entities.LegalPerson)">
+            <summary>
+            Updates an existing legal person in the database.
+            </summary>
+            <param name="id">The ID of the legal person to update.</param>
+            <param name="updateModel">The updated LegalPerson object.</param>
+            <returns>The LegalPerson object that was updated in the database, or null if no such legal person exists.</returns>
+        </member>
+        <member name="T:Person.API.Data.Repository.PhysicalPersonRepository">
+            <summary>
+            Provides CRUD operations for the PhysicalPerson entity.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.PhysicalPersonRepository.#ctor(Person.API.Data.PersonDbContext)">
+            <summary>
+            Creates a new instance of the PhysicalPersonRepository class.
+            </summary>
+            <param name="context">The PersonDbContext object.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.PhysicalPersonRepository.GetAllPhysicalPersons">
+            <summary>
+            Retrieves all physical persons from the database.
+            </summary>
+            <returns>An IEnumerable collection of PhysicalPerson objects.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.PhysicalPersonRepository.GetPhysicalPersonByGuid(System.Guid)">
+            <summary>
+            Retrieves an physical person from the database by its ID.
+            </summary>
+            <param name="PhysicalPersonId">The ID of the physical person to retrieve.</param>
+            <returns>The PhysicalPerson object with the specified ID, or null if no such physical person exists.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.PhysicalPersonRepository.CreatePhysicalPerson(Person.API.Entities.PhysicalPerson)">
+            <summary>
+            Adds a new physical person to the database.
+            </summary>
+            <param name="physicalPerson">The PhysicalPerson object to be added.</param>
+            <returns>The PhysicalPerson object that was added to the database.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.PhysicalPersonRepository.DeletePhysicalPerson(System.Guid)">
+            <summary>
+            Deletes an physical person from the database by its ID.
+            </summary>
+            <param name="PhysicalPersonId">The ID of the physical person to delete.</param>
+            <returns>A Task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.PhysicalPersonRepository.UpdatePhysicalPerson(System.Guid,Person.API.Entities.PhysicalPerson)">
+            <summary>
+            Updates an existing physical person in the database.
+            </summary>
+            <param name="id">The ID of the physical person to update.</param>
+            <param name="updateModel">The updated PhysicalPerson object.</param>
+            <returns>The PhysicalPerson object that was updated in the database, or null if no such physical person exists.</returns>
+        </member>
         <member name="T:Person.API.Migrations.InitialCreate">
             <inheritdoc />
         </member>
