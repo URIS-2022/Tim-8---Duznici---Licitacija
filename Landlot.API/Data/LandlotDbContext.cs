@@ -3,19 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Landlot.API.Data
 {
+    /// <summary>
+    /// Represents the database context for managing landlot entities.
+    /// </summary>
     public class LandlotDbContext : DbContext
     {
-        private readonly IConfiguration configuration;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LandlotDbContext"/> class.
-        /// </summary>
-        /// <param name="options">The DbContext options.</param>
-        /// <param name="configuration">The application configuration.</param>
-        public LandlotDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
-        {
-            
-        }
+       
         /// <summary>
         /// Gets or sets the DbSet of lands in the database.
         /// </summary>
