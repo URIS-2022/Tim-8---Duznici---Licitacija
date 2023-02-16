@@ -1,6 +1,6 @@
 ﻿using Administration.API.Data.Repository;
 using Administration.API.Entities;
-using Administration.API.Models;
+using Administration.API.Models.Member;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 

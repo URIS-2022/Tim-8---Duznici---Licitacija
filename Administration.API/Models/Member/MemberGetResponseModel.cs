@@ -1,18 +1,20 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Administration.API.Models;
+namespace Administration.API.Models.Member;
 
 [DataContract(Name = "Member", Namespace = "")]
-public class MemberPostResponseModel
+public class MemberGetResponseModel
 {
+    [DataMember]
+    public Guid Guid { get; set; }
+
     [DataMember]
     public string FirstName { get; set; }
 
     [DataMember]
     public string LastName { get; set; }
-
     [DataMember]
     public IEnumerable<CommitteeMemberMemberGetResponseModel> MemberCommittees { get; set; }
 
-    public MemberPostResponseModel() { }
+    public MemberGetResponseModel() { }
 }

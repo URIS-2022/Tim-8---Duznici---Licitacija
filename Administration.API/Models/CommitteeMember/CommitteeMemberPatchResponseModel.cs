@@ -1,6 +1,6 @@
-﻿namespace Administration.API.Models
+﻿namespace Administration.API.Models.CommitteeMember
 {
-    public class CommitteeMemberPostRequestModel
+    public class CommitteeMemberPatchResponseModel
     {
         public Guid CommitteeGuid { get; set; }
         public Guid MemberGuid { get; set; }

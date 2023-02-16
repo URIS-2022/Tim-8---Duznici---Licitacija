@@ -27,6 +27,30 @@
             </summary>
             <param name="modelBuilder">The ModelBuilder instance to be used for model creating.</param>
         </member>
+        <member name="T:Administration.API.Data.Repository.CommitteeMemberRepository">
+            <summary>
+            Implementation of the ICommitteeMemberRepository
+            interface for managing CommitteeMember entities in the database.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeMemberRepository.#ctor(Administration.API.Data.AdministrationDbContext)">
+            <summary>
+            Initializes a new instance of the CommitteeMemberRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeMemberRepository.GetCommitteeMember(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeMemberRepository.GetCommitteeMember(System.Guid,System.Guid)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeMemberRepository.UpdateCommitteeMember(Administration.API.Entities.CommitteeMember)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeMemberRepository.UpdateCommitteeMember(Administration.API.Entities.CommitteeMember)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeMemberRepository.AddCommitteeMember(Administration.API.Entities.CommitteeMember)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeMemberRepository.AddCommitteeMember(Administration.API.Entities.CommitteeMember)"/>
+        </member>
+        <member name="M:Administration.API.Data.Repository.CommitteeMemberRepository.DeleteCommitteeMember(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeMemberRepository.DeleteCommitteeMember(System.Guid,System.Guid)"/>
+        </member>
         <member name="T:Administration.API.Data.Repository.CommitteeRepository">
             <summary>
             Implementation of the ICommitteeRepository
@@ -53,6 +77,41 @@
         </member>
         <member name="M:Administration.API.Data.Repository.CommitteeRepository.DeleteCommittee(System.Guid)">
             <inheritdoc cref="M:Administration.API.Data.Repository.ICommitteeRepository.DeleteCommittee(System.Guid)"/>
+        </member>
+        <member name="T:Administration.API.Data.Repository.ICommitteeMemberRepository">
+            <summary>
+            The interface for committee member repository, provides methods for getting, updating, adding and deleting a committee member
+            </summary>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeMemberRepository.GetCommitteeMember(System.Guid,System.Guid)">
+            <summary>
+            Gets a specific committee member by its identifier.
+            </summary>
+            <param name="committeeId">The identifier of the Committee.</param>
+            /// <param name="memberId">The id of member to add.</param>
+            <returns>The member with the specified identifier.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeMemberRepository.AddCommitteeMember(Administration.API.Entities.CommitteeMember)">
+            <summary>
+            Adds a new member to committee.
+            </summary>
+            <param name="committeeMember">The request format for adding member to commitee.</param>
+            <returns>The added committee member.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeMemberRepository.UpdateCommitteeMember(Administration.API.Entities.CommitteeMember)">
+            <summary>
+            Updates a specific commitee member.
+            </summary>
+            <param name="patchDocument">The updated values for the member.</param>
+            <returns>The updated commitee member.</returns>
+        </member>
+        <member name="M:Administration.API.Data.Repository.ICommitteeMemberRepository.DeleteCommitteeMember(System.Guid,System.Guid)">
+            <summary>
+            Removes a specific member from committee.
+            </summary>
+            <param name="committeeId">The identifier of the committee member to delete.</param>
+            /// <param name="memberId">The id of member to remove.</param>
+            <returns>The deleted committee member.</returns>
         </member>
         <member name="T:Administration.API.Data.Repository.ICommitteeRepository">
             <summary>

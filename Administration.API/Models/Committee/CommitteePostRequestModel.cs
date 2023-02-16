@@ -1,4 +1,4 @@
-﻿namespace Administration.API.Models;
+﻿namespace Administration.API.Models.Committee;
 
 public class CommitteePostRequestModel
 {

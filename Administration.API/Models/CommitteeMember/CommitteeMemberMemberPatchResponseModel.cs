@@ -1,13 +1,10 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Administration.API.Models;
+namespace Administration.API.Models.CommitteeMember;
 
 [DataContract(Name = "MemberCommittee", Namespace = "")]
-public class CommitteeMemberMemberGetResponseModel
+public class CommitteeMemberMemberPatchResponseModel
 {
-    [DataMember]
-    public Guid Guid { get; set; }
-
     [DataMember]
     public DateTime DateAssembled { get; set; }
 

@@ -1,9 +1,10 @@
 ﻿using System.Runtime.Serialization;
+using Administration.API.Models.CommitteeMember;
 
-namespace Administration.API.Models;
+namespace Administration.API.Models.Member;
 
 [DataContract(Name = "Member", Namespace = "")]
-public class MemberPatchResponseModel
+public class MemberPostResponseModel
 {
     [DataMember]
     public string FirstName { get; set; }
@@ -14,5 +15,5 @@ public class MemberPatchResponseModel
     [DataMember]
     public IEnumerable<CommitteeMemberMemberGetResponseModel> MemberCommittees { get; set; }
 
-    public MemberPatchResponseModel() { }
+    public MemberPostResponseModel() { }
 }

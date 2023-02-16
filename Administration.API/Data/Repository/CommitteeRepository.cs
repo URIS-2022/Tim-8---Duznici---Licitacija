@@ -62,12 +62,12 @@ public class CommitteeRepository : ICommitteeRepository
     /// <inheritdoc cref="ICommitteeRepository.DeleteCommittee"/>
     public async Task DeleteCommittee(Guid id)
     {
-        var systemUser = await context.Committees.FindAsync(id);
-        if (systemUser == null)
+        var committee = await context.Committees.FindAsync(id);
+        if (committee == null)
         {
             throw new InvalidOperationException("Committee not found");
         }
-        context.Committees.Remove(systemUser);
+        context.Committees.Remove(committee);
         await context.SaveChangesAsync();
     }
 }

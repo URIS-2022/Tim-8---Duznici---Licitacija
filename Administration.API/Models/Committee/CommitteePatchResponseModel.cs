@@ -1,6 +1,7 @@
 ﻿using System.Runtime.Serialization;
+using Administration.API.Models.CommitteeMember;
 
-namespace Administration.API.Models;
+namespace Administration.API.Models.Committee;
 
 [DataContract(Name = "Committee", Namespace = "")]
 public class CommitteePatchResponseModel

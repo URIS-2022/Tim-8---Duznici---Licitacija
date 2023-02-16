@@ -8,6 +8,8 @@ public class CommitteeMember
     public Member Member { get; set; }
     public string Role { get; set; }
 
+    public CommitteeMember() { }
+
     public CommitteeMember(Guid committeeGuid, Guid memberGuid, string role)
     {
         CommitteeGuid = committeeGuid;

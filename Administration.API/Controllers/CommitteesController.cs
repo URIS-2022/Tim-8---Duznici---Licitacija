@@ -13,11 +13,13 @@ namespace Administration.API.Controllers;
 public class CommitteesController : ControllerBase
 {
     private readonly ICommitteeRepository committeeRepository;
+    private readonly ICommitteeMemberRepository cmRepository;
     private readonly IMapper mapper;
 
-    public CommitteesController(ICommitteeRepository committeeRepository, IMapper mapper)
+    public CommitteesController(ICommitteeRepository committeeRepository, ICommitteeMemberRepository cmRepository, IMapper mapper)
     {
         this.committeeRepository = committeeRepository;
+        this.cmRepository = cmRepository;
         this.mapper = mapper;
     }
 
@@ -50,7 +52,7 @@ public class CommitteesController : ControllerBase
     // PATCH: api/Committees/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPatch("{id}")]
-    public async Task<IActionResult> PatchCommittee(Guid id, CommitteePatchRequestModel patchModel)
+    public async Task<ActionResult<CommitteePatchResponseModel>> PatchCommittee(Guid id, CommitteePatchRequestModel patchModel)
     {
         var committee = await committeeRepository.GetCommittee(id);
         if (committee == null)
@@ -71,6 +73,34 @@ public class CommitteesController : ControllerBase
         return Ok(responseModel);
     }
 
+    // PATCH: api/Committees/5
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPatch("{id}/members/{memberId}")]
+    public async Task<ActionResult<CommitteeMemberPatchResponseModel>> PatchCommitteeMember(Guid id, Guid memberId, CommitteeMemberPatchRequestModel patchModel)
+    {
+        var request = mapper.Map<CommitteeMember>(patchModel);
+        request.MemberGuid = memberId;
+        request.CommitteeGuid = id;
+
+        var committeeMember = await cmRepository.GetCommitteeMember(id, memberId);
+        if (committeeMember == null)
+        {
+            return NotFound();
+        }
+
+        mapper.Map(patchModel, committeeMember);
+
+        var updated = await cmRepository.UpdateCommitteeMember(committeeMember);
+        if (updated == null)
+        {
+            return BadRequest();
+        }
+
+        var responseModel = mapper.Map<CommitteeMemberPatchResponseModel>(updated);
+
+        return Ok(responseModel);
+    }
+
     // POST: api/Committees
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
@@ -86,6 +116,21 @@ public class CommitteesController : ControllerBase
         return CreatedAtAction("GetCommittee", new { id = created.Guid }, responseModel);
     }
 
+    // POST: api/Committees
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPost("{id}/members")]
+    public async Task<ActionResult<CommitteePostResponseModel>> PostCommitteeMember(Guid id, CommitteeMemberPostRequestModel postModel)
+    {
+        var committeeMember = mapper.Map<CommitteeMember>(postModel);
+        committeeMember.CommitteeGuid = id;
+        var created = await cmRepository.AddCommitteeMember(committeeMember);
+        if (created == null)
+        {
+            return BadRequest();
+        }
+        return NoContent();
+    }
+
     // DELETE: api/Committees/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCommittee(Guid id)
@@ -96,7 +141,19 @@ public class CommitteesController : ControllerBase
             return NotFound();
         }
         await committeeRepository.DeleteCommittee(committee.Guid);
+        return NoContent();
+    }
 
+    // DELETE: api/Committees/5
+    [HttpDelete("{id}/members/{memberId}")]
+    public async Task<IActionResult> DeleteCommitteeMember(Guid id, Guid memberId)
+    {
+        var committee = await cmRepository.GetCommitteeMember(id, memberId);
+        if (committee == null)
+        {
+            return NotFound();
+        }
+        await cmRepository.DeleteCommitteeMember(committee.CommitteeGuid, committee.MemberGuid);
         return NoContent();
     }
 }

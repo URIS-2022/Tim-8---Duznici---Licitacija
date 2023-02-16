@@ -1,5 +1,5 @@
 ﻿using Administration.API.Entities;
-using Administration.API.Models;
+using Administration.API.Models.Committee;
 using AutoMapper;
 
 namespace Administration.API.Profiles;

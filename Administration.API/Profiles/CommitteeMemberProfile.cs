@@ -8,6 +8,14 @@ public class CommitteeMemberProfile : Profile
 {
     public CommitteeMemberProfile()
     {
+        CreateMap<CommitteeMemberPostRequestModel, CommitteeMember>()
+            .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.MemberRole));
+        CreateMap<CommitteeMemberPatchRequestModel, CommitteeMember>()
+            .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.MemberRole));
+
+        CreateMap<CommitteeMember, CommitteeMemberPatchResponseModel>()
+            .ForMember(dest => dest.MemberRole, opt => opt.MapFrom(src => src.Role));
+
         CreateMap<CommitteeMember, CommitteeMemberCommitteeGetResponseModel>()
             .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Member.Guid))
             .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.Member.FirstName))

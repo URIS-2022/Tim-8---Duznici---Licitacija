@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Administration.API.Models;
+namespace Administration.API.Models.CommitteeMember;
 
 [DataContract(Name = "CommitteeMember", Namespace = "")]
 public class CommitteeMemberCommitteeGetResponseModel

@@ -62,12 +62,12 @@ public class MemberRepository : IMemberRepository
     /// <inheritdoc cref="IMemberRepository.DeleteMember"/>
     public async Task DeleteMember(Guid id)
     {
-        var systemUser = await context.Members.FindAsync(id);
-        if (systemUser == null)
+        var member = await context.Members.FindAsync(id);
+        if (member == null)
         {
             throw new InvalidOperationException("Member not found");
         }
-        context.Members.Remove(systemUser);
+        context.Members.Remove(member);
         await context.SaveChangesAsync();
     }
 }
