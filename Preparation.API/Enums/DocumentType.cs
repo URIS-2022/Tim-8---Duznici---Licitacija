@@ -3,11 +3,29 @@ using System.Text.Json;
 
 namespace Preparation.API.Enums
 {
+    /// <summary>
+    /// Represents the type of a document.
+    /// </summary>
     public enum DocumentType
     {
+        /// <summary>
+        /// A document used to determine the outcome of a licitation process.
+        /// </summary>
         Determining,
+
+        /// <summary>
+        /// A document used to request information or proposals for a licitation process.
+        /// </summary>
         Request,
+
+        /// <summary>
+        /// A document containing a proposal for a licitation process.
+        /// </summary>
         Proposal,
+
+        /// <summary>
+        /// A document containing a decision about a licitation process.
+        /// </summary>
         Decision
     }
 

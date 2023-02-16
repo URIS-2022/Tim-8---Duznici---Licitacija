@@ -8,8 +8,19 @@ namespace Preparation.API.Enums
     /// </summary>
     public enum DocumentStatus
     {
+        /// <summary>
+        /// The document has been approved.
+        /// </summary>
         Approved,
+
+        /// <summary>
+        /// The document has been rejected.
+        /// </summary>
         Rejected,
+
+        /// <summary>
+        /// The document is currently open.
+        /// </summary>
         Opened
     }
 
