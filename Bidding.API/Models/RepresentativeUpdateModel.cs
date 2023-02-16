@@ -9,37 +9,37 @@ namespace Bidding.API.Models
     {
 
 
-        public Guid Guid {get; set;}
+       // public Guid Guid {get; set;}
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
 
         public string? IdentificationNumber { get; set; }
 
-        public Guid address { get; set; }
+        public Guid addressGuid { get; set; }
 
 
 
         public int? NumberOfBoard { get; set; }
 
 
-        public Guid PublicBidding { get; set; }
+        public Guid PublicBiddingGuid { get; set; }
 
         public RepresentativeUpdateModel() { }
 
 
         // public List<BuyerApplication> BuyerRepresentatives { get; set; }
 
-        public RepresentativeUpdateModel(Guid guid,string? firstName, string? lastName, string? identificationNumber,
-                         Guid address, int? numberOfBoard, Guid publicBidding)
+        public RepresentativeUpdateModel(string? firstName, string? lastName, string? identificationNumber,
+                         Guid addressGuid, int? numberOfBoard, Guid publicBiddingGuid)
         {
-            Guid = guid;
+            
             FirstName = firstName;
             LastName = lastName;
             IdentificationNumber = identificationNumber;
-            this.address = address;
+            this.addressGuid = addressGuid;
             NumberOfBoard = numberOfBoard;
-            PublicBidding = publicBidding;
+            PublicBiddingGuid = publicBiddingGuid;
            
         }
     }

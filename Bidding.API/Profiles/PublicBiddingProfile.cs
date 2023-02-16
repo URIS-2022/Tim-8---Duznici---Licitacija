@@ -22,7 +22,7 @@ namespace Bidding.API.Profiles
     .ForMember(dest => dest.AuctionedPrice, opt => opt.Condition(src => src.AuctionedPrice != null))
     .ForMember(dest => dest.BestBuyerGuid, opt => opt.Condition(src => src.BestBuyerGuid != null))
     .ForMember(dest => dest.public_bidding_type, opt => opt.Condition(src => src.public_bidding_type != null))
-    .ForMember(dest => dest.Address, opt => opt.Condition(src => src.Addres != null))
+    .ForMember(dest => dest.Address, opt => opt.Condition(src => src.Addres != null)) // ne valja
     .ForMember(dest => dest.LeasePeriod, opt => opt.Condition(src => src.LeasePeriod != null))
     .ForMember(dest => dest.DepositReplenishmentAmount, opt => opt.Condition(src => src.DepositReplenishmentAmount != null))
     .ForMember(dest => dest.Round, opt => opt.Condition(src => src.Round != null))
