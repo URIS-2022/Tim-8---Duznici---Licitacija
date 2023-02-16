@@ -23,13 +23,11 @@ public class ContactPersonController : ControllerBase
     /// </summary>
     /// <param name="contactPersonRepository">The repository for managing contact persons.</param>
     /// <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
-
     public ContactPersonController(IContactPersonRepository contactPersonRepository, IMapper mapper)
     {
         this.contactPersonRepository = contactPersonRepository;
         this.mapper = mapper;
     }
-
     /// <summary>
     /// Gets all contact persons.
     /// </summary>
@@ -45,7 +43,6 @@ public class ContactPersonController : ControllerBase
         IEnumerable<ContactPerson> responseModels = mapper.Map<IEnumerable<ContactPerson>>(contactPersons);
         return Ok(responseModels);
     }
-
     /// <summary>
     /// Gets an contact person by its ID.
     /// </summary>
@@ -62,14 +59,12 @@ public class ContactPersonController : ControllerBase
         var responseModel = mapper.Map<ContactPersonResponseModel>(person);
         return responseModel;
     }
-
     /// <summary>
     /// Updates an contact person with the specified ID.
     /// </summary>
     /// <param name="id">The ID of the contact person to update.</param>
     /// <param name="patchModel">The contact person information to update.</param>
     /// <returns>The updated contact person, or NotFound if no such contact person exists, or BadRequest if the update fails.</returns>
-    [HttpPatch("{id}")]
     [HttpPatch("{id}")]
     public async Task<ActionResult<ContactPersonResponseModel>> PatchContactPerson(Guid id, [FromBody] ContactPersonRequestModel patchModel)
     {
@@ -91,12 +86,12 @@ public class ContactPersonController : ControllerBase
 
         return Ok(responseModel);
     }
-
     /// <summary>
     /// Creates a new contact person.
     /// </summary>
     /// <param name="requestContactPerson">The information for the new contact person.</param>
     /// <returns>The newly created contact person, or BadRequest if the contact person creation fails.</returns>
+
     [HttpPost]
     public async Task<ActionResult<ContactPersonResponseModel>> PostContactPerson(ContactPersonRequestModel requestContactPerson)
     {
@@ -115,7 +110,6 @@ public class ContactPersonController : ControllerBase
     /// </summary>
     /// <param name="id">The ID of the contact person to delete.</param>
     /// <returns>NoContent if the contact person is deleted successfully, or NotFound if no such contact person exists.</returns>
-
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteContactPerson (Guid id)
     {

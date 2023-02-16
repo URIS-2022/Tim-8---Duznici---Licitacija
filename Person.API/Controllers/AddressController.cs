@@ -17,7 +17,6 @@ public class AddressController : ControllerBase
 {
     private readonly IAddressRepository addressRepository;
     private readonly IMapper mapper;
-
     /// <summary>
     /// Constructor for the AddressController.
     /// </summary>
@@ -28,7 +27,6 @@ public class AddressController : ControllerBase
         this.addressRepository = addressRepository;
         this.mapper = mapper;
     }
-
     /// <summary>
     /// Gets all addresses.
     /// </summary>
@@ -44,7 +42,6 @@ public class AddressController : ControllerBase
         IEnumerable<Address> responseModels = mapper.Map<IEnumerable<Address>>(addresses);
         return Ok(responseModels);
     }
-
     /// <summary>
     /// Gets an address by its ID.
     /// </summary>
@@ -61,7 +58,6 @@ public class AddressController : ControllerBase
         var responseModel = mapper.Map<AddressResponseModel>(address);
         return responseModel;
     }
-
     /// <summary>
     /// Updates an address with the specified ID.
     /// </summary>
@@ -94,6 +90,7 @@ public class AddressController : ControllerBase
     /// </summary>
     /// <param name="requestAddress">The information for the new address.</param>
     /// <returns>The newly created address, or BadRequest if the address creation fails.</returns>
+
     [HttpPost]
     public async Task<ActionResult<AddressResponseModel>> PostAddress(AddressRequestModel requestAddress)
     {
@@ -106,7 +103,6 @@ public class AddressController : ControllerBase
         AddressResponseModel responseModel = mapper.Map<AddressResponseModel>(createdAddress);
         return CreatedAtAction("GetAddresses", new { street = responseModel.Street }, responseModel);
     }
-
     /// <summary>
     /// Deletes the address with the specified ID.
     /// </summary>
@@ -124,5 +120,4 @@ public class AddressController : ControllerBase
 
         return NoContent();
     }
-
 }

@@ -27,7 +27,6 @@ public class PhysicalPersonController : ControllerBase
         this.physicalPersonRepository = physicalPersonRepository;
         this.mapper = mapper;
     }
-
     /// <summary>
     /// Gets all physical persons.
     /// </summary>
@@ -43,7 +42,6 @@ public class PhysicalPersonController : ControllerBase
         IEnumerable<PhysicalPerson> responseModels = mapper.Map<IEnumerable<PhysicalPerson>>(physicalPersons);
         return Ok(responseModels);
     }
-
     /// <summary>
     /// Gets an physical person by its ID.
     /// </summary>
@@ -60,7 +58,6 @@ public class PhysicalPersonController : ControllerBase
         var responseModel = mapper.Map<PhysicalPersonResponseModel>(person);
         return responseModel;
     }
-
     /// <summary>
     /// Updates an physical person with the specified ID.
     /// </summary>
@@ -88,12 +85,12 @@ public class PhysicalPersonController : ControllerBase
 
         return Ok(responseModel);
     }
-
     /// <summary>
     /// Creates a new physical person.
     /// </summary>
     /// <param name="requestPhysicalPerson">The information for the new physical person.</param>
     /// <returns>The newly created physical person, or BadRequest if the physical person creation fails.</returns>
+
     [HttpPost]
     public async Task<ActionResult<PhysicalPersonResponseModel>> PostPhysicalPerson(PhysicalPersonRequestModel requestPhysicalPerson)
     {
@@ -106,14 +103,12 @@ public class PhysicalPersonController : ControllerBase
         PhysicalPersonResponseModel responseModel = mapper.Map<PhysicalPersonResponseModel>(createdPhysicalPerson);
         return CreatedAtAction("GetPhysicalPersons", new { firstname = responseModel.FirstName }, responseModel);
     }
-
-
     /// <summary>
     /// Deletes the physical person with the specified ID.
     /// </summary>
     /// <param name="id">The ID of the physical person to delete.</param>
     /// <returns>NoContent if the physical person is deleted successfully, or NotFound if no such physical person exists.</returns>
-    /// 
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePhysicalPerson(Guid id)
     {

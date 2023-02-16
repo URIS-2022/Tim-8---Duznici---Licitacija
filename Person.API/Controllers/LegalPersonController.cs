@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Person.API.Models;
 
 namespace Person.API.Controllers;
-    /// <summary>
-    /// Controller for managing legal persons.
-    /// </summary>
+/// <summary>
+/// Controller for managing legal persons.
+/// </summary>
 
 [Route("api/[controller]")]
 [ApiController]
@@ -17,7 +17,6 @@ public class LegalPersonController : ControllerBase
 {
     private readonly ILegalPersonRepository legalPersonRepository;
     private readonly IMapper mapper;
-
     /// <summary>
     /// Constructor for the LegalPersonController.
     /// </summary>
@@ -28,7 +27,6 @@ public class LegalPersonController : ControllerBase
         this.legalPersonRepository = legalPersonRepository;
         this.mapper = mapper;
     }
-
     /// <summary>
     /// Gets all legal persons.
     /// </summary>
@@ -44,7 +42,6 @@ public class LegalPersonController : ControllerBase
         IEnumerable<LegalPerson> responseModels = mapper.Map<IEnumerable<LegalPerson>>(legalPersons);
         return Ok(responseModels);
     }
-
     /// <summary>
     /// Gets an legal person by its ID.
     /// </summary>
@@ -62,7 +59,6 @@ public class LegalPersonController : ControllerBase
         var responseModel = mapper.Map<LegalPersonResponseModel>(legalPerson);
         return responseModel;
     }
-
     /// <summary>
     /// Updates an legal person with the specified ID.
     /// </summary>
@@ -97,7 +93,6 @@ public class LegalPersonController : ControllerBase
     /// </summary>
     /// <param name="requestLegalPerson">The information for the new legal person.</param>
     /// <returns>The newly created legal person, or BadRequest if the legal person creation fails.</returns>
-
     [HttpPost]
     public async Task<ActionResult<LegalPersonResponseModel>> PostLegalPerson(LegalPersonRequestModel requestLegalPerson)
     {
@@ -110,7 +105,6 @@ public class LegalPersonController : ControllerBase
         LegalPersonResponseModel responseModel = mapper.Map<LegalPersonResponseModel>(createdLegalPerson);
         return CreatedAtAction("GetLegalPersons", new { name = responseModel.Name }, responseModel);
     }
-
     /// <summary>
     /// Deletes the legal person with the specified ID.
     /// </summary>

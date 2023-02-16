@@ -4,6 +4,194 @@
         <name>Person.API</name>
     </assembly>
     <members>
+        <member name="T:Person.API.Controllers.AddressController">
+            <summary>
+            Controller for managing addresses.
+            </summary>
+        </member>
+        <member name="M:Person.API.Controllers.AddressController.#ctor(Person.API.Data.Repository.IAddressRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor for the AddressController.
+            </summary>
+            <param name="addressRepository">The repository for managing addresses.</param>
+            <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
+        </member>
+        <member name="M:Person.API.Controllers.AddressController.GetAddresses">
+            <summary>
+            Gets all addresses.
+            </summary>
+            <returns>A collection of addresses.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.AddressController.GetAddress(System.Guid)">
+            <summary>
+            Gets an address by its ID.
+            </summary>
+            <param name="AddressId">The ID of the address to get.</param>
+            <returns>The address with the specified ID, or NotFound if no such address exists.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.AddressController.PatchAddress(System.Guid,Person.API.Models.AddressRequestModel)">
+            <summary>
+            Updates an address with the specified ID.
+            </summary>
+            <param name="id">The ID of the address to update.</param>
+            <param name="patchModel">The address information to update.</param>
+            <returns>The updated address, or NotFound if no such address exists, or BadRequest if the update fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.AddressController.PostAddress(Person.API.Models.AddressRequestModel)">
+            <summary>
+            Creates a new address.
+            </summary>
+            <param name="requestAddress">The information for the new address.</param>
+            <returns>The newly created address, or BadRequest if the address creation fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.AddressController.DeleteAddress(System.Guid)">
+            <summary>
+            Deletes the address with the specified ID.
+            </summary>
+            <param name="id">The ID of the address to delete.</param>
+            <returns>NoContent if the address is deleted successfully, or NotFound if no such address exists.</returns>
+        </member>
+        <member name="T:Person.API.Controllers.ContactPersonController">
+            <summary>
+            Controller for managing contact persons.
+            </summary>
+        </member>
+        <member name="M:Person.API.Controllers.ContactPersonController.#ctor(Person.API.Data.Repository.IContactPersonRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor for the ContactPersonController.
+            </summary>
+            <param name="contactPersonRepository">The repository for managing contact persons.</param>
+            <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
+        </member>
+        <member name="M:Person.API.Controllers.ContactPersonController.GetContactPersons">
+            <summary>
+            Gets all contact persons.
+            </summary>
+            <returns>A collection of contact persons.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.ContactPersonController.GetContactPerson(System.Guid)">
+            <summary>
+            Gets an contact person by its ID.
+            </summary>
+            <param name="ContactPersonGuid">The ID of the contact person to get.</param>
+            <returns>The contact person with the specified ID, or NotFound if no such contact person exists.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.ContactPersonController.PatchContactPerson(System.Guid,Person.API.Models.ContactPersonRequestModel)">
+            <summary>
+            Updates an contact person with the specified ID.
+            </summary>
+            <param name="id">The ID of the contact person to update.</param>
+            <param name="patchModel">The contact person information to update.</param>
+            <returns>The updated contact person, or NotFound if no such contact person exists, or BadRequest if the update fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.ContactPersonController.PostContactPerson(Person.API.Models.ContactPersonRequestModel)">
+            <summary>
+            Creates a new contact person.
+            </summary>
+            <param name="requestContactPerson">The information for the new contact person.</param>
+            <returns>The newly created contact person, or BadRequest if the contact person creation fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.ContactPersonController.DeleteContactPerson(System.Guid)">
+            <summary>
+            Deletes the contact person with the specified ID.
+            </summary>
+            <param name="id">The ID of the contact person to delete.</param>
+            <returns>NoContent if the contact person is deleted successfully, or NotFound if no such contact person exists.</returns>
+        </member>
+        <member name="T:Person.API.Controllers.LegalPersonController">
+            <summary>
+            Controller for managing legal persons.
+            </summary>
+        </member>
+        <member name="M:Person.API.Controllers.LegalPersonController.#ctor(Person.API.Data.Repository.ILegalPersonRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor for the LegalPersonController.
+            </summary>
+            <param name="legalPersonRepository">The repository for managing legal persons.</param>
+            <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
+        </member>
+        <member name="M:Person.API.Controllers.LegalPersonController.GetLegalPersons">
+            <summary>
+            Gets all legal persons.
+            </summary>
+            <returns>A collection of legal persons.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.LegalPersonController.GetLegalPerson(System.Guid)">
+            <summary>
+            Gets an legal person by its ID.
+            </summary>
+            <param name="legalPersonGuid">The ID of the legal person to get.</param>
+            <returns>The legal person with the specified ID, or NotFound if no such legal person exists.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.LegalPersonController.PatchLegalPerson(System.Guid,Person.API.Models.LegalPersonRequestModel)">
+            <summary>
+            Updates an legal person with the specified ID.
+            </summary>
+            <param name="id">The ID of the legal person to update.</param>
+            <param name="patchModel">The legal person information to update.</param>
+            <returns>The updated legal person, or NotFound if no such legal person exists, or BadRequest if the update fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.LegalPersonController.PostLegalPerson(Person.API.Models.LegalPersonRequestModel)">
+            <summary>
+            Creates a new legal person.
+            </summary>
+            <param name="requestLegalPerson">The information for the new legal person.</param>
+            <returns>The newly created legal person, or BadRequest if the legal person creation fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.LegalPersonController.DeleteLegalPerson(System.Guid)">
+            <summary>
+            Deletes the legal person with the specified ID.
+            </summary>
+            <param name="id">The ID of the legal person to delete.</param>
+            <returns>NoContent if the legal person is deleted successfully, or NotFound if no such legal person exists.</returns>
+        </member>
+        <member name="T:Person.API.Controllers.PhysicalPersonController">
+            <summary>
+            Controller for managing physical persons.
+            </summary>
+        </member>
+        <member name="M:Person.API.Controllers.PhysicalPersonController.#ctor(Person.API.Data.Repository.IPhysicalPersonRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor for the PhysicalPersonController.
+            </summary>
+            <param name="physicalPersonRepository">The repository for managing physical persons.</param>
+            <param name="mapper">The mapper for mapping between domain models and DTOs.</param>
+        </member>
+        <member name="M:Person.API.Controllers.PhysicalPersonController.GetPhysicalPersons">
+            <summary>
+            Gets all physical persons.
+            </summary>
+            <returns>A collection of physical persons.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.PhysicalPersonController.GetPhysicalPerson(System.Guid)">
+            <summary>
+            Gets an physical person by its ID.
+            </summary>
+            <param name="PhysicalPersonGuid">The ID of the physical person to get.</param>
+            <returns>The physical person with the specified ID, or NotFound if no such physical person exists.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.PhysicalPersonController.PatchPhysicalPerson(System.Guid,Person.API.Models.PhysicalPersonRequestModel)">
+            <summary>
+            Updates an physical person with the specified ID.
+            </summary>
+            <param name="id">The ID of the physical person to update.</param>
+            <param name="patchModel">The physical person information to update.</param>
+            <returns>The updated physical person, or NotFound if no such physical person exists, or BadRequest if the update fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.PhysicalPersonController.PostPhysicalPerson(Person.API.Models.PhysicalPersonRequestModel)">
+            <summary>
+            Creates a new physical person.
+            </summary>
+            <param name="requestPhysicalPerson">The information for the new physical person.</param>
+            <returns>The newly created physical person, or BadRequest if the physical person creation fails.</returns>
+        </member>
+        <member name="M:Person.API.Controllers.PhysicalPersonController.DeletePhysicalPerson(System.Guid)">
+            <summary>
+            Deletes the physical person with the specified ID.
+            </summary>
+            <param name="id">The ID of the physical person to delete.</param>
+            <returns>NoContent if the physical person is deleted successfully, or NotFound if no such physical person exists.</returns>
+        </member>
         <member name="T:Person.API.Data.Repository.AddressRepository">
             <summary>
             Provides CRUD operations for the Address entity.
@@ -132,7 +320,7 @@
             Updates an existing address in the database.
             </summary>
             <param name="id">The unique identifier of the address to be updated.</param>
-            <param name="address">The updated address data.</param>
+            <param name="updateModel">The updated address data.</param>
             <returns>The updated Address object if successful; otherwise, null.</returns>
         </member>
         <member name="T:Person.API.Data.Repository.IContactPersonRepository">
@@ -171,7 +359,7 @@
             Updates an existing contact person in the database.
             </summary>
             <param name="id">The unique identifier of the contact person to be updated.</param>
-            <param name="contactPerson">The updated contact person data.</param>
+            <param name="updateModel">The updated contact person data.</param>
             <returns>The updated ContactPerson object if successful; otherwise, null.</returns>
         </member>
         <member name="T:Person.API.Data.Repository.ILegalPersonRepository">
@@ -210,7 +398,7 @@
             Updates an existing legal person in the database.
             </summary>
             <param name="id">The unique identifier of the legal person to be updated.</param>
-            <param name="legalPerson">The updated legal person data.</param>
+            <param name="updateModel">The updated legal person data.</param>
             <returns>The updated LegalPerson object if successful; otherwise, null.</returns>
         </member>
         <member name="T:Person.API.Data.Repository.IPhysicalPersonRepository">
