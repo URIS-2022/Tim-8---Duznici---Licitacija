@@ -2,20 +2,25 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Person.API.Data;
 using Person.API.Data.Repository;
+using Person.API.Enums;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-// Add services to the container.
-
 builder.Services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
         ).AddXmlDataContractSerializerFormatters() // Dodajemo podršku za XML tako da ukoliko klijent to traži u Accept header-u zahteva možemo da serializujemo payload u XML u odgovoru.
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new CountryConverter());
+        }
+        )
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Person.API.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Person.API.Entities
 {
@@ -12,7 +14,9 @@ namespace Person.API.Entities
         /// </summary>
         [Key]
         public Guid AddressId { get; set; }
-        public string Country { get; set; }
+
+        [JsonConverter(typeof(CountryConverter))]
+        public Country Country { get; set; }
         public string Street { get; set; }
         public string StreetNumber { get; set; }
         public string Place { get; set; }
@@ -28,13 +32,9 @@ namespace Person.API.Entities
             var results = new List<ValidationResult>();
 
             // Validate Country
-            if (string.IsNullOrWhiteSpace(Country))
+            if (!Enum.IsDefined(typeof(Country), Country) || Country.Equals(default(Country)))
             {
-                results.Add(new ValidationResult("Country is required"));
-            }
-            else if (Country.Length > 50)
-            {
-                results.Add(new ValidationResult("Country cannot be longer than 50 characters"));
+                results.Add(new ValidationResult("Country is required."));
             }
 
             // Validate Street

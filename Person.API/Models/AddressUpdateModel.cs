@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Person.API.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 
 namespace Person.API.Models
@@ -12,8 +14,8 @@ namespace Person.API.Models
         /// <summary>
         /// Drzava
         /// </summary>
-        [Required(ErrorMessage = "Obavezno je naziv drzave")]
-        public string? Country { get; set; }
+        [JsonConverter(typeof(CountryConverter))]
+        public Country? Country { get; set; }
 
         /// <summary>
         /// Ulica adrese
@@ -40,7 +42,7 @@ namespace Person.API.Models
         public string? ZipCode { get; set; }
 
 
-        public AddressUpdateModel(string? country, string? street, string? streetNumber, string? place, string? zipCode)
+        public AddressUpdateModel(Country? country, string? street, string? streetNumber, string? place, string? zipCode)
 
         {
             Country = country;

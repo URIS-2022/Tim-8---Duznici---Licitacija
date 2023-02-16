@@ -16,7 +16,7 @@ namespace Person.API.Migrations
                 columns: table => new
                 {
                     AddressId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<int>(type: "int", nullable: false),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StreetNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Place = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -90,7 +90,7 @@ namespace Person.API.Migrations
             migrationBuilder.InsertData(
                 table: "Addresses",
                 columns: new[] { "AddressId", "Country", "Place", "Street", "StreetNumber", "ZipCode" },
-                values: new object[] { new Guid("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"), "Srbija", "Beograd", "Njegoseva", "21", "11000" });
+                values: new object[] { new Guid("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"), 0, "Beograd", "Njegoseva", "21", "11000" });
 
             migrationBuilder.InsertData(
                 table: "ContactPersons",

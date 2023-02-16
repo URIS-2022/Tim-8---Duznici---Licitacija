@@ -664,7 +664,7 @@
         </member>
         <member name="P:Person.API.Models.AddressRequestModel.Country">
             <summary>
-            DrzavA
+            Drzava
             </summary>
         </member>
         <member name="P:Person.API.Models.AddressRequestModel.Street">

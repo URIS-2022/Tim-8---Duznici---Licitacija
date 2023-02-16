@@ -110,6 +110,9 @@ namespace Person.API.Data
               .HasKey(p => p.ContactPersonId);
 
 
+
+
+
             modelBuilder.Entity<ContactPerson>()
                 .HasData(
                     new ContactPerson
@@ -125,6 +128,7 @@ namespace Person.API.Data
 
             modelBuilder.Entity<Address>()
               .HasKey(a => a.AddressId);
+;
 
 
             modelBuilder.Entity<Address>()
@@ -132,7 +136,7 @@ namespace Person.API.Data
                     new Address
                 {
                         AddressId = Guid.Parse("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
-                        Country = "Srbija",
+                        Country = Enums.Country.Srbija,
                         Street = "Njegoseva",
                         StreetNumber = "21",
                         Place = "Beograd",

@@ -12,7 +12,7 @@ using Person.API.Data;
 namespace Person.API.Migrations
 {
     [DbContext(typeof(PersonDbContext))]
-    [Migration("20230216000325_InitialCreate")]
+    [Migration("20230216230010_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -31,9 +31,8 @@ namespace Person.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Country")
+                        .HasColumnType("int");
 
                     b.Property<string>("Place")
                         .IsRequired()
@@ -59,7 +58,7 @@ namespace Person.API.Migrations
                         new
                         {
                             AddressId = new Guid("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
-                            Country = "Srbija",
+                            Country = 0,
                             Place = "Beograd",
                             Street = "Njegoseva",
                             StreetNumber = "21",
@@ -225,17 +224,12 @@ namespace Person.API.Migrations
             modelBuilder.Entity("Person.API.Entities.LegalPerson", b =>
                 {
                     b.HasOne("Person.API.Entities.ContactPerson", "ContactPerson")
-                        .WithMany("LegalPersons")
+                        .WithMany()
                         .HasForeignKey("ContactPersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ContactPerson");
-                });
-
-            modelBuilder.Entity("Person.API.Entities.ContactPerson", b =>
-                {
-                    b.Navigation("LegalPersons");
                 });
 #pragma warning restore 612, 618
         }

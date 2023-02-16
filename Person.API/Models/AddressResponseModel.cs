@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using Person.API.Enums;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Person.API.Models
 {
@@ -12,8 +14,11 @@ namespace Person.API.Models
         /// <summary>
         /// Drzava
         /// </summary>
+        [JsonConverter(typeof(CountryConverter))]
         [DataMember]
-        public string Country { get; set; }
+        public Country Country { get; set; }
+
+        
 
         /// <summary>
         /// Ulica adrese
@@ -40,7 +45,7 @@ namespace Person.API.Models
         public string ZipCode { get; set; }
 
 
-        public AddressResponseModel(string country, string street, string streetNumber, string place, string zipCode)
+        public AddressResponseModel(Country country, string street, string streetNumber, string place, string zipCode)
 
         {
             Country = country;
