@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Landlot.API.Controllers
 {
-
+    /// <summary>
+    /// Controller for managing lots of land.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json", "application/xml")]

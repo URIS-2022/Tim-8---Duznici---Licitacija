@@ -6,10 +6,10 @@ using Landlot.API.Enums;
 namespace Landlot.API.Models
 {
 
-        // <summary>
+        /// <summary>
         /// Represents a response model for a lot.
-        ///</summary>
-        [DataContract(Name = "Lot", Namespace = "")]
+        /// </summary>
+    [DataContract(Name = "Lot", Namespace = "")]
       public class LotGetResponseModel
         {
         /// <summary>
