@@ -37,9 +37,9 @@ namespace Person.API.Data.Repository
         /// Updates an existing legal person in the database.
         /// </summary>
         /// <param name="id">The unique identifier of the legal person to be updated.</param>
-        /// <param name="legalPerson">The updated legal person data.</param>
+        /// <param name="updateModel">The updated legal person data.</param>
         /// <returns>The updated LegalPerson object if successful; otherwise, null.</returns>
-        Task<LegalPerson?> UpdateLegalPerson(Guid id, LegalPerson legalPerson);
+        Task<LegalPerson?> UpdateLegalPerson(Guid id, LegalPerson updateModel);
 
     }
 }

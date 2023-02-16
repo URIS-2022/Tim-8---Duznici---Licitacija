@@ -37,8 +37,8 @@ namespace Person.API.Data.Repository
         /// Updates an existing contact person in the database.
         /// </summary>
         /// <param name="id">The unique identifier of the contact person to be updated.</param>
-        /// <param name="contactPerson">The updated contact person data.</param>
+        /// <param name="updateModel">The updated contact person data.</param>
         /// <returns>The updated ContactPerson object if successful; otherwise, null.</returns>
-        Task<ContactPerson?> UpdateContactPerson(Guid id, ContactPerson contactPerson);
+        Task<ContactPerson?> UpdateContactPerson(Guid id, ContactPerson updateModel);
     }
 }

@@ -37,8 +37,8 @@ namespace Person.API.Data.Repository
         /// Updates an existing address in the database.
         /// </summary>
         /// <param name="id">The unique identifier of the address to be updated.</param>
-        /// <param name="address">The updated address data.</param>
+        /// <param name="updateModel">The updated address data.</param>
         /// <returns>The updated Address object if successful; otherwise, null.</returns>
-        Task<Address?> UpdateAddress(Guid id, Address address);
+        Task<Address?> UpdateAddress(Guid id, Address updateModel);
     }
 }

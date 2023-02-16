@@ -40,7 +40,7 @@ namespace Person.API.Data.Repository
         /// </summary>
         /// <param name="PhysicalPersonId">The ID of the physical person to retrieve.</param>
         /// <returns>The PhysicalPerson object with the specified ID, or null if no such physical person exists.</returns>
-        public async Task<PhysicalPerson> GetPhysicalPersonByGuid(Guid PhysicalPersonId)
+        public async Task<PhysicalPerson?> GetPhysicalPersonByGuid(Guid PhysicalPersonId)
         {
             return await context.PhysicalPersons.FirstOrDefaultAsync(p => p.PhysicalPersonId == PhysicalPersonId);
         }
@@ -49,7 +49,7 @@ namespace Person.API.Data.Repository
         /// </summary>
         /// <param name="physicalPerson">The PhysicalPerson object to be added.</param>
         /// <returns>The PhysicalPerson object that was added to the database.</returns>
-        public async Task<PhysicalPerson> CreatePhysicalPerson(PhysicalPerson physicalPerson)
+        public async Task<PhysicalPerson?> CreatePhysicalPerson(PhysicalPerson? physicalPerson)
         {
             context.PhysicalPersons.Add(physicalPerson);
             await context.SaveChangesAsync();

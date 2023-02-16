@@ -111,7 +111,7 @@
             <summary>
             Gets an address by its unique identifier.
             </summary>
-            <param name="addressId">The unique identifier of the address.</param>
+            <param name="AddressId">The unique identifier of the address.</param>
             <returns>An Address object if found; otherwise, null.</returns>
         </member>
         <member name="M:Person.API.Data.Repository.IAddressRepository.CreateAddress(Person.API.Entities.Address)">
@@ -134,6 +134,123 @@
             <param name="id">The unique identifier of the address to be updated.</param>
             <param name="address">The updated address data.</param>
             <returns>The updated Address object if successful; otherwise, null.</returns>
+        </member>
+        <member name="T:Person.API.Data.Repository.IContactPersonRepository">
+            <summary>
+            Interface for managing contact persoons in the database.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.IContactPersonRepository.GetAllContactPersons">
+            <summary>
+            Gets all contact persons from the database.
+            </summary>
+            <returns>An IEnumerable of ContactPerson.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IContactPersonRepository.GetContactPersonByGuid(System.Guid)">
+            <summary>
+            Gets an contact person by its unique identifier.
+            </summary>
+            <param name="ContactPersonId">The unique identifier of the contact perso.</param>
+            <returns>An ContactPerson object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IContactPersonRepository.CreateContactPerson(Person.API.Entities.ContactPerson)">
+            <summary>
+            Creates a new contact person in the database.
+            </summary>
+            <param name="contactPerson">The contact person to be created.</param>
+            <returns>The newly created ContactPerson object.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IContactPersonRepository.DeleteContactPerson(System.Guid)">
+            <summary>
+            Deletes an contact person from the database.
+            </summary>
+            <param name="ContactPersonId">The unique identifier of the contact person to be deleted.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.IContactPersonRepository.UpdateContactPerson(System.Guid,Person.API.Entities.ContactPerson)">
+            <summary>
+            Updates an existing contact person in the database.
+            </summary>
+            <param name="id">The unique identifier of the contact person to be updated.</param>
+            <param name="contactPerson">The updated contact person data.</param>
+            <returns>The updated ContactPerson object if successful; otherwise, null.</returns>
+        </member>
+        <member name="T:Person.API.Data.Repository.ILegalPersonRepository">
+            <summary>
+            Interface for managing legal persons in the database.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.ILegalPersonRepository.GetAllLegalPersons">
+            <summary>
+            Gets all legal persons from the database.
+            </summary>
+            <returns>An IEnumerable of LegalPerson.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.ILegalPersonRepository.GetLegalPersonByGuid(System.Guid)">
+            <summary>
+            Gets an legal person by its unique identifier.
+            </summary>
+            <param name="LegalPersonId">The unique identifier of the legal person.</param>
+            <returns>An LegalPerson object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.ILegalPersonRepository.CreateLegalPerson(Person.API.Entities.LegalPerson)">
+            <summary>
+            Creates a new legal person in the database.
+            </summary>
+            <param name="legalPerson">The legal person to be created.</param>
+            <returns>The newly created LegalPerson object.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.ILegalPersonRepository.DeleteLegalPerson(System.Guid)">
+            <summary>
+            Deletes an legal person from the database.
+            </summary>
+            <param name="LegalPersonId">The unique identifier of the legal person to be deleted.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.ILegalPersonRepository.UpdateLegalPerson(System.Guid,Person.API.Entities.LegalPerson)">
+            <summary>
+            Updates an existing legal person in the database.
+            </summary>
+            <param name="id">The unique identifier of the legal person to be updated.</param>
+            <param name="legalPerson">The updated legal person data.</param>
+            <returns>The updated LegalPerson object if successful; otherwise, null.</returns>
+        </member>
+        <member name="T:Person.API.Data.Repository.IPhysicalPersonRepository">
+            <summary>
+            Interface for managing physical persons in the database.
+            </summary>
+        </member>
+        <member name="M:Person.API.Data.Repository.IPhysicalPersonRepository.GetAllPhysicalPersons">
+            <summary>
+            Gets all physical persons from the database.
+            </summary>
+            <returns>An IEnumerable of PhysicalPerson.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IPhysicalPersonRepository.GetPhysicalPersonByGuid(System.Guid)">
+            <summary>
+            Gets an physical person by its unique identifier.
+            </summary>
+            <param name="PhysicalPersonId">The unique identifier of the physical person.</param>
+            <returns>An PhysicalPerson object if found; otherwise, null.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IPhysicalPersonRepository.CreatePhysicalPerson(Person.API.Entities.PhysicalPerson)">
+            <summary>
+            Creates a new physical person in the database.
+            </summary>
+            <param name="physicalPerson">The physical person to be created.</param>
+            <returns>The newly created PhysicalPerson object.</returns>
+        </member>
+        <member name="M:Person.API.Data.Repository.IPhysicalPersonRepository.DeletePhysicalPerson(System.Guid)">
+            <summary>
+            Deletes an physical person from the database.
+            </summary>
+            <param name="PhysicalPersonId">The unique identifier of the physical person to be deleted.</param>
+        </member>
+        <member name="M:Person.API.Data.Repository.IPhysicalPersonRepository.UpdatePhysicalPerson(System.Guid,Person.API.Entities.PhysicalPerson)">
+            <summary>
+            Updates an existing physical person in the database.
+            </summary>
+            <param name="id">The unique identifier of the physical person to be updated.</param>
+            <param name="updateModel">The updated physical person data.</param>
+            <returns>The updated PhysicalPerson object if successful; otherwise, null.</returns>
         </member>
         <member name="T:Person.API.Data.Repository.LegalPersonRepository">
             <summary>

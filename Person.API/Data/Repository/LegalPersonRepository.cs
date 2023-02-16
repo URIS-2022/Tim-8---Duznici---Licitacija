@@ -34,10 +34,6 @@ namespace Person.API.Data.Repository
         /// <returns>An IEnumerable collection of LegalPerson objects.</returns>
         public async Task<IEnumerable<LegalPerson>> GetAllLegalPersons()
         {
-            var options = new JsonSerializerOptions
-            {
-                ReferenceHandler = ReferenceHandler.Preserve
-            };
 
             return await context.LegalPersons
                .Include(c => c.ContactPerson)

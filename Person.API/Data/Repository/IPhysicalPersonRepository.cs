@@ -37,9 +37,9 @@ namespace Person.API.Data.Repository
         /// Updates an existing physical person in the database.
         /// </summary>
         /// <param name="id">The unique identifier of the physical person to be updated.</param>
-        /// <param name="physicalPerson">The updated physical person data.</param>
+        /// <param name="updateModel">The updated physical person data.</param>
         /// <returns>The updated PhysicalPerson object if successful; otherwise, null.</returns>
-        Task<PhysicalPerson?> UpdatePhysicalPerson(Guid id, PhysicalPerson physicalPerson);
+        Task<PhysicalPerson?> UpdatePhysicalPerson(Guid id, PhysicalPerson updateModel);
 
     }
 }
