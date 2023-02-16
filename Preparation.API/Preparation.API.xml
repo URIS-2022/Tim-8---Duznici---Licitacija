@@ -4,5 +4,866 @@
         <name>Preparation.API</name>
     </assembly>
     <members>
+        <member name="T:Preparation.API.Controllers.AnnouncementsController">
+            <summary>
+            Provides endpoints for Announcements management
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.#ctor(Preparation.API.Data.Repository.IAnnouncementRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the AnnouncementsController class
+            </summary>
+            <param name="announcementRepository">An instance of IAnnouncementRepository to handle the Announcements</param>
+            <param name="mapper">An instance of IMapper to map between Announcement entities and models</param>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.GetAnnouncements">
+            <summary>
+            Gets a list of Announcements.
+            </summary>
+            <returns>A list of AnnouncementGetResponseModel, or No Content if there are no announcements.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.GetAnnouncement(System.Guid)">
+            <summary>
+            Gets the Announcement with the specified ID.
+            </summary>
+            <param name="id">The ID of the Announcement to retrieve.</param>
+            <returns>An AnnouncementGetResponseModel representing the retrieved Announcement, or NotFound if the Announcement does not exist.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.PatchAnnouncement(System.Guid,Preparation.API.Models.AnnouncementPatchRequestModel)">
+            <summary>
+            Updates the Announcement with the specified ID.
+            </summary>
+            <param name="id">The ID of the Announcement to update.</param>
+            <param name="patchModel">An AnnouncementPatchRequestModel containing the properties to update.</param>
+            <returns>An AnnouncementPatchResponseModel representing the updated Announcement, or BadRequest if the update failed or the Announcement does not exist.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.PostAnnouncement(Preparation.API.Models.AnnouncementPostRequestModel)">
+            <summary>
+            Creates a new Announcement.
+            </summary>
+            <param name="postModel">An AnnouncementPostRequestModel containing the properties of the Announcement to create.</param>
+            <returns>A CreatedAtActionResult containing a URL to the new Announcement and the AnnouncementPostResponseModel of the created Announcement, or BadRequest if the creation failed.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.AnnouncementsController.DeleteAnnouncement(System.Guid)">
+            <summary>
+            Deletes an announcement with the given ID.
+            </summary>
+            <param name="id">The ID of the announcement to delete.</param>
+            <returns>
+            <list type="bullet">
+            <item><description>HTTP 204 No Content if the announcement was successfully deleted.</description></item>
+            <item><description>HTTP 404 Not Found if an announcement with the given ID could not be found.</description></item>
+            </list>
+            </returns>
+        </member>
+        <member name="T:Preparation.API.Controllers.DocumentsController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.#ctor(Preparation.API.Data.Repository.IDocumentRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="documentRepository">An instance of IDocumentRepository to handle the Documents</param>
+            <param name="mapper">An instance of IMapper to map between Document entities and models</param>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.GetDocument(System.Guid)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.PatchDocument(System.Guid,Preparation.API.Models.DocumentPatchRequestModel)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="patchModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.PostDocument(Preparation.API.Models.DocumentPostRequestModel)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="postModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+        </member>
+        <member name="M:Preparation.API.Controllers.DocumentsController.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a Document by ID
+            </summary>
+            <param name="id">The ID of the Document to delete</param>
+            <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
+        </member>
+        <member name="T:Preparation.API.Data.PreparationDbContext">
+            <summary>
+            DbContext za rad sa bazom podataka.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.PreparationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the PreparationDbContext class.
+            </summary>
+            <param name="options">The options for this context.</param>
+            <param name="configuration">The configuration for this context.</param>
+        </member>
+        <member name="P:Preparation.API.Data.PreparationDbContext.Announcements">
+            <summary>
+            Gets or sets the set of announcements in the database.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Data.PreparationDbContext.Documents">
+            <summary>
+            Gets or sets the set of documents in the database.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.PreparationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Metoda za definisanje strukture baze i njenih relacija.
+            </summary>
+        </member>
+        <member name="T:Preparation.API.Data.Repository.AnnouncementRepository">
+            <summary>
+            Implementation of the IAnnouncementRepository
+            interface for managing Announcement entities in the database.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.#ctor(Preparation.API.Data.PreparationDbContext)">
+            <summary>
+            Initializes a new instance of the AnnouncementRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetAnnouncements">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncements"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.GetAnnouncement(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncement(System.Guid)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.UpdateAnnouncement(System.Guid,Preparation.API.Entities.Announcement)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.UpdateAnnouncement(System.Guid,Preparation.API.Entities.Announcement)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.AddAnnouncement(Preparation.API.Entities.Announcement)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.AddAnnouncement(Preparation.API.Entities.Announcement)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.DeleteAnnouncement(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IAnnouncementRepository.DeleteAnnouncement(System.Guid)"/>
+        </member>
+        <member name="T:Preparation.API.Data.Repository.DocumentRepository">
+            <summary>
+            Implementation of the IDocumentRepository
+            interface for managing Document entities in the database.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.#ctor(Preparation.API.Data.PreparationDbContext)">
+            <summary>
+            Initializes a new instance of the DocumentRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetDocuments">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocuments"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.GetDocument(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.UpdateDocument(System.Guid,Preparation.API.Entities.Document)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Preparation.API.Entities.Document)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.AddDocument(Preparation.API.Entities.Document)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.AddDocument(Preparation.API.Entities.Document)"/>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.DeleteDocument(System.Guid)">
+            <inheritdoc cref="M:Preparation.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)"/>
+        </member>
+        <member name="T:Preparation.API.Data.Repository.IAnnouncementRepository">
+            <summary>
+            The interface for announcement repository, provides methods for getting, updating, adding and deleting a announcement
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncements">
+            <summary>
+            Gets a list of all announcements.
+            </summary>
+            <returns>A list of announcements.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.GetAnnouncement(System.Guid)">
+            <summary>
+            Gets a specific announcement by its identifier.
+            </summary>
+            <param name="id">The identifier of the announcement.</param>
+            <returns>The announcement with the specified identifier.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.UpdateAnnouncement(System.Guid,Preparation.API.Entities.Announcement)">
+            <summary>
+            Updates a specific announcement.
+            </summary>
+            <param name="id">The identifier of the announcement to update.</param>
+            <param name="patchAnnouncement">The updated values for the announcement.</param>
+            <returns>The updated announcement.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.AddAnnouncement(Preparation.API.Entities.Announcement)">
+            <summary>
+            Adds a new announcement.
+            </summary>
+            <param name="announcement">The announcement to add.</param>
+            <returns>The added announcement.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IAnnouncementRepository.DeleteAnnouncement(System.Guid)">
+            <summary>
+            Deletes a specific announcement.
+            </summary>
+            <param name="id">The identifier of the announcement to delete.</param>
+            <returns>The deleted announcement.</returns>
+        </member>
+        <member name="T:Preparation.API.Data.Repository.IDocumentRepository">
+            <summary>
+            The interface for document repository, provides methods for getting, updating, adding and deleting a document
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocuments">
+            <summary>
+            Gets a list of all documents.
+            </summary>
+            <returns>A list of documents.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)">
+            <summary>
+            Gets a specific document by its identifier.
+            </summary>
+            <param name="id">The identifier of the document.</param>
+            <returns>The document with the specified identifier.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Preparation.API.Entities.Document)">
+            <summary>
+            Updates a specific document.
+            </summary>
+            <param name="id">The identifier of the document to update.</param>
+            <param name="patchDocument">The updated values for the document.</param>
+            <returns>The updated document.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.AddDocument(Preparation.API.Entities.Document)">
+            <summary>
+            Adds a new document.
+            </summary>
+            <param name="document">The document to add.</param>
+            <returns>The added document.</returns>
+        </member>
+        <member name="M:Preparation.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a specific document.
+            </summary>
+            <param name="id">The identifier of the document to delete.</param>
+            <returns>The deleted document.</returns>
+        </member>
+        <member name="T:Preparation.API.Entities.Announcement">
+            <summary>
+            Represents an announcement made for a licitation.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Announcement.Guid">
+            <summary>
+            Gets or sets the unique identifier for the announcement.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Announcement.LicitationGuid">
+            <summary>
+            Gets or sets the unique identifier for the licitation to which the announcement belongs.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Announcement.Documents">
+            <summary>
+            Gets or sets the collection of documents associated with the announcement.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Entities.Announcement.#ctor(System.Guid,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Entities.Announcement"/> class with the specified unique identifier and licitation identifier.
+            </summary>
+            <param name="id">The unique identifier for the announcement.</param>
+            <param name="licitationGuid">The unique identifier for the licitation to which the announcement belongs.</param>
+        </member>
+        <member name="M:Preparation.API.Entities.Announcement.#ctor(System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Entities.Announcement"/> class with a new unique identifier and the specified licitation identifier.
+            </summary>
+            <param name="licitationGuid">The unique identifier for the licitation to which the announcement belongs.</param>
+        </member>
+        <member name="M:Preparation.API.Entities.Announcement.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the current instance of the <see cref="T:Preparation.API.Entities.Announcement"/> class.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>A collection of validation results. The collection is empty if the instance is valid.</returns>
+        </member>
+        <member name="T:Preparation.API.Entities.Document">
+            <summary>
+            Represents a document entity with its properties and methods.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.Guid">
+            <summary>
+            Gets or sets the unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.AnnouncementGuid">
+            <summary>
+            Gets or sets the unique identifier of the announcement.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.DocumentType">
+            <summary>
+            Gets or sets the type of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.DocumentStatus">
+            <summary>
+            Gets or sets the status of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.DateSubmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.Announcement">
+            <summary>
+            Gets or sets the announcement related to this document.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Entities.Document.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Entities.Document"/> class.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Entities.Document.#ctor(System.Guid,System.Guid,Preparation.API.Enums.DocumentType,Preparation.API.Enums.DocumentStatus,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Entities.Document"/> class with the specified parameters.
+            </summary>
+            <param name="id">The unique identifier of the document.</param>
+            <param name="announcementGuid">The unique identifier of the announcement.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="documentStatus">The status of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date when the document was submitted.</param>
+            <param name="dateCertified">The date when the document was certified.</param>
+            <param name="template">The template of the document.</param>
+        </member>
+        <member name="M:Preparation.API.Entities.Document.#ctor(System.Guid,Preparation.API.Enums.DocumentType,Preparation.API.Enums.DocumentStatus,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the Document class with a new Guid.
+            </summary>
+            <param name="announcementGuid">The unique identifier of the announcement that this Document is associated with.</param>
+            <param name="documentType">The type of the Document.</param>
+            <param name="documentStatus">The status of the Document.</param>
+            <param name="referenceNumber">The reference number of the Document.</param>
+            <param name="dateSubmitted">The date when the Document was submitted.</param>
+            <param name="dateCertified">The date when the Document was certified.</param>
+            <param name="template">The template of the Document.</param>
+        </member>
+        <member name="M:Preparation.API.Entities.Document.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the Document entity.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>A collection of ValidationResult objects that represent the validation errors.</returns>
+        </member>
+        <member name="T:Preparation.API.Enums.DocumentStatus">
+            <summary>
+            Represents the possible status values for a document.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentStatus.Approved">
+            <summary>
+            The document has been approved.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentStatus.Rejected">
+            <summary>
+            The document has been rejected.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentStatus.Opened">
+            <summary>
+            The document is currently open.
+            </summary>
+        </member>
+        <member name="T:Preparation.API.Enums.DocumentStatusConverter">
+            <summary>
+            Converts between <see cref="T:Preparation.API.Enums.DocumentStatus"/> enum and JSON string representation of the status.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Enums.DocumentStatusConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Preparation.API.Enums.DocumentStatusConverter.Write(System.Text.Json.Utf8JsonWriter,Preparation.API.Enums.DocumentStatus,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Preparation.API.Enums.DocumentType">
+            <summary>
+            Represents the type of a document.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Determining">
+            <summary>
+            A document used to determine the outcome of a licitation process.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Request">
+            <summary>
+            A document used to request information or proposals for a licitation process.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Proposal">
+            <summary>
+            A document containing a proposal for a licitation process.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.DocumentType.Decision">
+            <summary>
+            A document containing a decision about a licitation process.
+            </summary>
+        </member>
+        <member name="T:Preparation.API.Enums.DocumentTypeConverter">
+            <summary>
+            The DocumentTypeConverter class provides a custom implementation for converting the DocumentType enum to and from JSON.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Enums.DocumentTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the DocumentType value from a JSON reader.
+            </summary>
+            <param name="reader">The JSON reader to read from.</param>
+            <param name="typeToConvert">The type to convert to.</param>
+            <param name="options">The JSON serializer options.</param>
+            <returns>The DocumentType value read from the JSON reader.</returns>
+        </member>
+        <member name="M:Preparation.API.Enums.DocumentTypeConverter.Write(System.Text.Json.Utf8JsonWriter,Preparation.API.Enums.DocumentType,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the DocumentType value to a JSON writer.
+            </summary>
+            <param name="writer">The JSON writer to write to.</param>
+            <param name="value">The DocumentType value to write.</param>
+            <param name="options">The JSON serializer options.</param>
+        </member>
+        <member name="T:Preparation.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Preparation.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Preparation.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Preparation.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Preparation.API.Models.AnnouncementGetResponseModel">
+            <summary>
+            Represents the response model for retrieving announcement data.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.AnnouncementGetResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the announcement.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.AnnouncementGetResponseModel.LicitationGuid">
+            <summary>
+            Gets or sets the unique identifier of the licitation associated with the announcement.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementGetResponseModel.#ctor(System.Guid,System.Guid)">
+            <summary>
+            Initializes a new instance of the AnnouncementGetResponseModel class with the specified values.
+            </summary>
+            <param name="guid">The unique identifier of the announcement.</param>
+            <param name="licitationGuid">The unique identifier of the licitation associated with the announcement.</param>
+        </member>
+        <member name="T:Preparation.API.Models.AnnouncementPatchRequestModel">
+            <summary>
+            Model for the request to patch an announcement.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.AnnouncementPatchRequestModel.LicitationGuid">
+            <summary>
+            Gets or sets the optional Licitation Guid to update in the announcement.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPatchRequestModel.#ctor(System.Nullable{System.Guid})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPatchRequestModel"/> class with the specified Licitation Guid.
+            </summary>
+            <param name="licitationGuid">The optional Licitation Guid to update in the announcement.</param>
+        </member>
+        <member name="T:Preparation.API.Models.AnnouncementPatchResponseModel">
+            <summary>
+            Represents an announcement patch response model.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.AnnouncementPatchResponseModel.Guid">
+            <summary>
+            Gets or sets the announcement GUID.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.AnnouncementPatchResponseModel.LicitationGuid">
+            <summary>
+            Gets or sets the licitation GUID.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPatchResponseModel.#ctor(System.Guid,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPatchResponseModel"/> class.
+            </summary>
+            <param name="guid">The announcement GUID.</param>
+            <param name="licitationGuid">The licitation GUID.</param>
+        </member>
+        <member name="T:Preparation.API.Models.AnnouncementPostRequestModel">
+            <summary>
+            Represents the request model for creating a new announcement.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.AnnouncementPostRequestModel.LicitationGuid">
+            <summary>
+            Gets or sets the GUID of the associated licitation.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPostRequestModel.#ctor(System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPostRequestModel"/> class with the specified licitation GUID.
+            </summary>
+            <param name="licitationGuid">The GUID of the associated licitation.</param>
+        </member>
+        <member name="T:Preparation.API.Models.AnnouncementPostResponseModel">
+            <summary>
+            Model representing the response to a POST request for a new Announcement.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.AnnouncementPostResponseModel.LicitationGuid">
+            <summary>
+            Gets or sets the Guid of the associated Licitation.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPostResponseModel.#ctor(System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPostResponseModel"/> class with the specified LicitationGuid.
+            </summary>
+            <param name="licitationGuid">The Guid of the associated Licitation.</param>
+        </member>
+        <member name="T:Preparation.API.Models.DocumentGetResponseModel">
+            <summary>
+            Represents the response model for a document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.Guid">
+            <summary>
+            The GUID of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.AnnouncementGuid">
+            <summary>
+            The GUID of the announcement that the document is associated with.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.DocumentType">
+            <summary>
+            The type of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.DocumentStatus">
+            <summary>
+            The status of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.ReferenceNumber">
+            <summary>
+            The reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.DateSubmitted">
+            <summary>
+            The date the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.DateCertified">
+            <summary>
+            The date the document was certified.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentGetResponseModel.Template">
+            <summary>
+            The template of the document.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.DocumentGetResponseModel.#ctor(System.Guid,System.Guid,Preparation.API.Enums.DocumentType,Preparation.API.Enums.DocumentStatus,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.DocumentGetResponseModel"/> class with the specified properties.
+            </summary>
+            <param name="guid">The GUID of the document.</param>
+            <param name="announcementGuid">The GUID of the announcement that the document is associated with.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="documentStatus">The status of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date the document was submitted.</param>
+            <param name="dateCertified">The date the document was certified.</param>
+            <param name="template">The template of the document.</param>
+        </member>
+        <member name="T:Preparation.API.Models.DocumentPatchRequestModel">
+            <summary>
+            Represents a request model for patching a <see cref="T:Preparation.API.Entities.Document"/>.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchRequestModel.AnnouncementGuid">
+            <summary>
+            Gets or sets the announcement GUID for the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchRequestModel.DocumentType">
+            <summary>
+            Gets or sets the document type.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchRequestModel.DocumentStatus">
+            <summary>
+            Gets or sets the document status.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number for the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchRequestModel.DateSubmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchRequestModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchRequestModel.Template">
+            <summary>
+            Gets or sets the document template.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.DocumentPatchRequestModel.#ctor(System.Nullable{System.Guid},System.Nullable{Preparation.API.Enums.DocumentType},System.Nullable{Preparation.API.Enums.DocumentStatus},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.DocumentPatchRequestModel"/> class.
+            </summary>
+            <param name="announcementGuid">The announcement GUID for the document.</param>
+            <param name="documentType">The document type.</param>
+            <param name="documentStatus">The document status.</param>
+            <param name="referenceNumber">The reference number for the document.</param>
+            <param name="dateSubmitted">The date when the document was submitted.</param>
+            <param name="dateCertified">The date when the document was certified.</param>
+            <param name="template">The document template.</param>
+        </member>
+        <member name="T:Preparation.API.Models.DocumentPatchResponseModel">
+            <summary>
+            Represents the response model for a document PATCH request.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.Guid">
+            <summary>
+            Gets or sets the GUID of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.AnnouncementGuid">
+            <summary>
+            Gets or sets the GUID of the announcement that the document is associated with.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.DocumentType">
+            <summary>
+            Gets or sets the type of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.DocumentStatus">
+            <summary>
+            Gets or sets the status of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.DateSubmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPatchResponseModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.DocumentPatchResponseModel.#ctor(System.Guid,System.Guid,Preparation.API.Enums.DocumentType,Preparation.API.Enums.DocumentStatus,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.DocumentPatchResponseModel"/> class with the specified parameters.
+            </summary>
+            <param name="guid">The GUID of the document.</param>
+            <param name="announcementGuid">The GUID of the announcement that the document is associated with.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="documentStatus">The status of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date when the document was submitted.</param>
+            <param name="dateCertified">The date when the document was certified.</param>
+            <param name="template">The template of the document.</param>
+        </member>
+        <member name="T:Preparation.API.Models.DocumentPostRequestModel">
+            <summary>
+            Represents a model for creating a new document request.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostRequestModel.AnnouncementGuid">
+            <summary>
+            Gets or sets the announcement Guid of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostRequestModel.DocumentType">
+            <summary>
+            Gets or sets the type of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostRequestModel.DocumentStatus">
+            <summary>
+            Gets or sets the status of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostRequestModel.DateSubmitted">
+            <summary>
+            Gets or sets the date the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostRequestModel.DateCertified">
+            <summary>
+            Gets or sets the date the document was certified.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostRequestModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.DocumentPostRequestModel.#ctor(System.Guid,Preparation.API.Enums.DocumentType,Preparation.API.Enums.DocumentStatus,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.DocumentPostRequestModel"/> class.
+            </summary>
+            <param name="announcementGuid">The announcement Guid of the document.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="documentStatus">The status of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date the document was submitted.</param>
+            <param name="dateCertified">The date the document was certified.</param>
+            <param name="template">The template of the document.</param>
+        </member>
+        <member name="T:Preparation.API.Models.DocumentPostResponseModel">
+            <summary>
+            Represents the model for the response after a new document is posted.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostResponseModel.AnnouncementGuid">
+            <summary>
+            The Announcement Guid of the new document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostResponseModel.DocumentType">
+            <summary>
+            The Document Type of the new document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostResponseModel.DocumentStatus">
+            <summary>
+            The Document Status of the new document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostResponseModel.ReferenceNumber">
+            <summary>
+            The Reference Number of the new document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostResponseModel.DateSubmitted">
+            <summary>
+            The Date Submitted of the new document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostResponseModel.DateCertified">
+            <summary>
+            The Date Certified of the new document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Models.DocumentPostResponseModel.Template">
+            <summary>
+            The Template of the new document.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.DocumentPostResponseModel.#ctor(System.Guid,Preparation.API.Enums.DocumentType,Preparation.API.Enums.DocumentStatus,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Models.DocumentPostResponseModel"/> class.
+            </summary>
+            <param name="announcementGuid">The Announcement Guid of the new document.</param>
+            <param name="documentType">The Document Type of the new document.</param>
+            <param name="documentStatus">The Document Status of the new document.</param>
+            <param name="referenceNumber">The Reference Number of the new document.</param>
+            <param name="dateSubmitted">The Date Submitted of the new document.</param>
+            <param name="dateCertified">The Date Certified of the new document.</param>
+            <param name="template">The Template of the new document.</param>
+        </member>
+        <member name="T:Preparation.API.Profiles.AnnouncementProfile">
+            <summary>
+            AutoMapper profile for mapping Announcement entities to/from request/response models.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Profiles.AnnouncementProfile.#ctor">
+            <summary>
+            Initializes a new instance of the AnnouncementProfile class and configures the mappings between Announcement entities and request/response models.
+            </summary>
+        </member>
+        <member name="T:Preparation.API.Profiles.DocumentProfile">
+            <summary>
+            Defines the mapping profile for <see cref="T:Preparation.API.Entities.Document"/> and its corresponding models.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Profiles.DocumentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Preparation.API.Profiles.DocumentProfile"/> class and creates the mapping for the document-related models and entities.
+            </summary>
+        </member>
     </members>
 </doc>

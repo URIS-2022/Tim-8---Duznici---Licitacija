@@ -1,7 +1,25 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-	<assembly>
-		<name>Landlot.API</name>
-	</assembly>
-	
+    <assembly>
+        <name>Landlot.API</name>
+    </assembly>
+    <members>
+        <member name="M:Landlot.API.Data.LandlotDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjavanje baze sa nekim test podacima
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
 </doc>
