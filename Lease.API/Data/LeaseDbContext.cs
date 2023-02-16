@@ -1,8 +1,9 @@
 ﻿
 using Lease.API.Entities;
 using Lease.API.Enums;
+using Lease.API.Models.Buyer;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Lease.API.Data;
 
@@ -20,9 +21,11 @@ public class LeaseDbContext : DbContext
     public DbSet<Buyer> Buyers { get; set; }
     public DbSet<Document> Documents { get; set; }
 
-    public DbSet<PriorityTypeEntity> PriorityTypes { get; set; }
-    public DbSet<PriorityBuyer> PriorityBuyers { get; set; }
     public DbSet<DueDate> DueDates { get; set; }
+
+    //public DbSet<PriorityTypeEntity> PriorityTypes { get; set; }
+    // public DbSet<PriorityBuyer> PriorityBuyers { get; set; }
+ 
 
 
 
@@ -53,6 +56,8 @@ public class LeaseDbContext : DbContext
            modelBuilder.Entity<DueDate>()
              .HasKey(u => u.Guid);
 
+      
+
            
 
 
@@ -81,40 +86,54 @@ public class LeaseDbContext : DbContext
 
 
         modelBuilder.Entity<LeaseAgreement>()
-               .HasOne(x => x.Buyer)
-               .WithOne(x => x.LeaseAgreement)
-               .HasForeignKey<Buyer>(x => x.PersonGuid)
-               .IsRequired();
+            .HasOne(x => x.Buyer)
+            .WithOne(b=> b.LeaseAgreement)
+            .HasPrincipalKey<LeaseAgreement>(x => x.PersonGuid)
+            .HasForeignKey<Buyer>(x => x.PersonGuid)
+            .IsRequired();
 
-        modelBuilder.Entity<PriorityBuyer>()
-                .HasKey(pb => new { pb.BuyerGuid, pb.PriorityTypeId });
-
-        modelBuilder.Entity<PriorityBuyer>()
-        .HasOne(pb => pb.Buyer)
-        .WithMany(b => b.PriorityBuyers)
-        .HasForeignKey(pb => pb.BuyerGuid);
-
-        modelBuilder.Entity<PriorityBuyer>()
-            .HasOne(pb => pb.PriorityType)
-            .WithMany(pt => pt.PriorityBuyers)
-            .HasForeignKey(pb => pb.PriorityTypeId);
 
         modelBuilder.Entity<Buyer>()
-             .HasMany(b => b.PriorityBuyers)
-             .WithOne(pb => pb.Buyer)
-             .HasForeignKey(pb => pb.BuyerGuid);
+            .OwnsMany(b => b.Priorities, p =>
+            {
+                p.Property(p => p.PriorityTypes).HasConversion(typeof(PriorityTypeListJsonConverter)).IsRequired();
 
-        modelBuilder.Entity<PriorityTypeEntity>()
-             .HasKey(pt=>pt.Id);
+            });
 
-        modelBuilder.Entity<PriorityTypeEntity>()
-            .HasMany(pt => pt.PriorityBuyers)
-            .WithOne(pb => pb.PriorityType)
-            .HasForeignKey(pb => pb.PriorityTypeId);
+
+     
 
 
 
-        //proveri da li mora da se napise many to many
+        /*   modelBuilder.Entity<PriorityBuyer>()
+                  .HasKey(pb => new { pb.BuyerGuid, pb.PriorityTypeId });
+
+          modelBuilder.Entity<PriorityBuyer>()
+          .HasOne(pb => pb.Buyer)
+          .WithMany(b => b.PriorityBuyers)
+          .HasForeignKey(pb => pb.BuyerGuid);
+
+         modelBuilder.Entity<PriorityBuyer>()
+              .HasOne(pb => pb.PriorityTypeEntity)
+              .WithMany(pt => pt.PriorityBuyers)
+              .HasForeignKey(pb => pb.PriorityTypeId);
+
+          modelBuilder.Entity<Buyer>()
+               .HasMany(b => b.PriorityBuyers)
+               .WithOne(pb => pb.Buyer)
+               .HasForeignKey(pb => pb.BuyerGuid);
+
+          modelBuilder.Entity<PriorityTypeEntity>()
+               .HasKey(pt=>pt.Id);
+
+          modelBuilder.Entity<PriorityTypeEntity>()
+              .HasMany(pt => pt.PriorityBuyers)
+              .WithOne(pb => pb.PriorityTypeEntity)
+              .HasForeignKey(pb => pb.PriorityTypeId);
+
+
+
+          //proveri da li mora da se napise many to many */
 
 
 

@@ -22,6 +22,7 @@ public class BuyerProfile : Profile
             .ForMember(dest => dest.BanEndDate, opt => opt.Condition(src => src.BanEndDate != null))
             .ForMember(dest => dest.BiddingGuid, opt => opt.Condition(src => src.BiddingGuid != null))
             .ForMember(dest => dest.PersonGuid, opt => opt.Condition(src => src.PersonGuid != null));
+
     }
 }
 

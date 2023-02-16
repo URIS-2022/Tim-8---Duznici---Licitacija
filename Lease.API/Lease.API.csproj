@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\**" />
+    <Content Remove="Entities\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <None Remove="Entities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20230215170846_push6.cs" />
     <Compile Remove="Migrations\20230215170846_push6.Designer.cs" />
     <Compile Remove="Migrations\20230215180414_push6.1.cs" />

@@ -1,4 +1,6 @@
 ﻿
+using Lease.API.Entities;
+using Lease.API.Enums;
 using System.Text.Json.Serialization;
 
 
@@ -16,10 +18,11 @@ public class BuyerPostResponseModel
     public Guid BiddingGuid { get; set; }
 
     public Guid PersonGuid { get; set; }
+    [JsonConverter(typeof(  PriorityTypeListJsonConverter))]
+    public List<PriorityType> Priorities { get; set; }
 
 
-
-    public BuyerPostResponseModel(int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
+    public BuyerPostResponseModel(int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
     {
         RealisedArea = realisedArea;
         Ban = ban;
@@ -28,5 +31,6 @@ public class BuyerPostResponseModel
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
+        Priorities = priorities;
     }
 }

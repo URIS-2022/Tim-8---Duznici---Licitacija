@@ -1,5 +1,6 @@
 ﻿using Lease.API.Data;
 using Lease.API.Data.Repository;
+using Lease.API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -112,7 +113,10 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<LeaseDbContext>(options =>
        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new PriorityTypeListJsonConverter());
+});
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

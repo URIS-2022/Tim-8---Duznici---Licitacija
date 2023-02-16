@@ -8,8 +8,10 @@ namespace Lease.API.Enums;
     public enum PriorityType
     {
         None = 0,
-        LeaseProposition,
-        LeaseDecision
+        Irrigation,
+        Border,
+        Registry,
+        Location
     }
 
 
@@ -24,8 +26,10 @@ public class PriorityTypeConverter : JsonConverter<PriorityType>
     private readonly Dictionary<PriorityType, string> _PriorityTypeMapping = new Dictionary<PriorityType, string>
 {
     { PriorityType.None, "Nije dodeljeno" },
-    { PriorityType.LeaseProposition, "Predlog ugovora o davanju u zakup" },
-    { PriorityType.LeaseDecision, "Odluka o davanju u zakup" }
+    { PriorityType.Irrigation, "Ima sistem za navodnjavanje" },
+    { PriorityType.Border, "Granici se sa zemljistem" },
+    { PriorityType.Registry, "Upisan u registar" },
+    {  PriorityType.Location, "Najblize zemljistu"  },
 
 };
 
