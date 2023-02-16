@@ -59,23 +59,26 @@ namespace Preparation.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (AnnouncementGuid == null)
-                results.Add(new ValidationResult("Announcement cannot be null."/*, new[] { nameof(publicBidding) }*/));
-
-            if (DocumentType == null)
-                results.Add(new ValidationResult("Document type cannot be null."/*, new[] { nameof(documentType) }*/));
+            if (AnnouncementGuid == Guid.Empty)
+            {
+                results.Add(new ValidationResult("Guid cannot be empty."));
+            }
 
             if (ReferenceNumber.Length != 20 )
-                results.Add(new ValidationResult("Reference number length must be 20 characters."/*, new[] { nameof(ReferenceNumber) }*/));
+                results.Add(new ValidationResult("Reference number length must be 20 characters.", new[] { nameof(ReferenceNumber) }));
 
-            if (DateSubmitted == null)
-                results.Add(new ValidationResult("Date submitted cannot be null."/*, new[] { nameof(DateSubmitted) }*/));
+            if (DateSubmitted > DateTime.Now)
+            {
+                results.Add(new ValidationResult("Date Submitted cannot be in the future.", new[] { nameof(DateSubmitted) }));
+            }
 
-            if (DateCertified == null)
-                results.Add(new ValidationResult("Date certified cannot be null."/*, new[] { nameof(DateCertified) }*/));
+            if (DateCertified < DateSubmitted)
+            {
+                results.Add(new ValidationResult("Resolution Certified cannot be before Date Submitted.", new[] { nameof(DateCertified) }));
+            }
 
             if (string.IsNullOrWhiteSpace(Template))
-                results.Add(new ValidationResult("Template cannot be empty or whitespace."/*, new[] { nameof(Template) }*/));
+                results.Add(new ValidationResult("Template cannot be empty or whitespace.", new[] { nameof(Template) }));
 
             return results;
         }
