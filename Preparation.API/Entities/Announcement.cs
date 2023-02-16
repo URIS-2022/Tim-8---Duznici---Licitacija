@@ -7,10 +7,10 @@ namespace Preparation.API.Entities
     /// </summary>
     public partial class Announcement : IValidatableObject
     {
-        [Key]
         /// <summary>
         /// Gets or sets the unique identifier for the announcement.
         /// </summary>
+        [Key]
         public Guid Guid { get; set; }
 
         /// <summary>
@@ -18,10 +18,10 @@ namespace Preparation.API.Entities
         /// </summary>
         public Guid LicitationGuid { get; set; }
 
-        //public List<Document> Documents { get; set; }
+        /// <summary>
+        /// Gets or sets the collection of documents associated with the announcement.
+        /// </summary>
         public ICollection<Document> Documents { get; set; }
-
-        //public Announcement() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Announcement"/> class with the specified unique identifier and licitation identifier.
