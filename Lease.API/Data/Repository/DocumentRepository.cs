@@ -1,52 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lease.API.Entities;
+﻿using Lease.API.Entities;
+using Lease.API.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Lease.API.Data.Repository
+namespace Lease.API.Data.Repository;
+
+/// <summary>
+/// Implementation of the IDocumentRepository
+/// interface for managing Document entities in the database.
+/// </summary>
+public class DocumentRepository : IDocumentRepository
 {
-    public class DocumentRepository : IDocumentRepository
+    private readonly LeaseDbContext context;
+
+    /// <summary>
+    /// Initializes a new instance of the DocumentRepository class.
+    /// </summary>
+    /// <param name="context">The database context to use for data access.</param>
+    public DocumentRepository(LeaseDbContext context)
     {
-        private readonly LeaseDbContext _context;
+        this.context = context;
+    }
 
-        public DocumentRepository(LeaseDbContext context)
+    /// <inheritdoc cref="IDocumentRepository.GetDocuments"/>
+    public async Task<IEnumerable<Document>> GetDocuments()
+    {
+        return await context.Documents.ToListAsync();
+    }
+
+    /// <inheritdoc cref="IDocumentRepository.GetDocument"/>
+    public async Task<Document?> GetDocument(Guid id)
+    {
+        return await context.Documents.FindAsync(id);
+    }
+
+    /// <inheritdoc cref="IDocumentRepository.UpdateDocument"/>
+    public async Task<Document?> UpdateDocument(Guid id, Document updateModel)
+    {
+        var document = await context.Documents.FirstOrDefaultAsync(c => c.Guid == id);
+        if (document == null)
         {
-            _context = context;
+            return null;
         }
+        context.Entry(document).CurrentValues.SetValues(updateModel);
+        await context.SaveChangesAsync();
+        return document;
+    }
 
-        public async Task<Document> GetByGuid(Guid id)
+    /// <inheritdoc cref="IDocumentRepository.AddDocument"/>
+    public async Task<Document?> AddDocument(Document document)
+    {
+        var created = context.Documents.Add(document);
+        await context.SaveChangesAsync();
+        return created.Entity;
+    }
+
+    /// <inheritdoc cref="IDocumentRepository.DeleteDocument"/>
+    public async Task DeleteDocument(Guid id)
+    {
+        var systemUser = await context.Documents.FindAsync(id);
+        if (systemUser == null)
         {
-            return await _context.Documents.FirstOrDefaultAsync(d => d.Guid == id);
+            throw new InvalidOperationException("Document not found");
         }
-
-        public async Task<List<Document>> GetAll()
-        {
-            return await _context.Documents.ToListAsync();
-        }
-
-        public async Task<Document> Add(Document document)
-        {
-            await _context.Documents.AddAsync(document);
-            await _context.SaveChangesAsync();
-            return document;
-        }
-
-        public async Task<Document> Update(Document document)
-        {
-            _context.Documents.Update(document);
-            await _context.SaveChangesAsync();
-            return document;
-        }
-
-        public async Task<Document> Delete(Guid id)
-        {
-            var document = await _context.Documents.FirstOrDefaultAsync(d => d.Guid == id);
-            if (document == null) return null;
-
-            _context.Documents.Remove(document);
-            await _context.SaveChangesAsync();
-            return document;
-        }
+        context.Documents.Remove(systemUser);
+        await context.SaveChangesAsync();
     }
 }

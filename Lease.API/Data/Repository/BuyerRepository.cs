@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Lease.API.Entities;
 using Microsoft.EntityFrameworkCore;
 using Lease.API.Data;
+using Lease.API.Models;
 
 namespace Lease.API.Data.Repository;
 

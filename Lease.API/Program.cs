@@ -113,16 +113,17 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<LeaseDbContext>(options =>
        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddControllers().AddJsonOptions(options =>
+builder.Services.AddControllers();/*AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new PriorityTypeListJsonConverter());
-});
+});*/
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<ILeaseAgreementRepository, LeaseAgreementRepository>();
 builder.Services.AddScoped<IDueDateRepository, DueDateRepository>();
 builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 
 WebApplication app = builder.Build();
 

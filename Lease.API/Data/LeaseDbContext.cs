@@ -23,7 +23,7 @@ public class LeaseDbContext : DbContext
 
     public DbSet<DueDate> DueDates { get; set; }
 
-    //public DbSet<PriorityTypeEntity> PriorityTypes { get; set; }
+    //public DbSet<PriorityTypeEntity> PriorityTypeEntities { get; set; }
     // public DbSet<PriorityBuyer> PriorityBuyers { get; set; }
  
 
@@ -56,9 +56,12 @@ public class LeaseDbContext : DbContext
            modelBuilder.Entity<DueDate>()
              .HasKey(u => u.Guid);
 
-      
+       /*   modelBuilder.Entity<PriorityTypeEntity>()
+            .HasKey(u => u.Id); */
 
-           
+
+
+
 
 
 
@@ -92,16 +95,15 @@ public class LeaseDbContext : DbContext
             .HasForeignKey<Buyer>(x => x.PersonGuid)
             .IsRequired();
 
+        /* modelBuilder.Entity<PriorityTypeEntity>()
+             .Property(p => p.PriorityTypes)
+             .HasColumnType("jsonb");*/
 
-        modelBuilder.Entity<Buyer>()
-            .OwnsMany(b => b.Priorities, p =>
-            {
-                p.Property(p => p.PriorityTypes).HasConversion(typeof(PriorityTypeListJsonConverter)).IsRequired();
+        modelBuilder.Entity<Buyer>().Property(b => b.Priorities).HasConversion(new PriorityTypeListJsonConverter());
 
-            });
+             
 
-
-     
+        
 
 
 

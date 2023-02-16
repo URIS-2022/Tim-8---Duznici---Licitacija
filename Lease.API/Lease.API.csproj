@@ -11,9 +11,13 @@
 
   <ItemGroup>
     <Compile Remove="Entities\**" />
+    <Compile Remove="Models\NewFolder\**" />
     <Content Remove="Entities\**" />
+    <Content Remove="Models\NewFolder\**" />
     <EmbeddedResource Remove="Entities\**" />
+    <EmbeddedResource Remove="Models\NewFolder\**" />
     <None Remove="Entities\**" />
+    <None Remove="Models\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +45,8 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Models\NewFolder2\" />
+    <Folder Include="Models\NewFolder3\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

@@ -1,13 +1,15 @@
 ﻿
 
+using AutoMapper.Configuration.Annotations;
 using Lease.API.Entities;
 using Lease.API.Enums;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 namespace Lease.API.Models.Buyer;
 
-[DataContract(Name = "LeaseAgreement", Namespace = "")]
+[DataContract(Name = "Buyer", Namespace = "")]
 public class BuyerPostRequestModel
 {
     public int RealisedArea { get; set; }
@@ -25,7 +27,7 @@ public class BuyerPostRequestModel
     public Guid PersonGuid { get; set; }
 
 
-    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
+    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType> Priorities { get; set; }
 
     public BuyerPostRequestModel( int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)

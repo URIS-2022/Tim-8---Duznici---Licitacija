@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lease.API.Entities;
+using Lease.API.Models;
 
 namespace Lease.API.Data.Repository;
 

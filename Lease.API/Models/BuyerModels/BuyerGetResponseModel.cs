@@ -1,6 +1,8 @@
 ﻿
+using AutoMapper.Configuration.Annotations;
 using Lease.API.Entities;
 using Lease.API.Enums;
+using Microsoft.OpenApi.Extensions;
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -30,12 +32,15 @@ public class BuyerGetResponseModel
 
     public Guid PersonGuid { get; set; }
 
-    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
+    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType>  Priorities { get; set; }
 
+    public List<string> PrioritiesString { get; set; }
 
 
-    public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities )
+
+
+public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities )
     {
         Guid = guid;
         RealisedArea = realisedArea;
@@ -46,5 +51,7 @@ public class BuyerGetResponseModel
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         Priorities = priorities;
+
+       
     }
 }

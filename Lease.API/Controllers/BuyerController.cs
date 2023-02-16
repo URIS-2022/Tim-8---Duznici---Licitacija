@@ -26,33 +26,33 @@ public class BuyerController : ControllerBase
 
     // GET: api/Buyers
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<BuyerGetResponseModel>>> GetBuyer()
+    public async Task<ActionResult<IEnumerable<Models.Buyer.BuyerGetResponseModel>>> GetBuyer()
     {
         var Buyers = await _BuyerRepository.GetAll();
         if (!Buyers.Any())
         {
             return NoContent();
         }
-        var responseModel = mapper.Map<IEnumerable<BuyerGetResponseModel>>(Buyers);
+        var responseModel = mapper.Map<IEnumerable<Models.Buyer.BuyerGetResponseModel>>(Buyers);
         return Ok(responseModel);
     }
 
     // GET: api/Buyers/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<BuyerGetResponseModel>> GetBuyer(Guid id)
+    public async Task<ActionResult<Models.Buyer.BuyerGetResponseModel>> GetBuyer(Guid id)
     {
         var Buyer = await _BuyerRepository.GetByGuid(id);
         if (Buyer == null)
         {
             return NotFound();
         }
-        var responseModel = mapper.Map<BuyerGetResponseModel>(Buyer);
+        var responseModel = mapper.Map<Models.Buyer.BuyerGetResponseModel>(Buyer);
         return responseModel;
     }
 
     // PATCH: api/Buyers/5
     [HttpPatch("{guid}")]
-    public async Task<ActionResult<BuyerPatchResponseModel>> PatchGuid(Guid guid, [FromBody] BuyerPatchRequestModel patchModel)
+    public async Task<ActionResult<Models.Buyer.BuyerPatchResponseModel>> PatchGuid(Guid guid, [FromBody] Models.Buyer.BuyerPatchRequestModel patchModel)
     {
         var Buyer = await _BuyerRepository.GetByGuid(guid);
         if (Buyer == null)
@@ -68,14 +68,14 @@ public class BuyerController : ControllerBase
             return BadRequest();
         }
 
-        var responseModel = mapper.Map<BuyerPatchResponseModel>(updated);
+        var responseModel = mapper.Map<Models.Buyer.BuyerPatchResponseModel>(updated);
 
         return Ok(responseModel);
     }
 
     // POST: api/Buyers
     [HttpPost]
-    public async Task<ActionResult<BuyerPostResponseModel>> PostBuyer(BuyerPostRequestModel postModel)
+    public async Task<ActionResult<Models.Buyer.BuyerPostResponseModel>> PostBuyer(Models.Buyer.BuyerPostRequestModel postModel)
     {
         var Buyer = mapper.Map<Entities.Buyer>(postModel);
         Entities.Buyer? created = await _BuyerRepository.Add(Buyer);
@@ -83,7 +83,7 @@ public class BuyerController : ControllerBase
         {
             return BadRequest();
         }
-        var responseModel = mapper.Map<BuyerPostResponseModel>(created);
+        var responseModel = mapper.Map<Models.Buyer.BuyerPostResponseModel>(created);
         return CreatedAtAction("GetBuyer", new { id = created.Guid }, responseModel);
     }
 

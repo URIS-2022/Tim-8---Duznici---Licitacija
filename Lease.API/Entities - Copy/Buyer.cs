@@ -1,4 +1,6 @@
 ﻿
+using AutoMapper.Configuration.Annotations;
+using Lease.API.Entities;
 using Lease.API.Enums;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace Lease.API.Entities;
 
-public partial class Buyer : IValidatableObject
+public class Buyer : IValidatableObject
 {
     public Guid Guid { get; set; }
     public int RealisedArea { get; set; }
@@ -18,18 +20,21 @@ public partial class Buyer : IValidatableObject
     public Guid BiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
-  //   [JsonConverter(typeof(PriorityTypeConverter))]
-  //  public PriorityType PriorityType { get; set; }
 
-    public  virtual LeaseAgreement LeaseAgreement { get; set; }
+   // [ValueConverter(typeof(PriorityTypeConverter))]
+   //  public PriorityType PriorityType { get; set; }
+
+    public virtual LeaseAgreement LeaseAgreement { get; set; }
 
     // public virtual ICollection<PriorityBuyer> PriorityBuyers { get; set; }
 
-    //[JsonConverter(typeof(PriorityTypeConverter))]
-    public List<PriorityTypeEntity> Priorities { get; set; }
-    
+  
+  //  public List<PriorityTypeEntity> PrioritiesEntities { get; set; }
 
-    public Buyer(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
+    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
+    public List<PriorityType> Priorities { get; set; }
+
+    public Buyer(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
     {
         Guid = guid;
         RealisedArea = realisedArea;
@@ -39,6 +44,7 @@ public partial class Buyer : IValidatableObject
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
+        Priorities = priorities;
       //  Priorities = (List<PriorityType>?) PriorityBuyers.Where(pb => pb.BuyerGuid == Guid).Select(pb => pb.PriorityType).ToList();
 
 

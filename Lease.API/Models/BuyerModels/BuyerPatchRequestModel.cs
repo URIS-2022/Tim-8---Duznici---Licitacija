@@ -1,4 +1,5 @@
 ﻿
+using AutoMapper.Configuration.Annotations;
 using Lease.API.Entities;
 using Lease.API.Enums;
 using System.Text.Json.Serialization;
@@ -19,7 +20,7 @@ public class BuyerPatchRequestModel
 
     public Guid? PersonGuid {get; set;}
 
-    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
+    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType>? Priorities { get; set; }
 
 
