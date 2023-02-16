@@ -9,27 +9,43 @@ using System.Threading.Tasks;
 
 namespace Person.API.Data
 {
+    /// <summary>
+    /// Represents the database context for managing person entities.
+    /// </summary>
     public class PersonDbContext : DbContext
     {
-
-
-        private readonly IConfiguration Configuration;
-
-        public PersonDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
-        {
-            this.Configuration = configuration;
-        }
-
-
+        /// <summary>
+        /// Gets or sets the DbSet of physical persons in the database.
+        /// </summary>
+        /// <remarks>
+        /// This DbSet is used to interact with the "PhysicalPersons" table in the database.
+        /// </remarks>
         public DbSet<PhysicalPerson> PhysicalPersons { get; set; }
-
+        /// <summary>
+        /// Gets or sets the DbSet of addresses in the database.
+        /// </summary>
+        /// <remarks>
+        /// This DbSet is used to interact with the "Addresses" table in the database.
+        /// </remarks>
         public DbSet<Address> Addresses { get; set; }
-
+        /// <summary>
+        /// Gets or sets the DbSet of legal persons in the database.
+        /// </summary>
+        /// <remarks>
+        /// This DbSet is used to interact with the "LegalPersons" table in the database.
+        /// </remarks>
         public DbSet<LegalPerson> LegalPersons { get; set; }
-
+        /// <summary>
+        /// Gets or sets the DbSet of contact persons in the database.
+        /// </summary>
+        /// <remarks>
+        /// This DbSet is used to interact with the "ContactPersons" table in the database.
+        /// </remarks>
         public DbSet<ContactPerson> ContactPersons { get; set; }
 
-
+        /// <summary>
+        /// Popunjavanje baze sa test podacima
+        /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PhysicalPerson>()
