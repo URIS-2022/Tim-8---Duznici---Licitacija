@@ -19,6 +19,7 @@ namespace Preparation.API.Entities
         public Guid LicitationGuid { get; set; }
 
         //public List<Document> Documents { get; set; }
+        public ICollection<Document> Documents { get; set; }
 
         //public Announcement() { }
 

@@ -9,13 +9,13 @@ namespace Preparation.API.Data.Repository
     /// </summary>
     public class AnnouncementRepository : IAnnouncementRepository
     {
-        private readonly PreparationDBContext context;
+        private readonly PreparationDbContext context;
 
         /// <summary>
         /// Initializes a new instance of the AnnouncementRepository class.
         /// </summary>
         /// <param name="context">The database context to use for data access.</param>
-        public AnnouncementRepository(PreparationDBContext context)
+        public AnnouncementRepository(PreparationDbContext context)
         {
             this.context = context;
         }

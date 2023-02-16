@@ -69,7 +69,7 @@ builder.Services.AddControllers(setup =>
             };
         });
 
-builder.Services.AddDbContext<PreparationDBContext>(options =>
+builder.Services.AddDbContext<PreparationDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'PreparationDBContext' not found.")));
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();

@@ -28,7 +28,8 @@ namespace Preparation.API.Profiles
             CreateMap<AnnouncementPostRequestModel, Entities.Announcement>();
 
             // Maps AnnouncementPatchRequestModel objects to Announcement entities
-            CreateMap<AnnouncementPatchRequestModel, Entities.Announcement>();
+            CreateMap<AnnouncementPatchRequestModel, Entities.Announcement>()
+                .ForMember(dest => dest.LicitationGuid, opt => opt.Condition(src => src.LicitationGuid != null));
         }
     }
 }

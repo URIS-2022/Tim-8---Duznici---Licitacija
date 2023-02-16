@@ -10,8 +10,8 @@ using Preparation.API.Data;
 
 namespace Preparation.API.Migrations
 {
-    [DbContext(typeof(PreparationDBContext))]
-    partial class PreparationDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PreparationDbContext))]
+    partial class PreparationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -79,6 +79,8 @@ namespace Preparation.API.Migrations
 
                     b.HasKey("Guid");
 
+                    b.HasIndex("AnnouncementGuid");
+
                     b.HasIndex("ReferenceNumber")
                         .IsUnique();
 
@@ -107,6 +109,22 @@ namespace Preparation.API.Migrations
                             ReferenceNumber = "34432564789541299211",
                             Template = "Sablon dokumenta"
                         });
+                });
+
+            modelBuilder.Entity("Preparation.API.Entities.Document", b =>
+                {
+                    b.HasOne("Preparation.API.Entities.Announcement", "Announcement")
+                        .WithMany("Documents")
+                        .HasForeignKey("AnnouncementGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Announcement");
+                });
+
+            modelBuilder.Entity("Preparation.API.Entities.Announcement", b =>
+                {
+                    b.Navigation("Documents");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,8 +11,8 @@ using Preparation.API.Data;
 
 namespace Preparation.API.Migrations
 {
-    [DbContext(typeof(PreparationDBContext))]
-    [Migration("20230215141452_InitialCreate")]
+    [DbContext(typeof(PreparationDbContext))]
+    [Migration("20230216152420_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -82,6 +82,8 @@ namespace Preparation.API.Migrations
 
                     b.HasKey("Guid");
 
+                    b.HasIndex("AnnouncementGuid");
+
                     b.HasIndex("ReferenceNumber")
                         .IsUnique();
 
@@ -110,6 +112,22 @@ namespace Preparation.API.Migrations
                             ReferenceNumber = "34432564789541299211",
                             Template = "Sablon dokumenta"
                         });
+                });
+
+            modelBuilder.Entity("Preparation.API.Entities.Document", b =>
+                {
+                    b.HasOne("Preparation.API.Entities.Announcement", "Announcement")
+                        .WithMany("Documents")
+                        .HasForeignKey("AnnouncementGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Announcement");
+                });
+
+            modelBuilder.Entity("Preparation.API.Entities.Announcement", b =>
+                {
+                    b.Navigation("Documents");
                 });
 #pragma warning restore 612, 618
         }

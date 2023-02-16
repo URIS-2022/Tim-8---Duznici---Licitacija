@@ -4,9 +4,6 @@ using Preparation.API.Data.Repository;
 using Preparation.API.Entities;
 using Preparation.API.Models;
 
-/// <summary>
-/// API controller for Announcements management
-/// </summary>
 namespace Preparation.API.Controllers
 {
     /// <summary>

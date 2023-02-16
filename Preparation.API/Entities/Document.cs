@@ -53,10 +53,10 @@ namespace Preparation.API.Entities
         /// </summary>
         public string Template { get; set; }
 
-        //// <summary>
-        //// Gets or sets the announcement related to this document.
-        //// </summary>
-        //public Announcement Announcement { get; set; }
+        /// <summary>
+        /// Gets or sets the announcement related to this document.
+        /// </summary>
+        public Announcement Announcement { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Document"/> class.

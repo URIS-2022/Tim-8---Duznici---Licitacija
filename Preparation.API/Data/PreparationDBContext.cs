@@ -7,10 +7,10 @@ namespace Preparation.API.Data
     /// <summary>
     /// DbContext za rad sa bazom podataka.
     /// </summary>
-    public class PreparationDBContext : DbContext
+    public class PreparationDbContext : DbContext
     {
         private readonly IConfiguration configuration;
-        public PreparationDBContext(DbContextOptions options, IConfiguration configuration) : base(options)
+        public PreparationDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             this.configuration = configuration;
         }
@@ -36,11 +36,10 @@ namespace Preparation.API.Data
             modelBuilder.Entity<Document>()
                 .HasKey(u => u.Guid);
 
-            // TODO: Uncomment if you need to define a relationship between Announcement and Document entities.
-            // modelBuilder.Entity<Announcement>()
-            //     .HasMany(p => p.Documents)
-            //     .WithOne(a => a.Announcement)
-            //     .HasForeignKey(p => p.Guid);
+            modelBuilder.Entity<Announcement>()
+                .HasMany(p => p.Documents)
+                .WithOne(a => a.Announcement)
+                .HasForeignKey(p => p.AnnouncementGuid); // Add foreign key
 
             modelBuilder.Entity<Document>()
                 .HasData(new 

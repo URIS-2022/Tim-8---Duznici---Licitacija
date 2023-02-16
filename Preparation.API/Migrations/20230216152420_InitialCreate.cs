@@ -41,6 +41,12 @@ namespace Preparation.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Documents", x => x.Guid);
+                    table.ForeignKey(
+                        name: "FK_Documents_Announcements_AnnouncementGuid",
+                        column: x => x.AnnouncementGuid,
+                        principalTable: "Announcements",
+                        principalColumn: "Guid",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -62,6 +68,11 @@ namespace Preparation.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Documents_AnnouncementGuid",
+                table: "Documents",
+                column: "AnnouncementGuid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Documents_ReferenceNumber",
                 table: "Documents",
                 column: "ReferenceNumber",
@@ -72,10 +83,10 @@ namespace Preparation.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Announcements");
+                name: "Documents");
 
             migrationBuilder.DropTable(
-                name: "Documents");
+                name: "Announcements");
         }
     }
 }

@@ -103,12 +103,12 @@
             <param name="id">The ID of the Document to delete</param>
             <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
         </member>
-        <member name="T:Preparation.API.Data.PreparationDBContext">
+        <member name="T:Preparation.API.Data.PreparationDbContext">
             <summary>
             DbContext za rad sa bazom podataka.
             </summary>
         </member>
-        <member name="M:Preparation.API.Data.PreparationDBContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Preparation.API.Data.PreparationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Metoda za definisanje strukture baze i njenih relacija.
             </summary>
@@ -119,7 +119,7 @@
             interface for managing Announcement entities in the database.
             </summary>
         </member>
-        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.#ctor(Preparation.API.Data.PreparationDBContext)">
+        <member name="M:Preparation.API.Data.Repository.AnnouncementRepository.#ctor(Preparation.API.Data.PreparationDbContext)">
             <summary>
             Initializes a new instance of the AnnouncementRepository class.
             </summary>
@@ -146,7 +146,7 @@
             interface for managing Document entities in the database.
             </summary>
         </member>
-        <member name="M:Preparation.API.Data.Repository.DocumentRepository.#ctor(Preparation.API.Data.PreparationDBContext)">
+        <member name="M:Preparation.API.Data.Repository.DocumentRepository.#ctor(Preparation.API.Data.PreparationDbContext)">
             <summary>
             Initializes a new instance of the DocumentRepository class.
             </summary>
@@ -320,6 +320,11 @@
         <member name="P:Preparation.API.Entities.Document.Template">
             <summary>
             Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="P:Preparation.API.Entities.Document.Announcement">
+            <summary>
+            Gets or sets the announcement related to this document.
             </summary>
         </member>
         <member name="M:Preparation.API.Entities.Document.#ctor">
