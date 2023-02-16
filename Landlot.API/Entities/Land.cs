@@ -7,6 +7,12 @@ using System.Text.RegularExpressions;
 
 namespace Landlot.API.Entities
 {
+    
+
+        /// <summary>
+        /// Represents a piece of land with multiple lots and various attributes such as zoning, property type, and drainage.
+        /// Implements the IValidatableObject interface for custom validation logic.
+        /// </summary>
     public class Land : IValidatableObject
     {
         /// <summary>
