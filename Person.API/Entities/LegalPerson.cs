@@ -3,8 +3,15 @@ using System.Text.RegularExpressions;
 
 namespace Person.API.Entities
 {
+    /// <summary>
+    /// Represents a legal person.
+    /// Implements the IValidatableObject interface for custom validation logic.
+    /// </summary>
     public class LegalPerson : IValidatableObject
     {
+        /// <summary>
+        /// Gets or sets the unique identifier for a legal person record.
+        /// </summary>
         [Key]
         public Guid LegalPersonId { get; set; }
         public Guid ContactPersonId { get; set; }
@@ -18,6 +25,11 @@ namespace Person.API.Entities
         public string AccountNumber { get; set; }
         public ContactPerson ContactPerson { get; set; }
 
+        /// <summary>
+        /// Validates the LegalPerson object using the specified validation context and returns a collection of validation results.
+        /// </summary>
+        /// <param name="validationContext">The validation context used for validation.</param>
+        /// <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();

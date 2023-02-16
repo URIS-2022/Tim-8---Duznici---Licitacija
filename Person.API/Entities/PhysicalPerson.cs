@@ -2,8 +2,16 @@
 
 namespace Person.API.Entities
 {
+    /// <summary>
+    /// Represents a physical person.
+    /// Implements the IValidatableObject interface for custom validation logic.
+    /// </summary>
     public class PhysicalPerson : IValidatableObject
     {
+        /// <summary>
+        /// Gets or sets the unique identifier for a physical person record.
+        /// </summary>
+        [Key] 
         public Guid PhysicalPersonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -14,6 +22,11 @@ namespace Person.API.Entities
         public string Email { get; set; }
         public string AccountNumber { get; set; }
 
+        /// <summary>
+        /// Validates the PyhsicalPerson object using the specified validation context and returns a collection of validation results.
+        /// </summary>
+        /// <param name="validationContext">The validation context used for validation.</param>
+        /// <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();

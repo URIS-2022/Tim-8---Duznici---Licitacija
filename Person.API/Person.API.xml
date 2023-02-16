@@ -574,6 +574,77 @@
             <param name="updateModel">The updated PhysicalPerson object.</param>
             <returns>The PhysicalPerson object that was updated in the database, or null if no such physical person exists.</returns>
         </member>
+        <member name="T:Person.API.Entities.Address">
+            <summary>
+            Represents a physical address that can be validated for correctness.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.Address.AddressId">
+            <summary>
+            Gets or sets the unique identifier for a address record.
+            </summary>
+        </member>
+        <member name="M:Person.API.Entities.Address.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the Address object using the specified validation context and returns a collection of validation results.
+            </summary>
+            <param name="validationContext">The validation context used for validation.</param>
+            <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
+        </member>
+        <member name="T:Person.API.Entities.ContactPerson">
+            <summary>
+            Represents a contact person.
+            Implements the IValidatableObject interface for custom validation logic.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.ContactPerson.ContactPersonId">
+            <summary>
+            Gets or sets the unique identifier for a contact person record.
+            </summary>
+        </member>
+        <member name="M:Person.API.Entities.ContactPerson.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the ContactPerson object using the specified validation context and returns a collection of validation results.
+            </summary>
+            <param name="validationContext">The validation context used for validation.</param>
+            <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
+        </member>
+        <member name="T:Person.API.Entities.LegalPerson">
+            <summary>
+            Represents a legal person.
+            Implements the IValidatableObject interface for custom validation logic.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.LegalPersonId">
+            <summary>
+            Gets or sets the unique identifier for a legal person record.
+            </summary>
+        </member>
+        <member name="M:Person.API.Entities.LegalPerson.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the LegalPerson object using the specified validation context and returns a collection of validation results.
+            </summary>
+            <param name="validationContext">The validation context used for validation.</param>
+            <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
+        </member>
+        <member name="T:Person.API.Entities.PhysicalPerson">
+            <summary>
+            Represents a physical person.
+            Implements the IValidatableObject interface for custom validation logic.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.PhysicalPersonId">
+            <summary>
+            Gets or sets the unique identifier for a physical person record.
+            </summary>
+        </member>
+        <member name="M:Person.API.Entities.PhysicalPerson.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the PyhsicalPerson object using the specified validation context and returns a collection of validation results.
+            </summary>
+            <param name="validationContext">The validation context used for validation.</param>
+            <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
+        </member>
         <member name="T:Person.API.Migrations.InitialCreate">
             <inheritdoc />
         </member>
@@ -614,6 +685,11 @@
         <member name="P:Person.API.Models.AddressRequestModel.ZipCode">
             <summary>
             Postanski broj adrese
+            </summary>
+        </member>
+        <member name="T:Person.API.Models.AddressResponseModel">
+            <summary>
+            Represents a response model for a address record.
             </summary>
         </member>
         <member name="P:Person.API.Models.AddressResponseModel.Country">
@@ -671,6 +747,11 @@
             Postanski broj adrese
             </summary>
         </member>
+        <member name="T:Person.API.Models.ContactLegalResponseModel">
+            <summary>
+            Represents a response model for a contact person object in legal person record.
+            </summary>
+        </member>
         <member name="P:Person.API.Models.ContactLegalResponseModel.FirstName">
             <summary>
             Ime kontakt osobe
@@ -714,6 +795,11 @@
         <member name="P:Person.API.Models.ContactPersonRequestModel.PhoneNumber">
             <summary>
             Telefon kontakt osobe
+            </summary>
+        </member>
+        <member name="T:Person.API.Models.ContactPersonResponseModel">
+            <summary>
+            Represents a response model for a contact person record.
             </summary>
         </member>
         <member name="P:Person.API.Models.ContactPersonResponseModel.FirstName">
@@ -813,7 +899,7 @@
         </member>
         <member name="T:Person.API.Models.LegalPersonResponseModel">
             <summary>
-            Dto pravno lica
+            Represents a response model for a legal person record.
             </summary>
         </member>
         <member name="P:Person.API.Models.LegalPersonResponseModel.Name">
@@ -954,7 +1040,7 @@
         </member>
         <member name="T:Person.API.Models.PhysicalPersonResponseModel">
             <summary>
-            Dto fizicko lice
+            Represents a response model for a physical person record.
             </summary>
         </member>
         <member name="P:Person.API.Models.PhysicalPersonResponseModel.FirstName">
@@ -1040,6 +1126,56 @@
         <member name="P:Person.API.Models.PhysicalPersonUpdateModel.AccountNumber">
             <summary>
             Broj računa fizičkog lica
+            </summary>
+        </member>
+        <member name="T:Person.API.Profiles.AddressProfile">
+            <summary>
+            Represents a profile that contains information specific to a address.
+            </summary>
+        </member>
+        <member name="M:Person.API.Profiles.AddressProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Profiles.AddressProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Person.API.Profiles.ContactLegalPersonProfile">
+            <summary>
+            Represents a profile that contains information specific to a contact person of legal person.
+            </summary>
+        </member>
+        <member name="M:Person.API.Profiles.ContactLegalPersonProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Profiles.ContactLegalPersonProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Person.API.Profiles.ContactPersonProfile">
+            <summary>
+            Represents a profile that contains information specific to a contact person.
+            </summary>
+        </member>
+        <member name="M:Person.API.Profiles.ContactPersonProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Profiles.ContactPersonProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Person.API.Profiles.LegalPersonProfile">
+            <summary>
+            Represents a profile that contains information specific to a legal person.
+            </summary>
+        </member>
+        <member name="M:Person.API.Profiles.LegalPersonProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Profiles.LegalPersonProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Person.API.Profiles.PhysicalPersonProfile">
+            <summary>
+            Represents a profile that contains information specific to a physical person.
+            </summary>
+        </member>
+        <member name="M:Person.API.Profiles.PhysicalPersonProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Profiles.PhysicalPersonProfile"/> class.
             </summary>
         </member>
     </members>

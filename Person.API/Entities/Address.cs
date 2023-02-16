@@ -2,8 +2,15 @@
 
 namespace Person.API.Entities
 {
+    /// <summary>
+    /// Represents a physical address that can be validated for correctness.
+    /// </summary>
     public class Address : IValidatableObject
     {
+        /// <summary>
+        /// Gets or sets the unique identifier for a address record.
+        /// </summary>
+        [Key]
         public Guid AddressId { get; set; }
         public string Country { get; set; }
         public string Street { get; set; }
@@ -11,6 +18,11 @@ namespace Person.API.Entities
         public string Place { get; set; }
         public string ZipCode { get; set; }
 
+        /// <summary>
+        /// Validates the Address object using the specified validation context and returns a collection of validation results.
+        /// </summary>
+        /// <param name="validationContext">The validation context used for validation.</param>
+        /// <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();
