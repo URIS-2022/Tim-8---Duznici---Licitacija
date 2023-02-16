@@ -63,9 +63,9 @@ public class SystemUsersController : ControllerBase
     /// Patches a system user
     /// </summary>
     /// <param name="username">Username of the user to update</param>
-    /// <param name="systemUserUpdate">Request body with updated user information</param>
+    /// <param name="requestModel">Request body with updated user information</param>
     /// <returns>IActionResult indicating the status of the operation</returns>
     [HttpPatch("{username}")]
     [Authorize(Roles = "Admin")]
-    public Task<IActionResult> PatchSystemUser(string username, object systemUserUpdate) => serviceProxy.Patch(username, systemUserUpdate);
+    public Task<IActionResult> PatchSystemUser(string username, object requestModel) => serviceProxy.Patch(username, requestModel);
 }
