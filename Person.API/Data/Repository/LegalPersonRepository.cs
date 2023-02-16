@@ -32,12 +32,11 @@ namespace Person.API.Data.Repository
             return await context.LegalPersons
                .Include(c => c.ContactPerson)
                 .ToListAsync();
-
-            
         }
 
-        public async Task<LegalPerson> GetLegalPersonByGuid(Guid LegalPersonId)
+        public async Task<LegalPerson?> GetLegalPersonByGuid(Guid LegalPersonId)
         {
+
             return await context.LegalPersons
                 .Include(c => c.ContactPerson)
                 .FirstOrDefaultAsync(o => o.LegalPersonId == LegalPersonId);
