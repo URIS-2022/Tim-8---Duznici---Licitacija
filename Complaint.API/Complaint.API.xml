@@ -83,5 +83,16 @@
         <member name="M:Complaint.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Complaint.API.Profiles.ComplaintProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for complaints.
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Profiles.ComplaintProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Complaint.API.Profiles.ComplaintProfile"/> class and sets up mappings between
+            <see cref="T:Complaint.API.Entities.Complaint"/> and its corresponding response/request models.
+            </summary>
+        </member>
     </members>
 </doc>
