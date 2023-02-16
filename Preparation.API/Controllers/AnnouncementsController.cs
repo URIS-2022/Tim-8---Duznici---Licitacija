@@ -4,8 +4,14 @@ using Preparation.API.Data.Repository;
 using Preparation.API.Entities;
 using Preparation.API.Models;
 
+/// <summary>
+/// API controller for Announcements management
+/// </summary>
 namespace Preparation.API.Controllers
 {
+    /// <summary>
+    /// Provides endpoints for Announcements management
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json", "application/xml")]
@@ -27,9 +33,9 @@ namespace Preparation.API.Controllers
         }
 
         /// <summary>
-        /// Returns a list of System Users
+        /// Gets a list of Announcements.
         /// </summary>
-        /// <returns>A list of System User models, or No Content if no System User found</returns>
+        /// <returns>A list of AnnouncementGetResponseModel, or No Content if there are no announcements.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AnnouncementGetResponseModel>>> GetAnnouncements()
         {
@@ -42,7 +48,11 @@ namespace Preparation.API.Controllers
             return Ok(responseModels);
         }
 
-        /// GET: api/Announcements/5
+        /// <summary>
+        /// Gets the Announcement with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the Announcement to retrieve.</param>
+        /// <returns>An AnnouncementGetResponseModel representing the retrieved Announcement, or NotFound if the Announcement does not exist.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<AnnouncementGetResponseModel>> GetAnnouncement(Guid id)
         {
@@ -55,7 +65,12 @@ namespace Preparation.API.Controllers
             return responseModel;
         }
 
-        // PATCH: api/Announcements/5
+        /// <summary>
+        /// Updates the Announcement with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the Announcement to update.</param>
+        /// <param name="patchModel">An AnnouncementPatchRequestModel containing the properties to update.</param>
+        /// <returns>An AnnouncementPatchResponseModel representing the updated Announcement, or BadRequest if the update failed or the Announcement does not exist.</returns>
         [HttpPatch("{id}")]
         public async Task<ActionResult<AnnouncementPatchResponseModel>> PatchAnnouncement(Guid id, [FromBody] AnnouncementPatchRequestModel patchModel)
         {
@@ -78,7 +93,11 @@ namespace Preparation.API.Controllers
             return Ok(responseModel);
         }
 
-        // POST: api/Announcements
+        /// <summary>
+        /// Creates a new Announcement.
+        /// </summary>
+        /// <param name="postModel">An AnnouncementPostRequestModel containing the properties of the Announcement to create.</param>
+        /// <returns>A CreatedAtActionResult containing a URL to the new Announcement and the AnnouncementPostResponseModel of the created Announcement, or BadRequest if the creation failed.</returns>
         [HttpPost]
         public async Task<ActionResult<AnnouncementPostResponseModel>> PostAnnouncement(AnnouncementPostRequestModel postModel)
         {
@@ -92,7 +111,16 @@ namespace Preparation.API.Controllers
             return CreatedAtAction("GetAnnouncement", new { id = created.Guid }, responseModel);
         }
 
-        // DELETE: api/Announcements/5
+        /// <summary>
+        /// Deletes an announcement with the given ID.
+        /// </summary>
+        /// <param name="id">The ID of the announcement to delete.</param>
+        /// <returns>
+        /// <list type="bullet">
+        /// <item><description>HTTP 204 No Content if the announcement was successfully deleted.</description></item>
+        /// <item><description>HTTP 404 Not Found if an announcement with the given ID could not be found.</description></item>
+        /// </list>
+        /// </returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAnnouncement(Guid id)
         {

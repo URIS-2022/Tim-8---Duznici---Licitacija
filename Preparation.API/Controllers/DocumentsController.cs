@@ -6,6 +6,9 @@ using Preparation.API.Entities;
 
 namespace Preparation.API.Controllers
 {
+    /// <summary>
+    /// API controller for managing Documents.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json", "application/xml")]
@@ -27,9 +30,9 @@ namespace Preparation.API.Controllers
         }
 
         /// <summary>
-        /// Returns a list of System Users
+        /// Returns a list of documents.
         /// </summary>
-        /// <returns>A list of System User models, or No Content if no System User found</returns>
+        /// <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DocumentGetResponseModel>>> GetDocuments()
         {
@@ -42,7 +45,11 @@ namespace Preparation.API.Controllers
             return Ok(responseModels);
         }
 
-        // GET: api/Documents/5
+        /// <summary>
+        /// Returns the document with the specified id.
+        /// </summary>
+        /// <param name="id">The id of the document.</param>
+        /// <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<DocumentGetResponseModel>> GetDocument(Guid id)
         {
@@ -55,7 +62,12 @@ namespace Preparation.API.Controllers
             return responseModel;
         }
 
-        // PATCH: api/Documents/5
+        /// <summary>
+        /// Updates the document with the specified id.
+        /// </summary>
+        /// <param name="id">The id of the document to update.</param>
+        /// <param name="patchModel">The DocumentPatchRequestModel with the updated values.</param>
+        /// <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
         [HttpPatch("{id}")]
         public async Task<ActionResult<DocumentPatchResponseModel>> PatchDocument(Guid id, [FromBody] DocumentPatchRequestModel patchModel)
         {
@@ -78,7 +90,11 @@ namespace Preparation.API.Controllers
             return Ok(responseModel);
         }
 
-        // POST: api/Documents
+        /// <summary>
+        /// Creates a new document.
+        /// </summary>
+        /// <param name="postModel">The DocumentPostRequestModel with the values for the new document.</param>
+        /// <returns>The DocumentPostResponseModel for the newly created document.</returns>
         [HttpPost]
         public async Task<ActionResult<DocumentPostResponseModel>> PostDocument(DocumentPostRequestModel postModel)
         {
@@ -92,7 +108,11 @@ namespace Preparation.API.Controllers
             return CreatedAtAction("GetDocument", new { id = created.Guid }, responseModel);
         }
 
-        // DELETE: api/Documents/5
+        /// <summary>
+        /// Deletes a Document by ID
+        /// </summary>
+        /// <param name="id">The ID of the Document to delete</param>
+        /// <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDocument(Guid id)
         {

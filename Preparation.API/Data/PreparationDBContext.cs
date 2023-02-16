@@ -4,6 +4,9 @@ using Preparation.API.Enums;
 
 namespace Preparation.API.Data
 {
+    /// <summary>
+    /// DbContext za rad sa bazom podataka.
+    /// </summary>
     public class PreparationDBContext : DbContext
     {
         private readonly IConfiguration configuration;
@@ -16,9 +19,8 @@ namespace Preparation.API.Data
         public DbSet<Document> Documents { get; set; }
 
         /// <summary>
-        /// Popunjavanje baze sa nekim test podacima
+        /// Metoda za definisanje strukture baze i njenih relacija.
         /// </summary>
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -34,12 +36,11 @@ namespace Preparation.API.Data
             modelBuilder.Entity<Document>()
                 .HasKey(u => u.Guid);
 
-            /*
-            modelBuilder.Entity<Announcement>()
-                .HasMany(p => p.Documents)
-                .WithOne(a => a.Announcement)
-                .HasForeignKey(p => p.Guid);
-            */
+            // TODO: Uncomment if you need to define a relationship between Announcement and Document entities.
+            // modelBuilder.Entity<Announcement>()
+            //     .HasMany(p => p.Documents)
+            //     .WithOne(a => a.Announcement)
+            //     .HasForeignKey(p => p.Guid);
 
             modelBuilder.Entity<Document>()
                 .HasData(new 
