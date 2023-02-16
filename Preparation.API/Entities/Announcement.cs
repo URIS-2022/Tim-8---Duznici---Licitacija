@@ -21,7 +21,7 @@ namespace Preparation.API.Entities
         /// <summary>
         /// Gets or sets the collection of documents associated with the announcement.
         /// </summary>
-        public ICollection<Document> Documents { get; set; }
+        public ICollection<Document>? Documents { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Announcement"/> class with the specified unique identifier and licitation identifier.
