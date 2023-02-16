@@ -23,14 +23,16 @@ namespace Licitation.API.Models.Licitation
         public int BidIncrement { get; set; }
         [DataMember]
         public DateTime ApplicationDeadline { get; set; }
+
+        [DataMember]
+        public IEnumerable<LicitationLandLicitationResponseModel> LicitationLands { get; set; }
+
+
         //[DataMember]
         //public List<LicitationLand> LandGuids { get; set; }
 
         //[DataMember]
         //public List<LicitationPublicBidding> PublicBiddingGuids { get; set; }
-
-        [DataMember]
-        public IEnumerable<LicitationLandLicitationResponseModel> LicitationLands { get; set; }
 
         //[DataMember]
         //public IEnumerable<LicitationPubblicBiddingLicitationResponseModel> PublicBiddings { get; set; }
@@ -38,19 +40,6 @@ namespace Licitation.API.Models.Licitation
         public LicitationResponseModel()
         {
 
-        }
-        public LicitationResponseModel(int stage, DateTime date, int year, int constarint, int bidIncrement, DateTime applicationDeadline,/* List<LicitationLand> landGuids, List<LicitationPublicBidding> publicBiddingGuids,*/ IEnumerable<LicitationLandLicitationResponseModel> lands)
-        {
-            Stage = stage;
-            Date = date;
-            Year = year;
-            Constarint = constarint;
-            BidIncrement = bidIncrement;
-            ApplicationDeadline = applicationDeadline;
-            //LandGuids = landGuids;
-            //PublicBiddingGuids = publicBiddingGuids;
-            LicitationLands = lands;
-            //PublicBiddings = publicBiddings;
         }
     }
 }

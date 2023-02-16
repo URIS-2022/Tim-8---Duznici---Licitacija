@@ -95,13 +95,24 @@ public class LicitationDBContext : DbContext
             entity.Property(e => e.ApplicationDeadline).IsRequired();
         });
 
+        modelBuilder.Entity<LicitationLand>(entity =>
+        {
+            entity.HasKey(e => new { e.LandGuid, e.LicitationGuid });
+        });
+
+        modelBuilder.Entity<LicitationPublicBidding>(entity =>
+        {
+            entity.HasKey(e => new { e.PublicBiddingGuid, e.LicitationGuid });
+        });
+
+        modelBuilder.Entity<Document>(entity =>
+        {
+            entity.HasKey(e => e.Guid);
+        });
+
         modelBuilder.Entity<LicitationLand>().HasOne(ll => ll.licitation)
         .WithMany(l => l.LicitationLands)
         .HasForeignKey(ll => ll.LicitationGuid);
-
-        /*modelBuilder.Entity<LicitationLand>().HasOne(ll => ll.licitation)
-        .WithMany(l => l.LicitationLands)
-        .HasForeignKey(ll => ll.LicitationGuid);*/
 
         modelBuilder.Entity<LicitationPublicBidding>().HasOne(pb => pb.licitation)
         .WithMany(l => l.PublicBiddings)
@@ -133,7 +144,16 @@ public class LicitationDBContext : DbContext
         modelBuilder.Entity<Document>()
         .HasIndex(u => u.ReferenceNumber)
         .IsUnique();
-        
+
+        /*modelBuilder.Entity<LicitationPublicBidding>().HasOne(pb => pb.licitation)
+        .WithMany(l => l.PublicBiddings)
+        .HasForeignKey(pb => pb.LicitationGuid);*/
+
+        /*modelBuilder.Entity<LicitationLand>().HasOne(ll => ll.licitation)
+        .WithMany(l => l.LicitationLands)
+        .HasForeignKey(ll => ll.LicitationGuid);*/
+
+
     }
-    
+
 }

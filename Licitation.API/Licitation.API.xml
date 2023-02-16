@@ -104,6 +104,21 @@
             <param name="id">The identifier of the document to delete.</param>
             <returns>The deleted document.</returns>
         </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)">
+            <summary>
+            Adds a new member to committee.
+            </summary>
+            <param name="licitationLand">The request format for adding member to commitee.</param>
+            <returns>The added committee member.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)">
+            <summary>
+            Removes a specific member from committee.
+            </summary>
+            <param name="licitationId">The identifier of the committee member to delete.</param>
+            /// <param name="licitationLandId">The id of member to remove.</param>
+            <returns>The deleted committee member.</returns>
+        </member>
         <member name="T:Licitation.API.Data.Repository.ILicitationRepository">
             <summary>
             Repository for managing Licitation entities.
@@ -143,6 +158,19 @@
             <param name="id">The identifier of the licitation to update.</param>
             <param name="patchDocument">The updated values for the licitation.</param>
             <returns>The updated licitation.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
+            <summary>
+            Initializes a new instance of the CommitteeMemberRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)"/>
+            
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)"/>
         </member>
         <member name="T:Licitation.API.Data.Repository.LicitationRepository">
             <summary>
@@ -258,6 +286,12 @@
         </member>
         <member name="M:Licitation.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="M:Licitation.API.Profiles.LicitationLicitationLandProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.LicitationLand"/> class and sets up mappings between
+            <see cref="T:Licitation.API.Entities.LicitationLand"/> and its corresponding response/request models.
+            </summary>
         </member>
     </members>
 </doc>

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Licitation.API.Migrations
 {
     [DbContext(typeof(LicitationDBContext))]
-    [Migration("20230212154201_InitialCreate")]
+    [Migration("20230216120741_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Licitation.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -37,6 +37,9 @@ namespace Licitation.API.Migrations
                     b.Property<DateTime>("DateSubmitted")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DocumentType")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("LicitationGuid")
                         .HasColumnType("uniqueidentifier");
 
@@ -48,9 +51,6 @@ namespace Licitation.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("documentType")
-                        .HasColumnType("int");
-
                     b.HasKey("Guid");
 
                     b.HasIndex("LicitationGuid");
@@ -61,7 +61,7 @@ namespace Licitation.API.Migrations
                     b.ToTable("Documents");
                 });
 
-            modelBuilder.Entity("Licitation.API.Entities.LicitationEntity", b =>
+            modelBuilder.Entity("Licitation.API.Entities.Licitation", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -92,18 +92,20 @@ namespace Licitation.API.Migrations
 
             modelBuilder.Entity("Licitation.API.Entities.LicitationLand", b =>
                 {
-                    b.Property<Guid>("Licitation")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("LandGuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("LicitationEntityGuid")
+                    b.Property<Guid>("LicitationGuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Licitation", "LandGuid");
+                    b.Property<Guid?>("LicitationGuid1")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasIndex("LicitationEntityGuid");
+                    b.HasKey("LandGuid", "LicitationGuid");
+
+                    b.HasIndex("LicitationGuid");
+
+                    b.HasIndex("LicitationGuid1");
 
                     b.ToTable("LicitationLands");
                 });
@@ -113,73 +115,73 @@ namespace Licitation.API.Migrations
                     b.Property<Guid>("PublicBiddingGuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Licitation")
+                    b.Property<Guid>("LicitationGuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("LicitationEntityGuid")
+                    b.Property<Guid?>("LicitationGuid1")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("PublicBiddingGuid", "Licitation");
+                    b.HasKey("PublicBiddingGuid", "LicitationGuid");
 
-                    b.HasIndex("Licitation");
+                    b.HasIndex("LicitationGuid");
 
-                    b.HasIndex("LicitationEntityGuid");
+                    b.HasIndex("LicitationGuid1");
 
                     b.ToTable("LicitationPublicBiddings");
                 });
 
             modelBuilder.Entity("Licitation.API.Entities.Document", b =>
                 {
-                    b.HasOne("Licitation.API.Entities.LicitationEntity", "licitationEntity")
+                    b.HasOne("Licitation.API.Entities.Licitation", "licitation")
                         .WithMany("Documents")
                         .HasForeignKey("LicitationGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("licitationEntity");
+                    b.Navigation("licitation");
                 });
 
             modelBuilder.Entity("Licitation.API.Entities.LicitationLand", b =>
                 {
-                    b.HasOne("Licitation.API.Entities.LicitationEntity", "licitationEntity")
+                    b.HasOne("Licitation.API.Entities.Licitation", "licitation")
                         .WithMany("LicitationLands")
-                        .HasForeignKey("Licitation")
+                        .HasForeignKey("LicitationGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Licitation.API.Entities.LicitationEntity", null)
-                        .WithMany("LandGuids")
-                        .HasForeignKey("LicitationEntityGuid");
+                    b.HasOne("Licitation.API.Entities.Licitation", null)
+                        .WithMany("Lands")
+                        .HasForeignKey("LicitationGuid1");
 
-                    b.Navigation("licitationEntity");
+                    b.Navigation("licitation");
                 });
 
             modelBuilder.Entity("Licitation.API.Entities.LicitationPublicBidding", b =>
                 {
-                    b.HasOne("Licitation.API.Entities.LicitationEntity", "licitationEntity")
-                        .WithMany("LicitationPublicBiddings")
-                        .HasForeignKey("Licitation")
+                    b.HasOne("Licitation.API.Entities.Licitation", "licitation")
+                        .WithMany("PublicBiddings")
+                        .HasForeignKey("LicitationGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Licitation.API.Entities.LicitationEntity", null)
-                        .WithMany("PublicBiddingGuids")
-                        .HasForeignKey("LicitationEntityGuid");
+                    b.HasOne("Licitation.API.Entities.Licitation", null)
+                        .WithMany("LicitationPublicBiddings")
+                        .HasForeignKey("LicitationGuid1");
 
-                    b.Navigation("licitationEntity");
+                    b.Navigation("licitation");
                 });
 
-            modelBuilder.Entity("Licitation.API.Entities.LicitationEntity", b =>
+            modelBuilder.Entity("Licitation.API.Entities.Licitation", b =>
                 {
                     b.Navigation("Documents");
 
-                    b.Navigation("LandGuids");
+                    b.Navigation("Lands");
 
                     b.Navigation("LicitationLands");
 
                     b.Navigation("LicitationPublicBiddings");
 
-                    b.Navigation("PublicBiddingGuids");
+                    b.Navigation("PublicBiddings");
                 });
 #pragma warning restore 612, 618
         }

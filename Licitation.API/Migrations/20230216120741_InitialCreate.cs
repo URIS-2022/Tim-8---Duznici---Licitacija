@@ -34,7 +34,7 @@ namespace Licitation.API.Migrations
                 {
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LicitationGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    documentType = table.Column<int>(type: "int", nullable: false),
+                    DocumentType = table.Column<int>(type: "int", nullable: false),
                     ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateSubmitted = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateCertified = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -55,22 +55,22 @@ namespace Licitation.API.Migrations
                 name: "LicitationLands",
                 columns: table => new
                 {
-                    Licitation = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LicitationGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LandGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LicitationEntityGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    LicitationGuid1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LicitationLands", x => new { x.Licitation, x.LandGuid });
+                    table.PrimaryKey("PK_LicitationLands", x => new { x.LandGuid, x.LicitationGuid });
                     table.ForeignKey(
-                        name: "FK_LicitationLands_LicitationEntities_Licitation",
-                        column: x => x.Licitation,
+                        name: "FK_LicitationLands_LicitationEntities_LicitationGuid",
+                        column: x => x.LicitationGuid,
                         principalTable: "LicitationEntities",
                         principalColumn: "Guid",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LicitationLands_LicitationEntities_LicitationEntityGuid",
-                        column: x => x.LicitationEntityGuid,
+                        name: "FK_LicitationLands_LicitationEntities_LicitationGuid1",
+                        column: x => x.LicitationGuid1,
                         principalTable: "LicitationEntities",
                         principalColumn: "Guid");
                 });
@@ -80,21 +80,21 @@ namespace Licitation.API.Migrations
                 columns: table => new
                 {
                     PublicBiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Licitation = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LicitationEntityGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    LicitationGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LicitationGuid1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LicitationPublicBiddings", x => new { x.PublicBiddingGuid, x.Licitation });
+                    table.PrimaryKey("PK_LicitationPublicBiddings", x => new { x.PublicBiddingGuid, x.LicitationGuid });
                     table.ForeignKey(
-                        name: "FK_LicitationPublicBiddings_LicitationEntities_Licitation",
-                        column: x => x.Licitation,
+                        name: "FK_LicitationPublicBiddings_LicitationEntities_LicitationGuid",
+                        column: x => x.LicitationGuid,
                         principalTable: "LicitationEntities",
                         principalColumn: "Guid",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LicitationPublicBiddings_LicitationEntities_LicitationEntityGuid",
-                        column: x => x.LicitationEntityGuid,
+                        name: "FK_LicitationPublicBiddings_LicitationEntities_LicitationGuid1",
+                        column: x => x.LicitationGuid1,
                         principalTable: "LicitationEntities",
                         principalColumn: "Guid");
                 });
@@ -111,19 +111,24 @@ namespace Licitation.API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_LicitationLands_LicitationEntityGuid",
+                name: "IX_LicitationLands_LicitationGuid",
                 table: "LicitationLands",
-                column: "LicitationEntityGuid");
+                column: "LicitationGuid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LicitationPublicBiddings_Licitation",
-                table: "LicitationPublicBiddings",
-                column: "Licitation");
+                name: "IX_LicitationLands_LicitationGuid1",
+                table: "LicitationLands",
+                column: "LicitationGuid1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LicitationPublicBiddings_LicitationEntityGuid",
+                name: "IX_LicitationPublicBiddings_LicitationGuid",
                 table: "LicitationPublicBiddings",
-                column: "LicitationEntityGuid");
+                column: "LicitationGuid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LicitationPublicBiddings_LicitationGuid1",
+                table: "LicitationPublicBiddings",
+                column: "LicitationGuid1");
         }
 
         /// <inheritdoc />

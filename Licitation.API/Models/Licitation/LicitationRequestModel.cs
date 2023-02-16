@@ -13,10 +13,8 @@ namespace Licitation.API.Models.Licitation
         public int Constarint { get; set; }
         public int BidIncrement { get; set; }
         public DateTime ApplicationDeadline { get; set; }
-        public List<LicitationLandRequest> LandGuids { get; set; }
 
-
-        public LicitationRequestModel(int stage, DateTime date, int year, int constarint, int bidIncrement, DateTime applicationDeadline, List<LicitationLandRequest> landGuids)
+        public LicitationRequestModel(int stage, DateTime date, int year, int constarint, int bidIncrement, DateTime applicationDeadline)
         {
             Stage = stage;
             Date = date;
@@ -24,7 +22,6 @@ namespace Licitation.API.Models.Licitation
             Constarint = constarint;
             BidIncrement = bidIncrement;
             ApplicationDeadline = applicationDeadline;
-            LandGuids = landGuids;
         }
     }
 }

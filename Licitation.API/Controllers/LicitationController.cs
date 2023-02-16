@@ -2,8 +2,10 @@
 using Licitation.API.Data.Repository;
 using Licitation.API.Entities;
 using Licitation.API.Models.Licitation;
+using Licitation.API.Models.LicitationLands;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 
 namespace Licitation.API.Controllers;
 
@@ -14,6 +16,7 @@ namespace Licitation.API.Controllers;
 public class LicitationController : ControllerBase
 {
     private readonly ILicitationRepository licitationRepository;
+    private readonly ILicitationLandRepository llRepository;
     private readonly IMapper mapper;
 
     /// <summary>
@@ -110,6 +113,34 @@ public class LicitationController : ControllerBase
 
         return Ok(responseModel);
     }
+
+    // POST: api/Licitation
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPost("{id}/licitationLands")]
+    public async Task<ActionResult<LicitationResponseModel>> PostLicitationLand(Guid id, LicitationLandPostRequestModel postModel)
+    {
+        var licitationLand = mapper.Map<LicitationLand>(postModel);
+        licitationLand.LicitationGuid = id;
+        var created = await llRepository.AddLicitationLand(licitationLand);
+        if (created == null)
+        {
+            return BadRequest();
+        }
+        return NoContent();
+    }
+
+    // DELETE: api/Licitaion/5
+    /*[HttpDelete("{id}/licitationLands/{licitationLandId}")]
+    public async Task<IActionResult> DeleteLicitationLand(Guid id, Guid licitationLandId)
+    {
+        var licitation = await llRepository.GetLicitationLand(id, licitationLandId);
+        if (licitation == null)
+        {
+            return NotFound();
+        }
+        await llRepository.DeleteLicitationLand(licitation.LicitationGuid, licitation.LandGuid);
+        return NoContent();
+    }*/
 
     /* // POST: api/Licitation
      [HttpPost]

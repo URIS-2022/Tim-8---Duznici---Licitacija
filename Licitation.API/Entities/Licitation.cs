@@ -15,9 +15,7 @@ public partial class Licitation : IValidatableObject
     public int Constarint { get; set; }
     public int BidIncrement { get; set; }
     public DateTime ApplicationDeadline { get; set; }
-
     public IEnumerable<LicitationLand> Lands { get; set; }
-
     public IEnumerable<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
 
     public List<LicitationLand> LicitationLands { get; set; }
@@ -44,7 +42,7 @@ public partial class Licitation : IValidatableObject
         LicitationPublicBiddings = new HashSet<LicitationPublicBidding>();
     }
 
-    public Licitation(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand> licitationLands = null, ICollection<LicitationPublicBidding> licitationPublicBiddings = null /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
+    public Licitation(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand>? licitationLands = null, ICollection<LicitationPublicBidding>? licitationPublicBiddings = null /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
     {
         Guid = licitationGuid;
         Stage = stage;
@@ -60,7 +58,7 @@ public partial class Licitation : IValidatableObject
 
     }
 
-    public Licitation(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand> licitationLands = null, ICollection<LicitationPublicBidding> licitationPublicBiddings = null /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
+    public Licitation(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand>? licitationLands = null, ICollection<LicitationPublicBidding>? licitationPublicBiddings = null /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
     {
         Guid = Guid.NewGuid();
         Stage = stage;
