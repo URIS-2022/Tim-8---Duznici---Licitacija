@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Administration.API.Entities;
+﻿namespace Administration.API.Entities;
 
 /// <summary>
 /// Represents a member-committee relation.
