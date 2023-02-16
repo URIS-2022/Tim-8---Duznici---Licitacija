@@ -4,8 +4,15 @@ using AutoMapper;
 
 namespace Administration.API.Profiles;
 
+/// <summary>
+/// AutoMapper profile for mapping between entities and response/request models for document.
+/// </summary>
 public class DocumentProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Document"/> class and sets up mappings between
+    /// <see cref="Document"/> and its corresponding response/request models.
+    /// </summary>
     public DocumentProfile()
     {
         CreateMap<Document, DocumentGetResponseModel>();

@@ -4,8 +4,15 @@ using AutoMapper;
 
 namespace Administration.API.Profiles;
 
+/// <summary>
+/// AutoMapper profile for mapping between entities and response/request models for member.
+/// </summary>
 public class MemberProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Member"/> class and sets up mappings between
+    /// <see cref="Member"/> and its corresponding response/request models.
+    /// </summary>
     public MemberProfile()
     {
         CreateMap<Member, MemberGetResponseModel>()

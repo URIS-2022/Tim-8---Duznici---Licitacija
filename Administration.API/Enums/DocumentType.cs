@@ -3,10 +3,24 @@ using System.Text.Json.Serialization;
 
 namespace Administration.API.Enums;
 
+/// <summary>
+/// An enumeration of the different types of documents that can be associated with a committee.
+/// </summary>
 public enum DocumentType
 {
+    /// <summary>
+    /// A committee assembly plan document.
+    /// </summary>
     CommitteePlan,
+
+    /// <summary>
+    /// A year plan draft document.
+    /// </summary>
     YearPlanDraft,
+
+    /// <summary>
+    /// A year plan final document.
+    /// </summary>
     YearPlanFinal
 }
 

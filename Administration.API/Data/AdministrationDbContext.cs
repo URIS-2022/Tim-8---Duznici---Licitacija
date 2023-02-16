@@ -24,10 +24,19 @@ public class AdministrationDbContext : DbContext
     /// </summary>
     public DbSet<CommitteeMember> CommitteeMembers { get; set; }
 
+    /// <summary>
+    /// A DbSet of Committees entities.
+    /// </summary>
     public DbSet<Committee> Committees { get; set; }
 
+    /// <summary>
+    /// A DbSet of Members entities.
+    /// </summary>
     public DbSet<Member> Members { get; set; }
 
+    /// <summary>
+    /// A DbSet of Documents entities.
+    /// </summary>
     public DbSet<Document> Documents { get; set; }
 
     /// <summary>

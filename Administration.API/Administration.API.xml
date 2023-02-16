@@ -4,6 +4,79 @@
         <name>Administration.API</name>
     </assembly>
     <members>
+        <member name="T:Administration.API.Controllers.CommitteesController">
+            <summary>
+            Represents the API endpoint for managing committees and their members.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.#ctor(Administration.API.Data.Repository.ICommitteeRepository,Administration.API.Data.Repository.ICommitteeMemberRepository,AutoMapper.IMapper)">
+            <summary>
+            Represents a controller for managing committees.
+            </summary>
+            <param name="committeeRepository">The repository for managing committees.</param>
+            <param name="cmRepository">The repository for managing committee members.</param>
+            <param name="mapper">The mapper for mapping models to entities and vice versa.</param>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.GetCommittees">
+            <summary>
+            Returns a list of all committees.
+            </summary>
+            <returns>A list of committees</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.GetCommittee(System.Guid)">
+            <summary>
+            Returns the details of a specific committee.
+            </summary>
+            <param name="id">The ID of the committee</param>
+            <returns>The details of the committee</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.PatchCommittee(System.Guid,Administration.API.Models.Committee.CommitteePatchRequestModel)">
+            <summary>
+            Updates the specified committee with the given changes.
+            </summary>
+            <param name="id">The ID of the committee to update</param>
+            <param name="patchModel">The changes to apply to the committee</param>
+            <returns>The updated committee</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.PatchCommitteeMember(System.Guid,System.Guid,Administration.API.Models.CommitteeMember.CommitteeMemberPatchRequestModel)">
+            <summary>
+            Updates the specified member of a committee with the given changes.
+            </summary>
+            <param name="id">The ID of the committee to update the member for</param>
+            <param name="memberId">The ID of the member to update</param>
+            <param name="patchModel">The changes to apply to the member</param>
+            <returns>The updated member</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.PostCommittee(Administration.API.Models.Committee.CommitteePostRequestModel)">
+            <summary>
+            Creates a new committee.
+            </summary>
+            <param name="postModel">The model for creating a committee.</param>
+            <returns>The created committee.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.PostCommitteeMember(System.Guid,Administration.API.Models.CommitteeMember.CommitteeMemberPostRequestModel)">
+            <summary>
+            Creates a new committee member for a committee.
+            </summary>
+            <param name="id">The ID of the committee to which the member belongs.</param>
+            <param name="postModel">The model for creating a committee member.</param>
+            <returns>The created committee member.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.DeleteCommittee(System.Guid)">
+            <summary>
+            Deletes a committee by ID.
+            </summary>
+            <param name="id">The ID of the committee to delete.</param>
+            <returns>A response indicating the success or failure of the operation.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.CommitteesController.DeleteCommitteeMember(System.Guid,System.Guid)">
+            <summary>
+            Deletes a committee member by ID.
+            </summary>
+            <param name="id">The ID of the committee to which the member belongs.</param>
+            <param name="memberId">The ID of the member to delete.</param>
+            <returns>A response indicating the success or failure of the operation.</returns>
+        </member>
         <member name="T:Administration.API.Controllers.DocumentsController">
             <summary>
             API controller for managing Documents.
@@ -51,6 +124,52 @@
             <param name="id">The ID of the Document to delete</param>
             <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
         </member>
+        <member name="T:Administration.API.Controllers.MembersController">
+            <summary>
+            API controller for managing members.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Controllers.MembersController.#ctor(Administration.API.Data.Repository.IMemberRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the MembersController class with the specified dependencies.
+            </summary>
+            <param name="memberRepository">The repository used for interacting with member data.</param>
+            <param name="mapper">The object mapper used for mapping between models and entities.</param>
+        </member>
+        <member name="M:Administration.API.Controllers.MembersController.GetMembers">
+            <summary>
+            Gets all members.
+            </summary>
+            <returns>A collection of MemberGetResponseModel objects.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.MembersController.GetMember(System.Guid)">
+            <summary>
+            Gets a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to retrieve.</param>
+            <returns>A MemberGetResponseModel object representing the retrieved member.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.MembersController.PatchMember(System.Guid,Administration.API.Models.Member.MemberPatchRequestModel)">
+            <summary>
+            Updates a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to update.</param>
+            <param name="patchModel">The MemberPatchRequestModel containing the updates to apply.</param>
+            <returns>A MemberPatchResponseModel object representing the updated member.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.MembersController.PostMember(Administration.API.Models.Member.MemberPostRequestModel)">
+            <summary>
+            Creates a new member.
+            </summary>
+            <param name="postModel">The MemberPostRequestModel containing the new member data.</param>
+            <returns>A MemberPostResponseModel object representing the newly created member.</returns>
+        </member>
+        <member name="M:Administration.API.Controllers.MembersController.DeleteMember(System.Guid)">
+            <summary>
+            Deletes a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to delete.</param>
+        </member>
         <member name="T:Administration.API.Data.AdministrationDbContext">
             <summary>
             AdministrationDbContext is a class that inherits from DbContext. 
@@ -66,6 +185,21 @@
         <member name="P:Administration.API.Data.AdministrationDbContext.CommitteeMembers">
             <summary>
             A DbSet of SystemUser entities.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Data.AdministrationDbContext.Committees">
+            <summary>
+            A DbSet of Committees entities.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Data.AdministrationDbContext.Members">
+            <summary>
+            A DbSet of Members entities.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Data.AdministrationDbContext.Documents">
+            <summary>
+            A DbSet of Documents entities.
             </summary>
         </member>
         <member name="M:Administration.API.Data.AdministrationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
@@ -334,6 +468,241 @@
         <member name="M:Administration.API.Data.Repository.MemberRepository.DeleteMember(System.Guid)">
             <inheritdoc cref="M:Administration.API.Data.Repository.IMemberRepository.DeleteMember(System.Guid)"/>
         </member>
+        <member name="T:Administration.API.Entities.Committee">
+            <summary>
+            Represents a committee entity.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Committee.Guid">
+            <summary>
+            Gets or sets the unique identifier for the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Committee.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Committee.Documents">
+            <summary>
+            Gets or sets the documents associated with the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Committee.CommitteeMembers">
+            <summary>
+            Gets or sets the committee members associated with the committee.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Entities.Committee.#ctor(System.Guid,System.DateTime,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember},System.Collections.Generic.IEnumerable{Administration.API.Entities.Document})">
+            <summary>
+            Initializes a new instance of the Committee class with the specified unique identifier, date assembled, committee members and documents.
+            </summary>
+            <param name="guid">The unique identifier for the committee.</param>
+            <param name="dateAssembled">The date when the committee was assembled.</param>
+            <param name="committeeMembers">The committee members associated with the committee. Defaults to an empty collection if not provided.</param>
+            <param name="documents">The documents associated with the committee. Defaults to an empty collection if not provided.</param>
+        </member>
+        <member name="M:Administration.API.Entities.Committee.#ctor">
+            <summary>
+            Initializes a new instance of the Committee class with default values.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Entities.Committee.#ctor(System.DateTime,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember},System.Collections.Generic.IEnumerable{Administration.API.Entities.Document})">
+            <summary>
+            Initializes a new instance of the Committee class with the specified date assembled, committee members and documents. The unique identifier will be generated automatically.
+            </summary>
+            <param name="dateAssembled">The date when the committee was assembled.</param>
+            <param name="committeeMembers">The committee members associated with the committee. Defaults to an empty collection if not provided.</param>
+            <param name="documents">The documents associated with the committee. Defaults to an empty collection if not provided.</param>
+        </member>
+        <member name="T:Administration.API.Entities.CommitteeMember">
+            <summary>
+            Represents a member-committee relation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.CommitteeMember.CommitteeGuid">
+            <summary>
+            Gets or sets the GUID of the committee this member belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.CommitteeMember.Committee">
+            <summary>
+            Gets or sets the committee this member belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.CommitteeMember.MemberGuid">
+            <summary>
+            Gets or sets the GUID of the member who is a part of the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.CommitteeMember.Member">
+            <summary>
+            Gets or sets the member who is a part of the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.CommitteeMember.Role">
+            <summary>
+            Gets or sets the role of the member in the committee.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Entities.CommitteeMember.#ctor">
+            <summary>
+            Initializes a new instance of the CommitteeMember class.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Entities.CommitteeMember.#ctor(System.Guid,System.Guid,System.String)">
+            <summary>
+            Initializes a new instance of the CommitteeMember class with the specified committee GUID, member GUID, and role.
+            </summary>
+            <param name="committeeGuid">The GUID of the committee this member belongs to.</param>
+            <param name="memberGuid">The GUID of the member who is a part of the committee.</param>
+            <param name="role">The role of the member in the committee.</param>
+        </member>
+        <member name="M:Administration.API.Entities.CommitteeMember.#ctor(Administration.API.Entities.Committee,Administration.API.Entities.Member,System.String)">
+            <summary>
+            Initializes a new instance of the CommitteeMember class with the specified committee, member, and role.
+            </summary>
+            <param name="committee">The committee this member belongs to.</param>
+            <param name="member">The member who is a part of the committee.</param>
+            <param name="role">The role of the member in the committee.</param>
+        </member>
+        <member name="T:Administration.API.Entities.Document">
+            <summary>
+            Represents a document related to a committee, with its metadata and contents.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.Guid">
+            <summary>
+            The unique identifier for this document.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.Type">
+            <summary>
+            The type of document, which determines its structure and required information.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.CommitteeGuid">
+            <summary>
+            The unique identifier of the committee that this document belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.Committee">
+            <summary>
+            The committee that this document belongs to.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.ReferenceNumber">
+            <summary>
+            A reference number for this document, which may be used to locate or identify it.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.DateSubbmitted">
+            <summary>
+            The date on which this document was submitted to the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.DateCertified">
+            <summary>
+            The date on which this document was certified or approved by the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Document.Template">
+            <summary>
+            The template used to create this document, if any.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Entities.Document.#ctor(System.Guid,Administration.API.Enums.DocumentType,System.Guid,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Creates a new Document object with the specified properties.
+            </summary>
+            <param name="guid">The unique identifier for this document.</param>
+            <param name="type">The type of document.</param>
+            <param name="committeeGuid">The unique identifier of the committee that this document belongs to.</param>
+            <param name="referenceNumber">The reference number for this document.</param>
+            <param name="dateSubbmitted">The date on which this document was submitted.</param>
+            <param name="dateCertified">The date on which this document was certified.</param>
+            <param name="template">The template used to create this document.</param>
+        </member>
+        <member name="M:Administration.API.Entities.Document.#ctor(Administration.API.Enums.DocumentType,System.Guid,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Creates a new Document object with the specified properties, generating a new unique identifier.
+            </summary>
+            <param name="type">The type of document.</param>
+            <param name="committeeGuid">The unique identifier of the committee that this document belongs to.</param>
+            <param name="referenceNumber">The reference number for this document.</param>
+            <param name="dateSubbmitted">The date on which this document was submitted.</param>
+            <param name="dateCertified">The date on which this document was certified.</param>
+            <param name="template">The template used to create this document.</param>
+        </member>
+        <member name="T:Administration.API.Entities.Member">
+            <summary>
+            Represents a member in a committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Member.Guid">
+            <summary>
+            Gets or sets the unique identifier of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Member.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Member.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Entities.Member.CommitteeMembers">
+            <summary>
+            Gets or sets the committee members associated with the member.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Entities.Member.#ctor(System.Guid,System.String,System.String,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Administration.API.Entities.Member"/> class with the specified parameters.
+            </summary>
+            <param name="guid">The unique identifier of the member.</param>
+            <param name="firstName">The first name of the member.</param>
+            <param name="lastName">The last name of the member.</param>
+            <param name="committeeMembers">The committee members associated with the member.</param>
+        </member>
+        <member name="M:Administration.API.Entities.Member.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Administration.API.Entities.Member"/> class with the specified parameters.
+            </summary>
+            <param name="firstName">The first name of the member.</param>
+            <param name="lastName">The last name of the member.</param>
+        </member>
+        <member name="M:Administration.API.Entities.Member.#ctor(System.String,System.String,System.Collections.Generic.ICollection{Administration.API.Entities.CommitteeMember})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Administration.API.Entities.Member"/> class with the specified parameters.
+            </summary>
+            <param name="firstName">The first name of the member.</param>
+            <param name="lastName">The last name of the member.</param>
+            <param name="committeeMembers">The committee members associated with the member.</param>
+        </member>
+        <member name="T:Administration.API.Enums.DocumentType">
+            <summary>
+            An enumeration of the different types of documents that can be associated with a committee.
+            </summary>
+        </member>
+        <member name="F:Administration.API.Enums.DocumentType.CommitteePlan">
+            <summary>
+            A committee assembly plan document.
+            </summary>
+        </member>
+        <member name="F:Administration.API.Enums.DocumentType.YearPlanDraft">
+            <summary>
+            A year plan draft document.
+            </summary>
+        </member>
+        <member name="F:Administration.API.Enums.DocumentType.YearPlanFinal">
+            <summary>
+            A year plan final document.
+            </summary>
+        </member>
         <member name="T:Administration.API.Enums.DocumentTypeConverter">
             <summary>
             The DocumentTypeConverter class provides a custom implementation for converting the DocumentType enum to and from JSON.
@@ -367,6 +736,50 @@
         </member>
         <member name="M:Administration.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:Administration.API.Profiles.CommitteeMemberProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for CommitteeMember.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Profiles.CommitteeMemberProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Administration.API.Entities.CommitteeMember"/> class and sets up mappings between
+            <see cref="T:Administration.API.Entities.CommitteeMember"/> and its corresponding response/request models.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Profiles.CommitteeProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for committees.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Profiles.CommitteeProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Administration.API.Profiles.CommitteeProfile"/> class and sets up mappings between
+            <see cref="T:Administration.API.Entities.Committee"/> and its corresponding response/request models.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Profiles.DocumentProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for document.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Profiles.DocumentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Administration.API.Entities.Document"/> class and sets up mappings between
+            <see cref="T:Administration.API.Entities.Document"/> and its corresponding response/request models.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Profiles.MemberProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for member.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Profiles.MemberProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Administration.API.Entities.Member"/> class and sets up mappings between
+            <see cref="T:Administration.API.Entities.Member"/> and its corresponding response/request models.
+            </summary>
         </member>
     </members>
 </doc>

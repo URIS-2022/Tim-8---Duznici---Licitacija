@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Administration.API.Controllers;
 
+/// <summary>
+/// Represents the API endpoint for managing committees and their members.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json", "application/xml")]
@@ -17,6 +20,12 @@ public class CommitteesController : ControllerBase
     private readonly ICommitteeMemberRepository cmRepository;
     private readonly IMapper mapper;
 
+    /// <summary>
+    /// Represents a controller for managing committees.
+    /// </summary>
+    /// <param name="committeeRepository">The repository for managing committees.</param>
+    /// <param name="cmRepository">The repository for managing committee members.</param>
+    /// <param name="mapper">The mapper for mapping models to entities and vice versa.</param>
     public CommitteesController(ICommitteeRepository committeeRepository, ICommitteeMemberRepository cmRepository, IMapper mapper)
     {
         this.committeeRepository = committeeRepository;
@@ -24,7 +33,10 @@ public class CommitteesController : ControllerBase
         this.mapper = mapper;
     }
 
-    // GET: api/Committees
+    /// <summary>
+    /// Returns a list of all committees.
+    /// </summary>
+    /// <returns>A list of committees</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<CommitteeGetResponseModel>>> GetCommittees()
     {
@@ -37,7 +49,11 @@ public class CommitteesController : ControllerBase
         return Ok(responseModel);
     }
 
-    // GET: api/Committees/5
+    /// <summary>
+    /// Returns the details of a specific committee.
+    /// </summary>
+    /// <param name="id">The ID of the committee</param>
+    /// <returns>The details of the committee</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<CommitteeGetResponseModel>> GetCommittee(Guid id)
     {
@@ -50,8 +66,12 @@ public class CommitteesController : ControllerBase
         return responseModel;
     }
 
-    // PATCH: api/Committees/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Updates the specified committee with the given changes.
+    /// </summary>
+    /// <param name="id">The ID of the committee to update</param>
+    /// <param name="patchModel">The changes to apply to the committee</param>
+    /// <returns>The updated committee</returns>
     [HttpPatch("{id}")]
     public async Task<ActionResult<CommitteePatchResponseModel>> PatchCommittee(Guid id, CommitteePatchRequestModel patchModel)
     {
@@ -74,8 +94,13 @@ public class CommitteesController : ControllerBase
         return Ok(responseModel);
     }
 
-    // PATCH: api/Committees/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Updates the specified member of a committee with the given changes.
+    /// </summary>
+    /// <param name="id">The ID of the committee to update the member for</param>
+    /// <param name="memberId">The ID of the member to update</param>
+    /// <param name="patchModel">The changes to apply to the member</param>
+    /// <returns>The updated member</returns>
     [HttpPatch("{id}/members/{memberId}")]
     public async Task<ActionResult<CommitteeMemberPatchResponseModel>> PatchCommitteeMember(Guid id, Guid memberId, CommitteeMemberPatchRequestModel patchModel)
     {
@@ -102,8 +127,11 @@ public class CommitteesController : ControllerBase
         return Ok(responseModel);
     }
 
-    // POST: api/Committees
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Creates a new committee.
+    /// </summary>
+    /// <param name="postModel">The model for creating a committee.</param>
+    /// <returns>The created committee.</returns>
     [HttpPost]
     public async Task<ActionResult<CommitteePostResponseModel>> PostCommittee(CommitteePostRequestModel postModel)
     {
@@ -117,8 +145,12 @@ public class CommitteesController : ControllerBase
         return CreatedAtAction("GetCommittee", new { id = created.Guid }, responseModel);
     }
 
-    // POST: api/Committees
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Creates a new committee member for a committee.
+    /// </summary>
+    /// <param name="id">The ID of the committee to which the member belongs.</param>
+    /// <param name="postModel">The model for creating a committee member.</param>
+    /// <returns>The created committee member.</returns>
     [HttpPost("{id}/members")]
     public async Task<ActionResult<CommitteePostResponseModel>> PostCommitteeMember(Guid id, CommitteeMemberPostRequestModel postModel)
     {
@@ -132,7 +164,11 @@ public class CommitteesController : ControllerBase
         return NoContent();
     }
 
-    // DELETE: api/Committees/5
+    /// <summary>
+    /// Deletes a committee by ID.
+    /// </summary>
+    /// <param name="id">The ID of the committee to delete.</param>
+    /// <returns>A response indicating the success or failure of the operation.</returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCommittee(Guid id)
     {
@@ -145,7 +181,12 @@ public class CommitteesController : ControllerBase
         return NoContent();
     }
 
-    // DELETE: api/Committees/5
+    /// <summary>
+    /// Deletes a committee member by ID.
+    /// </summary>
+    /// <param name="id">The ID of the committee to which the member belongs.</param>
+    /// <param name="memberId">The ID of the member to delete.</param>
+    /// <returns>A response indicating the success or failure of the operation.</returns>
     [HttpDelete("{id}/members/{memberId}")]
     public async Task<IActionResult> DeleteCommitteeMember(Guid id, Guid memberId)
     {

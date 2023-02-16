@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Administration.API.Controllers;
 
+/// <summary>
+/// API controller for managing members.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json", "application/xml")]
@@ -15,13 +18,21 @@ public class MembersController : ControllerBase
     private readonly IMemberRepository memberRepository;
     private readonly IMapper mapper;
 
+    /// <summary>
+    /// Initializes a new instance of the MembersController class with the specified dependencies.
+    /// </summary>
+    /// <param name="memberRepository">The repository used for interacting with member data.</param>
+    /// <param name="mapper">The object mapper used for mapping between models and entities.</param>
     public MembersController(IMemberRepository memberRepository, IMapper mapper)
     {
         this.memberRepository = memberRepository;
         this.mapper = mapper;
     }
 
-    // GET: api/Members
+    /// <summary>
+    /// Gets all members.
+    /// </summary>
+    /// <returns>A collection of MemberGetResponseModel objects.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MemberGetResponseModel>>> GetMembers()
     {
@@ -34,7 +45,11 @@ public class MembersController : ControllerBase
         return Ok(responseModel);
     }
 
-    // GET: api/Members/5
+    /// <summary>
+    /// Gets a member with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the member to retrieve.</param>
+    /// <returns>A MemberGetResponseModel object representing the retrieved member.</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<MemberGetResponseModel>> GetMember(Guid id)
     {
@@ -47,8 +62,12 @@ public class MembersController : ControllerBase
         return responseModel;
     }
 
-    // PATCH: api/Members/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Updates a member with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the member to update.</param>
+    /// <param name="patchModel">The MemberPatchRequestModel containing the updates to apply.</param>
+    /// <returns>A MemberPatchResponseModel object representing the updated member.</returns>
     [HttpPatch("{id}")]
     public async Task<IActionResult> PatchMember(Guid id, MemberPatchRequestModel patchModel)
     {
@@ -71,8 +90,11 @@ public class MembersController : ControllerBase
         return Ok(responseModel);
     }
 
-    // POST: api/Members
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Creates a new member.
+    /// </summary>
+    /// <param name="postModel">The MemberPostRequestModel containing the new member data.</param>
+    /// <returns>A MemberPostResponseModel object representing the newly created member.</returns>
     [HttpPost]
     public async Task<ActionResult<MemberPostResponseModel>> PostMember(MemberPostRequestModel postModel)
     {
@@ -86,7 +108,10 @@ public class MembersController : ControllerBase
         return CreatedAtAction("GetMember", new { id = created.Guid }, responseModel);
     }
 
-    // DELETE: api/Members/5
+    /// <summary>
+    /// Deletes a member with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the member to delete.</param>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteMember(Guid id)
     {

@@ -4,8 +4,15 @@ using AutoMapper;
 
 namespace Administration.API.Profiles;
 
+/// <summary>
+/// AutoMapper profile for mapping between entities and response/request models for committees.
+/// </summary>
 public class CommitteeProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CommitteeProfile"/> class and sets up mappings between
+    /// <see cref="Committee"/> and its corresponding response/request models.
+    /// </summary>
     public CommitteeProfile()
     {
         CreateMap<Committee, CommitteeGetResponseModel>()
