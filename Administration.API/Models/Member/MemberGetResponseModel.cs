@@ -36,5 +36,5 @@ public class MemberGetResponseModel
     /// <summary>
     /// Initializes a new instance of the MemberGetResponseModel class.
     /// </summary>
-    public MemberGetResponseModel() {}
+    public MemberGetResponseModel() { }
 }
