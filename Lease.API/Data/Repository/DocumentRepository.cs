@@ -1,5 +1,4 @@
 ﻿using Lease.API.Entities;
-using Lease.API.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lease.API.Data.Repository;

@@ -1,5 +1,4 @@
-﻿using Preparation.API.Entities;
-using Preparation.API.Enums;
+﻿using Preparation.API.Enums;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 

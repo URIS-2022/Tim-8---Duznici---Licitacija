@@ -1,6 +1,4 @@
-﻿using Lease.API.Enums;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Lease.API.Models;
 

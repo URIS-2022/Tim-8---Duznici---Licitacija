@@ -1,6 +1,4 @@
-﻿using Preparation.API.Entities;
-
-namespace Preparation.API.Data.Repository
+﻿namespace Preparation.API.Data.Repository
 {
     /// <summary>
     /// The interface for document repository, provides methods for getting, updating, adding and deleting a document

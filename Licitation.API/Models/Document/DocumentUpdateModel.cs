@@ -1,5 +1,4 @@
-﻿using Licitation.API.Entities;
-using Licitation.API.Enums;
+﻿using Licitation.API.Enums;
 using System.Text.Json.Serialization;
 
 namespace Licitation.API.Models.Document

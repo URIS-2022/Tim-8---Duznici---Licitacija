@@ -1,9 +1,5 @@
-﻿
-using AutoMapper.Configuration.Annotations;
-using Lease.API.Entities;
+﻿using Lease.API.Entities;
 using Lease.API.Enums;
-using Microsoft.OpenApi.Extensions;
-using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 

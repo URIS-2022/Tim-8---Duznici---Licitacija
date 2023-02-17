@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Licitation.API.Entities;
-using Licitation.API.Models.LicitationLands;
 using Licitation.API.Models.LicitationPB;
 using Licitation.API.Models.LicitationPBResponse;
 

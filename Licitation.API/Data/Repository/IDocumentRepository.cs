@@ -1,6 +1,4 @@
-﻿using Licitation.API.Entities;
-
-namespace Licitation.API.Data.Repository
+﻿namespace Licitation.API.Data.Repository
 {
     /// <summary>
     /// The interface for document repository, provides methods for getting, updating, adding and deleting a document

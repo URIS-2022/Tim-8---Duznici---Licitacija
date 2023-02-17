@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Payment.API.Entities;
 
 namespace Payment.API.Data.Repository;
 

@@ -1,6 +1,4 @@
-﻿using Lease.API.Enums;
-
-namespace Lease.API.Entities;
+﻿namespace Lease.API.Entities;
 
 public class PriorityBuyer
 {

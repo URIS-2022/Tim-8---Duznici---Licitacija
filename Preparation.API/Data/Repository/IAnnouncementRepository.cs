@@ -1,6 +1,4 @@
-﻿using Preparation.API.Entities;
-
-namespace Preparation.API.Data.Repository
+﻿namespace Preparation.API.Data.Repository
 {
     /// <summary>
     /// The interface for announcement repository, provides methods for getting, updating, adding and deleting a announcement

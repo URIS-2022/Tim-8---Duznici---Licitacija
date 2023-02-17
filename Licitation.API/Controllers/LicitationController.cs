@@ -4,9 +4,7 @@ using Licitation.API.Entities;
 using Licitation.API.Models.Licitation;
 using Licitation.API.Models.LicitationLands;
 using Licitation.API.Models.LicitationPB;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol.Core.Types;
 
 namespace Licitation.API.Controllers;
 
@@ -168,44 +166,11 @@ public class LicitationController : ControllerBase
     public async Task<IActionResult> DeletePublicBidding(Guid id, Guid publicBiddingId)
     {
         var publicBidding = await publicBiddingRepository.GetPublicBidding(id, publicBiddingId);
-        if (publicBiddingId == null)
+        if (publicBidding == null)
         {
             return NotFound();
         }
         await publicBiddingRepository.DeletePublicBidding(id, publicBiddingId);
         return NoContent();
     }
-
-
-    /* // POST: api/Licitation
-     [HttpPost]
-     public async Task<ActionResult<LicitationResponseModel>> PostLicitation(LicitationRequestModel postModel)
-     {
-         var complaint = mapper.Map<Entities.LicitationEntity>(postModel);
-         Entities.LicitationEntity? created = await licitationRepository.AddLicitation(complaint);
-         if (created == null)
-         {
-             return BadRequest();
-         }
-         var responseModel = mapper.Map<LicitationResponseModel>(created);
-         return CreatedAtAction("GetComplaint", new { id = created.Guid }, responseModel);
-     }*/
-
-    /*/// <summary>
-    /// Returns a specific Licitation based on the date
-    /// </summary>
-    /// <param name="date">The date of the Licitation to retrieve</param>
-    /// <returns>The Licitation model, or Not Found if the Licitation is not found</returns>
-    [HttpGet("{date}")]
-    public async Task<ActionResult<LicitationResponseModel>> GetLicitation(DateTime date)
-    {
-        LicitationEntity? licitation = await licitationRepository.GetByDate(date);
-        if (licitation == null)
-        {
-            return NotFound();
-        }
-        LicitationResponseModel responseModel = mapper.Map<LicitationResponseModel>(licitation);
-        return Ok(responseModel);
-    }*/
-
 }

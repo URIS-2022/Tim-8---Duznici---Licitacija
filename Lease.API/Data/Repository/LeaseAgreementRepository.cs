@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lease.API.Entities;
+﻿using Lease.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lease.API.Data.Repository;

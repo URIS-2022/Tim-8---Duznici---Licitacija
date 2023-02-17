@@ -1,8 +1,4 @@
-﻿
-using AutoMapper.Configuration.Annotations;
-using Lease.API.Entities;
-using Lease.API.Enums;
-using System.Text.Json.Serialization;
+﻿using Lease.API.Enums;
 
 
 namespace Lease.API.Models.Buyer;

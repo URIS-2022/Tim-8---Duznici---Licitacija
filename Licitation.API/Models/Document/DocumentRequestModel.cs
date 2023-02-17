@@ -1,8 +1,5 @@
-﻿using Licitation.API.Entities;
-using Licitation.API.Enums;
-using System.Diagnostics.Metrics;
+﻿using Licitation.API.Enums;
 using System.Text.Json.Serialization;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Licitation.API.Models.Document
 {

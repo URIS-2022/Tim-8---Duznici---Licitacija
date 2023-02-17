@@ -1,8 +1,5 @@
-﻿
-using AutoMapper.Configuration.Annotations;
-using Lease.API.Entities;
+﻿using Lease.API.Entities;
 using Lease.API.Enums;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System.Text.Json.Serialization;
 
 

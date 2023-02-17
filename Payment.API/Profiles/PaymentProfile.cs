@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Payment.API.Entities;
 using Payment.API.Models.PaymentModel;
 using Payment.API.Models.PaymentModels;
 

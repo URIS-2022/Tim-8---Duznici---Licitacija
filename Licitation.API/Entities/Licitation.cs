@@ -1,8 +1,4 @@
-﻿using Licitation.API.Models.LicitationLands;
-using Licitation.API.Models.LicitationPB;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Licitation.API.Entities;
 

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Licitation.API.Data.Repository;
-using Licitation.API.Entities;
 using Licitation.API.Models.Document;
 using Microsoft.AspNetCore.Mvc;
 

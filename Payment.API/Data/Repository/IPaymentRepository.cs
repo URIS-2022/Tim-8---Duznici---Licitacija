@@ -1,6 +1,4 @@
-﻿using Payment.API.Entities;
-
-namespace Payment.API.Data.Repository;
+﻿namespace Payment.API.Data.Repository;
 
 public interface IPaymentRepository
 {

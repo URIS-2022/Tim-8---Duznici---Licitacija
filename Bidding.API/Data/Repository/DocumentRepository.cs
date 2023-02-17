@@ -1,6 +1,5 @@
 ﻿using Bidding.API.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Bidding.API.Data.Repository
 {

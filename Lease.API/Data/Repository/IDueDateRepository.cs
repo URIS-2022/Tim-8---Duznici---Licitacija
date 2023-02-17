@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lease.API.Entities;
+﻿using Lease.API.Entities;
 
 namespace Lease.API.Data.Repository;
 
-    public interface IDueDateRepository
+public interface IDueDateRepository
     {
         Task<DueDate> GetByGuid(Guid id);
         Task<List<DueDate>> GetAll();

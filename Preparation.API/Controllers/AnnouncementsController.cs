@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Preparation.API.Data.Repository;
-using Preparation.API.Entities;
 using Preparation.API.Models;
 
 namespace Preparation.API.Controllers

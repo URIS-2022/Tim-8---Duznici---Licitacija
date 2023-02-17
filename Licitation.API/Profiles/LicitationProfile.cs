@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Licitation.API.Entities;
 using Licitation.API.Models.Licitation;
 
 namespace Licitation.API.Profiles;

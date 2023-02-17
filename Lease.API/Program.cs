@@ -1,6 +1,5 @@
 ﻿using Lease.API.Data;
 using Lease.API.Data.Repository;
-using Lease.API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;

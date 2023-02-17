@@ -1,9 +1,4 @@
-﻿using Licitation.API.Entities;
-using Licitation.API.Models.LicitationLands;
-using Licitation.API.Models.LicitationPB;
-using System.Collections.ObjectModel;
-
-namespace Licitation.API.Models.Licitation
+﻿namespace Licitation.API.Models.Licitation
 {
     public class LicitationRequestModel
     {

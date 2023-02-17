@@ -1,6 +1,4 @@
-﻿using Payment.API.Models.PaymentWarrantModel;
-using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Payment.API.Entities
 {

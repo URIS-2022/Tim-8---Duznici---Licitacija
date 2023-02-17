@@ -1,6 +1,4 @@
-﻿using Licitation.API.Entities;
-
-namespace Licitation.API.Data.Repository
+﻿namespace Licitation.API.Data.Repository
 {
     /// <summary>
     /// Repository for managing Licitation entities.

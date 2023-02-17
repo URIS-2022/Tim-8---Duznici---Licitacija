@@ -1,8 +1,4 @@
-﻿using Licitation.API.Entities;
-using Licitation.API.Models.LicitationLands;
-using Licitation.API.Models.LicitationPBResponse;
-using System.Runtime.Serialization;
-using System.Xml.Linq;
+﻿using System.Runtime.Serialization;
 
 namespace Licitation.API.Models.Licitation
 {

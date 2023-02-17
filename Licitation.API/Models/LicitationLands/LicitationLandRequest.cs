@@ -1,6 +1,4 @@
-﻿using Licitation.API.Entities;
-
-namespace Licitation.API.Models.LicitationLands;
+﻿namespace Licitation.API.Models.LicitationLands;
 
 public class LicitationLandRequest
 {

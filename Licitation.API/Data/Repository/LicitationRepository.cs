@@ -1,5 +1,4 @@
-﻿using Licitation.API.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Licitation.API.Data.Repository;
 

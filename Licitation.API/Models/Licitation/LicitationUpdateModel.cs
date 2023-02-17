@@ -1,7 +1,4 @@
-﻿using Licitation.API.Entities;
-using System.Runtime.Serialization;
-
-namespace Licitation.API.Models.Licitation
+﻿namespace Licitation.API.Models.Licitation
 {
     public class LicitationUpdateModel
     {

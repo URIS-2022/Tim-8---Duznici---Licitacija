@@ -1,11 +1,10 @@
-﻿using Lease.API.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Lease.API.Enums;
 
-    public enum PriorityType
+public enum PriorityType
     {
         None = 0,
         Irrigation,

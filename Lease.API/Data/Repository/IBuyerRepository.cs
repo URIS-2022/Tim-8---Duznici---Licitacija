@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lease.API.Entities;
-using Lease.API.Models;
+﻿using Lease.API.Entities;
 
 namespace Lease.API.Data.Repository;
 
-    public interface IBuyerRepository
+public interface IBuyerRepository
     {
         Task<Buyer> GetByGuid(Guid id);
         Task<List<Buyer>> GetAll();

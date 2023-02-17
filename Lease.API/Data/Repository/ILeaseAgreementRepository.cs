@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Lease.API.Entities;
 
-namespace  Lease.API.Data.Repository;
+namespace Lease.API.Data.Repository;
 
 public interface ILeaseAgreementRepository
 {

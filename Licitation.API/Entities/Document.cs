@@ -1,7 +1,6 @@
 ﻿using Licitation.API.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 
 namespace Licitation.API.Entities
 {
@@ -47,12 +46,10 @@ namespace Licitation.API.Entities
         /// </summary>
         public string Template { get; set; }
 
-        public Licitation licitation { get; set; }
-
-        //// <summary>
-        //// Gets or sets the announcement related to this document.
-        //// </summary>
-        //public Announcement Announcement { get; set; }
+        /// <summary>
+        /// Gets or sets the licitation related to this document.
+        /// </summary>
+        public Licitation? licitation { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Document"/> class.
@@ -65,7 +62,6 @@ namespace Licitation.API.Entities
         /// <param name="id">The unique identifier of the document.</param>
         /// <param name="licitationGuid">The unique identifier of the announcement.</param>
         /// <param name="documentType">The type of the document.</param>
-        /// <param name="documentStatus">The status of the document.</param>
         /// <param name="referenceNumber">The reference number of the document.</param>
         /// <param name="dateSubmitted">The date when the document was submitted.</param>
         /// <param name="dateCertified">The date when the document was certified.</param>

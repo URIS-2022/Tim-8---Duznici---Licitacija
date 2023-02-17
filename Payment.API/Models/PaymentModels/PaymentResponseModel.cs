@@ -1,5 +1,4 @@
-﻿using Payment.API.Entities;
-using Payment.API.Models.PaymentWarrantModel;
+﻿using Payment.API.Models.PaymentWarrantModel;
 using System.Runtime.Serialization;
 
 namespace Payment.API.Models.PaymentModels;
