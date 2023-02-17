@@ -1,17 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Bidding.API.Entities;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
-using System.Reflection.Emit;
 using Bidding.API.Enums;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections;
 
 namespace Bidding.API.Data
 {

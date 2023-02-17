@@ -279,23 +279,30 @@
             Gets or sets the unique identifier for the licitation to which the announcement belongs.
             </summary>
         </member>
+        <member name="P:Preparation.API.Entities.Announcement.AnnouncementStatus">
+            <summary>
+            Gets or sets the status of the announcement.
+            </summary>
+        </member>
         <member name="P:Preparation.API.Entities.Announcement.Documents">
             <summary>
             Gets or sets the collection of documents associated with the announcement.
             </summary>
         </member>
-        <member name="M:Preparation.API.Entities.Announcement.#ctor(System.Guid,System.Guid)">
+        <member name="M:Preparation.API.Entities.Announcement.#ctor(System.Guid,System.Guid,Preparation.API.Enums.AnnouncementStatus)">
             <summary>
             Initializes a new instance of the <see cref="T:Preparation.API.Entities.Announcement"/> class with the specified unique identifier and licitation identifier.
             </summary>
             <param name="id">The unique identifier for the announcement.</param>
             <param name="licitationGuid">The unique identifier for the licitation to which the announcement belongs.</param>
+            <param name="announcementStatus">The status of the announcement.</param>
         </member>
-        <member name="M:Preparation.API.Entities.Announcement.#ctor(System.Guid)">
+        <member name="M:Preparation.API.Entities.Announcement.#ctor(System.Guid,Preparation.API.Enums.AnnouncementStatus)">
             <summary>
             Initializes a new instance of the <see cref="T:Preparation.API.Entities.Announcement"/> class with a new unique identifier and the specified licitation identifier.
             </summary>
             <param name="licitationGuid">The unique identifier for the licitation to which the announcement belongs.</param>
+            /// <param name="announcementStatus">The status of the announcement.</param>
         </member>
         <member name="M:Preparation.API.Entities.Announcement.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
@@ -390,6 +397,37 @@
             </summary>
             <param name="validationContext">The validation context.</param>
             <returns>A collection of ValidationResult objects that represent the validation errors.</returns>
+        </member>
+        <member name="T:Preparation.API.Enums.AnnouncementStatus">
+            <summary>
+            Represents the possible status values for a announcement.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.AnnouncementStatus.Approved">
+            <summary>
+            The announcement has been approved.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.AnnouncementStatus.Rejected">
+            <summary>
+            The announcement has been rejected.
+            </summary>
+        </member>
+        <member name="F:Preparation.API.Enums.AnnouncementStatus.Opened">
+            <summary>
+            The announcement is currently open.
+            </summary>
+        </member>
+        <member name="T:Preparation.API.Enums.AnnouncementStatusConverter">
+            <summary>
+            Converts between <see cref="T:Preparation.API.Enums.AnnouncementStatus"/> enum and JSON string representation of the status.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Enums.AnnouncementStatusConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Preparation.API.Enums.AnnouncementStatusConverter.Write(System.Text.Json.Utf8JsonWriter,Preparation.API.Enums.AnnouncementStatus,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
         </member>
         <member name="T:Preparation.API.Enums.DocumentStatus">
             <summary>
@@ -496,12 +534,18 @@
             Gets or sets the unique identifier of the licitation associated with the announcement.
             </summary>
         </member>
-        <member name="M:Preparation.API.Models.AnnouncementGetResponseModel.#ctor(System.Guid,System.Guid)">
+        <member name="P:Preparation.API.Models.AnnouncementGetResponseModel.AnnouncementStatus">
+            <summary>
+            The status of the announcement.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementGetResponseModel.#ctor(System.Guid,System.Guid,Preparation.API.Enums.AnnouncementStatus)">
             <summary>
             Initializes a new instance of the AnnouncementGetResponseModel class with the specified values.
             </summary>
             <param name="guid">The unique identifier of the announcement.</param>
             <param name="licitationGuid">The unique identifier of the licitation associated with the announcement.</param>
+            /// <param name="announcementStatus">The status of the announcement.</param>
         </member>
         <member name="T:Preparation.API.Models.AnnouncementPatchRequestModel">
             <summary>
@@ -513,11 +557,17 @@
             Gets or sets the optional Licitation Guid to update in the announcement.
             </summary>
         </member>
-        <member name="M:Preparation.API.Models.AnnouncementPatchRequestModel.#ctor(System.Nullable{System.Guid})">
+        <member name="P:Preparation.API.Models.AnnouncementPatchRequestModel.AnnouncementStatus">
+            <summary>
+            Gets or sets the announcement status.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPatchRequestModel.#ctor(System.Nullable{System.Guid},System.Nullable{Preparation.API.Enums.AnnouncementStatus})">
             <summary>
             Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPatchRequestModel"/> class with the specified Licitation Guid.
             </summary>
             <param name="licitationGuid">The optional Licitation Guid to update in the announcement.</param>
+            <param name="announcementStatus">The announcement status.</param>
         </member>
         <member name="T:Preparation.API.Models.AnnouncementPatchResponseModel">
             <summary>
@@ -534,12 +584,18 @@
             Gets or sets the licitation GUID.
             </summary>
         </member>
-        <member name="M:Preparation.API.Models.AnnouncementPatchResponseModel.#ctor(System.Guid,System.Guid)">
+        <member name="P:Preparation.API.Models.AnnouncementPatchResponseModel.AnnouncementStatus">
+            <summary>
+            Gets or sets the status of the announcement.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPatchResponseModel.#ctor(System.Guid,System.Guid,Preparation.API.Enums.AnnouncementStatus)">
             <summary>
             Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPatchResponseModel"/> class.
             </summary>
             <param name="guid">The announcement GUID.</param>
             <param name="licitationGuid">The licitation GUID.</param>
+            /// <param name="announcementStatus">The status of the announcement.</param>
         </member>
         <member name="T:Preparation.API.Models.AnnouncementPostRequestModel">
             <summary>
@@ -551,11 +607,17 @@
             Gets or sets the GUID of the associated licitation.
             </summary>
         </member>
-        <member name="M:Preparation.API.Models.AnnouncementPostRequestModel.#ctor(System.Guid)">
+        <member name="P:Preparation.API.Models.AnnouncementPostRequestModel.AnnouncementStatus">
+            <summary>
+            Gets or sets the status of the announcement.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPostRequestModel.#ctor(System.Guid,Preparation.API.Enums.AnnouncementStatus)">
             <summary>
             Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPostRequestModel"/> class with the specified licitation GUID.
             </summary>
             <param name="licitationGuid">The GUID of the associated licitation.</param>
+            <param name="announcementStatus">The status of the announcement.</param>
         </member>
         <member name="T:Preparation.API.Models.AnnouncementPostResponseModel">
             <summary>
@@ -567,11 +629,17 @@
             Gets or sets the Guid of the associated Licitation.
             </summary>
         </member>
-        <member name="M:Preparation.API.Models.AnnouncementPostResponseModel.#ctor(System.Guid)">
+        <member name="P:Preparation.API.Models.AnnouncementPostResponseModel.AnnouncementStatus">
+            <summary>
+            The Announcement Status of the new announcement.
+            </summary>
+        </member>
+        <member name="M:Preparation.API.Models.AnnouncementPostResponseModel.#ctor(System.Guid,Preparation.API.Enums.AnnouncementStatus)">
             <summary>
             Initializes a new instance of the <see cref="T:Preparation.API.Models.AnnouncementPostResponseModel"/> class with the specified LicitationGuid.
             </summary>
             <param name="licitationGuid">The Guid of the associated Licitation.</param>
+            /// <param name="announcementStatus">The Announcement Status of the new announcement.</param>
         </member>
         <member name="T:Preparation.API.Models.DocumentGetResponseModel">
             <summary>

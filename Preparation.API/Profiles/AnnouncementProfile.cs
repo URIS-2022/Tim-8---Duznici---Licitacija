@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Preparation.API.Entities;
 using Preparation.API.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Preparation.API.Profiles
 {
@@ -29,7 +27,9 @@ namespace Preparation.API.Profiles
 
             // Maps AnnouncementPatchRequestModel objects to Announcement entities
             CreateMap<AnnouncementPatchRequestModel, Entities.Announcement>()
-                .ForMember(dest => dest.LicitationGuid, opt => opt.Condition(src => src.LicitationGuid != null));
+                .ForMember(dest => dest.LicitationGuid, opt => opt.Condition(src => src.LicitationGuid != null))
+                .ForMember(dest => dest.AnnouncementStatus, opt => opt.Condition(src => src.AnnouncementStatus.HasValue))
+                .ForMember(dest => dest.AnnouncementStatus, opt => opt.MapFrom(src => src.AnnouncementStatus!.Value));
         }
     }
 }

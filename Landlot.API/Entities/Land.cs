@@ -1,18 +1,15 @@
-﻿using Landlot.API.Entities;
-using Landlot.API.Enums;
+﻿using Landlot.API.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 namespace Landlot.API.Entities
 {
-    
 
-        /// <summary>
-        /// Represents a piece of land with multiple lots and various attributes such as zoning, property type, and drainage.
-        /// Implements the IValidatableObject interface for custom validation logic.
-        /// </summary>
+
+    /// <summary>
+    /// Represents a piece of land with multiple lots and various attributes such as zoning, property type, and drainage.
+    /// Implements the IValidatableObject interface for custom validation logic.
+    /// </summary>
     public class Land : IValidatableObject
     {
         /// <summary>

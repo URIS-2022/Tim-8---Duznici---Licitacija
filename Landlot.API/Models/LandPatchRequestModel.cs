@@ -1,9 +1,5 @@
 ﻿using Landlot.API.Enums;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 namespace Landlot.API.Models
 {

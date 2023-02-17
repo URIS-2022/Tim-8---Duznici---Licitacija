@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Preparation.API.Data.Repository;
 using Preparation.API.Models;
-using Preparation.API.Entities;
 
 namespace Preparation.API.Controllers
 {

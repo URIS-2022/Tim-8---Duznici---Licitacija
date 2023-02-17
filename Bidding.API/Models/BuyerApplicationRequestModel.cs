@@ -1,10 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Text.Json.Serialization;
-
-
-
-namespace Bidding.API.Models
+﻿namespace Bidding.API.Models
 {
     public class BuyerApplicationRequestModel
     {
