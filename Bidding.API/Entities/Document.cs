@@ -65,8 +65,7 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (documentType == null)
-                results.Add(new ValidationResult("Document type cannot be null.", new[] { nameof(documentType) }));
+            
 
             if (string.IsNullOrWhiteSpace(ReferenceNumber))
                 results.Add(new ValidationResult("ReferenceNumber cannot be empty or whitespace.", new[] { nameof(ReferenceNumber) }));

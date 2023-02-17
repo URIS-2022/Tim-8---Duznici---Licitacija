@@ -153,25 +153,16 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Expected must not be empty."));
             }
 
-            if (municipality == null)
-            {
-                results.Add(new ValidationResult("municipality must not be null."));
-            }
+           
 
-            if (public_bidding_type == null)
-            {
-                results.Add(new ValidationResult("public_bidding_type must not be null."));
-            }
+            
 
             if (AddresGuid == Guid.Empty)
             {
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (biddingStatus == null)
-            {
-                results.Add(new ValidationResult("biddingStatus must not be null."));
-            }
+            
 
 
             if (Round == Guid.Empty)

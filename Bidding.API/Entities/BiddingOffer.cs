@@ -70,10 +70,7 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Offer must be greater than 0."));
             }
 
-            if (Date == null)
-            {
-                results.Add(new ValidationResult("Date submissed cannot be null."));
-            }
+            
             return results;
 
 
