@@ -61,7 +61,9 @@ namespace Person.API.Models
         [Required(ErrorMessage = "Obavezno je uneti broj racuna!")]
         public string? AccountNumber { get; set; }
 
-
+        /// <summary>
+        /// Represents a model used to update a legal person's information.
+        /// </summary>
         public LegalPersonUpdateModel(Guid? contactPersonId, string? name, string? identificationNumber, Guid? addressId, string? phoneNumber1, string? phoneNumber2, string? fax, string? email, string? accountNumber)
         {
             ContactPersonId = contactPersonId;

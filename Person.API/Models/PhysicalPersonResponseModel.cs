@@ -58,9 +58,14 @@ namespace Person.API.Models
         /// </summary>
         [DataMember]
         public string AccountNumber { get; set; }
+        /// <summary>
+        /// Gets or sets the address information.
+        /// </summary>
+        public AddressPersonResponseModel? Address { get; set; }
 
-        public AddressPersonResponseModel Address { get; set; }
-
+        /// <summary>
+        /// Represents an physical person response model.
+        /// </summary>
         public PhysicalPersonResponseModel(string firstName, string lastName, string jmbg, Guid addressId, string phoneNumber1, string phoneNumber2, string email, string accountNumber)
         {
             FirstName = firstName;

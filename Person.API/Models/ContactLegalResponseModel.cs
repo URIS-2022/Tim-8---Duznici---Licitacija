@@ -14,25 +14,25 @@ namespace Person.API.Models
             /// Ime kontakt osobe
             /// </summary>
             [DataMember]
-            public string FirstName { get; set; }
+            public string? FirstName { get; set; }
 
 
             /// <summary>
             /// Prezime kontakt osobe
             /// </summary>
             [DataMember]
-            public string LastName { get; set; }
+            public string? LastName { get; set; }
 
             /// <summary>
             /// Funkcija kontakt osoba
             /// </summary>
             [DataMember]
-            public string Function { get; set; }
+            public string? Function { get; set; }
 
             /// <summary>
             /// Telefon kontakt osobe
             /// </summary>
             [DataMember]
-            public string PhoneNumber { get; set; }
+            public string? PhoneNumber { get; set; }
         }
 }

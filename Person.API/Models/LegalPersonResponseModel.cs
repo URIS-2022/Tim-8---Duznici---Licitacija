@@ -10,7 +10,9 @@ namespace Person.API.Models
 
     [DataContract(Name = "ContactPerson", Namespace = "")]
     public class LegalPersonResponseModel
-    {
+        { /// <summary>
+          /// Id kontakt osobe
+          /// </summary>
         [DataMember]
         public Guid ContactPersonId { get; set; }
 
@@ -58,19 +60,29 @@ namespace Person.API.Models
         [DataMember]
         public string Email { get; set; }
 
-
-
         /// <summary>
         /// Broj računa pravnog lica
         /// </summary>
         [DataMember]
         public string AccountNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets the contact legal person information.
+        /// </summary>
         public ContactLegalResponseModel ContactLegalPerson { get; set; }
+        /// <summary>
+        /// Gets or sets the address information.
+        /// </summary>
+        public AddressPersonResponseModel? Address { get; set; }
 
-        public AddressPersonResponseModel Address { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LegalPersonResponseModel"/> class.
+        /// </summary>
         public LegalPersonResponseModel() { }
+
+        /// <summary>
+        /// Represents an legal person response model.
+        /// </summary>
         public LegalPersonResponseModel(Guid contactPersonId, ContactLegalResponseModel contactLegalPerson, string name, string identificationNumber, Guid addressId, string phoneNumber1, string phoneNumber2, string fax, string email, string accountNumber)
         {
             ContactPersonId = contactPersonId;

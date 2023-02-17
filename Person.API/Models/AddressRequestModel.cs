@@ -41,7 +41,14 @@ namespace Person.API.Models
         [Required(ErrorMessage = "Obavezno je uneti postanski broj")]
         public string ZipCode { get; set; }
 
-
+        /// <summary>
+        /// Creates a new instance of the AddressRequestModel class.
+        /// </summary>
+        /// <param name="country">The country of the address.</param>
+        /// <param name="street">The street name of the address.</param>
+        /// <param name="streetNumber">The street number of the address.</param>
+        /// <param name="place">The place of the address.</param>
+        /// <param name="zipCode">The zip code of the address.</param>
         public AddressRequestModel(Country country,string street,string streetNumber,string place,string zipCode)
         {
             Country = country;  

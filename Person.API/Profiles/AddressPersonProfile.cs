@@ -4,8 +4,14 @@ using Person.API.Models;
 
 namespace Person.API.Profiles
 {
+    /// <summary>
+    /// Represents a profile that contains information specific to a address of person.
+    /// </summary>
     public class AddressPersonModel : Profile
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddressPersonModel"/> class.
+        /// </summary>
         public AddressPersonModel()
         {
             CreateMap<Address, AddressPersonResponseModel>()

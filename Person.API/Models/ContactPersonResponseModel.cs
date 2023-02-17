@@ -34,7 +34,13 @@ namespace Person.API.Models
         /// </summary>
         [DataMember] 
         public string PhoneNumber { get; set; }
-
+        /// <summary>
+        /// Represents an contact person response model.
+        /// </summary>
+        /// <param name="firstName">The first name of the contact person.</param>
+        /// <param name="lastName">The last name of the contact person.</param>
+        /// <param name="function">The function of the contact person.</param>
+        /// <param name="phoneNumber">The phone number of the contact person.</param>
         public ContactPersonResponseModel(string firstName, string lastName, string function, string phoneNumber)
         {
             FirstName = firstName;

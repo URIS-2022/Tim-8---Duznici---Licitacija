@@ -57,6 +57,9 @@ namespace Person.API.Models
         [Required(ErrorMessage = "Obavezno je uneti broj računa!")]
         public string AccountNumber { get; set; }
 
+        /// <summary>
+        /// Represents a request model for creating a physical person.
+        /// </summary>
         public PhysicalPersonRequestModel(string firstName, string lastName, string jmbg, Guid addressId, string phoneNumber1, string phoneNumber2, string email, string accountNumber)
         {
             FirstName = firstName;
