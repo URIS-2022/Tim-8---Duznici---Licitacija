@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Preparation.API.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Preparation.API.Entities
 {
@@ -19,29 +21,39 @@ namespace Preparation.API.Entities
         public Guid LicitationGuid { get; set; }
 
         /// <summary>
+        /// Gets or sets the status of the announcement.
+        /// </summary>
+        [JsonConverter(typeof(AnnouncementStatusConverter))]
+        public AnnouncementStatus AnnouncementStatus { get; set; }
+
+        /// <summary>
         /// Gets or sets the collection of documents associated with the announcement.
         /// </summary>
-        public ICollection<Document> Documents { get; set; }
+        public ICollection<Document>? Documents { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Announcement"/> class with the specified unique identifier and licitation identifier.
         /// </summary>
         /// <param name="id">The unique identifier for the announcement.</param>
         /// <param name="licitationGuid">The unique identifier for the licitation to which the announcement belongs.</param>
-        public Announcement(Guid id, Guid licitationGuid)
+        /// <param name="announcementStatus">The status of the announcement.</param>
+        public Announcement(Guid id, Guid licitationGuid, AnnouncementStatus announcementStatus)
         {
             Guid = id;
             LicitationGuid = licitationGuid;
+            AnnouncementStatus = announcementStatus;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Announcement"/> class with a new unique identifier and the specified licitation identifier.
         /// </summary>
         /// <param name="licitationGuid">The unique identifier for the licitation to which the announcement belongs.</param>
-        public Announcement(Guid licitationGuid)
+        /// /// <param name="announcementStatus">The status of the announcement.</param>
+        public Announcement(Guid licitationGuid, AnnouncementStatus announcementStatus)
         {
             Guid = Guid.NewGuid();
             LicitationGuid = licitationGuid;
+            AnnouncementStatus = announcementStatus;
         }
 
         /// <summary>

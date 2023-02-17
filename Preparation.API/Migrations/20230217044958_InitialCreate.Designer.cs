@@ -12,7 +12,7 @@ using Preparation.API.Data;
 namespace Preparation.API.Migrations
 {
     [DbContext(typeof(PreparationDbContext))]
-    [Migration("20230216152420_InitialCreate")]
+    [Migration("20230217044958_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -31,6 +31,9 @@ namespace Preparation.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("AnnouncementStatus")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("LicitationGuid")
                         .HasColumnType("uniqueidentifier");
 
@@ -42,11 +45,13 @@ namespace Preparation.API.Migrations
                         new
                         {
                             Guid = new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
+                            AnnouncementStatus = 0,
                             LicitationGuid = new Guid("8de0c01b-b7b0-4df2-1001-3df21b91a0bb")
                         },
                         new
                         {
                             Guid = new Guid("8da0c01b-b7b0-4df2-9009-3df21b91a0bb"),
+                            AnnouncementStatus = 2,
                             LicitationGuid = new Guid("8de0c01b-b7b0-4df2-2002-3df21b91a0bb")
                         });
                 });
@@ -73,7 +78,6 @@ namespace Preparation.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ReferenceNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Template")
@@ -85,7 +89,8 @@ namespace Preparation.API.Migrations
                     b.HasIndex("AnnouncementGuid");
 
                     b.HasIndex("ReferenceNumber")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ReferenceNumber] IS NOT NULL");
 
                     b.ToTable("Documents");
 

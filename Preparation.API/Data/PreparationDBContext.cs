@@ -87,7 +87,8 @@ namespace Preparation.API.Data
                 .HasData(new
                 {
                     Guid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
-                    LicitationGuid = Guid.Parse("8de0c01b-b7b0-4df2-1001-3df21b91a0bb")
+                    LicitationGuid = Guid.Parse("8de0c01b-b7b0-4df2-1001-3df21b91a0bb"),
+                    AnnouncementStatus = AnnouncementStatus.Approved
                 }
               );
 
@@ -95,7 +96,8 @@ namespace Preparation.API.Data
                 .HasData(new
                 {
                     Guid = Guid.Parse("8da0c01b-b7b0-4df2-9009-3df21b91a0bb"),
-                    LicitationGuid = Guid.Parse("8de0c01b-b7b0-4df2-2002-3df21b91a0bb")
+                    LicitationGuid = Guid.Parse("8de0c01b-b7b0-4df2-2002-3df21b91a0bb"),
+                    AnnouncementStatus = AnnouncementStatus.Opened
                 }
               );
         }
