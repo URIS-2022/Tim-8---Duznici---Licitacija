@@ -24,11 +24,12 @@ public class PaymentResponseModel
     [DataMember]
     public Guid PublicBiddingGuid { get; set; }
     [DataMember]
-    public PaymentWarrantResponseModel PaymentWarrant { get; set; }
+    public PaymentWarrantPaymentResponseModel PaymentWarrant { get; set; }
 
-    public PaymentResponseModel(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrantResponseModel paymentWarrant)
+
+    public PaymentResponseModel(/*string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid*/)
     {
-        Guid = Guid.NewGuid();
+        /*Guid = Guid.NewGuid();
         AccountNumber = accountNumber;
         ReferenceNumber = referenceNumber;
         TotalAmount = totalAmount;
@@ -36,6 +37,6 @@ public class PaymentResponseModel
         PaymentTitle = paymentTitle;
         PaymentDate = paymentDate;
         PublicBiddingGuid = publicBiddingGuid;
-        PaymentWarrant = paymentWarrant;
+        PaymentWarrant = paymentWarrant;*/
     }
 }

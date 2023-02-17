@@ -9,9 +9,9 @@ public class PaymentRequestModel
     public string PaymentTitle { get; set; }
     public DateTime PaymentDate { get; set; }
     public Guid PublicBiddingGuid { get; set; }
-    public Guid PaymentWarrantGuid { get; set; }
+    
 
-    public PaymentRequestModel(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, Guid paymentWarrantGuid)
+    public PaymentRequestModel(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid)
     {
         AccountNumber = accountNumber;
         ReferenceNumber = referenceNumber;
@@ -20,6 +20,5 @@ public class PaymentRequestModel
         PaymentTitle = paymentTitle;
         PaymentDate = paymentDate;
         PublicBiddingGuid = publicBiddingGuid;
-        PaymentWarrantGuid = paymentWarrantGuid;
     }
 }

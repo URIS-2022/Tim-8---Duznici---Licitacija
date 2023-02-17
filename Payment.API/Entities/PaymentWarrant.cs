@@ -35,6 +35,17 @@ namespace Payment.API.Entities
             PublicBiddingGuid = publicBiddingGuid;
         }
 
+       //ovaj konstruktor------------>
+
+        public PaymentWarrant(Guid paymentWarrantGuid, Guid payerGuid, decimal totalAmount, Guid publicBiddingGuid)
+        {
+            Guid = paymentWarrantGuid;
+            PayerGuid = payerGuid;
+            TotalAmount = totalAmount;
+            PublicBiddingGuid = publicBiddingGuid;
+        }
+
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();

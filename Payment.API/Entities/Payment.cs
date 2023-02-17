@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Payment.API.Models.PaymentWarrantModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace Payment.API.Entities
@@ -15,16 +16,16 @@ namespace Payment.API.Entities
         public string PaymentTitle { get; set; }
         public DateTime PaymentDate { get; set; }
         public Guid PublicBiddingGuid { get; set; }
-        public Guid PaymentWarrantGuid { get; set; }
+
         public PaymentWarrant PaymentWarrant { get; set; }
 
-        //public object PaymentWarrant { get; set; }
+        public PaymentWarrantPaymentResponseModel WarrantPaymentModel { get; set; }
 
         public Payment()
         {
         }
 
-        public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, Guid paymentWarrantGuid)
+        public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrantPaymentResponseModel warrantPaymentModel)
         {
             Guid = paymentGuid;
             AccountNumber = accountNumber;
@@ -34,10 +35,11 @@ namespace Payment.API.Entities
             PaymentTitle = paymentTitle;
             PaymentDate = paymentDate;
             PublicBiddingGuid = publicBiddingGuid;
-            PaymentWarrantGuid = paymentWarrantGuid;
+            WarrantPaymentModel = warrantPaymentModel;
+
         }
 
-        public Payment(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, Guid paymentWarrantGuid)
+        public Payment(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrantPaymentResponseModel warrantPaymentModel)
         {
             Guid = Guid.NewGuid();
             AccountNumber = accountNumber;
@@ -47,7 +49,7 @@ namespace Payment.API.Entities
             PaymentTitle = paymentTitle;
             PaymentDate = paymentDate;
             PublicBiddingGuid = publicBiddingGuid;
-            PaymentWarrantGuid = paymentWarrantGuid;
+            WarrantPaymentModel = warrantPaymentModel;
         }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
@@ -92,11 +94,6 @@ namespace Payment.API.Entities
             if (PublicBiddingGuid == Guid.Empty)
             {
                 results.Add(new ValidationResult("PublicBiddingGuid cannot be empty."));
-            }
-
-            if (PaymentWarrantGuid == Guid.Empty)
-            {
-                results.Add(new ValidationResult("PaymentWarrantGuid cannot be empty."));
             }
 
             return results;

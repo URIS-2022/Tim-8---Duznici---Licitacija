@@ -13,11 +13,11 @@ public class PaymentRepository : IPaymentRepository
     }
     public async Task<IEnumerable<Entities.Payment>> GetAllPayments()
     {
-        return await context.Payments.ToListAsync();
+        return await context.Payments.Include(p => p.PaymentWarrant).ToListAsync();
     }
     public async Task<Entities.Payment> GetPaymentByGuid(Guid guid)
     {
-        return await context.Payments.FindAsync(guid);
+        return await context.Payments.Include(p => p.PaymentWarrant).FirstOrDefaultAsync(p => p.Guid == guid);
     }
 
     /// <inheritdoc cref="IPaymentRepository.AddPayment"/>
