@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Person.API.Data.Repository;
+using Person.API.Entities;
 
-namespace Person.API.Models.LegalPerson
+namespace Person.API.Models
 {
     /// <summary>
     /// Dto Create pravno lice
     /// </summary>
-    public class LegalPersonCreationModel
+    public class LegalPersonRequestModel
     {
         /// <summary>
         /// Kontakt osoba id
@@ -61,5 +63,23 @@ namespace Person.API.Models.LegalPerson
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti broj računa!")]
         public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// Represents a request model for creating a legal person.
+        /// </summary>
+        public LegalPersonRequestModel(Guid contactPersonId,string name, string identificationNumber, Guid addressId, string phoneNumber1,
+                                           string phoneNumber2, string fax, string email, string accountNumber)
+        {
+            ContactPersonId = contactPersonId;
+            Name = name;
+            IdentificationNumber = identificationNumber;     
+            AddressId = addressId;
+            PhoneNumber1 = phoneNumber1;
+            PhoneNumber2 = phoneNumber2;
+            Fax = fax;
+            Email = email;
+            AccountNumber = accountNumber;
+            
+        }
     }
 }
