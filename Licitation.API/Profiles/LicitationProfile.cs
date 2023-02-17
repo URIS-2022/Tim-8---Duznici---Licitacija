@@ -10,7 +10,7 @@ public class LicitationProfile : Profile
     {
         CreateMap<Entities.Licitation, LicitationResponseModel>()
             .ForMember(dest => dest.LicitationLands, opt => opt.MapFrom(src => src.LicitationLands))
-            .ForMember(dest => dest.LicitationPublicBiddings, opt => opt.MapFrom(src => src.LicitationPublicBiddings));
+            .ForMember(dest => dest.LicitationPublicBiddings, opt => opt.MapFrom(src => src.PublicBiddings));
         CreateMap<LicitationRequestModel, Entities.Licitation>();
         CreateMap<LicitationUpdateModel, Entities.Licitation>()
             .ForMember(dest => dest.Stage, opt => opt.Condition(src => src.Stage != null))
