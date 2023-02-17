@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Person.API.Data.Repository;
-using Person.API.Entities;
 
 namespace Person.API.Models
 {

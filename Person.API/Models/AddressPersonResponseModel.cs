@@ -1,8 +1,4 @@
-﻿using Person.API.Enums;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
-namespace Person.API.Models
+﻿namespace Person.API.Models
 {
     /// <summary>
     /// Represents an address object belonging to a person.

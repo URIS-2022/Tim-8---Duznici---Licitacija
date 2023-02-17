@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Data;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using Bidding.API.Entities;
 using Bidding.API.Enums;
 
 

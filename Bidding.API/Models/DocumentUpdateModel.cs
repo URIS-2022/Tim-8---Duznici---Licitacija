@@ -1,5 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
+﻿using Bidding.API.Enums;
 using System.Text.Json.Serialization;
 
 

@@ -1,13 +1,10 @@
-﻿using Landlot.API.Controllers;
-using Landlot.API.Data;
+﻿using Landlot.API.Data;
 using Landlot.API.Data.Repository;
-using Landlot.API.Entities;
 using Landlot.API.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 

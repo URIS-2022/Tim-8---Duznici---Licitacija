@@ -1,5 +1,4 @@
-﻿using Landlot.API.Data.Repository;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Landlot.API.Entities;
 
 namespace Landlot.API.Data.Repository

@@ -1,5 +1,4 @@
 ﻿using Landlot.API.Enums;
-using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 namespace Landlot.API.Models

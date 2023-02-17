@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Preparation.API.Entities;
 
 namespace Preparation.API.Data.Repository
 {

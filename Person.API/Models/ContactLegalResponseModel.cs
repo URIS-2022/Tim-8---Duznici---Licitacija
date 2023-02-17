@@ -1,5 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using Person.API.Entities;
 
 namespace Person.API.Models
 {
