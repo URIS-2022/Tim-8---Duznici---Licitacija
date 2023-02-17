@@ -289,6 +289,11 @@
             Gets or sets the template of the document.
             </summary>
         </member>
+        <member name="P:Licitation.API.Entities.Document.licitation">
+            <summary>
+            Gets or sets the licitation related to this document.
+            </summary>
+        </member>
         <member name="M:Licitation.API.Entities.Document.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Licitation.API.Entities.Document"/> class.
@@ -301,7 +306,6 @@
             <param name="id">The unique identifier of the document.</param>
             <param name="licitationGuid">The unique identifier of the announcement.</param>
             <param name="documentType">The type of the document.</param>
-            <param name="documentStatus">The status of the document.</param>
             <param name="referenceNumber">The reference number of the document.</param>
             <param name="dateSubmitted">The date when the document was submitted.</param>
             <param name="dateCertified">The date when the document was certified.</param>
