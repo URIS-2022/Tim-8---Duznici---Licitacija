@@ -55,8 +55,7 @@ namespace Lease.API.Migrations
 
                     b.HasKey("Guid");
 
-                    b.HasIndex("PersonGuid")
-                        .IsUnique();
+                    b.HasIndex("PersonGuid");
 
                     b.ToTable("Buyers");
                 });

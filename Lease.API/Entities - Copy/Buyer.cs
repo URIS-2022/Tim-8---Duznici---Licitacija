@@ -2,7 +2,6 @@
 using AutoMapper.Configuration.Annotations;
 using Lease.API.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace Lease.API.Entities;
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lease.API.Migrations
 {
     [DbContext(typeof(LeaseDbContext))]
-    [Migration("20230216183701_m111")]
-    partial class m111
+    [Migration("20230217145916_finalfinal3")]
+    partial class finalfinal3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,10 @@ namespace Lease.API.Migrations
                     b.Property<Guid>("PersonGuid")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Priorities")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RealisedArea")
                         .HasColumnType("int");
 
@@ -54,8 +58,7 @@ namespace Lease.API.Migrations
 
                     b.HasKey("Guid");
 
-                    b.HasIndex("PersonGuid")
-                        .IsUnique();
+                    b.HasIndex("PersonGuid");
 
                     b.ToTable("Buyers");
                 });
@@ -69,11 +72,8 @@ namespace Lease.API.Migrations
                     b.Property<DateTime>("DateCertified")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateSubmissed")
+                    b.Property<DateTime>("DateSubbmitted")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("DocumentType")
-                        .HasColumnType("int");
 
                     b.Property<Guid>("LeaseAgreementGuid")
                         .HasColumnType("uniqueidentifier");
@@ -85,6 +85,9 @@ namespace Lease.API.Migrations
                     b.Property<string>("Template")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Guid");
 
@@ -170,32 +173,7 @@ namespace Lease.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsMany("Lease.API.Entities.PriorityTypeEntity", "Priorities", b1 =>
-                        {
-                            b1.Property<Guid>("BuyerGuid")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
-
-                            b1.Property<string>("PriorityTypes")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("BuyerGuid", "Id");
-
-                            b1.ToTable("PriorityTypeEntity");
-
-                            b1.WithOwner()
-                                .HasForeignKey("BuyerGuid");
-                        });
-
                     b.Navigation("LeaseAgreement");
-
-                    b.Navigation("Priorities");
                 });
 
             modelBuilder.Entity("Lease.API.Entities.Document", b =>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lease.API.Migrations
 {
     [DbContext(typeof(LeaseDbContext))]
-    [Migration("20230216200413_M333")]
-    partial class M333
+    [Migration("20230217145637_finalfinal")]
+    partial class finalfinal
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,11 +73,8 @@ namespace Lease.API.Migrations
                     b.Property<DateTime>("DateCertified")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateSubmissed")
+                    b.Property<DateTime>("DateSubbmitted")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("DocumentType")
-                        .HasColumnType("int");
 
                     b.Property<Guid>("LeaseAgreementGuid")
                         .HasColumnType("uniqueidentifier");
@@ -89,6 +86,9 @@ namespace Lease.API.Migrations
                     b.Property<string>("Template")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Guid");
 

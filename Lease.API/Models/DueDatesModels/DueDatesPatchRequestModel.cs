@@ -7,7 +7,7 @@ namespace Lease.API.Models;
 public class DueDatePatchRequestModel
 {
     
-    public Guid? Guid { get; set; }
+
 
     
     public DateTime? Date { get; set; }
@@ -16,7 +16,7 @@ public class DueDatePatchRequestModel
 
     public DueDatePatchRequestModel(Guid guid, DateTime date)
     {
-        Guid = guid;
+       
         Date = date;
     }
 }

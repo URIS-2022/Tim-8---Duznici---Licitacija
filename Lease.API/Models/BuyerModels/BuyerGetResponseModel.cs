@@ -13,35 +13,33 @@ namespace Lease.API.Models.Buyer;
 [DataContract(Name = "LeaseAgreement", Namespace = "")]
 public class BuyerGetResponseModel
 {
-    
+
     public Guid Guid { get; set; }
 
     public int RealisedArea { get; set; }
-    
-    
- 
+
+
+
     public bool Ban { get; set; }
 
     public DateTime StartDateOfBan { get; set; }
 
     public int BanDuration { get; set; }
-    
+
     public DateTime BanEndDate { get; set; }
- 
+
     public Guid BiddingGuid { get; set; }
 
     public Guid PersonGuid { get; set; }
 
-    [ValueConverter(typeof(PriorityTypeListValueConverter))]
-    public List<PriorityType>  Priorities { get; set; }
-   
-   // [JsonConverter(typeof(PriorityTypeListJsonConverter))]
-   public List<string> PrioritiesString { get; set; }
+    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
+    public List<PriorityType> Priorities { get; set; }
 
 
 
 
-public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities )
+
+    public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
     {
         Guid = guid;
         RealisedArea = realisedArea;
@@ -52,30 +50,7 @@ public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime sta
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         Priorities = priorities;
-        PrioritiesString = ConvertEnumToString(priorities);
+     
     }
 
-public static List<string> ConvertEnumToString(List<PriorityType> list)
-    {
-
-          var dict= new Dictionary<PriorityType, string> 
-    {
-         { PriorityType.None, "Nije dodeljeno" },
-        { PriorityType.Irrigation, "Ima sistem za navodnjavanje" },
-        { PriorityType.Border, "Granici se sa zemljistem" },
-        { PriorityType.Registry, "Upisan u registar" },
-        { PriorityType.Location, "Najblize zemljistu" },
-    };
-
-        List<string> prioritiesString = new List<string>();
-
-        foreach (PriorityType l in list ) 
-        {
-
-            prioritiesString.Add(dict[l]);
-        
-        }
-
-        return prioritiesString;
-    }
 }

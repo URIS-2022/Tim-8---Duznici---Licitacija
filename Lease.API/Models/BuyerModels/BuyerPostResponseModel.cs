@@ -24,7 +24,8 @@ public class BuyerPostResponseModel
     [JsonConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType> Priorities { get; set; }
 
-    public List<string> PrioritiesString { get; set; }
+   
+
 
 
     public BuyerPostResponseModel(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
@@ -38,8 +39,7 @@ public class BuyerPostResponseModel
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         Priorities = priorities;
-        
-        foreach(PriorityType priorityType in Priorities) { PrioritiesString.Add(priorityType.ToString());}
-       
+
+
     }
 }

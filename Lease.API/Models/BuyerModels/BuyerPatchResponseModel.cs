@@ -1,4 +1,4 @@
-﻿using AutoMapper.Configuration.Annotations;
+﻿
 using Lease.API.Entities;
 using Lease.API.Enums;
 using System.Runtime.Serialization;
@@ -33,6 +33,10 @@ public class BuyerPatchResponseModel
 
 
 
+
+
+
+
     public BuyerPatchResponseModel(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
     {
         Guid = guid;
@@ -43,6 +47,7 @@ public class BuyerPatchResponseModel
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-        Priorities= priorities; 
+        Priorities= priorities;
+       
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lease.API.Migrations
 {
     /// <inheritdoc />
-    public partial class m111 : Migration
+    public partial class finalfinal : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,7 +63,8 @@ namespace Lease.API.Migrations
                     BanDuration = table.Column<int>(type: "int", nullable: false),
                     BanEndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PersonGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PersonGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Priorities = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,10 +83,10 @@ namespace Lease.API.Migrations
                 {
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DateSubmissed = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateSubbmitted = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateCertified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Template = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DocumentType = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
                     LeaseAgreementGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -95,26 +96,6 @@ namespace Lease.API.Migrations
                         name: "FK_Documents_LeaseAgreements_LeaseAgreementGuid",
                         column: x => x.LeaseAgreementGuid,
                         principalTable: "LeaseAgreements",
-                        principalColumn: "Guid",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PriorityTypeEntity",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BuyerGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PriorityTypes = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PriorityTypeEntity", x => new { x.BuyerGuid, x.Id });
-                    table.ForeignKey(
-                        name: "FK_PriorityTypeEntity_Buyers_BuyerGuid",
-                        column: x => x.BuyerGuid,
-                        principalTable: "Buyers",
                         principalColumn: "Guid",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -152,13 +133,10 @@ namespace Lease.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Documents");
-
-            migrationBuilder.DropTable(
-                name: "PriorityTypeEntity");
-
-            migrationBuilder.DropTable(
                 name: "Buyers");
+
+            migrationBuilder.DropTable(
+                name: "Documents");
 
             migrationBuilder.DropTable(
                 name: "LeaseAgreements");

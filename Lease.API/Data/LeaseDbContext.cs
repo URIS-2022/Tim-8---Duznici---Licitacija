@@ -30,8 +30,11 @@ public class LeaseDbContext : DbContext
 
            modelBuilder.Entity<Buyer>()
                .HasKey(u => u.Guid);
+        modelBuilder.Entity<Buyer>()
+               .HasIndex(u => u.PersonGuid).IsUnique(false);
 
-           modelBuilder.Entity<Document>()
+
+        modelBuilder.Entity<Document>()
               .HasIndex(u => u.ReferenceNumber)
               .IsUnique();
 
@@ -59,7 +62,7 @@ public class LeaseDbContext : DbContext
             .HasForeignKey<Buyer>(x => x.PersonGuid)
             .IsRequired();
 
-        modelBuilder.Entity<Buyer>().Property(b => b.Priorities).HasConversion(typeof(PriorityTypeListJsonConverter));
+        modelBuilder.Entity<Buyer>().Property(b => b.Priorities).HasConversion(new PriorityTypeListValueConverter());
 
     }
 

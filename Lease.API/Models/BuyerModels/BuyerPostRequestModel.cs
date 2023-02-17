@@ -27,7 +27,6 @@ public class BuyerPostRequestModel
     public Guid PersonGuid { get; set; }
 
 
-    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType> Priorities { get; set; }
 
     public BuyerPostRequestModel( int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
