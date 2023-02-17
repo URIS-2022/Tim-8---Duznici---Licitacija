@@ -27,6 +27,13 @@
 
   <ItemGroup>
     <Folder Include="Consumes\" />
+    <Folder Include="Controllers\Bidding\" />
+    <Folder Include="Controllers\Landlot\" />
+    <Folder Include="Controllers\Lease\" />
+    <Folder Include="Controllers\Licitation\" />
+    <Folder Include="Controllers\Payment\" />
+    <Folder Include="Controllers\Person\" />
+    <Folder Include="Controllers\Preparation\" />
   </ItemGroup>
 
   <Import Project="..\Shared\Shared.projitems" Label="Shared" />

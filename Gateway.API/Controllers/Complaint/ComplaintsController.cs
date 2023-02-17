@@ -47,7 +47,6 @@ public class ComplaintsController : ControllerBase
     /// </summary>
     /// <returns>IActionResult indicating the status of the operation</returns>
     [HttpGet]
-    [Produces("application/json", "application/xml")]
     public Task<IActionResult> GetComplaints() => serviceProxy.Get();
 
     /// <summary>

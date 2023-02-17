@@ -4,6 +4,168 @@
         <name>Gateway.API</name>
     </assembly>
     <members>
+        <member name="T:Gateway.API.Controllers.CommitteesController">
+            <summary>
+            Represents the API endpoint for managing committees and their members.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Represents a controller for managing committees.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.GetCommittees">
+            <summary>
+            Returns a list of all committees.
+            </summary>
+            <returns>A list of committees</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.GetCommittee(System.String)">
+            <summary>
+            Returns the details of a specific committee.
+            </summary>
+            <param name="id">The ID of the committee</param>
+            <returns>The details of the committee</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.PatchCommittee(System.String,System.Object)">
+            <summary>
+            Updates the specified committee with the given changes.
+            </summary>
+            <param name="id">The ID of the committee to update</param>
+            <param name="requestModel">The changes to apply to the committee</param>
+            <returns>The updated committee</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.PatchCommitteeMember(System.Guid,System.Guid,System.Object)">
+            <summary>
+            Updates the specified member of a committee with the given changes.
+            </summary>
+            <param name="id">The ID of the committee to update the member for</param>
+            <param name="memberId">The ID of the member to update</param>
+            <param name="patchModel">The changes to apply to the member</param>
+            <returns>The updated member</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.PostCommittee(System.Object)">
+            <summary>
+            Creates a new committee.
+            </summary>
+            <param name="postModel">The model for creating a committee.</param>
+            <returns>The created committee.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.PostCommitteeMember(System.Guid,System.Object)">
+            <summary>
+            Creates a new committee member for a committee.
+            </summary>
+            <param name="id">The ID of the committee to which the member belongs.</param>
+            <param name="postModel">The model for creating a committee member.</param>
+            <returns>The created committee member.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.DeleteCommittee(System.String)">
+            <summary>
+            Deletes a committee by ID.
+            </summary>
+            <param name="id">The ID of the committee to delete.</param>
+            <returns>A response indicating the success or failure of the operation.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.CommitteesController.DeleteCommitteeMember(System.Guid,System.Guid)">
+            <summary>
+            Deletes a committee member by ID.
+            </summary>
+            <param name="id">The ID of the committee to which the member belongs.</param>
+            <param name="memberId">The ID of the member to delete.</param>
+            <returns>A response indicating the success or failure of the operation.</returns>
+        </member>
+        <member name="T:Gateway.API.Controllers.DocumentsController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.DocumentsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.DocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.DocumentsController.GetDocument(System.String)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.DocumentsController.PatchDocument(System.String,System.Object)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="requestModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.DocumentsController.PostDocument(System.Object)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="postModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.DocumentsController.DeleteDocument(System.String)">
+            <summary>
+            Deletes a Document by ID
+            </summary>
+            <param name="id">The ID of the Document to delete</param>
+            <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
+        </member>
+        <member name="T:Gateway.API.Controllers.MembersController">
+            <summary>
+            API controller for managing members.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.MembersController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the MembersController class with the specified dependencies.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.MembersController.GetMembers">
+            <summary>
+            Gets all members.
+            </summary>
+            <returns>A collection of MemberGetResponseModel objects.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.MembersController.GetMember(System.String)">
+            <summary>
+            Gets a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to retrieve.</param>
+            <returns>A MemberGetResponseModel object representing the retrieved member.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.MembersController.PatchMember(System.String,System.Object)">
+            <summary>
+            Updates a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to update.</param>
+            <param name="requestModel">The MemberPatchRequestModel containing the updates to apply.</param>
+            <returns>A MemberPatchResponseModel object representing the updated member.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.MembersController.PostMember(System.Object)">
+            <summary>
+            Creates a new member.
+            </summary>
+            <param name="postModel">The MemberPostRequestModel containing the new member data.</param>
+            <returns>A MemberPostResponseModel object representing the newly created member.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.MembersController.DeleteMember(System.String)">
+            <summary>
+            Deletes a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to delete.</param>
+        </member>
         <member name="T:Gateway.API.Controllers.Auth.SystemUsersController">
             <summary>
             Controller for managing System Users
