@@ -75,10 +75,7 @@ namespace Person.API.Models
         /// </summary>
         public AddressPersonResponseModel? Address { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LegalPersonResponseModel"/> class.
-        /// </summary>
-        public LegalPersonResponseModel() { }
+        
 
         /// <summary>
         /// Represents an legal person response model.
