@@ -1,7 +1,1588 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-	<assembly>
-		<name>Landlot.API</name>
-	</assembly>
-	
+    <assembly>
+        <name>Landlot.API</name>
+    </assembly>
+    <members>
+        <member name="T:Landlot.API.Controllers.LandController">
+            <summary>
+            Controller for managing lands.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Controllers.LandController.#ctor(Landlot.API.Data.Repository.ILandRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Controllers.LandController"/> class.
+            </summary>
+            <param name="landRepository">The land repository.</param>
+            <param name="mapper">The mapper.</param>
+        </member>
+        <member name="M:Landlot.API.Controllers.LandController.GetLand">
+            <summary>
+            Retrieves a list of land objects from the land repository.
+            </summary>
+            <returns> A list of land view models.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LandController.GetLand(System.Guid)">
+            <summary>
+            Retrieves a land object with the specified ID from the land repository.
+            </summary>
+            <param name="LandGuid">The ID of the land object to retrieve.</param>
+            <returns>A land view model.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LandController.PatchLand(System.Guid,Landlot.API.Models.LandPatchRequestModel)">
+            <summary>
+            Updates a land object with the specified ID in the land repository.
+            </summary>
+            <param name="id">The ID of the land object to update.</param>
+            <param name="patchModel">A <see cref="T:Landlot.API.Models.LandPatchRequestModel"/> that contains the updated land data.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the update operation.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LandController.PostLand(Landlot.API.Models.LandPostRequestModel)">
+            <summary>
+            Creates a new land object in the land repository.
+            </summary>
+            <param name="postModel">A <see cref="T:Landlot.API.Models.LandPostRequestModel"/> that contains the data for the new land object.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the create operation.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LandController.DeleteLand(System.Guid)">
+            <summary>
+            Deletes a land object with the specified ID from the land repository.
+            </summary>
+            <param name="id">The ID of the land object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+        </member>
+        <member name="T:Landlot.API.Controllers.LotController">
+            <summary>
+            Controller for managing lots of land.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Controllers.LotController.#ctor(Landlot.API.Data.Repository.ILotRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Controllers.LotController"/> class.
+            </summary>
+            <param name="lotRepository">The lot repository.</param>
+            <param name="mapper">The mapper.</param>
+        </member>
+        <member name="M:Landlot.API.Controllers.LotController.GetLot">
+            <summary>
+            Retrieves a list of lot objects from the lot repository.
+            </summary>
+            <returns> A list of lot view models.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LotController.GetLot(System.Guid)">
+            <summary>
+            Retrieves a lot object with the specified ID from the lot repository.
+            </summary>
+            <param name="LotGuid">The ID of the lot object to retrieve.</param>
+            <returns>A lot view model.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LotController.PatchLot(System.Guid,Landlot.API.Models.LotPatchRequestModel)">
+            <summary>
+            Updates a lot object with the specified ID in the lot repository.
+            </summary>
+            <param name="id">The ID of the lot object to update.</param>
+            <param name="patchModel">A <see cref="T:Landlot.API.Models.LotPatchRequestModel"/> that contains the updated lot data.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the update operation.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LotController.PostLot(Landlot.API.Models.LotPostRequestModel)">
+            <summary>
+            Creates a new lot object in the lot repository.
+            </summary>
+            <param name="postModel">A <see cref="T:Landlot.API.Models.LotPostRequestModel"/> that contains the data for the new lot object.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the create operation.</returns>
+        </member>
+        <member name="M:Landlot.API.Controllers.LotController.DeleteLot(System.Guid)">
+            <summary>
+            Deletes a lot object with the specified ID from the lot repository.
+            </summary>
+            <param name="id">The ID of the lot object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+        </member>
+        <member name="T:Landlot.API.Data.LandlotDbContext">
+            <summary>
+            Represents the database context for managing landlot entities.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Data.LandlotDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Landlot.API.Data.LandlotDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Data.LandlotDbContext"/> class using the specified options.
+            </summary>
+            <param name="options">The options for configuring this database context.</param>
+        </member>
+        <member name="P:Landlot.API.Data.LandlotDbContext.Lands">
+            <summary>
+            Gets or sets the DbSet of lands in the database.
+            </summary>
+            <remarks>
+            This DbSet is used to interact with the "Lands" table in the database.
+            </remarks>
+        </member>
+        <member name="P:Landlot.API.Data.LandlotDbContext.Lots">
+            <summary>
+            Gets or sets the DbSet of lots in the database.
+            </summary>
+            <remarks>
+            This DbSet is used to interact with the "Lots" table in the database.
+            </remarks>
+        </member>
+        <member name="M:Landlot.API.Data.LandlotDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjavanje baze sa nekim test podacima
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Data.Repository.ILandRepository">
+            <summary>
+            Represents a repository for managing land data.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILandRepository.GetLands">
+            <summary>
+            Retrieves a collection of land objects from the repository.
+            </summary>
+            <returns>A collection of land objects.</returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILandRepository.GetLand(System.Guid)">
+            <summary>
+            Retrieves a land object with the specified ID from the repository.
+            <param name="id">The ID of the land to retrieve.</param>
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILandRepository.UpdateLand(System.Guid,Landlot.API.Entities.Land)">
+            <summary>
+            Updates the land record with the specified ID.
+            </summary>
+            <param name="id">The unique identifier of the land record.</param>
+            <param name="updateModel">The updated land object.</param>
+            <returns>A boolean value indicating whether the update was successful.</returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILandRepository.AddLand(Landlot.API.Entities.Land)">
+            <summary>
+            Adds a new land record to the repository.
+            </summary>
+            <param name="land">The land object to be added.</param>
+            <returns>The unique identifier of the added land record.</returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILandRepository.DeleteLand(System.Guid)">
+            <summary>
+            Deletes the land record with the specified ID.
+            </summary>
+            <param name="id">The unique identifier of the land record to be deleted.</param>
+            <returns>A boolean value indicating whether the deletion was successful.</returns>
+        </member>
+        <member name="T:Landlot.API.Data.Repository.ILotRepository">
+            <summary>
+            Represents a repository for managing lot data.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILotRepository.GetLots">
+            <summary>
+            Retrieves a collection of lot objects from the repository.
+            </summary>
+            <returns>A collection of lot objects.</returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILotRepository.GetLot(System.Guid)">
+            <summary>
+            Retrieves a lot object with the specified ID from the repository.
+            <param name="id">The ID of the lot to retrieve.</param>
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILotRepository.UpdateLot(System.Guid,Landlot.API.Entities.Lot)">
+            <summary>
+            Updates the lot record with the specified ID.
+            </summary>
+            <param name="id">The unique identifier of the lot record.</param>
+            <param name="updateModel">The updated lot object.</param>
+            <returns>A boolean value indicating whether the update was successful.</returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILotRepository.AddLot(Landlot.API.Entities.Lot)">
+            <summary>
+            Adds a new lot record to the repository.
+            </summary>
+            <param name="lot">The lot object to be added.</param>
+            <returns>The unique identifier of the added lot record.</returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.ILotRepository.DeleteLot(System.Guid)">
+            <summary>
+            Deletes the lot record with the specified ID.
+            </summary>
+            <param name="id">The unique identifier of the lot record to be deleted.</param>
+            <returns>A boolean value indicating whether the deletion was successful.</returns>
+        </member>
+        <member name="T:Landlot.API.Data.Repository.LandRepository">
+            <summary>
+            Implements the ILandRepository interface to provide CRUD operations for land records.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LandRepository.#ctor(Landlot.API.Data.LandlotDbContext)">
+            <summary>
+            Initializes a new instance of the LandRepository class with the specified database context.
+            </summary>
+            <param name="context">The database context for the repository.</param>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LandRepository.GetLands">
+            <summary>
+            Gets all land records asynchronously.
+            </summary>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains an enumerable collection of all land records in the database.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LandRepository.GetLand(System.Guid)">
+            <summary>
+            Gets the land record with the specified ID asynchronously.
+            </summary>
+            <param name="id">The unique identifier of the land record to retrieve.</param>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains the land record with the specified ID, or null if no such record exists.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LandRepository.UpdateLand(System.Guid,Landlot.API.Entities.Land)">
+            <summary>
+            Updates the land record with the specified ID asynchronously.
+            </summary>
+            <param name="id">The unique identifier of the land record to update.</param>
+            <param name="updateModel">The updated land record information.</param>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains the updated land record, or null if no such record exists.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LandRepository.AddLand(Landlot.API.Entities.Land)">
+            <summary>
+            Adds a new land record to the database asynchronously.
+            </summary>
+            <param name="land">The land record to add to the database.</param>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains the added land record, including any database-generated fields.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LandRepository.DeleteLand(System.Guid)">
+            <summary>
+            Deletes the land record with the specified ID asynchronously.
+            </summary>
+            <param name="id">The unique identifier of the land record to delete.</param>
+            <returns>
+            A task that represents the asynchronous operation.
+            </returns>
+        </member>
+        <member name="T:Landlot.API.Data.Repository.LotRepository">
+            <summary>
+            Implements the ILotRepository interface to provide CRUD operations for land records.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LotRepository.#ctor(Landlot.API.Data.LandlotDbContext)">
+            <summary>
+            Initializes a new instance of the LotRepository class with the specified database context.
+            </summary>
+            <param name="context">The database context for the repository.</param>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LotRepository.GetLots">
+            <summary>
+            Gets all lot records asynchronously.
+            </summary>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains an enumerable collection of all lot records in the database.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LotRepository.GetLot(System.Guid)">
+            <summary>
+            Gets the lot record with the specified ID asynchronously.
+            </summary>
+            <param name="id">The unique identifier of the lot record to retrieve.</param>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains the lot record with the specified ID, or null if no such record exists.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LotRepository.UpdateLot(System.Guid,Landlot.API.Entities.Lot)">
+            <summary>
+            Updates the lot record with the specified ID asynchronously.
+            </summary>
+            <param name="id">The unique identifier of the lot record to update.</param>
+            <param name="updateModel">The updated lot record information.</param>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains the updated lot record, or null if no such record exists.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LotRepository.AddLot(Landlot.API.Entities.Lot)">
+            <summary>
+            Adds a new lot record to the database asynchronously.
+            </summary>
+            <param name="lot">The lot record to add to the database.</param>
+            <returns>
+            A task that represents the asynchronous operation. The task result contains the added lot record, including any database-generated fields.
+            </returns>
+        </member>
+        <member name="M:Landlot.API.Data.Repository.LotRepository.DeleteLot(System.Guid)">
+            <summary>
+            Deletes the lot record with the specified ID asynchronously.
+            </summary>
+            <param name="id">The unique identifier of the lot record to delete.</param>
+            <returns>
+            A task that represents the asynchronous operation.
+            </returns>
+        </member>
+        <member name="T:Landlot.API.Entities.Land">
+            <summary>
+            Represents a piece of land with multiple lots and various attributes such as zoning, property type, and drainage.
+            Implements the IValidatableObject interface for custom validation logic.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.LandGuid">
+            <summary>
+            Gets or sets the unique identifier for a land record.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.TotalArea">
+            <summary>
+            Gets or sets the total area of the land in square meters.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.Municipality">
+            <summary>
+            Gets or sets the municipality in which the landlot is located.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.RealEstateNumber">
+            <summary>
+            Gets or sets the RealSstateNumber of the landlot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.Culture">
+            <summary>
+            Gets or sets the culture of the landlot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.LandClass">
+            <summary>
+            Gets or sets the class of the landlot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.Processing">
+            <summary>
+            Gets or sets the public LandlotProcessing object used for processing landlot data.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.Zone">
+            <summary>
+            Gets or sets the public LandlotProtectedZone object used for managing protected zones within the landlot.
+            </summary>
+            
+        </member>
+        <member name="P:Landlot.API.Entities.Land.Property">
+            <summary>
+            Gets or sets the public LandlotPropertyType object used for managing property types within the landlot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Land.Drainage">
+            <summary>
+            Gets or sets the public LandlotDrainage object used for managing drainage systems within the landlot.
+            </summary>
+            
+        </member>
+        <member name="P:Landlot.API.Entities.Land.Lots">
+            <summary>
+            Gets or sets a list of Lot objects representing the individual lots within the landlot.
+            </summary>
+            <remarks>
+            This property can be used to access and manipulate information about each lot within the landlot,
+            such as its boundaries, ownership, and permitted uses.
+            </remarks>
+        </member>
+        <member name="M:Landlot.API.Entities.Land.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the Landlot object using the specified validation context and returns a collection of validation results.
+            </summary>
+            <param name="validationContext">The validation context used for validation.</param>
+            <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
+        </member>
+        <member name="T:Landlot.API.Entities.Lot">
+            <summary>
+            Represents an individual lot within a larger piece of land with various attributes such as boundaries, ownership, and permitted uses.
+            Implements the IValidatableObject interface for custom validation logic.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.LotGuid">
+            <summary>
+            Gets or sets the unique identifier for the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.LandGuid">
+            <summary>
+            Gets or sets the unique identifier for the landlot that the lot belongs to.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.LotArea">
+            <summary>
+            Gets or sets the area of the lot in square meters.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.LotUser">
+            <summary>
+            Gets or sets the unique identifier of the user who owns the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.LotNumber">
+            <summary>
+            Gets or sets the unique number or identifier of the lot within the landlot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.CultureState">
+            <summary>
+            Gets or sets the cultural state of the landlot, which may affect its use or development.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.ClassState">
+            <summary>
+            Gets or sets the class state of the landlot, which may affect its use or development.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.ProcessingState">
+            <summary>
+            Gets or sets the processing state of the landlot, which may indicate its readiness for development or sale.
+            </summary>
+            
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.ProtectedZoneState">
+            <summary>
+            Gets or sets the protected zone state of the landlot, which may affect its use or development.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.DrainageState">
+            <summary>
+            Gets or sets the drainage state of the landlot, which may affect its suitability for development or agricultural use.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Entities.Lot.Land">
+            <summary>
+            Gets or sets the Land object associated with the Lot.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Entities.Lot.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the Lot object and returns a collection of any validation errors.
+            </summary>
+            <param name="validationContext">The context in which the validation is being performed.</param>
+            <returns>
+            A collection of ValidationResult objects that represent the validation errors detected on the Lot object.
+            </returns>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotClass">
+            <summary>
+            Represents the class state of a landlot, which reflects its agricultural productivity potential.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.I">
+            <summary>
+            Represents the "I" soil classification category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.II">
+            <summary>
+            Represents the "II" soil classification category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.III">
+            <summary>
+            Represents the "III" soil classification category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.IV">
+            <summary>
+            Represents the "IV" soil classification category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.V">
+            <summary>
+            Represents the "V" soil classification category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.VI">
+            <summary>
+            Represents the "VI" soil classification category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.VII">
+            <summary>
+            Represents the "VII" soil classification category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotClass.VIII">
+            <summary>
+            Represents the "VIII" soil classification category.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotClassConverter">
+            <summary>
+            Provides custom JSON serialization and deserialization for the LandlotClass enum.
+            </summary>
+            <remarks>
+            The LandlotClassConverter class can be used to convert a JSON representation of a LandlotClass enum value to an instance of the LandlotClass type, and vice versa.
+            This can be useful when serializing or deserializing Land objects to or from JSON format, for example.
+            </remarks>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotClassConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the JSON representation of a LandlotClass enum value and converts it to an instance of the LandlotClass type.
+            </summary>
+            <param name="reader">The Utf8JsonReader that contains the JSON data to be read.</param>
+            <param name="typeToConvert">The target type to convert to, which should be LandlotClass.</param>
+            <param name="options">The JsonSerializerOptions to use for deserialization.</param>
+            <returns>An instance of the LandlotClass type that corresponds to the JSON value that was read.</returns>
+            <remarks>
+            The Read method is called by the JSON serializer to convert a JSON representation of a LandlotClass enum value to an instance of the LandlotClass type.
+            The method reads the JSON data from the reader parameter and returns an instance of the LandlotClass type that corresponds to the JSON value that was read.
+            </remarks>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotClassConverter.Write(System.Text.Json.Utf8JsonWriter,Landlot.API.Enums.LandlotClass,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes a LandlotClass value to JSON format using the specified Utf8JsonWriter.
+            </summary>
+            <param name="writer">The Utf8JsonWriter to use for writing the JSON data.</param>
+            <param name="value">The LandlotClass value to write to JSON format.</param>
+            <param name="options">The JsonSerializerOptions to use for serialization.</param>
+            <remarks>
+            The Write method is called by the JSON serializer to convert a LandlotClass value to a JSON representation.
+            The method writes the JSON data to the writer parameter in the specified format.
+            </remarks>
+            
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotCulture">
+            <summary>
+            Enumerates the possible land use categories for a land lot.
+            </summary>
+            <remarks>
+            The LandlotCulture enumeration represents the possible land use categories for a land lot, such as agriculture, forestry, or wetlands.
+            The enum values correspond to the categories defined in the Croatian land use classification system, which classifies land use based on its function and economic value.
+            The possible values are "Njive", "Vrtovi", "Voćnjaci", "Vinogradi", "Livade", "Pasnjaci", "Sume", and "TrsticiMocvare".
+            </remarks>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.Njive">
+            <summary>
+            Represents the "Njive" land use category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.Vrtovi">
+            <summary>
+            Represents the "Vrtovi" land use category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.Voćnjaci">
+            <summary>
+            Represents the "Njive" land use category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.Vinogradi">
+            <summary>
+            Represents the "Vinogradi" land use category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.Livade">
+            <summary>
+            Represents the "Livade" land use category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.Pasnjaci">
+            <summary>
+            Represents the "Pasnjaci" land use category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.Sume">
+            <summary>
+            Represents the "Sume" land use category.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotCulture.TrsticiMocvare">
+            <summary>
+            Represents the "Trstici Mocvare" land use category.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotCultureConverter">
+            <summary>
+            Converts a <see cref="T:Landlot.API.Enums.LandlotCulture"/> value to and from JSON.
+            </summary>
+            <remarks>
+            This converter is used by the JSON serializer to convert LandlotCulture enum values to and from JSON.
+            It overrides the default serialization behavior to output enum values as strings instead of integers.
+            </remarks>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotCultureConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads a JSON value and converts it to a <see cref="T:Landlot.API.Enums.LandlotCulture"/> enum value.
+            </summary>
+            <param name="reader">The reader used to read the JSON value.</param>
+            <param name="typeToConvert">The type to convert.</param>
+            <param name="options">The serializer options.</param>
+            <returns>A <see cref="T:Landlot.API.Enums.LandlotCulture"/> enum value.</returns>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotCultureConverter.Write(System.Text.Json.Utf8JsonWriter,Landlot.API.Enums.LandlotCulture,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes a LandlotCulture value to JSON format using the specified Utf8JsonWriter.
+            </summary>
+            <param name="writer">The Utf8JsonWriter to use for writing the JSON data.</param>
+            <param name="value">The LandlotCulture value to write to JSON format.</param>
+            <param name="options">The JsonSerializerOptions to use for serialization.</param>
+            <remarks>
+            The Write method is called by the JSON serializer to convert a LandlotCulture value to a JSON representation.
+            The method writes the JSON data to the writer parameter in the specified format.
+            </remarks>
+            
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotDrainage">
+            <summary>
+            Specifies the type of drainage used on a land lot.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotDrainage.Odvodnjavanje">
+            <summary>
+            The land lot is drained by traditional drainage methods.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotDrainageConverter">
+            <summary>
+            Provides custom conversion logic for the <see cref="T:Landlot.API.Enums.LandlotDrainage"/> enumeration when
+            it is serialized or deserialized with Newtonsoft.Json.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotDrainageConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads and converts the JSON representation of the <see cref="T:Landlot.API.Enums.LandlotDrainage"/> enumeration.
+            </summary>
+            <param name="reader">The reader used to read the JSON.</param>
+            <param name="typeToConvert">The type of object being converted.</param>
+            <param name="options">The serializer options to use.</param>
+            <returns>The deserialized <see cref="T:Landlot.API.Enums.LandlotDrainage"/> enumeration value.</returns>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotDrainageConverter.Write(System.Text.Json.Utf8JsonWriter,Landlot.API.Enums.LandlotDrainage,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the JSON representation of the specified <see cref="T:Landlot.API.Enums.LandlotDrainage"/> enumeration value.
+            </summary>
+            <param name="writer">The writer used to write the JSON.</param>
+            <param name="value">The <see cref="T:Landlot.API.Enums.LandlotDrainage"/> enumeration value to write.</param>
+            <param name="options">The serializer options to use.</param>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotMunicipality">
+            <summary>
+            Specifies the municipality in which a land lot is located.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.Bikovo">
+            <summary>
+            The land lot is located in the Bikovo municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.Bajmok">
+            <summary>
+            The land lot is located in the Bajmok municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.Palic">
+            <summary>
+            The land lot is located in the Palic municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.StariGrad">
+            <summary>
+            The land lot is located in the Stari Grad municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.NoviGrad">
+            <summary>
+            The land lot is located in the Novi Grad municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.DonjiGrad">
+            <summary>
+            The land lot is located in the Donji Grad municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.Zednik">
+            <summary>
+            The land lot is located in the Zednik municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.Djurdjin">
+            <summary>
+            The land lot is located in the Djurdjin municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.Tavankut">
+            <summary>
+            The land lot is located in the Tavankut municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.BackiVinogradi">
+            <summary>
+            The land lot is located in the Backi Vinogradi municipality.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotMunicipality.Cantavir">
+            <summary>
+            The land lot is located in the Cantavir municipality.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotMunicipalityConverter">
+            <summary>
+            Provides custom conversion logic for the <see cref="T:Landlot.API.Enums.LandlotMunicipality"/> enumeration when
+            it is serialized or deserialized with Newtonsoft.Json.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotMunicipalityConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads and converts the JSON representation of the <see cref="T:Landlot.API.Enums.LandlotMunicipality"/> enumeration.
+            </summary>
+            <param name="reader">The reader used to read the JSON.</param>
+            <param name="typeToConvert">The type of object being converted.</param>
+            <param name="options">The serializer options to use.</param>
+            <returns>The deserialized <see cref="T:Landlot.API.Enums.LandlotMunicipality"/> enumeration value.</returns>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotMunicipalityConverter.Write(System.Text.Json.Utf8JsonWriter,Landlot.API.Enums.LandlotMunicipality,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the JSON representation of the specified <see cref="T:Landlot.API.Enums.LandlotMunicipality"/> enumeration value.
+            </summary>
+            <param name="writer">The writer used to write the JSON.</param>
+            <param name="value">The <see cref="T:Landlot.API.Enums.LandlotMunicipality"/> enumeration value to write.</param>
+            <param name="options">The serializer options to use.</param>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotProcessing">
+            <summary>
+            Specifies the type of processing that can be done on a land lot.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotProcessing.Obradivo">
+            <summary>
+            The land lot is arable and can be used for cultivation or other agricultural activities.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotProcessing.Ostalo">
+            <summary>
+            The land lot is not arable and cannot be used for cultivation or other agricultural activities.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotProcessingConverter">
+            <summary>
+            Converts a <see cref="T:Landlot.API.Enums.LandlotProcessing"/> value to and from JSON.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotProcessingConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads and converts the JSON representation of the <see cref="T:Landlot.API.Enums.LandlotProcessing"/> enumeration.
+            </summary>
+            <param name="reader">The reader used to read the JSON.</param>
+            <param name="typeToConvert">The type of object being converted.</param>
+            <param name="options">The serializer options to use.</param>
+            <returns>The deserialized <see cref="T:Landlot.API.Enums.LandlotProcessing"/> enumeration value.</returns>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotProcessingConverter.Write(System.Text.Json.Utf8JsonWriter,Landlot.API.Enums.LandlotProcessing,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the JSON representation of the specified <see cref="T:Landlot.API.Enums.LandlotProcessing"/> enumeration value.
+            </summary>
+            <param name="writer">The writer used to write the JSON.</param>
+            <param name="value">The <see cref="T:Landlot.API.Enums.LandlotProcessing"/> enumeration value to write.</param>
+            <param name="options">The serializer options to use.</param>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotPropertyType">
+            <summary>
+            Specifies the type of property ownership for a land lot.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotPropertyType.PrivatnaSvojina">
+            <summary>
+            The land lot is privately owned.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotPropertyType.DrzavnaSvojina">
+            <summary>
+            The land lot is owned by the state.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotPropertyType.DrzavnaSvojinaRS">
+            <summary>
+            The land lot is owned by the Republic of Serbia.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotPropertyType.DrustvenaSvojina">
+            <summary>
+            The land lot is owned by a social organization or institution.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotPropertyType.ZadruznaSvojina">
+            <summary>
+            The land lot is owned by a cooperative or communal organization.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotPropertyType.MesovitaSvojina">
+            <summary>
+            The land lot has a mixed ownership structure.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotPropertyType.DrugiOblici">
+            <summary>
+            The land lot has a different or unspecified ownership structure.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotPropertyTypeConverter">
+            <summary>
+            Converts a <see cref="T:Landlot.API.Enums.LandlotPropertyType"/> value to and from JSON.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotPropertyTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads and converts the JSON representation of the <see cref="T:Landlot.API.Enums.LandlotPropertyType"/> enumeration.
+            </summary>
+            <param name="reader">The reader used to read the JSON.</param>
+            <param name="typeToConvert">The type of object being converted.</param>
+            <param name="options">The serializer options to use.</param>
+            <returns>The deserialized <see cref="T:Landlot.API.Enums.LandlotPropertyType"/> enumeration value.</returns>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotPropertyTypeConverter.Write(System.Text.Json.Utf8JsonWriter,Landlot.API.Enums.LandlotPropertyType,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the JSON representation of the specified <see cref="T:Landlot.API.Enums.LandlotPropertyType"/> enumeration value.
+            </summary>
+            <param name="writer">The writer used to write the JSON.</param>
+            <param name="value">The <see cref="T:Landlot.API.Enums.LandlotPropertyType"/> enumeration value to write.</param>
+            <param name="options">The serializer options to use.</param>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotProtectedZone">
+            <summary>
+            Specifies the protected zone classification for a land lot.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotProtectedZone.Zone1">
+            <summary>
+            Zone 1 classification.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotProtectedZone.Zone2">
+            <summary>
+            Zone 2 classification.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotProtectedZone.Zone3">
+            <summary>
+            Zone 3 classification.
+            </summary>
+        </member>
+        <member name="F:Landlot.API.Enums.LandlotProtectedZone.Zone4">
+            <summary>
+            Zone 4 classification.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Enums.LandlotProtectedZoneConverter">
+            <summary>
+            Converts a <see cref="T:Landlot.API.Enums.LandlotProtectedZone"/> value to and from JSON.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotProtectedZoneConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads and converts the JSON representation of the <see cref="T:Landlot.API.Enums.LandlotProtectedZone"/> enumeration.
+            </summary>
+            <param name="reader">The reader used to read the JSON.</param>
+            <param name="typeToConvert">The type of object being converted.</param>
+            <param name="options">The serializer options to use.</param>
+            <returns>The deserialized <see cref="T:Landlot.API.Enums.LandlotProtectedZone"/> enumeration value.</returns>
+        </member>
+        <member name="M:Landlot.API.Enums.LandlotProtectedZoneConverter.Write(System.Text.Json.Utf8JsonWriter,Landlot.API.Enums.LandlotProtectedZone,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the JSON representation of the specified <see cref="T:Landlot.API.Enums.LandlotProtectedZone"/> enumeration value.
+            </summary>
+            <param name="writer">The writer used to write the JSON.</param>
+            <param name="value">The <see cref="T:Landlot.API.Enums.LandlotProtectedZone"/> enumeration value to write.</param>
+            <param name="options">The serializer options to use.</param>
+        </member>
+        <member name="T:Landlot.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Landlot.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Landlot.API.Models.LandGetResponseModel">
+            <summary>
+            Represents a response model for a land record.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.LandGuid">
+            <summary>
+            Gets or sets the unique identifier for the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.TotalArea">
+            <summary>
+            Gets or sets the total area of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.Municipality">
+            <summary>
+            Gets or sets the municipality where the land is located.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.RealEstateNumber">
+            <summary>
+            Gets or sets the real estate number of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.Culture">
+            <summary>
+            Gets or sets the primary crop culture of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.LandClass">
+            <summary>
+            Gets or sets the land class.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.Processing">
+            <summary>
+            Gets or sets the land processing type.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.Zone">
+            <summary>
+            Gets or sets the protected zone classification of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.Property">
+            <summary>
+            Gets or sets the property type of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandGetResponseModel.Drainage">
+            <summary>
+            Gets or sets the land drainage type.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LandGetResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LandGetResponseModel"/> class.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LandGetResponseModel.#ctor(System.Guid,System.Decimal,Landlot.API.Enums.LandlotMunicipality,System.String,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotPropertyType,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Represents a response model for a land record.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Models.LandPatchRequestModel">
+            <summary>
+            Model for updating a land's properties.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.TotalArea">
+            <summary>
+            Gets or sets the total area of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.Municipality">
+            <summary>
+            Gets or sets the municipality where the land is located.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.RealEstateNumber">
+            <summary>
+            Gets or sets the real estate number of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.Culture">
+            <summary>
+            Gets or sets the culture of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.LandClass">
+            <summary>
+            Gets or sets the class of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.Processing">
+            <summary>
+            Gets or sets the processing type of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.Zone">
+            <summary>
+            Gets or sets the protected zone of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.Property">
+            <summary>
+            Gets or sets the property type of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchRequestModel.Drainage">
+            <summary>
+            Gets or sets the drainage type of the land.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LandPatchRequestModel.#ctor(System.Nullable{System.Decimal},System.Nullable{Landlot.API.Enums.LandlotMunicipality},System.String,System.Nullable{Landlot.API.Enums.LandlotCulture},System.Nullable{Landlot.API.Enums.LandlotClass},System.Nullable{Landlot.API.Enums.LandlotProcessing},System.Nullable{Landlot.API.Enums.LandlotProtectedZone},System.Nullable{Landlot.API.Enums.LandlotPropertyType},System.Nullable{Landlot.API.Enums.LandlotDrainage})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LandPatchRequestModel"/> class with the specified parameters.
+            </summary>
+            <param name="totalArea">The total area of the land lot.</param>
+            <param name="municipality">The municipality where the land lot is located.</param>
+            <param name="realEstateNumber">The real estate number of the land lot.</param>
+            <param name="culture">The culture of the land lot.</param>
+            <param name="landClass">The class of the land lot.</param>
+            <param name="processing">The processing type of the land lot.</param>
+            <param name="zone">The protected zone of the land lot.</param>
+            <param name="property">The property type of the land lot.</param>
+            <param name="drainage">The drainage type of the land lot.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LandPatchResponseModel">
+            <summary>
+            Represents a response model for patching land details
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.LandGuid">
+            <summary>
+            Gets or sets the GUID of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.TotalArea">
+            <summary>
+            Gets or sets the total area of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.Municipality">
+            <summary>
+            Gets or sets the municipality of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.RealEstateNumber">
+            <summary>
+            Gets or sets the real estate number of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.Culture">
+            <summary>
+            Gets or sets the culture of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.LandClass">
+            <summary>
+            Gets or sets the class of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.Processing">
+            <summary>
+            Gets or sets the processing of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.Zone">
+            <summary>
+            Gets or sets the protected zone of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.Property">
+            <summary>
+            Gets or sets the property type of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPatchResponseModel.Drainage">
+            <summary>
+            Gets or sets the drainage of the land.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LandPatchResponseModel.#ctor(System.Guid,System.Decimal,Landlot.API.Enums.LandlotMunicipality,System.String,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotPropertyType,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LandPatchResponseModel"/> class.
+            </summary>
+            <param name="landGuid">The GUID of the land.</param>
+            <param name="totalArea">The total area of the land.</param>
+            <param name="municipality">The municipality of the land.</param>
+            <param name="realEstateNumber">The real estate number of the land.</param>
+            <param name="culture">The culture of the land.</param>
+            <param name="landClass">The class of the land.</param>
+            <param name="processing">The processing of the land.</param>
+            <param name="zone">The protected zone of the land.</param>
+            <param name="property">The property type of the land.</param>
+            <param name="drainage">The drainage of the land.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LandPostRequestModel">
+            <summary>
+            Represents a request model for creating a new land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.TotalArea">
+            <summary>
+            Gets or sets the total area of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.Municipality">
+            <summary>
+            Gets or sets the municipality of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.RealEstateNumber">
+            <summary>
+            Gets or sets the real estate number of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.Culture">
+            <summary>
+            Gets or sets the culture of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.LandClass">
+            <summary>
+            Gets or sets the class of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.Processing">
+            <summary>
+            Gets or sets the processing of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.Zone">
+            <summary>
+            Gets or sets the protected zone of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.Property">
+            <summary>
+            Gets or sets the property type of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostRequestModel.Drainage">
+            <summary>
+            Gets or sets the drainage of the land.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LandPostRequestModel.#ctor(System.Decimal,Landlot.API.Enums.LandlotMunicipality,System.String,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotPropertyType,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Initializes a new instance of the LandPostRequestModel class with the specified values.
+            </summary>
+            <param name="totalArea">The total area of the land.</param>
+            <param name="municipality">The municipality of the land.</param>
+            <param name="realEstateNumber">The real estate number of the land.</param>
+            <param name="culture">The culture of the land.</param>
+            <param name="landClass">The class of the land.</param>
+            <param name="processing">The processing of the land.</param>
+            <param name="zone">The protected zone of the land.</param>
+            <param name="property">The property type of the land.</param>
+            <param name="drainage">The drainage of the land.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LandPostResponseModel">
+            <summary>
+            Represents a response model for a land post request.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.TotalArea">
+            <summary>
+            Gets or sets the total area of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.Municipality">
+            <summary>
+            Gets or sets the municipality of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.RealEstateNumber">
+            <summary>
+            Gets or sets the real estate number of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.Culture">
+            <summary>
+            Gets or sets the culture of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.LandClass">
+            <summary>
+            Gets or sets the land class of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.Processing">
+            <summary>
+            Gets or sets the processing information of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.Zone">
+            <summary>
+            Gets or sets the protected zone of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.Property">
+            <summary>
+            Gets or sets the property type of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LandPostResponseModel.Drainage">
+            <summary>
+            Gets or sets the drainage information of the land.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LandPostResponseModel.#ctor(System.Decimal,Landlot.API.Enums.LandlotMunicipality,System.String,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotPropertyType,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LandPostResponseModel"/> class.
+            </summary>
+            <param name="totalArea">The total area of the land.</param>
+            <param name="municipality">The municipality of the land.</param>
+            <param name="realEstateNumber">The real estate number of the land.</param>
+            <param name="culture">The culture of the land.</param>
+            <param name="landClass">The land class of the land.</param>
+            <param name="processing">The processing information of the land.</param>
+            <param name="zone">The protected zone of the land.</param>
+            <param name="property">The property type of the land.</param>
+            <param name="drainage">The drainage information of the land.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LotGetResponseModel">
+            <summary>
+            Represents a response model for a lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.LotGuid">
+            <summary>
+            The unique identifier of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.LandGuid">
+            <summary>
+            The unique identifier of the land that the lot belongs to.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.LotArea">
+            <summary>
+            The area of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.LotUser">
+            <summary>
+            The unique identifier of the user who owns the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.LotNumber">
+            <summary>
+            The number of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.CultureState">
+            <summary>
+            The culture state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.ClassState">
+            <summary>
+            The class state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.ProcessingState">
+            <summary>
+            The processing state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.ProtectedZoneState">
+            <summary>
+            The protected zone state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotGetResponseModel.DrainageState">
+            <summary>
+            The drainage state of the lot.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LotGetResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LotGetResponseModel"/> class.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LotGetResponseModel.#ctor(System.Guid,System.Guid,System.Decimal,System.Guid,System.Int32,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LotGetResponseModel"/> class with the specified values.
+            </summary>
+            <param name="lotGuid">The unique identifier of the lot.</param>
+            <param name="landGuid">The unique identifier of the land that the lot belongs to.</param>
+            <param name="lotArea">The area of the lot.</param>
+            <param name="lotUser">The unique identifier of the user who owns the lot.</param>
+            <param name="lotNumber">The number of the lot.</param>
+            <param name="cultureState">The culture state of the lot.</param>
+            <param name="classState">The class state of the lot.</param>
+            <param name="processingState">The processing state of the lot.</param>
+            <param name="protectedZoneState">The protected zone state of the lot.</param>
+            <param name="drainageState">The drainage state of the lot.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LotPatchRequestModel">
+            <summary>
+            Model used for patching a lot's properties.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.LandGuid">
+            <summary>
+            The GUID of the land that the lot is on.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.LotArea">
+            <summary>
+            The area of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.LotUser">
+            <summary>
+            The GUID of the user who owns the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.LotNumber">
+            <summary>
+            The lot number.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.CultureState">
+            <summary>
+            The culture state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.ClassState">
+            <summary>
+            The class state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.ProcessingState">
+            <summary>
+            The processing state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.ProtectedZoneState">
+            <summary>
+            The protected zone state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchRequestModel.DrainageState">
+            <summary>
+            The drainage state of the lot.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LotPatchRequestModel.#ctor(System.Nullable{System.Guid},System.Nullable{System.Decimal},System.Nullable{System.Guid},System.Nullable{System.Int32},System.Nullable{Landlot.API.Enums.LandlotCulture},System.Nullable{Landlot.API.Enums.LandlotClass},System.Nullable{Landlot.API.Enums.LandlotProcessing},System.Nullable{Landlot.API.Enums.LandlotProtectedZone},System.Nullable{Landlot.API.Enums.LandlotDrainage})">
+            <summary>
+            Initializes a new instance of the LotPatchRequestModel class with the specified properties.
+            </summary>
+            <param name="landGuid">The new Land Guid to assign to the Lot.</param>
+            <param name="lotArea">The new area of the Lot.</param>
+            <param name="lotUser">The new user associated with the Lot.</param>
+            <param name="lotNumber">The new number of the Lot.</param>
+            <param name="cultureState">The new culture state of the Lot.</param>
+            <param name="classState">The new class state of the Lot.</param>
+            <param name="processingState">The new processing state of the Lot.</param>
+            <param name="protectedZoneState">The new protected zone state of the Lot.</param>
+            <param name="drainageState">The new drainage state of the Lot.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LotPatchResponseModel">
+            <summary>
+            Represents a response model for patching lot information.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.LotGuid">
+            <summary>
+            Gets or sets the unique identifier of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.LandGuid">
+            <summary>
+            Gets or sets the unique identifier of the land.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.LotArea">
+            <summary>
+            Gets or sets the area of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.LotUser">
+            <summary>
+            Gets or sets the unique identifier of the user associated with the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.LotNumber">
+            <summary>
+            Gets or sets the lot number.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.CultureState">
+            <summary>
+            Gets or sets the culture state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.ClassState">
+            <summary>
+            Gets or sets the class state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.ProcessingState">
+            <summary>
+            Gets or sets the processing state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.ProtectedZoneState">
+            <summary>
+            Gets or sets the protected zone state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPatchResponseModel.DrainageState">
+            <summary>
+            Gets or sets the drainage state of the lot.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LotPatchResponseModel.#ctor(System.Guid,System.Guid,System.Decimal,System.Guid,System.Int32,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LotPatchResponseModel"/> class.
+            </summary>
+            <param name="lotGuid">The unique identifier of the lot.</param>
+            <param name="landGuid">The unique identifier of the land.</param>
+            <param name="lotArea">The area of the lot.</param>
+            <param name="lotUser">The unique identifier of the user who owns the lot.</param>
+            <param name="lotNumber">The number of the lot.</param>
+            <param name="cultureState">The culture state of the lot.</param>
+            <param name="classState">The class state of the lot.</param>
+            <param name="processingState">The processing state of the lot.</param>
+            <param name="protectedZoneState">The protected zone state of the lot.</param>
+            <param name="drainageState">The drainage state of the lot.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LotPostRequestModel">
+            <summary>
+            Represents a model for a HTTP POST request to create a new lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.LandGuid">
+            <summary>
+            Gets or sets the GUID of the land associated with the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.LotArea">
+            <summary>
+            Gets or sets the area of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.LotUser">
+            <summary>
+            Gets or sets the GUID of the user associated with the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.LotNumber">
+            <summary>
+            Gets or sets the number of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.CultureState">
+            <summary>
+            Gets or sets the culture state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.ClassState">
+            <summary>
+            Gets or sets the class state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.ProcessingState">
+            <summary>
+            Gets or sets the processing state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.ProtectedZoneState">
+            <summary>
+            Gets or sets the protected zone state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostRequestModel.DrainageState">
+            <summary>
+            Gets or sets the drainage state of the lot.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LotPostRequestModel.#ctor(System.Guid,System.Decimal,System.Guid,System.Int32,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Creates a new instance of the LotPostRequestModel class with the specified properties.
+            </summary>
+            <param name="landGuid">The GUID of the land associated with the lot.</param>
+            <param name="lotArea">The area of the lot in square meters.</param>
+            <param name="lotUser">The GUID of the user who owns the lot.</param>
+            <param name="lotNumber">The number of the lot within the land.</param>
+            <param name="cultureState">The culture state of the lot.</param>
+            <param name="classState">The class state of the lot.</param>
+            <param name="processingState">The processing state of the lot.</param>
+            <param name="protectedZoneState">The protected zone state of the lot.</param>
+            <param name="drainageState">The drainage state of the lot.</param>
+        </member>
+        <member name="T:Landlot.API.Models.LotPostResponseModel">
+            <summary>
+            Represents the response model for a new lot posted to the system.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.LandGuid">
+            <summary>
+            Gets or sets the GUID of the land associated with the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.LotArea">
+            <summary>
+            Gets or sets the area of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.LotUser">
+            <summary>
+            Gets or sets the GUID of the user who owns the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.LotNumber">
+            <summary>
+            Gets or sets the number of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.CultureState">
+            <summary>
+            Gets or sets the culture state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.ClassState">
+            <summary>
+            Gets or sets the class state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.ProcessingState">
+            <summary>
+            Gets or sets the processing state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.ProtectedZoneState">
+            <summary>
+            Gets or sets the protected zone state of the lot.
+            </summary>
+        </member>
+        <member name="P:Landlot.API.Models.LotPostResponseModel.DrainageState">
+            <summary>
+            Gets or sets the drainage state of the lot.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Models.LotPostResponseModel.#ctor(System.Guid,System.Decimal,System.Guid,System.Int32,Landlot.API.Enums.LandlotCulture,Landlot.API.Enums.LandlotClass,Landlot.API.Enums.LandlotProcessing,Landlot.API.Enums.LandlotProtectedZone,Landlot.API.Enums.LandlotDrainage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Models.LotPostResponseModel"/> class with the specified values.
+            </summary>
+            <param name="landGuid">The unique identifier of the land.</param>
+            <param name="lotArea">The area of the lot.</param>
+            <param name="lotUser">The unique identifier of the user who owns the lot.</param>
+            <param name="lotNumber">The number of the lot.</param>
+            <param name="cultureState">The culture state of the lot.</param>
+            <param name="classState">The class state of the lot.</param>
+            <param name="processingState">The processing state of the lot.</param>
+            <param name="protectedZoneState">The protected zone state of the lot.</param>
+            <param name="drainageState">The drainage state of the lot.</param>
+        </member>
+        <member name="T:Landlot.API.Profiles.LandProfile">
+            <summary>
+            Represents a profile that contains information specific to a land.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Profiles.LandProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Profiles.LandProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Landlot.API.Profiles.LotProfile">
+            <summary>
+            Represents a profile that contains information specific to a lot.
+            </summary>
+        </member>
+        <member name="M:Landlot.API.Profiles.LotProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Landlot.API.Profiles.LotProfile"/> class.
+            </summary>
+        </member>
+    </members>
 </doc>

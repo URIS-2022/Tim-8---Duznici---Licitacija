@@ -57,7 +57,7 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlCommentsPath);
 });
 
-byte[] key = Encoding.ASCII.GetBytes("H+MbQeThWmZq4t7w");
+byte[] key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_ENCRYPT_KEY") ?? "null");
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

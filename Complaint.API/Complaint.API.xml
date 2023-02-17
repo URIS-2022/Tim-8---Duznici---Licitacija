@@ -54,7 +54,7 @@
             Updates a specific complaint.
             </summary>
             <param name="id">The identifier of the complaint to update.</param>
-            <param name="patchDocument">The updated values for the complaint.</param>
+            <param name="updateModel">The updated values for the complaint.</param>
             <returns>The updated complaint.</returns>
         </member>
         <member name="M:Complaint.API.Data.Repository.IComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)">
@@ -82,6 +82,17 @@
         </member>
         <member name="M:Complaint.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:Complaint.API.Profiles.ComplaintProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for complaints.
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Profiles.ComplaintProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Complaint.API.Profiles.ComplaintProfile"/> class and sets up mappings between
+            <see cref="T:Complaint.API.Entities.Complaint"/> and its corresponding response/request models.
+            </summary>
         </member>
     </members>
 </doc>
