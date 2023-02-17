@@ -705,6 +705,226 @@
         <member name="M:Administration.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteeGetResponseModel">
+            <summary>
+            Represents a CommitteeMember in CommitteeGetResponseModel.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteeGetResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteeGetResponseModel.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteeGetResponseModel.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteeGetResponseModel.Role">
+            <summary>
+            Gets or sets the rome of the member in committee.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteePatchResponseModel">
+            <summary>
+            Represents a CommitteeMember in CommitteePatchResponseModel.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteePatchResponseModel.FirstName">
+            <summary>
+            Gets or sets the first name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteePatchResponseModel.LastName">
+            <summary>
+            Gets or sets the last name of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberCommitteePatchResponseModel.Role">
+            <summary>
+            Gets or sets the role of the member in committee.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.CommitteeMember.CommitteeMemberMemberGetResponseModel">
+            <summary>
+            Represents a CommitteeMember in MemberGetResponseModel.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberMemberGetResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberMemberGetResponseModel.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberMemberGetResponseModel.MemberRole">
+            <summary>
+            Gets or sets the role of the member in committee.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.CommitteeMember.CommitteeMemberMemberPatchResponseModel">
+            <summary>
+            Represents a CommitteeMember in MemberPatchResponseModel.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberMemberPatchResponseModel.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberMemberPatchResponseModel.MemberRole">
+            <summary>
+            Gets or sets the role of the member in committee.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.CommitteeMember.CommitteeMemberPatchRequestModel">
+            <summary>
+            Represents a patch request model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberPatchRequestModel.MemberRole">
+            <summary>
+            Gets or sets the role of the member in committee.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.CommitteeMember.CommitteeMemberPatchResponseModel">
+            <summary>
+            Represents a patch response response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberPatchResponseModel.CommitteeGuid">
+            <summary>
+            Gets or sets the unique identifier of the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberPatchResponseModel.MemberGuid">
+            <summary>
+            Gets or sets the unique identifier of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberPatchResponseModel.MemberRole">
+            <summary>
+            Gets or sets the role of the member in committee.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.CommitteeMember.CommitteeMemberPostRequestModel">
+            <summary>
+            Represents a post requset response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberPostRequestModel.MemberGuid">
+            <summary>
+            Gets or sets the unique identifier of the member.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.CommitteeMember.CommitteeMemberPostRequestModel.MemberRole">
+            <summary>
+            Gets or sets the role of the member in committee.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Committee.CommitteeGetResponseModel">
+            <summary>
+            Represents a get response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteeGetResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the committee.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteeGetResponseModel.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteeGetResponseModel.CommitteeMembers">
+            <summary>
+            Initializes a new instance of the CommitteePostResponseModel class.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Committee.CommitteeGetResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the CommitteeGetResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Committee.CommitteePatchRequestModel">
+            <summary>
+            Represents a patch request model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteePatchRequestModel.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Committee.CommitteePatchRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the CommitteePatchRequestModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Committee.CommitteePatchResponseModel">
+            <summary>
+            Represents a patch response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteePatchResponseModel.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteePatchResponseModel.CommitteeMembers">
+            <summary>
+            Initializes a new instance of the CommitteePostResponseModel class.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Committee.CommitteePatchResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the CommitteePatchResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Committee.CommitteePostRequestModel">
+            <summary>
+            Represents a post request model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteePostRequestModel.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Committee.CommitteePostRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the CommitteePostRequestModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Committee.CommitteePostResponseModel">
+            <summary>
+            Represents a post response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteePostResponseModel.DateAssembled">
+            <summary>
+            Gets or sets the date when the committee was assembled.
+            </summary>
+        </member>
+        <member name="P:Administration.API.Models.Committee.CommitteePostResponseModel.CommitteeMembers">
+            <summary>
+            Gets or sets the list of members that are in the committee.
+            </summary>
+        </member>
+        <member name="M:Administration.API.Models.Committee.CommitteePostResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the CommitteePostResponseModel class.
+            </summary>
+        </member>
         <member name="T:Administration.API.Models.Document.DocumentGetResponseModel">
             <summary>
             Represents a get response model for the document retrieval operation.

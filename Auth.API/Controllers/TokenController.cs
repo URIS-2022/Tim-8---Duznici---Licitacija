@@ -1,5 +1,4 @@
 ﻿using Auth.API.Data.Repository;
-using Auth.API.Entities;
 using Auth.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -39,7 +38,8 @@ public class TokenController : ControllerBase
     [HttpPost("generate")]
     public async Task<IActionResult> GenerateToken([FromBody] JwtTokenRequestModel userParam)
     {
-        SystemUser? user = await systemUserRepository.GetByCredentials(userParam.Username, userParam.Password);
+        userParam.Password = BCrypt.Net.BCrypt.HashPassword(userParam.Password, Environment.GetEnvironmentVariable("BCRYPT_SALT"));
+        var user = await systemUserRepository.GetByCredentials(userParam.Username, userParam.Password);
 
         if (user == null)
         {
@@ -47,7 +47,7 @@ public class TokenController : ControllerBase
         }
 
         JwtSecurityTokenHandler tokenHandler = new();
-        byte[] key = Encoding.ASCII.GetBytes("H+MbQeThWmZq4t7w");
+        byte[] key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_ENCRYPT_KEY") ?? "null");
         SecurityTokenDescriptor tokenDescriptor = new()
         {
             Subject = new ClaimsIdentity(new Claim[]
@@ -83,7 +83,7 @@ public class TokenController : ControllerBase
         var validationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("H+MbQeThWmZq4t7w")),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_ENCRYPT_KEY") ?? "null")),
             ValidateIssuer = false,
             ValidateAudience = false
         };
@@ -96,7 +96,7 @@ public class TokenController : ControllerBase
             return BadRequest("JWT Claims are not valid");
         }
 
-        SystemUser? systemUser = await systemUserRepository.GetByGuid(Guid.Parse(nameClaim.Value));
+        var systemUser = await systemUserRepository.GetByGuid(Guid.Parse(nameClaim.Value));
         if (systemUser == null)
         {
             return BadRequest();
