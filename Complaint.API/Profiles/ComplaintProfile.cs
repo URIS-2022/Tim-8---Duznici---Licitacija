@@ -3,8 +3,15 @@ using Complaint.API.Models;
 
 namespace Complaint.API.Profiles;
 
+/// <summary>
+/// AutoMapper profile for mapping between entities and response/request models for complaints.
+/// </summary>
 public class ComplaintProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ComplaintProfile"/> class and sets up mappings between
+    /// <see cref="Entities.Complaint"/> and its corresponding response/request models.
+    /// </summary>
     public ComplaintProfile()
     {
         CreateMap<Entities.Complaint, ComplaintGetResponseModel>();
