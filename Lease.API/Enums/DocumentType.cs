@@ -6,14 +6,8 @@ namespace Lease.API.Enums;
 public enum DocumentType
 {
     None = 0,
-    Operator,
-    TechSecretary,
-    FirstCommission,
-    Superuser,
-    BiddingOperator,
-    Bidder,
-    Manager,
-    Admin
+    LeaseProposition,
+    LeaseDecision
 }
 
 [NotMapped]
@@ -22,14 +16,8 @@ public class DocumentTypeConverter : JsonConverter<DocumentType>
     private readonly Dictionary<DocumentType, string> _roleMapping = new Dictionary<DocumentType, string>
     {
         { DocumentType.None, "Nije dodeljeno" },
-        { DocumentType.Operator, "Operater" },
-        { DocumentType.TechSecretary, "Tehnički sekretar" },
-        { DocumentType.FirstCommission, "Prva komisija" },
-        { DocumentType.Superuser, "Superkorisnik" },
-        { DocumentType.BiddingOperator, "Operater nadmetanja" },
-        { DocumentType.Bidder, "Licitant" },
-        { DocumentType.Manager, "Menadžer" },
-        { DocumentType.Admin, "Administrator" },
+        { DocumentType.LeaseProposition, "Predlog odluke o davanju u zakup" },
+        { DocumentType.LeaseDecision, "Odluka o davanju u zakup" }
     };
 
     public override DocumentType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

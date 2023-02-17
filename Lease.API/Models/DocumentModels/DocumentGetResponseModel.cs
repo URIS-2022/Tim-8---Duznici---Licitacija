@@ -53,7 +53,7 @@ public class DocumentGetResponseModel
     public string? Template { get; set; }
 
     [DataMember]
-    public Guid LeaseAgreementgGuid { get; set; }
+    public Guid LeaseAgreementGuid { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the DocumentGetResponseModel class.

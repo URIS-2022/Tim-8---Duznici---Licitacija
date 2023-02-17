@@ -32,7 +32,7 @@ public class LeaseAgreementPatchRequestModel
     public Guid? DueDateGuid { get; set; }
 
     public LeaseAgreementPatchRequestModel( string? referenceNumber, GuaranteeType? guaranteeType, DateTime? dateRecording, Guid? ministerGuid,
-        DateTime? deadlineLandReturn, string? placeOfSigning, DateTime? dateOfSigning, Guid? publicBiddingGuid,
+        DateTime? deadlineLandReturn, string? placeOfSigning, DateTime? dateOfSigning, Guid? biddingGuid,
         Guid? personGuid, DocumentStatus? documentStatus, Guid? dueDateGuid)
     {
       
@@ -43,7 +43,7 @@ public class LeaseAgreementPatchRequestModel
         DeadlineLandReturn = deadlineLandReturn;
         PlaceOfSigning = placeOfSigning;
         DateOfSigning = dateOfSigning;
-        BiddingGuid = publicBiddingGuid;
+        BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         DocumentStatus = documentStatus;
         DueDateGuid = dueDateGuid;

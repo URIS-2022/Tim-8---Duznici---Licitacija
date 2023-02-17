@@ -46,7 +46,7 @@ public class DocumentPatchResponseModel
     [DataMember]
     public string? Template { get; set; }
     [DataMember]
-    public Guid LeaseAgreementGuid { get; set; }
+    public Guid? LeaseAgreementGuid { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the DocumentPatchResponseModel class.

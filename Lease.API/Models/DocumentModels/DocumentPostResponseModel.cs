@@ -10,6 +10,9 @@ namespace Lease.API.Models.Document;
 [DataContract(Name = "Document", Namespace = "")]
 public class DocumentPostResponseModel
 {
+
+    public Guid Guid { get; set; }
+
     /// <summary>
     /// Gets or sets the type of the document, which is converted from JSON format using a custom converter.
     /// </summary>

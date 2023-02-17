@@ -1,4 +1,5 @@
 ﻿
+using AutoMapper.Configuration.Annotations;
 using Lease.API.Enums;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
@@ -25,8 +26,8 @@ public partial class Buyer : IValidatableObject
 
     // public virtual ICollection<PriorityBuyer> PriorityBuyers { get; set; }
 
-    //[JsonConverter(typeof(PriorityTypeConverter))]
-    public List<PriorityTypeEntity> Priorities { get; set; }
+    [ValueConverter(typeof(PriorityTypeListValueConverter))]
+    public List<PriorityType> Priorities { get; set; }
     
 
     public Buyer(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lease.API.Migrations
 {
     /// <inheritdoc />
-    public partial class finalfinal : Migration
+    public partial class FinalMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -103,8 +103,7 @@ namespace Lease.API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Buyers_PersonGuid",
                 table: "Buyers",
-                column: "PersonGuid",
-                unique: true);
+                column: "PersonGuid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Documents_LeaseAgreementGuid",

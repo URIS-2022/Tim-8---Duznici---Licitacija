@@ -14,14 +14,13 @@ public partial class Document : IValidatableObject
 {
     public Guid Guid { get; set; }
     public string ReferenceNumber { get; set; }
-    public DateTime DateSubmissed { get; set; }
+    public DateTime DateSubbmitted { get; set; }
     public DateTime DateCertified { get; set; }
     public string Template { get; set; }
 
     [JsonConverter(typeof(DocumentTypeConverter))]
-    public DocumentType DocumentType { get; set; }
+    public DocumentType Type { get;  set; }
     public Guid LeaseAgreementGuid { get; set; }
-
     public LeaseAgreement LeaseAgreement { get; set; }
 
 
@@ -31,10 +30,10 @@ public partial class Document : IValidatableObject
     {
         Guid = guid;
         ReferenceNumber = referenceNumber;
-        DateSubmissed = dateSubmissed;
+        DateSubbmitted = dateSubmissed;
         DateCertified = dateCertified;
         Template = template;
-        DocumentType = documentType;
+        Type = documentType;
         LeaseAgreementGuid = leaseAgreementGuid;
     }
 
@@ -43,10 +42,10 @@ public partial class Document : IValidatableObject
     {
         Guid = Guid.NewGuid();
         ReferenceNumber = referenceNumber;
-        DateSubmissed = dateSubmissed;
+        DateSubbmitted = dateSubmissed;
         DateCertified = dateCertified;
         Template = template;
-        DocumentType = documentType;
+        Type = documentType;
         LeaseAgreementGuid = leaseAgreementGuid;
     }
 

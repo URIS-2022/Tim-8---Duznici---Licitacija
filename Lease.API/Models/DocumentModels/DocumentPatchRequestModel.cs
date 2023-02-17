@@ -47,7 +47,9 @@ public class DocumentPatchRequestModel
 
 
     [DataMember]
-    public Guid LeaseAgreementGuid { get; set; }
+    public Guid? LeaseAgreementGuid { get; set; }
+
+
     /// <summary>
     /// Initializes a new instance of the DocumentPatchRequestModel class.
     /// </summary>

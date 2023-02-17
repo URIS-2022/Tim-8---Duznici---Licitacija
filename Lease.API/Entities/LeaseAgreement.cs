@@ -1,7 +1,5 @@
 ﻿
 using Lease.API.Enums;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -22,7 +20,7 @@ public partial class LeaseAgreement : IValidatableObject
     public Guid BiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
-    public Buyer Buyer { get; set; }
+    public virtual Buyer Buyer { get; set; }
 
     [JsonConverter(typeof(DocumentStatusConverter))]
     public DocumentStatus DocumentStatus { get; set; }

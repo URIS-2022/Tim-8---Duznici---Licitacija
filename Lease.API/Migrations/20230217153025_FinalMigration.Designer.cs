@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lease.API.Migrations
 {
     [DbContext(typeof(LeaseDbContext))]
-    [Migration("20230217145637_finalfinal")]
-    partial class finalfinal
+    [Migration("20230217153025_FinalMigration")]
+    partial class FinalMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,8 +58,7 @@ namespace Lease.API.Migrations
 
                     b.HasKey("Guid");
 
-                    b.HasIndex("PersonGuid")
-                        .IsUnique();
+                    b.HasIndex("PersonGuid");
 
                     b.ToTable("Buyers");
                 });

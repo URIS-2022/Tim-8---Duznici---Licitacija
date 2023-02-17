@@ -118,28 +118,16 @@
             <param name="id">The identifier of the document to delete.</param>
             <returns>The deleted document.</returns>
         </member>
-        <member name="T:Lease.API.Migrations.finalfinal">
+        <member name="T:Lease.API.Migrations.FinalMigration">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.finalfinal.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lease.API.Migrations.FinalMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.finalfinal.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lease.API.Migrations.FinalMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.finalfinal.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Lease.API.Migrations.finalfinal3">
-            <inheritdoc />
-        </member>
-        <member name="M:Lease.API.Migrations.finalfinal3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Lease.API.Migrations.finalfinal3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Lease.API.Migrations.finalfinal3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Lease.API.Migrations.FinalMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:Lease.API.Models.DocumentGetResponseModel">

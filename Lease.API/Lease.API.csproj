@@ -10,13 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Entities\**" />
     <Compile Remove="Models\NewFolder\**" />
-    <Content Remove="Entities\**" />
     <Content Remove="Models\NewFolder\**" />
-    <EmbeddedResource Remove="Entities\**" />
     <EmbeddedResource Remove="Models\NewFolder\**" />
-    <None Remove="Entities\**" />
     <None Remove="Models\NewFolder\**" />
   </ItemGroup>
 
