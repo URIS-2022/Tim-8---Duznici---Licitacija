@@ -18,7 +18,8 @@ namespace Preparation.API.Migrations
                 columns: table => new
                 {
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LicitationGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LicitationGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AnnouncementStatus = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,7 +34,7 @@ namespace Preparation.API.Migrations
                     AnnouncementGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DocumentType = table.Column<int>(type: "int", nullable: false),
                     DocumentStatus = table.Column<int>(type: "int", nullable: false),
-                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DateSubmitted = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateCertified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Template = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -51,11 +52,11 @@ namespace Preparation.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Announcements",
-                columns: new[] { "Guid", "LicitationGuid" },
+                columns: new[] { "Guid", "AnnouncementStatus", "LicitationGuid" },
                 values: new object[,]
                 {
-                    { new Guid("8da0c01b-b7b0-4df2-9009-3df21b91a0bb"), new Guid("8de0c01b-b7b0-4df2-2002-3df21b91a0bb") },
-                    { new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), new Guid("8de0c01b-b7b0-4df2-1001-3df21b91a0bb") }
+                    { new Guid("8da0c01b-b7b0-4df2-9009-3df21b91a0bb"), 2, new Guid("8de0c01b-b7b0-4df2-2002-3df21b91a0bb") },
+                    { new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), 0, new Guid("8de0c01b-b7b0-4df2-1001-3df21b91a0bb") }
                 });
 
             migrationBuilder.InsertData(
@@ -76,7 +77,8 @@ namespace Preparation.API.Migrations
                 name: "IX_Documents_ReferenceNumber",
                 table: "Documents",
                 column: "ReferenceNumber",
-                unique: true);
+                unique: true,
+                filter: "[ReferenceNumber] IS NOT NULL");
         }
 
         /// <inheritdoc />
