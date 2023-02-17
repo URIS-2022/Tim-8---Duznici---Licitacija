@@ -6,6 +6,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
+        "JWT_ENCRYPT_KEY": "H+MbQeThWmZq4t7w",
         "SERVICE_ENDPOINT_ADMINISTRATION": "https://localhost:7010",
         "SERVICE_ENDPOINT_AUTH": "https://localhost:7020",
         "SERVICE_ENDPOINT_BIDDING": "https://localhost:7030",
