@@ -36,7 +36,7 @@ public class BuyerGetResponseModel
     public List<PriorityType>  Priorities { get; set; }
    
    // [JsonConverter(typeof(PriorityTypeListJsonConverter))]
-   // public List<PriorityT> PrioritiesString { get; set; }
+   public List<string> PrioritiesString { get; set; }
 
 
 
@@ -52,7 +52,30 @@ public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime sta
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         Priorities = priorities;
-       
-       
+        PrioritiesString = ConvertEnumToString(priorities);
+    }
+
+public static List<string> ConvertEnumToString(List<PriorityType> list)
+    {
+
+          var dict= new Dictionary<PriorityType, string> 
+    {
+         { PriorityType.None, "Nije dodeljeno" },
+        { PriorityType.Irrigation, "Ima sistem za navodnjavanje" },
+        { PriorityType.Border, "Granici se sa zemljistem" },
+        { PriorityType.Registry, "Upisan u registar" },
+        { PriorityType.Location, "Najblize zemljistu" },
+    };
+
+        List<string> prioritiesString = new List<string>();
+
+        foreach (PriorityType l in list ) 
+        {
+
+            prioritiesString.Add(dict[l]);
+        
+        }
+
+        return prioritiesString;
     }
 }
