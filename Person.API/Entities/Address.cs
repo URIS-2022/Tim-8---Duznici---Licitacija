@@ -22,6 +22,9 @@ namespace Person.API.Entities
         public string Place { get; set; }
         public string ZipCode { get; set; }
 
+        
+
+
         /// <summary>
         /// Validates the Address object using the specified validation context and returns a collection of validation results.
         /// </summary>

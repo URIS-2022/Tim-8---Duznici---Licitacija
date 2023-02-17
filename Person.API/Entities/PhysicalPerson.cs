@@ -22,6 +22,8 @@ namespace Person.API.Entities
         public string Email { get; set; }
         public string AccountNumber { get; set; }
 
+        public Address Address { get; set; }
+
         /// <summary>
         /// Validates the PyhsicalPerson object using the specified validation context and returns a collection of validation results.
         /// </summary>

@@ -23,7 +23,11 @@ namespace Person.API.Entities
         public string Fax { get; set; }
         public string Email { get; set; }
         public string AccountNumber { get; set; }
+
+        public Address Address { get; set; }
         public ContactPerson ContactPerson { get; set; }
+
+        
 
         /// <summary>
         /// Validates the LegalPerson object using the specified validation context and returns a collection of validation results.

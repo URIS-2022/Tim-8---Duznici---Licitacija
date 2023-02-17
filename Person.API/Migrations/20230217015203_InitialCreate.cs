@@ -59,6 +59,12 @@ namespace Person.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PhysicalPersons", x => x.PhysicalPersonId);
+                    table.ForeignKey(
+                        name: "FK_PhysicalPersons_Addresses_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Addresses",
+                        principalColumn: "AddressId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -80,6 +86,12 @@ namespace Person.API.Migrations
                 {
                     table.PrimaryKey("PK_LegalPersons", x => x.LegalPersonId);
                     table.ForeignKey(
+                        name: "FK_LegalPersons_Addresses_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Addresses",
+                        principalColumn: "AddressId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_LegalPersons_ContactPersons_ContactPersonId",
                         column: x => x.ContactPersonId,
                         principalTable: "ContactPersons",
@@ -98,27 +110,34 @@ namespace Person.API.Migrations
                 values: new object[] { new Guid("a43a31f7-ffad-4aff-a199-1a6d31a8b850"), "Petar", "Generalni direktor", "Milanovic", "0639444271" });
 
             migrationBuilder.InsertData(
-                table: "PhysicalPersons",
-                columns: new[] { "PhysicalPersonId", "AccountNumber", "AddressId", "Email", "FirstName", "Jmbg", "LastName", "PhoneNumber1", "PhoneNumber2" },
-                values: new object[] { new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), "1234567", new Guid("8de0c01b-b7b0-4df2-9000-3df21b91a0bb"), "luka123@gmail.com", "Luka", "1234567876543", "Lukic", "0652632633", "0622402001" });
-
-            migrationBuilder.InsertData(
                 table: "LegalPersons",
                 columns: new[] { "LegalPersonId", "AccountNumber", "AddressId", "ContactPersonId", "Email", "Fax", "IdentificationNumber", "Name", "PhoneNumber1", "PhoneNumber2" },
-                values: new object[] { new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), "7654321", new Guid("8de0c01b-b7b0-4df2-9234-3df21b91a0bb"), new Guid("a43a31f7-ffad-4aff-a199-1a6d31a8b850"), "vaskons@yahoo.com", "1110222", "16050", "Vaskons", "0613263358", "0603377409" });
+                values: new object[] { new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), "7654321", new Guid("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"), new Guid("a43a31f7-ffad-4aff-a199-1a6d31a8b850"), "vaskons@yahoo.com", "1110222", "16050", "Vaskons", "0613263358", "0603377409" });
+
+            migrationBuilder.InsertData(
+                table: "PhysicalPersons",
+                columns: new[] { "PhysicalPersonId", "AccountNumber", "AddressId", "Email", "FirstName", "Jmbg", "LastName", "PhoneNumber1", "PhoneNumber2" },
+                values: new object[] { new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), "1234567", new Guid("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"), "luka123@gmail.com", "Luka", "1234567876543", "Lukic", "0652632633", "0622402001" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LegalPersons_AddressId",
+                table: "LegalPersons",
+                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LegalPersons_ContactPersonId",
                 table: "LegalPersons",
                 column: "ContactPersonId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PhysicalPersons_AddressId",
+                table: "PhysicalPersons",
+                column: "AddressId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Addresses");
-
             migrationBuilder.DropTable(
                 name: "LegalPersons");
 
@@ -127,6 +146,9 @@ namespace Person.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "ContactPersons");
+
+            migrationBuilder.DropTable(
+                name: "Addresses");
         }
     }
 }

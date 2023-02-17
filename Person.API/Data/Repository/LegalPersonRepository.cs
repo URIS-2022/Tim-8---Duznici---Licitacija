@@ -36,7 +36,8 @@ namespace Person.API.Data.Repository
         {
 
             return await context.LegalPersons
-               .Include(c => c.ContactPerson)
+                .Include(a => a.Address)
+                .Include(c => c.ContactPerson)
                 .ToListAsync();
         }
         /// <summary>
@@ -48,6 +49,7 @@ namespace Person.API.Data.Repository
         {
 
             return await context.LegalPersons
+                .Include(a => a.Address)
                 .Include(c => c.ContactPerson)
                 .FirstOrDefaultAsync(o => o.LegalPersonId == LegalPersonId);
             

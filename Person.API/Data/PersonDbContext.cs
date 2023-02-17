@@ -60,6 +60,12 @@ namespace Person.API.Data
             modelBuilder.Entity<PhysicalPerson>()
                .HasKey(p => p.PhysicalPersonId);
 
+
+            modelBuilder.Entity<PhysicalPerson>()
+              .HasOne(a => a.Address)
+              .WithMany()
+              .HasForeignKey(a => a.AddressId);
+
             modelBuilder.Entity<PhysicalPerson>()
                 .HasData(
                     new PhysicalPerson
@@ -69,7 +75,7 @@ namespace Person.API.Data
                         FirstName ="Luka",
                         LastName="Lukic",
                         Jmbg="1234567876543",
-                        AddressId=Guid.Parse("8de0c01b-b7b0-4df2-9000-3df21b91a0bb"),
+                        AddressId=Guid.Parse("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
                         PhoneNumber1="0652632633",
                         PhoneNumber2="0622402001",
                         Email="luka123@gmail.com",
@@ -89,6 +95,12 @@ namespace Person.API.Data
 
 
             modelBuilder.Entity<LegalPerson>()
+              .HasOne(a => a.Address)
+              .WithMany()
+              .HasForeignKey(a => a.AddressId);
+
+
+            modelBuilder.Entity<LegalPerson>()
                 .HasData(
                     new LegalPerson
                     {
@@ -96,7 +108,7 @@ namespace Person.API.Data
                         ContactPersonId = Guid.Parse("a43a31f7-ffad-4aff-a199-1a6d31a8b850"),
                         Name = "Vaskons",
                         IdentificationNumber = "16050",
-                        AddressId = Guid.Parse("8de0c01b-b7b0-4df2-9234-3df21b91a0bb"),
+                        AddressId = Guid.Parse("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
                         PhoneNumber1 = "0613263358",
                         PhoneNumber2 = "0603377409",
                         Fax = "1110222",
@@ -108,8 +120,6 @@ namespace Person.API.Data
 
             modelBuilder.Entity<ContactPerson>()
               .HasKey(p => p.ContactPersonId);
-
-
 
 
 
@@ -129,7 +139,6 @@ namespace Person.API.Data
             modelBuilder.Entity<Address>()
               .HasKey(a => a.AddressId);
 ;
-
 
             modelBuilder.Entity<Address>()
                 .HasData(

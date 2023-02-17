@@ -16,8 +16,9 @@ namespace Person.API.Profiles
         public LegalPersonProfile()
         {
             CreateMap<LegalPerson, LegalPersonResponseModel>()
-                .ForMember(dest => dest.ContactLegalPerson,opt => opt.MapFrom(src=>src.ContactPerson));
-            
+                .ForMember(dest => dest.ContactLegalPerson,opt => opt.MapFrom(src=>src.ContactPerson))
+                 .ForMember(dest => dest.AddressPersonResponseModel, opt => opt.MapFrom(src => src.Address));
+
             CreateMap<LegalPersonRequestModel, LegalPerson>();
             CreateMap<LegalPersonUpdateModel, LegalPerson>()
                 .ForMember(dest => dest.Name, opt => opt.Condition(src => src.Name != null))

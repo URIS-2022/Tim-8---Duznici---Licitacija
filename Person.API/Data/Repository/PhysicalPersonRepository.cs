@@ -33,6 +33,7 @@ namespace Person.API.Data.Repository
         public async Task<IEnumerable<PhysicalPerson>> GetAllPhysicalPersons()
         {
             return await context.PhysicalPersons
+                .Include(a => a.Address)
                 .ToListAsync();
         }
         /// <summary>
@@ -42,7 +43,9 @@ namespace Person.API.Data.Repository
         /// <returns>The PhysicalPerson object with the specified ID, or null if no such physical person exists.</returns>
         public async Task<PhysicalPerson?> GetPhysicalPersonByGuid(Guid PhysicalPersonId)
         {
-            return await context.PhysicalPersons.FirstOrDefaultAsync(p => p.PhysicalPersonId == PhysicalPersonId);
+            return await context.PhysicalPersons
+                .Include(a => a.Address)
+                .FirstOrDefaultAsync(p => p.PhysicalPersonId == PhysicalPersonId);
         }
         /// <summary>
         /// Adds a new physical person to the database.

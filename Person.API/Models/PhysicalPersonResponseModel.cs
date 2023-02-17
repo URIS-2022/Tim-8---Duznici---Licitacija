@@ -59,6 +59,8 @@ namespace Person.API.Models
         [DataMember]
         public string AccountNumber { get; set; }
 
+        public AddressPersonResponseModel AddressPersonResponseModel { get; set; }
+
         public PhysicalPersonResponseModel(string firstName, string lastName, string jmbg, Guid addressId, string phoneNumber1, string phoneNumber2, string email, string accountNumber)
         {
             FirstName = firstName;

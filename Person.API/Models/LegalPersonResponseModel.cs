@@ -68,6 +68,8 @@ namespace Person.API.Models
 
         public ContactLegalResponseModel ContactLegalPerson { get; set; }
 
+        public AddressPersonResponseModel AddressPersonResponseModel { get; set; }
+
         public LegalPersonResponseModel() { }
         public LegalPersonResponseModel(Guid contactPersonId, ContactLegalResponseModel contactLegalPerson, string name, string identificationNumber, Guid addressId, string phoneNumber1, string phoneNumber2, string fax, string email, string accountNumber)
         {

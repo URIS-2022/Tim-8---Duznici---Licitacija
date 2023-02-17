@@ -12,7 +12,7 @@ using Person.API.Data;
 namespace Person.API.Migrations
 {
     [DbContext(typeof(PersonDbContext))]
-    [Migration("20230216230010_InitialCreate")]
+    [Migration("20230217015203_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -145,6 +145,8 @@ namespace Person.API.Migrations
 
                     b.HasKey("LegalPersonId");
 
+                    b.HasIndex("AddressId");
+
                     b.HasIndex("ContactPersonId");
 
                     b.ToTable("LegalPersons");
@@ -154,7 +156,7 @@ namespace Person.API.Migrations
                         {
                             LegalPersonId = new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                             AccountNumber = "7654321",
-                            AddressId = new Guid("8de0c01b-b7b0-4df2-9234-3df21b91a0bb"),
+                            AddressId = new Guid("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
                             ContactPersonId = new Guid("a43a31f7-ffad-4aff-a199-1a6d31a8b850"),
                             Email = "vaskons@yahoo.com",
                             Fax = "1110222",
@@ -204,6 +206,8 @@ namespace Person.API.Migrations
 
                     b.HasKey("PhysicalPersonId");
 
+                    b.HasIndex("AddressId");
+
                     b.ToTable("PhysicalPersons");
 
                     b.HasData(
@@ -211,7 +215,7 @@ namespace Person.API.Migrations
                         {
                             PhysicalPersonId = new Guid("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                             AccountNumber = "1234567",
-                            AddressId = new Guid("8de0c01b-b7b0-4df2-9000-3df21b91a0bb"),
+                            AddressId = new Guid("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
                             Email = "luka123@gmail.com",
                             FirstName = "Luka",
                             Jmbg = "1234567876543",
@@ -223,13 +227,32 @@ namespace Person.API.Migrations
 
             modelBuilder.Entity("Person.API.Entities.LegalPerson", b =>
                 {
+                    b.HasOne("Person.API.Entities.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Person.API.Entities.ContactPerson", "ContactPerson")
                         .WithMany()
                         .HasForeignKey("ContactPersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Address");
+
                     b.Navigation("ContactPerson");
+                });
+
+            modelBuilder.Entity("Person.API.Entities.PhysicalPerson", b =>
+                {
+                    b.HasOne("Person.API.Entities.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }
