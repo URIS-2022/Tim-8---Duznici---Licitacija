@@ -15,12 +15,9 @@ namespace Person.API.Data
     public class PersonDbContext : DbContext
     {
 
-
-        private readonly IConfiguration Configuration;
-
         public PersonDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
-            this.Configuration = configuration;
+            
         }
 
         /// <summary>
@@ -138,7 +135,6 @@ namespace Person.API.Data
 
             modelBuilder.Entity<Address>()
               .HasKey(a => a.AddressId);
-;
 
             modelBuilder.Entity<Address>()
                 .HasData(

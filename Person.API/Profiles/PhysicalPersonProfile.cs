@@ -17,7 +17,7 @@ namespace Person.API.Profiles
         public PhysicalPersonProfile()
         {
             CreateMap<PhysicalPerson, PhysicalPersonResponseModel>()
-             .ForMember(dest => dest.AddressPersonResponseModel, opt => opt.MapFrom(src => src.Address));
+             .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
 
             CreateMap<PhysicalPersonRequestModel, PhysicalPerson>();
             CreateMap<PhysicalPersonUpdateModel, PhysicalPerson>()
