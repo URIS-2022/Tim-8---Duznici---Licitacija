@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Gateway.API.Helpers;
+﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.API.Controllers;
 

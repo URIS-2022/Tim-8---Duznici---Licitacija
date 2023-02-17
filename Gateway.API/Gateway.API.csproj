@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Consumes\" />
-    <Folder Include="Controllers\Bidding\" />
     <Folder Include="Controllers\Landlot\" />
     <Folder Include="Controllers\Lease\" />
     <Folder Include="Controllers\Licitation\" />

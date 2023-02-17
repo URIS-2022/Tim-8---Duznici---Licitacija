@@ -29,7 +29,7 @@ public class CommitteesController : ControllerBase
     /// </summary>
     /// <returns>A list of committees</returns>
     [HttpGet]
-    public Task<IActionResult> GetCommittees() 
+    public Task<IActionResult> GetCommittees()
         => serviceProxy.Get();
 
     /// <summary>
@@ -38,7 +38,7 @@ public class CommitteesController : ControllerBase
     /// <param name="id">The ID of the committee</param>
     /// <returns>The details of the committee</returns>
     [HttpGet("{id}")]
-    public Task<IActionResult> GetCommittee(string id) 
+    public Task<IActionResult> GetCommittee(string id)
         => serviceProxy.GetById(id);
 
     /// <summary>
@@ -48,7 +48,7 @@ public class CommitteesController : ControllerBase
     /// <param name="requestModel">The changes to apply to the committee</param>
     /// <returns>The updated committee</returns>
     [HttpPatch("{id}")]
-    public Task<IActionResult> PatchCommittee(string id, object requestModel) 
+    public Task<IActionResult> PatchCommittee(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
     /// <summary>
@@ -68,7 +68,7 @@ public class CommitteesController : ControllerBase
     /// <param name="postModel">The model for creating a committee.</param>
     /// <returns>The created committee.</returns>
     [HttpPost]
-    public Task<IActionResult> PostCommittee(object postModel) 
+    public Task<IActionResult> PostCommittee(object postModel)
         => serviceProxy.Post(postModel);
 
     /// <summary>
@@ -87,7 +87,7 @@ public class CommitteesController : ControllerBase
     /// <param name="id">The ID of the committee to delete.</param>
     /// <returns>A response indicating the success or failure of the operation.</returns>
     [HttpDelete("{id}")]
-    public Task<IActionResult> DeleteCommittee(string id) 
+    public Task<IActionResult> DeleteCommittee(string id)
         => serviceProxy.Delete(id);
 
     /// <summary>
@@ -97,6 +97,6 @@ public class CommitteesController : ControllerBase
     /// <param name="memberId">The ID of the member to delete.</param>
     /// <returns>A response indicating the success or failure of the operation.</returns>
     [HttpDelete("{id}/members/{memberId}")]
-    public Task<IActionResult> DeleteCommitteeMember(Guid id, Guid memberId) 
+    public Task<IActionResult> DeleteCommitteeMember(Guid id, Guid memberId)
         => serviceProxy.Delete($"{id}/members/{memberId}");
 }

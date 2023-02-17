@@ -12,6 +12,7 @@ namespace Gateway.API.Controllers.Auth;
 public class TokenController : ControllerBase
 {
     private readonly HttpServiceProxy serviceProxy;
+
     /// <summary>
     /// Constructor for TokenController
     /// </summary>

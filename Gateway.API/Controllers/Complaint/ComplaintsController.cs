@@ -30,6 +30,8 @@ public class ComplaintsController : ControllerBase
     /// </summary>
     /// <param name="id">id of the complaint to be deleted</param>
     /// <returns>IActionResult indicating the status of the operation</returns>
+    /// <response code="204">Returns no content</response>
+    /// <response code="404">If the SystemUser is not found</response>
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
     public Task<IActionResult> DeleteSystemUser(string id) => serviceProxy.Delete(id);
@@ -39,6 +41,7 @@ public class ComplaintsController : ControllerBase
     /// </summary>
     /// <param name="id">Id of the complaint to retrieve</param>
     /// <returns>IActionResult indicating the status of the operation</returns>
+    /// <response code="200">Returns the complaint</response>
     [HttpGet("{id}")]
     public Task<IActionResult> GetComplaint(string id) => serviceProxy.GetById(id);
 
@@ -46,6 +49,7 @@ public class ComplaintsController : ControllerBase
     /// Gets a list of all complaints
     /// </summary>
     /// <returns>IActionResult indicating the status of the operation</returns>
+    /// <response code="200">Returns the list of complaints</response>
     [HttpGet]
     public Task<IActionResult> GetComplaints() => serviceProxy.Get();
 
@@ -54,6 +58,7 @@ public class ComplaintsController : ControllerBase
     /// </summary>
     /// <param name="requestModel">Request body with complaint information</param>
     /// <returns>IActionResult indicating the status of the operation</returns>
+    /// <response code="201">Returns the newly created complaint</response>
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public Task<IActionResult> PostComplaint(object requestModel) => serviceProxy.Post(requestModel);
@@ -64,6 +69,7 @@ public class ComplaintsController : ControllerBase
     /// <param name="id">id of the user to update</param>
     /// <param name="requestModel">Request body with updated complaint information</param>
     /// <returns>IActionResult indicating the status of the operation</returns>
+    /// <response code="204">Returns no content</response>
     [HttpPatch("{id}")]
     [Authorize(Roles = "Admin")]
     public Task<IActionResult> PatchComplaint(string id, object requestModel) => serviceProxy.Patch(id, requestModel);

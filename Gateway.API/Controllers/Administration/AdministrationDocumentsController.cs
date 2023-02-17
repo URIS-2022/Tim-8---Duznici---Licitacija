@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Gateway.API.Helpers;
+﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.API.Controllers;
 
@@ -11,7 +11,7 @@ namespace Gateway.API.Controllers;
 [ApiController]
 [Produces("application/json", "application/xml")]
 [Consumes("application/json", "application/xml")]
-public class DocumentsController : ControllerBase
+public class AdministrationDocumentsController : ControllerBase
 {
     private readonly HttpServiceProxy serviceProxy;
 
@@ -19,7 +19,7 @@ public class DocumentsController : ControllerBase
     /// Initializes a new instance of the DocumentsController class
     /// </summary>
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
-    public DocumentsController(HttpClient httpClient)
+    public AdministrationDocumentsController(HttpClient httpClient)
     {
         serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_ADMINISTRATION")}/api/Documents");
     }
