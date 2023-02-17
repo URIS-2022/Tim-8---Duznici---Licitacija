@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using Preparation.API.Enums;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Preparation.API.Models
 {
@@ -21,14 +23,23 @@ namespace Preparation.API.Models
         public Guid LicitationGuid { get; set; }
 
         /// <summary>
+        /// Gets or sets the status of the announcement.
+        /// </summary>
+        [JsonConverter(typeof(AnnouncementStatusConverter))]
+        [DataMember(Name = "AnnouncementStatus")]
+        public AnnouncementStatus AnnouncementStatus { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AnnouncementPatchResponseModel"/> class.
         /// </summary>
         /// <param name="guid">The announcement GUID.</param>
         /// <param name="licitationGuid">The licitation GUID.</param>
-        public AnnouncementPatchResponseModel(Guid guid, Guid licitationGuid)
+        /// /// <param name="announcementStatus">The status of the announcement.</param>
+        public AnnouncementPatchResponseModel(Guid guid, Guid licitationGuid, AnnouncementStatus announcementStatus)
         {
             Guid = guid;
             LicitationGuid = licitationGuid;
+            AnnouncementStatus = announcementStatus;
         }
     }
 }

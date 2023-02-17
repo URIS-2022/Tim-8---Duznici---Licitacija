@@ -36,7 +36,7 @@ namespace Preparation.API.Entities
         /// <summary>
         /// Gets or sets the reference number of the document.
         /// </summary>
-        public string ReferenceNumber { get; set; }
+        public string? ReferenceNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the date when the document was submitted.

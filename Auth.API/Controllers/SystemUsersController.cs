@@ -53,7 +53,7 @@ public class SystemUsersController : ControllerBase
     [HttpGet("{username}")]
     public async Task<ActionResult<SystemUserResponseModel>> GetSystemUser(string username)
     {
-        SystemUser? systemUser = await systemUserRepository.GetByUsername(username);
+        var systemUser = await systemUserRepository.GetByUsername(username);
         if (systemUser == null)
         {
             return NotFound();
@@ -71,8 +71,13 @@ public class SystemUsersController : ControllerBase
     [HttpPatch("{username}")]
     public async Task<IActionResult> PatchSystemUser(string username, SystemUserPatchRequestModel systemUserUpdate)
     {
+        if (systemUserUpdate.Password != null)
+        {
+            systemUserUpdate.Password = BCrypt.Net.BCrypt.HashPassword(systemUserUpdate.Password);
+
+        }
         var systemUser = await systemUserRepository.GetByUsername(username);
-        if (systemUser == null || systemUserUpdate == null)
+        if (systemUser == null)
         {
             return BadRequest();
         }
@@ -91,6 +96,7 @@ public class SystemUsersController : ControllerBase
     public async Task<ActionResult<SystemUserResponseModel>> PostSystemUser(SystemUserPostRequestModel requestModel)
     {
         SystemUser requestedSystemUser = mapper.Map<SystemUser>(requestModel);
+        requestedSystemUser.Password = BCrypt.Net.BCrypt.HashPassword(requestModel.Password, Environment.GetEnvironmentVariable("BCRYPT_SALT"));
         SystemUser? createdSystemUser = await systemUserRepository.Add(requestedSystemUser);
         if (createdSystemUser == null)
         {

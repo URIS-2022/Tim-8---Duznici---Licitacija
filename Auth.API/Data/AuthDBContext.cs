@@ -1,4 +1,5 @@
 ﻿using Auth.API.Entities;
+using Auth.API.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Auth.API.Data;
@@ -37,5 +38,16 @@ public class AuthDbContext : DbContext
 
         modelBuilder.Entity<SystemUser>()
             .HasKey(u => u.Guid);
+
+        modelBuilder.Entity<SystemUser>().HasData(
+            new SystemUser(
+                id: Guid.Parse("e5c54eb6-18b5-4442-8e31-b023c9b72add"),
+                firstName: "Mladen",
+                lastName: "Draganović",
+                username: "mdraganov",
+                password: "sifra",
+                role: SystemUserRole.Admin
+                )
+        );
     }
 }

@@ -29,7 +29,9 @@ namespace Preparation.API.Profiles
 
             // Maps AnnouncementPatchRequestModel objects to Announcement entities
             CreateMap<AnnouncementPatchRequestModel, Entities.Announcement>()
-                .ForMember(dest => dest.LicitationGuid, opt => opt.Condition(src => src.LicitationGuid != null));
+                .ForMember(dest => dest.LicitationGuid, opt => opt.Condition(src => src.LicitationGuid != null))
+                .ForMember(dest => dest.AnnouncementStatus, opt => opt.Condition(src => src.AnnouncementStatus.HasValue))
+                .ForMember(dest => dest.AnnouncementStatus, opt => opt.MapFrom(src => src.AnnouncementStatus!.Value));
         }
     }
 }
