@@ -16,13 +16,23 @@ namespace Person.API.Entities
         /// </summary>
         [Key]
         public Guid ContactPersonId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Function { get; set; }
-        public string PhoneNumber { get; set; }
+        /// <summary>The first name of the contact person.</summary>
+        public string? FirstName { get; set; }
+        /// <summary>The last name of the contact person.</summary>
+        public string? LastName { get; set; }
+        /// <summary>The function or role of the contact person.</summary>
+        public string? Function { get; set; }
+        /// <summary>The phone number of the contact person.</summary>
+        public string? PhoneNumber { get; set; }
 
-
-        public ContactPerson(string firstName, string lastName, string function, string phoneNumber)
+               /**
+            <summary>Initializes a new instance of the ContactPerson class.</summary>
+            <param name="firstName">The first name of the contact person.</param>
+            <param name="lastName">The last name of the contact person.</param>
+            <param name="function">The function or role of the contact person.</param>
+            <param name="phoneNumber">The phone number of the contact person.</param>
+               */
+        public ContactPerson(string? firstName, string? lastName, string? function, string? phoneNumber)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -30,7 +40,7 @@ namespace Person.API.Entities
             PhoneNumber = phoneNumber;
 
         }
-
+        /// <summary>Initializes a new instance of the ContactPerson class.</summary>
         public ContactPerson() { }
 
         /// <summary>

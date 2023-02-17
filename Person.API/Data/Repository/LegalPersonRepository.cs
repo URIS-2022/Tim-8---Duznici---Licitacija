@@ -73,8 +73,12 @@ namespace Person.API.Data.Repository
         public async Task DeleteLegalPerson(Guid LegalPersonId)
         {
             var legalPerson = await GetLegalPersonByGuid(LegalPersonId);
-            context.LegalPersons.Remove(legalPerson);
-            await context.SaveChangesAsync();
+            if(legalPerson != null)
+            {
+                context.LegalPersons.Remove(legalPerson);
+                await context.SaveChangesAsync();
+            }
+            
         }
         /// <summary>
         /// Updates an existing legal person in the database.

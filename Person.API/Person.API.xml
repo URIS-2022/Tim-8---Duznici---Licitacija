@@ -197,6 +197,13 @@
             Represents the database context for managing person entities.
             </summary>
         </member>
+        <member name="M:Person.API.Data.PersonDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Data.PersonDbContext"/> class.
+            </summary>
+            <param name="options">The options for this context.</param>
+            <param name="configuration">The configuration to use for this context.</param>
+        </member>
         <member name="P:Person.API.Data.PersonDbContext.PhysicalPersons">
             <summary>
             Gets or sets the DbSet of physical persons in the database.
@@ -584,6 +591,31 @@
             Gets or sets the unique identifier for a address record.
             </summary>
         </member>
+        <member name="P:Person.API.Entities.Address.Country">
+            <summary>
+            Gets or sets the country of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.Address.Street">
+            <summary>
+            Gets or sets the street of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.Address.StreetNumber">
+            <summary>
+            Gets or sets the street number of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.Address.Place">
+            <summary>
+            Gets or sets the place of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.Address.ZipCode">
+            <summary>
+            Gets or sets the ZIP code of the address.
+            </summary>
+        </member>
         <member name="M:Person.API.Entities.Address.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
             Validates the Address object using the specified validation context and returns a collection of validation results.
@@ -601,6 +633,28 @@
             <summary>
             Gets or sets the unique identifier for a contact person record.
             </summary>
+        </member>
+        <member name="P:Person.API.Entities.ContactPerson.FirstName">
+            <summary>The first name of the contact person.</summary>
+        </member>
+        <member name="P:Person.API.Entities.ContactPerson.LastName">
+            <summary>The last name of the contact person.</summary>
+        </member>
+        <member name="P:Person.API.Entities.ContactPerson.Function">
+            <summary>The function or role of the contact person.</summary>
+        </member>
+        <member name="P:Person.API.Entities.ContactPerson.PhoneNumber">
+            <summary>The phone number of the contact person.</summary>
+        </member>
+        <member name="M:Person.API.Entities.ContactPerson.#ctor(System.String,System.String,System.String,System.String)">
+                        <summary>Initializes a new instance of the ContactPerson class.</summary>
+                        <param name="firstName">The first name of the contact person.</param>
+                        <param name="lastName">The last name of the contact person.</param>
+                        <param name="function">The function or role of the contact person.</param>
+                        <param name="phoneNumber">The phone number of the contact person.</param>
+        </member>
+        <member name="M:Person.API.Entities.ContactPerson.#ctor">
+            <summary>Initializes a new instance of the ContactPerson class.</summary>
         </member>
         <member name="M:Person.API.Entities.ContactPerson.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
@@ -620,6 +674,61 @@
             Gets or sets the unique identifier for a legal person record.
             </summary>
         </member>
+        <member name="P:Person.API.Entities.LegalPerson.ContactPersonId">
+            <summary>
+            Gets or sets the unique identifier of the contact person associated with the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.Name">
+            <summary>
+            Gets or sets the name of the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.IdentificationNumber">
+            <summary>
+            Gets or sets the identification number of the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.AddressId">
+            <summary>
+            Gets or sets the unique identifier of the address associated with the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.PhoneNumber1">
+            <summary>
+            Gets or sets the first phone number of the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.PhoneNumber2">
+            <summary>
+            Gets or sets the second phone number of the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.Fax">
+            <summary>
+            Gets or sets the fax number of the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.Email">
+            <summary>
+            Gets or sets the email of the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.AccountNumber">
+            <summary>
+            Gets or sets the account number of the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.Address">
+            <summary>
+            Gets or sets the address associated with the legal person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.LegalPerson.ContactPerson">
+            <summary>
+            Gets or sets the contact person associated with the legal person.
+            </summary>
+        </member>
         <member name="M:Person.API.Entities.LegalPerson.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
             Validates the LegalPerson object using the specified validation context and returns a collection of validation results.
@@ -636,6 +745,51 @@
         <member name="P:Person.API.Entities.PhysicalPerson.PhysicalPersonId">
             <summary>
             Gets or sets the unique identifier for a physical person record.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.FirstName">
+            <summary>
+            Gets or sets the first name of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.LastName">
+            <summary>
+            Gets or sets the last name of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.Jmbg">
+            <summary>
+            Gets or sets the JMBG (Unique Master Citizen Number) of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.AddressId">
+            <summary>
+            Gets or sets the unique identifier for the address of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.PhoneNumber1">
+            <summary>
+            Gets or sets the primary phone number of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.PhoneNumber2">
+            <summary>
+            Gets or sets the secondary phone number of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.Email">
+            <summary>
+            Gets or sets the email address of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.AccountNumber">
+            <summary>
+            Gets or sets the account number of the physical person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Entities.PhysicalPerson.Address">
+            <summary>
+            Gets or sets the contact person associated with the physical person.
             </summary>
         </member>
         <member name="M:Person.API.Entities.PhysicalPerson.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">

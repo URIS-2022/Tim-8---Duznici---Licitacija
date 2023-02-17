@@ -14,18 +14,51 @@ namespace Person.API.Entities
         /// </summary>
         [Key]
         public Guid LegalPersonId { get; set; }
+        /// <summary>
+        /// Gets or sets the unique identifier of the contact person associated with the legal person.
+        /// </summary>
         public Guid ContactPersonId { get; set; }
-        public string Name { get; set; }
-        public string IdentificationNumber { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the legal person.
+        /// </summary>
+        public string? Name { get; set; }
+        /// <summary>
+        /// Gets or sets the identification number of the legal person.
+        /// </summary>
+        public string? IdentificationNumber { get; set; }
+        /// <summary>
+        /// Gets or sets the unique identifier of the address associated with the legal person.
+        /// </summary>
         public Guid AddressId { get; set; }
-        public string PhoneNumber1 { get; set; }
-        public string PhoneNumber2 { get; set; }
-        public string Fax { get; set; }
-        public string Email { get; set; }
-        public string AccountNumber { get; set; }
+        /// <summary>
+        /// Gets or sets the first phone number of the legal person.
+        /// </summary>
+        public string? PhoneNumber1 { get; set; }
+        /// <summary>
+        /// Gets or sets the second phone number of the legal person.
+        /// </summary>
+        public string? PhoneNumber2 { get; set; }
+        /// <summary>
+        /// Gets or sets the fax number of the legal person.
+        /// </summary>
+        public string? Fax { get; set; }
+        /// <summary>
+        /// Gets or sets the email of the legal person.
+        /// </summary>
+        public string? Email { get; set; }
+        /// <summary>
+        /// Gets or sets the account number of the legal person.
+        /// </summary>
+        public string? AccountNumber { get; set; }
+        /// <summary>
+        /// Gets or sets the address associated with the legal person.
+        /// </summary>
 
-        public Address Address { get; set; }
-        public ContactPerson ContactPerson { get; set; }
+        public Address? Address { get; set; }
+        /// <summary>
+        /// Gets or sets the contact person associated with the legal person.
+        /// </summary>
+        public ContactPerson? ContactPerson { get; set; }
 
         
 

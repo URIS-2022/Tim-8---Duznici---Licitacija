@@ -62,8 +62,12 @@ namespace Person.API.Data.Repository
         public async Task DeleteAddress(Guid AddressId)
         {
             var address = await GetAddressByGuid(AddressId);
-            context.Addresses.Remove(address);
-            await context.SaveChangesAsync();
+            if (address != null)
+            {
+                context.Addresses.Remove(address);
+                await context.SaveChangesAsync();
+            }
+                
         }
         /// <summary>
         /// Updates an existing address in the database.

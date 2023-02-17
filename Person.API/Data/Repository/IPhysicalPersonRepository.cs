@@ -27,7 +27,7 @@ namespace Person.API.Data.Repository
         /// </summary>
         /// <param name="physicalPerson">The physical person to be created.</param>
         /// <returns>The newly created PhysicalPerson object.</returns>
-        Task<PhysicalPerson?> CreatePhysicalPerson(PhysicalPerson? physicalPerson);
+        Task<PhysicalPerson> CreatePhysicalPerson(PhysicalPerson physicalPerson);
         /// <summary>
         /// Deletes an physical person from the database.
         /// </summary>

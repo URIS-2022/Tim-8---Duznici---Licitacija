@@ -14,7 +14,11 @@ namespace Person.API.Data
     /// </summary>
     public class PersonDbContext : DbContext
     {
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PersonDbContext"/> class.
+        /// </summary>
+        /// <param name="options">The options for this context.</param>
+        /// <param name="configuration">The configuration to use for this context.</param>
         public PersonDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             

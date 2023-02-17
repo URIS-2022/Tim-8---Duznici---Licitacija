@@ -13,16 +13,43 @@ namespace Person.API.Entities
         /// </summary>
         [Key] 
         public Guid PhysicalPersonId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Jmbg { get; set; }
+        /// <summary>
+        /// Gets or sets the first name of the physical person.
+        /// </summary>
+        public string? FirstName { get; set; }
+        /// <summary>
+        /// Gets or sets the last name of the physical person.
+        /// </summary>
+        public string? LastName { get; set; }
+        /// <summary>
+        /// Gets or sets the JMBG (Unique Master Citizen Number) of the physical person.
+        /// </summary>
+        public string? Jmbg { get; set; }
+        /// <summary>
+        /// Gets or sets the unique identifier for the address of the physical person.
+        /// </summary>
         public Guid AddressId { get; set; }
-        public string PhoneNumber1 { get; set; }
-        public string PhoneNumber2 { get; set; }
-        public string Email { get; set; }
-        public string AccountNumber { get; set; }
+        /// <summary>
+        /// Gets or sets the primary phone number of the physical person.
+        /// </summary>
+        public string? PhoneNumber1 { get; set; }
+        /// <summary>
+        /// Gets or sets the secondary phone number of the physical person.
+        /// </summary>
+        public string? PhoneNumber2 { get; set; }
+        /// <summary>
+        /// Gets or sets the email address of the physical person.
+        /// </summary>
+        public string? Email { get; set; }
+        /// <summary>
+        /// Gets or sets the account number of the physical person.
+        /// </summary>
+        public string? AccountNumber { get; set; }
 
-        public Address Address { get; set; }
+        /// <summary>
+        /// Gets or sets the contact person associated with the physical person.
+        /// </summary>
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Validates the PyhsicalPerson object using the specified validation context and returns a collection of validation results.

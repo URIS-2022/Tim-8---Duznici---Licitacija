@@ -14,15 +14,27 @@ namespace Person.API.Entities
         /// </summary>
         [Key]
         public Guid AddressId { get; set; }
-
+        /// <summary>
+        /// Gets or sets the country of the address.
+        /// </summary>
         [JsonConverter(typeof(CountryConverter))]
         public Country Country { get; set; }
-        public string Street { get; set; }
-        public string StreetNumber { get; set; }
-        public string Place { get; set; }
-        public string ZipCode { get; set; }
-
-        
+        /// <summary>
+        /// Gets or sets the street of the address.
+        /// </summary>
+        public string? Street { get; set; }
+        /// <summary>
+        /// Gets or sets the street number of the address.
+        /// </summary>
+        public string? StreetNumber { get; set; }
+        /// <summary>
+        /// Gets or sets the place of the address.
+        /// </summary>
+        public string? Place { get; set; }
+        /// <summary>
+        /// Gets or sets the ZIP code of the address.
+        /// </summary>
+        public string? ZipCode { get; set; }
 
 
         /// <summary>

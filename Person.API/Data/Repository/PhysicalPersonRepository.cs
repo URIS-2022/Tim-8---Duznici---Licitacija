@@ -52,7 +52,7 @@ namespace Person.API.Data.Repository
         /// </summary>
         /// <param name="physicalPerson">The PhysicalPerson object to be added.</param>
         /// <returns>The PhysicalPerson object that was added to the database.</returns>
-        public async Task<PhysicalPerson?> CreatePhysicalPerson(PhysicalPerson? physicalPerson)
+        public async Task<PhysicalPerson> CreatePhysicalPerson(PhysicalPerson physicalPerson)
         {
             context.PhysicalPersons.Add(physicalPerson);
             await context.SaveChangesAsync();
@@ -66,8 +66,12 @@ namespace Person.API.Data.Repository
         public async Task DeletePhysicalPerson(Guid PhysicalPersonId)
         {
             var physicalPerson = await GetPhysicalPersonByGuid(PhysicalPersonId);
-            context.PhysicalPersons.Remove(physicalPerson);
-            await context.SaveChangesAsync();
+             if (physicalPerson != null)
+            {
+                context.PhysicalPersons.Remove(physicalPerson);
+                await context.SaveChangesAsync();
+            }
+            
         }
         /// <summary>
         /// Updates an existing physical person in the database.

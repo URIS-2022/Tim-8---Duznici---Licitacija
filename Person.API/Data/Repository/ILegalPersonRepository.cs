@@ -27,7 +27,7 @@ namespace Person.API.Data.Repository
         /// </summary>
         /// <param name="legalPerson">The legal person to be created.</param>
         /// <returns>The newly created LegalPerson object.</returns>
-        Task<LegalPerson?> CreateLegalPerson(LegalPerson? legalPerson);
+        Task<LegalPerson> CreateLegalPerson(LegalPerson legalPerson);
         /// <summary>
         /// Deletes an legal person from the database.
         /// </summary>

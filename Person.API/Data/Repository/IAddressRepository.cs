@@ -27,7 +27,7 @@ namespace Person.API.Data.Repository
         /// </summary>
         /// <param name="address">The address to be created.</param>
         /// <returns>The newly created Address object.</returns>
-        Task<Address?> CreateAddress(Address? address);
+        Task<Address> CreateAddress(Address address);
         /// <summary>
         /// Deletes an address from the database.
         /// </summary>

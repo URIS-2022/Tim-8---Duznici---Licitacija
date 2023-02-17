@@ -27,7 +27,7 @@ namespace Person.API.Data.Repository
         /// </summary>
         /// <param name="contactPerson">The contact person to be created.</param>
         /// <returns>The newly created ContactPerson object.</returns>
-        Task<ContactPerson?> CreateContactPerson(ContactPerson? contactPerson);
+        Task<ContactPerson> CreateContactPerson(ContactPerson contactPerson);
         /// <summary>
         /// Deletes an contact person from the database.
         /// </summary>

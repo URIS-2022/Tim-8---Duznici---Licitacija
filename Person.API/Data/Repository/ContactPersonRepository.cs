@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace Person.API.Data.Repository
 {
@@ -64,8 +65,12 @@ namespace Person.API.Data.Repository
         public async Task DeleteContactPerson(Guid ContactPersonId)
         {
             var contactPerson = await GetContactPersonByGuid(ContactPersonId);
-            context.ContactPersons.Remove(contactPerson);
-            await context.SaveChangesAsync();
+            if (contactPerson != null)
+            {
+                context.ContactPersons.Remove(contactPerson);
+                await context.SaveChangesAsync();
+            }
+               
         }
         /// <summary>
         /// Updates an existing contact person in the database.
