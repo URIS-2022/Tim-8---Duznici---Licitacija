@@ -34,7 +34,8 @@ public class ComplaintsController : ControllerBase
     /// <response code="404">If the SystemUser is not found</response>
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
-    public Task<IActionResult> DeleteSystemUser(string id) => serviceProxy.Delete(id);
+    public Task<IActionResult> DeleteSystemUser(string id) 
+        => serviceProxy.Delete(id);
 
     /// <summary>
     /// Gets a complaint
@@ -43,7 +44,8 @@ public class ComplaintsController : ControllerBase
     /// <returns>IActionResult indicating the status of the operation</returns>
     /// <response code="200">Returns the complaint</response>
     [HttpGet("{id}")]
-    public Task<IActionResult> GetComplaint(string id) => serviceProxy.GetById(id);
+    public Task<IActionResult> GetComplaint(string id)
+        => serviceProxy.GetById(id);
 
     /// <summary>
     /// Gets a list of all complaints
@@ -51,7 +53,8 @@ public class ComplaintsController : ControllerBase
     /// <returns>IActionResult indicating the status of the operation</returns>
     /// <response code="200">Returns the list of complaints</response>
     [HttpGet]
-    public Task<IActionResult> GetComplaints() => serviceProxy.Get();
+    public Task<IActionResult> GetComplaints()
+        => serviceProxy.Get();
 
     /// <summary>
     /// Adds a new complaint
@@ -61,7 +64,8 @@ public class ComplaintsController : ControllerBase
     /// <response code="201">Returns the newly created complaint</response>
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public Task<IActionResult> PostComplaint(object requestModel) => serviceProxy.Post(requestModel);
+    public Task<IActionResult> PostComplaint(object requestModel) 
+        => serviceProxy.Post(requestModel);
 
     /// <summary>
     /// Patches a system user
@@ -72,5 +76,6 @@ public class ComplaintsController : ControllerBase
     /// <response code="204">Returns no content</response>
     [HttpPatch("{id}")]
     [Authorize(Roles = "Admin")]
-    public Task<IActionResult> PatchComplaint(string id, object requestModel) => serviceProxy.Patch(id, requestModel);
+    public Task<IActionResult> PatchComplaint(string id, object requestModel) 
+        => serviceProxy.Patch(id, requestModel);
 }
