@@ -19,13 +19,13 @@ namespace Payment.API.Entities
 
         public PaymentWarrant PaymentWarrant { get; set; }
 
-        public PaymentWarrantPaymentResponseModel WarrantPaymentModel { get; set; }
+       // public PaymentWarrantPaymentResponseModel WarrantPaymentModel { get; set; }
 
         public Payment()
         {
         }
 
-        public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrantPaymentResponseModel warrantPaymentModel)
+        public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
         {
             Guid = paymentGuid;
             AccountNumber = accountNumber;
@@ -35,11 +35,11 @@ namespace Payment.API.Entities
             PaymentTitle = paymentTitle;
             PaymentDate = paymentDate;
             PublicBiddingGuid = publicBiddingGuid;
-            WarrantPaymentModel = warrantPaymentModel;
+            PaymentWarrant = paymentWarrant;
 
         }
 
-        public Payment(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrantPaymentResponseModel warrantPaymentModel)
+        public Payment(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
         {
             Guid = Guid.NewGuid();
             AccountNumber = accountNumber;
@@ -49,7 +49,7 @@ namespace Payment.API.Entities
             PaymentTitle = paymentTitle;
             PaymentDate = paymentDate;
             PublicBiddingGuid = publicBiddingGuid;
-            WarrantPaymentModel = warrantPaymentModel;
+            PaymentWarrant = paymentWarrant;
         }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
