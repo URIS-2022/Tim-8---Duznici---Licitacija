@@ -18,20 +18,20 @@
         </member>
         <member name="M:Person.API.Controllers.AddressController.GetAddresses">
             <summary>
-            Gets all addresses.
+            Returns a list of addresses.
             </summary>
             <returns>A collection of addresses.</returns>
         </member>
         <member name="M:Person.API.Controllers.AddressController.GetAddress(System.Guid)">
             <summary>
-            Gets an address by its ID.
+            Returns the address with the specified id.
             </summary>
             <param name="AddressId">The ID of the address to get.</param>
             <returns>The address with the specified ID, or NotFound if no such address exists.</returns>
         </member>
         <member name="M:Person.API.Controllers.AddressController.PatchAddress(System.Guid,Person.API.Models.AddressRequestModel)">
             <summary>
-            Updates an address with the specified ID.
+            Updates an address with the specified id.
             </summary>
             <param name="id">The ID of the address to update.</param>
             <param name="patchModel">The address information to update.</param>
@@ -46,7 +46,7 @@
         </member>
         <member name="M:Person.API.Controllers.AddressController.DeleteAddress(System.Guid)">
             <summary>
-            Deletes the address with the specified ID.
+            Deletes the address with the specified id.
             </summary>
             <param name="id">The ID of the address to delete.</param>
             <returns>NoContent if the address is deleted successfully, or NotFound if no such address exists.</returns>
@@ -65,20 +65,20 @@
         </member>
         <member name="M:Person.API.Controllers.ContactPersonController.GetContactPersons">
             <summary>
-            Gets all contact persons.
+            Returns a list of all contact persons.
             </summary>
             <returns>A collection of contact persons.</returns>
         </member>
         <member name="M:Person.API.Controllers.ContactPersonController.GetContactPerson(System.Guid)">
             <summary>
-            Gets an contact person by its ID.
+            Returns an contact person with the specified id.
             </summary>
             <param name="ContactPersonGuid">The ID of the contact person to get.</param>
             <returns>The contact person with the specified ID, or NotFound if no such contact person exists.</returns>
         </member>
         <member name="M:Person.API.Controllers.ContactPersonController.PatchContactPerson(System.Guid,Person.API.Models.ContactPersonRequestModel)">
             <summary>
-            Updates an contact person with the specified ID.
+            Updates an contact person with the specified id.
             </summary>
             <param name="id">The ID of the contact person to update.</param>
             <param name="patchModel">The contact person information to update.</param>
@@ -93,7 +93,7 @@
         </member>
         <member name="M:Person.API.Controllers.ContactPersonController.DeleteContactPerson(System.Guid)">
             <summary>
-            Deletes the contact person with the specified ID.
+            Deletes the contact person with the specified id.
             </summary>
             <param name="id">The ID of the contact person to delete.</param>
             <returns>NoContent if the contact person is deleted successfully, or NotFound if no such contact person exists.</returns>
@@ -112,20 +112,20 @@
         </member>
         <member name="M:Person.API.Controllers.LegalPersonController.GetLegalPersons">
             <summary>
-            Gets all legal persons.
+            Returns a list of all legal persons.
             </summary>
             <returns>A collection of legal persons.</returns>
         </member>
         <member name="M:Person.API.Controllers.LegalPersonController.GetLegalPerson(System.Guid)">
             <summary>
-            Gets an legal person by its ID.
+            Returns an legal person with the specified id.
             </summary>
             <param name="legalPersonGuid">The ID of the legal person to get.</param>
             <returns>The legal person with the specified ID, or NotFound if no such legal person exists.</returns>
         </member>
         <member name="M:Person.API.Controllers.LegalPersonController.PatchLegalPerson(System.Guid,Person.API.Models.LegalPersonRequestModel)">
             <summary>
-            Updates an legal person with the specified ID.
+            Updates an legal person with the specified id.
             </summary>
             <param name="id">The ID of the legal person to update.</param>
             <param name="patchModel">The legal person information to update.</param>
@@ -140,7 +140,7 @@
         </member>
         <member name="M:Person.API.Controllers.LegalPersonController.DeleteLegalPerson(System.Guid)">
             <summary>
-            Deletes the legal person with the specified ID.
+            Deletes the legal person with the specified id.
             </summary>
             <param name="id">The ID of the legal person to delete.</param>
             <returns>NoContent if the legal person is deleted successfully, or NotFound if no such legal person exists.</returns>
@@ -159,20 +159,20 @@
         </member>
         <member name="M:Person.API.Controllers.PhysicalPersonController.GetPhysicalPersons">
             <summary>
-            Gets all physical persons.
+            Returns a list of all physical persons.
             </summary>
             <returns>A collection of physical persons.</returns>
         </member>
         <member name="M:Person.API.Controllers.PhysicalPersonController.GetPhysicalPerson(System.Guid)">
             <summary>
-            Gets an physical person by its ID.
+            Returns an physical person with the specified id.
             </summary>
             <param name="PhysicalPersonGuid">The ID of the physical person to get.</param>
             <returns>The physical person with the specified ID, or NotFound if no such physical person exists.</returns>
         </member>
         <member name="M:Person.API.Controllers.PhysicalPersonController.PatchPhysicalPerson(System.Guid,Person.API.Models.PhysicalPersonRequestModel)">
             <summary>
-            Updates an physical person with the specified ID.
+            Updates an physical person with the specified id.
             </summary>
             <param name="id">The ID of the physical person to update.</param>
             <param name="patchModel">The physical person information to update.</param>
@@ -187,7 +187,7 @@
         </member>
         <member name="M:Person.API.Controllers.PhysicalPersonController.DeletePhysicalPerson(System.Guid)">
             <summary>
-            Deletes the physical person with the specified ID.
+            Deletes the physical person with the specified id.
             </summary>
             <param name="id">The ID of the physical person to delete.</param>
             <returns>NoContent if the physical person is deleted successfully, or NotFound if no such physical person exists.</returns>
@@ -799,6 +799,58 @@
             <param name="validationContext">The validation context used for validation.</param>
             <returns>An IEnumerable of ValidationResult objects representing the validation errors, if any.</returns>
         </member>
+        <member name="T:Person.API.Enums.Country">
+            <summary>
+            Enum representing countries.
+            </summary>
+        </member>
+        <member name="F:Person.API.Enums.Country.Srbija">
+            <summary>
+            Represents the "Srbija" country.
+            </summary>
+        </member>
+        <member name="F:Person.API.Enums.Country.CrnaGora">
+            <summary>
+            Represents the "Crna Gora" country.
+            </summary>
+        </member>
+        <member name="F:Person.API.Enums.Country.BiH">
+            <summary>
+            Represents the "Bosna i Hercegovina" country.
+            </summary>
+        </member>
+        <member name="F:Person.API.Enums.Country.Madjarska">
+            <summary>
+            Represents the "Madjarska" country.
+            </summary>
+        </member>
+        <member name="F:Person.API.Enums.Country.Hrvatska">
+            <summary>
+            Represents the "Hrvatska" country.
+            </summary>
+        </member>
+        <member name="T:Person.API.Enums.CountryConverter">
+            <summary>
+            JSON converter for <see cref="T:Person.API.Enums.Country"/> enum.
+            </summary>
+        </member>
+        <member name="M:Person.API.Enums.CountryConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the JSON representation of the object and converts it to an instance of <see cref="T:Person.API.Enums.Country"/>.
+            </summary>
+            <param name="reader">The <see cref="T:System.Text.Json.Utf8JsonReader"/> to read from.</param>
+            <param name="typeToConvert">The type of object to convert.</param>
+            <param name="options">The <see cref="T:System.Text.Json.JsonSerializerOptions"/> being used.</param>
+            <returns>The converted object.</returns>
+        </member>
+        <member name="M:Person.API.Enums.CountryConverter.Write(System.Text.Json.Utf8JsonWriter,Person.API.Enums.Country,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes a JSON representation of the <paramref name="value"/> object to the specified <see cref="T:System.Text.Json.Utf8JsonWriter"/>.
+            </summary>
+            <param name="writer">The <see cref="T:System.Text.Json.Utf8JsonWriter"/> to write to.</param>
+            <param name="value">The value to write.</param>
+            <param name="options">The <see cref="T:System.Text.Json.JsonSerializerOptions"/> being used.</param>
+        </member>
         <member name="T:Person.API.Migrations.InitialCreate">
             <inheritdoc />
         </member>
@@ -810,6 +862,36 @@
         </member>
         <member name="M:Person.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:Person.API.Models.AddressPersonResponseModel">
+            <summary>
+            Represents an address object belonging to a person.
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.AddressPersonResponseModel.Country">
+            <summary>
+            The country of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.AddressPersonResponseModel.Street">
+            <summary>
+            The street name of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.AddressPersonResponseModel.StreetNumber">
+            <summary>
+            The street name of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.AddressPersonResponseModel.Place">
+            <summary>
+            The name of the city or town of the address.
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.AddressPersonResponseModel.ZipCode">
+            <summary>
+            The postal code of the address.
+            </summary>
         </member>
         <member name="T:Person.API.Models.AddressRequestModel">
             <summary>
@@ -841,6 +923,16 @@
             Postanski broj adrese
             </summary>
         </member>
+        <member name="M:Person.API.Models.AddressRequestModel.#ctor(Person.API.Enums.Country,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of the AddressRequestModel class.
+            </summary>
+            <param name="country">The country of the address.</param>
+            <param name="street">The street name of the address.</param>
+            <param name="streetNumber">The street number of the address.</param>
+            <param name="place">The place of the address.</param>
+            <param name="zipCode">The zip code of the address.</param>
+        </member>
         <member name="T:Person.API.Models.AddressResponseModel">
             <summary>
             Represents a response model for a address record.
@@ -871,6 +963,16 @@
             Postanski broj adrese
             </summary>
         </member>
+        <member name="M:Person.API.Models.AddressResponseModel.#ctor(Person.API.Enums.Country,System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents an address response model.
+            </summary>
+            <param name="country">The country of the address.</param>
+            <param name="street">The street name of the address.</param>
+            <param name="streetNumber">The street number of the address.</param>
+            <param name="place">The place of the address.</param>
+            <param name="zipCode">The zip code of the address.</param>
+        </member>
         <member name="T:Person.API.Models.AddressUpdateModel">
             <summary>
             DTO za update adrese
@@ -900,6 +1002,16 @@
             <summary>
             Postanski broj adrese
             </summary>
+        </member>
+        <member name="M:Person.API.Models.AddressUpdateModel.#ctor(System.Nullable{Person.API.Enums.Country},System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates an address update model.
+            </summary>
+            <param name="country">The country of the address.</param>
+            <param name="street">The street name of the address.</param>
+            <param name="streetNumber">The street number of the address.</param>
+            <param name="place">The place of the address.</param>
+            <param name="zipCode">The zip code of the address.</param>
         </member>
         <member name="T:Person.API.Models.ContactLegalResponseModel">
             <summary>
@@ -951,6 +1063,15 @@
             Telefon kontakt osobe
             </summary>
         </member>
+        <member name="M:Person.API.Models.ContactPersonRequestModel.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of the ContactPersonRequestModel class.
+            </summary>
+            <param name="firstName">The first name of the contact person.</param>
+            <param name="lastName">The last name of the contact person.</param>
+            <param name="function">The function of the contact person.</param>
+            <param name="phoneNumber">The phone number of the contact person.</param>
+        </member>
         <member name="T:Person.API.Models.ContactPersonResponseModel">
             <summary>
             Represents a response model for a contact person record.
@@ -976,6 +1097,15 @@
             Telefon kontakt osobe
             </summary>
         </member>
+        <member name="M:Person.API.Models.ContactPersonResponseModel.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents an contact person response model.
+            </summary>
+            <param name="firstName">The first name of the contact person.</param>
+            <param name="lastName">The last name of the contact person.</param>
+            <param name="function">The function of the contact person.</param>
+            <param name="phoneNumber">The phone number of the contact person.</param>
+        </member>
         <member name="T:Person.API.Models.ContactPersonUpdateModel">
             <summary>
             Dto Update kontakt osoba
@@ -1000,6 +1130,15 @@
             <summary>
             Telefon kontakt osobe
             </summary>
+        </member>
+        <member name="M:Person.API.Models.ContactPersonUpdateModel.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Models.ContactPersonUpdateModel"/> class.
+            </summary>
+            <param name="firstName">The first name of the contact person.</param>
+            <param name="lastName">The last name of the contact person.</param>
+            <param name="function">The function of the contact person.</param>
+            <param name="phoneNumber">The phone number of the contact person.</param>
         </member>
         <member name="T:Person.API.Models.LegalPersonRequestModel">
             <summary>
@@ -1051,9 +1190,19 @@
             Broj računa pravnog lica
             </summary>
         </member>
+        <member name="M:Person.API.Models.LegalPersonRequestModel.#ctor(System.Guid,System.String,System.String,System.Guid,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents a request model for creating a legal person.
+            </summary>
+        </member>
         <member name="T:Person.API.Models.LegalPersonResponseModel">
             <summary>
             Represents a response model for a legal person record.
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.LegalPersonResponseModel.ContactPersonId">
+            <summary>
+            Id kontakt osobe
             </summary>
         </member>
         <member name="P:Person.API.Models.LegalPersonResponseModel.Name">
@@ -1095,6 +1244,21 @@
         <member name="P:Person.API.Models.LegalPersonResponseModel.AccountNumber">
             <summary>
             Broj računa pravnog lica
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.LegalPersonResponseModel.ContactLegalPerson">
+            <summary>
+            Gets or sets the contact legal person information.
+            </summary>
+        </member>
+        <member name="P:Person.API.Models.LegalPersonResponseModel.Address">
+            <summary>
+            Gets or sets the address information.
+            </summary>
+        </member>
+        <member name="M:Person.API.Models.LegalPersonResponseModel.#ctor(System.Guid,Person.API.Models.ContactLegalResponseModel,System.String,System.String,System.Guid,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents an legal person response model.
             </summary>
         </member>
         <member name="T:Person.API.Models.LegalPersonUpdateModel">
@@ -1147,6 +1311,11 @@
             Broj računa pravnog lica
             </summary>
         </member>
+        <member name="M:Person.API.Models.LegalPersonUpdateModel.#ctor(System.Nullable{System.Guid},System.String,System.String,System.Nullable{System.Guid},System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents a model used to update a legal person's information.
+            </summary>
+        </member>
         <member name="T:Person.API.Models.PhysicalPersonRequestModel">
             <summary>
             Dto Create fizičko lice
@@ -1190,6 +1359,11 @@
         <member name="P:Person.API.Models.PhysicalPersonRequestModel.AccountNumber">
             <summary>
             Broj računa fizičkog lica
+            </summary>
+        </member>
+        <member name="M:Person.API.Models.PhysicalPersonRequestModel.#ctor(System.String,System.String,System.String,System.Guid,System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents a request model for creating a physical person.
             </summary>
         </member>
         <member name="T:Person.API.Models.PhysicalPersonResponseModel">
@@ -1237,6 +1411,16 @@
             Broj računa fizičkog lica
             </summary>
         </member>
+        <member name="P:Person.API.Models.PhysicalPersonResponseModel.Address">
+            <summary>
+            Gets or sets the address information.
+            </summary>
+        </member>
+        <member name="M:Person.API.Models.PhysicalPersonResponseModel.#ctor(System.String,System.String,System.String,System.Guid,System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents an physical person response model.
+            </summary>
+        </member>
         <member name="T:Person.API.Models.PhysicalPersonUpdateModel">
             <summary>
             Dto Update fizičko lice
@@ -1280,6 +1464,21 @@
         <member name="P:Person.API.Models.PhysicalPersonUpdateModel.AccountNumber">
             <summary>
             Broj računa fizičkog lica
+            </summary>
+        </member>
+        <member name="M:Person.API.Models.PhysicalPersonUpdateModel.#ctor(System.String,System.String,System.String,System.Nullable{System.Guid},System.String,System.String,System.String,System.String)">
+            <summary>
+            Represents a model used to update a physical person's information.
+            </summary>
+        </member>
+        <member name="T:Person.API.Profiles.AddressPersonModel">
+            <summary>
+            Represents a profile that contains information specific to a address of person.
+            </summary>
+        </member>
+        <member name="M:Person.API.Profiles.AddressPersonModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Profiles.AddressPersonModel"/> class.
             </summary>
         </member>
         <member name="T:Person.API.Profiles.AddressProfile">

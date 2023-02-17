@@ -29,7 +29,7 @@ public class ContactPersonController : ControllerBase
         this.mapper = mapper;
     }
     /// <summary>
-    /// Gets all contact persons.
+    /// Returns a list of all contact persons.
     /// </summary>
     /// <returns>A collection of contact persons.</returns>
     [HttpGet]
@@ -44,7 +44,7 @@ public class ContactPersonController : ControllerBase
         return Ok(responseModels);
     }
     /// <summary>
-    /// Gets an contact person by its ID.
+    /// Returns an contact person with the specified id.
     /// </summary>
     /// <param name="ContactPersonGuid">The ID of the contact person to get.</param>
     /// <returns>The contact person with the specified ID, or NotFound if no such contact person exists.</returns>
@@ -60,7 +60,7 @@ public class ContactPersonController : ControllerBase
         return responseModel;
     }
     /// <summary>
-    /// Updates an contact person with the specified ID.
+    /// Updates an contact person with the specified id.
     /// </summary>
     /// <param name="id">The ID of the contact person to update.</param>
     /// <param name="patchModel">The contact person information to update.</param>
@@ -106,7 +106,7 @@ public class ContactPersonController : ControllerBase
     }
 
     /// <summary>
-    /// Deletes the contact person with the specified ID.
+    /// Deletes the contact person with the specified id.
     /// </summary>
     /// <param name="id">The ID of the contact person to delete.</param>
     /// <returns>NoContent if the contact person is deleted successfully, or NotFound if no such contact person exists.</returns>

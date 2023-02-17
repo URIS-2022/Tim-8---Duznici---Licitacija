@@ -28,7 +28,7 @@ public class AddressController : ControllerBase
         this.mapper = mapper;
     }
     /// <summary>
-    /// Gets all addresses.
+    /// Returns a list of addresses.
     /// </summary>
     /// <returns>A collection of addresses.</returns>
     [HttpGet]
@@ -43,7 +43,7 @@ public class AddressController : ControllerBase
         return Ok(responseModels);
     }
     /// <summary>
-    /// Gets an address by its ID.
+    /// Returns the address with the specified id.
     /// </summary>
     /// <param name="AddressId">The ID of the address to get.</param>
     /// <returns>The address with the specified ID, or NotFound if no such address exists.</returns>
@@ -59,7 +59,7 @@ public class AddressController : ControllerBase
         return responseModel;
     }
     /// <summary>
-    /// Updates an address with the specified ID.
+    /// Updates an address with the specified id.
     /// </summary>
     /// <param name="id">The ID of the address to update.</param>
     /// <param name="patchModel">The address information to update.</param>
@@ -104,7 +104,7 @@ public class AddressController : ControllerBase
         return CreatedAtAction("GetAddresses", new { street = responseModel.Street }, responseModel);
     }
     /// <summary>
-    /// Deletes the address with the specified ID.
+    /// Deletes the address with the specified id.
     /// </summary>
     /// <param name="id">The ID of the address to delete.</param>
     /// <returns>NoContent if the address is deleted successfully, or NotFound if no such address exists.</returns>

@@ -28,7 +28,7 @@ public class PhysicalPersonController : ControllerBase
         this.mapper = mapper;
     }
     /// <summary>
-    /// Gets all physical persons.
+    /// Returns a list of all physical persons.
     /// </summary>
     /// <returns>A collection of physical persons.</returns>
     [HttpGet]
@@ -43,7 +43,7 @@ public class PhysicalPersonController : ControllerBase
         return Ok(responseModels);
     }
     /// <summary>
-    /// Gets an physical person by its ID.
+    /// Returns an physical person with the specified id.
     /// </summary>
     /// <param name="PhysicalPersonGuid">The ID of the physical person to get.</param>
     /// <returns>The physical person with the specified ID, or NotFound if no such physical person exists.</returns>
@@ -59,7 +59,7 @@ public class PhysicalPersonController : ControllerBase
         return responseModel;
     }
     /// <summary>
-    /// Updates an physical person with the specified ID.
+    /// Updates an physical person with the specified id.
     /// </summary>
     /// <param name="id">The ID of the physical person to update.</param>
     /// <param name="patchModel">The physical person information to update.</param>
@@ -104,7 +104,7 @@ public class PhysicalPersonController : ControllerBase
         return CreatedAtAction("GetPhysicalPersons", new { firstname = responseModel.FirstName }, responseModel);
     }
     /// <summary>
-    /// Deletes the physical person with the specified ID.
+    /// Deletes the physical person with the specified id.
     /// </summary>
     /// <param name="id">The ID of the physical person to delete.</param>
     /// <returns>NoContent if the physical person is deleted successfully, or NotFound if no such physical person exists.</returns>
