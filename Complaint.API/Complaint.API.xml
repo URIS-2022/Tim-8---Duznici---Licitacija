@@ -54,7 +54,7 @@
             Updates a specific complaint.
             </summary>
             <param name="id">The identifier of the complaint to update.</param>
-            <param name="patchDocument">The updated values for the complaint.</param>
+            <param name="updateModel">The updated values for the complaint.</param>
             <returns>The updated complaint.</returns>
         </member>
         <member name="M:Complaint.API.Data.Repository.IComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)">

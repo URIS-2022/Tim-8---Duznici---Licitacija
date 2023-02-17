@@ -1,6 +1,15 @@
-﻿namespace Administration.API.Models.CommitteeMember;
+﻿using System.Runtime.Serialization;
 
+namespace Administration.API.Models.CommitteeMember;
+
+/// <summary>
+/// Represents a patch request model for the document retrieval operation.
+/// </summary>
 public class CommitteeMemberPatchRequestModel
 {
-    public string MemberRole { get; set; }
+    /// <summary>
+    /// Gets or sets the role of the member in committee.
+    /// </summary>
+    [DataMember]
+    public string? MemberRole { get; set; }
 }

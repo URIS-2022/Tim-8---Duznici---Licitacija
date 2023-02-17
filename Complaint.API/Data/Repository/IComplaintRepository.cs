@@ -22,9 +22,9 @@ public interface IComplaintRepository
     /// Updates a specific complaint.
     /// </summary>
     /// <param name="id">The identifier of the complaint to update.</param>
-    /// <param name="patchDocument">The updated values for the complaint.</param>
+    /// <param name="updateModel">The updated values for the complaint.</param>
     /// <returns>The updated complaint.</returns>
-    Task<Entities.Complaint?> UpdateComplaint(Guid id, Entities.Complaint patchDocument);
+    Task<Entities.Complaint?> UpdateComplaint(Guid id, Entities.Complaint updateModel);
 
     /// <summary>
     /// Adds a new complaint.
