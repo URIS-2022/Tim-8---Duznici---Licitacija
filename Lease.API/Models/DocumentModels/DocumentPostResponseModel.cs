@@ -1,16 +1,14 @@
-﻿using Lease.API.Entities;
-using Lease.API.Enums;
-using Lease.API.Enums;
+﻿using Lease.API.Enums;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 namespace Lease.API.Models.Document;
 
 /// <summary>
-/// Represents a patch response model for the document retrieval operation.
+/// Represents a post response model for the document retrieval operation.
 /// </summary>
 [DataContract(Name = "Document", Namespace = "")]
-public class DocumentPatchResponseModel
+public class DocumentPostResponseModel
 {
     /// <summary>
     /// Gets or sets the type of the document, which is converted from JSON format using a custom converter.
@@ -22,7 +20,6 @@ public class DocumentPatchResponseModel
     /// <summary>
     /// Gets or sets the unique identifier of the committee that the document belongs to.
     /// </summary>
-
 
     /// <summary>
     /// Gets or sets the reference number of the document.
@@ -47,13 +44,13 @@ public class DocumentPatchResponseModel
     /// </summary>
     [DataMember]
     public string? Template { get; set; }
+
     [DataMember]
     public Guid LeaseAgreementGuid { get; set; }
-
     /// <summary>
-    /// Initializes a new instance of the DocumentPatchResponseModel class.
+    /// Initializes a new instance of the DocumentPostResponseModel class.
     /// </summary>
     /// 
 
-    public DocumentPatchResponseModel() { }
+    public DocumentPostResponseModel() { }
 }

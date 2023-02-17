@@ -15,7 +15,7 @@ public class LeaseAgreementRepository : ILeaseAgreementRepository
         _context = context;
     }
 
-    public async Task<LeaseAgreement> GetByGuid(Guid id)
+    public async Task<LeaseAgreement?> GetByGuid(Guid id)
     {
         return await _context.LeaseAgreements.FirstOrDefaultAsync(la => la.Guid == id);
     }
@@ -39,7 +39,7 @@ public class LeaseAgreementRepository : ILeaseAgreementRepository
         return leaseAgreement;
     }
 
-    public async Task<LeaseAgreement> Delete(Guid id)
+    public async Task<LeaseAgreement?> Delete(Guid id)
     {
         var leaseAgreement = await _context.LeaseAgreements.FirstOrDefaultAsync(la => la.Guid == id);
         if (leaseAgreement == null) return null;
@@ -49,7 +49,7 @@ public class LeaseAgreementRepository : ILeaseAgreementRepository
         return leaseAgreement;
     }
 
-    public async Task<LeaseAgreement> GetByReferenceNumber(string referenceNumber)
+    public async Task<LeaseAgreement?> GetByReferenceNumber(string referenceNumber)
     {
         return await _context.LeaseAgreements.FirstOrDefaultAsync(la => la.ReferenceNumber == referenceNumber);
     }

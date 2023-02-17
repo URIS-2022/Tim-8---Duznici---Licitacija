@@ -1,8 +1,6 @@
 ﻿
 using AutoMapper.Configuration.Annotations;
-using Lease.API.Entities;
 using Lease.API.Enums;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -20,18 +18,12 @@ public class Buyer : IValidatableObject
     public Guid BiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
-
-   // [ValueConverter(typeof(PriorityTypeConverter))]
-   //  public PriorityType PriorityType { get; set; }
-
     public virtual LeaseAgreement LeaseAgreement { get; set; }
 
-    // public virtual ICollection<PriorityBuyer> PriorityBuyers { get; set; }
 
-  
-  //  public List<PriorityTypeEntity> PrioritiesEntities { get; set; }
-
-    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
+    
+    
+    [ValueConverter(typeof(PriorityTypeListValueConverter))]
     public List<PriorityType> Priorities { get; set; }
 
     public Buyer(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
@@ -45,11 +37,6 @@ public class Buyer : IValidatableObject
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         Priorities = priorities;
-      //  Priorities = (List<PriorityType>?) PriorityBuyers.Where(pb => pb.BuyerGuid == Guid).Select(pb => pb.PriorityType).ToList();
-
-
-    //    PriorityTypes = priorityTypes;
-
 
 }
 
@@ -64,10 +51,7 @@ public Buyer() { }
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-        //Priorities = (List<PriorityType>?)PriorityBuyers.Where(pb => pb.BuyerGuid == Guid).Select(pb => pb.PriorityType).ToList();
             
-
-        //  PriorityTypes = priorityTypes;
     }
 
 

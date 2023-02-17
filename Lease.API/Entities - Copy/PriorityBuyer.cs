@@ -6,7 +6,7 @@ public class PriorityBuyer
 {
     public int Id { get; set; }
 
-    public virtual PriorityTypeEntity PriorityTypeEntity { get; set; }
+    
     public virtual Buyer Buyer {get; set;}
 
     public Guid BuyerGuid { get; set; }

@@ -22,7 +22,7 @@ public partial class Document : IValidatableObject
     public DocumentType Type { get; set; }
     public Guid LeaseAgreementGuid { get; set; }
 
-    public LeaseAgreement LeaseAgreement { get; set; }
+    public virtual LeaseAgreement LeaseAgreement { get; set; }
 
 
     public Document() { }

@@ -28,7 +28,7 @@ public class BuyerPatchResponseModel
     public Guid PersonGuid { get; set; }
 
     [DataMember]
-    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
+    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType> Priorities { get; set; }
 
 

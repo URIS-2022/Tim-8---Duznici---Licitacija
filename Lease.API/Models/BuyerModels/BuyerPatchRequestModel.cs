@@ -20,7 +20,7 @@ public class BuyerPatchRequestModel
 
     public Guid? PersonGuid {get; set;}
 
-    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
+    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType>? Priorities { get; set; }
 
 

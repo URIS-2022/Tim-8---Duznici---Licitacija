@@ -21,7 +21,7 @@ public class BuyerPostResponseModel
 
     public Guid PersonGuid { get; set; }
 
-    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
+    [JsonConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType> Priorities { get; set; }
 
     public List<string> PrioritiesString { get; set; }

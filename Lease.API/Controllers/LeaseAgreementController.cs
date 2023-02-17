@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-
-using AutoMapper;
 using Lease.API.Data.Repository;
-using Lease.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Lease.API.Models.LeaseAgreementModels;
 

@@ -1,8 +1,6 @@
 ﻿using Lease.API.Data.Repository;
 using Lease.API.Models.Document;
 using AutoMapper;
-using Lease.API.Data.Repository;
-using Lease.API.Models.Document;
 using Lease.API.Models;
 using Microsoft.AspNetCore.Mvc;
 

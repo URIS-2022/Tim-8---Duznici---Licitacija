@@ -32,10 +32,11 @@ public class BuyerGetResponseModel
 
     public Guid PersonGuid { get; set; }
 
-    [ValueConverter(typeof(PriorityTypeListJsonConverter))]
+    [ValueConverter(typeof(PriorityTypeListValueConverter))]
     public List<PriorityType>  Priorities { get; set; }
-
-    public List<string> PrioritiesString { get; set; }
+   
+   // [JsonConverter(typeof(PriorityTypeListJsonConverter))]
+   // public List<PriorityT> PrioritiesString { get; set; }
 
 
 
@@ -51,7 +52,7 @@ public BuyerGetResponseModel(Guid guid, int realisedArea, bool ban, DateTime sta
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         Priorities = priorities;
-
+       
        
     }
 }

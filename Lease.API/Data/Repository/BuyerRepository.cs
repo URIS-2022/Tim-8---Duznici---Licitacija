@@ -17,7 +17,7 @@ public class BuyerRepository : IBuyerRepository
         _context = context;
     }
 
-    public async Task<Buyer> GetByGuid(Guid id)
+    public async Task<Buyer?> GetByGuid(Guid id)
     {
         return await _context.Buyers.FirstOrDefaultAsync(b => b.Guid == id);
     }
@@ -41,7 +41,7 @@ public class BuyerRepository : IBuyerRepository
         return buyer;
     }
 
-    public async Task<Buyer> Delete(Guid id)
+    public async Task<Buyer?> Delete(Guid id)
     {
         var buyer = await _context.Buyers.FirstOrDefaultAsync(b => b.Guid == id);
         if (buyer == null) return null;

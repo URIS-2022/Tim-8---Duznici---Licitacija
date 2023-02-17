@@ -7,11 +7,7 @@ namespace Lease.API.Models.LeaseAgreementModels;
 
 public class LeaseAgreementPatchRequestModel
 {
-  
-    //public Guid? Guid { get; set; }
-
     public string? ReferenceNumber { get; set; }
-
 
     [JsonConverter(typeof(GuaranteeTypeConverter))]
     public GuaranteeType? GuaranteeType { get; set; }
@@ -34,7 +30,6 @@ public class LeaseAgreementPatchRequestModel
     public DocumentStatus? DocumentStatus { get; set; }
     
     public Guid? DueDateGuid { get; set; }
-
 
     public LeaseAgreementPatchRequestModel( string? referenceNumber, GuaranteeType? guaranteeType, DateTime? dateRecording, Guid? ministerGuid,
         DateTime? deadlineLandReturn, string? placeOfSigning, DateTime? dateOfSigning, Guid? publicBiddingGuid,

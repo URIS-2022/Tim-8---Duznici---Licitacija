@@ -15,8 +15,8 @@ public class DueDateRepository : IDueDateRepository
     {
         _context = context;
     }
-
-    public async Task<DueDate> GetByGuid(Guid id)
+    
+    public async Task<DueDate?> GetByGuid(Guid id)
     {
         return await _context.DueDates.FirstOrDefaultAsync(b => b.Guid == id);
     }
@@ -51,13 +51,5 @@ public class DueDateRepository : IDueDateRepository
         return DueDate;
     }
 
-   /*public async Task<DueDate> GetByDate(DateTime date)
-    {
-        var DueDate = await _context.DueDates.FirstOrDefaultAsync(b => b.Date == date);
-        if (DueDate == null) return null;
-
-        _context.DueDates.Remove(DueDate);
-        await _context.SaveChangesAsync();
-        return DueDate;
-    }*/
+   
 }

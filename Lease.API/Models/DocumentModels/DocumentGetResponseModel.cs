@@ -1,17 +1,21 @@
-﻿using Lease.API.Entities;
-using Lease.API.Enums;
-using Lease.API.Enums;
+﻿using Lease.API.Enums;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Lease.API.Models.Document;
+namespace Lease.API.Models;
 
 /// <summary>
-/// Represents a post request model for the document retrieval operation.
+/// Represents a get response model for the document retrieval operation.
 /// </summary>
 [DataContract(Name = "Document", Namespace = "")]
-public class DocumentPostRequestModel
+public class DocumentGetResponseModel
 {
+    /// <summary>
+    /// Gets or sets the unique identifier of the document.
+    /// </summary>
+    [DataMember]
+    public Guid Guid { get; set; }
+
     /// <summary>
     /// Gets or sets the type of the document, which is converted from JSON format using a custom converter.
     /// </summary>
@@ -22,7 +26,7 @@ public class DocumentPostRequestModel
     /// <summary>
     /// Gets or sets the unique identifier of the committee that the document belongs to.
     /// </summary>
-
+   
 
     /// <summary>
     /// Gets or sets the reference number of the document.
@@ -49,12 +53,10 @@ public class DocumentPostRequestModel
     public string? Template { get; set; }
 
     [DataMember]
-    public Guid LeaseAgreementGuid { get; set; }
+    public Guid LeaseAgreementgGuid { get; set; }
 
     /// <summary>
-    /// Initializes a new instance of the DocumentPostRequestModel class.
+    /// Initializes a new instance of the DocumentGetResponseModel class.
     /// </summary>
-    /// 
-
-    public DocumentPostRequestModel() { }
+    public DocumentGetResponseModel() { }
 }
