@@ -8,52 +8,64 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Auth.API.Migrations;
-
-[DbContext(typeof(AuthDbContext))]
-partial class AuthDbContextModelSnapshot : ModelSnapshot
+namespace Auth.API.Migrations
 {
-    protected override void BuildModel(ModelBuilder modelBuilder)
+    [DbContext(typeof(AuthDbContext))]
+    partial class AuthDbContextModelSnapshot : ModelSnapshot
     {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
 #pragma warning disable 612, 618
-        modelBuilder
-            .HasAnnotation("ProductVersion", "7.0.2")
-            .HasAnnotation("Relational:MaxIdentifierLength", 128);
+            modelBuilder
+                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-        SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-        modelBuilder.Entity("Auth.API.Entities.SystemUser", b =>
-            {
-                b.Property<Guid>("Guid")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("uniqueidentifier");
+            modelBuilder.Entity("Auth.API.Entities.SystemUser", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                b.Property<string>("FirstName")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<string>("LastName")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<string>("Password")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<int>("Role")
-                    .HasColumnType("int");
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
-                b.Property<string>("Username")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                b.HasKey("Guid");
+                    b.HasKey("Guid");
 
-                b.HasIndex("Username")
-                    .IsUnique();
+                    b.HasIndex("Username")
+                        .IsUnique();
 
-                b.ToTable("SystemUsers");
-            });
+                    b.ToTable("SystemUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("e5c54eb6-18b5-4442-8e31-b023c9b72add"),
+                            FirstName = "Mladen",
+                            LastName = "Draganović",
+                            Password = "$2a$11$KtYIQwKz6k4RoQGjuey7.ujl/LOJFLhNO4xjN.jm5kw1TmtyLUyKO",
+                            Role = 8,
+                            Username = "mdraganov"
+                        });
+                });
 #pragma warning restore 612, 618
+        }
     }
 }
