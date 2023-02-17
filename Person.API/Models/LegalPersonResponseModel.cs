@@ -15,21 +15,18 @@ namespace Person.API.Models
           /// </summary>
         [DataMember]
         public Guid ContactPersonId { get; set; }
-
-
         /// <summary>
         /// Naziv pravnog lica
         /// </summary>
         [DataMember]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Matični broj pravnog lica
         /// </summary>
-        /// 
         
         [DataMember]
-        public string IdentificationNumber { get; set; }
+        public string? IdentificationNumber { get; set; }
         /// <summary>
         /// Adresa id
         /// </summary>
@@ -40,41 +37,45 @@ namespace Person.API.Models
         /// </summary>
 
         [DataMember] 
-        public string PhoneNumber1 { get; set; }
+        public string? PhoneNumber1 { get; set; }
 
         /// <summary>
         /// Broj telefona 2 pravnog lica
         /// </summary>
         [DataMember] 
-        public string PhoneNumber2 { get; set; }
+        public string? PhoneNumber2 { get; set; }
 
         /// <summary>
         /// Faks pravnog lica
         /// </summary>
         [DataMember]
-        public string Fax { get; set; }
+        public string? Fax { get; set; }
 
         /// <summary>
         /// Email pravnog lica
         /// </summary>
         [DataMember]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// Broj računa pravnog lica
         /// </summary>
         [DataMember]
-        public string AccountNumber { get; set; }
+        public string? AccountNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the contact legal person information.
         /// </summary>
-        public ContactLegalResponseModel ContactLegalPerson { get; set; }
+        public ContactLegalResponseModel? ContactLegalPerson { get; set; }
         /// <summary>
         /// Gets or sets the address information.
         /// </summary>
         public AddressPersonResponseModel? Address { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LegalPersonResponseModel"/> class.
+        /// </summary>
+        public LegalPersonResponseModel() { }
         
 
         /// <summary>

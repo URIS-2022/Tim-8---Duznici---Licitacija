@@ -1214,7 +1214,6 @@
             <summary>
             Matični broj pravnog lica
             </summary>
-            
         </member>
         <member name="P:Person.API.Models.LegalPersonResponseModel.AddressId">
             <summary>
@@ -1254,6 +1253,11 @@
         <member name="P:Person.API.Models.LegalPersonResponseModel.Address">
             <summary>
             Gets or sets the address information.
+            </summary>
+        </member>
+        <member name="M:Person.API.Models.LegalPersonResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Person.API.Models.LegalPersonResponseModel"/> class.
             </summary>
         </member>
         <member name="M:Person.API.Models.LegalPersonResponseModel.#ctor(System.Guid,Person.API.Models.ContactLegalResponseModel,System.String,System.String,System.Guid,System.String,System.String,System.String,System.String,System.String)">
