@@ -13,8 +13,7 @@ namespace Bidding.API.Models
         public Guid Guid { get; set; }
 
 
-        //[DataMember]
-       // public Guid RepresentativeGuid { get; set; }
+        
 
         [DataMember]
         public int Amount { get; set; }

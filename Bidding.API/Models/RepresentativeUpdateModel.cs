@@ -9,7 +9,7 @@ namespace Bidding.API.Models
     {
 
 
-       // public Guid Guid {get; set;}
+      
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
@@ -28,7 +28,7 @@ namespace Bidding.API.Models
         public RepresentativeUpdateModel() { }
 
 
-        // public List<BuyerApplication> BuyerRepresentatives { get; set; }
+        
 
         public RepresentativeUpdateModel(string? firstName, string? lastName, string? identificationNumber,
                          Guid addressGuid, int? numberOfBoard, Guid publicBiddingGuid)

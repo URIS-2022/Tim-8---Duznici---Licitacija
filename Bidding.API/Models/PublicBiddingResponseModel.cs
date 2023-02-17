@@ -44,7 +44,7 @@ namespace Bidding.API.Models
         [JsonConverter(typeof(BiddingStatusConverter))]
         [DataMember(Name ="biddingStatus")]
         public BiddingStatus biddingStatus { get; set; }
-        [DataMember] // mozda ne treba za ovu listu ispod
+        [DataMember] 
         public IEnumerable<PublicBiddingLotResponseModel> PublicBiddingLots { get; set; }
 
         public PublicBiddingResponseModel() { }

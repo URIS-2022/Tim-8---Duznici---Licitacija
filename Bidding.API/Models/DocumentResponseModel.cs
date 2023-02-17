@@ -26,7 +26,7 @@ namespace Bidding.API.Models
 
         [DataMember]
 
-        public DateTime DateSubmited { get; set; } // promjeniti da bude DateSubmitted
+        public DateTime DateSubmited { get; set; } 
 
         [DataMember]
         public DateTime DateSertified { get; set; }

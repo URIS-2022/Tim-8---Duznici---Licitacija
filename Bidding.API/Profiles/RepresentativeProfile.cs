@@ -21,10 +21,10 @@ namespace Bidding.API.Profiles
            .ForMember(dest => dest.LastName, opt => opt.Condition(src => src.LastName != null))
            .ForMember(dest => dest.IdentificationNumber, opt => opt.Condition(src => src.IdentificationNumber != null))
            .ForMember(dest => dest.AddressGuid, opt => opt.Condition(src => src.addressGuid != Guid.Empty))
-           //.ForMember(dest => dest.AddressGuid, opt => opt.MapFrom(src => src.addressGuid != Guid.Empty))
+           
            .ForMember(dest => dest.NumberOfBoard, opt => opt.Condition(src => src.NumberOfBoard != null))
            .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty));
-            //.ForMember(dest => dest.BuyerRepresentatives, opt => opt.Condition(src => src.BuyerRepresentatives != null))
+            
 
             CreateMap<Representative, RepresentativeRequestModel>();
                
@@ -34,10 +34,10 @@ namespace Bidding.API.Profiles
            .ForMember(dest => dest.LastName, opt => opt.Condition(src => src.LastName != null))
            .ForMember(dest => dest.IdentificationNumber, opt => opt.Condition(src => src.IdentificationNumber != null))
            .ForMember(dest => dest.AddressGuid, opt => opt.Condition(src => src.addressGuid != Guid.Empty))
-           //.ForMember(dest => dest.AddressGuid, opt => opt.MapFrom(src => src.addressGuid != Guid.Empty))
+           
            .ForMember(dest => dest.NumberOfBoard, opt => opt.Condition(src => src.NumberOfBoard.HasValue))
            .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty));
-           //.ForMember(dest => dest.BuyerRepresentatives, opt => opt.Condition(src => src.BuyerRepresentatives != null))
+           
         }
     }
 }

@@ -188,13 +188,13 @@ namespace Bidding.API.Data
 
             modelBuilder.Entity<PublicBidding>()
               .HasKey(u => u.Guid);
-            //.HasKey(p => new { p.Guid, p.Round });
+            
 
             modelBuilder.Entity<PublicBidding>()
             .HasMany(p => p.Representatives)
             .WithOne(r => r.publicBidding)
             .HasForeignKey(r => r.PublicBiddingGuid);
-           // .OnDelete(DeleteBehavior.NoAction); // dodato kasnije zbog problema sa bazom,mozda treba izbrisati
+           
 
             modelBuilder.Entity<PublicBidding>()
             .HasOne(p => p.Address)
@@ -220,13 +220,7 @@ namespace Bidding.API.Data
 
             modelBuilder.Entity<Representative>()
             .HasKey(u => u.Guid);
-          /*
-            modelBuilder.Entity<Representative>() // ovo je dodato kasnije zbog problema sa bazom,mozda ne treba
-            .HasOne(r => r.publicBidding) 
-            .WithMany(p => p.Representatives)
-            .HasForeignKey(r => r.PublicBiddingGuid)
-            .OnDelete(DeleteBehavior.NoAction);
-          */
+         
             modelBuilder.Entity<Representative>()
            .HasMany(r => r.BiddingOffers)
           .WithOne(bo => bo.Representative)

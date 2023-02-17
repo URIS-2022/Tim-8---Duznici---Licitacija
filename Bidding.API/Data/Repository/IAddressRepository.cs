@@ -7,7 +7,7 @@ namespace Bidding.API.Data.Repository
         
             Task<IEnumerable<Address>> GetAllAddresses();
             Task<Address> GetAddressByGuid(Guid guid);
-           // Task<Document?> GetDocumentByReferenceNumber(string referenceNumber);
+           
             Task<Address> AddAddress(Address address);
             Task DeleteAddress(Guid guid);
             Task<Address?> UpdateAddress(Address address);

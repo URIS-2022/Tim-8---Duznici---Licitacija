@@ -8,7 +8,7 @@ namespace Bidding.API.Enums
 
     public enum BiddingStatus
     {
-        None = 0,// Mozda treba izbaciti None kod svih Enuma
+        None = 0,
         FirstRound,
         SecondRoundOldConditions,
         SecondRoundNewConditions

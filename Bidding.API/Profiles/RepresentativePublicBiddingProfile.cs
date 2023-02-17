@@ -10,7 +10,7 @@ namespace Bidding.API.Profiles
         {
             CreateMap<PublicBidding, RepresentativePublicBiddingResponseModel>()
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
-                //   .ForMember(dest => dest.RepresentativeGuid, opt => opt.MapFrom(src => src.RepresentativeGuid))
+               
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
                 .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))

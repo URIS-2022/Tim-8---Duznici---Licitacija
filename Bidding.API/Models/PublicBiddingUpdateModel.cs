@@ -9,7 +9,7 @@ namespace Bidding.API.Models
     {
 
 
-       // public Guid Guid { get; set; }
+       
         public DateTime? Date { get; set; }
         
         public DateTime? StartDate { get; set; }
@@ -42,7 +42,6 @@ namespace Bidding.API.Models
         
         public BiddingStatus? biddingStatus { get; set; }
 
-        //public List<PublicBiddingLot> PublicBiddingLot { get; set; }
 
         public PublicBiddingUpdateModel() { }
 

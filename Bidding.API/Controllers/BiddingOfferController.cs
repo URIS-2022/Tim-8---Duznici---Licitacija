@@ -44,19 +44,7 @@ namespace Bidding.API.Controllers
             BiddingOfferResponseModel responseModel = _mapper.Map<BiddingOfferResponseModel>(biddingOffer);
             return Ok(responseModel);
         }
-        /*
-        [HttpGet("{offer}")]
-        public async Task<ActionResult<BiddingOfferResponseModel>> GetBiddingOfferByOffer(float offer)
-        {
-            BiddingOffer biddingOffer = await _biddingOfferRepository.GetBiddingOfferByOffer(offer);
-            if (biddingOffer == null)
-            {
-                return NotFound();
-            }
-            BiddingOfferResponseModel responseModel = _mapper.Map<BiddingOfferResponseModel>(biddingOffer);
-            return Ok(responseModel);
-        }
-        */
+      
         [HttpPost]
         public async Task<ActionResult<BiddingOfferResponseModel>> PostBiddingOffer(BiddingOfferRequestModel requestModel)
         {

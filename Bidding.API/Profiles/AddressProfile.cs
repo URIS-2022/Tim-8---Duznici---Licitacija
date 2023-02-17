@@ -27,7 +27,7 @@ namespace Bidding.API.Profiles
 
 
             CreateMap<AddressUpdateModel, Address>()
-    //.ForMember(dest => dest.Guid, opt => opt.Ignore())
+    
     .ForMember(dest => dest.Country, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Country)))
     .ForMember(dest => dest.Street, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Street)))
     .ForMember(dest => dest.StreetNumber, opt => opt.Condition(src => !string.IsNullOrEmpty(src.StreetNumber)))

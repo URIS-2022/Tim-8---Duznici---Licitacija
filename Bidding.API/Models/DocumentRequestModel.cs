@@ -25,7 +25,7 @@ namespace Bidding.API.Models
             Guid = guid;
             this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
-            ReferenceNumber = referenceNumber; // U entitetu dokument popraviti svuda da reference number bude string a ne int
+            ReferenceNumber = referenceNumber; 
             Template = template;
         }
     }

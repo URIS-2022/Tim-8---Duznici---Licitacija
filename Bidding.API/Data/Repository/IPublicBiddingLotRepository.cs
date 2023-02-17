@@ -8,7 +8,7 @@ namespace Bidding.API.Data.Repository
         
             Task<IEnumerable<PublicBiddingLot>> GetAllBiddingLots();
              Task<PublicBiddingLot> GetPublicBiddingLotByGuid(Guid guid);
-            // Task<Document?> GetDocumentByReferenceNumber(string referenceNumber);
+            
             Task<PublicBiddingLot> AddBiddingLot(PublicBiddingLot publicBiddingLot);
             Task DeleteBiddingLot(Guid guid);
             Task<PublicBiddingLot?> UpdateBiddingLot(PublicBiddingLot publicBiddingLot);

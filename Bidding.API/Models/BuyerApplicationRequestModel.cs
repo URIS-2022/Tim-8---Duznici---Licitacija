@@ -9,12 +9,12 @@ namespace Bidding.API.Models
     public class BuyerApplicationRequestModel
     {
 
-       // public Guid Guid { get; set; }
+       
         public Guid RepresentativeGuid { get; set; }
 
         public int Amount { get; set; }
 
-        // public Guid representative { get; set; }
+        
 
         public BuyerApplicationRequestModel() { }
         public BuyerApplicationRequestModel( Guid representativeGuid, int amount)
@@ -22,7 +22,7 @@ namespace Bidding.API.Models
             
             RepresentativeGuid = representativeGuid;
             Amount = amount;
-           // this.representative = representative;
+           
         }
     }
 }

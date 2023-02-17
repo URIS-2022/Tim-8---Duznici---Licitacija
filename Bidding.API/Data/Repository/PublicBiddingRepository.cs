@@ -15,7 +15,7 @@ namespace Bidding.API.Data.Repository
         public async Task<PublicBidding> AddPublicBidding(PublicBidding publicBidding)
         {
             context.PublicBiddings.Add(publicBidding);
-           // context.Adresses.Add(publicBidding.Address); //ako ne bude radilo izbaciti address,ovdje je bilo Async,takodje i kod representative
+           
             await context.SaveChangesAsync();
             return publicBidding;
         }

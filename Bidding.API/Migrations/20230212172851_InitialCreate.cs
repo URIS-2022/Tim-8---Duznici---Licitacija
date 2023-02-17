@@ -127,7 +127,7 @@ namespace Bidding.API.Migrations
                         column: x => x.PublicBiddingGuid,
                         principalTable: "PublicBiddings",
                         principalColumn: "Guid");
-                     //   onDelete: ReferentialAction.Cascade);
+                     
                 });
 
             migrationBuilder.CreateTable(
@@ -155,7 +155,7 @@ namespace Bidding.API.Migrations
                         column: x => x.RepresentativeGuid,
                         principalTable: "Representatives",
                         principalColumn: "Guid");
-                       // onDelete: ReferentialAction.Cascade);
+                       
                 });
 
             migrationBuilder.CreateTable(

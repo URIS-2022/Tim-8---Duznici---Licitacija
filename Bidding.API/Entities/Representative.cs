@@ -37,7 +37,7 @@ namespace Bidding.API.Entities
             AddressGuid = addressGuid;
             NumberOfBoard = numberOfBoard;
             PublicBiddingGuid = publicBiddingGuid;
-           // BuyerApplications = buyerApplications ?? new HashSet<BuyerApplication>();
+           
         }
 
         public Representative(string firstName, string lastName, string identificationNumber,
@@ -50,7 +50,7 @@ namespace Bidding.API.Entities
             AddressGuid = addressGuid;
             NumberOfBoard = numberOfBoard;
             PublicBiddingGuid = publicBiddingGuid;
-           // BuyerApplications = buyerApplications ?? new HashSet<BuyerApplication>();
+           
         }
 
 

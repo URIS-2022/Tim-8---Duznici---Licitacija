@@ -43,7 +43,7 @@ namespace Bidding.API.Data.Repository
         public async Task<Representative> AddRepresentative(Representative representative)
         {
             _context.Representatives.Add(representative);
-            //_context.Adresses.Add(representative.address); //ako ne bude radilo izbaciti address
+           
             await _context.SaveChangesAsync();
             return representative;
         }
