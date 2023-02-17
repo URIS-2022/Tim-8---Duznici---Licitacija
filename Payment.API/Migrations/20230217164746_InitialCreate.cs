@@ -37,8 +37,7 @@ namespace Payment.API.Migrations
                     PayerGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PaymentTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PublicBiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PaymentWarrantGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PublicBiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,12 +54,6 @@ namespace Payment.API.Migrations
                 name: "IX_Payments_ReferenceNumber",
                 table: "Payments",
                 column: "ReferenceNumber");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PaymentWarrants_ReferenceNumber",
-                table: "PaymentWarrants",
-                column: "ReferenceNumber",
-                unique: true);
         }
 
         /// <inheritdoc />

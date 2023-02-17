@@ -25,7 +25,7 @@ namespace Payment.API.Entities
         {
         }
 
-        public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
+        /*public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
         {
             Guid = paymentGuid;
             AccountNumber = accountNumber;
@@ -50,7 +50,7 @@ namespace Payment.API.Entities
             PaymentDate = paymentDate;
             PublicBiddingGuid = publicBiddingGuid;
             PaymentWarrant = paymentWarrant;
-        }
+        }*/
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
