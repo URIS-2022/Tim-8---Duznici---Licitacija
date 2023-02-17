@@ -17,7 +17,7 @@
             </summary>
             <returns>A list of System User models, or No Content if no System User found</returns>
         </member>
-        <member name="M:Licitation.API.Controllers.LicitationController.#ctor(Licitation.API.Data.Repository.ILicitationRepository,Licitation.API.Data.Repository.ILicitationLandRepository,AutoMapper.IMapper)">
+        <member name="M:Licitation.API.Controllers.LicitationController.#ctor(Licitation.API.Data.Repository.ILicitationRepository,Licitation.API.Data.Repository.ILicitationLandRepository,Licitation.API.Data.Repository.ILicitationPublicBiddingRepository,AutoMapper.IMapper)">
             <summary>
             Initializes a new instance of the LicitacionController class
             </summary>
@@ -127,6 +127,29 @@
             /// <param name="licitationLandId">The id of member to remove.</param>
             <returns>The deleted committee member.</returns>
         </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.GetPublicBidding(System.Guid,System.Guid)">
+            <summary>
+            Gets a specific licitation public bidding by its identifier.
+            </summary>
+            <param name="licitationId">The identifier of the Licitation.</param>
+            /// <param name="publicBiddingId">The id of public bidding to add.</param>
+            <returns>The member with the specified identifier.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.AddPublicBidding(Licitation.API.Entities.PublicBidding)">
+            <summary>
+            Adds a new public bidding to licitation.
+            </summary>
+            <param name="publicBidding">The request format for adding public bidding to licitation.</param>
+            <returns>The added public bidding.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.DeletePublicBidding(System.Guid,System.Guid)">
+            <summary>
+            Removes a specific public bidding from licitation.
+            </summary>
+            <param name="licitationId">The identifier of the public bidding to delete.</param>
+            /// <param name="publicBiddingId">The id of public bidding to remove.</param>
+            <returns>The deleted public bidding.</returns>
+        </member>
         <member name="T:Licitation.API.Data.Repository.ILicitationRepository">
             <summary>
             Repository for managing Licitation entities.
@@ -182,6 +205,22 @@
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)">
             <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
+            <summary>
+            Initializes a new instance of the PublicBiddingRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.GetPublicBidding(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.GetPublicBidding(System.Guid,System.Guid)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.AddPublicBidding(Licitation.API.Entities.PublicBidding)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.AddPublicBidding(Licitation.API.Entities.PublicBidding)"/>
+            
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.DeletePublicBidding(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.DeletePublicBidding(System.Guid,System.Guid)"/>
         </member>
         <member name="T:Licitation.API.Data.Repository.LicitationRepository">
             <summary>
@@ -302,6 +341,12 @@
             <summary>
             Initializes a new instance of the <see cref="T:Licitation.API.Entities.LicitationLand"/> class and sets up mappings between
             <see cref="T:Licitation.API.Entities.LicitationLand"/> and its corresponding response/request models.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Profiles.LicitationPublicBiddingProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.PublicBidding"/> class and sets up mappings between
+            <see cref="T:Licitation.API.Entities.PublicBidding"/> and its corresponding response/request models.
             </summary>
         </member>
     </members>

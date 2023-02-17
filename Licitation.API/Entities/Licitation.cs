@@ -16,33 +16,20 @@ public partial class Licitation : IValidatableObject
     public int BidIncrement { get; set; }
     public DateTime ApplicationDeadline { get; set; }
     public IEnumerable<LicitationLand> Lands { get; set; }
-    public IEnumerable<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
+    public IEnumerable<PublicBidding> LicitationPublicBiddings { get; set; }
 
     public List<LicitationLand> LicitationLands { get; set; }
-    public List<LicitationPublicBidding> PublicBiddings { get; set; }
+    public List<PublicBidding> PublicBiddings { get; set; }
     public List<Document> Documents { get; set; }
-    //public object licitationLands { get; internal set; }
 
-    //public ICollection<LicitationLand> LicitationLands { get; set; }
-    //public ICollection<LicitationPublicBidding> PublicBidding { get; set; }
-    //public object Documents { get; internal set; }
-    //public object LicitationLands { get; internal set; }
-
-    //public List<LicitationLand> LicitationLands { get; set; }
-    //public List<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
-    //public ICollection<Document> Documents { get; set; }
-
-    //public LicitationLand LicitationLands { get; set; }
-    //public LicitationPublicBidding LicitationPublicBidding { get; set; }
-    //public ICollection<Document> Documents { get; set; }
-
+ 
     public Licitation()
     {
         Lands =  new HashSet<LicitationLand>();
-        LicitationPublicBiddings = new HashSet<LicitationPublicBidding>();
+        LicitationPublicBiddings = new HashSet<PublicBidding>();
     }
 
-    public Licitation(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand>? licitationLands = null, ICollection<LicitationPublicBidding>? licitationPublicBiddings = null /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
+    public Licitation(Guid licitationGuid, int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand>? licitationLands = null, ICollection<PublicBidding>? licitationPublicBiddings = null)
     {
         Guid = licitationGuid;
         Stage = stage;
@@ -52,13 +39,11 @@ public partial class Licitation : IValidatableObject
         BidIncrement = bidIncrement;
         ApplicationDeadline = applicationDeadline;
         Lands = licitationLands ?? new HashSet<LicitationLand>();
-        LicitationPublicBiddings = licitationPublicBiddings ?? new HashSet<LicitationPublicBidding>();
-        //LandGuids = landGuids;
-        //PublicBiddingGuids = publicBiddingGuids;
+        LicitationPublicBiddings = licitationPublicBiddings ?? new HashSet<PublicBidding>();
 
     }
 
-    public Licitation(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand>? licitationLands = null, ICollection<LicitationPublicBidding>? licitationPublicBiddings = null /*List<LicitationLandRequest> landGuids, List<LicitationPublicBiddingRequest> publicBiddingGuids*/)
+    public Licitation(int stage, DateTime date, int year, int constraint, int bidIncrement, DateTime applicationDeadline, ICollection<LicitationLand>? licitationLands = null, ICollection<PublicBidding>? licitationPublicBiddings = null)
     {
         Guid = Guid.NewGuid();
         Stage = stage;
@@ -68,9 +53,7 @@ public partial class Licitation : IValidatableObject
         BidIncrement = bidIncrement;
         ApplicationDeadline = applicationDeadline;
         Lands = licitationLands ?? new HashSet<LicitationLand>();
-        LicitationPublicBiddings = licitationPublicBiddings ?? new HashSet<LicitationPublicBidding>();
-        //LandGuids = landGuids;
-        //PublicBiddingGuids = publicBiddingGuids;
+        LicitationPublicBiddings = licitationPublicBiddings ?? new HashSet<PublicBidding>();
     }
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

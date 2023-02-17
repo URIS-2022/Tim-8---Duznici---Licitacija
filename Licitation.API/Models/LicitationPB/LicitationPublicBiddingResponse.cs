@@ -2,7 +2,7 @@
 
 namespace Licitation.API.Models.LicitationPBResponse;
 
-[DataContract(Name = "PublicBIdding", Namespace = "")]
+[DataContract(Name = "PublicBidding", Namespace = "")]
 public class LicitationPublicBiddingResponse
 {
     [DataMember]

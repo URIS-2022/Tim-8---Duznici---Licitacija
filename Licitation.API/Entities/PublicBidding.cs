@@ -2,25 +2,19 @@
 
 namespace Licitation.API.Entities;
 
-public class LicitationPublicBidding : IValidatableObject
+public class PublicBidding : IValidatableObject
 {
 
     public Guid PublicBiddingGuid { get; set; }
     public Guid LicitationGuid { get; set; }
 
-    //public Entities.Licitation licitationEntity { get; set; }
-
-    //public object LicitationEntity { get; internal set; }
-
-    //public object LicitationEntity { get; internal set; }
-
     public Licitation licitation { get; set; }
 
-    public LicitationPublicBidding()
+    public PublicBidding()
     {
 
     }
-    public LicitationPublicBidding(Guid publicBiddingGuid, Guid licitation)
+    public PublicBidding(Guid publicBiddingGuid, Guid licitation)
     {
         PublicBiddingGuid= publicBiddingGuid;
         LicitationGuid= licitation;

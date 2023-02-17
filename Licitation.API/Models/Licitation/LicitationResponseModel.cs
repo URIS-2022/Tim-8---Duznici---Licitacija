@@ -26,16 +26,8 @@ namespace Licitation.API.Models.Licitation
 
         [DataMember]
         public IEnumerable<LicitationLandLicitationResponseModel> LicitationLands { get; set; }
-
-
-        //[DataMember]
-        //public List<LicitationLand> LandGuids { get; set; }
-
-        //[DataMember]
-        //public List<LicitationPublicBidding> PublicBiddingGuids { get; set; }
-
-        //[DataMember]
-        //public IEnumerable<LicitationPubblicBiddingLicitationResponseModel> PublicBiddings { get; set; }
+        [DataMember]
+        public IEnumerable<LicitationPublicBiddingLicitationResponseModel> LicitationPublicBiddings { get; set; }
 
         public LicitationResponseModel()
         {

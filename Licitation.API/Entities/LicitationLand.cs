@@ -3,21 +3,12 @@
 namespace Licitation.API.Entities;
 public partial class LicitationLand : IValidatableObject
 {
-   //internal object licitationEntity { get; set; }
 
     public Guid LicitationGuid { get; set; }
     public Guid LandGuid { get; set; }
-    //public object licitation { get;  set;}
-    //public object Licitations { get; internal set; }
 
     public Licitation licitation { get; set; }
 
-    //public LicitationEntity licitationEntity { get; set; }
-    //public object LicitationEntities { get; internal set; }
-    //public object Licitation { get; set; }
-    //public object Land { get; internal set; }
-
-    //public object LicitationEntities { get; internal set; }
 
     public LicitationLand()
     {

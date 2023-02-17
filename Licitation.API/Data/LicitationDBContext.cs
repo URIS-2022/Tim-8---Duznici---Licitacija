@@ -27,7 +27,7 @@ public class LicitationDBContext : DbContext
     public DbSet<Entities.Licitation> LicitationEntities { get; set; }
     public DbSet<Document> Documents { get; set; }
     public DbSet<LicitationLand> LicitationLands { get; set; }
-    public DbSet<LicitationPublicBidding> LicitationPublicBiddings { get; set; }
+    public DbSet<PublicBidding> LicitationPublicBiddings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -100,7 +100,7 @@ public class LicitationDBContext : DbContext
             entity.HasKey(e => new { e.LandGuid, e.LicitationGuid });
         });
 
-        modelBuilder.Entity<LicitationPublicBidding>(entity =>
+        modelBuilder.Entity<PublicBidding>(entity =>
         {
             entity.HasKey(e => new { e.PublicBiddingGuid, e.LicitationGuid });
         });
@@ -114,7 +114,7 @@ public class LicitationDBContext : DbContext
         .WithMany(l => l.LicitationLands)
         .HasForeignKey(ll => ll.LicitationGuid);
 
-        modelBuilder.Entity<LicitationPublicBidding>().HasOne(pb => pb.licitation)
+        modelBuilder.Entity<PublicBidding>().HasOne(pb => pb.licitation)
         .WithMany(l => l.PublicBiddings)
         .HasForeignKey(pb => pb.LicitationGuid);
 
@@ -131,7 +131,7 @@ public class LicitationDBContext : DbContext
             entity.HasKey(e => new { e.LandGuid, e.LicitationGuid });
         });
 
-        modelBuilder.Entity<LicitationPublicBidding>(entity =>
+        modelBuilder.Entity<PublicBidding>(entity =>
         {
             entity.HasKey(e => new { e.PublicBiddingGuid, e.LicitationGuid });
         });

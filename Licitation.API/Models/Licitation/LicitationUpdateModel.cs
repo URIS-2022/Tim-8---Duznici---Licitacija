@@ -5,6 +5,7 @@ namespace Licitation.API.Models.Licitation
 {
     public class LicitationUpdateModel
     {
+
         public int? Stage { get; set; }
         public DateTime? Date { get; set; }
         public int? Year { get; set; }

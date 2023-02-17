@@ -79,6 +79,8 @@ builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 
 builder.Services.AddScoped<ILicitationLandRepository, LicitationLandRepository>();
 
+builder.Services.AddScoped<ILicitationPublicBiddingRepository, LicitationPublicBiddingRepository>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddEndpointsApiExplorer();

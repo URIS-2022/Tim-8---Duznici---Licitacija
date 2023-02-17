@@ -3,6 +3,7 @@ using Licitation.API.Data.Repository;
 using Licitation.API.Entities;
 using Licitation.API.Models.Licitation;
 using Licitation.API.Models.LicitationLands;
+using Licitation.API.Models.LicitationPB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
@@ -17,6 +18,7 @@ public class LicitationController : ControllerBase
 {
     private readonly ILicitationRepository licitationRepository;
     private readonly ILicitationLandRepository llRepository;
+    private readonly ILicitationPublicBiddingRepository publicBiddingRepository;
     private readonly IMapper mapper;
 
     /// <summary>
@@ -24,10 +26,11 @@ public class LicitationController : ControllerBase
     /// </summary>
     /// <param name="licitationRepository">An instance of ILicitacionRepository to handle the Licitacions</param>
     /// <param name="mapper">An instance of IMapper to map between Licitacion entities and models</param>
-    public LicitationController(ILicitationRepository licitationRepository, ILicitationLandRepository llRepository, IMapper mapper)
+    public LicitationController(ILicitationRepository licitationRepository, ILicitationLandRepository llRepository, ILicitationPublicBiddingRepository publicBiddingRepository, IMapper mapper)
     {
         this.licitationRepository = licitationRepository;
         this.llRepository = llRepository;
+        this.publicBiddingRepository = publicBiddingRepository;
         this.mapper = mapper;
     }
 
@@ -95,7 +98,7 @@ public class LicitationController : ControllerBase
 
     // PATCH: api/LicitationEntities/5
     [HttpPatch("{id}")]
-    public async Task<ActionResult<LicitationResponseModel>> PatchLicitation(Guid id, [FromBody] LicitationRequestModel patchModel)
+    public async Task<ActionResult<LicitationResponseModel>> PatchLicitation(Guid id, [FromBody] LicitationUpdateModel patchModel)
     {
         var licitation = await licitationRepository.GetByGuid(id);
         if (licitation == null)
@@ -131,6 +134,22 @@ public class LicitationController : ControllerBase
         return NoContent();
     }
 
+    // POST: api/Licitation
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPost("{id}/publicBiddings")]
+    public async Task<ActionResult<LicitationResponseModel>> PostPublicBidding(Guid id, PublicBiddingPostRequestModel postModel)
+    {
+        var publicBidding = mapper.Map<PublicBidding>(postModel);
+        publicBidding.LicitationGuid = id;
+        var created = await publicBiddingRepository.AddPublicBidding(publicBidding);
+        if (created == null)
+        {
+            return BadRequest();
+        }
+        return NoContent();
+    }
+
+
     // DELETE: api/Licitaion/5
     [HttpDelete("{id}/licitationLands/{licitationLandId}")]
     public async Task<IActionResult> DeleteLicitationLand(Guid id, Guid licitationLandId)
@@ -143,6 +162,20 @@ public class LicitationController : ControllerBase
         await llRepository.DeleteLicitationLand(id, licitationLandId);
         return NoContent();
     }
+
+    // DELETE: api/Licitaion/5
+    [HttpDelete("{id}/publicBiddings/{publicBiddingId}")]
+    public async Task<IActionResult> DeletePublicBidding(Guid id, Guid publicBiddingId)
+    {
+        var publicBidding = await publicBiddingRepository.GetPublicBidding(id, publicBiddingId);
+        if (publicBiddingId == null)
+        {
+            return NotFound();
+        }
+        await publicBiddingRepository.DeletePublicBidding(id, publicBiddingId);
+        return NoContent();
+    }
+
 
     /* // POST: api/Licitation
      [HttpPost]
