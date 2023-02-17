@@ -63,7 +63,7 @@ public partial class SystemUser : IValidatableObject
         FirstName = firstName;
         LastName = lastName;
         Username = username;
-        Password = password;
+        Password = BCrypt.Net.BCrypt.HashPassword(password, Environment.GetEnvironmentVariable("BCRYPT_SALT") ?? "$2a$11$KtYIQwKz6k4RoQGjuey7.u");
         Role = role;
     }
 
