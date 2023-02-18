@@ -50,7 +50,6 @@ public class BuyerController : ControllerBase
     [HttpPatch("{guid}")]
     public async Task<ActionResult<Models.Buyer.BuyerPatchResponseModel>> PatchGuid(Guid guid, [FromBody] Models.Buyer.BuyerPatchRequestModel patchModel)
     {
-
         var Buyer = await _BuyerRepository.GetByGuid(guid);
         if (Buyer == null)
         {
@@ -74,8 +73,6 @@ public class BuyerController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Models.Buyer.BuyerPostResponseModel>> PostBuyer(Models.Buyer.BuyerPostRequestModel postModel)
     {
-        
-
         var Buyer = mapper.Map<Entities.Buyer>(postModel);
         Entities.Buyer? created = await _BuyerRepository.Add(Buyer);
         if (created == null)
