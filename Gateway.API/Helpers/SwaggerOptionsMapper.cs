@@ -39,7 +39,7 @@ static class SwaggerOptionsMapper
     }
     private static void GenerateEndpoint(SwaggerUIOptions options, string serviceName)
     {
-        options.SwaggerEndpoint($"/swagger/{serviceName}/swagger.json", $"Gateway {serviceName} Service API");
+        options.SwaggerEndpoint($"/swagger/{serviceName}/swagger.json", $"{serviceName} Service API Gateway");
     }
     private static void AddAdministrationSwaggerDoc(SwaggerGenOptions options)
     {
