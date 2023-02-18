@@ -60,6 +60,271 @@
         <member name="M:Bidding.API.Migrations.SecondUpdateDBContext.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Bidding.API.Models.AddressNewResponseModel">
+            <summary>
+            Represents a response model for creating a new address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressNewResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier for the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressNewResponseModel.Country">
+            <summary>
+            Gets or sets the country of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressNewResponseModel.Street">
+            <summary>
+            Gets or sets the street of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressNewResponseModel.StreetNumber">
+            <summary>
+            Gets or sets the street number of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressNewResponseModel.Place">
+            <summary>
+            Gets or sets the place of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressNewResponseModel.ZipCode">
+            <summary>
+            Gets or sets the ZIP code of the address.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.AddressNewResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the AddressNewResponseModel class.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.AddressNewResponseModel.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the AddressNewResponseModel class with the specified properties.
+            </summary>
+            <param name="country">The country of the address.</param>
+            <param name="street">The street of the address.</param>
+            <param name="streetNumber">The street number of the address.</param>
+            <param name="place">The place of the address.</param>
+            <param name="zipCode">The ZIP code of the address.</param>
+        </member>
+        <member name="T:Bidding.API.Models.AddressRequestModel">
+            <summary>
+            Represents a model for requesting an address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressRequestModel.Country">
+            <summary>
+            Gets or sets the country of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressRequestModel.Street">
+            <summary>
+            Gets or sets the street of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressRequestModel.StreetNumber">
+            <summary>
+            Gets or sets the street number of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressRequestModel.Place">
+            <summary>
+            Gets or sets the place of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressRequestModel.ZipCode">
+            <summary>
+            Gets or sets the ZIP code of the address.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.AddressRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the AddressRequestModel class.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.AddressRequestModel.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the AddressRequestModel class with the specified properties.
+            </summary>
+            <param name="country">The country of the address.</param>
+            <param name="street">The street of the address.</param>
+            <param name="streetNumber">The street number of the address.</param>
+            <param name="place">The place of the address.</param>
+            <param name="zipCode">The ZIP code of the address.</param>
+        </member>
+        <member name="T:Bidding.API.Models.AddressUpdateModel">
+            <summary>
+            Represents a model for updating an address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressUpdateModel.Country">
+            <summary>
+            Gets or sets the country of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressUpdateModel.Street">
+            <summary>
+            Gets or sets the street of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressUpdateModel.StreetNumber">
+            <summary>
+            Gets or sets the street number of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressUpdateModel.Place">
+            <summary>
+            Gets or sets the place of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AddressUpdateModel.ZipCode">
+            <summary>
+            Gets or sets the ZIP code of the address.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.AddressUpdateModel.#ctor">
+            <summary>
+            Initializes a new instance of the AddressUpdateModel class.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.AddressUpdateModel.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the AddressUpdateModel class with the specified properties.
+            </summary>
+            <param name="country">The country of the address.</param>
+            <param name="street">The street of the address.</param>
+            <param name="streetNumber">The street number of the address.</param>
+            <param name="place">The place of the address.</param>
+            <param name="zipCode">The ZIP code of the address.</param>
+        </member>
+        <member name="T:Bidding.API.Models.AdressResponseModel">
+            <summary>
+            Represents a model for an address response.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AdressResponseModel.Country">
+            <summary>
+            Gets or sets the country of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AdressResponseModel.Street">
+            <summary>
+            Gets or sets the street of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AdressResponseModel.StreetNumber">
+            <summary>
+            Gets or sets the street number of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AdressResponseModel.Place">
+            <summary>
+            Gets or sets the place of the address.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.AdressResponseModel.ZipCode">
+            <summary>
+            Gets or sets the ZIP code of the address.
+            </summary>
+        </member>
+        <member name="T:Bidding.API.Models.BiddingOfferRequestModel">
+            <summary>
+            Represents a model for a bidding offer request.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferRequestModel.RepresentativeGuid">
+            <summary>
+            Gets or sets the GUID of the representative making the offer.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferRequestModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the GUID of the public bidding to make the offer for.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferRequestModel.Date">
+            <summary>
+            Gets or sets the date of the offer.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferRequestModel.Offer">
+            <summary>
+            Gets or sets the offer amount.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferRequestModel.BuyerGuid">
+            <summary>
+            Gets or sets the GUID of the buyer making the offer.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.BiddingOfferRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the BiddingOfferRequestModel class.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.BiddingOfferRequestModel.#ctor(System.Guid,System.Guid,System.DateTime,System.Single,System.Guid)">
+            <summary>
+            Initializes a new instance of the BiddingOfferRequestModel class with the specified values.
+            </summary>
+            <param name="representativeGuid">The GUID of the representative making the offer.</param>
+            <param name="publicBiddingGuid">The GUID of the public bidding to make the offer for.</param>
+            <param name="date">The date of the offer.</param>
+            <param name="offer">The offer amount.</param>
+            <param name="buyerGuid">The GUID of the buyer making the offer.</param>
+        </member>
+        <member name="T:Bidding.API.Models.BiddingOfferResponseModel">
+            <summary>
+            Represents a bidding offer in the system.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the bidding offer.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferResponseModel.RepresentativeGuid">
+            <summary>
+            Gets or sets the unique identifier of the representative making the offer.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferResponseModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the unique identifier of the public bidding the offer is made for.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferResponseModel.Date">
+            <summary>
+            Gets or sets the date when the offer was made.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferResponseModel.Offer">
+            <summary>
+            Gets or sets the value of the offer.
+            </summary>
+        </member>
+        <member name="P:Bidding.API.Models.BiddingOfferResponseModel.BuyerGuid">
+            <summary>
+            Gets or sets the unique identifier of the buyer associated with the bidding offer.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.BiddingOfferResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the BiddingOfferResponseModel class.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Models.BiddingOfferResponseModel.#ctor(System.Guid,System.Guid,System.DateTime,System.Single,System.Guid)">
+            <summary>
+            Initializes a new instance of the BiddingOfferResponseModel class with the specified parameters.
+            </summary>
+            <param name="representativeGuid">The unique identifier of the representative making the offer.</param>
+            <param name="publicBiddingGuid">The unique identifier of the public bidding the offer is made for.</param>
+            <param name="date">The date when the offer was made.</param>
+            <param name="offer">The value of the offer.</param>
+            <param name="buyerGuid">The unique identifier of the buyer associated with the bidding offer.</param>
+        </member>
         <member name="T:System.Text.RegularExpressions.Generated.usernameValidationRegex_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the usernameValidationRegex method.</summary>
         </member>
