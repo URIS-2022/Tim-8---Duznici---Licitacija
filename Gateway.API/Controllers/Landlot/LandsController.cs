@@ -6,7 +6,7 @@ namespace Gateway.API.Controllers.Landlot;
 /// <summary>
 /// Controller for managing lands.
 /// </summary>
-[ApiExplorerSettings(GroupName = "landlot")]
+[ApiExplorerSettings(GroupName = "Landlot")]
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json", "application/xml")]

@@ -1,7 +1,7 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gateway.API.Controllers;
+namespace Gateway.API.Controllers.Bidding;
 
 /// <summary>
 /// API controller for managing Buyer Applications.

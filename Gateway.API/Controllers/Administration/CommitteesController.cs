@@ -1,7 +1,7 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gateway.API.Controllers;
+namespace Gateway.API.Controllers.Administration;
 
 /// <summary>
 /// Represents the API endpoint for managing committees and their members.

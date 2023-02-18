@@ -1,7 +1,7 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gateway.API.Controllers;
+namespace Gateway.API.Controllers.Bidding;
 
 /// <summary>
 /// API controller for managing Addresses.
@@ -49,7 +49,7 @@ public class AddressController : ControllerBase
     [HttpPost]
     public Task<IActionResult> PostAddress(object requestModel)
         => serviceProxy.Post(requestModel);
-    
+
     /// <summary>
     /// Patch an Address to the Bidding service
     /// </summary>
