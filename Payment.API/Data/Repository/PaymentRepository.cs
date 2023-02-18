@@ -2,18 +2,27 @@
 
 namespace Payment.API.Data.Repository;
 
+/// <summary>
+/// Repository class for Payment entity. Implements <see cref="IPaymentRepository"/>.
+/// </summary>
 public class PaymentRepository : IPaymentRepository
 {
     private readonly PaymentDBContext context;
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PaymentRepository"/> class.
+    /// </summary>
+    /// <param name="context">The PaymentDBContext object.</param>
     public PaymentRepository(PaymentDBContext context)
     {
         this.context = context;
     }
+
+    /// <inheritdoc cref="IPaymentRepository.GetAllPayments"/>
     public async Task<IEnumerable<Entities.Payment>> GetAllPayments()
     {
         return await context.Payments.Include(p => p.PaymentWarrant).ToListAsync();
     }
+    /// <inheritdoc cref="IPaymentRepository.GetPaymentByGuid"/>
     public async Task<Entities.Payment> GetPaymentByGuid(Guid guid)
     {
         return await context.Payments.Include(p => p.PaymentWarrant).FirstOrDefaultAsync(p => p.Guid == guid);
@@ -26,7 +35,7 @@ public class PaymentRepository : IPaymentRepository
         await context.SaveChangesAsync();
         return created.Entity;
     }
-
+    /// <inheritdoc cref="IPaymentRepository.DeletePayment"/>
     public async Task DeletePayment(Guid guid)
     {
         var paymentEntity = await context.Payments.FindAsync(guid);
@@ -37,7 +46,7 @@ public class PaymentRepository : IPaymentRepository
         context.Payments.Remove(paymentEntity);
         await context.SaveChangesAsync();
     }
-
+    /// <inheritdoc cref="IPaymentRepository.UpdatePayment"/>
     public async Task<Entities.Payment?> UpdatePayment(Entities.Payment paymentEntity)
     {
         var existingPayment = await context.Payments.FindAsync(paymentEntity.Guid);
@@ -51,14 +60,4 @@ public class PaymentRepository : IPaymentRepository
 
         return existingPayment;
     }
-
-
-    /*///<inheritdoc cref="IPaymentRepository.GetByReferenceNumber(string)"/>
-    public async Task<PaymentEntity?> GetByReferenceNumber(string referenceNumber)
-    {
-        PaymentEntity? paymentEntity = await context.Payments.SingleOrDefaultAsync(x => x.ReferenceNumber == referenceNumber);
-
-        return paymentEntity;
-    }
-    */
 }
