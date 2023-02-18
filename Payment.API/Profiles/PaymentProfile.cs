@@ -4,8 +4,14 @@ using Payment.API.Models.PaymentModels;
 
 namespace Payment.API.Profiles;
 
+/// <summary>
+/// AutoMapper profile for Payment related classes.
+/// </summary>
 public class PaymentProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the PaymentProfile class.
+    /// </summary>
     public PaymentProfile()
     {
         CreateMap<Entities.Payment, PaymentResponseModel>()

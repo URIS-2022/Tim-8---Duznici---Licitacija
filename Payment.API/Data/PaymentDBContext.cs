@@ -3,18 +3,32 @@ using Payment.API.Entities;
 
 namespace Payment.API.Data;
 
+/// <summary>
+/// Represents a database context for the Payment application.
+/// </summary>
 public class PaymentDBContext : DbContext
 {
     private readonly IConfiguration Configuration;
+
+    /// <summary>
+    /// Initializes a new instance of the PaymentDBContext class.
+    /// </summary>
+    /// <param name="options">The DbContextOptions to be used by the context.</param>
+    /// <param name="configuration">The IConfiguration used to configure the context.</param>
     public PaymentDBContext(DbContextOptions options, IConfiguration configuration) : base(options)
     {
         this.Configuration = configuration;
     }
-
+    /// <summary>
+    /// Gets or sets the Payments table in the database.
+    /// </summary>
     public DbSet<Entities.Payment> Payments { get; set; }
-
+    /// <summary>
+    /// Gets or sets the PaymentWarrants table in the database.
+    /// </summary>
     public DbSet<PaymentWarrant> PaymentWarrants { get; set; }
 
+    /// <inheritdoc />
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
