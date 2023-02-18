@@ -3,9 +3,7 @@ using Licitation.API.Data.Repository;
 using Licitation.API.Models.Document;
 using Microsoft.AspNetCore.Mvc;
 
-/// <summary>
-/// Contains API endpoints to handle Documents.
-/// </summary>
+
 namespace Licitation.API.Controllers
 {
     /// <summary>

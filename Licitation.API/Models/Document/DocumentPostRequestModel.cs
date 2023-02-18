@@ -8,9 +8,9 @@ namespace Licitation.API.Models.Document
     */
     public class DocumentPostRequestModel
     {
-        /*
-        Represents a unique identifier for the licitation.
-        */
+        /// <summary>
+        /// The GUID of the Licitation entity associated with this LicitationPublicBidding.
+        /// </summary>
         public Guid LicitationGuid { get; set; }
 
         /**

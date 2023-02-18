@@ -19,7 +19,7 @@ public class LicitationRepository : ILicitationRepository
         this.context = context;
     }
 
-    /// <inheritdoc cref="IComplaintRepository.GetAll"/>
+    /// <inheritdoc cref="ILicitationRepository.GetAll"/>
     public async Task<IEnumerable<Entities.Licitation>> GetAll()
     {
         return await context.LicitationEntities.Include(l => l.LicitationLands).Include(l => l.PublicBiddings).ToListAsync();

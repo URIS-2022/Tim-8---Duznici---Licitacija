@@ -6,11 +6,12 @@ using Licitation.API.Models.LicitationLands;
 using Licitation.API.Models.LicitationPB;
 using Microsoft.AspNetCore.Mvc;
 
-/// <summary>
-/// Controller for managing Licitations.
-/// </summary>
+
 namespace Licitation.API.Controllers
 {
+    /// <summary>
+    /// Controller for handling CRUD operations related to licitation entities.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json", "application/xml")]

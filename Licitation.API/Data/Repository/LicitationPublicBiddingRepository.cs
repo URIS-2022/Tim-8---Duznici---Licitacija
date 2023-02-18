@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Licitation.API.Data.Repository;
 
+
+/// <summary>
+/// Repository for performing CRUD operations related to LicitationPublicBidding entities.
+/// </summary>
 public class LicitationPublicBiddingRepository : ILicitationPublicBiddingRepository
 {
     private readonly LicitationDBContext context;

@@ -1,5 +1,8 @@
 ﻿namespace Licitation.API.Data.Repository;
 
+/// <summary>
+/// Repository interface for performing CRUD operations related to LicitationLands entities.
+/// </summary>
 public interface ILicitationLandRepository
 {
 

@@ -6,8 +6,6 @@ namespace Licitation.API.Data;
 /// <summary>
 /// Initializes a new instance of the LicitationDBContext class.
 /// </summary>
-/// <param name="options">The options to be used by the database context.</param>
-/// <param name="configuration">The configuration used by the database context.</param>
 public class LicitationDBContext : DbContext
 
 {
@@ -15,8 +13,6 @@ public class LicitationDBContext : DbContext
 
     /**
     <summary>Initializes a new instance of the <c>LicitationDBContext</c> class with the specified options and configuration.</summary>
-    <param name="options">The options used to configure this context.</param>
-    <param name="configuration">The configuration used to configure this context.</param>
     */
     public LicitationDBContext(DbContextOptions options, IConfiguration configuration) : base(options)
     {
