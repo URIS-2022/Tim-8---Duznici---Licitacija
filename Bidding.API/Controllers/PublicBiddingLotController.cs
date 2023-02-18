@@ -56,7 +56,7 @@ namespace Bidding.API.Controllers
                 return BadRequest();
             }
             PublicBiddingLotNewResponseModel responseModel = _mapper.Map<PublicBiddingLotNewResponseModel>(createdPublicBiddingLot);
-            return CreatedAtAction("GetPublicBiddingLot", new { id = createdPublicBiddingLot.Guid }, responseModel);
+            return CreatedAtAction("GetPublicBiddingLot", new { guid = createdPublicBiddingLot.Guid }, responseModel);
         }
 
         [HttpPatch("{guid}")]

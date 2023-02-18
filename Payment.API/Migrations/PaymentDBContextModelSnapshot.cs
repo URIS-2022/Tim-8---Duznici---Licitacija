@@ -58,6 +58,19 @@ namespace Payment.API.Migrations
                     b.HasIndex("ReferenceNumber");
 
                     b.ToTable("Payments");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("56277ee2-3d28-4cde-8e6d-d2397342fc9d"),
+                            AccountNumber = "323024329",
+                            PayerGuid = new Guid("e31726fb-23a4-4f1b-a335-4354a96d052b"),
+                            PaymentDate = new DateTime(2021, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PaymentTitle = "Sample Payment",
+                            PublicBiddingGuid = new Guid("f488b81f-ff6e-4ce1-aea9-050b085b6849"),
+                            ReferenceNumber = "PW-1234",
+                            TotalAmount = 230m
+                        });
                 });
 
             modelBuilder.Entity("Payment.API.Entities.PaymentWarrant", b =>
@@ -80,6 +93,16 @@ namespace Payment.API.Migrations
                     b.HasKey("ReferenceNumber");
 
                     b.ToTable("PaymentWarrants");
+
+                    b.HasData(
+                        new
+                        {
+                            ReferenceNumber = "PW-1234",
+                            Guid = new Guid("e1cd0010-b413-4b81-841d-2bc234b34c85"),
+                            PayerGuid = new Guid("ec856b7c-278d-4877-afc7-83405a3259bb"),
+                            PublicBiddingGuid = new Guid("af3ad9df-c61c-4229-958f-e2b5f96870d7"),
+                            TotalAmount = 100.50m
+                        });
                 });
 
             modelBuilder.Entity("Payment.API.Entities.Payment", b =>

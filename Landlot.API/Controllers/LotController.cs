@@ -75,16 +75,18 @@ namespace Landlot.API.Controllers
         [HttpPatch("{id}")]
         public async Task<ActionResult<LotPatchResponseModel>> PatchLot(Guid id, [FromBody] LotPatchRequestModel patchModel)
         {
-
-            var personApiClient = new HttpClient();
-            var personApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PERSON");
-            
-
-            var legalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/LegalPerson/{patchModel.LotUser}");
-            var physicalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/PhysicalPerson/{patchModel.LotUser}");
-            if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+            if (patchModel.LotUser != null)
             {
-                return BadRequest("Person not found.");
+                var personApiClient = new HttpClient();
+                var personApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PERSON");
+
+
+                var legalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/LegalPerson/{patchModel.LotUser}");
+                var physicalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/PhysicalPerson/{patchModel.LotUser}");
+                if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+                {
+                    return BadRequest("Person not found.");
+                }
             }
 
             var lot = await lotRepository.GetLot(id);

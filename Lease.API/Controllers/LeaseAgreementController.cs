@@ -55,6 +55,20 @@ public class LeaseAgreementController : ControllerBase
     [HttpPatch("{guid}")]
     public async Task<ActionResult<LeaseAgreementPatchResponseModel>> PatchGuid(Guid guid, [FromBody] LeaseAgreementPatchRequestModel patchModel)
     {
+        if (patchModel.PersonGuid != null)
+        {
+            var personApiClient = new HttpClient();
+            var personApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PERSON");
+
+
+            var legalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/LegalPerson/{patchModel.PersonGuid}");
+            var physicalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/PhysicalPerson/{patchModel.PersonGuid}");
+            if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+            {
+                return BadRequest("Person not found.");
+            }
+        }
+
         var LeaseAgreement = await _LeaseAgreementRepository.GetByGuid(guid);
         if (LeaseAgreement == null)
         {
@@ -78,6 +92,17 @@ public class LeaseAgreementController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<LeaseAgreementPostResponseModel>> PostLeaseAgreement(LeaseAgreementPostRequestModel postModel)
     {
+        var personApiClient = new HttpClient();
+        var personApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PERSON");
+
+
+        var legalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/LegalPerson/{postModel.PersonGuid}");
+        var physicalPersonResponse = await personApiClient.GetAsync($"{personApiUrl}/api/PhysicalPerson/{postModel.PersonGuid}");
+        if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+        {
+            return BadRequest("Person not found.");
+        }
+
         var LeaseAgreement = mapper.Map<Entities.LeaseAgreement>(postModel);
         Entities.LeaseAgreement? created = await _LeaseAgreementRepository.Add(LeaseAgreement);
         if (created == null)

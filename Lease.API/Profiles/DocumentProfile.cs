@@ -6,7 +6,7 @@ using Lease.API.Models;
 namespace Lease.API.Profiles;
 
 /// <summary>
-/// AutoMapper profile for mapping between entities and response/request models for document.
+/// The profile for mapping between entities and response/request models for document.
 /// </summary>
 public class DocumentProfile : Profile
 {

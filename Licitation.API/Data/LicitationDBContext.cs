@@ -1,4 +1,5 @@
 ﻿using Licitation.API.Entities;
+using Licitation.API.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Licitation.API.Data;
@@ -44,32 +45,18 @@ public class LicitationDBContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        /*
-        modelBuilder.Entity<LicitationEntity>()
+        
+        modelBuilder.Entity<Entities.Licitation>()
             .HasData(
-               new LicitationEntity
+               new Entities.Licitation
                {
-                   Guid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
+                   Guid = Guid.Parse("e053576b-8397-4173-928e-dec58721d00f"),
                    Stage = 2,
                    Date = new DateTime(2023, 2, 11),
                    Year = 2023,
                    Constarint = 0,
                    BidIncrement = 100,
-                   ApplicationDeadline = new DateTime(2023, 2, 11),
-                   LandGuids = new List<Guid>
-                   {
-                        Guid.Parse("9de0c01b-b7b0-4df2-9009-3df21b91a0ss"),
-                        Guid.Parse("1de0c01b-b7b0-4df2-9009-3df21b91a0cc"),
-                        Guid.Parse("2de0c01b-b7b0-4df2-9009-3df21b91a0dd"),
-                        Guid.Parse("3de0c01b-b7b0-4df2-9009-3df21b91a0ee")
-                   },
-                   PublicBiddingGuids = new List<Guid>
-                   {
-                        Guid.Parse("3de0c01b-b7b0-4df2-9009-3df21b91a0ss"),
-                        Guid.Parse("5de0c01b-b7b0-4df2-9009-3df21b91a0cc"),
-                        Guid.Parse("2de9c01b-b7b0-4df2-9009-3df21b91a0dd"),
-                        Guid.Parse("3de7c01b-b7b0-4df2-9009-3df21b91a0ee")
-                   }
+                   ApplicationDeadline = new DateTime(2023, 2, 11)
 
                }
 
@@ -79,9 +66,9 @@ public class LicitationDBContext : DbContext
             .HasData(
             new Document
             {
-                Guid = Guid.Parse("8ne0c01b-b7b0-4df2-9009-3df21b91a0bb"),
-                LicitationGuid = Guid.Parse("8de0c02b - b7b0 - 4df2 - 9009 - 3df21b91a0bb"),
-                documentType = DocumentType.PreparationOfTheBiddingReport,
+                Guid = Guid.Parse("3eaae99e-7690-4476-ab92-213bf3a2ea58"),
+                LicitationGuid = Guid.Parse("e053576b-8397-4173-928e-dec58721d00f"),
+                DocumentType = DocumentType.PreparationOfTheBiddingReport,
                 ReferenceNumber = "34",
                 DateSubmitted = new DateTime(2021, 2, 11),
                 DateCertified = new DateTime(2022, 2, 11),
@@ -89,11 +76,6 @@ public class LicitationDBContext : DbContext
 
             }
           );
-
-
-
-
-        */
 
 
         modelBuilder.Entity<Entities.Licitation>(entity =>

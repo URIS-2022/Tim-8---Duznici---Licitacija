@@ -1,12 +1,17 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Lease.API.Entities;
 using Lease.API.Models.Buyer;
 
 namespace Lease.API.Profiles;
 
+/// <summary>
+/// The profile for mapping between entities and response/request models for buyers.
+/// </summary>
 public class BuyerProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BuyerProfile"/> class.
+    /// </summary>
     public BuyerProfile()
     {
         CreateMap<Buyer, BuyerGetResponseModel>();

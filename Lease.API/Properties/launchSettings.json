@@ -5,12 +5,11 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
+        "SERVICE_ENDPOINT_PERSON": "https://localhost:7090",
         "RABBITMQ_USER": "guest",
         "RABBITMQ_PASSWORD": "guest",
         "RABBITMQ_HOST": "localhost",
         "QUEUE": "my_queue"
-
-
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7060;http://localhost:5060"
