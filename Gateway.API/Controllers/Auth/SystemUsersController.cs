@@ -39,7 +39,7 @@ public class SystemUsersController : ControllerBase
     /// Gets a system user
     /// </summary>
     /// <param name="username">Username of the user to retrieve</param>
-    /// <returns>IActionResult indicating the status of the operation</returns
+    /// <returns>IActionResult indicating the status of the operation</returns>
     /// <response code="200">Returns the system user</response>
     [HttpGet("{username}")]
     public Task<IActionResult> GetSystemUser(string username) => serviceProxy.GetById(username);

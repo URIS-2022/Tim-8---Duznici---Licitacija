@@ -58,6 +58,7 @@ public class PhysicalPersonsController : ControllerBase
     /// <summary>
     /// Creates a new physical person.
     /// </summary>
+    /// <param name="id">The ID of the physical person to create.</param>
     /// <param name="requestModel">The physical person information to create.</param>
     /// <returns>The created physical person, or BadRequest if the creation fails.</returns>
     /// <response code="201">Created if the physical person is successfully created</response>

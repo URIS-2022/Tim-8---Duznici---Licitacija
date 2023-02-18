@@ -52,7 +52,7 @@ public class AdministrationDocumentsController : ControllerBase
     /// <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
     /// <response code="200">The Document was successfully updated</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PatchDocument(string id, [FromBody] object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -63,7 +63,7 @@ public class AdministrationDocumentsController : ControllerBase
     /// <returns>The DocumentPostResponseModel for the newly created document.</returns>
     /// <response code="201">The Document was successfully created</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PostDocument(object postModel)
         => serviceProxy.Post(postModel);
 
@@ -75,7 +75,7 @@ public class AdministrationDocumentsController : ControllerBase
     /// <response code="204">The Document was successfully deleted</response>
     /// <response code="404">The Document was not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> DeleteDocument(string id)
         => serviceProxy.Delete(id);
 }

@@ -52,7 +52,7 @@ public class CommitteesController : ControllerBase
     /// <returns>The updated committee</returns>
     /// <response code="204">The committee was successfully updated.</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PatchCommittee(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -65,7 +65,7 @@ public class CommitteesController : ControllerBase
     /// <returns>The updated member</returns>
     /// <response code="204">The member was successfully updated.</response>
     [HttpPatch("{id}/members/{memberId}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PatchCommitteeMember(Guid id, Guid memberId, object patchModel)
         => serviceProxy.Patch($"{id}/members/{memberId}", patchModel);
 
@@ -76,7 +76,7 @@ public class CommitteesController : ControllerBase
     /// <returns>The created committee.</returns>
     /// <response code="201">The committee was created successfully.</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PostCommittee(object postModel)
         => serviceProxy.Post(postModel);
 
@@ -88,7 +88,7 @@ public class CommitteesController : ControllerBase
     /// <returns>The created committee member.</returns>
     /// <response code="201">The committee member was created successfully.</response>
     [HttpPost("{id}/members")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> PostCommitteeMember(Guid id, object postModel)
         => await serviceProxy.Post(postModel, $"{id}/members");
 
@@ -99,7 +99,7 @@ public class CommitteesController : ControllerBase
     /// <returns>A response indicating the success or failure of the operation.</returns>
     /// <response code="204">The committee was deleted successfully.</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> DeleteCommittee(string id)
         => serviceProxy.Delete(id);
 
@@ -112,7 +112,7 @@ public class CommitteesController : ControllerBase
     /// <response code="204">The committee member was deleted successfully.</response>
     /// <response code="404">The committee member was not found.</response>
     [HttpDelete("{id}/members/{memberId}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> DeleteCommitteeMember(Guid id, Guid memberId)
         => serviceProxy.Delete($"{id}/members/{memberId}");
 }
