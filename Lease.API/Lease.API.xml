@@ -962,15 +962,45 @@
             </summary>
             
         </member>
+        <member name="T:Lease.API.Profiles.BuyerProfile">
+            <summary>
+            The profile for mapping between entities and response/request models for buyers.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Profiles.BuyerProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Profiles.BuyerProfile"/> class.
+            </summary>
+        </member>
         <member name="T:Lease.API.Profiles.DocumentProfile">
             <summary>
-            AutoMapper profile for mapping between entities and response/request models for document.
+            The profile for mapping between entities and response/request models for document.
             </summary>
         </member>
         <member name="M:Lease.API.Profiles.DocumentProfile.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Lease.API.Entities.Document"/> class and sets up mappings between
             <see cref="T:Lease.API.Entities.Document"/> and its corresponding response/request models.
+            </summary>
+        </member>
+        <member name="T:Lease.API.Profiles.DueDateProfile">
+            <summary>
+            The profile for mapping between entities and response/request models for due dates.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Profiles.DueDateProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Profiles.DueDateProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Lease.API.Profiles.LeaseAgreementProfile">
+            <summary>
+            The profile for lease agreements.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Profiles.LeaseAgreementProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Profiles.LeaseAgreementProfile"/> class.
             </summary>
         </member>
     </members>
