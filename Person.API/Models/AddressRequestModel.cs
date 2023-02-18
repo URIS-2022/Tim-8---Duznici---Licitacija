@@ -49,9 +49,9 @@ namespace Person.API.Models
         /// <param name="streetNumber">The street number of the address.</param>
         /// <param name="place">The place of the address.</param>
         /// <param name="zipCode">The zip code of the address.</param>
-        public AddressRequestModel(Country country,string street,string streetNumber,string place,string zipCode)
+        public AddressRequestModel(Country country, string street, string streetNumber, string place, string zipCode)
         {
-            Country = country;  
+            Country = country;
             Street = street;
             StreetNumber = streetNumber;
             Place = place;

@@ -1,14 +1,13 @@
 ﻿using Bidding.API.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 
 namespace Bidding.API.Entities
 {
     public partial class Document : IValidatableObject
     {
-       
+
         public Guid Guid { get; set; }
         public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
@@ -26,7 +25,7 @@ namespace Bidding.API.Entities
         public Document() { }
 
 
-        public Document(Guid id,Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
+        public Document(Guid id, Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
             Guid = id;
             this.PublicBiddingGuid = publicBidding;
@@ -65,7 +64,7 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            
+
 
             if (string.IsNullOrWhiteSpace(ReferenceNumber))
                 results.Add(new ValidationResult("ReferenceNumber cannot be empty or whitespace.", new[] { nameof(ReferenceNumber) }));

@@ -1,13 +1,5 @@
-﻿using AutoMapper;
-using Person.API.Entities;
-using Person.API.Data;
+﻿using Person.API.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text.Json.Serialization;
-using System.Text.Json;
 
 namespace Person.API.Data.Repository
 
@@ -16,7 +8,7 @@ namespace Person.API.Data.Repository
     /// Provides CRUD operations for the LegalPerson entity.
     /// </summary>
     public class LegalPersonRepository : ILegalPersonRepository
-    { 
+    {
         private readonly PersonDbContext context;
 
         /// <summary>
@@ -52,7 +44,7 @@ namespace Person.API.Data.Repository
                 .Include(a => a.Address)
                 .Include(c => c.ContactPerson)
                 .FirstOrDefaultAsync(o => o.LegalPersonId == LegalPersonId);
-            
+
         }
         /// <summary>
         /// Adds a new legal person to the database.
@@ -73,12 +65,12 @@ namespace Person.API.Data.Repository
         public async Task DeleteLegalPerson(Guid LegalPersonId)
         {
             var legalPerson = await GetLegalPersonByGuid(LegalPersonId);
-            if(legalPerson != null)
+            if (legalPerson != null)
             {
                 context.LegalPersons.Remove(legalPerson);
                 await context.SaveChangesAsync();
             }
-            
+
         }
         /// <summary>
         /// Updates an existing legal person in the database.

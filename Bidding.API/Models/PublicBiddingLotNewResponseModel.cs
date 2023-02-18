@@ -1,8 +1,4 @@
-﻿
-using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Bidding.API.Models
 {
@@ -21,7 +17,7 @@ namespace Bidding.API.Models
 
         public PublicBiddingLotNewResponseModel() { }
 
-        public PublicBiddingLotNewResponseModel(Guid guid,Guid lotGuid, Guid publicBidding, int lotNumber)
+        public PublicBiddingLotNewResponseModel(Guid guid, Guid lotGuid, Guid publicBidding, int lotNumber)
         {
             Guid = guid;
             this.lotGuid = lotGuid;

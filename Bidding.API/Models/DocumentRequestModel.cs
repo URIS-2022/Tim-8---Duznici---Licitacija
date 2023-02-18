@@ -1,5 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
+﻿using Bidding.API.Enums;
 using System.Text.Json.Serialization;
 
 
@@ -20,12 +19,12 @@ namespace Bidding.API.Models
 
         public DocumentRequestModel() { }
 
-        public DocumentRequestModel(Guid guid,Guid publicBidding, DocumentType documentType, string referenceNumber,string template)
+        public DocumentRequestModel(Guid guid, Guid publicBidding, DocumentType documentType, string referenceNumber, string template)
         {
             Guid = guid;
             this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
-            ReferenceNumber = referenceNumber; 
+            ReferenceNumber = referenceNumber;
             Template = template;
         }
     }

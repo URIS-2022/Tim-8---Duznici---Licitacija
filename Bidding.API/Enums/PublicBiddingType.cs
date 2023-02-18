@@ -8,7 +8,7 @@ namespace Bidding.API.Enums
         None = 0,
         PublicLicitation,
         OpeningOfSealedBids
-        
+
 
     }
     public class PublicBiddingTypeConverter : JsonConverter<PublicBiddingType>
@@ -18,7 +18,7 @@ namespace Bidding.API.Enums
          { PublicBiddingType.None, "Nije dodeljeno" },
          { PublicBiddingType.PublicLicitation, "Javna licitacija" },
          { PublicBiddingType.OpeningOfSealedBids, "Otvaranje zatvorenih ponuda" },
-         
+
 
         };
 

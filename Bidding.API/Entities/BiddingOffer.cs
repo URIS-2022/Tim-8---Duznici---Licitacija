@@ -1,13 +1,10 @@
-﻿using Bidding.API.Enums;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Bidding.API.Entities
 {
     public partial class BiddingOffer : IValidatableObject
     {
-        
+
         public Guid Guid { get; set; }
         public Guid RepresentativeGuid { get; set; }
         public Guid PublicBiddingGuid { get; set; }
@@ -16,7 +13,7 @@ namespace Bidding.API.Entities
 
         public Guid BuyerGuid { get; set; }
 
-        public  Representative Representative { get; set; }
+        public Representative Representative { get; set; }
 
         public PublicBidding publicBidding { get; set; }
 
@@ -70,7 +67,7 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Offer must be greater than 0."));
             }
 
-            
+
             return results;
 
 

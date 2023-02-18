@@ -1,7 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
 
 
 namespace Bidding.API.Models
@@ -11,7 +8,7 @@ namespace Bidding.API.Models
     {
         [DataMember]
         public Guid Guid { get; set; }
-        
+
         [DataMember]
         public string FirstName { get; set; }
         [DataMember]
@@ -23,12 +20,12 @@ namespace Bidding.API.Models
 
         [DataMember]
         public Guid AddressGuid { get; set; }
-        
+
         [DataMember]
 
         public int NumberOfBoard { get; set; }
-        
-       [DataMember]
+
+        [DataMember]
         public RepresentativePublicBiddingResponseModel publicBidding { get; set; }
 
         [DataMember]
@@ -36,11 +33,11 @@ namespace Bidding.API.Models
 
         public RepresentativeResponseModel() { }
 
-        public RepresentativeResponseModel(Guid guid,Guid addressGuid,string firstName, string lastName, string identificationNumber,
+        public RepresentativeResponseModel(Guid guid, Guid addressGuid, string firstName, string lastName, string identificationNumber,
                          AdressResponseModel address, int numberOfBoard, RepresentativePublicBiddingResponseModel publicbidding, ICollection<RepresentativeBuyerApplicationResponseModel> buyerApplications)
         {
             Guid = guid;
-            AddressGuid =addressGuid;
+            AddressGuid = addressGuid;
             FirstName = firstName;
             LastName = lastName;
             IdentificationNumber = identificationNumber;

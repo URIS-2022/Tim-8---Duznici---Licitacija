@@ -1,17 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Bidding.API.Entities;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
-using System.Reflection.Emit;
 using Bidding.API.Enums;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections;
 
 namespace Bidding.API.Data
 {
@@ -28,7 +17,7 @@ namespace Bidding.API.Data
         public DbSet<Document> Documents { get; set; }
         public DbSet<BiddingOffer> BiddingOffers { get; set; }
         public DbSet<BuyerApplication> BuyerApplications { get; set; }
-        
+
         public DbSet<PublicBidding> PublicBiddings { get; set; }
         public DbSet<PublicBiddingLot> PublicBiddingLots { get; set; }
         public DbSet<Representative> Representatives { get; set; }
@@ -60,11 +49,11 @@ namespace Bidding.API.Data
                 {
                     Guid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                     PublicBiddingGuid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
-                    documentType =DocumentType.Report ,
+                    documentType = DocumentType.Report,
                     ReferenceNumber = "34",
                     DateSubmited = new DateTime(2021, 2, 11),
                     DateSertified = new DateTime(2022, 2, 11),
-                    Template ="Sablon dokumenta"
+                    Template = "Sablon dokumenta"
 
                 }
               );
@@ -90,13 +79,13 @@ namespace Bidding.API.Data
                   {
                       Guid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                       RepresentativeGuid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
-                      Amount = 60000 
+                      Amount = 60000
                   }
 
 
                 );
 
-            
+
 
             modelBuilder.Entity<PublicBidding>()
                 .HasData(
@@ -188,13 +177,13 @@ namespace Bidding.API.Data
 
             modelBuilder.Entity<PublicBidding>()
               .HasKey(u => u.Guid);
-            
+
 
             modelBuilder.Entity<PublicBidding>()
             .HasMany(p => p.Representatives)
             .WithOne(r => r.publicBidding)
             .HasForeignKey(r => r.PublicBiddingGuid);
-           
+
 
             modelBuilder.Entity<PublicBidding>()
             .HasOne(p => p.Address)
@@ -220,7 +209,7 @@ namespace Bidding.API.Data
 
             modelBuilder.Entity<Representative>()
             .HasKey(u => u.Guid);
-         
+
             modelBuilder.Entity<Representative>()
            .HasMany(r => r.BiddingOffers)
           .WithOne(bo => bo.Representative)

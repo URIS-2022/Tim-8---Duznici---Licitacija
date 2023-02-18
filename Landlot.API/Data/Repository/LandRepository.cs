@@ -1,5 +1,4 @@
-﻿using Landlot.API.Data.Repository;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Landlot.API.Entities;
 
 namespace Landlot.API.Data.Repository
@@ -47,7 +46,7 @@ namespace Landlot.API.Data.Repository
         /// <returns>
         /// A task that represents the asynchronous operation. The task result contains the updated land record, or null if no such record exists.
         /// </returns>
-        public async Task<Land?> UpdateLand(Guid id,Land updateModel)
+        public async Task<Land?> UpdateLand(Guid id, Land updateModel)
         {
             var land = await context.Lands.FirstOrDefaultAsync(c => c.LandGuid == id);
             if (land == null)

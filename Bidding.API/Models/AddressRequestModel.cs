@@ -1,26 +1,21 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
-namespace Bidding.API.Models
+﻿namespace Bidding.API.Models
 {
     public class AddressRequestModel
     {
-        
+
         public string Country { get; set; }
-       
+
         public string Street { get; set; }
-       
+
         public string StreetNumber { get; set; }
-        
+
         public string Place { get; set; }
-        
+
         public string ZipCode { get; set; }
 
         public AddressRequestModel() { }
 
-        public AddressRequestModel(string country,string street,string streetNumber,string place,string zipCode)
+        public AddressRequestModel(string country, string street, string streetNumber, string place, string zipCode)
         {
             Country = country;
             Street = street;
@@ -28,6 +23,6 @@ namespace Bidding.API.Models
             Place = place;
             ZipCode = zipCode;
 
-;        }
+        }
     }
 }

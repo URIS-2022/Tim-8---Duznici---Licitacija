@@ -1,12 +1,8 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Text.Json.Serialization;
-
-namespace Bidding.API.Models
+﻿namespace Bidding.API.Models
 {
     public class BiddingOfferUpdateModel
     {
-       
+
         public Guid RepresentativeGuid { get; set; }
         public Guid PublicBiddingGuid { get; set; }
         public DateTime? Date { get; set; }
@@ -16,9 +12,9 @@ namespace Bidding.API.Models
 
         public BiddingOfferUpdateModel() { }
 
-        public BiddingOfferUpdateModel( Guid representativeGuid, Guid publicBiddingGuid, DateTime? date, float? offer, Guid buyerGuid)
+        public BiddingOfferUpdateModel(Guid representativeGuid, Guid publicBiddingGuid, DateTime? date, float? offer, Guid buyerGuid)
         {
-            
+
             RepresentativeGuid = representativeGuid;
             PublicBiddingGuid = publicBiddingGuid;
             Date = date;

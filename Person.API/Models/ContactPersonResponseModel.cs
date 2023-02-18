@@ -1,5 +1,4 @@
-﻿using Person.API.Entities;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Person.API.Models
 
@@ -13,26 +12,26 @@ namespace Person.API.Models
         /// <summary>
         /// Ime kontakt osobe
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string FirstName { get; set; }
 
 
         /// <summary>
         /// Prezime kontakt osobe
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string LastName { get; set; }
 
         /// <summary>
         /// Funkcija kontakt osoba
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string Function { get; set; }
 
         /// <summary>
         /// Telefon kontakt osobe
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string PhoneNumber { get; set; }
         /// <summary>
         /// Represents an contact person response model.

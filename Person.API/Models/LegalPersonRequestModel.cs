@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Person.API.Data.Repository;
-using Person.API.Entities;
 
 namespace Person.API.Models
 {
@@ -67,19 +65,19 @@ namespace Person.API.Models
         /// <summary>
         /// Represents a request model for creating a legal person.
         /// </summary>
-        public LegalPersonRequestModel(Guid contactPersonId,string name, string identificationNumber, Guid addressId, string phoneNumber1,
+        public LegalPersonRequestModel(Guid contactPersonId, string name, string identificationNumber, Guid addressId, string phoneNumber1,
                                            string phoneNumber2, string fax, string email, string accountNumber)
         {
             ContactPersonId = contactPersonId;
             Name = name;
-            IdentificationNumber = identificationNumber;     
+            IdentificationNumber = identificationNumber;
             AddressId = addressId;
             PhoneNumber1 = phoneNumber1;
             PhoneNumber2 = phoneNumber2;
             Fax = fax;
             Email = email;
             AccountNumber = accountNumber;
-            
+
         }
     }
 }

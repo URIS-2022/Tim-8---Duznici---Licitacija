@@ -1,11 +1,5 @@
-﻿using AutoMapper;
-using Person.API.Entities;
-using Person.API.Data;
+﻿using Person.API.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Person.API.Data.Repository
 
@@ -66,12 +60,12 @@ namespace Person.API.Data.Repository
         public async Task DeletePhysicalPerson(Guid PhysicalPersonId)
         {
             var physicalPerson = await GetPhysicalPersonByGuid(PhysicalPersonId);
-             if (physicalPerson != null)
+            if (physicalPerson != null)
             {
                 context.PhysicalPersons.Remove(physicalPerson);
                 await context.SaveChangesAsync();
             }
-            
+
         }
         /// <summary>
         /// Updates an existing physical person in the database.

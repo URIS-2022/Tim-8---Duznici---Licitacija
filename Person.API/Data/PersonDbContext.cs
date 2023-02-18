@@ -1,11 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Person.API.Entities;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Person.API.Data
 {
@@ -21,7 +15,7 @@ namespace Person.API.Data
         /// <param name="configuration">The configuration to use for this context.</param>
         public PersonDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
-            
+
         }
 
         /// <summary>
@@ -73,14 +67,14 @@ namespace Person.API.Data
                     {
 
                         PhysicalPersonId = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
-                        FirstName ="Luka",
-                        LastName="Lukic",
-                        Jmbg="1234567876543",
-                        AddressId=Guid.Parse("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
-                        PhoneNumber1="0652632633",
-                        PhoneNumber2="0622402001",
-                        Email="luka123@gmail.com",
-                        AccountNumber="1234567"
+                        FirstName = "Luka",
+                        LastName = "Lukic",
+                        Jmbg = "1234567876543",
+                        AddressId = Guid.Parse("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
+                        PhoneNumber1 = "0652632633",
+                        PhoneNumber2 = "0622402001",
+                        Email = "luka123@gmail.com",
+                        AccountNumber = "1234567"
 
                     }
             );
@@ -143,14 +137,14 @@ namespace Person.API.Data
             modelBuilder.Entity<Address>()
                 .HasData(
                     new Address
-                {
+                    {
                         AddressId = Guid.Parse("9a8e31d5-5e7b-46e7-80c6-f22e607ee907"),
                         Country = Enums.Country.Srbija,
                         Street = "Njegoseva",
                         StreetNumber = "21",
                         Place = "Beograd",
                         ZipCode = "11000"
-                });
+                    });
         }
     }
 }

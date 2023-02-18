@@ -22,7 +22,6 @@
             Place = place;
             ZipCode = zipCode;
 
-            ;
         }
     }
 }

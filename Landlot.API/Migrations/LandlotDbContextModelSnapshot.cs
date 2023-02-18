@@ -47,7 +47,6 @@ namespace Landlot.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RealEstateNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TotalArea")

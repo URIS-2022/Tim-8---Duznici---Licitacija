@@ -1,6 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Runtime.Serialization;
+﻿using Bidding.API.Enums;
 using System.Text.Json.Serialization;
 
 namespace Bidding.API.Models
@@ -9,44 +7,44 @@ namespace Bidding.API.Models
     {
 
 
-       
+
         public DateTime? Date { get; set; }
-        
+
         public DateTime? StartDate { get; set; }
-        
+
         public DateTime? EndDate { get; set; }
-        
+
         public int? StartPricePerHectar { get; set; }
-        
+
         public string? Expected { get; set; }
         [JsonConverter(typeof(MunicipalityConverter))]
-        
+
         public Municipality? municipality { get; set; }
-        
+
         public int? AuctionedPrice { get; set; }
-        
+
         public Guid BestBuyerGuid { get; set; }
         [JsonConverter(typeof(PublicBiddingTypeConverter))]
-       
+
         public PublicBiddingType? public_bidding_type { get; set; }
-        
+
         public Guid AddressGuid { get; set; }
-        
+
         public int? LeasePeriod { get; set; }
-        
+
         public int? DepositReplenishmentAmount { get; set; }
-       
+
 
         public Guid Round { get; set; }
         [JsonConverter(typeof(BiddingStatusConverter))]
-        
+
         public BiddingStatus? biddingStatus { get; set; }
 
 
         public PublicBiddingUpdateModel() { }
 
         public PublicBiddingUpdateModel(
-       
+
        DateTime? date,
        DateTime? startDate,
        DateTime? endDate,
@@ -61,11 +59,11 @@ namespace Bidding.API.Models
        int? depositReplenishmentAmount,
        Guid round,
        BiddingStatus? biddingStatus
-       
+
 
         )
         {
-            
+
             Date = date;
             StartDate = startDate;
             EndDate = endDate;
@@ -80,7 +78,7 @@ namespace Bidding.API.Models
             DepositReplenishmentAmount = depositReplenishmentAmount;
             this.Round = round;
             this.biddingStatus = biddingStatus;
-            
+
         }
     }
 }

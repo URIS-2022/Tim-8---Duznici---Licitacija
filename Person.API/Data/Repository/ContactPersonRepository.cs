@@ -1,12 +1,5 @@
-﻿using AutoMapper;
-using Person.API.Data;
-using Person.API.Entities;
+﻿using Person.API.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
 
 namespace Person.API.Data.Repository
 {
@@ -21,7 +14,7 @@ namespace Person.API.Data.Repository
         /// Creates a new instance of the ContactPersonRepository class.
         /// </summary>
         /// <param name="context">The PersonDbContext object.</param>
-        public ContactPersonRepository (PersonDbContext context)
+        public ContactPersonRepository(PersonDbContext context)
         {
             this.context = context;
 
@@ -70,7 +63,7 @@ namespace Person.API.Data.Repository
                 context.ContactPersons.Remove(contactPerson);
                 await context.SaveChangesAsync();
             }
-               
+
         }
         /// <summary>
         /// Updates an existing contact person in the database.
@@ -78,7 +71,7 @@ namespace Person.API.Data.Repository
         /// <param name="id">The ID of the contact person to update.</param>
         /// <param name="updateModel">The updated ContactPerson object.</param>
         /// <returns>The ContactPerson object that was updated in the database, or null if no such contact person exists.</returns>
-        public async Task<ContactPerson?> UpdateContactPerson(Guid id,ContactPerson updateModel)
+        public async Task<ContactPerson?> UpdateContactPerson(Guid id, ContactPerson updateModel)
         {
             var contactPerson = await context.ContactPersons.FirstOrDefaultAsync(c => c.ContactPersonId == id);
             if (contactPerson == null)
@@ -90,7 +83,7 @@ namespace Person.API.Data.Repository
             return contactPerson;
         }
 
-        
+
     }
 }
 

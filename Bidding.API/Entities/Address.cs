@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 
@@ -22,7 +20,7 @@ namespace Bidding.API.Entities
 
         public Address() { }
 
-        public Address(Guid id,string country, string street, string streetNumber, string place, string zipCode)
+        public Address(Guid id, string country, string street, string streetNumber, string place, string zipCode)
         {
             Guid = id;
             Country = country;

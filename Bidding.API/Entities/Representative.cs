@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 
 namespace Bidding.API.Entities
@@ -22,7 +20,7 @@ namespace Bidding.API.Entities
 
         public IEnumerable<BuyerApplication> BuyerApplications { get; set; }
 
-        public  ICollection<BiddingOffer> BiddingOffers { get; set; }
+        public ICollection<BiddingOffer> BiddingOffers { get; set; }
 
         public Representative() { }
 
@@ -37,7 +35,7 @@ namespace Bidding.API.Entities
             AddressGuid = addressGuid;
             NumberOfBoard = numberOfBoard;
             PublicBiddingGuid = publicBiddingGuid;
-           
+
         }
 
         public Representative(string firstName, string lastName, string identificationNumber,
@@ -50,7 +48,7 @@ namespace Bidding.API.Entities
             AddressGuid = addressGuid;
             NumberOfBoard = numberOfBoard;
             PublicBiddingGuid = publicBiddingGuid;
-           
+
         }
 
 

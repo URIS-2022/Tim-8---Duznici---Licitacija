@@ -1,7 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
 
 
 namespace Bidding.API.Models
@@ -14,7 +11,7 @@ namespace Bidding.API.Models
 
         [DataMember]
         public Guid LotGuid { get; set; }
-        
+
 
         [DataMember]
         public int LotNumber { get; set; }

@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Preparation.API.Entities;
 using Preparation.API.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Preparation.API.Profiles
 {
@@ -29,7 +27,7 @@ namespace Preparation.API.Profiles
             .ForMember(dest => dest.DocumentType, opt => opt.Condition(src => src.DocumentType.HasValue))
             .ForMember(dest => dest.DocumentStatus, opt => opt.MapFrom(src => src.DocumentStatus!.Value))
             .ForMember(dest => dest.DocumentType, opt => opt.MapFrom(src => src.DocumentType!.Value));
-            
+
         }
     }
 }

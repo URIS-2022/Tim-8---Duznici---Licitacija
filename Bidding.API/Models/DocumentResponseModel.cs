@@ -1,5 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
+﻿using Bidding.API.Enums;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -12,13 +11,13 @@ namespace Bidding.API.Models
     public class DocumentResponseModel
     {
         [DataMember]
-       public  Guid Guid { get; set; }
+        public Guid Guid { get; set; }
 
         [DataMember]
         public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
 
-        [DataMember(Name ="documentType")]
+        [DataMember(Name = "documentType")]
         public DocumentType documentType { get; set; }
 
         [DataMember]
@@ -26,7 +25,7 @@ namespace Bidding.API.Models
 
         [DataMember]
 
-        public DateTime DateSubmited { get; set; } 
+        public DateTime DateSubmited { get; set; }
 
         [DataMember]
         public DateTime DateSertified { get; set; }
@@ -36,7 +35,7 @@ namespace Bidding.API.Models
 
         public DocumentResponseModel() { }
 
-        public DocumentResponseModel(Guid guid,Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
+        public DocumentResponseModel(Guid guid, Guid publicBidding, DocumentType documentType, string referenceNumber, DateTime dateSubmited, DateTime dateSertified, string template)
         {
             Guid = guid;
             this.PublicBiddingGuid = publicBidding;

@@ -1,5 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using Person.API.Entities;
 
 namespace Person.API.Models
 {
@@ -8,31 +7,31 @@ namespace Person.API.Models
     /// </summary>
 
     [DataContract(Name = "ContactLegalResponseModel", Namespace = "")]
-        public class ContactLegalResponseModel
-        {
-            /// <summary>
-            /// Ime kontakt osobe
-            /// </summary>
-            [DataMember]
-            public string? FirstName { get; set; }
+    public class ContactLegalResponseModel
+    {
+        /// <summary>
+        /// Ime kontakt osobe
+        /// </summary>
+        [DataMember]
+        public string? FirstName { get; set; }
 
 
-            /// <summary>
-            /// Prezime kontakt osobe
-            /// </summary>
-            [DataMember]
-            public string? LastName { get; set; }
+        /// <summary>
+        /// Prezime kontakt osobe
+        /// </summary>
+        [DataMember]
+        public string? LastName { get; set; }
 
-            /// <summary>
-            /// Funkcija kontakt osoba
-            /// </summary>
-            [DataMember]
-            public string? Function { get; set; }
+        /// <summary>
+        /// Funkcija kontakt osoba
+        /// </summary>
+        [DataMember]
+        public string? Function { get; set; }
 
-            /// <summary>
-            /// Telefon kontakt osobe
-            /// </summary>
-            [DataMember]
-            public string? PhoneNumber { get; set; }
-        }
+        /// <summary>
+        /// Telefon kontakt osobe
+        /// </summary>
+        [DataMember]
+        public string? PhoneNumber { get; set; }
+    }
 }

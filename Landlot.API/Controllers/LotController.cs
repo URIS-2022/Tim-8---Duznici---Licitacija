@@ -73,7 +73,7 @@ namespace Landlot.API.Controllers
 
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<LotPatchResponseModel>> PatchLot(Guid id,[FromBody] LotPatchRequestModel patchModel)
+        public async Task<ActionResult<LotPatchResponseModel>> PatchLot(Guid id, [FromBody] LotPatchRequestModel patchModel)
         {
 
             var personApiClient = new HttpClient();

@@ -4,5 +4,341 @@
         <name>Lease.API</name>
     </assembly>
     <members>
+        <member name="T:Lease.API.Controllers.DocumentsController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Controllers.DocumentsController.#ctor(Lease.API.Data.Repository.IDocumentRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="documentRepository">An instance of IDocumentRepository to handle the Documents</param>
+            <param name="mapper">An instance of IMapper to map between Document entities and models</param>
+        </member>
+        <member name="M:Lease.API.Controllers.DocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+        </member>
+        <member name="M:Lease.API.Controllers.DocumentsController.GetDocument(System.Guid)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Lease.API.Controllers.DocumentsController.PatchDocument(System.Guid,Lease.API.Models.Document.DocumentPatchRequestModel)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="patchModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+        </member>
+        <member name="M:Lease.API.Controllers.DocumentsController.PostDocument(Lease.API.Models.Document.DocumentPostRequestModel)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="postModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+        </member>
+        <member name="M:Lease.API.Controllers.DocumentsController.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a Document by ID
+            </summary>
+            <param name="id">The ID of the Document to delete</param>
+            <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
+        </member>
+        <member name="T:Lease.API.Data.Repository.DocumentRepository">
+            <summary>
+            Implementation of the IDocumentRepository
+            interface for managing Document entities in the database.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DocumentRepository.#ctor(Lease.API.Data.LeaseDbContext)">
+            <summary>
+            Initializes a new instance of the DocumentRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DocumentRepository.GetDocuments">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDocumentRepository.GetDocuments"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DocumentRepository.GetDocument(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DocumentRepository.UpdateDocument(System.Guid,Lease.API.Entities.Document)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Lease.API.Entities.Document)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DocumentRepository.AddDocument(Lease.API.Entities.Document)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDocumentRepository.AddDocument(Lease.API.Entities.Document)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DocumentRepository.DeleteDocument(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)"/>
+        </member>
+        <member name="T:Lease.API.Data.Repository.IDocumentRepository">
+            <summary>
+            The interface for document repository, provides methods for getting, updating, adding and deleting a document
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDocumentRepository.GetDocuments">
+            <summary>
+            Gets a list of all documents.
+            </summary>
+            <returns>A list of documents.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)">
+            <summary>
+            Gets a specific document by its identifier.
+            </summary>
+            <param name="id">The identifier of the document.</param>
+            <returns>The document with the specified identifier.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Lease.API.Entities.Document)">
+            <summary>
+            Updates a specific document.
+            </summary>
+            <param name="id">The identifier of the document to update.</param>
+            <param name="updateModel">The updated values for the document.</param>
+            <returns>The updated document.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDocumentRepository.AddDocument(Lease.API.Entities.Document)">
+            <summary>
+            Adds a new document.
+            </summary>
+            <param name="document">The document to add.</param>
+            <returns>The added document.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a specific document.
+            </summary>
+            <param name="id">The identifier of the document to delete.</param>
+            <returns>The deleted document.</returns>
+        </member>
+        <member name="T:Lease.API.Migrations.FinalMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.FinalMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.FinalMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Lease.API.Migrations.FinalMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Lease.API.Models.DocumentGetResponseModel">
+            <summary>
+            Represents a get response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.DocumentGetResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.DocumentGetResponseModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.DocumentGetResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.DocumentGetResponseModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.DocumentGetResponseModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.DocumentGetResponseModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Models.DocumentGetResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentGetResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Lease.API.Models.Document.DocumentPatchRequestModel">
+            <summary>
+            Represents a patch request model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchRequestModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchRequestModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchRequestModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchRequestModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Models.Document.DocumentPatchRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPatchRequestModel class.
+            </summary>
+            
+        </member>
+        <member name="T:Lease.API.Models.Document.DocumentPatchResponseModel">
+            <summary>
+            Represents a patch response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchResponseModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchResponseModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchResponseModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPatchResponseModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Models.Document.DocumentPatchResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPatchResponseModel class.
+            </summary>
+            
+        </member>
+        <member name="T:Lease.API.Models.Document.DocumentPostRequestModel">
+            <summary>
+            Represents a post request model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostRequestModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostRequestModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostRequestModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostRequestModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Models.Document.DocumentPostRequestModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPostRequestModel class.
+            </summary>
+            
+        </member>
+        <member name="T:Lease.API.Models.Document.DocumentPostResponseModel">
+            <summary>
+            Represents a post response model for the document retrieval operation.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostResponseModel.Type">
+            <summary>
+            Gets or sets the type of the document, which is converted from JSON format using a custom converter.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the unique identifier of the committee that the document belongs to.
+            </summary>
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostResponseModel.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostResponseModel.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Models.Document.DocumentPostResponseModel.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Models.Document.DocumentPostResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the DocumentPostResponseModel class.
+            </summary>
+            
+        </member>
+        <member name="T:Lease.API.Profiles.DocumentProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for document.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Profiles.DocumentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.Document"/> class and sets up mappings between
+            <see cref="T:Lease.API.Entities.Document"/> and its corresponding response/request models.
+            </summary>
+        </member>
     </members>
 </doc>

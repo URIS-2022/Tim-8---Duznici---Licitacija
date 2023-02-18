@@ -2,7 +2,7 @@
 using Bidding.API.Models;
 using AutoMapper;
 
-namespace Bidding.API.Profiles 
+namespace Bidding.API.Profiles
 {
     public class BuyerApplicationRepresentativeProfile : Profile
     {

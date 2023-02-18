@@ -1,7 +1,4 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.Enums;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Bidding.API.Models
 {
@@ -23,9 +20,9 @@ namespace Bidding.API.Models
 
         public BuyerApplicationResponseModel() { }
 
-        public BuyerApplicationResponseModel( Guid representativeGuid, int amount, BuyerApplicationRepresentativeResponseModel representative)
+        public BuyerApplicationResponseModel(Guid representativeGuid, int amount, BuyerApplicationRepresentativeResponseModel representative)
         {
-            
+
             RepresentativeGuid = representativeGuid;
             Amount = amount;
             this.representative = representative;

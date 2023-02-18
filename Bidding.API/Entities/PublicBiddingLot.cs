@@ -1,7 +1,4 @@
-﻿using Bidding.API.Enums;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
 
 
 namespace Bidding.API.Entities
@@ -25,9 +22,9 @@ namespace Bidding.API.Entities
             LotNumber = lotNumber;
         }
 
-        public PublicBiddingLot( Guid lotGuid, Guid publicBidding, int lotNumber)
+        public PublicBiddingLot(Guid lotGuid, Guid publicBidding, int lotNumber)
         {
-            Guid =Guid.NewGuid();
+            Guid = Guid.NewGuid();
             LotGuid = lotGuid;
             PublicBiddingGuid = publicBidding;
             LotNumber = lotNumber;

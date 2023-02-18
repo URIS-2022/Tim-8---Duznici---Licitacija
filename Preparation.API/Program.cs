@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Preparation.API.Data;
 using Preparation.API.Data.Repository;
@@ -19,6 +18,7 @@ builder.Services.AddControllers(setup =>
         {
             options.JsonSerializerOptions.Converters.Add(new DocumentTypeConverter());
             options.JsonSerializerOptions.Converters.Add(new DocumentStatusConverter());
+            options.JsonSerializerOptions.Converters.Add(new AnnouncementStatusConverter());
         }
         )
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
@@ -70,7 +70,7 @@ builder.Services.AddControllers(setup =>
         });
 
 builder.Services.AddDbContext<PreparationDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'PreparationDBContext' not found.")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'PreparationDbContext' not found.")));
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
 

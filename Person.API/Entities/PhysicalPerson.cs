@@ -11,7 +11,7 @@ namespace Person.API.Entities
         /// <summary>
         /// Gets or sets the unique identifier for a physical person record.
         /// </summary>
-        [Key] 
+        [Key]
         public Guid PhysicalPersonId { get; set; }
         /// <summary>
         /// Gets or sets the first name of the physical person.

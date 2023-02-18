@@ -111,7 +111,7 @@ public class ContactPersonController : ControllerBase
     /// <param name="id">The ID of the contact person to delete.</param>
     /// <returns>NoContent if the contact person is deleted successfully, or NotFound if no such contact person exists.</returns>
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteContactPerson (Guid id)
+    public async Task<IActionResult> DeleteContactPerson(Guid id)
     {
         var contactPerson = await contactPersonRepository.GetContactPersonByGuid(id);
         if (contactPerson == null)

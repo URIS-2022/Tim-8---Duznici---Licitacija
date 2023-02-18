@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 
 namespace Person.API.Entities
@@ -25,13 +23,13 @@ namespace Person.API.Entities
         /// <summary>The phone number of the contact person.</summary>
         public string? PhoneNumber { get; set; }
 
-               /**
-            <summary>Initializes a new instance of the ContactPerson class.</summary>
-            <param name="firstName">The first name of the contact person.</param>
-            <param name="lastName">The last name of the contact person.</param>
-            <param name="function">The function or role of the contact person.</param>
-            <param name="phoneNumber">The phone number of the contact person.</param>
-               */
+        /**
+     <summary>Initializes a new instance of the ContactPerson class.</summary>
+     <param name="firstName">The first name of the contact person.</param>
+     <param name="lastName">The last name of the contact person.</param>
+     <param name="function">The function or role of the contact person.</param>
+     <param name="phoneNumber">The phone number of the contact person.</param>
+        */
         public ContactPerson(string? firstName, string? lastName, string? function, string? phoneNumber)
         {
             FirstName = firstName;
