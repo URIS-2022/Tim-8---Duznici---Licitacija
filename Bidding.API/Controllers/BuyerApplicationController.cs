@@ -59,11 +59,6 @@ namespace Bidding.API.Controllers
             BuyerApplicationResponseModel responseModel = _mapper.Map<BuyerApplicationResponseModel>(buyerApplication);
             return Ok(responseModel);
         }
-        /// <summary>
-        /// Creates a new buyer application.
-        /// </summary>
-        /// <param name="requestModel">The details of the buyer application to create.</param>
-        /// <returns>The created buyer application.</returns>
         [HttpPost]
         public async Task<ActionResult<BuyerApplicationResponseModel>> PostBuyerApplication(BuyerApplicationRequestModel requestModel)
         {

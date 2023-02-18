@@ -6,7 +6,7 @@ namespace Bidding.API.Models
     public class PublicBiddingRequestModel
     {
 
-        
+
         public DateTime Date { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -47,7 +47,7 @@ namespace Bidding.API.Models
         BiddingStatus biddingStatus
          )
         {
-            
+
             Date = date;
             StartDate = startDate;
             EndDate = endDate;

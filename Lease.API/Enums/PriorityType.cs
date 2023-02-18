@@ -5,22 +5,22 @@ using System.Text.Json.Serialization;
 namespace Lease.API.Enums;
 
 public enum PriorityType
-    {
-        None = 0,
-        Irrigation,
-        Border,
-        Registry,
-        Location
-    }
+{
+    None = 0,
+    Irrigation,
+    Border,
+    Registry,
+    Location
+}
 
 
 
 [NotMapped]
 public class PriorityTypeConverter : JsonConverter<PriorityType>
-    
+
 
 {
-    
+
 
     private readonly Dictionary<PriorityType, string> _PriorityTypeMapping = new Dictionary<PriorityType, string>
 {

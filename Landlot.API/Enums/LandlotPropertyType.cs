@@ -57,7 +57,7 @@ namespace Landlot.API.Enums
             { LandlotPropertyType.ZadruznaSvojina, "Zadruzna svojina" },
             { LandlotPropertyType.MesovitaSvojina, "Mesovita svojina" },
             { LandlotPropertyType.DrugiOblici, "Drugi oblici" }
-        
+
      };
 
         /// <summary>

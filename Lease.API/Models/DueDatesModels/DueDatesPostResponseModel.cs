@@ -13,9 +13,9 @@ public class DueDatePostResponseModel
 
 
 
-    public DueDatePostResponseModel(Guid guid,DateTime date)
+    public DueDatePostResponseModel(Guid guid, DateTime date)
     {
-        Guid= guid;
+        Guid = guid;
         Date = date;
     }
 }

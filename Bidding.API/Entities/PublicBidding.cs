@@ -24,7 +24,7 @@ namespace Bidding.API.Entities
         public Guid AddresGuid { get; set; }
         public int LeasePeriod { get; set; }
         public int DepositReplenishmentAmount { get; set; }
-         
+
         public Guid Round { get; set; }
         [JsonConverter(typeof(BiddingStatusConverter))]
 
@@ -76,25 +76,25 @@ namespace Bidding.API.Entities
             this.biddingStatus = biddingStatus;
         }
 
-         public PublicBidding(
+        public PublicBidding(
 
-         DateTime date,
-         DateTime startDate,
-         DateTime endDate,
-         int startPricePerHectar,
-         string expected,
-         Municipality municipality,
-         int auctionedPrice,
-         Guid bestBuyerGuid,
-         PublicBiddingType public_bidding_type,
-         Guid addressGuid,
-         int leasePeriod,
-         int depositReplenishmentAmount,
-         Guid round,
-         BiddingStatus biddingStatus
-          )
+        DateTime date,
+        DateTime startDate,
+        DateTime endDate,
+        int startPricePerHectar,
+        string expected,
+        Municipality municipality,
+        int auctionedPrice,
+        Guid bestBuyerGuid,
+        PublicBiddingType public_bidding_type,
+        Guid addressGuid,
+        int leasePeriod,
+        int depositReplenishmentAmount,
+        Guid round,
+        BiddingStatus biddingStatus
+         )
         {
-            Guid =Guid.NewGuid();
+            Guid = Guid.NewGuid();
             Date = date;
             StartDate = startDate;
             EndDate = endDate;
@@ -151,16 +151,16 @@ namespace Bidding.API.Entities
                 results.Add(new ValidationResult("Expected must not be empty."));
             }
 
-           
 
-            
+
+
 
             if (AddresGuid == Guid.Empty)
             {
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            
+
 
 
             if (Round == Guid.Empty)

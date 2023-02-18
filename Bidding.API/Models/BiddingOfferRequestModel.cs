@@ -6,9 +6,6 @@
     /// </summary>
     public class BiddingOfferRequestModel
     {
-        /// <summary>
-        /// Gets or sets the GUID of the representative making the offer.
-        /// </summary>
 
         public Guid RepresentativeGuid { get; set; }
         /// <summary>
@@ -50,7 +47,7 @@
 
         public BiddingOfferRequestModel(Guid representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
-            
+
             RepresentativeGuid = representativeGuid;
             PublicBiddingGuid = publicBiddingGuid;
             Date = date;

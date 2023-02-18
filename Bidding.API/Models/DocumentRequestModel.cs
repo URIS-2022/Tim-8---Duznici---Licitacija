@@ -19,12 +19,12 @@ namespace Bidding.API.Models
 
         public DocumentRequestModel() { }
 
-        public DocumentRequestModel(Guid publicBidding, DocumentType documentType, string referenceNumber,string template)
+        public DocumentRequestModel(Guid guid, Guid publicBidding, DocumentType documentType, string referenceNumber, string template)
         {
            
             this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
-            ReferenceNumber = referenceNumber; 
+            ReferenceNumber = referenceNumber;
             Template = template;
         }
     }

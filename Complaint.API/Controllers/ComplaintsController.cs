@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Complaint.API.Controllers;
 
+/// <summary>
+/// Controller for managing Complaints
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json", "application/xml")]
@@ -14,13 +17,22 @@ public class ComplaintsController : ControllerBase
     private readonly IComplaintRepository _complaintRepository;
     private readonly IMapper mapper;
 
+    /// <summary>
+    /// Constructor for ComplaintController
+    /// </summary>
+    /// <param name="complaintRepository"> Instance of IComplaintRepository to be used for making requests</param>
+    /// <param name="mapper"> Instance of IMapper to be used for mapping models</param>
     public ComplaintsController(IComplaintRepository complaintRepository, IMapper mapper)
     {
         _complaintRepository = complaintRepository;
         this.mapper = mapper;
     }
 
-    // GET: api/Complaints
+    /// <summary>
+    /// Gets a list of all complaints
+    /// </summary>
+    /// <returns> IActionResult indicating the status of the operation</returns>
+    /// <response code="200">Returns the list of complaints</response>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ComplaintGetResponseModel>>> GetComplaint()
     {
@@ -33,7 +45,12 @@ public class ComplaintsController : ControllerBase
         return Ok(responseModel);
     }
 
-    // GET: api/Complaints/5
+    /// <summary>
+    /// Gets a complaint
+    /// </summary>
+    /// <param name="id"> Id of the complaint to retrieve</param>
+    /// <returns> IActionResult indicating the status of the operation</returns>
+    /// <response code="200">Returns the complaint</response>
     [HttpGet("{id}")]
     public async Task<ActionResult<ComplaintGetResponseModel>> GetComplaint(Guid id)
     {
@@ -46,7 +63,13 @@ public class ComplaintsController : ControllerBase
         return responseModel;
     }
 
-    // PATCH: api/Complaints/5
+    /// <summary>
+    /// Deletes a complaint
+    /// </summary>
+    /// <param name="id"> id of the complaint to be deleted</param>
+    /// <param name="patchModel"> Model containing the properties to be updated</param>
+    /// <returns> IActionResult indicating the status of the operation</returns>
+    /// <response code="204">Returns no content</response>
     [HttpPatch("{id}")]
     public async Task<ActionResult<ComplaintPatchResponseModel>> PatchComplaint(Guid id, [FromBody] ComplaintPatchRequestModel patchModel)
     {
@@ -54,6 +77,21 @@ public class ComplaintsController : ControllerBase
         if (complaint == null)
         {
             return NotFound();
+        }
+
+        if(patchModel.SubjectGuid != null)
+        {
+            using var personApiClient = new HttpClient();
+            var biddingApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING");
+            var prepApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PREPARATION");
+
+
+            var legalPersonResponse = await personApiClient.GetAsync($"{biddingApiUrl}/api/PublicBidding/{patchModel.SubjectGuid}");
+            var physicalPersonResponse = await personApiClient.GetAsync($"{prepApiUrl}/api/Announcements/{patchModel.SubjectGuid}");
+            if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+            {
+                return BadRequest("Subject id is not valid.");
+            }
         }
 
         mapper.Map(patchModel, complaint);
@@ -69,12 +107,30 @@ public class ComplaintsController : ControllerBase
         return Ok(responseModel);
     }
 
-    // POST: api/Complaints
+    /// <summary>
+    /// Creates a new complaint
+    /// </summary>
+    /// <param name="postModel"> Model containing the properties of the complaint to be created</param>
+    /// <returns> IActionResult indicating the status of the operation</returns>
+    /// <response code="201">Returns the created complaint</response>
     [HttpPost]
     public async Task<ActionResult<ComplaintPostResponseModel>> PostComplaint(ComplaintPostRequestModel postModel)
     {
         var complaint = mapper.Map<Entities.Complaint>(postModel);
-        Entities.Complaint? created = await _complaintRepository.AddComplaint(complaint);
+
+        using var personApiClient = new HttpClient();
+        var biddingApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING");
+        var prepApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PREPARATION");
+
+
+        var legalPersonResponse = await personApiClient.GetAsync($"{biddingApiUrl}/api/PublicBidding/{postModel.SubjectGuid}");
+        var physicalPersonResponse = await personApiClient.GetAsync($"{prepApiUrl}/api/Announcements/{postModel.SubjectGuid}");
+        if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+        {
+            return BadRequest("Subject id is not valid.");
+        }
+
+        var created = await _complaintRepository.AddComplaint(complaint);
         if (created == null)
         {
             return BadRequest();
@@ -83,7 +139,13 @@ public class ComplaintsController : ControllerBase
         return CreatedAtAction("GetComplaint", new { id = created.Guid }, responseModel);
     }
 
-    // DELETE: api/Complaints/5
+    /// <summary>
+    /// Deletes a complaint
+    /// </summary>
+    /// <param name="id"> id of the complaint to be deleted</param>
+    /// <returns> IActionResult indicating the status of the operation</returns>
+    /// <response code="204">Returns no content</response>
+    /// <response code="404">Returns not found if the complaint does not exist</response>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteComplaint(Guid id)
     {

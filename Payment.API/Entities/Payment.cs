@@ -2,54 +2,68 @@
 
 namespace Payment.API.Entities
 {
+    /// <summary>
+    /// Represents a payment warrant entity.
+    /// </summary>
     public class Payment : IValidatableObject
     {
-        internal object paymentWarrant;
 
+        /// <summary>
+        /// The unique identifier for the payment.
+        /// </summary>
         public Guid Guid { get; set; }
-        public string AccountNumber { get; set; }
-        public string ReferenceNumber { get; set; }
+        /// <summary>
+        /// The account number for the payment.
+        /// </summary>
+        public string? AccountNumber { get; set; }
+
+        /// <summary>
+        /// The reference number for the payment.
+        /// </summary>
+        public string? ReferenceNumber { get; set; }
+
+        /// <summary>
+        /// The total amount for the payment.
+        /// </summary>
         public decimal TotalAmount { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the payer.
+        /// </summary>
         public Guid PayerGuid { get; set; }
-        public string PaymentTitle { get; set; }
+
+        /// <summary>
+        /// The title of the payment.
+        /// </summary>
+        public string? PaymentTitle { get; set; }
+
+        /// <summary>
+        /// The date of the payment.
+        /// </summary>
         public DateTime PaymentDate { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the public bidding.
+        /// </summary>
         public Guid PublicBiddingGuid { get; set; }
 
-        public PaymentWarrant PaymentWarrant { get; set; }
+        /// <summary>
+        /// The payment warrant associated with the payment.
+        /// </summary>
+        public PaymentWarrant? PaymentWarrant { get; set; }
 
-       // public PaymentWarrantPaymentResponseModel WarrantPaymentModel { get; set; }
-
+        /// <summary>
+        /// Default constructor for Payment class.
+        /// </summary>
         public Payment()
         {
         }
 
-        /*public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
-        {
-            Guid = paymentGuid;
-            AccountNumber = accountNumber;
-            ReferenceNumber = referenceNumber;
-            TotalAmount = totalAmount;
-            PayerGuid = payerGuid;
-            PaymentTitle = paymentTitle;
-            PaymentDate = paymentDate;
-            PublicBiddingGuid = publicBiddingGuid;
-            PaymentWarrant = paymentWarrant;
-
-        }
-
-        public Payment(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
-        {
-            Guid = Guid.NewGuid();
-            AccountNumber = accountNumber;
-            ReferenceNumber = referenceNumber;
-            TotalAmount = totalAmount;
-            PayerGuid = payerGuid;
-            PaymentTitle = paymentTitle;
-            PaymentDate = paymentDate;
-            PublicBiddingGuid = publicBiddingGuid;
-            PaymentWarrant = paymentWarrant;
-        }*/
-
+        /// <summary>
+        /// Validates the Payment object using the specified context.
+        /// </summary>
+        /// <param name="validationContext">The context to use for validation.</param>
+        /// <returns>An enumerable collection of ValidationResult objects.</returns>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();
@@ -97,5 +111,5 @@ namespace Payment.API.Entities
             return results;
         }
     }
-    
+
 }

@@ -8,7 +8,7 @@ namespace Person.API.Models
     /// <summary>
     /// Represents a response model for a address record.
     /// </summary>
-    [DataContract (Name = "Address", Namespace ="")]
+    [DataContract(Name = "Address", Namespace = "")]
     public class AddressResponseModel
     {
         /// <summary>
@@ -21,25 +21,25 @@ namespace Person.API.Models
         /// <summary>
         /// Ulica adrese
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string Street { get; set; }
 
         /// <summary>
         /// Broj adrese
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string StreetNumber { get; set; }
 
         /// <summary>
         /// Mesto adrese
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string Place { get; set; }
 
         /// <summary>
         /// Postanski broj adrese
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string ZipCode { get; set; }
 
         /// <summary>

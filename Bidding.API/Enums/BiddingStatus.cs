@@ -40,7 +40,7 @@ namespace Bidding.API.Enums
          { BiddingStatus.FirstRound, "Prvi krug" },
          { BiddingStatus.SecondRoundOldConditions, "Drugi krug sa starim uslovima" },
          { BiddingStatus.SecondRoundNewConditions, "Drugi krug sa novim uslovima" },
-        
+
         };
 
         /// <summary>

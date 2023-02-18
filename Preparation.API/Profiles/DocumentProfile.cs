@@ -27,7 +27,7 @@ namespace Preparation.API.Profiles
             .ForMember(dest => dest.DocumentType, opt => opt.Condition(src => src.DocumentType.HasValue))
             .ForMember(dest => dest.DocumentStatus, opt => opt.MapFrom(src => src.DocumentStatus!.Value))
             .ForMember(dest => dest.DocumentType, opt => opt.MapFrom(src => src.DocumentType!.Value));
-            
+
         }
     }
 }

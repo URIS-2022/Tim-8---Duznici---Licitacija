@@ -13,20 +13,20 @@ namespace Person.API.Models
         /// <summary>
         /// Ime fizičkog lica
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Prezime fizičkog lica
         /// </summary>
 
-        [DataMember] 
+        [DataMember]
         public string LastName { get; set; }
 
         /// <summary>
         /// Jmbg fizičkog lica
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string Jmbg { get; set; }
 
         /// <summary>
@@ -38,13 +38,13 @@ namespace Person.API.Models
         /// <summary>
         /// Broj telefona fizičkog lica
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string PhoneNumber1 { get; set; }
 
         /// <summary>
         /// Broj telefona 2 fizičkog lica
         /// </summary>
-        [DataMember] 
+        [DataMember]
         public string PhoneNumber2 { get; set; }
 
         /// <summary>

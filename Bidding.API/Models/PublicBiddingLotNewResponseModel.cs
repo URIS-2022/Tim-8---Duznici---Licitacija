@@ -17,7 +17,7 @@ namespace Bidding.API.Models
 
         public PublicBiddingLotNewResponseModel() { }
 
-        public PublicBiddingLotNewResponseModel(Guid guid,Guid lotGuid, Guid publicBidding, int lotNumber)
+        public PublicBiddingLotNewResponseModel(Guid guid, Guid lotGuid, Guid publicBidding, int lotNumber)
         {
             Guid = guid;
             this.lotGuid = lotGuid;

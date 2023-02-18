@@ -53,7 +53,6 @@
             Place = place;
             ZipCode = zipCode;
 
-            ;
         }
     }
 }

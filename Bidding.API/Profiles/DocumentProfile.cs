@@ -15,14 +15,16 @@ namespace Bidding.API.Profiles
             CreateMap<Document, DocumentResponseModel>()
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid != Guid.Empty))
                  .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
+            CreateMap<DocumentRequestModel, Document>()
+                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid != Guid.Empty))
+                 .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
 
            
             CreateMap<DocumentRequestModel, Document>()
                  
                  .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
 
-           
-            CreateMap<DocumentUpdateModel,Document>()
+            CreateMap<DocumentUpdateModel, Document>()
                 .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty))
                 .ForMember(dest => dest.documentType, opt => opt.Condition(src => src.documentType.HasValue))
                 .ForMember(dest => dest.ReferenceNumber, opt => opt.Condition(src => !string.IsNullOrEmpty(src.ReferenceNumber)))

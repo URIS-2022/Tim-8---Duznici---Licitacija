@@ -62,12 +62,6 @@ namespace Bidding.API.Controllers
             return Ok(responseModel);
         }
 
-        /// <summary>
-        /// Creates a new bidding offer.
-        /// </summary>
-        /// <param name="requestModel">The BiddingOfferRequestModel object containing the data to create the bidding offer.</param>
-        /// <returns>A  representing the newly created bidding offer.</returns>
-
         [HttpPost]
         public async Task<ActionResult<BiddingOfferResponseModel>> PostBiddingOffer(BiddingOfferRequestModel requestModel)
         {

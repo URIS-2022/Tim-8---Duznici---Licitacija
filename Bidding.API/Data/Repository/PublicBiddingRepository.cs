@@ -15,7 +15,7 @@ namespace Bidding.API.Data.Repository
         public async Task<PublicBidding> AddPublicBidding(PublicBidding publicBidding)
         {
             context.PublicBiddings.Add(publicBidding);
-           
+
             await context.SaveChangesAsync();
             return publicBidding;
         }

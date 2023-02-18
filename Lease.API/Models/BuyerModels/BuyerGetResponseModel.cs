@@ -46,7 +46,7 @@ public class BuyerGetResponseModel
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         Priorities = priorities;
-     
+
     }
 
 }

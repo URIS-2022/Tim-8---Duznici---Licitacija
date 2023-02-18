@@ -23,7 +23,7 @@ namespace Bidding.API.Profiles
             
 
             CreateMap<Address, AddressNewResponseModel>()
-                .ForMember(dest=>dest.Guid,opt=>opt.MapFrom(src=>src.Guid))
+                .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
 
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
@@ -33,7 +33,7 @@ namespace Bidding.API.Profiles
 
             
             CreateMap<AddressUpdateModel, Address>()
-    
+
     .ForMember(dest => dest.Country, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Country)))
     .ForMember(dest => dest.Street, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Street)))
     .ForMember(dest => dest.StreetNumber, opt => opt.Condition(src => !string.IsNullOrEmpty(src.StreetNumber)))

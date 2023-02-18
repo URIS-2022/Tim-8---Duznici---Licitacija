@@ -20,7 +20,7 @@ namespace Bidding.API.Entities
 
         public Address() { }
 
-        public Address(Guid id,string country, string street, string streetNumber, string place, string zipCode)
+        public Address(Guid id, string country, string street, string streetNumber, string place, string zipCode)
         {
             Guid = id;
             Country = country;

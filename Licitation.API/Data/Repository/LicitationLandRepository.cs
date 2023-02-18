@@ -3,19 +3,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Licitation.API.Data.Repository;
 
+/// <summary>
+/// Repository for performing CRUD operations related to LicitationLand entities.
+/// </summary>
 public class LicitationLandRepository : ILicitationLandRepository
 {
     private readonly LicitationDBContext context;
 
     /// <summary>
-    /// Initializes a new instance of the CommitteeMemberRepository class.
+    /// Initializes a new instance of the LicitationLandRepository class.
     /// </summary>
     /// <param name="context">The database context to use for data access.</param>
     public LicitationLandRepository(LicitationDBContext context)
     {
         this.context = context;
     }
-    
+
     /// <inheritdoc cref="ILicitationLandRepository.GetLicitationLand"/>
     public async Task<LicitationLand?> GetLicitationLand(Guid licitationId, Guid licitationLandId)
     {

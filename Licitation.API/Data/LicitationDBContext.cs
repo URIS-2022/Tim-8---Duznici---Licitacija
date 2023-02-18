@@ -3,18 +3,44 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Licitation.API.Data;
 
+/// <summary>
+/// Initializes a new instance of the LicitationDBContext class.
+/// </summary>
 public class LicitationDBContext : DbContext
+
 {
     private readonly IConfiguration Configuration;
+
+    /**
+    <summary>Initializes a new instance of the <c>LicitationDBContext</c> class with the specified options and configuration.</summary>
+    */
     public LicitationDBContext(DbContextOptions options, IConfiguration configuration) : base(options)
     {
         this.Configuration = configuration;
     }
+    /// <summary>
+    /// Gets or sets the set of Licitation entities.
+    /// </summary>
     public DbSet<Entities.Licitation> LicitationEntities { get; set; }
+    /// <summary>
+    /// Gets or sets the set of Document entities.
+    /// </summary>
     public DbSet<Document> Documents { get; set; }
+    /// <summary>
+    /// Gets or sets the set of LicitationLand entities.
+    /// </summary>
     public DbSet<LicitationLand> LicitationLands { get; set; }
+
+    /// <summary>
+    /// Gets or sets the set of PublicBidding entities associated with Licitation.
+    /// </summary>
     public DbSet<PublicBidding> LicitationPublicBiddings { get; set; }
 
+    /// <summary>
+    /// Override of OnModelCreating method from DbContext, called when the model for a derived context has been initialized, allowing further configuration to be applied to the model.
+    /// This method can be used to configure entity mappings, relationships, database constraints, and other model-related settings.
+    /// </summary>
+    /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

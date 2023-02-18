@@ -17,6 +17,8 @@ namespace Bidding.API.Profiles
         {
             
             CreateMap<BiddingOffer, BiddingOfferResponseModel>();
+            CreateMap<BiddingOfferRequestModel, BiddingOffer>();
+
 
             
             CreateMap<BiddingOfferRequestModel, BiddingOffer>();

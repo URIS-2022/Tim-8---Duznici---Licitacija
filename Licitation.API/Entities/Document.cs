@@ -29,7 +29,7 @@ namespace Licitation.API.Entities
         /// <summary>
         /// Gets or sets the reference number of the document.
         /// </summary>
-        public string ReferenceNumber { get; set; }
+        public string? ReferenceNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the date when the document was submitted.
@@ -44,7 +44,7 @@ namespace Licitation.API.Entities
         /// <summary>
         /// Gets or sets the template of the document.
         /// </summary>
-        public string Template { get; set; }
+        public string? Template { get; set; }
 
         /// <summary>
         /// Gets or sets the licitation related to this document.
@@ -116,7 +116,7 @@ namespace Licitation.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (ReferenceNumber.Length != 20)
+            if (ReferenceNumber?.Length != 20)
                 results.Add(new ValidationResult("Reference number length must be 20 characters.", new[] { nameof(ReferenceNumber) }));
 
             if (DateSubmitted > DateTime.Now)

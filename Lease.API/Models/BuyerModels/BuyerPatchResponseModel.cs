@@ -47,7 +47,7 @@ public class BuyerPatchResponseModel
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-        Priorities= priorities;
-       
+        Priorities = priorities;
+
     }
 }
