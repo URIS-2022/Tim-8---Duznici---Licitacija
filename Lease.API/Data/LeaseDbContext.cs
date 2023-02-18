@@ -32,12 +32,7 @@ public class LeaseDbContext : DbContext
         modelBuilder.Entity<Buyer>()
             .HasKey(u => u.Guid);
 
-        /* modelBuilder.Entity<Buyer>()
-                .Prope(u => u.PersonGuid).IsUnique(false);
-
-         modelBuilder.Entity<LeaseAgreement>()
-               .Property(u => u.PersonGuid).IsUnique(false); */
-
+      
         modelBuilder.Entity<Document>()
               .HasIndex(u => u.ReferenceNumber)
               .IsUnique();

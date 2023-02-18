@@ -33,7 +33,7 @@ public class RabbitMQListener : IDisposable
         _consumer = new EventingBasicConsumer(_channel);
     }
 
-    public async void StartListening(Action<string> handleMessage)
+    public async Task StartListening(Action<string> handleMessage)
     {
 
        _consumer.Received += async (model, ea) =>
@@ -42,21 +42,14 @@ public class RabbitMQListener : IDisposable
             var json = Encoding.UTF8.GetString(body);
             Console.WriteLine("Received message: {0}", json);
             var message = JsonSerializer.Deserialize<ConsumerMessageFormat>(json);
-            
 
 
             Random random = new Random();
             string referenceNumber = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 9)
           .Select(s => s[random.Next(s.Length)]).ToArray());
 
-
-
             LeaseAgreementPostRequestModel leaseAgreementPostRequestModel = new LeaseAgreementPostRequestModel( referenceNumber, Enums.GuaranteeType.None, DateTime.UtcNow, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"), DateTime.UtcNow.AddYears(5), "Opstina Subotica", DateTime.UtcNow,  Guid.Parse(message.Guid), Guid.NewGuid(), Enums.DocumentStatus.None, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"))
            ;
-
-           
-
-        
 
             var requester = new Requester();
             await requester.PostNewLeaseAgreement(leaseAgreementPostRequestModel);

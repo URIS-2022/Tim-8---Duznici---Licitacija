@@ -34,7 +34,7 @@ public class RabbitMQListener : IDisposable
         _consumer = new EventingBasicConsumer(_channel);
     }
 
-    public async void StartListening(Action<string> handleMessage)
+    public async Task StartListening(Action<string> handleMessage)
     {
 
        _consumer.Received += async (model, ea) =>

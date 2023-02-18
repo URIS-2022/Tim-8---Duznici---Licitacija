@@ -18,8 +18,6 @@ namespace Bidding.API.Controllers
         private readonly IMapper _mapper;
         private readonly IMessageProducer _messageProducer;
 
-
-
         public PublicBiddingController(IPublicBiddingRepository publicBiddingRepository, IMapper mapper, IMessageProducer messageProducer)
         {
             _publicBiddingRepository = publicBiddingRepository;
@@ -60,8 +58,6 @@ namespace Bidding.API.Controllers
             {
                 return BadRequest();
             }
-
-
 
             PublicBiddingResponseModel responseModel = _mapper.Map<PublicBiddingResponseModel>(createdPublicBidding);
             return CreatedAtAction("GetPublicBidding", new { guid = createdPublicBidding.Guid }, responseModel);

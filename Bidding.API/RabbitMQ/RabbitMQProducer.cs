@@ -7,14 +7,16 @@ using System;
 using System.Text;
 
 namespace Bidding.API.RabbitMQ;
-public class RabbitMQMessageProducer : IMessageProducer, IDisposable
+public class RabbitMQMessageProducer : IMessageProducer
 {
     private IConnection _connection;
     private IModel _channel;
-    private string _queueName;
+    
 
     public RabbitMQMessageProducer(string hostname, string queueName)
     {
+
+        var _queueName
         _queueName = queueName;
 
         // Create a connection factory

@@ -20,10 +20,10 @@ namespace Payment.API.RabbitMQ;
         using (var httpClient = new HttpClient())
         {
             // Set the base URL for the API endpoint
-            httpClient.BaseAddress = new Uri("https://localhost:7080/api/PaymentWarrant");
+            httpClient.BaseAddress = new Uri("https://localhost:7080/api/PaymentWarrants");
 
             // Create a new HttpRequestMessage with the JSON payload
-            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7080/api/PaymentWarrant")
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7080/api/PaymentWarrants")
             {
                 Content = new StringContent(json, Encoding.UTF8, "application/json")
             };
