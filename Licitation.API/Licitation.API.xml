@@ -303,6 +303,13 @@
             <param name="id">The Guid identifier of the Licitation.</param>
             <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
         </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.GetByYear(System.Int32)">
+            <summary>
+            Gets a Licitation by its Year identifier.
+            </summary>
+            <param name="id">The Guid identifier of the Licitation.</param>
+            <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
+        </member>
         <member name="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)">
             <summary>
             Deletes a Licitation from the database by its Guid identifier.
@@ -374,6 +381,9 @@
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetByGuid(System.Guid)">
             <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetByYear(System.Int32)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetByYear(System.Int32)"/>
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationRepository.Delete(System.Guid)">
             <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)"/>
