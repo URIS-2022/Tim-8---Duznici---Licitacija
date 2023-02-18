@@ -267,7 +267,7 @@
             <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetAllPaymentWarrants"/>
         </member>
         <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.AddPaymentWarrant(Payment.API.Entities.PaymentWarrant)">
-            <inheritdoc cref="!:IPaymentWarrantRepository.AddPaymetWarrant"/>
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.AddPaymentWarrant(Payment.API.Entities.PaymentWarrant)"/>
         </member>
         <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.DeletePaymentWarrant(System.Guid)">
             <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrant(System.Guid)"/>

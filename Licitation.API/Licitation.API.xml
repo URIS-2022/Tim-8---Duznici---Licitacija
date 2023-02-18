@@ -230,7 +230,7 @@
             Updates a specific document.
             </summary>
             <param name="id">The identifier of the document to update.</param>
-            <param name="patchDocument">The updated values for the document.</param>
+            <param name="updateModel">The updated values for the document.</param>
             <returns>The updated document.</returns>
         </member>
         <member name="M:Licitation.API.Data.Repository.IDocumentRepository.AddDocument(Licitation.API.Entities.Document)">
@@ -347,7 +347,7 @@
             Updates a specific licitation.
             </summary>
             <param name="id">The identifier of the licitation to update.</param>
-            <param name="patchDocument">The updated values for the licitation.</param>
+            <param name="updateModel">The updated values for the licitation.</param>
             <returns>The updated licitation.</returns>
         </member>
         <member name="T:Licitation.API.Data.Repository.LicitationLandRepository">
