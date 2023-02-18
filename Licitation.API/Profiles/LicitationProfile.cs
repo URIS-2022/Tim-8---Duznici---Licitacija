@@ -2,9 +2,14 @@
 using Licitation.API.Models.Licitation;
 
 namespace Licitation.API.Profiles;
-
+/// <summary>
+/// Represents a profile that contains information specific to a licitation.
+/// </summary>
 public class LicitationProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LicitationProfile"/> class.
+    /// </summary>
     public LicitationProfile()
     {
         CreateMap<Entities.Licitation, LicitationResponseModel>()

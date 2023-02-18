@@ -3,8 +3,12 @@ using Licitation.API.Data.Repository;
 using Licitation.API.Models.Document;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace Licitation.API.Controllers
 {
+    /// <summary>
+    /// Represents a controller to handle Document requests.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json", "application/xml")]
@@ -15,10 +19,10 @@ namespace Licitation.API.Controllers
         private readonly IMapper mapper;
 
         /// <summary>
-        /// Initializes a new instance of the DocumentsController class
+        /// Initializes a new instance of the DocumentsController class.
         /// </summary>
-        /// <param name="documentRepository">An instance of IDocumentRepository to handle the Documents</param>
-        /// <param name="mapper">An instance of IMapper to map between Document entities and models</param>
+        /// <param name="documentRepository">An instance of IDocumentRepository to handle the Documents.</param>
+        /// <param name="mapper">An instance of IMapper to map between Document entities and models.</param>
         public DocumentsController(IDocumentRepository documentRepository, IMapper mapper)
         {
             _documentRepository = documentRepository;
@@ -26,9 +30,9 @@ namespace Licitation.API.Controllers
         }
 
         /// <summary>
-        /// Returns a list of System Users
+        /// Returns a list of Document models.
         /// </summary>
-        /// <returns>A list of System User models, or No Content if no System User found</returns>
+        /// <returns>A list of DocumentGetResponseModel models, or No Content if no Document found.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DocumentGetResponseModel>>> GetDocuments()
         {
@@ -41,7 +45,11 @@ namespace Licitation.API.Controllers
             return Ok(responseModels);
         }
 
-        // GET: api/Documents/5
+        /// <summary>
+        /// Returns a Document model with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the Document to retrieve.</param>
+        /// <returns>A DocumentGetResponseModel model with the specified ID, or NotFound if no Document found.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<DocumentGetResponseModel>> GetDocument(Guid id)
         {
@@ -54,7 +62,12 @@ namespace Licitation.API.Controllers
             return responseModel;
         }
 
-        // PATCH: api/Documents/5
+        /// <summary>
+        /// Updates the specified Document with a set of changes.
+        /// </summary>
+        /// <param name="id">The ID of the Document to update.</param>
+        /// <param name="patchModel">A DocumentPatchRequestModel containing the changes to apply.</param>
+        /// <returns>A DocumentPatchResponseModel model with the updated Document, or NotFound if no Document found.</returns>
         [HttpPatch("{id}")]
         public async Task<ActionResult<DocumentPatchResponseModel>> PatchDocument(Guid id, [FromBody] DocumentPatchRequestModel patchModel)
         {
@@ -77,7 +90,11 @@ namespace Licitation.API.Controllers
             return Ok(responseModel);
         }
 
-        // POST: api/Documents
+        /// <summary>
+        /// Creates a new Document with the specified properties.
+        /// </summary>
+        /// <param name="postModel">A DocumentPostRequestModel containing the properties of the new Document.</param>
+        /// <returns>A DocumentPostResponseModel model with the created Document, or BadRequest if the Document could not be created.</returns>
         [HttpPost]
         public async Task<ActionResult<DocumentPostResponseModel>> PostDocument(DocumentPostRequestModel postModel)
         {
@@ -91,7 +108,11 @@ namespace Licitation.API.Controllers
             return CreatedAtAction("GetDocument", new { id = created.Guid }, responseModel);
         }
 
-        // DELETE: api/Documents/5
+        /// <summary>
+        /// Deletes the Document with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the Document to delete.</param>
+        /// <returns>NoContent if the Document was successfully deleted, or NotFound if no Document found.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDocument(Guid id)
         {
@@ -104,5 +125,6 @@ namespace Licitation.API.Controllers
 
             return NoContent();
         }
+
     }
 }

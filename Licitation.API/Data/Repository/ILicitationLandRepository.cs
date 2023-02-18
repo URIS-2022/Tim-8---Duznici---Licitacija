@@ -1,28 +1,31 @@
 ﻿namespace Licitation.API.Data.Repository;
 
+/// <summary>
+/// Repository interface for performing CRUD operations related to LicitationLands entities.
+/// </summary>
 public interface ILicitationLandRepository
 {
-    
+
     /// <summary>
-    /// Gets a specific committee member by its identifier.
+    /// Gets a specific licitation land by its identifier.
     /// </summary>
-    /// <param name="licitationId">The identifier of the Committee.</param>
-    /// /// <param name="licitationLandId">The id of member to add.</param>
-    /// <returns>The member with the specified identifier.</returns>
+    /// <param name="licitationId">The identifier of the Licitation.</param>
+    /// /// <param name="licitationLandId">The id of land to add.</param>
+    /// <returns>The land with the specified identifier.</returns>
     Task<Entities.LicitationLand?> GetLicitationLand(Guid licitationId, Guid licitationLandId);
 
     /// <summary>
-    /// Adds a new member to committee.
+    /// Adds a new land to licitation.
     /// </summary>
-    /// <param name="licitationLand">The request format for adding member to commitee.</param>
-    /// <returns>The added committee member.</returns>
+    /// <param name="licitationLand">The request format for adding land to licitation.</param>
+    /// <returns>The added licitation land.</returns>
     Task<Entities.LicitationLand?> AddLicitationLand(Entities.LicitationLand licitationLand);
 
     /// <summary>
-    /// Removes a specific member from committee.
+    /// Removes a specific land from licitation.
     /// </summary>
-    /// <param name="licitationId">The identifier of the committee member to delete.</param>
-    /// /// <param name="licitationLandId">The id of member to remove.</param>
-    /// <returns>The deleted committee member.</returns>
+    /// <param name="licitationId">The identifier of the licitation land to delete.</param>
+    /// /// <param name="licitationLandId">The id of land to remove.</param>
+    /// <returns>The deleted licitation land.</returns>
     Task DeleteLicitationLand(Guid licitationId, Guid licitationLandId);
 }
