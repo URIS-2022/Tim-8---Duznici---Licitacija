@@ -2,6 +2,10 @@
 
 namespace Administration.API.Models.Member;
 
+/// <summary>
+/// Represents a post request model for the member retrieval operation.
+/// </summary>
+[DataContract(Name = "Member", Namespace = "")]
 public class MemberPostRequestModel
 {
     /// <summary>

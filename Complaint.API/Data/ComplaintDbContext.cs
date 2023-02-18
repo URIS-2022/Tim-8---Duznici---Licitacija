@@ -3,15 +3,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Complaint.API.Data;
 
+/// <summary>
+/// Db context for Complaints
+/// </summary>
 public class ComplaintDbContext : DbContext
 {
+    /// <summary>
+    /// Constructor for ComplaintDbContext
+    /// </summary>
+    /// <param name="options"> DbContextOptions for ComplaintDbContext</param>
     public ComplaintDbContext(DbContextOptions<ComplaintDbContext> options)
         : base(options)
     {
     }
 
+    /// <summary>
+    /// DbSet for Complaints
+    /// </summary>
     public DbSet<Entities.Complaint> Complaints { get; set; } = default!;
 
+    /// <summary>
+    /// OnModelCreating override
+    /// </summary>
+    /// <param name="modelBuilder"> ModelBuilder for ComplaintDbContext</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Entities.Complaint>().HasData(
