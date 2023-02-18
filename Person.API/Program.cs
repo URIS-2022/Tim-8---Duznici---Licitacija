@@ -101,7 +101,7 @@ builder.Services.AddSwaggerGen(options =>
         {
             Title = "Person Service API",
             Version = "v1.0.0",
-            Description = "Person.API ​​is a microservice that provides person management services. It allows you to create, update, and delete faces, as well as generate JSON Web Tokens (JVTs) for use in securing subsequent API requests. It is possible to track whether the person is legal or physical, whether he has a contact person and from which address he applied.",
+            Description = "Person.API is a microservice that provides person management services. It allows you to create, update, and delete faces. It is possible to track whether the person is legal or physical, whether he has a contact person and from which address he applied.",
             Contact = new OpenApiContact
             {
                 Name = "Andrea Ilić",
