@@ -4,8 +4,14 @@ using Lease.API.Models.LeaseAgreementModels;
 
 namespace Lease.API.Profiles;
 
+/// <summary>
+/// The profile for lease agreements.
+/// </summary>
 public class LeaseAgreementProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LeaseAgreementProfile"/> class.
+    /// </summary>
     public LeaseAgreementProfile()
     {
         CreateMap<LeaseAgreement, LeaseAgreementGetResponseModel>();

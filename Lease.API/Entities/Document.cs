@@ -4,23 +4,67 @@ using System.Text.Json.Serialization;
 
 namespace Lease.API.Entities;
 
-
+/// <summary>
+/// Represents a lease agreement entity with its properties and methods.
+/// </summary>
 public partial class Document : IValidatableObject
 {
+    /// <summary>
+    /// Gets or sets the unique identifier of the document.
+    /// </summary>
     public Guid Guid { get; set; }
-    public string ReferenceNumber { get; set; }
-    public DateTime DateSubbmitted { get; set; }
-    public DateTime DateCertified { get; set; }
-    public string Template { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reference number of the document.
+    /// </summary>
+    public string? ReferenceNumber { get; set; }
+
+    /// <summary>
+    /// Gets or sets the date when the document was submitted.
+    /// </summary>
+    public DateTime DateSubbmitted { get; set; }
+
+    /// <summary>
+    /// Gets or sets the date when the document was certified.
+    /// </summary>
+    public DateTime DateCertified { get; set; }
+
+    /// <summary>
+    /// Gets or sets the template of the document.
+    /// </summary>
+    public string? Template { get; set; }
+
+    /// <summary>
+    /// Gets or sets the type of the document.
+    /// </summary>
     [JsonConverter(typeof(DocumentTypeConverter))]
     public DocumentType Type { get; set; }
+
+    /// <summary>
+    /// Gets or sets the lease agreement related to this document.
+    /// </summary>
     public Guid LeaseAgreementGuid { get; set; }
-    public LeaseAgreement LeaseAgreement { get; set; }
 
+    /// <summary>
+    /// Gets or sets the lease agreement related to this document.
+    /// </summary>
+    public LeaseAgreement? LeaseAgreement { get; set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Document"/> class.
+    /// </summary>
     public Document() { }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Document"/> class.
+    /// </summary>
+    /// <param name="guid"></param>
+    /// <param name="referenceNumber"></param>
+    /// <param name="dateSubmissed"></param>
+    /// <param name="dateCertified"></param>
+    /// <param name="template"></param>
+    /// <param name="documentType"></param>
+    /// <param name="leaseAgreementGuid"></param>
     public Document(Guid guid, string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentType documentType, Guid leaseAgreementGuid)
     {
         Guid = guid;
@@ -32,7 +76,15 @@ public partial class Document : IValidatableObject
         LeaseAgreementGuid = leaseAgreementGuid;
     }
 
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Document"/> class.
+    /// </summary>
+    /// <param name="referenceNumber"></param>
+    /// <param name="dateSubmissed"></param>
+    /// <param name="dateCertified"></param>
+    /// <param name="template"></param>
+    /// <param name="documentType"></param>
+    /// <param name="leaseAgreementGuid"></param>
     public Document(string referenceNumber, DateTime dateSubmissed, DateTime dateCertified, string template, DocumentType documentType, Guid leaseAgreementGuid)
     {
         Guid = Guid.NewGuid();
@@ -44,8 +96,11 @@ public partial class Document : IValidatableObject
         LeaseAgreementGuid = leaseAgreementGuid;
     }
 
-
-
+    /// <summary>
+    /// Validates the document.
+    /// </summary>
+    /// <param name="validationContext"></param>
+    /// <returns> A collection of validation results. </returns>
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         var results = new List<ValidationResult>();
@@ -73,6 +128,4 @@ public partial class Document : IValidatableObject
 
         return results;
     }
-
-    //LeaseAgreement  instanca nije napisan u konstruktorima
 }

@@ -3,6 +3,10 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Lease.API.Entities;
+
+/// <summary>
+/// Represents a lease agreement entity with its properties and methods.
+/// </summary>
 public class PriorityTypeListJsonConverter : JsonConverter<List<PriorityType>>
 {
     private readonly Dictionary<PriorityType, string> _priorityTypeMapping = new Dictionary<PriorityType, string>
@@ -14,6 +18,13 @@ public class PriorityTypeListJsonConverter : JsonConverter<List<PriorityType>>
         { PriorityType.Location, "Najblize zemljistu" },
     };
 
+    /// <summary>
+    /// Reads the JSON representation of the object.
+    /// </summary>
+    /// <param name="reader"></param>
+    /// <param name="typeToConvert"></param>
+    /// <param name="options"></param>
+    /// <returns> A list of <see cref="PriorityType"/>. </returns>
     public override List<PriorityType> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var priorityTypes = new List<PriorityType>();
@@ -35,6 +46,12 @@ public class PriorityTypeListJsonConverter : JsonConverter<List<PriorityType>>
         return priorityTypes;
     }
 
+    /// <summary>
+    /// Writes the JSON representation of the object.
+    /// </summary>
+    /// <param name="writer"></param>
+    /// <param name="value"></param>
+    /// <param name="options"></param>
     public override void Write(Utf8JsonWriter writer, List<PriorityType> value, JsonSerializerOptions options)
     {
         writer.WriteStartArray();
@@ -45,10 +62,3 @@ public class PriorityTypeListJsonConverter : JsonConverter<List<PriorityType>>
         writer.WriteEndArray();
     }
 }
-
-
-
-/*
-
-
-*/

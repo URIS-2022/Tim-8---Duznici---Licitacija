@@ -51,6 +51,69 @@
             <param name="id">The ID of the Document to delete</param>
             <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
         </member>
+        <member name="T:Lease.API.Data.LeaseDbContext">
+            <summary>
+            Database context for the lease API.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.LeaseDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Lease.API.Data.LeaseDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Data.LeaseDbContext"/> class.
+            </summary>
+            <param name="options"> The options to be used by a <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/>. </param>
+        </member>
+        <member name="P:Lease.API.Data.LeaseDbContext.LeaseAgreements">
+            <summary>
+            Gets or sets the lease agreements.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Data.LeaseDbContext.Buyers">
+            <summary>
+            Gets or sets the buyers.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Data.LeaseDbContext.Documents">
+            <summary>
+            Gets or sets the documents.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Data.LeaseDbContext.DueDates">
+            <summary>
+            Gets or sets the due dates.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.LeaseDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configures the model that was discovered by convention from the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"/> properties on your derived context.
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:Lease.API.Data.Repository.BuyerRepository">
+            <summary>
+            Represents a repository for buyers.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.BuyerRepository.#ctor(Lease.API.Data.LeaseDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Data.Repository.BuyerRepository"/> class.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Lease.API.Data.Repository.BuyerRepository.GetByGuid(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IBuyerRepository.GetByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.BuyerRepository.GetAll">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IBuyerRepository.GetAll"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.BuyerRepository.Add(Lease.API.Entities.Buyer)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IBuyerRepository.Add(Lease.API.Entities.Buyer)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.BuyerRepository.Update(Lease.API.Entities.Buyer)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IBuyerRepository.Update(Lease.API.Entities.Buyer)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.BuyerRepository.Delete(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IBuyerRepository.Delete(System.Guid)"/>
+        </member>
         <member name="T:Lease.API.Data.Repository.DocumentRepository">
             <summary>
             Implementation of the IDocumentRepository
@@ -77,6 +140,71 @@
         </member>
         <member name="M:Lease.API.Data.Repository.DocumentRepository.DeleteDocument(System.Guid)">
             <inheritdoc cref="M:Lease.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)"/>
+        </member>
+        <member name="T:Lease.API.Data.Repository.DueDateRepository">
+            <summary>
+            Represents a repository for due dates.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DueDateRepository.#ctor(Lease.API.Data.LeaseDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Data.Repository.DueDateRepository"/> class.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DueDateRepository.GetByGuid(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDueDateRepository.GetByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DueDateRepository.GetAll">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDueDateRepository.GetAll"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DueDateRepository.Add(Lease.API.Entities.DueDate)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDueDateRepository.Add(Lease.API.Entities.DueDate)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DueDateRepository.Update(Lease.API.Entities.DueDate)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDueDateRepository.Update(Lease.API.Entities.DueDate)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.DueDateRepository.Delete(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.IDueDateRepository.Delete(System.Guid)"/>
+        </member>
+        <member name="T:Lease.API.Data.Repository.IBuyerRepository">
+            <summary>
+            Represents a repository for buyers.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IBuyerRepository.GetByGuid(System.Guid)">
+            <summary>
+            Gets a specific buyer by its identifier.
+            </summary>
+            <param name="id"> The identifier of the buyer.</param>
+            <returns> The buyer with the specified identifier.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IBuyerRepository.GetAll">
+            <summary>
+            Gets a list of all buyers.
+            </summary>
+            <returns> A list of buyers.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IBuyerRepository.Add(Lease.API.Entities.Buyer)">
+            <summary>
+            Adds a new buyer.
+            </summary>
+            <param name="buyer"> The buyer to add.</param>
+            <returns> The added buyer.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IBuyerRepository.Update(Lease.API.Entities.Buyer)">
+            <summary>
+            Updates a specific buyer.
+            </summary>
+            <param name="buyer"> The buyer to update.</param>
+            <returns> The updated buyer.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IBuyerRepository.Delete(System.Guid)">
+            <summary>
+            Deletes a specific buyer.
+            </summary>
+            <param name="id"> The identifier of the buyer to delete.</param>
+            <returns> The deleted buyer.</returns>
         </member>
         <member name="T:Lease.API.Data.Repository.IDocumentRepository">
             <summary>
@@ -117,6 +245,511 @@
             </summary>
             <param name="id">The identifier of the document to delete.</param>
             <returns>The deleted document.</returns>
+        </member>
+        <member name="T:Lease.API.Data.Repository.IDueDateRepository">
+            <summary>
+            The interface for due date repository, provides methods for getting, updating, adding and deleting a due date
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDueDateRepository.GetByGuid(System.Guid)">
+            <summary>
+            Gets a specific due date by its identifier.
+            </summary>
+            <param name="id"> The identifier of the due date.</param>
+            <returns> The due date with the specified identifier.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDueDateRepository.GetAll">
+            <summary>
+            Gets a list of all due dates.
+            </summary>
+            <returns> A list of due dates.</returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDueDateRepository.Add(Lease.API.Entities.DueDate)">
+            <summary>
+            Adds a new due date.
+            </summary>
+            <param name="DueDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDueDateRepository.Update(Lease.API.Entities.DueDate)">
+            <summary>
+            Updates a specific due date.
+            </summary>
+            <param name="DueDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.IDueDateRepository.Delete(System.Guid)">
+            <summary>
+            Deletes a specific due date.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lease.API.Data.Repository.ILeaseAgreementRepository">
+            <summary>
+            Represents a repository for lease agreements.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.ILeaseAgreementRepository.GetByGuid(System.Guid)">
+            <summary>
+            Gets a specific lease agreement by its identifier.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.ILeaseAgreementRepository.GetByReferenceNumber(System.String)">
+            <summary>
+            Gets a specific lease agreement by its reference number.
+            </summary>
+            <param name="referenceNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.ILeaseAgreementRepository.GetAll">
+            <summary>
+            Gets a list of all lease agreements.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.ILeaseAgreementRepository.Add(Lease.API.Entities.LeaseAgreement)">
+            <summary>
+            Adds a new lease agreement.
+            </summary>
+            <param name="leaseAgreement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.ILeaseAgreementRepository.Update(Lease.API.Entities.LeaseAgreement)">
+            <summary>
+            Updates a specific lease agreement.
+            </summary>
+            <param name="leaseAgreement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lease.API.Data.Repository.ILeaseAgreementRepository.Delete(System.Guid)">
+            <summary>
+            Deletes a specific lease agreement.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lease.API.Data.Repository.LeaseAgreementRepository">
+            <summary>
+            Represents a repository for lease agreements.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Data.Repository.LeaseAgreementRepository.#ctor(Lease.API.Data.LeaseDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Data.Repository.LeaseAgreementRepository"/> class.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Lease.API.Data.Repository.LeaseAgreementRepository.GetByGuid(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.ILeaseAgreementRepository.GetByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.LeaseAgreementRepository.GetAll">
+            <inheritdoc cref="M:Lease.API.Data.Repository.ILeaseAgreementRepository.GetAll"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.LeaseAgreementRepository.Add(Lease.API.Entities.LeaseAgreement)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.ILeaseAgreementRepository.Add(Lease.API.Entities.LeaseAgreement)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.LeaseAgreementRepository.Update(Lease.API.Entities.LeaseAgreement)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.ILeaseAgreementRepository.Update(Lease.API.Entities.LeaseAgreement)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.LeaseAgreementRepository.Delete(System.Guid)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.ILeaseAgreementRepository.Delete(System.Guid)"/>
+        </member>
+        <member name="M:Lease.API.Data.Repository.LeaseAgreementRepository.GetByReferenceNumber(System.String)">
+            <inheritdoc cref="M:Lease.API.Data.Repository.ILeaseAgreementRepository.GetByReferenceNumber(System.String)"/>
+        </member>
+        <member name="T:Lease.API.Entities.Buyer">
+            <summary>
+            Represents a buyer with its properties and associated entities.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.Guid">
+            <summary>
+            Gets or sets the unique identifier of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.RealisedArea">
+            <summary>
+            Gets or sets the realised area of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.Ban">
+            <summary>
+            Gets or sets the ban of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.StartDateOfBan">
+            <summary>
+            Gets or sets the start date of ban of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.BanDuration">
+            <summary>
+            Gets or sets the ban duration of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.BanEndDate">
+            <summary>
+            Gets or sets the ban end date of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.BiddingGuid">
+            <summary>
+            Gets or sets the bidding guid of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.PersonGuid">
+            <summary>
+            Gets or sets the person guid of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.LeaseAgreement">
+            <summary>
+            Gets or sets the bidding of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Buyer.Priorities">
+            <summary>
+            Gets or sets the person of the buyer.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.Buyer.#ctor(System.Guid,System.Int32,System.Boolean,System.DateTime,System.Int32,System.DateTime,System.Guid,System.Guid)">
+            <summary>
+            Creates a new instance of the <see cref="T:Lease.API.Entities.Buyer"/> class.
+            </summary>
+            <param name="guid"></param>
+            <param name="realisedArea"></param>
+            <param name="ban"></param>
+            <param name="startDateOfBan"></param>
+            <param name="banDuration"></param>
+            <param name="banEndDate"></param>
+            <param name="biddingGuid"></param>
+            <param name="personGuid"></param>
+        </member>
+        <member name="M:Lease.API.Entities.Buyer.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Lease.API.Entities.Buyer"/> class.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.Buyer.#ctor(System.Int32,System.Boolean,System.DateTime,System.Int32,System.DateTime,System.Guid,System.Guid)">
+            <summary>
+            Creates a new instance of the <see cref="T:Lease.API.Entities.Buyer"/> class with the specified parameters.
+            </summary>
+            <param name="realisedArea"></param>
+            <param name="ban"></param>
+            <param name="startDateOfBan"></param>
+            <param name="banDuration"></param>
+            <param name="banEndDate"></param>
+            <param name="biddingGuid"></param>
+            <param name="personGuid"></param>
+        </member>
+        <member name="M:Lease.API.Entities.Buyer.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the buyer.
+            </summary>
+            <param name="validationContext"> The validation context. </param>
+            <returns> The validation results. </returns>
+        </member>
+        <member name="T:Lease.API.Entities.Document">
+            <summary>
+            Represents a lease agreement entity with its properties and methods.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.Guid">
+            <summary>
+            Gets or sets the unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.DateSubbmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.Type">
+            <summary>
+            Gets or sets the type of the document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.LeaseAgreementGuid">
+            <summary>
+            Gets or sets the lease agreement related to this document.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.Document.LeaseAgreement">
+            <summary>
+            Gets or sets the lease agreement related to this document.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.Document.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.Document"/> class.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.Document.#ctor(System.Guid,System.String,System.DateTime,System.DateTime,System.String,Lease.API.Enums.DocumentType,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.Document"/> class.
+            </summary>
+            <param name="guid"></param>
+            <param name="referenceNumber"></param>
+            <param name="dateSubmissed"></param>
+            <param name="dateCertified"></param>
+            <param name="template"></param>
+            <param name="documentType"></param>
+            <param name="leaseAgreementGuid"></param>
+        </member>
+        <member name="M:Lease.API.Entities.Document.#ctor(System.String,System.DateTime,System.DateTime,System.String,Lease.API.Enums.DocumentType,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.Document"/> class.
+            </summary>
+            <param name="referenceNumber"></param>
+            <param name="dateSubmissed"></param>
+            <param name="dateCertified"></param>
+            <param name="template"></param>
+            <param name="documentType"></param>
+            <param name="leaseAgreementGuid"></param>
+        </member>
+        <member name="M:Lease.API.Entities.Document.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the document.
+            </summary>
+            <param name="validationContext"></param>
+            <returns> A collection of validation results. </returns>
+        </member>
+        <member name="T:Lease.API.Entities.DueDate">
+            <summary>
+            Represents a lease agreement with its properties and associated entities.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.DueDate.Guid">
+            <summary>
+            Gets or sets the unique identifier of the lease agreement.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.DueDate.DueDateGuid">
+            <summary>
+            Gets or sets the unique identifier of the due date.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.DueDate.LeaseAgreements">
+            <summary>
+            Gets or sets the lease agreements associated with the due date.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.DueDate.Date">
+            <summary>
+            Gets or sets the date of the due date.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.DueDate.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Lease.API.Entities.DueDate"/> class.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.DueDate.#ctor(System.Guid,System.Guid)">
+            <summary>
+            Creates a new instance of the <see cref="T:Lease.API.Entities.DueDate"/> class with the specified parameters.
+            </summary>
+            <param name="guid"> The unique identifier of the due date.</param>
+            <param name="dueDateGuid"> The unique identifier of the due date.</param>
+        </member>
+        <member name="T:Lease.API.Entities.LeaseAgreement">
+            <summary>
+            Represents a lease agreement entity with its properties and methods.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.Guid">
+            <summary>
+            Gets or sets the unique identifier of the lease agreement.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.GuaranteeType">
+            <summary>
+            Gets or sets the type of guarantee.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the lease agreement.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.DateRecording">
+            <summary>
+            Gets or sets the date when the lease agreement was recorded.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.MinisterGuid">
+            <summary>
+            Gets or sets the unique identifier of the minister.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.DeadlineLandReturn">
+            <summary>
+            Gets or sets the deadline for returning the land.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.PlaceOfSigning">
+            <summary>
+            Gets or sets the place where the lease agreement was signed.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.DateOfSigning">
+            <summary>
+            Gets or sets the date when the lease agreement was signed.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.BiddingGuid">
+            <summary>
+            Gets or sets the unique identifier of the bidding.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.PersonGuid">
+            <summary>
+            Gets or sets the unique identifier of the person.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.Buyer">
+            <summary>
+            Gets or sets the buyer related to this lease agreement.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.DocumentStatus">
+            <summary>
+            Gets or sets the bidding related to this lease agreement.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.DueDate">
+            <summary>
+            Gets or sets the due date related to this lease agreement.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.Documents">
+            <summary>
+            Gets or sets the documents related to this lease agreement.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.LeaseAgreement.DueDateGuid">
+            <summary>
+            Gets or sets the minister related to this lease agreement.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.LeaseAgreement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.LeaseAgreement"/> class.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.LeaseAgreement.#ctor(System.Guid,Lease.API.Enums.GuaranteeType,System.String,System.DateTime,System.Guid,System.DateTime,System.String,System.DateTime,System.Guid,System.Guid,Lease.API.Enums.DocumentStatus,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.LeaseAgreement"/> class with the specified parameters.
+            </summary>
+            <param name="Guid"></param>
+            <param name="GuaranteeType"></param>
+            <param name="ReferenceNumber"></param>
+            <param name="DateRecording"></param>
+            <param name="MinisterGuid"></param>
+            <param name="DeadlineLandReturn"></param>
+            <param name="PlaceOfSigning"></param>
+            <param name="DateOfSigning"></param>
+            <param name="BiddingGuid"></param>
+            <param name="PersonGuid"></param>
+            <param name="DocumentStatus"></param>
+            <param name="dueDateguid"></param>
+        </member>
+        <member name="M:Lease.API.Entities.LeaseAgreement.#ctor(Lease.API.Enums.GuaranteeType,System.String,System.DateTime,System.Guid,System.DateTime,System.String,System.DateTime,System.Guid,System.Guid,Lease.API.Enums.DocumentStatus,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.LeaseAgreement"/> class with the specified parameters.
+            </summary>
+            <param name="GuaranteeType"></param>
+            <param name="ReferenceNumber"></param>
+            <param name="DateRecording"></param>
+            <param name="MinisterGuid"></param>
+            <param name="DeadlineLandReturn"></param>
+            <param name="PlaceOfSigning"></param>
+            <param name="DateOfSigning"></param>
+            <param name="BiddingGuid"></param>
+            <param name="PersonGuid"></param>
+            <param name="DocumentStatus"></param>
+            <param name="dueDateGuid"></param>
+        </member>
+        <member name="M:Lease.API.Entities.LeaseAgreement.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the lease agreement.
+            </summary>
+            <param name="validationContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lease.API.Entities.PriorityBuyer">
+            <summary>
+            Represents a buyer with its properties and associated entities.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.PriorityBuyer.Id">
+            <summary>
+            Gets or sets the unique identifier of the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.PriorityBuyer.Buyer">
+            <summary>
+            Gets or sets the buyer.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.PriorityBuyer.BuyerGuid">
+            <summary>
+            Gets or sets the buyer guid.
+            </summary>
+        </member>
+        <member name="P:Lease.API.Entities.PriorityBuyer.PriorityTypeId">
+            <summary>
+            Gets or sets the priority type.
+            </summary>
+        </member>
+        <member name="T:Lease.API.Entities.PriorityTypeListJsonConverter">
+            <summary>
+            Represents a lease agreement entity with its properties and methods.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.PriorityTypeListJsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the JSON representation of the object.
+            </summary>
+            <param name="reader"></param>
+            <param name="typeToConvert"></param>
+            <param name="options"></param>
+            <returns> A list of <see cref="T:Lease.API.Enums.PriorityType"/>. </returns>
+        </member>
+        <member name="M:Lease.API.Entities.PriorityTypeListJsonConverter.Write(System.Text.Json.Utf8JsonWriter,System.Collections.Generic.List{Lease.API.Enums.PriorityType},System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the JSON representation of the object.
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="options"></param>
+        </member>
+        <member name="T:Lease.API.Entities.PriorityTypeListValueConverter">
+            <summary>
+            Represents a lease agreement entity with its properties and methods.
+            </summary>
+        </member>
+        <member name="M:Lease.API.Entities.PriorityTypeListValueConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lease.API.Entities.PriorityTypeListValueConverter"/> class.
+            </summary>
         </member>
         <member name="T:Lease.API.Migrations.FinalMigration">
             <inheritdoc />
