@@ -19,13 +19,13 @@ public class PaymentResponseModel
     /// Gets or sets the account number of the Payment.
     /// </summary>
     [DataMember]
-    public string AccountNumber { get; set; }
+    public string? AccountNumber { get; set; }
 
     /// <summary>
     /// Gets or sets the reference number of the Payment.
     /// </summary>
     [DataMember]
-    public string ReferenceNumber { get; set; }
+    public string? ReferenceNumber { get; set; }
 
     /// <summary>
     /// Gets or sets the total amount of the Payment.
@@ -43,7 +43,7 @@ public class PaymentResponseModel
     /// Gets or sets the payment title of the Payment.
     /// </summary>
     [DataMember]
-    public string PaymentTitle { get; set; }
+    public string? PaymentTitle { get; set; }
 
     /// <summary>
     /// Gets or sets the payment date of the Payment.
@@ -61,7 +61,7 @@ public class PaymentResponseModel
     /// Gets or sets the PaymentWarrant associated with the Payment.
     /// </summary>
     [DataMember]
-    public PaymentWarrantPaymentResponseModel PaymentWarrant { get; set; }
+    public PaymentWarrantPaymentResponseModel? PaymentWarrant { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PaymentResponseModel"/> class.

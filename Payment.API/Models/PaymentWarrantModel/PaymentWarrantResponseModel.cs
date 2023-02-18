@@ -1,5 +1,7 @@
 ﻿using System.Runtime.Serialization;
 
+namespace Payment.API.Models.PaymentWarrantModel;
+
 /// <summary>
 /// Represents the response model for a payment warrant.
 /// </summary>
