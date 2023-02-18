@@ -1,7 +1,6 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace Gateway.API.Controllers.Payment;
 
@@ -23,7 +22,7 @@ public class PaymentsController : ControllerBase
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
     public PaymentsController(HttpClient httpClient)
     {
-        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PAYMENT")}/api/Payment");
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PAYMENT")}/api/Payments");
     }
 
     /// <summary>

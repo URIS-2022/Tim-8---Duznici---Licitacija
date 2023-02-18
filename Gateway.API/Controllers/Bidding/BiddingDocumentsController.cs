@@ -1,7 +1,6 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace Gateway.API.Controllers.Bidding;
 
@@ -13,7 +12,7 @@ namespace Gateway.API.Controllers.Bidding;
 [ApiController]
 [Produces("application/json", "application/xml")]
 [Consumes("application/json", "application/xml")]
-public class DocumentsController : ControllerBase
+public class BiddingDocumentsController : ControllerBase
 {
     private readonly HttpServiceProxy serviceProxy;
 
@@ -21,7 +20,7 @@ public class DocumentsController : ControllerBase
     /// Constructor for DocumentController
     /// </summary>
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
-    public DocumentsController(HttpClient httpClient)
+    public BiddingDocumentsController(HttpClient httpClient)
     {
         serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING")}/api/Document");
     }

@@ -1,7 +1,6 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace Gateway.API.Controllers.Licitation;
 
@@ -13,7 +12,7 @@ namespace Gateway.API.Controllers.Licitation;
 [ApiController]
 [Produces("application/json", "application/xml")]
 [Consumes("application/json", "application/xml")]
-public class DocumentsController : ControllerBase
+public class LicitationDocumentsController : ControllerBase
 {
     private readonly HttpServiceProxy serviceProxy;
 
@@ -21,9 +20,9 @@ public class DocumentsController : ControllerBase
     /// Initializes a new instance of the DocumentsController class
     /// </summary>
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
-    public DocumentsController(HttpClient httpClient)
+    public LicitationDocumentsController(HttpClient httpClient)
     {
-        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LICITATION")}/api/Document");
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LICITATION")}/api/Documents");
     }
 
     /// <summary>

@@ -1,7 +1,6 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace Gateway.API.Controllers.Lease;
 

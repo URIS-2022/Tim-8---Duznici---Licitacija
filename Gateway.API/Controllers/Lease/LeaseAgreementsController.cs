@@ -1,7 +1,6 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace Gateway.API.Controllers.Lease;
 
@@ -13,7 +12,7 @@ namespace Gateway.API.Controllers.Lease;
 [ApiController]
 [Produces("application/json", "application/xml")]
 [Consumes("application/json", "application/xml")]
-public class LeasesAgreementController : ControllerBase
+public class LeaseAgreementsController : ControllerBase
 {
     private readonly HttpServiceProxy serviceProxy;
 
@@ -21,9 +20,9 @@ public class LeasesAgreementController : ControllerBase
     /// Constructor for Lease Agreements
     /// </summary>
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
-    public LeasesAgreementController(HttpClient httpClient)
+    public LeaseAgreementsController(HttpClient httpClient)
     {
-        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LEASE")}/api/Lease");
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LEASE")}/api/LeaseAgreement");
     }
 
     /// <summary>

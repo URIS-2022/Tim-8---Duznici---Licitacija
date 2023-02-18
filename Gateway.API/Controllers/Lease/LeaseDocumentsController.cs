@@ -1,19 +1,18 @@
 ﻿using Gateway.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
-namespace Gateway.API.Controllers.Preparation;
+namespace Gateway.API.Controllers.Lease;
 
 /// <summary>
 /// API controller for managing Documents.
 /// </summary>
-[ApiExplorerSettings(GroupName = "Preparation")]
+[ApiExplorerSettings(GroupName = "Lease")]
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json", "application/xml")]
 [Consumes("application/json", "application/xml")]
-public class DocumentsController : ControllerBase
+public class LeaseDocumentsController : ControllerBase
 {
     private readonly HttpServiceProxy serviceProxy;
 
@@ -21,9 +20,9 @@ public class DocumentsController : ControllerBase
     /// Initializes a new instance of the DocumentsController class
     /// </summary>
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
-    public DocumentsController(HttpClient httpClient)
+    public LeaseDocumentsController(HttpClient httpClient)
     {
-        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PREPARATION")}/api/Documents");
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LEASE")}/api/Documents");
     }
 
     /// <summary>
@@ -60,21 +59,20 @@ public class DocumentsController : ControllerBase
     /// <summary>
     /// Creates a new document.
     /// </summary>
-    /// <param name="id">The id of the document to create.</param>
     /// <param name="requestModel">The DocumentPostRequestModel with the values for the new document.</param>
     /// <returns>The DocumentPostResponseModel for the newly created document.</returns>
     /// <response code="201">Created if the Document is successfully created</response>
     [HttpPost]
     [Authorize(Roles = "Superuser")]
-    public Task<IActionResult> PostDocument(string id, object requestModel)
-        => serviceProxy.Patch(id, requestModel);
+    public Task<IActionResult> PostDocument(object requestModel)
+        => serviceProxy.Post(requestModel);
 
     /// <summary>
-    /// Deletes a document object with the specified ID.
+    /// Deletes a document object with the specified ID from the Buyers.
     /// </summary>
-    /// <param name="id">The ID of the document object to delete.</param>
+    /// <param name="id">The ID of the buyer object to delete.</param>
     /// <returns>An <see cref="IActionResult"/> representing the result of the delete operation.</returns>
-    /// <response code="204">NoContent if the document is successfully deleted</response>
+    /// <response code="204">NoContent if the Document is successfully deleted</response>
     /// <response code="404">If the document is not found</response>
     [HttpDelete("{id}")]
     [Authorize(Roles = "Superuser")]
