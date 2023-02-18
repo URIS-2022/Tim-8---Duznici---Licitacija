@@ -15,7 +15,7 @@ namespace Payment.API.Entities
         /// <summary>
         /// Gets or sets the reference number for the payment warrant.
         /// </summary>
-        public string ReferenceNumber { get; set; }
+        public string? ReferenceNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the unique identifier of the payer.
@@ -35,7 +35,7 @@ namespace Payment.API.Entities
         /// <summary>
         /// Gets or sets the list of payments associated with this payment warrant.
         /// </summary>
-        public ICollection<Payment> Payments { get; set; }
+        public ICollection<Payment>? Payments { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentWarrant"/> class.

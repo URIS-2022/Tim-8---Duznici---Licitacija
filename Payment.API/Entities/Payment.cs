@@ -8,7 +8,7 @@ namespace Payment.API.Entities
     public class Payment : IValidatableObject
     {
 
-        internal object paymentWarrant;
+        //internal object paymentWarrant;
         /// <summary>
         /// The unique identifier for the payment.
         /// </summary>
@@ -16,12 +16,12 @@ namespace Payment.API.Entities
         /// <summary>
         /// The account number for the payment.
         /// </summary>
-        public string AccountNumber { get; set; }
+        public string? AccountNumber { get; set; }
 
         /// <summary>
         /// The reference number for the payment.
         /// </summary>
-        public string ReferenceNumber { get; set; }
+        public string? ReferenceNumber { get; set; }
 
         /// <summary>
         /// The total amount for the payment.
@@ -36,7 +36,7 @@ namespace Payment.API.Entities
         /// <summary>
         /// The title of the payment.
         /// </summary>
-        public string PaymentTitle { get; set; }
+        public string? PaymentTitle { get; set; }
 
         /// <summary>
         /// The date of the payment.
@@ -51,7 +51,7 @@ namespace Payment.API.Entities
         /// <summary>
         /// The payment warrant associated with the payment.
         /// </summary>
-        public PaymentWarrant PaymentWarrant { get; set; }
+        public PaymentWarrant? PaymentWarrant { get; set; }
 
         /// <summary>
         /// Default constructor for Payment class.
@@ -59,33 +59,6 @@ namespace Payment.API.Entities
         public Payment()
         {
         }
-
-        /*public Payment(Guid paymentGuid, string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
-        {
-            Guid = paymentGuid;
-            AccountNumber = accountNumber;
-            ReferenceNumber = referenceNumber;
-            TotalAmount = totalAmount;
-            PayerGuid = payerGuid;
-            PaymentTitle = paymentTitle;
-            PaymentDate = paymentDate;
-            PublicBiddingGuid = publicBiddingGuid;
-            PaymentWarrant = paymentWarrant;
-
-        }
-
-        public Payment(string accountNumber, string referenceNumber, decimal totalAmount, Guid payerGuid, string paymentTitle, DateTime paymentDate, Guid publicBiddingGuid, PaymentWarrant paymentWarrant)
-        {
-            Guid = Guid.NewGuid();
-            AccountNumber = accountNumber;
-            ReferenceNumber = referenceNumber;
-            TotalAmount = totalAmount;
-            PayerGuid = payerGuid;
-            PaymentTitle = paymentTitle;
-            PaymentDate = paymentDate;
-            PublicBiddingGuid = publicBiddingGuid;
-            PaymentWarrant = paymentWarrant;
-        }*/
 
         /// <summary>
         /// Validates the Payment object using the specified context.

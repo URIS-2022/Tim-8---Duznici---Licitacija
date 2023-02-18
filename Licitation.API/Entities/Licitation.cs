@@ -45,27 +45,27 @@ public partial class Licitation : IValidatableObject
     /// <summary>
     /// Gets or sets the lands associated with the licitation.
     /// </summary>
-    public IEnumerable<LicitationLand> Lands { get; set; }
+    public IEnumerable<LicitationLand>? Lands { get; set; }
 
     /// <summary>
     /// Gets or sets the public biddings associated with the licitation.
     /// </summary>
-    public IEnumerable<PublicBidding> LicitationPublicBiddings { get; set; }
+    public IEnumerable<PublicBidding>? LicitationPublicBiddings { get; set; }
 
     /// <summary>
     /// Gets or sets the lands associated with the licitation.
     /// </summary>
-    public List<LicitationLand> LicitationLands { get; set; }
+    public List<LicitationLand>? LicitationLands { get; set; }
 
     /// <summary>
     /// Gets or sets the public biddings associated with the licitation.
     /// </summary>
-    public List<PublicBidding> PublicBiddings { get; set; }
+    public List<PublicBidding>? PublicBiddings { get; set; }
 
     /// <summary>
     /// Gets or sets the documents associated with the licitation.
     /// </summary>
-    public List<Document> Documents { get; set; }
+    public List<Document>? Documents { get; set; }
 
 
     /// <summary>
