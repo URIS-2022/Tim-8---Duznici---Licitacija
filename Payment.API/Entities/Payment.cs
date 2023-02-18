@@ -8,7 +8,6 @@ namespace Payment.API.Entities
     public class Payment : IValidatableObject
     {
 
-        //internal object paymentWarrant;
         /// <summary>
         /// The unique identifier for the payment.
         /// </summary>
