@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lease.API.Migrations
 {
     /// <inheritdoc />
-    public partial class update4 : Migration
+    public partial class update7 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,6 +16,7 @@ namespace Lease.API.Migrations
                 columns: table => new
                 {
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DueDateGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -29,11 +30,11 @@ namespace Lease.API.Migrations
                 {
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GuaranteeType = table.Column<int>(type: "int", nullable: false),
-                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DateRecording = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MinisterGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeadlineLandReturn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PlaceOfSigning = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PlaceOfSigning = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfSigning = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PublicBiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     PersonGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -64,7 +65,7 @@ namespace Lease.API.Migrations
                     BanEndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PersonGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Priorities = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Priorities = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,10 +83,10 @@ namespace Lease.API.Migrations
                 columns: table => new
                 {
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DateSubbmitted = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateCertified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Template = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Template = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<int>(type: "int", nullable: false),
                     LeaseAgreementGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -102,8 +103,8 @@ namespace Lease.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "DueDates",
-                columns: new[] { "Guid", "Date" },
-                values: new object[] { new Guid("b415d4f5-6342-41f3-9935-08db10fc223b"), new DateTime(2023, 1, 17, 15, 32, 2, 236, DateTimeKind.Unspecified) });
+                columns: new[] { "Guid", "Date", "DueDateGuid" },
+                values: new object[] { new Guid("b415d4f5-6342-41f3-9935-08db10fc223b"), new DateTime(2023, 1, 17, 15, 32, 2, 236, DateTimeKind.Unspecified), new Guid("00000000-0000-0000-0000-000000000000") });
 
             migrationBuilder.InsertData(
                 table: "LeaseAgreements",
@@ -135,7 +136,8 @@ namespace Lease.API.Migrations
                 name: "IX_Documents_ReferenceNumber",
                 table: "Documents",
                 column: "ReferenceNumber",
-                unique: true);
+                unique: true,
+                filter: "[ReferenceNumber] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaseAgreements_DueDateGuid",
@@ -146,7 +148,8 @@ namespace Lease.API.Migrations
                 name: "IX_LeaseAgreements_ReferenceNumber",
                 table: "LeaseAgreements",
                 column: "ReferenceNumber",
-                unique: true);
+                unique: true,
+                filter: "[ReferenceNumber] IS NOT NULL");
         }
 
         /// <inheritdoc />

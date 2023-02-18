@@ -44,7 +44,6 @@ namespace Lease.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Priorities")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RealisedArea")
@@ -91,11 +90,9 @@ namespace Lease.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ReferenceNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Template")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Type")
@@ -106,7 +103,8 @@ namespace Lease.API.Migrations
                     b.HasIndex("LeaseAgreementGuid");
 
                     b.HasIndex("ReferenceNumber")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ReferenceNumber] IS NOT NULL");
 
                     b.ToTable("Documents");
 
@@ -132,6 +130,9 @@ namespace Lease.API.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("DueDateGuid")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Guid");
 
                     b.ToTable("DueDates");
@@ -140,7 +141,8 @@ namespace Lease.API.Migrations
                         new
                         {
                             Guid = new Guid("b415d4f5-6342-41f3-9935-08db10fc223b"),
-                            Date = new DateTime(2023, 1, 17, 15, 32, 2, 236, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 1, 17, 15, 32, 2, 236, DateTimeKind.Unspecified),
+                            DueDateGuid = new Guid("00000000-0000-0000-0000-000000000000")
                         });
                 });
 
@@ -175,14 +177,12 @@ namespace Lease.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PlaceOfSigning")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("PublicBiddingGuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ReferenceNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Guid");
@@ -190,7 +190,8 @@ namespace Lease.API.Migrations
                     b.HasIndex("DueDateGuid");
 
                     b.HasIndex("ReferenceNumber")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ReferenceNumber] IS NOT NULL");
 
                     b.ToTable("LeaseAgreements");
 
@@ -253,8 +254,7 @@ namespace Lease.API.Migrations
 
             modelBuilder.Entity("Lease.API.Entities.LeaseAgreement", b =>
                 {
-                    b.Navigation("Buyer")
-                        .IsRequired();
+                    b.Navigation("Buyer");
 
                     b.Navigation("Documents");
                 });
