@@ -70,6 +70,16 @@ namespace Preparation.API.Controllers
         [HttpPatch("{id}")]
         public async Task<ActionResult<AnnouncementPatchResponseModel>> PatchAnnouncement(Guid id, [FromBody] AnnouncementPatchRequestModel patchModel)
         {
+            var licitationApiClient = new HttpClient();
+            var licitationApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LICITATION");
+
+
+            var licitationResponse = await licitationApiClient.GetAsync($"{licitationApiUrl}/api/Licitation/{patchModel.LicitationGuid}");
+            if (!licitationResponse.IsSuccessStatusCode)
+            {
+                return BadRequest("Licitation not found.");
+            }
+
             var announcement = await _announcementRepository.GetAnnouncement(id);
             if (announcement == null)
             {
@@ -97,6 +107,16 @@ namespace Preparation.API.Controllers
         [HttpPost]
         public async Task<ActionResult<AnnouncementPostResponseModel>> PostAnnouncement(AnnouncementPostRequestModel postModel)
         {
+            var licitationApiClient = new HttpClient();
+            var licitationApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LICITATION");
+
+
+            var licitationResponse = await licitationApiClient.GetAsync($"{licitationApiUrl}/api/Licitation/{postModel.LicitationGuid}");
+            if (!licitationResponse.IsSuccessStatusCode)
+            {
+                return BadRequest("Licitation not found.");
+            }
+
             var announcement = mapper.Map<Entities.Announcement>(postModel);
             Entities.Announcement? created = await _announcementRepository.AddAnnouncement(announcement);
             if (created == null)
