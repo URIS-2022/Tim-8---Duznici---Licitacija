@@ -52,7 +52,7 @@ public class AnnouncementsController : ControllerBase
     /// <returns>An AnnouncementPatchResponseModel representing the updated Announcement, or BadRequest if the update failed or the Announcement does not exist.</returns>
     /// <response code="200">Ok if the Announcement is successfully updated</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PatchAnnouncement(string id, object requestModel)
     => serviceProxy.Patch(id, requestModel);
 
@@ -64,7 +64,7 @@ public class AnnouncementsController : ControllerBase
     /// <returns>A CreatedAtActionResult containing a URL to the new Announcement and the AnnouncementPostResponseModel of the created Announcement, or BadRequest if the creation failed.</returns>
     /// <response code="201">Created if the Announcement is successfully created</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PostAnnouncement(string id, object requestModel)
     => serviceProxy.Patch(id, requestModel);
 
@@ -76,7 +76,7 @@ public class AnnouncementsController : ControllerBase
     /// <response code="204">NoContent if the Announcement is successfully deleted</response>
     /// <response code="404">If the Announcement is not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> DeleteAnnouncement(string id)
     => serviceProxy.Delete(id);
 }

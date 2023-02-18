@@ -51,7 +51,7 @@ public class ContactPersonsController : ControllerBase
     /// <returns>The updated contact person, or NotFound if no such contact person exists, or BadRequest if the update fails.</returns>
     /// <response code="204"> NoContent if the contact person is successfully updated</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,TechSecretary")]
     public Task<IActionResult> PatchContactPerson(string id, object requestModel)
     => serviceProxy.Patch(id, requestModel);
 
@@ -62,7 +62,7 @@ public class ContactPersonsController : ControllerBase
     /// <returns>The newly created contact person, or BadRequest if the contact person creation fails.</returns>
     /// <response code="201">Created if the contact person is successfully created</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,TechSecretary")]
     public Task<IActionResult> PostContactPerson(object requestModel)
     => serviceProxy.Post(requestModel);
 
@@ -74,7 +74,7 @@ public class ContactPersonsController : ControllerBase
     /// <response code="204">NoContent if the contact person is deleted successfully</response>
     /// <response code="404">NotFound if no such contact person exists</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,TechSecretary")]
     public Task<IActionResult> DeleteContactPerson(string id)
         => serviceProxy.Delete(id);
 }
