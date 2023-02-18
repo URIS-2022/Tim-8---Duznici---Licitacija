@@ -18,6 +18,15 @@
         /// <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
         Task<Entities.Licitation?> GetByGuid(Guid id);
 
+
+        /// <summary>
+        /// Gets a Licitation by its Year identifier.
+        /// </summary>
+        /// <param name="id">The Guid identifier of the Licitation.</param>
+        /// <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
+        Task<Entities.Licitation?> GetByYear(int year);
+
+
         /// <summary>
         /// Deletes a Licitation from the database by its Guid identifier.
         /// </summary>

@@ -30,7 +30,13 @@ public class LicitationRepository : ILicitationRepository
     {
         return await context.LicitationEntities.Include(l => l.LicitationLands).Include(l => l.PublicBiddings).FirstOrDefaultAsync(c => c.Guid == id);
     }
-   
+
+    /// <inheritdoc cref="ILicitationRepository.GetByYear "/>
+    public async Task<Entities.Licitation?> GetByYear(int year)
+    {
+        return await context.LicitationEntities.Where(c => c.Date.Year == year).OrderBy(c => c.Date).FirstOrDefaultAsync();
+    }
+
     /// <inheritdoc cref="ILicitationRepository.Delete"/>
     public async Task Delete(Guid id)
     {

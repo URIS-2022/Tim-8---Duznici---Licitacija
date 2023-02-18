@@ -62,6 +62,19 @@ public class LicitationController : ControllerBase
         return responseModel;
     }
 
+    // GET: api/LicitationEntities/year
+    [HttpGet("date/{year}")]
+    public async Task<ActionResult<LicitationResponseModel>> GetByYear(int year)
+    {
+        var licitation = await licitationRepository.GetByYear(year);
+        if (licitation == null)
+        {
+            return NotFound();
+        }
+        var responseModel = mapper.Map<LicitationResponseModel>(licitation);
+        return responseModel;
+    }
+
     // DELETE: api/LicitationEntities/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
