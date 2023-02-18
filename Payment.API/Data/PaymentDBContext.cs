@@ -32,20 +32,19 @@ public class PaymentDBContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        /*
-        modelBuilder.Entity<PaymentEntity>()
+        
+        modelBuilder.Entity<Entities.Payment>()
             .HasData(
-               new PaymentEntity
+               new Entities.Payment
                {
-                   Guid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
+                   Guid = Guid.Parse("56277ee2-3d28-4cde-8e6d-d2397342fc9d"),
                    AccountNumber = "323024329",
                    ReferenceNumber = "PW-1234",
                    TotalAmount = 230,
-                   PayerGuid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
+                   PayerGuid = Guid.Parse("e31726fb-23a4-4f1b-a335-4354a96d052b"),
                    PaymentTitle = "Sample Payment",
                    PaymentDate = new DateTime(2021, 2, 12),
-                   PublicBiddingGuid = Guid.Parse("88de3s01b-b7b0-4df2-9009-3df21b91a0bb"),
-                   PaymentWarrantGuid = Guid.Parse("8de0c09b-b7b0-4df2-9009-3df21b91a0bb")
+                   PublicBiddingGuid = Guid.Parse("f488b81f-ff6e-4ce1-aea9-050b085b6849")
                }
 
             );
@@ -54,15 +53,15 @@ public class PaymentDBContext : DbContext
             .HasData(
             new PaymentWarrant
             {
-                Guid = Guid.Parse("8de0c09b-b7b0-4df2-9009-3df21b91a0bb"),
+                Guid = Guid.Parse("e1cd0010-b413-4b81-841d-2bc234b34c85"),
                 ReferenceNumber = "PW-1234",
-                PayerGuid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
+                PayerGuid = Guid.Parse("ec856b7c-278d-4877-afc7-83405a3259bb"),
                 TotalAmount = 100.50m,
-                PublicBiddingGuid = Guid.Parse("8de0c01b-b7b0-4df2-9069-3df21b91a0bb")
+                PublicBiddingGuid = Guid.Parse("af3ad9df-c61c-4229-958f-e2b5f96870d7")
 
             }
            );
-        */
+        
 
         modelBuilder.Entity<Entities.Payment>(entity =>
         {

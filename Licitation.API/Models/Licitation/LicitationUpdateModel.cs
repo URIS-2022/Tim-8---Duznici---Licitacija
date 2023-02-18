@@ -43,5 +43,9 @@
             BidIncrement = bidIncrement;
             ApplicationDeadline = applicationDeadline;
         }
+            
     }
+
+
 }
+
