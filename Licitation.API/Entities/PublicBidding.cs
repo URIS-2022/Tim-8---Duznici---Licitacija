@@ -21,7 +21,7 @@ public class PublicBidding : IValidatableObject
     /// <summary>
     /// Gets or sets the licitation related to the public bidding.
     /// </summary>
-    public Licitation licitation { get; set; }
+    public Licitation? licitation { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PublicBidding"/> class.

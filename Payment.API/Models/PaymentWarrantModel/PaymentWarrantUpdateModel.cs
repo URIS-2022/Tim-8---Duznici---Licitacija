@@ -5,7 +5,6 @@
 /// </summary>
 public class PaymentWarrantUpdateModel
 {
-    //public string? ReferenceNumber { get; set; }
 
     /// <summary>
     /// Gets or sets the payer GUID for the payment warrant.
@@ -28,9 +27,8 @@ public class PaymentWarrantUpdateModel
     /// <param name="payerGuid">The payer GUID for the payment warrant.</param>
     /// <param name="totalAmount">The total amount for the payment warrant.</param>
     /// <param name="publicBiddingGuid">The public bidding GUID for the payment warrant.</param>
-    public PaymentWarrantUpdateModel(/*string? referenceNumber,*/ Guid? payerGuid, decimal? totalAmount, Guid? publicBiddingGuid)
+    public PaymentWarrantUpdateModel(Guid? payerGuid, decimal? totalAmount, Guid? publicBiddingGuid)
     {
-        //ReferenceNumber = referenceNumber;
         PayerGuid = payerGuid;
         TotalAmount = totalAmount;
         PublicBiddingGuid = publicBiddingGuid;

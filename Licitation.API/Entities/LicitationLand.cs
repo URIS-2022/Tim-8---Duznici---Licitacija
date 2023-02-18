@@ -20,7 +20,7 @@ public partial class LicitationLand : IValidatableObject
     /// <summary>
     /// Gets or sets the Licitation object associated with the current instance of LicitationLand.
     /// </summary>
-    public Licitation licitation { get; set; }
+    public Licitation? licitation { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the LicitationLand class.

@@ -51,6 +51,11 @@
             <param name="id">The ID of the Document to delete.</param>
             <returns>NoContent if the Document was successfully deleted, or NotFound if no Document found.</returns>
         </member>
+        <member name="T:Licitation.API.Controllers.LicitationController">
+            <summary>
+            Controller for handling CRUD operations related to licitation entities.
+            </summary>
+        </member>
         <member name="M:Licitation.API.Controllers.LicitationController.#ctor(Licitation.API.Data.Repository.ILicitationRepository,Licitation.API.Data.Repository.ILicitationLandRepository,Licitation.API.Data.Repository.ILicitationPublicBiddingRepository,AutoMapper.IMapper)">
             <summary>
             Initializes a new instance of the LicitacionController class.
@@ -65,6 +70,13 @@
             Returns a list of Licitacions.
             </summary>
             <returns>A list of Licitacion models, or No Content if no Licitacion found.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.GetByYear(System.Int32)">
+            <summary>
+            Gets all licitation entities that occurred in a specific year.
+            </summary>
+            <param name="year">The year to filter by.</param>
+            <returns>An ActionResult of type LicitationResponseModel if successful, or NotFound if no results are found.</returns>
         </member>
         <member name="M:Licitation.API.Controllers.LicitationController.GetByGuid(System.Guid)">
             <summary>
@@ -134,13 +146,9 @@
             <summary>
             Initializes a new instance of the LicitationDBContext class.
             </summary>
-            <param name="options">The options to be used by the database context.</param>
-            <param name="configuration">The configuration used by the database context.</param>
         </member>
         <member name="M:Licitation.API.Data.LicitationDBContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
                 <summary>Initializes a new instance of the <c>LicitationDBContext</c> class with the specified options and configuration.</summary>
-                <param name="options">The options used to configure this context.</param>
-                <param name="configuration">The configuration used to configure this context.</param>
         </member>
         <member name="P:Licitation.API.Data.LicitationDBContext.LicitationEntities">
             <summary>
@@ -239,6 +247,11 @@
             <param name="id">The identifier of the document to delete.</param>
             <returns>The deleted document.</returns>
         </member>
+        <member name="T:Licitation.API.Data.Repository.ILicitationLandRepository">
+            <summary>
+            Repository interface for performing CRUD operations related to LicitationLands entities.
+            </summary>
+        </member>
         <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.GetLicitationLand(System.Guid,System.Guid)">
             <summary>
             Gets a specific licitation land by its identifier.
@@ -261,6 +274,11 @@
             <param name="licitationId">The identifier of the licitation land to delete.</param>
             /// <param name="licitationLandId">The id of land to remove.</param>
             <returns>The deleted licitation land.</returns>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository">
+            <summary>
+            Repository interface for performing CRUD operations related to LicitationPublicBidding entities.
+            </summary>
         </member>
         <member name="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.GetPublicBidding(System.Guid,System.Guid)">
             <summary>
@@ -307,7 +325,7 @@
             <summary>
             Gets a Licitation by its Year identifier.
             </summary>
-            <param name="id">The Guid identifier of the Licitation.</param>
+            <param name="year">The Guid identifier of the Licitation.</param>
             <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
         </member>
         <member name="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)">
@@ -332,6 +350,11 @@
             <param name="patchDocument">The updated values for the licitation.</param>
             <returns>The updated licitation.</returns>
         </member>
+        <member name="T:Licitation.API.Data.Repository.LicitationLandRepository">
+            <summary>
+            Repository for performing CRUD operations related to LicitationLand entities.
+            </summary>
+        </member>
         <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
             <summary>
             Initializes a new instance of the LicitationLandRepository class.
@@ -347,6 +370,11 @@
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)">
             <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)"/>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.LicitationPublicBiddingRepository">
+            <summary>
+            Repository for performing CRUD operations related to LicitationPublicBidding entities.
+            </summary>
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
             <summary>
@@ -377,7 +405,7 @@
             <param name="context">The database context to use for data access.</param>
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetAll">
-            <inheritdoc cref="!:IComplaintRepository.GetAll"/>
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetAll"/>
         </member>
         <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetByGuid(System.Guid)">
             <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetByGuid(System.Guid)"/>
@@ -843,6 +871,11 @@
         <member name="T:Licitation.API.Models.Document.DocumentPostRequestModel">
                 Represents a request model for posting a new document.
         </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.LicitationGuid">
+            <summary>
+            The GUID of the Licitation entity associated with this LicitationPublicBidding.
+            </summary>
+        </member>
         <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.DocumentType">
                     Represents the type of document associated with the licitation, using a custom JsonConverter.
         </member>
@@ -915,6 +948,11 @@
         </member>
         <member name="T:Licitation.API.Models.Document.DocumentRequestModel">
                 Represents a request model for posting a new document.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentRequestModel.LicitationGuid">
+            <summary>
+            The GUID of the Licitation entity associated with this LicitationPublicBidding.
+            </summary>
         </member>
         <member name="P:Licitation.API.Models.Document.DocumentRequestModel.DocumentType">
                     Represents the type of document associated with the licitation, using a custom JsonConverter.

@@ -140,6 +140,10 @@ namespace Payment.API.Controllers
             {
                 return NotFound();
             }
+            if (paymentWarrant.ReferenceNumber == null)
+            {
+                return BadRequest();
+            }
             await _paymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(paymentWarrant.ReferenceNumber);
 
             return NoContent();

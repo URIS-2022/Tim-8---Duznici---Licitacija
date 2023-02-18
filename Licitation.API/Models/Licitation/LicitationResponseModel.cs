@@ -47,19 +47,17 @@ namespace Licitation.API.Models.Licitation
         /// The collection of lands.
         /// </summary>
         [DataMember]
-        public IEnumerable<LicitationLandLicitationResponseModel> LicitationLands { get; set; }
+        public IEnumerable<LicitationLandLicitationResponseModel>? LicitationLands { get; set; }
         /// <summary>
         /// The collection of public biddings.
         /// </summary>
         [DataMember]
-        public IEnumerable<LicitationPublicBiddingLicitationResponseModel> LicitationPublicBiddings { get; set; }
+        public IEnumerable<LicitationPublicBiddingLicitationResponseModel>? LicitationPublicBiddings { get; set; }
 
         /// <summary>
         /// The representing empty constructor.
         /// </summary>
-        public LicitationResponseModel()
-        {
-
-        }
+        public LicitationResponseModel() { }
+       
     }
 }

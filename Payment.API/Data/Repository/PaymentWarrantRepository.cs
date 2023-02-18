@@ -26,8 +26,8 @@ public class PaymentWarrantRepository : IPaymentWarrantRepository
     }
 
 
-    /// <inheritdoc cref="IPaymentWarrantRepository.AddPaymetWarrant"/>
-    public async Task<PaymentWarrant> AddPaymentWarrant(PaymentWarrant paymentWarrant)
+    /// <inheritdoc cref="IPaymentWarrantRepository.AddPaymentWarrant(PaymentWarrant)"/>
+    public async Task<PaymentWarrant?> AddPaymentWarrant(PaymentWarrant paymentWarrant)
     {
         context.PaymentWarrants.Add(paymentWarrant);
         await context.SaveChangesAsync();

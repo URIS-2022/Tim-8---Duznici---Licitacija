@@ -592,6 +592,31 @@
             <param name="paymentDate">The payment date associated with the payment.</param>
             <param name="publicBiddingGuid">The public bidding's unique identifier associated with the payment.</param>
         </member>
+        <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel">
+            <summary>
+            Represents a payment warrant payment response model.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.PayerGuid">
+            <summary>
+            Gets or sets the unique identifier of the payer associated with the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the unique identifier for the public bidding associated with the payment warrant.
+            </summary>
+        </member>
         <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel">
             <summary>
             Represents a payment warrant request model.
@@ -625,6 +650,45 @@
             <param name="payerGuid">The payer GUID for the payment warrant.</param>
             <param name="totalAmount">The total amount for the payment warrant.</param>
             <param name="publicBiddingGuid">The public bidding GUID for the payment warrant.</param>
+        </member>
+        <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel">
+            <summary>
+            Represents the response model for a payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.Guid">
+            <summary>
+            Gets or sets the GUID of the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.PayerGuid">
+            <summary>
+            Gets or sets the GUID of the payer associated with the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount of the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the GUID of the public bidding associated with the payment warrant.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.#ctor(System.String,System.Guid,System.Decimal,System.Guid)">
+            <summary>
+            Initializes a new instance of the PaymentWarrantResponseModel class with the specified values.
+            </summary>
+            <param name="referenceNumber">The reference number of the payment warrant.</param>
+            <param name="payerGuid">The GUID of the payer associated with the payment warrant.</param>
+            <param name="totalAmount">The total amount of the payment warrant.</param>
+            <param name="publicBiddingGuid">The GUID of the public bidding associated with the payment warrant.</param>
         </member>
         <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel">
             <summary>
@@ -693,70 +757,6 @@
             <summary>
             Initializes a new instance of the PaymentWarrantPaymentProfile class.
             </summary>
-        </member>
-        <member name="T:PaymentWarrantPaymentResponseModel">
-            <summary>
-            Represents a payment warrant payment response model.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantPaymentResponseModel.Guid">
-            <summary>
-            Gets or sets the unique identifier for the payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantPaymentResponseModel.PayerGuid">
-            <summary>
-            Gets or sets the unique identifier of the payer associated with the payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantPaymentResponseModel.TotalAmount">
-            <summary>
-            Gets or sets the total amount for the payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantPaymentResponseModel.PublicBiddingGuid">
-            <summary>
-            Gets or sets the unique identifier for the public bidding associated with the payment warrant.
-            </summary>
-        </member>
-        <member name="T:PaymentWarrantResponseModel">
-            <summary>
-            Represents the response model for a payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantResponseModel.Guid">
-            <summary>
-            Gets or sets the GUID of the payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantResponseModel.ReferenceNumber">
-            <summary>
-            Gets or sets the reference number of the payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantResponseModel.PayerGuid">
-            <summary>
-            Gets or sets the GUID of the payer associated with the payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantResponseModel.TotalAmount">
-            <summary>
-            Gets or sets the total amount of the payment warrant.
-            </summary>
-        </member>
-        <member name="P:PaymentWarrantResponseModel.PublicBiddingGuid">
-            <summary>
-            Gets or sets the GUID of the public bidding associated with the payment warrant.
-            </summary>
-        </member>
-        <member name="M:PaymentWarrantResponseModel.#ctor(System.String,System.Guid,System.Decimal,System.Guid)">
-            <summary>
-            Initializes a new instance of the PaymentWarrantResponseModel class with the specified values.
-            </summary>
-            <param name="referenceNumber">The reference number of the payment warrant.</param>
-            <param name="payerGuid">The GUID of the payer associated with the payment warrant.</param>
-            <param name="totalAmount">The total amount of the payment warrant.</param>
-            <param name="publicBiddingGuid">The GUID of the public bidding associated with the payment warrant.</param>
         </member>
     </members>
 </doc>

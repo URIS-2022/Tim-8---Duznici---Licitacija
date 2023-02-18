@@ -23,13 +23,13 @@ public class PaymentRepository : IPaymentRepository
         return await context.Payments.Include(p => p.PaymentWarrant).ToListAsync();
     }
     /// <inheritdoc cref="IPaymentRepository.GetPaymentByGuid"/>
-    public async Task<Entities.Payment> GetPaymentByGuid(Guid guid)
+    public async Task<Entities.Payment?> GetPaymentByGuid(Guid guid)
     {
         return await context.Payments.Include(p => p.PaymentWarrant).FirstOrDefaultAsync(p => p.Guid == guid);
     }
 
     /// <inheritdoc cref="IPaymentRepository.AddPayment"/>
-    public async Task<Entities.Payment> AddPayment(Entities.Payment paymentEntity)
+    public async Task<Entities.Payment?> AddPayment(Entities.Payment paymentEntity)
     {
         var created = context.Payments.Add(paymentEntity);
         await context.SaveChangesAsync();
