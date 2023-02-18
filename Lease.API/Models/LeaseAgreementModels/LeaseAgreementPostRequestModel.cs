@@ -15,7 +15,7 @@ public class LeaseAgreementPostRequestModel
     public DateTime DeadlineLandReturn { get; set; }
     public string PlaceOfSigning { get; set; }
     public DateTime DateOfSigning { get; set; }
-    public Guid PublicBiddingGuid { get; set; }
+    public Guid? PublicBiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
     [JsonConverter(typeof(DocumentStatusConverter))]
@@ -25,7 +25,7 @@ public class LeaseAgreementPostRequestModel
 
 
     public LeaseAgreementPostRequestModel(string referenceNumber, GuaranteeType guaranteeType, DateTime dateRecording, Guid ministerGuid,
-        DateTime deadlineLandReturn, string placeOfSigning, DateTime dateOfSigning, Guid publicBiddingGuid,
+        DateTime deadlineLandReturn, string placeOfSigning, DateTime dateOfSigning, Guid? publicBiddingGuid,
         Guid personGuid, DocumentStatus documentStatus, Guid dueDateGuid)
     {
         ReferenceNumber = referenceNumber;

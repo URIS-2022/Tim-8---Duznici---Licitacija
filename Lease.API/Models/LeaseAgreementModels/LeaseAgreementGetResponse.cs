@@ -14,7 +14,7 @@ public class LeaseAgreementGetResponseModel
     public DateTime DeadlineLandReturn { get; set; }
     public string PlaceOfSigning { get; set; }
     public DateTime DateOfSigning { get; set; }
-    public Guid PublicBiddingGuid { get; set; }
+    public Guid? PublicBiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
     [JsonConverter(typeof(DocumentStatusConverter))]

@@ -3,6 +3,8 @@ using Bidding.API.Entities;
 using Bidding.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using ServiceStack.Messaging;
+using Bidding.API.RabbitMQ;
 
 namespace Bidding.API.Controllers
 {
@@ -14,11 +16,13 @@ namespace Bidding.API.Controllers
     {
         private readonly IPublicBiddingRepository _publicBiddingRepository;
         private readonly IMapper _mapper;
+        private readonly IMessageProducer _messageProducer;
 
-        public PublicBiddingController(IPublicBiddingRepository publicBiddingRepository, IMapper mapper)
+        public PublicBiddingController(IPublicBiddingRepository publicBiddingRepository, IMapper mapper, IMessageProducer messageProducer)
         {
             _publicBiddingRepository = publicBiddingRepository;
             _mapper = mapper;
+            _messageProducer = messageProducer;
         }
 
         [HttpGet]
@@ -54,6 +58,7 @@ namespace Bidding.API.Controllers
             {
                 return BadRequest();
             }
+
             PublicBiddingResponseModel responseModel = _mapper.Map<PublicBiddingResponseModel>(createdPublicBidding);
             return CreatedAtAction("GetPublicBidding", new { guid = createdPublicBidding.Guid }, responseModel);
         }
@@ -73,9 +78,16 @@ namespace Bidding.API.Controllers
             {
                 return BadRequest();
             }
+            if (publicBiddingUpdate.BestBuyerGuid != null && updatedPublicBidding.biddingStatus != 0)
+            {
+                ProducerMessageFormat message = new ProducerMessageFormat() { Guid = updatedPublicBidding.Guid };
+                ProducerMessageFormatPayment messagePayment = new ProducerMessageFormatPayment() { Guid = updatedPublicBidding.Guid, auctionedPrice = updatedPublicBidding.AuctionedPrice };
+                _messageProducer.Publish(message);
+                _messageProducer.Publish(messagePayment);
 
+            }
             return NoContent();
-        }
+    }
 
         [HttpDelete("{guid}")]
         public async Task<IActionResult> DeletePublicBidding(Guid guid)

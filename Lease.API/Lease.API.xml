@@ -614,16 +614,6 @@
             Gets or sets the date when the lease agreement was signed.
             </summary>
         </member>
-        <member name="P:Lease.API.Entities.LeaseAgreement.BiddingGuid">
-            <summary>
-            Gets or sets the unique identifier of the bidding.
-            </summary>
-        </member>
-        <member name="P:Lease.API.Entities.LeaseAgreement.PersonGuid">
-            <summary>
-            Gets or sets the unique identifier of the person.
-            </summary>
-        </member>
         <member name="P:Lease.API.Entities.LeaseAgreement.Buyer">
             <summary>
             Gets or sets the buyer related to this lease agreement.
@@ -654,7 +644,7 @@
             Initializes a new instance of the <see cref="T:Lease.API.Entities.LeaseAgreement"/> class.
             </summary>
         </member>
-        <member name="M:Lease.API.Entities.LeaseAgreement.#ctor(System.Guid,Lease.API.Enums.GuaranteeType,System.String,System.DateTime,System.Guid,System.DateTime,System.String,System.DateTime,System.Guid,System.Guid,Lease.API.Enums.DocumentStatus,System.Guid)">
+        <member name="M:Lease.API.Entities.LeaseAgreement.#ctor(System.Guid,Lease.API.Enums.GuaranteeType,System.String,System.DateTime,System.Guid,System.DateTime,System.String,System.DateTime,System.Nullable{System.Guid},System.Guid,Lease.API.Enums.DocumentStatus,System.Guid)">
             <summary>
             Initializes a new instance of the <see cref="T:Lease.API.Entities.LeaseAgreement"/> class with the specified parameters.
             </summary>
@@ -694,31 +684,6 @@
             <param name="validationContext"></param>
             <returns></returns>
         </member>
-        <member name="T:Lease.API.Entities.PriorityBuyer">
-            <summary>
-            Represents a buyer with its properties and associated entities.
-            </summary>
-        </member>
-        <member name="P:Lease.API.Entities.PriorityBuyer.Id">
-            <summary>
-            Gets or sets the unique identifier of the buyer.
-            </summary>
-        </member>
-        <member name="P:Lease.API.Entities.PriorityBuyer.Buyer">
-            <summary>
-            Gets or sets the buyer.
-            </summary>
-        </member>
-        <member name="P:Lease.API.Entities.PriorityBuyer.BuyerGuid">
-            <summary>
-            Gets or sets the buyer guid.
-            </summary>
-        </member>
-        <member name="P:Lease.API.Entities.PriorityBuyer.PriorityTypeId">
-            <summary>
-            Gets or sets the priority type.
-            </summary>
-        </member>
         <member name="T:Lease.API.Entities.PriorityTypeListJsonConverter">
             <summary>
             Represents a lease agreement entity with its properties and methods.
@@ -751,16 +716,16 @@
             Initializes a new instance of the <see cref="T:Lease.API.Entities.PriorityTypeListValueConverter"/> class.
             </summary>
         </member>
-        <member name="T:Lease.API.Migrations.FinalMigration">
+        <member name="T:Lease.API.Migrations.update7">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.FinalMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lease.API.Migrations.update7.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.FinalMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lease.API.Migrations.update7.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.FinalMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Lease.API.Migrations.update7.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:Lease.API.Models.DocumentGetResponseModel">

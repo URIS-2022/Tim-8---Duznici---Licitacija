@@ -1,11 +1,14 @@
-﻿using Bidding.API.Data;
+﻿using Bidding.API.Controllers;
+using Bidding.API.Data;
 using Bidding.API.Data.Repository;
 using Bidding.API.Enums;
+using Bidding.API.RabbitMQ;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using ServiceStack.Messaging;
 using System.Reflection;
 
 
@@ -75,6 +78,8 @@ builder.Services.AddDbContext<BiddingDBContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 
+
+builder.Services.AddSingleton<IMessageProducer>(provider => new RabbitMQMessageProducer("localhost", "my_queue"));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IBiddingOfferRepository, BiddingOfferRepository>();
