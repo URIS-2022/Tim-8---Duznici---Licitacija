@@ -22,7 +22,7 @@ namespace Bidding.API.Models
         [DataMember]
         public string Expected { get; set; }
         [JsonConverter(typeof(MunicipalityConverter))]
-        [DataMember(Name ="municipality")]
+        [DataMember(Name = "municipality")]
         public Municipality municipality { get; set; }
         [DataMember]
         public int AuctionedPrice { get; set; }
@@ -41,15 +41,15 @@ namespace Bidding.API.Models
 
         public Guid Round { get; set; }
         [JsonConverter(typeof(BiddingStatusConverter))]
-        [DataMember(Name ="biddingStatus")]
+        [DataMember(Name = "biddingStatus")]
         public BiddingStatus biddingStatus { get; set; }
-        [DataMember] 
+        [DataMember]
         public IEnumerable<PublicBiddingLotResponseModel> PublicBiddingLots { get; set; }
 
         public PublicBiddingResponseModel() { }
 
         public PublicBiddingResponseModel(
-       
+
        DateTime date,
        DateTime startDate,
        DateTime endDate,
@@ -67,7 +67,7 @@ namespace Bidding.API.Models
        IEnumerable<PublicBiddingLotResponseModel> publicBiddingLot
         )
         {
-            
+
             Date = date;
             StartDate = startDate;
             EndDate = endDate;

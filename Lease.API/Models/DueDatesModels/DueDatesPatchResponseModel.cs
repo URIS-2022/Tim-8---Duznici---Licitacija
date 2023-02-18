@@ -14,7 +14,7 @@ public class DueDatePatchResponseModel
 
     DueDatePatchResponseModel() { }
 
-    public DueDatePatchResponseModel( Guid guid, DateTime date)
+    public DueDatePatchResponseModel(Guid guid, DateTime date)
     {
         Guid = guid;
         Date = date;

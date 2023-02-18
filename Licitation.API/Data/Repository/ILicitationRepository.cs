@@ -45,8 +45,8 @@
         /// Updates a specific licitation.
         /// </summary>
         /// <param name="id">The identifier of the licitation to update.</param>
-        /// <param name="patchDocument">The updated values for the licitation.</param>
+        /// <param name="updateModel">The updated values for the licitation.</param>
         /// <returns>The updated licitation.</returns>
-        Task<Entities.Licitation?> UpdateLicitation(Guid id, Entities.Licitation patchDocument);
+        Task<Entities.Licitation?> UpdateLicitation(Guid id, Entities.Licitation updateModel);
     }
 }

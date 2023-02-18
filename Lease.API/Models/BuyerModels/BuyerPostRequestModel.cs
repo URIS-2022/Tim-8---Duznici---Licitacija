@@ -23,7 +23,7 @@ public class BuyerPostRequestModel
 
     public List<PriorityType> Priorities { get; set; }
 
-    public BuyerPostRequestModel( int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
+    public BuyerPostRequestModel(int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid, List<PriorityType> priorities)
     {
         RealisedArea = realisedArea;
         Ban = ban;
@@ -32,6 +32,6 @@ public class BuyerPostRequestModel
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-        Priorities = priorities; 
+        Priorities = priorities;
     }
 }

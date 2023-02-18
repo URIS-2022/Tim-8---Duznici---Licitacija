@@ -44,7 +44,7 @@ namespace Bidding.API.Controllers
             BiddingOfferResponseModel responseModel = _mapper.Map<BiddingOfferResponseModel>(biddingOffer);
             return Ok(responseModel);
         }
-      
+
         [HttpPost]
         public async Task<ActionResult<BiddingOfferResponseModel>> PostBiddingOffer(BiddingOfferRequestModel requestModel)
         {

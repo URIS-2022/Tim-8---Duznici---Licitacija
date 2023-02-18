@@ -59,7 +59,7 @@ namespace Person.API.Entities
         /// </summary>
         public ContactPerson? ContactPerson { get; set; }
 
-        
+
 
         /// <summary>
         /// Validates the LegalPerson object using the specified validation context and returns a collection of validation results.

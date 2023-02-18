@@ -10,7 +10,7 @@ namespace Bidding.API.Enums
     {
         None = 0,
         Report
-        
+
 
     }
     public class DocumentTypeConverter : JsonConverter<DocumentType>
@@ -19,7 +19,7 @@ namespace Bidding.API.Enums
         {
          { DocumentType.None, "Nije dodeljeno" },
          { DocumentType.Report, "Izvještaj" },
-         
+
 
         };
 

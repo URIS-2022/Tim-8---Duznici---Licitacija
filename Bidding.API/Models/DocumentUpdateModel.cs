@@ -6,7 +6,7 @@ namespace Bidding.API.Models
 {
     public class DocumentUpdateModel
     {
-        
+
         public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType? documentType { get; set; }
@@ -22,7 +22,7 @@ namespace Bidding.API.Models
 
         public DocumentUpdateModel(Guid publicBidding, DocumentType? documentType, string? referenceNumber, DateTime? dateSubmited, DateTime? dateSertified, string? template)
         {
-            
+
             this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;

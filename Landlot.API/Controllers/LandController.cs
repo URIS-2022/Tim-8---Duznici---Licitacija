@@ -70,7 +70,7 @@ namespace Landlot.API.Controllers
         /// <returns>An <see cref="IActionResult"/> representing the result of the update operation.</returns>
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<LandPatchResponseModel>> PatchLand(Guid id,[FromBody] LandPatchRequestModel patchModel)
+        public async Task<ActionResult<LandPatchResponseModel>> PatchLand(Guid id, [FromBody] LandPatchRequestModel patchModel)
         {
             var land = await landRepository.GetLand(id);
             if (land == null)

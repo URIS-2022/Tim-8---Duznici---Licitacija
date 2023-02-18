@@ -57,19 +57,19 @@ namespace Licitation.API.Models.Document
         /// Constructor for DocumentResponseModel class.
         /// </summary>
         public DocumentResponseModel(Guid licitation, DocumentType documentType, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
-            {
+        {
 
-                Guid = Guid.NewGuid();
-                this.LicitationGuid = licitation;
-                DocumentType = documentType;
-                ReferenceNumber = referenceNumber;
-                DateSubmitted = dateSubmitted;
-                DateCertified = dateCertified;
-                Template = template;
-            }
+            Guid = Guid.NewGuid();
+            this.LicitationGuid = licitation;
+            DocumentType = documentType;
+            ReferenceNumber = referenceNumber;
+            DateSubmitted = dateSubmitted;
+            DateCertified = dateCertified;
+            Template = template;
+        }
 
 
 
-        
+
     }
 }

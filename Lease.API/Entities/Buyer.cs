@@ -9,7 +9,7 @@ public partial class Buyer : IValidatableObject
 {
     public Guid Guid { get; set; }
     public int RealisedArea { get; set; }
-    
+
     public bool Ban { get; set; }
     public DateTime StartDateOfBan { get; set; }
     public int BanDuration { get; set; }
@@ -17,16 +17,12 @@ public partial class Buyer : IValidatableObject
     public Guid BiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
-  //   [JsonConverter(typeof(PriorityTypeConverter))]
-  //  public PriorityType PriorityType { get; set; }
+    public virtual LeaseAgreement LeaseAgreement { get; set; }
 
-    public  virtual LeaseAgreement LeaseAgreement { get; set; }
-
-    // public virtual ICollection<PriorityBuyer> PriorityBuyers { get; set; }
 
     [ValueConverter(typeof(PriorityTypeListValueConverter))]
     public List<PriorityType> Priorities { get; set; }
-    
+
 
     public Buyer(Guid guid, int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
     {
@@ -38,16 +34,10 @@ public partial class Buyer : IValidatableObject
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-      //  Priorities = (List<PriorityType>?) PriorityBuyers.Where(pb => pb.BuyerGuid == Guid).Select(pb => pb.PriorityType).ToList();
+    }
 
-
-    //    PriorityTypes = priorityTypes;
-
-
-}
-
-public Buyer() { }
-    public Buyer(int realisedArea,bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid )
+    public Buyer() { }
+    public Buyer(int realisedArea, bool ban, DateTime startDateOfBan, int banDuration, DateTime banEndDate, Guid biddingGuid, Guid personGuid)
     {
         Guid = Guid.NewGuid();
         RealisedArea = realisedArea;
@@ -57,10 +47,6 @@ public Buyer() { }
         BanEndDate = banEndDate;
         BiddingGuid = biddingGuid;
         PersonGuid = personGuid;
-        //Priorities = (List<PriorityType>?)PriorityBuyers.Where(pb => pb.BuyerGuid == Guid).Select(pb => pb.PriorityType).ToList();
-            
-
-        //  PriorityTypes = priorityTypes;
     }
 
 

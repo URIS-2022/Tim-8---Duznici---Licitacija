@@ -129,7 +129,7 @@ namespace Preparation.API.Entities
                 results.Add(new ValidationResult("Guid cannot be empty."));
             }
 
-            if (ReferenceNumber.Length != 20 )
+            if (ReferenceNumber != null)
                 results.Add(new ValidationResult("Reference number length must be 20 characters.", new[] { nameof(ReferenceNumber) }));
 
             if (DateSubmitted > DateTime.Now)

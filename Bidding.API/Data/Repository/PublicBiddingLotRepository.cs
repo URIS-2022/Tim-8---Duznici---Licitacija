@@ -12,7 +12,7 @@ namespace Bidding.API.Data.Repository
             this.context = context;
         }
 
-        
+
 
         public async Task<IEnumerable<PublicBiddingLot>> GetAllBiddingLots()
         {

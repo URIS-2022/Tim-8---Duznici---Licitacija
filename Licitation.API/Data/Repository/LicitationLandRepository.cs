@@ -18,7 +18,7 @@ public class LicitationLandRepository : ILicitationLandRepository
     {
         this.context = context;
     }
-    
+
     /// <inheritdoc cref="ILicitationLandRepository.GetLicitationLand"/>
     public async Task<LicitationLand?> GetLicitationLand(Guid licitationId, Guid licitationLandId)
     {
