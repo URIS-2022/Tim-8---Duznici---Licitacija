@@ -4,8 +4,14 @@ using Payment.API.Models.PaymentWarrantModel;
 
 namespace Payment.API.Profiles;
 
+/// <summary>
+/// AutoMapper profile for PaymentWarrant related classes.
+/// </summary>
 public class PaymentWarrantPaymentProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the PaymentWarrantPaymentProfile class.
+    /// </summary>
     public PaymentWarrantPaymentProfile()
     {
 

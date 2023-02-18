@@ -2,6 +2,9 @@
 
 namespace Payment.API.Data.Repository;
 
+/// <summary>
+/// Repository interface for managing payment warrants.
+/// </summary>
 public interface IPaymentWarrantRepository
 {
     /// <summary>

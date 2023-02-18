@@ -3,6 +3,9 @@ using Payment.API.Entities;
 
 namespace Payment.API.Data.Repository;
 
+/// <summary>
+/// Repository class for managing payment warrants in the database.
+/// </summary>
 public class PaymentWarrantRepository : IPaymentWarrantRepository
 {
     private readonly PaymentDBContext context;

@@ -20,12 +20,14 @@ namespace Licitation.API.Data.Repository
         }
 
         /// <inheritdoc cref="IDocumentRepository.GetDocuments"/>
+        /// <returns>An enumerable collection of Document entities</returns>
         public async Task<IEnumerable<Entities.Document>> GetDocuments()
         {
             return await context.Documents.ToListAsync();
         }
 
         /// <inheritdoc cref="IDocumentRepository.GetDocument"/>
+        /// <returns>The Document entity with the specified ID, or null if not found</returns>
         public async Task<Entities.Document?> GetDocument(Guid id)
         {
             return await context.Documents.FindAsync(id);
@@ -45,6 +47,7 @@ namespace Licitation.API.Data.Repository
         }
 
         /// <inheritdoc cref="IDocumentRepository.AddDocument"/>
+        /// <returns>The created Document entity</returns>
         public async Task<Entities.Document?> AddDocument(Entities.Document document)
         {
             var created = context.Documents.Add(document);
@@ -55,13 +58,16 @@ namespace Licitation.API.Data.Repository
         /// <inheritdoc cref="IDocumentRepository.DeleteDocument"/>
         public async Task DeleteDocument(Guid id)
         {
-            var systemUser = await context.Documents.FindAsync(id);
-            if (systemUser == null)
+            var document = await context.Documents.FindAsync(id);
+            if (document == null)
             {
                 throw new InvalidOperationException("Document not found");
             }
-            context.Documents.Remove(systemUser);
+            context.Documents.Remove(document);
             await context.SaveChangesAsync();
         }
+
     }
 }
+
+
