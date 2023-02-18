@@ -651,7 +651,7 @@
         </member>
         <member name="T:Bidding.API.Profiles.AddressProfile">
             <summary>
-            Profile for mapping between <see cref="T:Bidding.API.Entities.Address"/> and its related models.
+            Profile for mapping between address and its related models.
             </summary>
         </member>
         <member name="T:Bidding.API.Profiles.BiddingOfferProfile">

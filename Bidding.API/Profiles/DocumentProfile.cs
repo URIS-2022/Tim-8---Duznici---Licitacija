@@ -18,7 +18,7 @@ namespace Bidding.API.Profiles
 
            
             CreateMap<DocumentRequestModel, Document>()
-                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid != Guid.Empty))
+                 
                  .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
 
            
