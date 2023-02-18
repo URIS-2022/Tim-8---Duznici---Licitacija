@@ -36,17 +36,33 @@ public class RabbitMQMessageProducer : IMessageProducer, IDisposable
 
     public void Publish<T>(T message)
     {
-        var messageGuid = (message as ProducerMessageFormat).Guid;
+
         string json = JsonConvert.SerializeObject(message);
         var body = Encoding.UTF8.GetBytes(json);
 
         // Publish the message to the queue
-        _channel.BasicPublish(exchange: "",
-                              routingKey: _queueName,
+        _channel.BasicPublish(exchange: "my_exchange",
+                              routingKey: "lease",
                               basicProperties: null,
                               body: body);
 
-        Console.WriteLine("Updated Public Bidding with guid {0} entity sent to MQ", messageGuid);
+        Console.WriteLine("Message sent to MQ");
+    }
+
+
+    public void Publish(ProducerMessageFormatPayment message)
+    {
+
+        string json = JsonConvert.SerializeObject(message);
+        var body = Encoding.UTF8.GetBytes(json);
+
+        // Publish the message to the queue
+        _channel.BasicPublish(exchange: "my_exchange",
+                              routingKey: "payment",
+                              basicProperties: null,
+                              body: body);
+
+        Console.WriteLine("Message sent to MQ");
     }
 
     public void Dispose()

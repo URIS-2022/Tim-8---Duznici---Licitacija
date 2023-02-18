@@ -85,7 +85,10 @@ namespace Bidding.API.Controllers
             if (publicBiddingUpdate.BestBuyerGuid != null && updatedPublicBidding.biddingStatus != 0)
             {
                 ProducerMessageFormat message = new ProducerMessageFormat() { Guid = updatedPublicBidding.Guid };
+                ProducerMessageFormatPayment messagePayment = new ProducerMessageFormatPayment() { Guid = updatedPublicBidding.Guid, auctionedPrice = updatedPublicBidding.AuctionedPrice };
                 _messageProducer.Publish(message);
+                _messageProducer.Publish(messagePayment);
+
             }
             return NoContent();
     }

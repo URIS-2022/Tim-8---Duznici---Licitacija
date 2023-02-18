@@ -1,12 +1,12 @@
 ﻿
-using Lease.API.Controllers;
 using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Lease.API.Models.LeaseAgreementModels;
 using System.Text.Json;
+using Payment.API.Models.PaymentWarrantModel;
+using System.Threading.Channels;
 
-namespace Lease.API.RabbitMQ;
+namespace Payment.API.RabbitMQ;
 
 public class RabbitMQListener : IDisposable
 {
@@ -27,9 +27,10 @@ public class RabbitMQListener : IDisposable
         };
         _connection = factory.CreateConnection();
         _channel = _connection.CreateModel();
+
         _channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
         _channel.ExchangeDeclare("my_exchange", ExchangeType.Direct);
-        _channel.QueueBind(queueName, "my_exchange", "lease");
+        _channel.QueueBind(queueName, "my_exchange", "payment");
         _consumer = new EventingBasicConsumer(_channel);
     }
 
@@ -41,7 +42,7 @@ public class RabbitMQListener : IDisposable
             var body = ea.Body.ToArray();
             var json = Encoding.UTF8.GetString(body);
             Console.WriteLine("Received message: {0}", json);
-            var message = JsonSerializer.Deserialize<ConsumerMessageFormat>(json);
+            var message = JsonSerializer.Deserialize<ConsumerMessageFormatPayment>(json);
             
 
 
@@ -51,15 +52,22 @@ public class RabbitMQListener : IDisposable
 
 
 
-            LeaseAgreementPostRequestModel leaseAgreementPostRequestModel = new LeaseAgreementPostRequestModel( referenceNumber, Enums.GuaranteeType.None, DateTime.UtcNow, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"), DateTime.UtcNow.AddYears(5), "Opstina Subotica", DateTime.UtcNow,  Guid.Parse(message.Guid), Guid.NewGuid(), Enums.DocumentStatus.None, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"))
-           ;
+            PaymentWarrantRequestModel paymentWarrentPostRequestModel = new PaymentWarrantRequestModel()
+            {
+                ReferenceNumber = referenceNumber,
+                PayerGuid = Guid.NewGuid(),
+                TotalAmount = message.auctionedPrice,
+                PublicBiddingGuid = message.Guid
+            
+
+            };
 
            
 
         
 
             var requester = new Requester();
-            await requester.PostNewLeaseAgreement(leaseAgreementPostRequestModel);
+            await requester.PostNewPaymentWarrant(paymentWarrentPostRequestModel);
 
             _channel.BasicAck(ea.DeliveryTag, false);
         };

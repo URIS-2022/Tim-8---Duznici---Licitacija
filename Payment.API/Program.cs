@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Payment.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Payment.API.Data.Repository;
+using Payment.API.RabbitMQ;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -69,6 +70,12 @@ builder.Services.AddDbContext<PaymentDBContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddControllers();
+
+
+RabbitMQListener listener = new RabbitMQListener("localhost", "my_queue", "guest", "guest");
+listener.StartListening(message => Console.WriteLine(message));
+
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -39,5 +39,9 @@ public class PaymentWarrantRequestModel
         TotalAmount = totalAmount;
         PublicBiddingGuid = publicBiddingGuid;
     }
+
+    public PaymentWarrantRequestModel()
+    {
+    }
 }
 
