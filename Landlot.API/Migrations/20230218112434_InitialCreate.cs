@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace Landlot.API.Migrations
 {
@@ -18,7 +20,7 @@ namespace Landlot.API.Migrations
                     LandGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TotalArea = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     Municipality = table.Column<int>(type: "int", nullable: false),
-                    RealEstateNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RealEstateNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Culture = table.Column<int>(type: "int", nullable: false),
                     LandClass = table.Column<int>(type: "int", nullable: false),
                     Processing = table.Column<int>(type: "int", nullable: false),
