@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Landlot.API.Migrations
 {
     [DbContext(typeof(LandlotDbContext))]
-    [Migration("20230213184047_InitialCreate")]
+    [Migration("20230218112434_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -50,7 +50,6 @@ namespace Landlot.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RealEstateNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TotalArea")
