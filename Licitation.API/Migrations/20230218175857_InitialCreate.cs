@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -34,10 +35,10 @@ namespace Licitation.API.Migrations
                     Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LicitationGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DocumentType = table.Column<int>(type: "int", nullable: false),
-                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReferenceNumber = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DateSubmitted = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateCertified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Template = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Template = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -98,6 +99,16 @@ namespace Licitation.API.Migrations
                         principalColumn: "Guid");
                 });
 
+            migrationBuilder.InsertData(
+                table: "LicitationEntities",
+                columns: new[] { "Guid", "ApplicationDeadline", "BidIncrement", "Constarint", "Date", "Stage", "Year" },
+                values: new object[] { new Guid("e053576b-8397-4173-928e-dec58721d00f"), new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 100, 0, new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2023 });
+
+            migrationBuilder.InsertData(
+                table: "Documents",
+                columns: new[] { "Guid", "DateCertified", "DateSubmitted", "DocumentType", "LicitationGuid", "ReferenceNumber", "Template" },
+                values: new object[] { new Guid("3eaae99e-7690-4476-ab92-213bf3a2ea58"), new DateTime(2022, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new Guid("e053576b-8397-4173-928e-dec58721d00f"), "34", "Sablon dokumenta" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Documents_LicitationGuid",
                 table: "Documents",
@@ -107,7 +118,8 @@ namespace Licitation.API.Migrations
                 name: "IX_Documents_ReferenceNumber",
                 table: "Documents",
                 column: "ReferenceNumber",
-                unique: true);
+                unique: true,
+                filter: "[ReferenceNumber] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LicitationLands_LicitationGuid",

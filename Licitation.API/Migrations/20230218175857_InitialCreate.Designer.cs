@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Licitation.API.Migrations
 {
     [DbContext(typeof(LicitationDBContext))]
-    [Migration("20230216120741_InitialCreate")]
+    [Migration("20230218175857_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -44,11 +44,9 @@ namespace Licitation.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ReferenceNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Template")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Guid");
@@ -56,9 +54,22 @@ namespace Licitation.API.Migrations
                     b.HasIndex("LicitationGuid");
 
                     b.HasIndex("ReferenceNumber")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ReferenceNumber] IS NOT NULL");
 
                     b.ToTable("Documents");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("3eaae99e-7690-4476-ab92-213bf3a2ea58"),
+                            DateCertified = new DateTime(2022, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateSubmitted = new DateTime(2021, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DocumentType = 1,
+                            LicitationGuid = new Guid("e053576b-8397-4173-928e-dec58721d00f"),
+                            ReferenceNumber = "34",
+                            Template = "Sablon dokumenta"
+                        });
                 });
 
             modelBuilder.Entity("Licitation.API.Entities.Licitation", b =>
@@ -88,6 +99,18 @@ namespace Licitation.API.Migrations
                     b.HasKey("Guid");
 
                     b.ToTable("LicitationEntities");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("e053576b-8397-4173-928e-dec58721d00f"),
+                            ApplicationDeadline = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BidIncrement = 100,
+                            Constarint = 0,
+                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Stage = 2,
+                            Year = 2023
+                        });
                 });
 
             modelBuilder.Entity("Licitation.API.Entities.LicitationLand", b =>
@@ -110,7 +133,7 @@ namespace Licitation.API.Migrations
                     b.ToTable("LicitationLands");
                 });
 
-            modelBuilder.Entity("Licitation.API.Entities.LicitationPublicBidding", b =>
+            modelBuilder.Entity("Licitation.API.Entities.PublicBidding", b =>
                 {
                     b.Property<Guid>("PublicBiddingGuid")
                         .HasColumnType("uniqueidentifier");
@@ -156,7 +179,7 @@ namespace Licitation.API.Migrations
                     b.Navigation("licitation");
                 });
 
-            modelBuilder.Entity("Licitation.API.Entities.LicitationPublicBidding", b =>
+            modelBuilder.Entity("Licitation.API.Entities.PublicBidding", b =>
                 {
                     b.HasOne("Licitation.API.Entities.Licitation", "licitation")
                         .WithMany("PublicBiddings")

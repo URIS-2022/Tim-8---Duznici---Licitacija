@@ -160,6 +160,16 @@ namespace Licitation.API.Controllers
         [HttpPost("{id}/licitationLands")]
         public async Task<ActionResult<LicitationResponseModel>> PostLicitationLand(Guid id, LicitationLandPostRequestModel postModel)
         {
+
+            var landLotApiClient = new HttpClient();
+            var landLotApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_LANDLOT");
+
+            var landResponse = await landLotApiClient.GetAsync($"{landLotApiUrl}/api/Land/{postModel.LandGuid}");
+            if (!landResponse.IsSuccessStatusCode)
+            {
+                return BadRequest("Land not found.");
+            }
+
             var licitationLand = mapper.Map<LicitationLand>(postModel);
             licitationLand.LicitationGuid = id;
             var created = await llRepository.AddLicitationLand(licitationLand);
