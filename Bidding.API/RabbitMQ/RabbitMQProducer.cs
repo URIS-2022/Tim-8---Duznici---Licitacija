@@ -16,9 +16,8 @@ public class RabbitMQMessageProducer : IMessageProducer
     public RabbitMQMessageProducer(string hostname, string queueName)
     {
 
-        var _queueName
-        _queueName = queueName;
-
+        var _queueName = queueName;
+        
         // Create a connection factory
         var factory = new ConnectionFactory() { HostName = hostname };
 
@@ -36,10 +35,10 @@ public class RabbitMQMessageProducer : IMessageProducer
                               arguments: null); 
     }
 
-    public void Publish<T>(T message)
+    public void Publish<T>(T messageBody)
     {
 
-        string json = JsonConvert.SerializeObject(message);
+        string json = JsonConvert.SerializeObject(messageBody);
         var body = Encoding.UTF8.GetBytes(json);
 
         // Publish the message to the queue
@@ -50,8 +49,6 @@ public class RabbitMQMessageProducer : IMessageProducer
 
         Console.WriteLine("Message sent to MQ");
     }
-
-
     public void Publish(ProducerMessageFormatPayment message)
     {
 
@@ -66,15 +63,15 @@ public class RabbitMQMessageProducer : IMessageProducer
 
         Console.WriteLine("Message sent to MQ");
     }
-
+    public void Publish<T>(IMessage<T> messageBody)
+    {
+        throw new NotImplementedException();
+    }
     public void Dispose()
     {
         _channel.Dispose();
         _connection.Dispose();
     }
 
-    public void Publish<T>(IMessage<T> message)
-    {
-        throw new NotImplementedException();
-    }
+    
 }

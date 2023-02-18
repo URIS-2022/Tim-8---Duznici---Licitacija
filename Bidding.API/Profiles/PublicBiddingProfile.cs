@@ -27,11 +27,7 @@ namespace Bidding.API.Profiles
     .ForMember(dest => dest.DepositReplenishmentAmount, opt => opt.Condition(src => src.DepositReplenishmentAmount != null))
     .ForMember(dest => dest.Round, opt => opt.Condition(src => src.Round != null))
     .ForMember(dest => dest.biddingStatus, opt => opt.Condition(src => src.biddingStatus != null));
-     /* .ForMember(dest => dest.municipality, opt => opt.MapFrom(src => src.municipality))
-      .ForMember(dest => dest.public_bidding_type, opt => opt.MapFrom(src => src.public_bidding_type))
-      .ForMember(dest => dest.biddingStatus, opt => opt.MapFrom(src => src.biddingStatus)); */
-
-
+     
 
 
 
