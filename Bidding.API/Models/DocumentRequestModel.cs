@@ -6,7 +6,6 @@ namespace Bidding.API.Models
 {
     public class DocumentRequestModel
     {
-        //public Guid Guid { get; set; }
         public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
