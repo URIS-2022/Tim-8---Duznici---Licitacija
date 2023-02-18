@@ -5,6 +5,9 @@ using Licitation.API.Models.LicitationPBResponse;
 
 namespace Licitation.API.Profiles;
 
+/// <summary>
+/// Represents a profile that contains information specific to a public biddings of licitation.
+/// </summary>
 public class LicitationPublicBiddingProfile : Profile
 {
     /// <summary>

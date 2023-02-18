@@ -4,6 +4,9 @@ using Licitation.API.Models.LicitationLands;
 
 namespace Licitation.API.Profiles;
 
+/// <summary>
+/// Represents a profile that contains information specific to a lands of licitation.
+/// </summary>
 public class LicitationLicitationLandProfile : Profile
 {
     /// <summary>

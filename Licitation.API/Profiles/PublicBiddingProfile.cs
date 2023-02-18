@@ -4,8 +4,14 @@ using Licitation.API.Models.Licitation;
 
 namespace Licitation.API.Profiles;
 
+/// <summary>
+/// Represents a profile that contains information specific to a public biddings.
+/// </summary>
 public class PublicBiddingProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PublicBiddingProfile"/> class.
+    /// </summary>
     public PublicBiddingProfile()
     {
         CreateMap<PublicBidding, LicitationPublicBiddingLicitationResponseModel>()

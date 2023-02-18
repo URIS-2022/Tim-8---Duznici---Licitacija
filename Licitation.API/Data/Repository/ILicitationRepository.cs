@@ -39,21 +39,5 @@
         /// <param name="patchDocument">The updated values for the licitation.</param>
         /// <returns>The updated licitation.</returns>
         Task<Entities.Licitation?> UpdateLicitation(Guid id, Entities.Licitation patchDocument);
-
-
-        /* /// <summary>
-        /// Gets a Licitation by its date.
-        /// </summary>
-        /// <param name="date">The username of the Licitation.</param>
-        /// <returns>An asynchronous task that returns the Licitation entity with the specified username, or null if no such entity exists.</returns>
-        Task<LicitationEntity?> GetByDate(DateTime date);*/
-
-
-        /// <summary>
-        /// Deletes a Licitation from the database by its username.
-        /// </summary>
-        /// <param name="date">The username of the Licitation to delete.</param>
-        /// <returns>An asynchronous task that represents the operation.</returns>
-       // Task Delete(string date);
     }
 }
