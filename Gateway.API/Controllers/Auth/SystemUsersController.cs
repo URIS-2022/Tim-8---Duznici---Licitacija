@@ -32,7 +32,7 @@ public class SystemUsersController : ControllerBase
     /// <returns>IActionResult indicating the status of the operation</returns>
     /// <response code="204">Returns no content</response>
     [HttpDelete("{username}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Superuser,Admin")]
     public Task<IActionResult> DeleteSystemUser(string username) => serviceProxy.Delete(username);
 
     /// <summary>
@@ -60,7 +60,7 @@ public class SystemUsersController : ControllerBase
     /// <returns>IActionResult indicating the status of the operation</returns>
     /// <response code="201">Returns the newly created item</response>
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Superuser,Admin")]
     public Task<IActionResult> PostSystemUser(object requestModel) => serviceProxy.Post(requestModel);
 
     /// <summary>
@@ -72,6 +72,6 @@ public class SystemUsersController : ControllerBase
     /// <response code="204">Returns no content</response>
     /// <response code="404">If the Document is not found</response>
     [HttpPatch("{username}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Superuser,Admin")]
     public Task<IActionResult> PatchSystemUser(string username, object requestModel) => serviceProxy.Patch(username, requestModel);
 }
