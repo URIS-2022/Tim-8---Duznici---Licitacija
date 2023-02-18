@@ -79,6 +79,21 @@ public class ComplaintsController : ControllerBase
             return NotFound();
         }
 
+        if(patchModel.SubjectGuid != null)
+        {
+            using var personApiClient = new HttpClient();
+            var biddingApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING");
+            var prepApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PREPARATION");
+
+
+            var legalPersonResponse = await personApiClient.GetAsync($"{biddingApiUrl}/api/PublicBidding/{patchModel.SubjectGuid}");
+            var physicalPersonResponse = await personApiClient.GetAsync($"{prepApiUrl}/api/Announcements/{patchModel.SubjectGuid}");
+            if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+            {
+                return BadRequest("Subject id is not valid.");
+            }
+        }
+
         mapper.Map(patchModel, complaint);
 
         var updated = await _complaintRepository.UpdateComplaint(id, complaint);
@@ -102,6 +117,19 @@ public class ComplaintsController : ControllerBase
     public async Task<ActionResult<ComplaintPostResponseModel>> PostComplaint(ComplaintPostRequestModel postModel)
     {
         var complaint = mapper.Map<Entities.Complaint>(postModel);
+
+        using var personApiClient = new HttpClient();
+        var biddingApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING");
+        var prepApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_PREPARATION");
+
+
+        var legalPersonResponse = await personApiClient.GetAsync($"{biddingApiUrl}/api/PublicBidding/{postModel.SubjectGuid}");
+        var physicalPersonResponse = await personApiClient.GetAsync($"{prepApiUrl}/api/Announcements/{postModel.SubjectGuid}");
+        if (!legalPersonResponse.IsSuccessStatusCode && !physicalPersonResponse.IsSuccessStatusCode)
+        {
+            return BadRequest("Subject id is not valid.");
+        }
+
         var created = await _complaintRepository.AddComplaint(complaint);
         if (created == null)
         {

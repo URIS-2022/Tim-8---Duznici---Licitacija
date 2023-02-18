@@ -71,10 +71,29 @@ public class Complaint : IValidatableObject
     /// <summary>
     /// Constructor for Complaint
     /// </summary>
-    public Complaint(ComplaintType type, DateTime dateSubmitted, Guid buyerGuid, string reason, string rationale,
-    DateTime resolutionDate, string resolutionCode, ComplaintStatus status, Guid subjectGuid, ComplaintAction action, Guid? guid = null)
+    public Complaint(Guid guid, ComplaintType type, DateTime dateSubmitted, Guid buyerGuid, string reason, string rationale,
+    DateTime resolutionDate, string resolutionCode, ComplaintStatus status, Guid subjectGuid, ComplaintAction action)
     {
-        Guid = guid ?? Guid.NewGuid();
+        Guid = guid;
+        Type = type;
+        DateSubmitted = dateSubmitted;
+        BuyerGuid = buyerGuid;
+        Reason = reason;
+        Rationale = rationale;
+        ResolutionDate = resolutionDate;
+        ResolutionCode = resolutionCode;
+        Status = status;
+        SubjectGuid = subjectGuid;
+        Action = action;
+    }
+
+    /// <summary>
+    /// Constructor for Complaint with Guid generated
+    /// </summary>
+    public Complaint(ComplaintType type, DateTime dateSubmitted, Guid buyerGuid, string reason, string rationale,
+    DateTime resolutionDate, string resolutionCode, ComplaintStatus status, Guid subjectGuid, ComplaintAction action)
+    {
+        Guid = Guid.NewGuid();
         Type = type;
         DateSubmitted = dateSubmitted;
         BuyerGuid = buyerGuid;

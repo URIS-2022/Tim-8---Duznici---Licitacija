@@ -208,7 +208,14 @@
             <returns>IActionResult indicating the status of the operation</returns>
             <response code="204">Returns no content</response>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUser(System.String)" -->
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUser(System.String)">
+            <summary>
+            Gets a system user
+            </summary>
+            <param name="username">Username of the user to retrieve</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="200">Returns the system user</response>
+        </member>
         <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUsers">
             <summary>
             Gets a list of all system users
@@ -1447,6 +1454,7 @@
             <summary>
             Creates a new physical person.
             </summary>
+            <param name="id">The ID of the physical person to create.</param>
             <param name="requestModel">The physical person information to create.</param>
             <returns>The created physical person, or BadRequest if the creation fails.</returns>
             <response code="201">Created if the physical person is successfully created</response>

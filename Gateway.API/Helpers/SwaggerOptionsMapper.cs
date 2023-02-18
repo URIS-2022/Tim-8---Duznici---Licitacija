@@ -134,7 +134,7 @@ static class SwaggerOptionsMapper
             {
                 Title = "Landlot Service API",
                 Version = "v1.0.0",
-                Description = "Landlot.API is a microservice that provides auction lot management services. It allows you to create, update, and delete parcels, as well as generate JSON Web Tokens (JVTs) for use in securing subsequent API requests.",
+                Description = "Landlot.API is a microservice that provides auction lot management services. It allows you to create, update, and delete parcels.",
                 Contact = new OpenApiContact
                 {
                     Name = "Andrea Ilić",
