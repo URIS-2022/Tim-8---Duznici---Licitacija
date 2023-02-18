@@ -28,8 +28,6 @@
   <ItemGroup>
     <Folder Include="Consumes\" />
     <Folder Include="Controllers\Landlot\" />
-    <Folder Include="Controllers\Person\" />
-    <Folder Include="Controllers\Preparation\" />
   </ItemGroup>
 
   <Import Project="..\Shared\Shared.projitems" Label="Shared" />
