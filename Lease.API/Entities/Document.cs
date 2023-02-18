@@ -14,7 +14,7 @@ public partial class Document : IValidatableObject
     public string Template { get; set; }
 
     [JsonConverter(typeof(DocumentTypeConverter))]
-    public DocumentType Type { get;  set; }
+    public DocumentType Type { get; set; }
     public Guid LeaseAgreementGuid { get; set; }
     public LeaseAgreement LeaseAgreement { get; set; }
 

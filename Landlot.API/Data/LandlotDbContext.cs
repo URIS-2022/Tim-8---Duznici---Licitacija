@@ -106,7 +106,7 @@ namespace Landlot.API.Data
                 });
 
             modelBuilder.Entity<Lot>()
-                .HasData(new 
+                .HasData(new
                 {
                     LotGuid = Guid.Parse("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),

@@ -13,7 +13,7 @@ namespace Landlot.API.Profiles
         /// <summary>
         /// Initializes a new instance of the <see cref="LandProfile"/> class.
         /// </summary>
-        public LandProfile() 
+        public LandProfile()
         {
             CreateMap<Land, LandGetResponseModel>();
             CreateMap<Land, LandPostResponseModel>();

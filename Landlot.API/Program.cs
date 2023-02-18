@@ -25,7 +25,7 @@ builder.Services.AddControllers(setup =>
              options.JsonSerializerOptions.Converters.Add(new LandlotPropertyTypeConverter());
              options.JsonSerializerOptions.Converters.Add(new LandlotProtectedZoneConverter());
          }
-          ) 
+          )
         .ConfigureApiBehaviorOptions(setupAction => // Deo koji se odnosi na podržavanje Problem Details for HTTP APIs
         {
             setupAction.InvalidModelStateResponseFactory = context =>
@@ -120,7 +120,7 @@ builder.Services.AddSwaggerGen(options =>
 
     string xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
 
-     options.IncludeXmlComments(xmlCommentsPath);
+    options.IncludeXmlComments(xmlCommentsPath);
 
 });
 

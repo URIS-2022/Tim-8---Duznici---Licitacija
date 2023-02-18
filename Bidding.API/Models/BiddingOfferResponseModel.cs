@@ -27,9 +27,9 @@ namespace Bidding.API.Models
 
         public BiddingOfferResponseModel() { }
 
-        public BiddingOfferResponseModel( Guid representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
+        public BiddingOfferResponseModel(Guid representativeGuid, Guid publicBiddingGuid, DateTime date, float offer, Guid buyerGuid)
         {
-            
+
             RepresentativeGuid = representativeGuid;
             PublicBiddingGuid = publicBiddingGuid;
             Date = date;

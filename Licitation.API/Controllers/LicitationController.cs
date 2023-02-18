@@ -115,7 +115,7 @@ namespace Licitation.API.Controllers
         public async Task<ActionResult<LicitationResponseModel>> PostLicitation(LicitationRequestModel requestModel)
         {
             Entities.Licitation requestedLicitation = mapper.Map<Entities.Licitation>(requestModel);
-            Entities.Licitation? createdLicitation = await licitationRepository.AddLicitation((Entities.Licitation)requestedLicitation);
+            Entities.Licitation? createdLicitation = await licitationRepository.AddLicitation(requestedLicitation);
             if (createdLicitation == null)
             {
                 return BadRequest();

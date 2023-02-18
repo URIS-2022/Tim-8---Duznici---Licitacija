@@ -8,7 +8,7 @@ namespace Landlot.API.Models
     /// Represents a response model for a land record.
     /// </summary>
     [DataContract(Name = "Land", Namespace = "")]
-    
+
     public class LandGetResponseModel
     {
         /// <summary>
@@ -90,7 +90,7 @@ namespace Landlot.API.Models
         /// Represents a response model for a land record.
         /// </summary>
         public LandGetResponseModel(Guid guid, decimal area, LandlotMunicipality municipality, string estateNumber, LandlotCulture culture,
-                                    LandlotClass landclass, LandlotProcessing processing,LandlotProtectedZone zone,
+                                    LandlotClass landclass, LandlotProcessing processing, LandlotProtectedZone zone,
                                     LandlotPropertyType property, LandlotDrainage drainage)
         {
             LandGuid = guid;
@@ -103,7 +103,7 @@ namespace Landlot.API.Models
             Zone = zone;
             Property = property;
             Drainage = drainage;
-            
+
         }
     }
 }
@@ -111,5 +111,5 @@ namespace Landlot.API.Models
 
 
 
-    
-       
+
+

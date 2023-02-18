@@ -14,7 +14,7 @@ public class BuyerPatchRequestModel
     public DateTime? BanEndDate { get; set; }
     public Guid? BiddingGuid { get; set; }
 
-    public Guid? PersonGuid {get; set;}
+    public Guid? PersonGuid { get; set; }
 
 
     public List<PriorityType>? Priorities { get; set; }

@@ -58,6 +58,6 @@ namespace Licitation.API.Models.Licitation
         /// The representing empty constructor.
         /// </summary>
         public LicitationResponseModel() { }
-       
+
     }
 }

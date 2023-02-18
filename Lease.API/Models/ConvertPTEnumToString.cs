@@ -5,7 +5,7 @@ namespace Lease.API.Models;
 public class ConvertPTEnumToString
 {
 
-    public  List<string> ConvertEnumToString(List<PriorityType> list)
+    public List<string> ConvertEnumToString(List<PriorityType> list)
     {
 
         var dict = new Dictionary<PriorityType, string>

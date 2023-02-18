@@ -73,7 +73,7 @@ public partial class Licitation : IValidatableObject
     /// </summary>
     public Licitation()
     {
-        Lands =  new HashSet<LicitationLand>();
+        Lands = new HashSet<LicitationLand>();
         LicitationPublicBiddings = new HashSet<PublicBidding>();
     }
 
@@ -172,5 +172,5 @@ public partial class Licitation : IValidatableObject
 
         return results;
     }
- }
+}
 

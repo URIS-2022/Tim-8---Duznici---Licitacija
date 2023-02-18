@@ -14,7 +14,7 @@ namespace Person.API.Data.Repository
         /// Creates a new instance of the AddressRepository class.
         /// </summary>
         /// <param name="context">The PersonDbContext object.</param>
-        public AddressRepository (PersonDbContext context)
+        public AddressRepository(PersonDbContext context)
         {
             this.context = context;
 
@@ -61,7 +61,7 @@ namespace Person.API.Data.Repository
                 context.Addresses.Remove(address);
                 await context.SaveChangesAsync();
             }
-                
+
         }
         /// <summary>
         /// Updates an existing address in the database.

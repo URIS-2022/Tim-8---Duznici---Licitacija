@@ -13,9 +13,9 @@ namespace Bidding.API.Profiles
         {
             CreateMap<BuyerApplication, RepresentativeBuyerApplicationResponseModel>()
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
-             
+
                 .ForMember(dest => dest.Amount, opt => opt.MapFrom(src => src.Amount));
-            
+
         }
 
     }

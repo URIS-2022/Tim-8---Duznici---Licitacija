@@ -26,7 +26,7 @@ public class DocumentGetResponseModel
     /// <summary>
     /// Gets or sets the unique identifier of the committee that the document belongs to.
     /// </summary>
-   
+
 
     /// <summary>
     /// Gets or sets the reference number of the document.

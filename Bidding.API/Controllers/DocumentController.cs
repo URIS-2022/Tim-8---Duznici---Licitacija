@@ -44,7 +44,7 @@ namespace Bidding.API.Controllers
             DocumentResponseModel responseModel = _mapper.Map<DocumentResponseModel>(document);
             return Ok(responseModel);
         }
-        
+
         [HttpPost]
         public async Task<ActionResult<DocumentResponseModel>> PostDocument(DocumentRequestModel requestModel)
         {

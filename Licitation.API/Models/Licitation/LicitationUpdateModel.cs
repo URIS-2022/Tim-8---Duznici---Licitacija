@@ -35,7 +35,7 @@
         /// The representing constructor.
         /// </summary>
         public LicitationUpdateModel(int? stage, DateTime? date, int? year, int? constarint, int? bidIncrement, DateTime? applicationDeadline)
-        { 
+        {
             Stage = stage;
             Date = date;
             Year = year;

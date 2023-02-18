@@ -75,7 +75,7 @@ namespace Payment.API.Controllers
         public async Task<ActionResult<PaymentResponseModel>> AddPayment(PaymentRequestModel requestModel)
         {
             var requestedPayment = mapper.Map<Entities.Payment>(requestModel);
-            Entities.Payment? createdPayment = await _paymentRepository.AddPayment((Entities.Payment)requestedPayment);
+            Entities.Payment? createdPayment = await _paymentRepository.AddPayment(requestedPayment);
             if (createdPayment == null)
             {
                 return BadRequest();

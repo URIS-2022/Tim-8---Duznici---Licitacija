@@ -54,7 +54,7 @@ namespace Preparation.API.Data
                 .HasForeignKey(p => p.AnnouncementGuid); // Add foreign key
 
             modelBuilder.Entity<Document>()
-                .HasData(new 
+                .HasData(new
                 {
                     Guid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                     AnnouncementGuid = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),

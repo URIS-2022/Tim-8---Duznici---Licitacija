@@ -25,11 +25,11 @@ public class LeaseDbContext : DbContext
                .HasIndex(u => u.ReferenceNumber)
                .IsUnique();
 
-           modelBuilder.Entity<LeaseAgreement>()
-               .HasKey(u => u.Guid); 
+        modelBuilder.Entity<LeaseAgreement>()
+            .HasKey(u => u.Guid);
 
-           modelBuilder.Entity<Buyer>()
-               .HasKey(u => u.Guid);
+        modelBuilder.Entity<Buyer>()
+            .HasKey(u => u.Guid);
         modelBuilder.Entity<Buyer>()
                .HasIndex(u => u.PersonGuid).IsUnique(false);
 
@@ -38,11 +38,11 @@ public class LeaseDbContext : DbContext
               .HasIndex(u => u.ReferenceNumber)
               .IsUnique();
 
-           modelBuilder.Entity<Document>()
-               .HasKey(u => u.Guid);
-        
-           modelBuilder.Entity<DueDate>()
-             .HasKey(u => u.Guid);
+        modelBuilder.Entity<Document>()
+            .HasKey(u => u.Guid);
+
+        modelBuilder.Entity<DueDate>()
+          .HasKey(u => u.Guid);
 
         modelBuilder.Entity<DueDate>()
               .HasMany(dd => dd.LeaseAgreements)
@@ -57,7 +57,7 @@ public class LeaseDbContext : DbContext
 
         modelBuilder.Entity<LeaseAgreement>()
             .HasOne(x => x.Buyer)
-            .WithOne(b=> b.LeaseAgreement)
+            .WithOne(b => b.LeaseAgreement)
             .HasPrincipalKey<LeaseAgreement>(x => x.PersonGuid)
             .HasForeignKey<Buyer>(x => x.PersonGuid)
             .IsRequired();

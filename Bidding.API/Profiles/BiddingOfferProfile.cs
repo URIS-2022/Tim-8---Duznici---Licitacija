@@ -10,7 +10,7 @@ namespace Bidding.API.Profiles
         {
             CreateMap<BiddingOffer, BiddingOfferResponseModel>();
             CreateMap<BiddingOfferRequestModel, BiddingOffer>();
-                
+
 
             CreateMap<BiddingOfferUpdateModel, BiddingOffer>()
                 .ForMember(dest => dest.RepresentativeGuid, opt => opt.Condition(src => src.RepresentativeGuid != Guid.Empty))

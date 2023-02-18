@@ -12,7 +12,7 @@ namespace Bidding.API.Enums
         FirstRound,
         SecondRoundOldConditions,
         SecondRoundNewConditions
-        
+
     }
     public class BiddingStatusConverter : JsonConverter<BiddingStatus>
     {
@@ -22,7 +22,7 @@ namespace Bidding.API.Enums
          { BiddingStatus.FirstRound, "Prvi krug" },
          { BiddingStatus.SecondRoundOldConditions, "Drugi krug sa starim uslovima" },
          { BiddingStatus.SecondRoundNewConditions, "Drugi krug sa novim uslovima" },
-        
+
         };
 
         public override BiddingStatus Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

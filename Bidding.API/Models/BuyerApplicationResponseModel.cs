@@ -20,9 +20,9 @@ namespace Bidding.API.Models
 
         public BuyerApplicationResponseModel() { }
 
-        public BuyerApplicationResponseModel( Guid representativeGuid, int amount, BuyerApplicationRepresentativeResponseModel representative)
+        public BuyerApplicationResponseModel(Guid representativeGuid, int amount, BuyerApplicationRepresentativeResponseModel representative)
         {
-            
+
             RepresentativeGuid = representativeGuid;
             Amount = amount;
             this.representative = representative;
