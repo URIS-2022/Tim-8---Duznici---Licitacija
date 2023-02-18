@@ -17,5 +17,5 @@ public class CommitteeMemberPostRequestModel
     /// Gets or sets the role of the member in committee.
     /// </summary>
     [DataMember]
-    public string MemberRole { get; set; }
+    public string? MemberRole { get; set; }
 }

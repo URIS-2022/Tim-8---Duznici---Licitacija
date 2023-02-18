@@ -15,13 +15,13 @@ public class DocumentPatchRequestModel
     /// </summary>
     [DataMember]
     [JsonConverter(typeof(DocumentTypeConverter))]
-    public DocumentType? Type { get; set; }
+    public DocumentType Type { get; set; }
 
     /// <summary>
     /// Gets or sets the unique identifier of the committee that the document belongs to.
     /// </summary>
     [DataMember]
-    public Guid? CommitteeGuid { get; set; }
+    public Guid CommitteeGuid { get; set; }
 
     /// <summary>
     /// Gets or sets the reference number of the document.
@@ -33,13 +33,13 @@ public class DocumentPatchRequestModel
     /// Gets or sets the date when the document was submitted.
     /// </summary>
     [DataMember]
-    public DateTime? DateSubbmitted { get; set; }
+    public DateTime DateSubbmitted { get; set; }
 
     /// <summary>
     /// Gets or sets the date when the document was certified.
     /// </summary>
     [DataMember]
-    public DateTime? DateCertified { get; set; }
+    public DateTime DateCertified { get; set; }
 
     /// <summary>
     /// Gets or sets the template of the document.
