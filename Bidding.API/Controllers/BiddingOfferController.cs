@@ -15,11 +15,22 @@ namespace Bidding.API.Controllers
         private readonly IBiddingOfferRepository _biddingOfferRepository;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BiddingOfferController"/> class.
+        /// </summary>
+        /// <param name="biddingOfferRepository">The repository for accessing bidding offers.</param>
+        /// <param name="mapper">The mapper for mapping between models and entities.</param>
+
         public BiddingOfferController(IBiddingOfferRepository biddingOfferRepository, IMapper mapper)
         {
             _biddingOfferRepository = biddingOfferRepository;
             _mapper = mapper;
         }
+
+        /// <summary>
+        /// Gets all bidding offers.
+        /// </summary>
+        /// <returns>A collection of BiddingOfferResponseModel objects.</returns>
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BiddingOfferResponseModel>>> GetBiddingOffers()
@@ -32,6 +43,12 @@ namespace Bidding.API.Controllers
             IEnumerable<BiddingOfferResponseModel> responseModels = _mapper.Map<IEnumerable<BiddingOfferResponseModel>>(biddingOffers);
             return Ok(responseModels);
         }
+
+        /// <summary>
+        /// Gets a specific bidding offer by its unique identifier.
+        /// </summary>
+        /// <param name="guid">The unique identifier of the bidding offer to retrieve.</param>
+        /// <returns>A BiddingOfferResponseModel object.</returns>
 
         [HttpGet("{guid}")]
         public async Task<ActionResult<BiddingOfferResponseModel>> GetBiddingOffer(Guid guid)
@@ -58,6 +75,13 @@ namespace Bidding.API.Controllers
             return CreatedAtAction("GetBiddingOffer", new { guid = createdBiddingOffer.Guid }, responseModel);
         }
 
+        /// <summary>
+        /// Updates a specific bidding offer with the given GUID.
+        /// </summary>
+        /// <param name="guid">The GUID of the bidding offer to update.</param>
+        /// <param name="biddingOfferUpdate">The updated information for the bidding offer.</param>
+        /// <returns>An IActionResult representing the result of the update operation.</returns>
+
         [HttpPatch("{guid}")]
         public async Task<IActionResult> PatchBiddingOffer(Guid guid, BiddingOfferUpdateModel biddingOfferUpdate)
         {
@@ -76,6 +100,12 @@ namespace Bidding.API.Controllers
 
             return NoContent();
         }
+
+        /// <summary>
+        /// Deletes a specific bidding offer with the given GUID.
+        /// </summary>
+        /// <param name="guid">The GUID of the bidding offer to delete.</param>
+        /// <returns>An IActionResult representing the result of the delete operation.</returns>
 
         [HttpDelete("{guid}")]
         public async Task<IActionResult> DeleteBiddingOffer(Guid guid)

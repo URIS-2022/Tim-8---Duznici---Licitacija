@@ -5,14 +5,26 @@ using System.Text.Json.Serialization;
 namespace Bidding.API.Enums
 {
 
-
+    /// <summary>
+    /// Enumeration of document types.
+    /// </summary>
     public enum DocumentType
     {
+        /// <summary>
+        /// No document type assigned.
+        /// </summary>
         None = 0,
+        /// <summary>
+        /// Report document type.
+        /// </summary>
         Report
 
 
     }
+
+    /// <summary>
+    /// A custom JSON converter for serializing and deserializing .
+    /// </summary>
     public class DocumentTypeConverter : JsonConverter<DocumentType>
     {
         private readonly Dictionary<DocumentType, string> _documentTypeMapping = new Dictionary<DocumentType, string>
@@ -22,6 +34,7 @@ namespace Bidding.API.Enums
 
 
         };
+        /// <inheritdoc/>
 
         public override DocumentType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -36,6 +49,8 @@ namespace Bidding.API.Enums
 
             throw new JsonException($"Unable to map document type string '{documentTypeString}' to DocumentType.");
         }
+
+        /// <inheritdoc/>
 
         public override void Write(Utf8JsonWriter writer, DocumentType value, JsonSerializerOptions options)
         {

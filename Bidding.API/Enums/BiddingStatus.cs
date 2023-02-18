@@ -5,15 +5,33 @@ using System.Text.Json.Serialization;
 
 namespace Bidding.API.Enums
 {
-
+    /// <summary>
+    /// Enumeration of possible bidding statuses.
+    /// </summary>
     public enum BiddingStatus
     {
+        /// <summary>
+        /// Default value for undefined bidding status.
+        /// </summary>
         None = 0,
+        /// <summary>
+        /// First round bidding status.
+        /// </summary>
         FirstRound,
+        /// <summary>
+        /// Second round bidding status with old conditions.
+        /// </summary>
         SecondRoundOldConditions,
+        /// <summary>
+        /// Second round bidding status with new conditions.
+        /// </summary>
         SecondRoundNewConditions
 
     }
+
+    /// <summary>
+    /// Json converter for the BiddingStatus enumeration.
+    /// </summary>
     public class BiddingStatusConverter : JsonConverter<BiddingStatus>
     {
         private readonly Dictionary<BiddingStatus, string> _biddingStatusMapping = new Dictionary<BiddingStatus, string>
@@ -24,6 +42,10 @@ namespace Bidding.API.Enums
          { BiddingStatus.SecondRoundNewConditions, "Drugi krug sa novim uslovima" },
 
         };
+
+        /// <summary>
+        /// Reads and maps a string value to a BiddingStatus enumeration value.
+        /// </summary>
 
         public override BiddingStatus Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -39,6 +61,9 @@ namespace Bidding.API.Enums
             throw new JsonException($"Unable to map bidding status string '{biddingStatusString}' to BiddingStatus.");
         }
 
+        /// <summary>
+        /// Writes a BiddingStatus enumeration value as a string value using the mapped string value.
+        /// </summary>
         public override void Write(Utf8JsonWriter writer, BiddingStatus value, JsonSerializerOptions options)
         {
             writer.WriteStringValue(_biddingStatusMapping[value]);
