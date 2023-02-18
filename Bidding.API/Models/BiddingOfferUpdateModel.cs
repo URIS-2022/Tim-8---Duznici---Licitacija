@@ -1,9 +1,8 @@
-﻿/// <summary>
-/// Represents a request to update an existing bidding offer.
-/// </summary>
-
-namespace Bidding.API.Models
+﻿namespace Bidding.API.Models
 {
+    /// <summary>
+    /// Represents a request to update an existing bidding offer.
+    /// </summary>
     public class BiddingOfferUpdateModel
     {
 

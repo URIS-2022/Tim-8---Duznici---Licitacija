@@ -585,6 +585,11 @@
             Initializes a new instance of the BiddingOfferResponseModel class.
             </summary>
         </member>
+        <member name="T:Bidding.API.Models.BiddingOfferUpdateModel">
+            <summary>
+            Represents a request to update an existing bidding offer.
+            </summary>
+        </member>
         <member name="T:Bidding.API.Profiles.AddressProfile">
             <summary>
             Profile for mapping between address and its related models.
