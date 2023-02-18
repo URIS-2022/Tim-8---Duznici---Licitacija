@@ -27,6 +27,7 @@ public class TokenController : ControllerBase
     /// </summary>
     /// <param name="userParam">Model containing username and password.</param>
     /// <returns>JWT token response model if the authentication is successful, otherwise returns Bad Request.</returns>
+    /// <response code="200">Returns the JWT token</response>
     [HttpPost("generate")]
     public Task<IActionResult> GenerateToken(object userParam) => serviceProxy.Post(userParam, endpoint: "generate");
 
@@ -35,6 +36,7 @@ public class TokenController : ControllerBase
     /// </summary>
     /// <param name="requestModel">Model containing the token to be introspected.</param>
     /// <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
+    /// <response code="200">Returns the system user</response>
     [HttpPost("introspection")]
     public Task<IActionResult> IntrospectToken(object requestModel) => serviceProxy.Post(requestModel, endpoint: "introspection");
 }

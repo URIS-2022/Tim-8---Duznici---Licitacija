@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Bidding;
 
@@ -50,6 +52,7 @@ public class BiddingOffersController : ControllerBase
     /// <returns> A newly created Bidding Offer </returns>
     /// <response code="201">Returns the newly created Bidding Offer</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostBiddingOffer(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -61,6 +64,7 @@ public class BiddingOffersController : ControllerBase
     /// <returns>A newly updated Bidding Offer </returns>
     /// <response code="200">Returns the newly updated Bidding Offer</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchBiddingOffer(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -72,6 +76,7 @@ public class BiddingOffersController : ControllerBase
     /// <response code="204">Returns no content </response>
     /// <response code="404">If the Bidding Offer is not found</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeleteBiddingOffer(string id)
         => serviceProxy.Delete(id);
 }

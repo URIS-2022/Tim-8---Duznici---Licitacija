@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Person;
 
@@ -49,6 +51,7 @@ public class AddressesController : ControllerBase
     /// <returns>The updated address, or NotFound if no such address exists, or BadRequest if the update fails.</returns>
     /// <response code="204"> NoContent if the address is successfully updated</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchAddress(string id, object requestModel)
     => serviceProxy.Patch(id, requestModel);
 
@@ -59,6 +62,7 @@ public class AddressesController : ControllerBase
     /// <returns>The newly created address, or BadRequest if the address creation fails.</returns>
     /// <response code="201">The newly created address</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostAddress(object requestModel)
     => serviceProxy.Post(requestModel);
 
@@ -70,6 +74,7 @@ public class AddressesController : ControllerBase
     /// <response code="204">NoContent if the Address is deleted successfully</response>
     /// <response code="404">NotFound if no such Address exists</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeleteAddress(string id)
         => serviceProxy.Delete(id);
 }

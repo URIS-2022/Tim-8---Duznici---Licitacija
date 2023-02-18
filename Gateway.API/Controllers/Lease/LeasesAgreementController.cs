@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Lease;
 
@@ -51,6 +53,7 @@ public class LeasesAgreementController : ControllerBase
     /// <returns> The LeaseAgreementPatchResponseModel with the updated values, or NotFound if the lease agreement is not found.</returns>
     /// <response code="200">Ok if the Lease Agreement is successfully updated</response>
     [HttpPatch("{guid}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchGuid(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -61,6 +64,7 @@ public class LeasesAgreementController : ControllerBase
     /// <returns> The LeaseAgreementPostResponseModel with the values for the new lease agreement.</returns>
     /// <response code="201">Created if the lease agreement is successfully created</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostLeaseAgreement(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -72,6 +76,7 @@ public class LeasesAgreementController : ControllerBase
     /// <response code="204">NoContent if the due date is successfully deleted</response>
     /// <response code="404">If the lot is not found</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> Delete(string id)
         => serviceProxy.Delete(id);
 }

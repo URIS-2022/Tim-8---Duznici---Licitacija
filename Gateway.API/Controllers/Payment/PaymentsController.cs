@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Payment;
 
@@ -50,6 +52,7 @@ public class PaymentsController : ControllerBase
     /// <returns> The newly created payment.</returns>
     /// <response code="201">Returns the newly created payment</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> AddPayment(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -61,6 +64,7 @@ public class PaymentsController : ControllerBase
     /// <response code="204">NoContent if the Payment is successfully deleted</response>
     /// <response code="404">If the payment is not found</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeletePayment(string id)
         => serviceProxy.Delete(id);
 
@@ -72,6 +76,7 @@ public class PaymentsController : ControllerBase
     /// <returns> The updated payment.</returns>
     /// <response code="204"> NoContent if the payment is successfully updated.</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchPayment(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 }

@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Person;
 /// <summary>
@@ -50,6 +52,7 @@ public class PhysicalPersonsController : ControllerBase
     /// <returns>The updated physical person, or NotFound if no such physical person exists, or BadRequest if the update fails.</returns>
     /// <response code="200">Ok if the physical person is successfully updated</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchPhysicalPerson(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -60,6 +63,7 @@ public class PhysicalPersonsController : ControllerBase
     /// <returns>The created physical person, or BadRequest if the creation fails.</returns>
     /// <response code="201">Created if the physical person is successfully created</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostPhysicalPerson(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -71,6 +75,7 @@ public class PhysicalPersonsController : ControllerBase
     /// <response code="204">NoContent if the physical person is successfully deleted</response>
     /// <response code="404">If the physical person is not found</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeletePhysicalPerson(string id)
         => serviceProxy.Delete(id);
 }

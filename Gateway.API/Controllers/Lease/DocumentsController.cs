@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Lease;
 
@@ -51,6 +53,7 @@ public class DocumentsController : ControllerBase
     /// <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
     /// <response code="200">Ok if the Document is successfully updated</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchDocument(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -61,6 +64,7 @@ public class DocumentsController : ControllerBase
     /// <returns>The DocumentPostResponseModel for the newly created document.</returns>
     /// <response code="201">Created if the Document is successfully created</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostDocument(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -72,6 +76,7 @@ public class DocumentsController : ControllerBase
     /// <response code="204">NoContent if the Document is successfully deleted</response>
     /// <response code="404">If the document is not found</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeleteDocument(string id)
         => serviceProxy.Delete(id);
 }

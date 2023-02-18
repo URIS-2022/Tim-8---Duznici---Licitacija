@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Bidding;
 
@@ -50,6 +52,7 @@ public class PublicBiddingLotController : ControllerBase
     /// <returns> A newly created public bidding lot </returns>
     /// <response code="201">Returns the newly created public bidding lot</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostPublicBiddingLot(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -61,6 +64,7 @@ public class PublicBiddingLotController : ControllerBase
     /// <returns> A newly updated public bidding lot </returns>
     /// <response code="200">Returns the newly updated public bidding lot</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchPublicBiddingLot(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -72,6 +76,7 @@ public class PublicBiddingLotController : ControllerBase
     /// <response code="204">Returns a no content response</response>
     /// <response code="404">If the public bidding lot is not found</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeletePublicBiddingLot(string id)
         => serviceProxy.Delete(id);
 }

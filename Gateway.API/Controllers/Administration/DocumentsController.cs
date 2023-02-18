@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Administration;
 
@@ -28,6 +30,7 @@ public class DocumentsController : ControllerBase
     /// Returns a list of documents.
     /// </summary>
     /// <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+    /// <response code="200">The Documents were successfully retrieved</response>
     [HttpGet]
     public Task<IActionResult> GetDocuments()
         => serviceProxy.Get();
@@ -37,6 +40,7 @@ public class DocumentsController : ControllerBase
     /// </summary>
     /// <param name="id">The id of the document.</param>
     /// <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+    /// <response code="200">The Document was successfully retrieved</response>
     [HttpGet("{id}")]
     public Task<IActionResult> GetDocument(string id)
         => serviceProxy.GetById(id);
@@ -47,7 +51,9 @@ public class DocumentsController : ControllerBase
     /// <param name="id">The id of the document to update.</param>
     /// <param name="requestModel">The DocumentPatchRequestModel with the updated values.</param>
     /// <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+    /// <response code="200">The Document was successfully updated</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchDocument(string id, [FromBody] object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -56,7 +62,9 @@ public class DocumentsController : ControllerBase
     /// </summary>
     /// <param name="postModel">The DocumentPostRequestModel with the values for the new document.</param>
     /// <returns>The DocumentPostResponseModel for the newly created document.</returns>
+    /// <response code="201">The Document was successfully created</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostDocument(object postModel)
         => serviceProxy.Post(postModel);
 
@@ -65,7 +73,10 @@ public class DocumentsController : ControllerBase
     /// </summary>
     /// <param name="id">The ID of the Document to delete</param>
     /// <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
+    /// <response code="204">The Document was successfully deleted</response>
+    /// <response code="404">The Document was not found</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeleteDocument(string id)
         => serviceProxy.Delete(id);
 }

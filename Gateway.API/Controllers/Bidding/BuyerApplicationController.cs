@@ -1,5 +1,7 @@
 ﻿using Gateway.API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Gateway.API.Controllers.Bidding;
 
@@ -51,6 +53,7 @@ public class BuyerApplicationController : ControllerBase
     /// <returns> A newly created Buyer Application </returns>
     /// <response code="201">Returns the newly created Buyer Application</response>
     [HttpPost]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PostBuyerApplication(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -62,6 +65,7 @@ public class BuyerApplicationController : ControllerBase
     /// <returns> A newly updated Buyer Application </returns>
     /// <response code="200">Returns the newly updated Buyer Application</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> PatchBuyerApplication(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -73,6 +77,7 @@ public class BuyerApplicationController : ControllerBase
     /// <response code="204"> Buyer Application deleted </response>
     /// <response code="404"> Buyer Application not found </response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser")]
     public Task<IActionResult> DeleteBuyerApplication(string id)
         => serviceProxy.Delete(id);
 }
