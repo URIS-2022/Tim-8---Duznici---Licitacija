@@ -62,6 +62,11 @@ public class LicitationController : ControllerBase
         return responseModel;
     }
 
+    /// <summary>
+    /// Gets all licitation entities that occurred in a specific year.
+    /// </summary>
+    /// <param name="year">The year to filter by.</param>
+    /// <returns>An ActionResult of type LicitationResponseModel if successful, or NotFound if no results are found.</returns>
     // GET: api/LicitationEntities/year
     [HttpGet("date/{year}")]
     public async Task<ActionResult<LicitationResponseModel>> GetByYear(int year)
