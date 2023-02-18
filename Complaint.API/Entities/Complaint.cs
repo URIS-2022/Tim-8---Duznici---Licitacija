@@ -50,11 +50,11 @@ public class Complaint : IValidatableObject
     /// Resolution code for the complaint
     /// </summary>
     public string ResolutionCode { get; set; }
-    [JsonConverter(typeof(ComplaintStatusConverter))]
 
     /// <summary>
     /// Status of the complaint
     /// </summary>
+    [JsonConverter(typeof(ComplaintStatusConverter))]
     public ComplaintStatus Status { get; set; }
 
     /// <summary>
