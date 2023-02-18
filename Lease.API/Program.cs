@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lease.API.Data;
+using Lease.API.Data.Repository;
+using Lease.API.RabbitMQ;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -58,11 +62,19 @@ builder.Services.AddControllers(setup =>
                 };
             };
         });
-
-
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddEndpointsApiExplorer(); // zagrada iznad
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder => builder.WithOrigins("https://localhost:7000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
+
+
+
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1",
@@ -85,6 +97,11 @@ builder.Services.AddSwaggerGen(options =>
             TermsOfService = new Uri("https://opensource.org/licenses/MIT")
         });
 
+
+
+
+
+
     string xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
     string xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
@@ -92,9 +109,32 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlCommentsPath);
 });
 
+builder.Services.AddDbContext<LeaseDbContext>(options =>
+       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddControllers();
+
+
+
+RabbitMQListener listener = new RabbitMQListener("localhost", "my_queue", "guest", "guest");
+listener.StartListening(message => Console.WriteLine(message));
+
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+builder.Services.AddScoped<ILeaseAgreementRepository, LeaseAgreementRepository>();
+builder.Services.AddScoped<IDueDateRepository, DueDateRepository>();
+builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 
 WebApplication app = builder.Build();
+
+app.UseCors("CorsPolicy");
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -116,6 +156,7 @@ else // Ukoliko se nalazimo u Production modu postavljamo default poruku za gre�
         });
     });
 }
+
 
 app.UseRouting();
 

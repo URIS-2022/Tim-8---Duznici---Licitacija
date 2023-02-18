@@ -53,7 +53,7 @@ public class SystemUsersController : ControllerBase
     [HttpGet("{username}")]
     public async Task<ActionResult<SystemUserResponseModel>> GetSystemUser(string username)
     {
-        SystemUser? systemUser = await systemUserRepository.GetByUsername(username);
+        var systemUser = await systemUserRepository.GetByUsername(username);
         if (systemUser == null)
         {
             return NotFound();
@@ -69,10 +69,15 @@ public class SystemUsersController : ControllerBase
     /// <param name="systemUserUpdate">The updated System User information</param>
     /// <returns>No Content if the System User is updated successfully, or Bad Request if the System User or the update information is invalid</returns>
     [HttpPatch("{username}")]
-    public async Task<IActionResult> PutSystemUser(string username, SystemUserUpdateModel systemUserUpdate)
+    public async Task<IActionResult> PatchSystemUser(string username, SystemUserPatchRequestModel systemUserUpdate)
     {
+        if (systemUserUpdate.Password != null)
+        {
+            systemUserUpdate.Password = BCrypt.Net.BCrypt.HashPassword(systemUserUpdate.Password);
+
+        }
         var systemUser = await systemUserRepository.GetByUsername(username);
-        if (systemUser == null || systemUserUpdate == null)
+        if (systemUser == null)
         {
             return BadRequest();
         }
@@ -88,10 +93,15 @@ public class SystemUsersController : ControllerBase
     /// <param name="requestModel">The new System User information</param>
     /// <returns>The created System User model, with a location header pointing to the URL of the newly created System User</returns>
     [HttpPost]
-    public async Task<ActionResult<SystemUserResponseModel>> PostSystemUser(SystemUserRequestModel requestModel)
+    public async Task<ActionResult<SystemUserResponseModel>> PostSystemUser(SystemUserPostRequestModel requestModel)
     {
         SystemUser requestedSystemUser = mapper.Map<SystemUser>(requestModel);
-        SystemUser createdSystemUser = await systemUserRepository.Add(requestedSystemUser);
+        requestedSystemUser.Password = BCrypt.Net.BCrypt.HashPassword(requestModel.Password, Environment.GetEnvironmentVariable("BCRYPT_SALT"));
+        SystemUser? createdSystemUser = await systemUserRepository.Add(requestedSystemUser);
+        if (createdSystemUser == null)
+        {
+            return BadRequest();
+        }
         SystemUserResponseModel responseModel = mapper.Map<SystemUserResponseModel>(createdSystemUser);
         return CreatedAtAction("GetSystemUser", new { username = responseModel.Username }, responseModel);
     }

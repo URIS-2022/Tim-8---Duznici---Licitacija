@@ -4,5 +4,1331 @@
         <name>Licitation.API</name>
     </assembly>
     <members>
+        <member name="T:Licitation.API.Controllers.DocumentsController">
+            <summary>
+            Represents a controller to handle Document requests.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Controllers.DocumentsController.#ctor(Licitation.API.Data.Repository.IDocumentRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the DocumentsController class.
+            </summary>
+            <param name="documentRepository">An instance of IDocumentRepository to handle the Documents.</param>
+            <param name="mapper">An instance of IMapper to map between Document entities and models.</param>
+        </member>
+        <member name="M:Licitation.API.Controllers.DocumentsController.GetDocuments">
+            <summary>
+            Returns a list of Document models.
+            </summary>
+            <returns>A list of DocumentGetResponseModel models, or No Content if no Document found.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.DocumentsController.GetDocument(System.Guid)">
+            <summary>
+            Returns a Document model with the specified ID.
+            </summary>
+            <param name="id">The ID of the Document to retrieve.</param>
+            <returns>A DocumentGetResponseModel model with the specified ID, or NotFound if no Document found.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.DocumentsController.PatchDocument(System.Guid,Licitation.API.Models.Document.DocumentPatchRequestModel)">
+            <summary>
+            Updates the specified Document with a set of changes.
+            </summary>
+            <param name="id">The ID of the Document to update.</param>
+            <param name="patchModel">A DocumentPatchRequestModel containing the changes to apply.</param>
+            <returns>A DocumentPatchResponseModel model with the updated Document, or NotFound if no Document found.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.DocumentsController.PostDocument(Licitation.API.Models.Document.DocumentPostRequestModel)">
+            <summary>
+            Creates a new Document with the specified properties.
+            </summary>
+            <param name="postModel">A DocumentPostRequestModel containing the properties of the new Document.</param>
+            <returns>A DocumentPostResponseModel model with the created Document, or BadRequest if the Document could not be created.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.DocumentsController.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes the Document with the specified ID.
+            </summary>
+            <param name="id">The ID of the Document to delete.</param>
+            <returns>NoContent if the Document was successfully deleted, or NotFound if no Document found.</returns>
+        </member>
+        <member name="T:Licitation.API.Controllers.LicitationController">
+            <summary>
+            Controller for handling CRUD operations related to licitation entities.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.#ctor(Licitation.API.Data.Repository.ILicitationRepository,Licitation.API.Data.Repository.ILicitationLandRepository,Licitation.API.Data.Repository.ILicitationPublicBiddingRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the LicitacionController class.
+            </summary>
+            <param name="licitationRepository">An instance of ILicitacionRepository to handle the Licitacions.</param>
+            <param name="llRepository">An instance of ILicitationLandRepository to handle the LicitacionLands.</param>
+            <param name="publicBiddingRepository">An instance of ILicitationPublicBiddingRepository to handle the LicitacionPublicBiddings.</param>
+            <param name="mapper">An instance of IMapper to map between Licitacion entities and models.</param>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.GetLicitations">
+            <summary>
+            Returns a list of Licitacions.
+            </summary>
+            <returns>A list of Licitacion models, or No Content if no Licitacion found.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.GetByYear(System.Int32)">
+            <summary>
+            Gets all licitation entities that occurred in a specific year.
+            </summary>
+            <param name="year">The year to filter by.</param>
+            <returns>An ActionResult of type LicitationResponseModel if successful, or NotFound if no results are found.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.GetByGuid(System.Guid)">
+            <summary>
+            Returns a Licitacion with the specified ID.
+            </summary>
+            <param name="id">The ID of the Licitacion to retrieve.</param>
+            <returns>The Licitacion model with the specified ID, or NotFound if the ID does not match a Licitacion.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.Delete(System.Guid)">
+            <summary>
+            Deletes a Licitation by its ID.
+            </summary>
+            <param name="id">The ID of the Licitation to be deleted.</param>
+            <returns>Returns a NoContent result if successful, or NotFound if the Licitation does not exist.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.PostLicitation(Licitation.API.Models.Licitation.LicitationRequestModel)">
+            <summary>
+            Creates a new Licitation.
+            </summary>
+            <param name="requestModel">The new Licitation information.</param>
+            <returns>Returns the created Licitation model, with a location header pointing to the URL of the newly created Licitation.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.PatchLicitation(System.Guid,Licitation.API.Models.Licitation.LicitationUpdateModel)">
+            <summary>
+            Updates a Licitation by its ID using a patch model.
+            </summary>
+            <param name="id">The ID of the Licitation to be updated.</param>
+            <param name="patchModel">The patch model containing the updates.</param>
+            <returns>Returns the updated Licitation model, or BadRequest if the update fails, or NotFound if the Licitation does not exist.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.PostLicitationLand(System.Guid,Licitation.API.Models.LicitationLands.LicitationLandPostRequestModel)">
+            <summary>
+            Adds a Licitation Land to an existing Licitation.
+            </summary>
+            <param name="id">The ID of the Licitation to which the Licitation Land should be added.</param>
+            <param name="postModel">The Licitation Land information.</param>
+            <returns>Returns a NoContent result if successful, or BadRequest if the add operation fails.</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.PostPublicBidding(System.Guid,Licitation.API.Models.LicitationPB.PublicBiddingPostRequestModel)">
+            <summary>
+            POST: api/Licitation
+            To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+            </summary>
+            <param name="id">The ID of the Licitation to associate with the new Public Bidding</param>
+            <param name="postModel">The request model for creating the new Public Bidding</param>
+            <returns>An action result containing the newly created Public Bidding</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.DeleteLicitationLand(System.Guid,System.Guid)">
+            <summary>
+            DELETE: api/Licitaion/5
+            Deletes a Licitation Land with the given Licitation ID and Licitation Land ID.
+            </summary>
+            <param name="id">The ID of the Licitation to delete the Licitation Land from</param>
+            <param name="licitationLandId">The ID of the Licitation Land to delete</param>
+            <returns>An action result indicating success or failure of the operation</returns>
+        </member>
+        <member name="M:Licitation.API.Controllers.LicitationController.DeletePublicBidding(System.Guid,System.Guid)">
+            <summary>
+            DELETE: api/Licitaion/5
+            Deletes a Public Bidding with the given Licitation ID and Public Bidding ID.
+            </summary>
+            <param name="id">The ID of the Licitation to delete the Public Bidding from</param>
+            <param name="publicBiddingId">The ID of the Public Bidding to delete</param>
+            <returns>An action result indicating success or failure of the operation</returns>
+        </member>
+        <member name="T:Licitation.API.Data.LicitationDBContext">
+            <summary>
+            Initializes a new instance of the LicitationDBContext class.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.LicitationDBContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
+                <summary>Initializes a new instance of the <c>LicitationDBContext</c> class with the specified options and configuration.</summary>
+        </member>
+        <member name="P:Licitation.API.Data.LicitationDBContext.LicitationEntities">
+            <summary>
+            Gets or sets the set of Licitation entities.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Data.LicitationDBContext.Documents">
+            <summary>
+            Gets or sets the set of Document entities.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Data.LicitationDBContext.LicitationLands">
+            <summary>
+            Gets or sets the set of LicitationLand entities.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Data.LicitationDBContext.LicitationPublicBiddings">
+            <summary>
+            Gets or sets the set of PublicBidding entities associated with Licitation.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.LicitationDBContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override of OnModelCreating method from DbContext, called when the model for a derived context has been initialized, allowing further configuration to be applied to the model.
+            This method can be used to configure entity mappings, relationships, database constraints, and other model-related settings.
+            </summary>
+            <param name="modelBuilder">The builder being used to construct the model for this context.</param>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.DocumentRepository">
+            <summary>
+            Implementation of the IDocumentRepository
+            interface for managing Document entities in the database.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.DocumentRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
+            <summary>
+            Initializes a new instance of the DocumentRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.DocumentRepository.GetDocuments">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.IDocumentRepository.GetDocuments"/>
+            <returns>An enumerable collection of Document entities</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.DocumentRepository.GetDocument(System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)"/>
+            <returns>The Document entity with the specified ID, or null if not found</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.DocumentRepository.UpdateDocument(System.Guid,Licitation.API.Entities.Document)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Licitation.API.Entities.Document)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.DocumentRepository.AddDocument(Licitation.API.Entities.Document)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.IDocumentRepository.AddDocument(Licitation.API.Entities.Document)"/>
+            <returns>The created Document entity</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.DocumentRepository.DeleteDocument(System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)"/>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.IDocumentRepository">
+            <summary>
+            The interface for document repository, provides methods for getting, updating, adding and deleting a document
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.IDocumentRepository.GetDocuments">
+            <summary>
+            Gets a list of all documents.
+            </summary>
+            <returns>A list of documents.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.IDocumentRepository.GetDocument(System.Guid)">
+            <summary>
+            Gets a specific document by its identifier.
+            </summary>
+            <param name="id">The identifier of the document.</param>
+            <returns>The document with the specified identifier.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.IDocumentRepository.UpdateDocument(System.Guid,Licitation.API.Entities.Document)">
+            <summary>
+            Updates a specific document.
+            </summary>
+            <param name="id">The identifier of the document to update.</param>
+            <param name="updateModel">The updated values for the document.</param>
+            <returns>The updated document.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.IDocumentRepository.AddDocument(Licitation.API.Entities.Document)">
+            <summary>
+            Adds a new document.
+            </summary>
+            <param name="document">The document to add.</param>
+            <returns>The added document.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.IDocumentRepository.DeleteDocument(System.Guid)">
+            <summary>
+            Deletes a specific document.
+            </summary>
+            <param name="id">The identifier of the document to delete.</param>
+            <returns>The deleted document.</returns>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.ILicitationLandRepository">
+            <summary>
+            Repository interface for performing CRUD operations related to LicitationLands entities.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.GetLicitationLand(System.Guid,System.Guid)">
+            <summary>
+            Gets a specific licitation land by its identifier.
+            </summary>
+            <param name="licitationId">The identifier of the Licitation.</param>
+            /// <param name="licitationLandId">The id of land to add.</param>
+            <returns>The land with the specified identifier.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)">
+            <summary>
+            Adds a new land to licitation.
+            </summary>
+            <param name="licitationLand">The request format for adding land to licitation.</param>
+            <returns>The added licitation land.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)">
+            <summary>
+            Removes a specific land from licitation.
+            </summary>
+            <param name="licitationId">The identifier of the licitation land to delete.</param>
+            /// <param name="licitationLandId">The id of land to remove.</param>
+            <returns>The deleted licitation land.</returns>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository">
+            <summary>
+            Repository interface for performing CRUD operations related to LicitationPublicBidding entities.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.GetPublicBidding(System.Guid,System.Guid)">
+            <summary>
+            Gets a specific licitation public bidding by its identifier.
+            </summary>
+            <param name="licitationId">The identifier of the Licitation.</param>
+            /// <param name="publicBiddingId">The id of public bidding to add.</param>
+            <returns>The member with the specified identifier.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.AddPublicBidding(Licitation.API.Entities.PublicBidding)">
+            <summary>
+            Adds a new public bidding to licitation.
+            </summary>
+            <param name="publicBidding">The request format for adding public bidding to licitation.</param>
+            <returns>The added public bidding.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.DeletePublicBidding(System.Guid,System.Guid)">
+            <summary>
+            Removes a specific public bidding from licitation.
+            </summary>
+            <param name="licitationId">The identifier of the public bidding to delete.</param>
+            /// <param name="publicBiddingId">The id of public bidding to remove.</param>
+            <returns>The deleted public bidding.</returns>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.ILicitationRepository">
+            <summary>
+            Repository for managing Licitation entities.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.GetAll">
+            <summary>
+            Gets all Licitations from the database.
+            </summary>
+            <returns>An asynchronous task that returns an enumerable of Licitations entities.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.GetByGuid(System.Guid)">
+            <summary>
+            Gets a Licitation by its Guid identifier.
+            </summary>
+            <param name="id">The Guid identifier of the Licitation.</param>
+            <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.GetByYear(System.Int32)">
+            <summary>
+            Gets a Licitation by its Year identifier.
+            </summary>
+            <param name="year">The Guid identifier of the Licitation.</param>
+            <returns>An asynchronous task that returns the Licitation entity with the specified Guid identifier, or null if no such entity exists.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)">
+            <summary>
+            Deletes a Licitation from the database by its Guid identifier.
+            </summary>
+            <param name="id">The Guid identifier of the Licitation to delete.</param>
+            <returns>An asynchronous task that represents the operation.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.Licitation)">
+            <summary>
+            Adds a new Licitation to the database.
+            </summary>
+            <param name="licitation">The Licitation entity to add to the database.</param>
+            <returns>An asynchronous task that returns the added Licitation entity.</returns>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.Licitation)">
+            <summary>
+            Updates a specific licitation.
+            </summary>
+            <param name="id">The identifier of the licitation to update.</param>
+            <param name="updateModel">The updated values for the licitation.</param>
+            <returns>The updated licitation.</returns>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.LicitationLandRepository">
+            <summary>
+            Repository for performing CRUD operations related to LicitationLand entities.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
+            <summary>
+            Initializes a new instance of the LicitationLandRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.GetLicitationLand(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.GetLicitationLand(System.Guid,System.Guid)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.AddLicitationLand(Licitation.API.Entities.LicitationLand)"/>
+            
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationLandRepository.DeleteLicitationLand(System.Guid,System.Guid)"/>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.LicitationPublicBiddingRepository">
+            <summary>
+            Repository for performing CRUD operations related to LicitationPublicBidding entities.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
+            <summary>
+            Initializes a new instance of the PublicBiddingRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.GetPublicBidding(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.GetPublicBidding(System.Guid,System.Guid)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.AddPublicBidding(Licitation.API.Entities.PublicBidding)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.AddPublicBidding(Licitation.API.Entities.PublicBidding)"/>
+            
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationPublicBiddingRepository.DeletePublicBidding(System.Guid,System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationPublicBiddingRepository.DeletePublicBidding(System.Guid,System.Guid)"/>
+        </member>
+        <member name="T:Licitation.API.Data.Repository.LicitationRepository">
+            <summary>
+            Implementation of the ISystemUserRepository
+            interface for managing SystemUser entities in the database.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.#ctor(Licitation.API.Data.LicitationDBContext)">
+            <summary>
+            Initializes a new instance of the LicitationRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetAll">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetAll"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetByGuid(System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.GetByYear(System.Int32)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.GetByYear(System.Int32)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.Delete(System.Guid)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.Delete(System.Guid)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.AddLicitation(Licitation.API.Entities.Licitation)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.AddLicitation(Licitation.API.Entities.Licitation)"/>
+        </member>
+        <member name="M:Licitation.API.Data.Repository.LicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.Licitation)">
+            <inheritdoc cref="M:Licitation.API.Data.Repository.ILicitationRepository.UpdateLicitation(System.Guid,Licitation.API.Entities.Licitation)"/>
+        </member>
+        <member name="T:Licitation.API.Entities.Document">
+            <summary>
+            Represents a document entity with its properties and methods.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.Guid">
+            <summary>
+            Gets or sets the unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.LicitationGuid">
+            <summary>
+            Gets or sets the unique identifier of the announcement.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.DocumentType">
+            <summary>
+            Gets or sets the type of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.DateSubmitted">
+            <summary>
+            Gets or sets the date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.DateCertified">
+            <summary>
+            Gets or sets the date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.Template">
+            <summary>
+            Gets or sets the template of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Document.licitation">
+            <summary>
+            Gets or sets the licitation related to this document.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.Document.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.Document"/> class.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.Document.#ctor(System.Guid,System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.Document"/> class with the specified parameters.
+            </summary>
+            <param name="id">The unique identifier of the document.</param>
+            <param name="licitationGuid">The unique identifier of the announcement.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date when the document was submitted.</param>
+            <param name="dateCertified">The date when the document was certified.</param>
+            <param name="template">The template of the document.</param>
+        </member>
+        <member name="M:Licitation.API.Entities.Document.#ctor(System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the Document class with a new Guid.
+            </summary>
+            <param name="licitationGuid">The unique identifier of the announcement that this Document is associated with.</param>
+            <param name="documentType">The type of the Document.</param>
+            <param name="referenceNumber">The reference number of the Document.</param>
+            <param name="dateSubmitted">The date when the Document was submitted.</param>
+            <param name="dateCertified">The date when the Document was certified.</param>
+            <param name="template">The template of the Document.</param>
+        </member>
+        <member name="M:Licitation.API.Entities.Document.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the Document entity.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>A collection of ValidationResult objects that represent the validation errors.</returns>
+        </member>
+        <member name="T:Licitation.API.Entities.Licitation">
+            <summary>
+            Represents a public land auction (licitation) with its properties and associated entities.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.Guid">
+            <summary>
+            Gets or sets the unique identifier of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.Stage">
+            <summary>
+            Gets or sets the stage number of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.Date">
+            <summary>
+            Gets or sets the date of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.Year">
+            <summary>
+            Gets or sets the year of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.Constarint">
+            <summary>
+            Gets or sets the constraint of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.BidIncrement">
+            <summary>
+            Gets or sets the bid increment of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.ApplicationDeadline">
+            <summary>
+            Gets or sets the application deadline of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.Lands">
+            <summary>
+            Gets or sets the lands associated with the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.LicitationPublicBiddings">
+            <summary>
+            Gets or sets the public biddings associated with the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.LicitationLands">
+            <summary>
+            Gets or sets the lands associated with the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.PublicBiddings">
+            <summary>
+            Gets or sets the public biddings associated with the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.Licitation.Documents">
+            <summary>
+            Gets or sets the documents associated with the licitation.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.Licitation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.Licitation"/> class.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.Licitation.#ctor(System.Guid,System.Int32,System.DateTime,System.Int32,System.Int32,System.Int32,System.DateTime,System.Collections.Generic.ICollection{Licitation.API.Entities.LicitationLand},System.Collections.Generic.ICollection{Licitation.API.Entities.PublicBidding})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.Licitation"/> class with the specified parameters.
+            </summary>
+            <param name="licitationGuid">The unique identifier of the licitation.</param>
+            <param name="stage">The stage of the licitation.</param>
+            <param name="date">The date of the licitation.</param>
+            <param name="year">The year of the licitation.</param>
+            <param name="constraint">The constraint of the licitation.</param>
+            <param name="bidIncrement">The bid increment of the licitation.</param>
+            <param name="applicationDeadline">The application deadline of the licitation.</param>
+            <param name="licitationLands">The collection of licitation lands associated with the licitation.</param>
+            <param name="licitationPublicBiddings">The collection of public biddings associated with the licitation.</param>
+        </member>
+        <member name="M:Licitation.API.Entities.Licitation.#ctor(System.Int32,System.DateTime,System.Int32,System.Int32,System.Int32,System.DateTime,System.Collections.Generic.ICollection{Licitation.API.Entities.LicitationLand},System.Collections.Generic.ICollection{Licitation.API.Entities.PublicBidding})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.Licitation"/> class with the specified parameters.
+            </summary>
+            <param name="stage">The stage of the licitation.</param>
+            <param name="date">The date of the licitation.</param>
+            <param name="year">The year of the licitation.</param>
+            <param name="constraint">The constraint of the licitation.</param>
+            <param name="bidIncrement">The bid increment of the licitation.</param>
+            <param name="applicationDeadline">The application deadline of the licitation.</param>
+            <param name="licitationLands">The collection of licitation lands associated with the licitation.</param>
+            <param name="licitationPublicBiddings">The collection of public biddings associated with the licitation.</param>
+        </member>
+        <member name="M:Licitation.API.Entities.Licitation.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the current instance of the Licitation class according to the specified rules.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>A collection of ValidationResult objects that contain any validation errors. The collection is empty if the object is valid.</returns>
+        </member>
+        <member name="T:Licitation.API.Entities.LicitationLand">
+            <summary>
+            Represents a piece of land associated with a licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.LicitationLand.LicitationGuid">
+            <summary>
+            Gets or sets the unique identifier of the associated Licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.LicitationLand.LandGuid">
+            <summary>
+            Gets or sets the unique identifier of the associated Land.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.LicitationLand.licitation">
+            <summary>
+            Gets or sets the Licitation object associated with the current instance of LicitationLand.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.LicitationLand.#ctor">
+            <summary>
+            Initializes a new instance of the LicitationLand class.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.LicitationLand.#ctor(System.Guid,System.Guid)">
+            <summary>
+            Initializes a new instance of the LicitationLand class with the specified Licitation and Land identifiers.
+            </summary>
+            <param name="licitation">The unique identifier of the associated Licitation.</param>
+            <param name="landGuid">The unique identifier of the associated Land.</param>
+        </member>
+        <member name="M:Licitation.API.Entities.LicitationLand.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the current instance of the LicitationLand class according to the specified rules.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>A collection of ValidationResult objects that contain any validation errors. The collection is empty if the object is valid.</returns>
+        </member>
+        <member name="T:Licitation.API.Entities.PublicBidding">
+            <summary>
+            Represents a public bidding related to a licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.PublicBidding.PublicBiddingGuid">
+            <summary>
+            Gets or sets the unique identifier of the public bidding.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.PublicBidding.LicitationGuid">
+            <summary>
+            Gets or sets the unique identifier of the licitation related to the public bidding.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Entities.PublicBidding.licitation">
+            <summary>
+            Gets or sets the licitation related to the public bidding.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.PublicBidding.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.PublicBidding"/> class.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Entities.PublicBidding.#ctor(System.Guid,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.PublicBidding"/> class with the specified public bidding and licitation identifiers.
+            </summary>
+            <param name="publicBiddingGuid">The unique identifier of the public bidding.</param>
+            <param name="licitation">The unique identifier of the licitation related to the public bidding.</param>
+        </member>
+        <member name="M:Licitation.API.Entities.PublicBidding.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the current <see cref="T:Licitation.API.Entities.PublicBidding"/> instance.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>A collection of validation results.</returns>
+        </member>
+        <member name="T:Licitation.API.Enums.DocumentType">
+            <summary>
+            Enumeration representing different types of documents that can be associated with a licitation.
+            </summary>
+        </member>
+        <member name="F:Licitation.API.Enums.DocumentType.None">
+            <summary>
+            No document type assigned.
+            </summary>
+        </member>
+        <member name="F:Licitation.API.Enums.DocumentType.PreparationOfTheBiddingReport">
+            <summary>
+            Document type for preparation of the bidding report.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Enums.DocumentTypeConverter">
+            <summary>
+            JsonConverter implementation to serialize and deserialize the DocumentType enumeration.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Enums.DocumentTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads the JSON representation of the enumeration and maps it to a DocumentType value.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Enums.DocumentTypeConverter.Write(System.Text.Json.Utf8JsonWriter,Licitation.API.Enums.DocumentType,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes the DocumentType value to its JSON representation.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Licitation.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Licitation.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Licitation.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentGetResponseModel">
+            <summary>
+            Model representing the response for getting a document. 
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentGetResponseModel.Guid">
+            <summary>
+            The unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentGetResponseModel.LicitationGuid">
+            <summary>
+            The unique identifier of the licitation to which the document belongs.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentGetResponseModel.DocumentType">
+            <summary>
+            The type of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentGetResponseModel.ReferenceNumber">
+            <summary>
+            The reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentGetResponseModel.DateSubmitted">
+            <summary>
+            The date the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentGetResponseModel.DateCertified">
+            <summary>
+            The date the document was certified.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentGetResponseModel.Template">
+            <summary>
+            The template of the document.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentGetResponseModel.#ctor(System.Guid,System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Models.Document.DocumentGetResponseModel"/> class.
+            </summary>
+            <param name="guid">The unique identifier of the document.</param>
+            <param name="licitationGuid">The unique identifier of the licitation to which the document belongs.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date the document was submitted.</param>
+            <param name="dateCertified">The date the document was certified.</param>
+            <param name="template">The template of the document.</param>
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentPatchRequestModel">
+                Model for patching (updating) a document.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchRequestModel.LicitationGuid">
+            <summary>
+            Gets or sets the LicitationGuid.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchRequestModel.DocumentType">
+            <summary>
+            Gets or sets the DocumentType.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the ReferenceNumber.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchRequestModel.DateSubmitted">
+            <summary>
+            Gets or sets the DateSubmitted.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchRequestModel.DateCertified">
+            <summary>
+            Gets or sets the DateCertified.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchRequestModel.Template">
+            <summary>
+            Gets or sets the Template.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentPatchRequestModel.#ctor(System.Nullable{System.Guid},System.Nullable{Licitation.API.Enums.DocumentType},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Represents a model for updating a document.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentPatchResponseModel">
+            <summary>
+            Represents the response model for patching a document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchResponseModel.Guid">
+            <summary>
+            The unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchResponseModel.LicitationGuid">
+            <summary>
+            The unique identifier of the licitation that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchResponseModel.DocumentType">
+            <summary>
+            The type of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchResponseModel.ReferenceNumber">
+            <summary>
+            The reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchResponseModel.DateSubmitted">
+            <summary>
+            The date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchResponseModel.DateCertified">
+            <summary>
+            The date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPatchResponseModel.Template">
+            <summary>
+            The template of the document.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentPatchResponseModel.#ctor(System.Guid,System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Constructor for DocumentPatchResponseModel class.
+            </summary>
+            <param name="guid">The Guid of the document.</param>
+            <param name="licitationGuid">The Guid of the licitation.</param>
+            <param name="documentType">The type of document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date the document was submitted.</param>
+            <param name="dateCertified">The date the document was certified.</param>
+            <param name="template">The template of the document.</param>
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentPostRequestModel">
+                Represents a request model for posting a new document.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.LicitationGuid">
+            <summary>
+            The GUID of the Licitation entity associated with this LicitationPublicBidding.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.DocumentType">
+                    Represents the type of document associated with the licitation, using a custom JsonConverter.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.ReferenceNumber">
+                    Represents a reference number associated with the licitation.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.DateSubmitted">
+                    Represents the date the document was submitted.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.DateCertified">
+                    Represents the date the document was certified.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostRequestModel.Template">
+                    Represents the template used for the document.
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentPostRequestModel.#ctor(System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Models.Document.DocumentPostRequestModel"/> class.
+            </summary>
+            <param name="licitationGuid">The GUID of the licitation associated with the document.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date when the document was submitted.</param>
+            <param name="dateCertified">The date when the document was certified.</param>
+            <param name="template">The template used to generate the document.</param>
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentPostResponseModel">
+                Represents a request model for posting a new document.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostResponseModel.LicitationGuid">
+            <summary>
+            The unique identifier of the licitation that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostResponseModel.DocumentType">
+            <summary>
+            The type of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostResponseModel.ReferenceNumber">
+            <summary>
+            The reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostResponseModel.DateSubmitted">
+            <summary>
+            The date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostResponseModel.DateCertified">
+            <summary>
+            The date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentPostResponseModel.Template">
+            <summary>
+            The template of the document.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentPostResponseModel.#ctor(System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Models.Document.DocumentPostRequestModel"/> class.
+            </summary>
+            <param name="licitationGuid">The GUID of the licitation associated with the document.</param>
+            <param name="documentType">The type of the document.</param>
+            <param name="referenceNumber">The reference number of the document.</param>
+            <param name="dateSubmitted">The date when the document was submitted.</param>
+            <param name="dateCertified">The date when the document was certified.</param>
+            <param name="template">The template used to generate the document.</param>
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentRequestModel">
+                Represents a request model for posting a new document.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentRequestModel.LicitationGuid">
+            <summary>
+            The GUID of the Licitation entity associated with this LicitationPublicBidding.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentRequestModel.DocumentType">
+                    Represents the type of document associated with the licitation, using a custom JsonConverter.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentRequestModel.ReferenceNumber">
+                    Represents a reference number associated with the licitation.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentRequestModel.DateSubmitted">
+                    Represents the date the document was submitted.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentRequestModel.DateCertified">
+                    Represents the date the document was certified.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentRequestModel.Template">
+                    Represents the template used for the document.
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentRequestModel.#ctor(System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Constructor for DocumentRewustModel class.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentResponseModel">
+                Represents a request model for posting a new document.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentResponseModel.Guid">
+            <summary>
+            The unique identifier of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentResponseModel.LicitationGuid">
+            <summary>
+            The unique identifier of the licitation that the document belongs to.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentResponseModel.DocumentType">
+            <summary>
+            The type of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentResponseModel.ReferenceNumber">
+            <summary>
+            The reference number of the document.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentResponseModel.DateSubmitted">
+            <summary>
+            The date when the document was submitted.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentResponseModel.DateCertified">
+            <summary>
+            The date when the document was certified.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentResponseModel.Template">
+            <summary>
+            The template of the document.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentResponseModel.#ctor(System.Guid,Licitation.API.Enums.DocumentType,System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Constructor for DocumentResponseModel class.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Document.DocumentUpdateModel">
+                Model for patching (updating) a document.
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentUpdateModel.LicitationGuid">
+            <summary>
+            Gets or sets the LicitationGuid.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentUpdateModel.DocumentType">
+            <summary>
+            Gets or sets the DocumentType.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentUpdateModel.ReferenceNumber">
+            <summary>
+            Gets or sets the ReferenceNumber.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentUpdateModel.DateSubmitted">
+            <summary>
+            Gets or sets the DateSubmitted.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentUpdateModel.DateCertified">
+            <summary>
+            Gets or sets the DateCertified.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Document.DocumentUpdateModel.Template">
+            <summary>
+            Gets or sets the Template.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Document.DocumentUpdateModel.#ctor(System.Guid,System.Nullable{Licitation.API.Enums.DocumentType},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Represents a model for updating a document.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.LicitationLands.LicitationLandPostRequestModel">
+            Represents a post reqest model for kicitation lands.
+        </member>
+        <member name="P:Licitation.API.Models.LicitationLands.LicitationLandPostRequestModel.LandGuid">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.LicitationLands.LicitationLandRequest">
+            Represents a request model for posting a new licitation land.
+        </member>
+        <member name="P:Licitation.API.Models.LicitationLands.LicitationLandRequest.LandGuid">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.LicitationLands.LicitationLandRequest.#ctor(System.Guid)">
+            <summary>
+            The representing constructor.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.LicitationLands.LicitationLandResponse">
+            Represents a response model for posting a new licitation land.
+        </member>
+        <member name="P:Licitation.API.Models.LicitationLands.LicitationLandResponse.LandGuid">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.LicitationLands.LicitationLandResponse.#ctor(System.Guid)">
+            <summary>
+            The representing constructor.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.LicitationPB.LicitationPublicBiddingRequest">
+            Represents a request model for posting a new licitation land.
+        </member>
+        <member name="P:Licitation.API.Models.LicitationPB.LicitationPublicBiddingRequest.PublicBiddingGuid">
+            <summary>
+            The unique identifier of the public bidding.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.LicitationPB.LicitationPublicBiddingRequest.#ctor(System.Guid)">
+            <summary>
+            The representing constructor.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.LicitationPB.PublicBiddingPostRequestModel">
+            Represents a request model licitation public bidding.
+        </member>
+        <member name="P:Licitation.API.Models.LicitationPB.PublicBiddingPostRequestModel.PublicBiddingGuid">
+            <summary>
+            The unique identifier of the public bidding.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.LicitationPBResponse.LicitationPublicBiddingResponse">
+            Represents a response model licitation public vidding.
+        </member>
+        <member name="P:Licitation.API.Models.LicitationPBResponse.LicitationPublicBiddingResponse.PublicBiddingGuid">
+            <summary>
+            The unique identifier of the public bidding.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.LicitationPBResponse.LicitationPublicBiddingResponse.#ctor(System.Guid)">
+            <summary>
+            The representing constructor.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Licitation.LicitationLandLicitationResponseModel">
+            Represents a response model for posting a new licitation land.
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationLandLicitationResponseModel.Guid">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Licitation.LicitationPublicBiddingLicitationResponseModel">
+            Represents a response model for posting a new licitation land.
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationPublicBiddingLicitationResponseModel.Guid">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Licitation.LicitationRequestModel">
+                Represents a REQUEST model for posting a new licitation.
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationRequestModel.Stage">
+            <summary>
+            The Stage of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationRequestModel.Date">
+            <summary>
+            The Date of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationRequestModel.Year">
+            <summary>
+            The Year of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationRequestModel.Constarint">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationRequestModel.BidIncrement">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationRequestModel.ApplicationDeadline">
+            <summary>
+            The unique identifier of the LICITATION.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Licitation.LicitationRequestModel.#ctor(System.Int32,System.DateTime,System.Int32,System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            The representing constructor.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Licitation.LicitationResponseModel">
+                Represents a response model for licitation.
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.Guid">
+            <summary>
+            The identifier of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.Stage">
+            <summary>
+            The Stage of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.Date">
+            <summary>
+            The Date of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.Year">
+            <summary>
+            The Year of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.Constarint">
+            <summary>
+            The Constarint of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.BidIncrement">
+            <summary>
+            The BidIncrement of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.ApplicationDeadline">
+            <summary>
+            The ApplicationDeadline of the licitation.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.LicitationLands">
+            <summary>
+            The collection of lands.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationResponseModel.LicitationPublicBiddings">
+            <summary>
+            The collection of public biddings.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Licitation.LicitationResponseModel.#ctor">
+            <summary>
+            The representing empty constructor.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Models.Licitation.LicitationUpdateModel">
+                Represents a update model for licitation.
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationUpdateModel.Stage">
+            <summary>
+            The stage of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationUpdateModel.Date">
+            <summary>
+            The DateTime of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationUpdateModel.Year">
+            <summary>
+            The Year of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationUpdateModel.Constarint">
+            <summary>
+            The Constarint of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationUpdateModel.BidIncrement">
+            <summary>
+            The BidIncrement of the LICITATION.
+            </summary>
+        </member>
+        <member name="P:Licitation.API.Models.Licitation.LicitationUpdateModel.ApplicationDeadline">
+            <summary>
+            The ApplicationDeadline of the LICITATION.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Models.Licitation.LicitationUpdateModel.#ctor(System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTime})">
+            <summary>
+            The representing constructor.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Profiles.DocumentProfile">
+            <summary>
+            Represents a profile that contains information specific to a document.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Profiles.DocumentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Profiles.DocumentProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Profiles.LicitationLandProfile">
+            <summary>
+            Represents a profile that contains information specific to a lands of licitation.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Profiles.LicitationLandProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Profiles.LicitationLandProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Profiles.LicitationLicitationLandProfile">
+            <summary>
+            Represents a profile that contains information specific to a lands of licitation.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Profiles.LicitationLicitationLandProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.LicitationLand"/> class and sets up mappings between
+            <see cref="T:Licitation.API.Entities.LicitationLand"/> and its corresponding response/request models.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Profiles.LicitationProfile">
+            <summary>
+            Represents a profile that contains information specific to a licitation.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Profiles.LicitationProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Profiles.LicitationProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Profiles.LicitationPublicBiddingProfile">
+            <summary>
+            Represents a profile that contains information specific to a public biddings of licitation.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Profiles.LicitationPublicBiddingProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Entities.PublicBidding"/> class and sets up mappings between
+            <see cref="T:Licitation.API.Entities.PublicBidding"/> and its corresponding response/request models.
+            </summary>
+        </member>
+        <member name="T:Licitation.API.Profiles.PublicBiddingProfile">
+            <summary>
+            Represents a profile that contains information specific to a public biddings.
+            </summary>
+        </member>
+        <member name="M:Licitation.API.Profiles.PublicBiddingProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Licitation.API.Profiles.PublicBiddingProfile"/> class.
+            </summary>
+        </member>
     </members>
 </doc>

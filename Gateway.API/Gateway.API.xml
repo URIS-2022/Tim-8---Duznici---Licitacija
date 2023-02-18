@@ -4,5 +4,1667 @@
         <name>Gateway.API</name>
     </assembly>
     <members>
+        <member name="T:Gateway.API.Controllers.Administration.AdministrationDocumentsController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.AdministrationDocumentsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.AdministrationDocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+            <response code="200">The Documents were successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.AdministrationDocumentsController.GetDocument(System.String)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+            <response code="200">The Document was successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.AdministrationDocumentsController.PatchDocument(System.String,System.Object)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="requestModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+            <response code="200">The Document was successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.AdministrationDocumentsController.PostDocument(System.Object)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="postModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+            <response code="201">The Document was successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.AdministrationDocumentsController.DeleteDocument(System.String)">
+            <summary>
+            Deletes a Document by ID
+            </summary>
+            <param name="id">The ID of the Document to delete</param>
+            <returns>NoContent if the Document is successfully deleted, NotFound if the Document is not found</returns>
+            <response code="204">The Document was successfully deleted</response>
+            <response code="404">The Document was not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Administration.CommitteesController">
+            <summary>
+            Represents the API endpoint for managing committees and their members.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Represents a controller for managing committees.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.GetCommittees">
+            <summary>
+            Returns a list of all committees.
+            </summary>
+            <returns>A list of committees</returns>
+            <response code="200">The committees were successfully retrieved.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.GetCommittee(System.String)">
+            <summary>
+            Returns the details of a specific committee.
+            </summary>
+            <param name="id">The ID of the committee</param>
+            <returns>The details of the committee</returns>
+            <response code="200">The committee was successfully retrieved.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.PatchCommittee(System.String,System.Object)">
+            <summary>
+            Updates the specified committee with the given changes.
+            </summary>
+            <param name="id">The ID of the committee to update</param>
+            <param name="requestModel">The changes to apply to the committee</param>
+            <returns>The updated committee</returns>
+            <response code="204">The committee was successfully updated.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.PatchCommitteeMember(System.Guid,System.Guid,System.Object)">
+            <summary>
+            Updates the specified member of a committee with the given changes.
+            </summary>
+            <param name="id">The ID of the committee to update the member for</param>
+            <param name="memberId">The ID of the member to update</param>
+            <param name="patchModel">The changes to apply to the member</param>
+            <returns>The updated member</returns>
+            <response code="204">The member was successfully updated.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.PostCommittee(System.Object)">
+            <summary>
+            Creates a new committee.
+            </summary>
+            <param name="postModel">The model for creating a committee.</param>
+            <returns>The created committee.</returns>
+            <response code="201">The committee was created successfully.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.PostCommitteeMember(System.Guid,System.Object)">
+            <summary>
+            Creates a new committee member for a committee.
+            </summary>
+            <param name="id">The ID of the committee to which the member belongs.</param>
+            <param name="postModel">The model for creating a committee member.</param>
+            <returns>The created committee member.</returns>
+            <response code="201">The committee member was created successfully.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.DeleteCommittee(System.String)">
+            <summary>
+            Deletes a committee by ID.
+            </summary>
+            <param name="id">The ID of the committee to delete.</param>
+            <returns>A response indicating the success or failure of the operation.</returns>
+            <response code="204">The committee was deleted successfully.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.CommitteesController.DeleteCommitteeMember(System.Guid,System.Guid)">
+            <summary>
+            Deletes a committee member by ID.
+            </summary>
+            <param name="id">The ID of the committee to which the member belongs.</param>
+            <param name="memberId">The ID of the member to delete.</param>
+            <returns>A response indicating the success or failure of the operation.</returns>
+            <response code="204">The committee member was deleted successfully.</response>
+            <response code="404">The committee member was not found.</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Administration.MembersController">
+            <summary>
+            API controller for managing members.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.MembersController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the MembersController class with the specified dependencies.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.MembersController.GetMembers">
+            <summary>
+            Gets all members.
+            </summary>
+            <returns>A collection of MemberGetResponseModel objects.</returns>
+            <response code="200"> The members were successfully retrieved. </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.MembersController.GetMember(System.String)">
+            <summary>
+            Gets a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to retrieve.</param>
+            <returns>A MemberGetResponseModel object representing the retrieved member.</returns>
+            <response code="200"> The member was successfully retrieved. </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.MembersController.PatchMember(System.String,System.Object)">
+            <summary>
+            Updates a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to update.</param>
+            <param name="requestModel">The MemberPatchRequestModel containing the updates to apply.</param>
+            <returns> A no content response. </returns>
+            <response code="204"> The member was successfully updated. </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.MembersController.PostMember(System.Object)">
+            <summary>
+            Creates a new member.
+            </summary>
+            <param name="postModel">The MemberPostRequestModel containing the new member data.</param>
+            <returns>A MemberPostResponseModel object representing the newly created member.</returns>
+            <response code="201"> The member was successfully created. </response>
+            <response code="400"> The member data was invalid. </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Administration.MembersController.DeleteMember(System.String)">
+            <summary>
+            Deletes a member with the specified ID.
+            </summary>
+            <param name="id">The ID of the member to delete.</param>
+            <returns>A MemberDeleteResponseModel object representing the deleted member.</returns>
+            <response code="204"> The member was successfully deleted. </response>
+            <response code="404"> The member with the specified ID was not found. </response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Auth.SystemUsersController">
+            <summary>
+            Controller for managing System Users
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for SystemUsersController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.DeleteSystemUser(System.String)">
+            <summary>
+            Deletes a system user
+            </summary>
+            <param name="username">Username of the user to be deleted</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="204">Returns no content</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUser(System.String)">
+            <summary>
+            Gets a system user
+            </summary>
+            <param name="username">Username of the user to retrieve</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="200">Returns the system user</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.GetSystemUsers">
+            <summary>
+            Gets a list of all system users
+            </summary>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="200">Returns the list of system users</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.PostSystemUser(System.Object)">
+            <summary>
+            Adds a new system user
+            </summary>
+            <param name="requestModel">Request body with user information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="201">Returns the newly created item</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.SystemUsersController.PatchSystemUser(System.String,System.Object)">
+            <summary>
+            Patches a system user
+            </summary>
+            <param name="username">Username of the user to update</param>
+            <param name="requestModel">Request body with updated user information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="204">Returns no content</response>
+            <response code="404">If the Document is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Auth.TokenController">
+            <summary>
+            Controller for managing JWT resources
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for TokenController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.GenerateToken(System.Object)">
+            <summary>
+            Generates JWT token based on the given username and password.
+            </summary>
+            <param name="userParam">Model containing username and password.</param>
+            <returns>JWT token response model if the authentication is successful, otherwise returns Bad Request.</returns>
+            <response code="200">Returns the JWT token</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Auth.TokenController.IntrospectToken(System.Object)">
+            <summary>
+            Introspects the given JWT token.
+            </summary>
+            <param name="requestModel">Model containing the token to be introspected.</param>
+            <returns>SystemUserResponseModel if the token is valid, otherwise returns Bad Request.</returns>
+            <response code="200">Returns the system user</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Bidding.AddressController">
+            <summary>
+            API controller for managing Addresses.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.AddressController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for AddressController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.AddressController.GetAddresses">
+            <summary>
+             Get all Addresses from the Bidding service
+            </summary>
+            <returns> A list of Addresses </returns>
+            <response code="200">Returns the list of Addresses</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.AddressController.GetAddress(System.String)">
+            <summary>
+            Get an Address by Id from the Bidding service
+            </summary>
+            <returns> An Address </returns>
+            <param name="id"> The Id of the Address to be retrieved </param>
+            <response code="200">Returns the Address</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.AddressController.PostAddress(System.Object)">
+            <summary>
+            Post an Address to the Bidding service
+            </summary>
+            <returns> An Address </returns>
+            <param name="requestModel"> The Address to be posted </param>
+            <response code="201">Returns the newly created Address</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.AddressController.PatchAddress(System.String,System.Object)">
+            <summary>
+            Patch an Address to the Bidding service
+            </summary>
+            <returns> An Address </returns>
+            <param name="id"> The Id of the Address to be patched </param>
+            <param name="requestModel"> The Address to be patched </param>
+            <response code="204">Returns the patched Address</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.AddressController.DeleteAddress(System.String)">
+            <summary>
+            Delete an Address from the Bidding service
+            </summary>
+            <params name="id"> The Id of the Address to be deleted </params>
+            <returns> A no content response </returns>
+            <response code="204">Returns a no content response</response>
+            <response code="404">Returns a not found response</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Bidding.BiddingDocumentsController">
+            <summary>
+            API controller for managing Bidding Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingDocumentsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for DocumentController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingDocumentsController.GetDocuments">
+            <summary>
+            Get all Documents
+            </summary>
+            <returns> List of Documents </returns>
+            <response code="200">Returns the list of Documents</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingDocumentsController.GetDocument(System.String)">
+            <summary>
+            Get a Document by Id
+            </summary>
+            <param name="id">Id of the Document</param>
+            <returns> A Document </returns>
+            <response code="200">Returns the Document</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingDocumentsController.PostDocument(System.Object)">
+            <summary>
+            Create a new Document
+            </summary>
+            <param name="requestModel">Document to be created</param>
+            <returns> A newly created Document </returns>
+            <response code="201">Returns the newly created Document</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingDocumentsController.PatchDocument(System.String,System.Object)">
+            <summary>
+            Update a Document
+            </summary>
+            <param name="id">Id of the Document</param>
+            <param name="requestModel">Document to be updated</param>
+            <returns> An updated Document </returns>
+            <response code="200">Returns the updated Document</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingDocumentsController.DeleteDocument(System.String)">
+            <summary>
+            Delete a Document
+            </summary>
+            <param name="id">Id of the Document</param>
+            <returns> A no content response </returns>
+            <response code="204">Returns no content</response>
+            <response code="404">If the Document is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Bidding.BiddingOffersController">
+            <summary>
+            API controller for managing Bidding Offers.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingOffersController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for BiddingOffersController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingOffersController.GetBiddingOffers">
+            <summary>
+            Get all Bidding Offers
+            </summary>
+            <returns> List of Bidding Offers </returns>
+            <response code="200">Returns the list of Bidding Offers</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingOffersController.GetBiddingOffer(System.String)">
+            <summary>
+            Get a Bidding Offer by Id
+            </summary>
+            <param name="id">Id of the Bidding Offer</param>
+            <returns> A Bidding Offer </returns>
+            <response code="200">Returns the Bidding Offer</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingOffersController.PostBiddingOffer(System.Object)">
+            <summary>
+            Create a new Bidding Offer
+            </summary>
+            <param name="requestModel">Bidding Offer to be created</param>
+            <returns> A newly created Bidding Offer </returns>
+            <response code="201">Returns the newly created Bidding Offer</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingOffersController.PatchBiddingOffer(System.String,System.Object)">
+            <summary>
+            Update a Bidding Offer
+            </summary>
+            <param name="id">Id of the Bidding Offer</param>
+            <param name="requestModel">Bidding Offer to be updated</param>
+            <returns>A newly updated Bidding Offer </returns>
+            <response code="200">Returns the newly updated Bidding Offer</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BiddingOffersController.DeleteBiddingOffer(System.String)">
+            <summary>
+            Delete a Bidding Offer
+            </summary>
+            <param name="id">Id of the Bidding Offer</param>
+            <returns> A no content response </returns>
+            <response code="204">Returns no content </response>
+            <response code="404">If the Bidding Offer is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Bidding.BuyerApplicationController">
+            <summary>
+            API controller for managing Buyer Applications.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BuyerApplicationController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for BuyerApplicationController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BuyerApplicationController.GetBuyerApplications">
+            <summary>
+            Get all Buyer Applications
+            </summary>
+            <returns> List of Buyer Applications </returns>
+            <response code="200">List of Buyer Applications</response>
+            <response code="204"> No Buyer Applications found </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BuyerApplicationController.GetBuyerApplication(System.String)">
+            <summary>
+            Get a Buyer Application by Id
+            </summary>
+            <param name="id">Id of the Buyer Application</param>
+            <returns> A Buyer Application </returns>
+            <response code="200">Returns the Buyer Application</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BuyerApplicationController.PostBuyerApplication(System.Object)">
+            <summary>
+            Create a new Buyer Application
+            </summary>
+            <param name="requestModel">Buyer Application to be created</param>
+            <returns> A newly created Buyer Application </returns>
+            <response code="201">Returns the newly created Buyer Application</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BuyerApplicationController.PatchBuyerApplication(System.String,System.Object)">
+            <summary>
+            Update a Buyer Application
+            </summary>
+            <param name="id">Id of the Buyer Application</param>
+            <param name="requestModel">Buyer Application to be updated</param>
+            <returns> A newly updated Buyer Application </returns>
+            <response code="200">Returns the newly updated Buyer Application</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.BuyerApplicationController.DeleteBuyerApplication(System.String)">
+            <summary>
+            Delete a Buyer Application
+            </summary>
+            <param name="id">Id of the Buyer Application</param>
+            <returns> A no content response </returns>
+            <response code="204"> Buyer Application deleted </response>
+            <response code="404"> Buyer Application not found </response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Bidding.PublicBiddingController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for PublicBiddingController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingController.GetPublicBiddings">
+            <summary>
+            Get all public biddings
+            </summary>
+            <returns> List of public biddings </returns>
+            <response code="200"> List of public biddings </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingController.GetPublicBidding(System.String)">
+            <summary>
+            Get a public bidding by Id
+            </summary>
+            <param name="id">Id of the public bidding</param>
+            <returns> A public bidding </returns>
+            <response code="200">Returns the public bidding</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingController.PostPublicBidding(System.Object)">
+            <summary>
+            Create a new public bidding
+            </summary>
+            <param name="requestModel">public bidding to be created</param>
+            <returns> A newly created public bidding </returns>
+            <response code="201">Returns the newly created public bidding</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingController.PatchPublicBidding(System.String,System.Object)">
+            <summary>
+            Update a public bidding
+            </summary>
+            <param name="id">Id of the public bidding</param>
+            <param name="requestModel">public bidding to be updated</param>
+            <returns> A newly updated public bidding </returns>
+            <response code="200">Returns the newly updated public bidding</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingController.DeletePublicBidding(System.String)">
+            <summary>
+            Delete a public bidding
+            </summary>
+            <param name="id">Id of the public bidding</param>
+            <returns> A no content response </returns>
+            <response code="204">Returns no content</response>
+            <response code="404">Returns not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Bidding.PublicBiddingLotController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingLotController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for PublicBiddingLotController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingLotController.GetPublicBiddingLots">
+            <summary>
+            Get all public bidding lots
+            </summary>
+            <returns> List of public bidding lots </returns>
+            <response code="200"> List of public bidding lots </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingLotController.GetPublicBiddingLot(System.String)">
+            <summary>
+            Get a public bidding lot by Id
+            </summary>
+            <param name="id">Id of the public bidding lot</param>
+            <returns> A public bidding lot </returns>
+            <response code="200">Returns the public bidding lot</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingLotController.PostPublicBiddingLot(System.Object)">
+            <summary>
+            Create a new public bidding lot
+            </summary>
+            <param name="requestModel">public bidding lot to be created</param>
+            <returns> A newly created public bidding lot </returns>
+            <response code="201">Returns the newly created public bidding lot</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingLotController.PatchPublicBiddingLot(System.String,System.Object)">
+            <summary>
+            Update a public bidding lot
+            </summary>
+            <param name="id">Id of the public bidding lot</param>
+            <param name="requestModel">public bidding lot to be updated</param>
+            <returns> A newly updated public bidding lot </returns>
+            <response code="200">Returns the newly updated public bidding lot</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.PublicBiddingLotController.DeletePublicBiddingLot(System.String)">
+            <summary>
+            Delete a public bidding lot
+            </summary>
+            <param name="id">Id of the public bidding lot</param>
+            <returns> A no content response </returns>
+            <response code="204">Returns a no content response</response>
+            <response code="404">If the public bidding lot is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Bidding.RepresentativeController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.RepresentativeController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for RepresentativeController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.RepresentativeController.GetRepresentatives">
+            <summary>
+            Get all representatives
+            </summary>
+            <returns> List of representatives </returns>
+            <response code="200"> List of representatives </response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.RepresentativeController.GetRepresentative(System.String)">
+            <summary>
+            Get a representative by Id
+            </summary>
+            <param name="id">Id of the representative</param>
+            <returns> A representative </returns>
+            <response code="200">Returns the representative</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.RepresentativeController.PostRepresentative(System.Object)">
+            <summary>
+            Create a new representative
+            </summary>
+            <param name="requestModel">representative to be created</param>
+            <returns> A newly created representative </returns>
+            <response code="201">Returns the newly created representative</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.RepresentativeController.PatchRepresentative(System.String,System.Object)">
+            <summary>
+            Update a representative
+            </summary>
+            <param name="id">Id of the representative</param>
+            <param name="requestModel">representative to be updated</param>
+            <returns> A updated representative </returns>
+            <response code="200">Returns the updated representative</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Bidding.RepresentativeController.DeleteRepresentative(System.String)">
+            <summary>
+            Delete a representative
+            </summary>
+            <param name="id">Id of the representative</param>
+            <returns> A no content response </returns>
+            <response code="204">Returns a no content response</response>
+            <response code="404">If the representative is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Complaint.ComplaintsController">
+            <summary>
+            Controller for managing Complaints
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for ComplaintController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.DeleteSystemUser(System.String)">
+            <summary>
+            Deletes a complaint
+            </summary>
+            <param name="id">id of the complaint to be deleted</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="204">Returns no content</response>
+            <response code="404">If the SystemUser is not found</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.GetComplaint(System.String)">
+            <summary>
+            Gets a complaint
+            </summary>
+            <param name="id">Id of the complaint to retrieve</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="200">Returns the complaint</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.GetComplaints">
+            <summary>
+            Gets a list of all complaints
+            </summary>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="200">Returns the list of complaints</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.PostComplaint(System.Object)">
+            <summary>
+            Adds a new complaint
+            </summary>
+            <param name="requestModel">Request body with complaint information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="201">Returns the newly created complaint</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Complaint.ComplaintsController.PatchComplaint(System.String,System.Object)">
+            <summary>
+            Patches a system user
+            </summary>
+            <param name="id">id of the user to update</param>
+            <param name="requestModel">Request body with updated complaint information</param>
+            <returns>IActionResult indicating the status of the operation</returns>
+            <response code="204">Returns no content</response>
+            <response code="404">If the system user is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Landlot.LandsController">
+            <summary>
+            Controller for managing lands.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LandsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for LandsController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LandsController.GetLand">
+            <summary>
+            Retrieves a list of land objects from the land repository.
+            </summary>
+            <returns> A list of land view models.</returns>
+            <response code="200">Returns the list of lands</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LandsController.GetLand(System.String)">
+            <summary>
+            Retrieves a land object with the specified ID from the land repository.
+            </summary>
+            <param name="id">The ID of the land object to retrieve.</param>
+            <returns>A land view model.</returns>
+            <response code="200">Returns the land</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LandsController.PatchLand(System.String,System.Object)">
+            <summary>
+            Updates a land object with the specified ID in the land repository.
+            </summary>
+            <param name="id">The ID of the land object to update.</param>
+            <param name="requestModel">A that contains the updated land data.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the update operation.</returns>
+            <response code="204">Returns no content</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LandsController.PostLand(System.Object)">
+            <summary>
+            Creates a new land object in the land repository.
+            </summary>
+            <param name="requestModel">A object that contains the data for the new land object.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the create operation.</returns>
+            <response code="201">Returns the newly created land</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LandsController.DeleteLand(System.String)">
+            <summary>
+            Deletes a land object with the specified ID from the land repository.
+            </summary>
+            <param name="id">The ID of the land object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">Returns no content</response>
+            <response code="404">Returns not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Landlot.LotsController">
+            <summary>
+            Controller for managing lots of land.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LotsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for LotsController
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LotsController.GetLot">
+            <summary>
+            Retrieves a list of lot objects from the lot repository.
+            </summary>
+            <returns> A list of lot view models.</returns>
+            <response code="200">Returns the list of lots</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LotsController.GetLot(System.String)">
+            <summary>
+            Retrieves a lot object with the specified ID from the lot repository.
+            </summary>
+            <param name="id">The ID of the lot object to retrieve.</param>
+            <returns>A lot view model.</returns>
+            <response code="200">Returns the lot</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LotsController.PatchLot(System.String,System.Object)">
+            <summary>
+            Updates a lot object with the specified ID in the lot repository.
+            </summary>
+            <param name="id">The ID of the lot object to update.</param>
+            <param name="requestModel">A that contains the updated lot data.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the update operation.</returns>
+            <response code="204">Returns no content</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LotsController.PostLot(System.Object)">
+            <summary>
+            Creates a new lot object in the lot repository.
+            </summary>
+            <param name="requestModel">A that contains the data for the new lot object.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the create operation.</returns>
+            <response code="201">Returns the newly created lot</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Landlot.LotsController.DeleteLot(System.String)">
+            <summary>
+            Deletes a lot object with the specified ID from the lot repository.
+            </summary>
+            <param name="id">The ID of the lot object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">Returns no content</response>
+            <response code="404">If the lot is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Lease.BuyersController">
+            <summary>
+            API controller for managing lands.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.BuyersController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for Buyers
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.BuyersController.GetBuyer">
+            <summary>
+            Gets a list of lot objects from the Buyers.
+            </summary>
+            <returns> A list of lot objects.</returns>
+            <response code="200">Returns the list of lot objects</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.BuyersController.GetBuyer(System.String)">
+            <summary>
+            Gets a lot object with the specified ID from the Buyers.
+            </summary>
+            <param name="id"> The ID of the lot object to get.</param>
+            <returns> An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the get operation.</returns>
+            <response code="200">Returns the lot</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.BuyersController.PatchGuid(System.String,System.Object)">
+            <summary>
+            Updates a lot object with the specified ID in the Buyers.
+            </summary>
+            <param name="id"> The ID of the lot object to update.</param>
+            <param name="requestModel"> The lot object to update.</param>
+            <returns> An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the update operation.</returns>
+            <response code="204">Returns no content</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.BuyersController.PostBuyer(System.Object)">
+            <summary>
+            Creates a new lot object in the Buyers.
+            </summary>
+            <param name="requestModel"> The lot object to create.</param>
+            <returns> An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the create operation.</returns>
+            <response code="201">Returns the newly created lot</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.BuyersController.Delete(System.String)">
+            <summary>
+            Deletes a lot object with the specified ID from the Buyers.
+            </summary>
+            <param name="id">The ID of the buyer object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">Returns no content</response>
+            <response code="404">If the lot is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Lease.DueDatesController">
+            <summary>
+            API controller for managing DueDate.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.DueDatesController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for Due Dates
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.DueDatesController.GetDueDate">
+            <summary>
+            Returns a list of due dates.
+            </summary>
+            <returns> A list of DueDateGetResponseModel, or No Content if no due date is found.</returns>
+            <response code="200">Ok if the Due Dates are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.DueDatesController.GetDueDate(System.String)">
+            <summary>
+            Returns the due date with the specified id.
+            </summary>
+            <param name="id"> The ID of the due date.</param>
+            <returns> The DueDateGetResponseModel with the specified id, or NotFound if the due date is not found.</returns>
+            <response code="200">Ok if the Due Date is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.DueDatesController.PatchGuid(System.String,System.Object)">
+            <summary>
+            Updates the due date with the specified id.
+            </summary>
+            <param name="id"> The ID of the due date to update.</param>
+            <param name="requestModel"> The DueDatePatchRequestModel with the updated values.</param>
+            <returns> The DueDatePatchResponseModel with the updated values, or NotFound if the due date is not found.</returns>
+            <response code="200">Ok if the Due Date is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.DueDatesController.PostDueDate(System.Object)">
+            <summary>
+            Creates a new due date.
+            </summary>
+            <param name="requestModel"> The DueDatePostRequestModel with the values for the new due date.</param>
+            <returns> The DueDatePostResponseModel with the values for the new due date.</returns>
+            <response code="201">Created if the due date is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.DueDatesController.Delete(System.String)">
+            <summary>
+            Deletes a lot object with the specified ID from the due date.
+            </summary>
+            <param name="id">The ID of the due date object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the due date is successfully deleted</response>
+            <response code="404">If the lot is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Lease.LeaseAgreementsController">
+            <summary>
+            API controller for managing Lease Agreement.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseAgreementsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for Lease Agreements
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseAgreementsController.GetLeaseAgreement">
+            <summary>
+            Returns a list of lease agreements.
+            </summary>
+            <returns> A list of LeaseAgreementGetResponseModel, or No Content if no lease agreement is found.</returns>
+            <response code="200">Ok if the Lease Agreements are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseAgreementsController.GetLeaseAgreement(System.String)">
+            <summary>
+            Returns the lease agreement with the specified id.
+            </summary>
+            <param name="id"> The ID of the lease agreement.</param>
+            <returns> The LeaseAgreementGetResponseModel with the specified id, or NotFound if the lease agreement is not found.</returns>
+            <response code="200">Ok if the Lease Agreement is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseAgreementsController.PatchGuid(System.String,System.Object)">
+            <summary>
+            Updates the lease agreement with the specified id.
+            </summary>
+            <param name="id"> The ID of the lease agreement to update.</param>
+            <param name="requestModel"> The LeaseAgreementPatchRequestModel with the updated values.</param>
+            <returns> The LeaseAgreementPatchResponseModel with the updated values, or NotFound if the lease agreement is not found.</returns>
+            <response code="200">Ok if the Lease Agreement is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseAgreementsController.PostLeaseAgreement(System.Object)">
+            <summary>
+            Creates a new lease agreement.
+            </summary>
+            <param name="requestModel"> The LeaseAgreementPostRequestModel with the values for the new lease agreement.</param>
+            <returns> The LeaseAgreementPostResponseModel with the values for the new lease agreement.</returns>
+            <response code="201">Created if the lease agreement is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseAgreementsController.Delete(System.String)">
+            <summary>
+            Deletes a lot object with the specified ID from the Lease Agreement.
+            </summary>
+            <param name="id">The ID of the Lease Agreement object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the due date is successfully deleted</response>
+            <response code="404">If the lot is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Lease.LeaseDocumentsController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseDocumentsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseDocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+            <response code="200">Ok if the Documents are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseDocumentsController.GetDocument(System.String)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+            <response code="200">Ok if the Document is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseDocumentsController.PatchDocument(System.String,System.Object)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="requestModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+            <response code="200">Ok if the Document is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseDocumentsController.PostDocument(System.Object)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="requestModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+            <response code="201">Created if the Document is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Lease.LeaseDocumentsController.DeleteDocument(System.String)">
+            <summary>
+            Deletes a document object with the specified ID from the Buyers.
+            </summary>
+            <param name="id">The ID of the buyer object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the Document is successfully deleted</response>
+            <response code="404">If the document is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Licitation.LicitationDocumentsController">
+            <summary>
+            API controller for managing Licitation Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationDocumentsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationDocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+            <response code="200">Ok if the Documents are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationDocumentsController.GetDocument(System.String)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+            <response code="200">Ok if the Document is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationDocumentsController.PatchDocument(System.String,System.Object)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="requestModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+            <response code="200">Ok if the Document is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationDocumentsController.PostDocument(System.Object)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="requestModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+            <response code="201">Created if the Document is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationDocumentsController.DeleteDocument(System.String)">
+            <summary>
+            Deletes a lot object with the specified ID from the Buyers.
+            </summary>
+            <param name="id">The ID of the buyer object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the Document is successfully deleted</response>
+            <response code="404">If the lot is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Licitation.LicitationsController">
+            <summary>
+            API controller for managing Licitations.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the LicitacionController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.GetLicitations">
+            <summary>
+            Returns a list of Licitacions
+            </summary>
+            <returns>A list of Licitacion models, or No Content if no Licitacion found</returns>
+            <response code="200">Ok if the Licitacions are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.GetByGuid(System.String)">
+            <summary>
+            Returns the licitation with the specified ID.
+            </summary>
+            <param name="id"> The ID of the licitation to return.</param>
+            <returns> The licitation with the specified ID, or NotFound if the licitation is not found.</returns>
+            <response code="200">Ok if the licitation is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.Delete(System.String)">
+            <summary>
+            Deletes a licitation object with the specified ID.
+            </summary>
+            <param name="id">The ID of the licitation object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the licitation is successfully deleted</response>
+            <response code="404">If the licitation is not found</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.PostLicitation(System.Object)">
+            <summary>
+            Creates a new Licitation
+            </summary>
+            <param name="requestModel">The new Licitation information</param>
+            <returns>The created Licitation model, with a location header pointing to the URL of the newly created Licitation</returns>
+            <response code="201">Created if the Licitation is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.PatchLicitation(System.String,System.Object)">
+            <summary>
+            Updates a Licitation
+            </summary>
+            <param name="id"> The ID of the Licitation to update.</param>
+            <param name="requestModel"> The updated Licitation information.</param>
+            <returns>A no content response</returns>
+             <response code="204">Ok if the Licitation is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.PostLicitationLand(System.Guid,System.Object)">
+            <summary>
+            Updates a land in a licitation
+            </summary>
+            <param name="id"> The ID of the Licitation land to update.</param>
+            <param name="postModel"> The updated Licitation land information.</param>
+            <returns> Licitation land model</returns>
+            <response code="204">Ok if the Licitation land is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.PostPublicBidding(System.String,System.Object)">
+            <summary>
+            Updates a public bidding in a licitation
+            </summary>
+            <param name="id"> The ID of the Licitation public bidding to update.</param>
+            <param name="postModel"> The updated Licitation public bidding information.</param>
+            <returns> Licitation public bidding model</returns>
+            <response code="201"> Created if the Licitation public bidding is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.DeleteLicitationLand(System.String,System.String)">
+            <summary>
+            Deletes a licitation land object with the specified ID.
+            </summary>
+            <param name="id"> The ID of the licitation object to delete from.</param>
+            <param name="licitationLandId"> The ID of the licitation land object to delete.</param>
+            <returns> An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204"> NoContent if the licitation land is successfully deleted</response>
+            <response code="404"> If the licitation land is not found</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Licitation.LicitationsController.DeletePublicBidding(System.Guid,System.Guid)">
+            <summary>
+            Deletes a public bidding object with the specified ID.
+            </summary>
+            <param name="id"> The ID of the licitation object to delete from.</param>
+            <param name="publicBiddingId"> The ID of the public bidding object to delete.</param>
+            <returns> An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204"> NoContent if the public bidding is successfully deleted</response>
+            <response code="404"> If the public bidding is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Payment.PaymentsController">
+            <summary>
+            API controller for managing Payments.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the PaymentsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentsController.GetAllPayments">
+            <summary>
+            Gets all payments.
+            </summary>
+            <returns> A list of all payments.</returns>
+            <response code="200">Returns a list of all payments</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentsController.GetPaymentByGuid(System.String)">
+            <summary>
+            Gets a payment by its ID.
+            </summary>
+            <param name="id"> The ID of the payment to get.</param>
+            <returns> A payment with the specified ID.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentsController.AddPayment(System.Object)">
+            <summary>
+            Adds a new payment.
+            </summary>
+            <param name="requestModel"> The payment to add.</param>
+            <returns> The newly created payment.</returns>
+            <response code="201">Returns the newly created payment</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentsController.DeletePayment(System.String)">
+            <summary>
+            Deletes a Payment object with the specified ID.
+            </summary>
+            <param name="id">The ID of the payment object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the Payment is successfully deleted</response>
+            <response code="404">If the payment is not found</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentsController.PatchPayment(System.String,System.Object)">
+            <summary>
+            Updates the payment with the specified id.
+            </summary>
+            <param name="id"> The ID of the payment to update.</param>
+            <param name="requestModel"> The payment to update.</param>
+            <returns> The updated payment.</returns>
+            <response code="204"> NoContent if the payment is successfully updated.</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Payment.PaymentWarrantsController">
+            <summary>
+            API controller for managing Payment Warrants.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the PaymentsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.GetAllPaymentWarrants">
+            <summary>
+            Gets all Payment Warrants.
+            </summary>
+            <returns> A list of all Payment Warrants.</returns>
+            <response code="200">Returns a list of all Payment Warrants</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.GetByReferenceNumber(System.String)">
+            <summary>
+            Gets a Payment warrant by its reference number.
+            </summary>
+            <param name="referenceNumber"> The reference number of the payment warrant to get.</param>
+            <returns> A payment warrant with the specified reference number.</returns>
+            <response code="200">Returns a payment warrant with the specified reference number</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.GetPaymentWarrantByGuid(System.String)">
+            <summary>
+            Gets a Payment warrant by its ID.
+            </summary>
+            <param name="id"> The ID of the payment warrant to get.</param>
+            <returns> A payment warrant with the specified ID.</returns>
+            <response code="200">Returns a payment warrant with the specified ID</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.UpdatePaymentWarrant(System.String,System.Object)">
+            <summary>
+            Updates a Payment warrant object with the specified reference number.
+            </summary>
+            <param name="referenceNumber"> The reference number of the payment warrant object to update.</param>
+            <param name="requestModel"> The updated payment warrant object.</param>
+            <returns> The updated payment warrant object.</returns>
+            <response code="204"> NoContent if the Payment warrant is successfully updated.</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.AddPaymentWarrant(System.Object)">
+            <summary>
+            Adds a new Payment warrant.
+            </summary>
+            <param name="requestModel"> The Payment warrant to add.</param>
+            <returns> The newly created Payment warrant.</returns>
+            <response code="201">Returns the newly created Payment warrant</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.DeletePaymentWarrantByReferenceNumber(System.String)">
+            <summary>
+            Deletes a Payment warrant object with the specified reference number.
+            </summary>
+            <param name="referenceNumber"> The reference number of the payment warrant object to delete.</param>
+            <returns> An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the Payment warrant is successfully deleted</response>
+            <response code="404">If the Payment warrant is not found</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Payment.PaymentWarrantsController.DeletePaymentWarrant(System.String)">
+            <summary>
+            Deletes a Payment warrant object with the specified ID.
+            </summary>
+            <param name="id">The ID of the payment warrant object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the Payment warrant is successfully deleted</response>
+            <response code="404">If the Payment warrant is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Person.AddressesController">
+            <summary>
+            API controller for managing Addresses.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.AddressesController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for the AddressController.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.AddressesController.GetAddresses">
+            <summary>
+            Returns a list of addresses.
+            </summary>
+            <returns>A collection of addresses.</returns>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.AddressesController.GetAddress(System.String)">
+            <summary>
+            Returns the address with the specified id.
+            </summary>
+            <param name="id">The ID of the address to get.</param>
+            <returns>The address with the specified ID, or NotFound if no such address exists.</returns>
+            <response code="200">Ok if the address is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.AddressesController.PatchAddress(System.String,System.Object)">
+            <summary>
+            Updates an address with the specified id.
+            </summary>
+            <param name="id">The ID of the address to update.</param>
+            <param name="requestModel">The address information to update.</param>
+            <returns>The updated address, or NotFound if no such address exists, or BadRequest if the update fails.</returns>
+            <response code="204"> NoContent if the address is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.AddressesController.PostAddress(System.Object)">
+            <summary>
+            Creates a new address.
+            </summary>
+            <param name="requestModel">The information for the new address.</param>
+            <returns>The newly created address, or BadRequest if the address creation fails.</returns>
+            <response code="201">The newly created address</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.AddressesController.DeleteAddress(System.String)">
+            <summary>
+            Deletes an Address person with the specified id.
+            </summary>
+            <param name="id">The ID of the Address to delete.</param>
+            <returns>NoContent if the Address is deleted successfully, or NotFound if no such Address exists.</returns>
+            <response code="204">NoContent if the Address is deleted successfully</response>
+            <response code="404">NotFound if no such Address exists</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Person.ContactPersonsController">
+            <summary>
+            Controller for managing contact persons.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.ContactPersonsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for the ContactPersonController.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.ContactPersonsController.GetContactPersons">
+            <summary>
+            Returns a list of all contact persons.
+            </summary>
+            <returns>A collection of contact persons.</returns>
+            <response code="200">Ok if the contact persons are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.ContactPersonsController.GetContactPerson(System.String)">
+            <summary>
+            Returns an contact person with the specified id.
+            </summary>
+            <param name="id">The ID of the contact person to get.</param>
+            <returns>The contact person with the specified ID, or NotFound if no such contact person exists.</returns>
+            <response code="200">Ok if the contact person is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.ContactPersonsController.PatchContactPerson(System.String,System.Object)">
+            <summary>
+            Updates an contact person with the specified id.
+            </summary>
+            <param name="id">The ID of the contact person to update.</param>
+            <param name="requestModel">The contact person information to update.</param>
+            <returns>The updated contact person, or NotFound if no such contact person exists, or BadRequest if the update fails.</returns>
+            <response code="204"> NoContent if the contact person is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.ContactPersonsController.PostContactPerson(System.Object)">
+            <summary>
+            Creates a new contact person.
+            </summary>
+            <param name="requestModel">The information for the new contact person.</param>
+            <returns>The newly created contact person, or BadRequest if the contact person creation fails.</returns>
+            <response code="201">Created if the contact person is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.ContactPersonsController.DeleteContactPerson(System.String)">
+            <summary>
+            Deletes the contact person with the specified id.
+            </summary>
+            <param name="id">The ID of the contact person to delete.</param>
+            <returns>NoContent if the contact person is deleted successfully, or NotFound if no such contact person exists.</returns>
+            <response code="204">NoContent if the contact person is deleted successfully</response>
+            <response code="404">NotFound if no such contact person exists</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Person.LegalPersonsController">
+            <summary>
+            Controller for managing legal persons.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.LegalPersonsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for the LegalPersonController.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.LegalPersonsController.GetLegalPersons">
+            <summary>
+            Returns a list of all legal persons.
+            </summary>
+            <returns>A collection of legal persons.</returns>
+            <response code="200">Ok if the Legal Persons are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.LegalPersonsController.GetLegalPerson(System.String)">
+            <summary>
+            Returns an legal person with the specified id.
+            </summary>
+            <param name="id">The ID of the legal person to get.</param>
+            <returns>The legal person with the specified ID, or NotFound if no such legal person exists.</returns>
+            <response code="200">Ok if the Legal Person is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.LegalPersonsController.PatchLegalPerson(System.String,System.Object)">
+            <summary>
+            Updates an legal person with the specified id.
+            </summary>
+            <param name="id">The ID of the legal person to update.</param>
+            <param name="requestModel">The legal person information to update.</param>
+            <returns>The updated legal person, or NotFound if no such legal person exists, or BadRequest if the update fails.</returns>
+            <response code="204"> NoContent if the Legal Person is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.LegalPersonsController.PostLegalPerson(System.Object)">
+            <summary>
+            Creates a new legal person.
+            </summary>
+            <param name="requestModel"> The legal person information to create.</param>
+            <returns> The created legal person, or BadRequest if the creation fails.</returns>
+            <response code="201">Created if the Legal Person is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.LegalPersonsController.DeleteLegalPerson(System.String)">
+            <summary>
+            Deletes a legal person object with the specified ID.
+            </summary>
+            <param name="id">The ID of the legal person object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the legal person is successfully deleted</response>
+            <response code="404">If the legal person is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Person.PhysicalPersonsController">
+            <summary>
+            Controller for managing physical persons.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.PhysicalPersonsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor for the PhysicalPersonController.
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.PhysicalPersonsController.GetPhysicalPersons">
+            <summary>
+            Returns a list of all physical persons.
+            </summary>
+            <returns>A collection of physical persons.</returns>
+            <response code="200">Ok if the physical persons are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.PhysicalPersonsController.GetPhysicalPerson(System.String)">
+            <summary>
+            Returns an physical person with the specified id.
+            </summary>
+            <param name="id">The ID of the physical person.</param>
+            <returns>The physical person with the specified id, or NotFound if the physical person is not found.</returns>
+            <response code="200">Ok if the physical person is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.PhysicalPersonsController.PatchPhysicalPerson(System.String,System.Object)">
+            <summary>
+            Updates an physical person with the specified id.
+            </summary>
+            <param name="id">The ID of the physical person to update.</param>
+            <param name="requestModel">The physical person information to update.</param>
+            <returns>The updated physical person, or NotFound if no such physical person exists, or BadRequest if the update fails.</returns>
+            <response code="200">Ok if the physical person is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.PhysicalPersonsController.PostPhysicalPerson(System.String,System.Object)">
+            <summary>
+            Creates a new physical person.
+            </summary>
+            <param name="id">The ID of the physical person to create.</param>
+            <param name="requestModel">The physical person information to create.</param>
+            <returns>The created physical person, or BadRequest if the creation fails.</returns>
+            <response code="201">Created if the physical person is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Person.PhysicalPersonsController.DeletePhysicalPerson(System.String)">
+            <summary>
+            Deletes a physical person object with the specified ID from the Buyers.
+            </summary>
+            <param name="id">The ID of the physical person object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the physical person is successfully deleted</response>
+            <response code="404">If the physical person is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Preparation.AnnouncementsController">
+            <summary>
+            Provides endpoints for Announcements management
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.AnnouncementsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the AnnouncementsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.AnnouncementsController.GetAnnouncements">
+            <summary>
+            Gets a list of Announcements.
+            </summary>
+            <returns>A list of AnnouncementGetResponseModel, or No Content if there are no announcements.</returns>
+            <response code="200">Ok if the Announcements are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.AnnouncementsController.GetAnnouncement(System.String)">
+            <summary>
+            Gets the Announcement with the specified ID.
+            </summary>
+            <param name="id">The ID of the Announcement to retrieve.</param>
+            <returns>An AnnouncementGetResponseModel representing the retrieved Announcement, or NotFound if the Announcement does not exist.</returns>
+            <response code="200">Ok if the Announcement is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.AnnouncementsController.PatchAnnouncement(System.String,System.Object)">
+            <summary>
+            Updates the Announcement with the specified ID.
+            </summary>
+            <param name="id">The ID of the Announcement to update.</param>
+            <param name="requestModel">An AnnouncementPatchRequestModel containing the properties to update.</param>
+            <returns>An AnnouncementPatchResponseModel representing the updated Announcement, or BadRequest if the update failed or the Announcement does not exist.</returns>
+            <response code="200">Ok if the Announcement is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.AnnouncementsController.PostAnnouncement(System.String,System.Object)">
+            <summary>
+            Creates a new Announcement.
+            </summary>
+            <param name="id">The ID of the Announcement to create.</param>
+            <param name="requestModel">An AnnouncementPostRequestModel containing the properties of the Announcement to create.</param>
+            <returns>A CreatedAtActionResult containing a URL to the new Announcement and the AnnouncementPostResponseModel of the created Announcement, or BadRequest if the creation failed.</returns>
+            <response code="201">Created if the Announcement is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.AnnouncementsController.DeleteAnnouncement(System.String)">
+            <summary>
+            Deletes a Announcement object with the specified ID.
+            </summary>
+            <param name="id">The ID of the Announcement object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the Announcement is successfully deleted</response>
+            <response code="404">If the Announcement is not found</response>
+        </member>
+        <member name="T:Gateway.API.Controllers.Preparation.PreparationDocumentsController">
+            <summary>
+            API controller for managing Documents.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.PreparationDocumentsController.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the DocumentsController class
+            </summary>
+            <param name="httpClient">Instance of HttpClient to be used for making requests</param>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.PreparationDocumentsController.GetDocuments">
+            <summary>
+            Returns a list of documents.
+            </summary>
+            <returns>A list of DocumentGetResponseModel, or No Content if no document is found.</returns>
+            <response code="200">Ok if the Documents are successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.PreparationDocumentsController.GetDocument(System.String)">
+            <summary>
+            Returns the document with the specified id.
+            </summary>
+            <param name="id">The id of the document.</param>
+            <returns>The DocumentGetResponseModel with the specified id, or NotFound if the document is not found.</returns>
+            <response code="200">Ok if the Document is successfully retrieved</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.PreparationDocumentsController.PatchDocument(System.String,System.Object)">
+            <summary>
+            Updates the document with the specified id.
+            </summary>
+            <param name="id">The id of the document to update.</param>
+            <param name="requestModel">The DocumentPatchRequestModel with the updated values.</param>
+            <returns>The DocumentPatchResponseModel with the updated values, or NotFound if the document is not found.</returns>
+            <response code="200">Ok if the Document is successfully updated</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.PreparationDocumentsController.PostDocument(System.String,System.Object)">
+            <summary>
+            Creates a new document.
+            </summary>
+            <param name="id">The id of the document to create.</param>
+            <param name="requestModel">The DocumentPostRequestModel with the values for the new document.</param>
+            <returns>The DocumentPostResponseModel for the newly created document.</returns>
+            <response code="201">Created if the Document is successfully created</response>
+        </member>
+        <member name="M:Gateway.API.Controllers.Preparation.PreparationDocumentsController.DeleteDocument(System.String)">
+            <summary>
+            Deletes a document object with the specified ID.
+            </summary>
+            <param name="id">The ID of the document object to delete.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the delete operation.</returns>
+            <response code="204">NoContent if the document is successfully deleted</response>
+            <response code="404">If the document is not found</response>
+        </member>
+        <member name="T:Gateway.API.Helpers.HttpServiceProxy">
+            <summary>
+            Implementation of the IComplaintRepository
+            interface for managing Complaint entities in the database.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.#ctor(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gateway.API.Helpers.HttpServiceProxy"/> class.
+            </summary>
+            <param name="httpClient">The <see cref="T:System.Net.Http.HttpClient"/> used to make HTTP requests to the downstream service.</param>
+            <param name="downstreamServiceUrl">The URL of the downstream service to proxy requests to.</param>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Get(System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Get(System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.GetById(System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.GetById(System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Post(System.Object,System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Post(System.Object,System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Patch(System.String,System.Object,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Patch(System.String,System.Object,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Delete(System.String,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Delete(System.String,System.String)"/>
+        </member>
+        <member name="M:Gateway.API.Helpers.HttpServiceProxy.Put(System.String,System.Object,System.String)">
+            <inheritdoc cref="M:Gateway.API.Helpers.IHttpServiceProxy.Put(System.String,System.Object,System.String)"/>
+        </member>
+        <member name="T:Gateway.API.Helpers.IHttpServiceProxy">
+            <summary>
+            A interface for proxy service that handles communication between an API and an external HTTP service.
+            </summary>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Get(System.String,System.String)">
+            <summary>
+            Sends a GET request to the specified endpoint of the external service.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to. If empty, the base URL of the external service is used.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.GetById(System.String,System.String)">
+            <summary>
+            Sends a GET request to the specified endpoint of the external service with a unique identifier.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to, including the identifier.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Post(System.Object,System.String,System.String)">
+            <summary>
+            Sends a POST request to the specified endpoint of the external service with the specified request body.
+            </summary>
+            <param name="requestBody">The request body to send in the request.</param>
+            <param name="endpoint">The endpoint of the external service to send the request to. If empty, the base URL of the external service is used.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Patch(System.String,System.Object,System.String)">
+            <summary>
+            Sends a PATCH request to the specified endpoint of the external service with the specified request body.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to. If empty, the base URL of the external service is used.</param>
+            <param name="requestBody">The request body to send in the request.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Put(System.String,System.Object,System.String)">
+            <summary>
+            Sends a PUT request to the specified endpoint of the external service.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to, including the identifier.</param>
+            <param name="requestBody">The request body to send in the request.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="M:Gateway.API.Helpers.IHttpServiceProxy.Delete(System.String,System.String)">
+            <summary>
+            Sends a DELETE request to the specified endpoint of the external service.
+            </summary>
+            <param name="endpoint">The endpoint of the external service to send the request to, including the identifier.</param>
+            <param name="acceptHeader">The accept header to include in the request. If not provided, the response will be formatted as JSON.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the response from the external service.</returns>
+        </member>
+        <member name="T:Gateway.API.Helpers.SwaggerOptionsMapper">
+            <summary>
+            This class maps SwaggerOptions to generate Swagger documentation and UI for different APIs.
+            </summary>
+        </member>
     </members>
 </doc>

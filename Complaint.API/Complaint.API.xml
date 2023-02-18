@@ -4,5 +4,743 @@
         <name>Complaint.API</name>
     </assembly>
     <members>
+        <member name="T:Complaint.API.Controllers.ComplaintsController">
+            <summary>
+            Controller for managing Complaints
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Controllers.ComplaintsController.#ctor(Complaint.API.Data.Repository.IComplaintRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor for ComplaintController
+            </summary>
+            <param name="complaintRepository"> Instance of IComplaintRepository to be used for making requests</param>
+            <param name="mapper"> Instance of IMapper to be used for mapping models</param>
+        </member>
+        <member name="M:Complaint.API.Controllers.ComplaintsController.GetComplaint">
+            <summary>
+            Gets a list of all complaints
+            </summary>
+            <returns> IActionResult indicating the status of the operation</returns>
+            <response code="200">Returns the list of complaints</response>
+        </member>
+        <member name="M:Complaint.API.Controllers.ComplaintsController.GetComplaint(System.Guid)">
+            <summary>
+            Gets a complaint
+            </summary>
+            <param name="id"> Id of the complaint to retrieve</param>
+            <returns> IActionResult indicating the status of the operation</returns>
+            <response code="200">Returns the complaint</response>
+        </member>
+        <member name="M:Complaint.API.Controllers.ComplaintsController.PatchComplaint(System.Guid,Complaint.API.Models.ComplaintPatchRequestModel)">
+            <summary>
+            Deletes a complaint
+            </summary>
+            <param name="id"> id of the complaint to be deleted</param>
+            <param name="patchModel"> Model containing the properties to be updated</param>
+            <returns> IActionResult indicating the status of the operation</returns>
+            <response code="204">Returns no content</response>
+        </member>
+        <member name="M:Complaint.API.Controllers.ComplaintsController.PostComplaint(Complaint.API.Models.ComplaintPostRequestModel)">
+            <summary>
+            Creates a new complaint
+            </summary>
+            <param name="postModel"> Model containing the properties of the complaint to be created</param>
+            <returns> IActionResult indicating the status of the operation</returns>
+            <response code="201">Returns the created complaint</response>
+        </member>
+        <member name="M:Complaint.API.Controllers.ComplaintsController.DeleteComplaint(System.Guid)">
+            <summary>
+            Deletes a complaint
+            </summary>
+            <param name="id"> id of the complaint to be deleted</param>
+            <returns> IActionResult indicating the status of the operation</returns>
+            <response code="204">Returns no content</response>
+            <response code="404">Returns not found if the complaint does not exist</response>
+        </member>
+        <member name="T:Complaint.API.Data.ComplaintDbContext">
+            <summary>
+            Db context for Complaints
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Data.ComplaintDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Complaint.API.Data.ComplaintDbContext})">
+            <summary>
+            Constructor for ComplaintDbContext
+            </summary>
+            <param name="options"> DbContextOptions for ComplaintDbContext</param>
+        </member>
+        <member name="P:Complaint.API.Data.ComplaintDbContext.Complaints">
+            <summary>
+            DbSet for Complaints
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Data.ComplaintDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            OnModelCreating override
+            </summary>
+            <param name="modelBuilder"> ModelBuilder for ComplaintDbContext</param>
+        </member>
+        <member name="T:Complaint.API.Data.Repository.ComplaintRepository">
+            <summary>
+            Implementation of the IComplaintRepository
+            interface for managing Complaint entities in the database.
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.#ctor(Complaint.API.Data.ComplaintDbContext)">
+            <summary>
+            Initializes a new instance of the ComplaintRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.GetComplaints">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaints"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.GetComplaint(System.Guid)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaint(System.Guid)"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.UpdateComplaint(System.Guid,Complaint.API.Entities.Complaint)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.UpdateComplaint(System.Guid,Complaint.API.Entities.Complaint)"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)"/>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.ComplaintRepository.DeleteComplaint(System.Guid)">
+            <inheritdoc cref="M:Complaint.API.Data.Repository.IComplaintRepository.DeleteComplaint(System.Guid)"/>
+        </member>
+        <member name="T:Complaint.API.Data.Repository.IComplaintRepository">
+            <summary>
+            The interface for complaint repository, provides methods for getting, updating, adding and deleting a complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaints">
+            <summary>
+            Gets a list of all complaints.
+            </summary>
+            <returns>A list of complaints.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.GetComplaint(System.Guid)">
+            <summary>
+            Gets a specific complaint by its identifier.
+            </summary>
+            <param name="id">The identifier of the complaint.</param>
+            <returns>The complaint with the specified identifier.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.UpdateComplaint(System.Guid,Complaint.API.Entities.Complaint)">
+            <summary>
+            Updates a specific complaint.
+            </summary>
+            <param name="id">The identifier of the complaint to update.</param>
+            <param name="updateModel">The updated values for the complaint.</param>
+            <returns>The updated complaint.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.AddComplaint(Complaint.API.Entities.Complaint)">
+            <summary>
+            Adds a new complaint.
+            </summary>
+            <param name="complaint">The complaint to add.</param>
+            <returns>The added complaint.</returns>
+        </member>
+        <member name="M:Complaint.API.Data.Repository.IComplaintRepository.DeleteComplaint(System.Guid)">
+            <summary>
+            Deletes a specific complaint.
+            </summary>
+            <param name="id">The identifier of the complaint to delete.</param>
+            <returns>The deleted complaint.</returns>
+        </member>
+        <member name="T:Complaint.API.Entities.Complaint">
+            <summary>
+            Represents a complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.Guid">
+            <summary>
+            Unique identifier for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.Type">
+            <summary>
+            Type of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.DateSubmitted">
+            <summary>
+            Date the complaint was submitted
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.BuyerGuid">
+            <summary>
+            Guid of the buyer
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.Reason">
+            <summary>
+            Reason for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.Rationale">
+            <summary>
+            Rationale for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.ResolutionDate">
+            <summary>
+            Date the complaint was resolved
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.ResolutionCode">
+            <summary>
+            Resolution code for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.Status">
+            <summary>
+            Status of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.SubjectGuid">
+            <summary>
+            Guid of the subject of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Entities.Complaint.Action">
+            <summary>
+            Action taken for the complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Entities.Complaint.#ctor(System.Guid,Complaint.API.Enums.ComplaintType,System.DateTime,System.Guid,System.String,System.String,System.DateTime,System.String,Complaint.API.Enums.ComplaintStatus,System.Guid,Complaint.API.Enums.ComplaintAction)">
+            <summary>
+            Constructor for Complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Entities.Complaint.#ctor(Complaint.API.Enums.ComplaintType,System.DateTime,System.Guid,System.String,System.String,System.DateTime,System.String,Complaint.API.Enums.ComplaintStatus,System.Guid,Complaint.API.Enums.ComplaintAction)">
+            <summary>
+            Constructor for Complaint with Guid generated
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Entities.Complaint.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the complaint
+            </summary>
+            <param name="validationContext"> ValidationContext for the complaint</param>
+            <returns> IEnumerable of ValidationResult</returns>
+        </member>
+        <member name="T:Complaint.API.Enums.ComplaintAction">
+            <summary>
+            Action to be taken for the complaint
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintAction.NoSecondRound">
+            <summary>
+            No second round
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintAction.SecondRoundNewConditions">
+            <summary>
+            Second round with new conditions
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintAction.SecondRoundSameConditions">
+            <summary>
+            Second round with same conditions
+            </summary>
+        </member>
+        <member name="T:Complaint.API.Enums.ComplaintActionConverter">
+            <summary>
+            JSON converter for ComplaintAction
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Enums.ComplaintActionConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Read override for ComplaintActionConverter
+            </summary>
+            <param name="reader"> Utf8JsonReader for ComplaintActionConverter</param>
+            <param name="typeToConvert"> Type to convert for ComplaintActionConverter</param>
+            <param name="options"> JsonSerializerOptions for ComplaintActionConverter</param>
+            <returns> ComplaintAction</returns>
+            <exception cref="T:System.Text.Json.JsonException"> Unable to map role string to complaint action</exception>
+        </member>
+        <member name="M:Complaint.API.Enums.ComplaintActionConverter.Write(System.Text.Json.Utf8JsonWriter,Complaint.API.Enums.ComplaintAction,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Write override for ComplaintActionConverter
+            </summary>
+            <param name="writer"> Utf8JsonWriter for ComplaintActionConverter</param>
+            <param name="value"> ComplaintAction to write</param>
+            <param name="options"> JsonSerializerOptions for ComplaintActionConverter</param>
+        </member>
+        <member name="T:Complaint.API.Enums.ComplaintStatus">
+            <summary>
+            Status of the complaint
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintStatus.Opened">
+            <summary>
+            Complaint is opened
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintStatus.Rejected">
+            <summary>
+            Complaint is rejected
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintStatus.Accepted">
+            <summary>
+            Complaint is accepted
+            </summary>
+        </member>
+        <member name="T:Complaint.API.Enums.ComplaintStatusConverter">
+            <summary>
+            Converts complaint status to string and vice versa
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Enums.ComplaintStatusConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads complaint status from string
+            </summary>
+            <param name="reader"> Utf8JsonReader for reading complaint status</param>
+            <param name="typeToConvert"> Type to convert for ComplaintStatusConverter</param>
+            <param name="options"> JsonSerializerOptions for ComplaintStatusConverter</param>
+            <returns> ComplaintStatus</returns>
+            <exception cref="T:System.Text.Json.JsonException"> Unable to map role string to complaint status</exception>
+        </member>
+        <member name="M:Complaint.API.Enums.ComplaintStatusConverter.Write(System.Text.Json.Utf8JsonWriter,Complaint.API.Enums.ComplaintStatus,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes complaint status to string
+            </summary>
+            <param name="writer"> Utf8JsonWriter for writing complaint status</param>
+            <param name="value"> ComplaintStatus to write</param>
+            <param name="options"> JsonSerializerOptions for ComplaintStatusConverter</param>
+        </member>
+        <member name="T:Complaint.API.Enums.ComplaintType">
+            <summary>
+            Type of the complaint
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintType.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintType.BiddingComplaint">
+            <summary>
+            Bidding complaint
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintType.LeaseComplaint">
+            <summary>
+            Lease complaint
+            </summary>
+        </member>
+        <member name="F:Complaint.API.Enums.ComplaintType.UsePermitComplaint">
+            <summary>
+            Use permit complaint
+            </summary>
+        </member>
+        <member name="T:Complaint.API.Enums.ComplaintTypeConverter">
+            <summary>
+            Converts ComplaintType to string and vice versa
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Enums.ComplaintTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads complaint type from string
+            </summary>
+            <param name="reader"> Utf8JsonReader for reading complaint type</param>
+            <param name="typeToConvert"> Type to convert for ComplaintTypeConverter</param>
+            <param name="options"> JsonSerializerOptions for ComplaintTypeConverter</param>
+            <returns> ComplaintType</returns>
+            <exception cref="T:System.Text.Json.JsonException"> Unable to map role string to complaint type</exception>
+        </member>
+        <member name="M:Complaint.API.Enums.ComplaintTypeConverter.Write(System.Text.Json.Utf8JsonWriter,Complaint.API.Enums.ComplaintType,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes complaint type to string
+            </summary>
+            <param name="writer"> Utf8JsonWriter for writing complaint type</param>
+            <param name="value"> ComplaintType to write</param>
+            <param name="options"> JsonSerializerOptions for ComplaintTypeConverter</param>
+        </member>
+        <member name="T:Complaint.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Complaint.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Complaint.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Complaint.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Complaint.API.Models.ComplaintGetResponseModel">
+            <summary>
+            Get response model for a complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.Guid">
+            <summary>
+            The unique identifier for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.Type">
+            <summary>
+            The type of complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.DateSubmitted">
+            <summary>
+            The date the complaint was submitted
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.BuyerGuid">
+            <summary>
+            The unique identifier of the buyer
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.Reason">
+            <summary>
+            The reason for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.Rationale">
+            <summary>
+            The rationale for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.ResolutionDate">
+            <summary>
+            The date the complaint was resolved
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.ResolutionCode">
+            <summary>
+            The resolution code for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.Status">
+            <summary>
+            The status of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.SubjectGuid">
+            <summary>
+            The unique identifier of the subject
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintGetResponseModel.Action">
+            <summary>
+            The action taken on the complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Models.ComplaintGetResponseModel.#ctor(System.Guid,Complaint.API.Enums.ComplaintType,System.DateTime,System.Guid,System.String,System.String,System.DateTime,System.String,Complaint.API.Enums.ComplaintStatus,System.Guid,Complaint.API.Enums.ComplaintAction)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="guid"></param>
+            <param name="type"></param>
+            <param name="dateSubmitted"></param>
+            <param name="buyerGuid"></param>
+            <param name="reason"></param>
+            <param name="rationale"></param>
+            <param name="resolutionDate"></param>
+            <param name="resolutionCode"></param>
+            <param name="status"></param>
+            <param name="subjectGuid"></param>
+            <param name="action"></param>
+        </member>
+        <member name="T:Complaint.API.Models.ComplaintPatchRequestModel">
+            <summary>
+            Patch request model for a complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.Type">
+            <summary>
+            The type of complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.DateSubmitted">
+            <summary>
+            The date the complaint was submitted
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.BuyerGuid">
+            <summary>
+            The unique identifier of the buyer
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.Reason">
+            <summary>
+            The reason for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.Rationale">
+            <summary>
+            The rationale for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.ResolutionDate">
+            <summary>
+            The date the complaint was resolved
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.ResolutionCode">
+            <summary>
+            The resolution code for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.Status">
+            <summary>
+            The status of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.SubjectGuid">
+            <summary>
+            The unique identifier of the subject
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchRequestModel.Action">
+            <summary>
+            The action to take on the complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Models.ComplaintPatchRequestModel.#ctor(System.Nullable{Complaint.API.Enums.ComplaintType},System.Nullable{System.DateTime},System.Nullable{System.Guid},System.String,System.String,System.Nullable{System.DateTime},System.String,System.Nullable{Complaint.API.Enums.ComplaintStatus},System.Nullable{System.Guid},System.Nullable{Complaint.API.Enums.ComplaintAction})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="type"></param>
+            <param name="dateSubmitted"></param>
+            <param name="buyerGuid"></param>
+            <param name="reason"></param>
+            <param name="rationale"></param>
+            <param name="resolutionDate"></param>
+            <param name="resolutionCode"></param>
+            <param name="status"></param>
+            <param name="subjectGuid"></param>
+            <param name="action"></param>
+        </member>
+        <member name="T:Complaint.API.Models.ComplaintPatchResponseModel">
+            <summary>
+            Patch response model for a complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.Guid">
+            <summary>
+            The unique identifier for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.Type">
+            <summary>
+            The type of complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.DateSubmitted">
+            <summary>
+            The date the complaint was submitted
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.BuyerGuid">
+            <summary>
+            The unique identifier of the buyer
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.Reason">
+            <summary>
+            The reason for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.Rationale">
+            <summary>
+            The rationale for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.ResolutionDate">
+            <summary>
+            The date the complaint was resolved
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.ResolutionCode">
+            <summary>
+            The resolution code for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.Status">
+            <summary>
+            The status of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.SubjectGuid">
+            <summary>
+            The unique identifier of the subject
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPatchResponseModel.Action">
+            <summary>
+            The action taken on the complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Models.ComplaintPatchResponseModel.#ctor(System.Guid,Complaint.API.Enums.ComplaintType,System.DateTime,System.Guid,System.String,System.String,System.DateTime,System.String,Complaint.API.Enums.ComplaintStatus,System.Guid,Complaint.API.Enums.ComplaintAction)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="guid"></param>
+            <param name="type"></param>
+            <param name="dateSubmitted"></param>
+            <param name="buyerGuid"></param>
+            <param name="reason"></param>
+            <param name="rationale"></param>
+            <param name="resolutionDate"></param>
+            <param name="resolutionCode"></param>
+            <param name="status"></param>
+            <param name="subjectGuid"></param>
+            <param name="action"></param>
+        </member>
+        <member name="T:Complaint.API.Models.ComplaintPostRequestModel">
+            <summary>
+            Post request model for a complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.Type">
+            <summary>
+            The type of complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.DateSubmitted">
+            <summary>
+            The date the complaint was submitted
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.BuyerGuid">
+            <summary>
+            The unique identifier of the buyer
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.Reason">
+            <summary>
+            The reason for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.Rationale">
+            <summary>
+            The rationale for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.ResolutionDate">
+            <summary>
+            The date the complaint was resolved
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.ResolutionCode">
+            <summary>
+            The resolution code for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.Status">
+            <summary>
+            The status of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.SubjectGuid">
+            <summary>
+            The unique identifier of the subject
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostRequestModel.Action">
+            <summary>
+            The action to take on the complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Models.ComplaintPostRequestModel.#ctor(Complaint.API.Enums.ComplaintType,System.DateTime,System.Guid,System.String,System.String,System.DateTime,System.String,Complaint.API.Enums.ComplaintStatus,System.Guid,Complaint.API.Enums.ComplaintAction)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="type"></param>
+            <param name="dateSubmitted"></param>
+            <param name="buyerGuid"></param>
+            <param name="reason"></param>
+            <param name="rationale"></param>
+            <param name="resolutionDate"></param>
+            <param name="resolutionCode"></param>
+            <param name="status"></param>
+            <param name="subjectGuid"></param>
+            <param name="action"></param>
+        </member>
+        <member name="T:Complaint.API.Models.ComplaintPostResponseModel">
+            <summary>
+            Post response model for a complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.Type">
+            <summary>
+            The type of complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.DateSubmitted">
+            <summary>
+            The date the complaint was submitted
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.BuyerGuid">
+            <summary>
+            The unique identifier of the buyer
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.Reason">
+            <summary>
+            The reason for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.Rationale">
+            <summary>
+            The rationale for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.ResolutionDate">
+            <summary>
+            The date the complaint was resolved
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.ResolutionCode">
+            <summary>
+            The resolution code for the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.Status">
+            <summary>
+            The status of the complaint
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.SubjectGuid">
+            <summary>
+            The unique identifier of the subject
+            </summary>
+        </member>
+        <member name="P:Complaint.API.Models.ComplaintPostResponseModel.Action">
+            <summary>
+            The action taken on the complaint
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Models.ComplaintPostResponseModel.#ctor(Complaint.API.Enums.ComplaintType,System.DateTime,System.Guid,System.String,System.String,System.DateTime,System.String,Complaint.API.Enums.ComplaintStatus,System.Guid,Complaint.API.Enums.ComplaintAction)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="type"></param>
+            <param name="dateSubmitted"></param>
+            <param name="buyerGuid"></param>
+            <param name="reason"></param>
+            <param name="rationale"></param>
+            <param name="resolutionDate"></param>
+            <param name="resolutionCode"></param>
+            <param name="status"></param>
+            <param name="subjectGuid"></param>
+            <param name="action"></param>
+        </member>
+        <member name="T:Complaint.API.Profiles.ComplaintProfile">
+            <summary>
+            AutoMapper profile for mapping between entities and response/request models for complaints.
+            </summary>
+        </member>
+        <member name="M:Complaint.API.Profiles.ComplaintProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Complaint.API.Profiles.ComplaintProfile"/> class and sets up mappings between
+            <see cref="T:Complaint.API.Entities.Complaint"/> and its corresponding response/request models.
+            </summary>
+        </member>
     </members>
 </doc>

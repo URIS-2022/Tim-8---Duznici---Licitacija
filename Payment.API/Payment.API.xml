@@ -4,5 +4,759 @@
         <name>Payment.API</name>
     </assembly>
     <members>
+        <member name="T:Payment.API.Controllers.PaymentsController">
+            <summary>
+            Controller class for managing payments in the Payment API.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentsController.#ctor(Payment.API.Data.Repository.IPaymentRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the PaymentsController class with the specified dependencies.
+            </summary>
+            <param name="paymentRepository">An object that implements the IPaymentRepository interface for accessing payment data.</param>
+            <param name="mapper">An IMapper object used to map between domain model objects and response/request model objects.</param>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentsController.GetAllPayments">
+            <summary>
+            Retrieves all payments from the payment repository.
+            </summary>
+            <returns>A list of PaymentResponseModel objects representing the payments.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentsController.GetPaymentByGuid(System.Guid)">
+            <summary>
+            Retrieves a single payment with the specified ID from the payment repository.
+            </summary>
+            <param name="id">The ID of the payment to retrieve.</param>
+            <returns>A PaymentResponseModel object representing the payment, or a NotFoundResult if no payment with the specified ID was found.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentsController.AddPayment(Payment.API.Models.PaymentModel.PaymentRequestModel)">
+            <summary>
+            Adds a new payment to the payment repository.
+            </summary>
+            <param name="requestModel">A PaymentRequestModel object representing the payment to add.</param>
+            <returns>A CreatedAtActionResult object representing the newly created payment, or a BadRequestResult if the request model was invalid.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentsController.DeletePayment(System.Guid)">
+            <summary>
+            Deletes a payment with the specified ID from the payment repository.
+            </summary>
+            <param name="id">The ID of the payment to delete.</param>
+            <returns>A NoContentResult indicating that the payment was successfully deleted, or a NotFoundResult if no payment with the specified ID was found.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentsController.PutPayment(System.Guid,Payment.API.Models.PaymentModels.PaymentUpdateModel)">
+            <summary>
+            Updates an existing payment with the specified ID in the payment repository.
+            </summary>
+            <param name="id">The ID of the payment to update.</param>
+            <param name="paymentUpdateModel">A PaymentUpdateModel object representing the updated payment information.</param>
+            <returns>A NoContentResult indicating that the payment was successfully updated, or a BadRequestResult if the payment with the specified ID was not found or the payment update model was invalid.</returns>
+        </member>
+        <member name="T:Payment.API.Controllers.PaymentWarrantsController">
+            <summary>
+            Controller for managing payment warrants.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.#ctor(Payment.API.Data.Repository.IPaymentWarrantRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the PaymentWarrantsController class with the specified dependencies.
+            </summary>
+            <param name="paymentWarrantRepository">An object that implements the IPaymentWarrantRepository interface for accessing payment warrant data.</param>
+            <param name="mapper">An IMapper object used to map between domain model objects and response/request model objects.</param>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.GetAllPaymentWarrants">
+            <summary>
+            Returns a collection of all payment warrants.
+            </summary>
+            <returns>An ActionResult object containing a collection of PaymentWarrantResponseModel objects, or a 204 No Content response if there are no payment warrants.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.GetByReferenceNumber(System.String)">
+            <summary>
+            Returns a payment warrant with the specified reference number.
+            </summary>
+            <param name="referenceNumber">The reference number of the payment warrant to retrieve.</param>
+            <returns>An ActionResult object containing a PaymentWarrantResponseModel object if the payment warrant is found, or a 404 Not Found response if it is not found.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.GetPaymentWarrantByGuid(System.Guid)">
+            <summary>
+            Returns a payment warrant with the specified GUID.
+            </summary>
+            <param name="id">The GUID of the payment warrant to retrieve.</param>
+            <returns>An ActionResult object containing a PaymentWarrantResponseModel object if the payment warrant is found, or a 404 Not Found response if it is not found.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.UpdatePaymentWarrant(System.String,Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel)">
+            Updates a payment warrant by reference number.
+            
+            @param referenceNumber The reference number of the payment warrant to update.
+            @param paymentWarrantUpdateModel The PaymentWarrantUpdateModel representing the updated payment warrant.
+            @return NoContent if successful, BadRequest if the payment warrant or update model is null.
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.AddPaymentWarrant(Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel)">
+            <summary>
+            Creates a new payment warrant and adds it to the payment warrants repository.
+            </summary>
+            <param name="requestModel">The payment warrant request model containing the payment warrant data.</param>
+            <returns>An ActionResult of PaymentWarrantResponseModel representing the created payment warrant.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.DeletePaymentWarrantByReferenceNumber(System.String)">
+            <summary>
+            Deletes a payment warrant by its unique identifier.
+            </summary>
+            <param name="referenceNumber">The unique identifier of the payment warrant to be deleted.</param>
+            <returns>A NoContentResult if the payment warrant was successfully deleted, otherwise a NotFoundResult.</returns>
+        </member>
+        <member name="M:Payment.API.Controllers.PaymentWarrantsController.DeletePaymentWarrant(System.Guid)">
+            <summary>
+            Deletes a payment warrant by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the payment warrant to be deleted.</param>
+            <returns>A NoContentResult if the payment warrant was successfully deleted, otherwise a NotFoundResult.</returns>
+        </member>
+        <member name="T:Payment.API.Data.PaymentDBContext">
+            <summary>
+            Represents a database context for the Payment application.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Data.PaymentDBContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the PaymentDBContext class.
+            </summary>
+            <param name="options">The DbContextOptions to be used by the context.</param>
+            <param name="configuration">The IConfiguration used to configure the context.</param>
+        </member>
+        <member name="P:Payment.API.Data.PaymentDBContext.Payments">
+            <summary>
+            Gets or sets the Payments table in the database.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Data.PaymentDBContext.PaymentWarrants">
+            <summary>
+            Gets or sets the PaymentWarrants table in the database.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Data.PaymentDBContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Payment.API.Data.Repository.IPaymentRepository">
+            <summary>
+             Represents a repository for managing Payment entities.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentRepository.GetAllPayments">
+            <summary>
+             Returns all Payment entities.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentRepository.GetPaymentByGuid(System.Guid)">
+            <summary>
+             Returns a Payment entity by its unique identifier.
+            </summary>
+            <param name="guid">The unique identifier of the Payment entity to retrieve.</param>
+            <returns>The Payment entity with the specified unique identifier, or null if not found.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentRepository.AddPayment(Payment.API.Entities.Payment)">
+            <summary>
+             Adds a new Payment entity.
+            </summary>
+            <param name="paymentEntity">The Payment entity to add.</param>
+            <returns>The added Payment entity, or null if it could not be added.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentRepository.UpdatePayment(Payment.API.Entities.Payment)">
+            <summary>
+             Updates an existing Payment entity.
+            </summary>
+            <param name="paymentEntity">The Payment entity to update.</param>
+            <returns>The updated Payment entity, or null if it could not be updated.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentRepository.DeletePayment(System.Guid)">
+            <summary>
+             Deletes a Payment entity by its unique identifier.
+            </summary>
+            <param name="guid">The unique identifier of the Payment entity to delete.</param>
+        </member>
+        <member name="T:Payment.API.Data.Repository.IPaymentWarrantRepository">
+            <summary>
+            Repository interface for managing payment warrants.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetAllPaymentWarrants">
+            <summary>
+            Gets all PaymentWarrants from the database.
+            </summary>
+            <returns>An asynchronous task that returns an enumerable of SystemUser entities.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetPaymentWarrantByGuid(System.Guid)">
+            <summary>
+            Gets a PaymentWarrant by its Guid identifier.
+            </summary>
+            <param name="guid">The Guid identifier of the PaymentWarrant.</param>
+            <returns>An asynchronous task that returns the PaymentWarrant entity with the specified Guid identifier, or null if no such entity exists.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetByReferenceNumber(System.String)">
+            <summary>
+            Gets a PaymantWarrant by its referenceNumber.
+            </summary>
+            <param name="referenceNumber">The referenceNumber of the PaymantWarrant.</param>
+            <returns>An asynchronous task that returns the PaymantWarrant entity with the specified referenceNumber, or null if no such entity exists.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.AddPaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <summary>
+            Adds a new PaymentWarrant to the database.
+            </summary>
+            <param name="paymentWarrant">The PaymentWarrant entity to add to the database.</param>
+            <returns>An asynchronous task that returns the added PaymantWarrant entity.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.UpdatePaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <summary>
+            Updates an existing PaymentWarrant in the database.
+            </summary>
+            <param name="paymentWarrant">The PaymentWarrant entity to update in the database.</param>
+            <returns>An asynchronous task that returns the updated PaymntWarrant entity.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrant(System.Guid)">
+            <summary>
+            Deletes a PaymentWarrant from the database by its Guid identifier.
+            </summary>
+            <param name="guid">The Guid identifier of the PaymentWarrant to delete.</param>
+            <returns>An asynchronous task that represents the operation.</returns>
+        </member>
+        <member name="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(System.String)">
+            <summary>
+            Deletes a PaymentWarrant from the database by its username.
+            </summary>
+            <param name="referenceNumber">The referenceNumber of the PaymentWarrant to delete.</param>
+            <returns>An asynchronous task that represents the operation.</returns>
+        </member>
+        <member name="T:Payment.API.Data.Repository.PaymentRepository">
+            <summary>
+            Repository class for Payment entity. Implements <see cref="T:Payment.API.Data.Repository.IPaymentRepository"/>.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentRepository.#ctor(Payment.API.Data.PaymentDBContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Data.Repository.PaymentRepository"/> class.
+            </summary>
+            <param name="context">The PaymentDBContext object.</param>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentRepository.GetAllPayments">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentRepository.GetAllPayments"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentRepository.GetPaymentByGuid(System.Guid)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentRepository.GetPaymentByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentRepository.AddPayment(Payment.API.Entities.Payment)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentRepository.AddPayment(Payment.API.Entities.Payment)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentRepository.DeletePayment(System.Guid)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentRepository.DeletePayment(System.Guid)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentRepository.UpdatePayment(Payment.API.Entities.Payment)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentRepository.UpdatePayment(Payment.API.Entities.Payment)"/>
+        </member>
+        <member name="T:Payment.API.Data.Repository.PaymentWarrantRepository">
+            <summary>
+            Repository class for managing payment warrants in the database.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.#ctor(Payment.API.Data.PaymentDBContext)">
+            <summary>
+            Initializes a new instance of the PaymentWarrantRepository class.
+            </summary>
+            <param name="context">The database context to use for data access.</param>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.GetAllPaymentWarrants">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetAllPaymentWarrants"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.AddPaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.AddPaymentWarrant(Payment.API.Entities.PaymentWarrant)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.DeletePaymentWarrant(System.Guid)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrant(System.Guid)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(System.String)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(System.String)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.GetPaymentWarrantByGuid(System.Guid)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetPaymentWarrantByGuid(System.Guid)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.GetByReferenceNumber(System.String)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.GetByReferenceNumber(System.String)"/>
+        </member>
+        <member name="M:Payment.API.Data.Repository.PaymentWarrantRepository.UpdatePaymentWarrant(Payment.API.Entities.PaymentWarrant)">
+            <inheritdoc cref="M:Payment.API.Data.Repository.IPaymentWarrantRepository.UpdatePaymentWarrant(Payment.API.Entities.PaymentWarrant)"/>
+        </member>
+        <member name="T:Payment.API.Entities.Payment">
+            <summary>
+            Represents a payment warrant entity.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.Guid">
+            <summary>
+            The unique identifier for the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.AccountNumber">
+            <summary>
+            The account number for the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.ReferenceNumber">
+            <summary>
+            The reference number for the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.TotalAmount">
+            <summary>
+            The total amount for the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.PayerGuid">
+            <summary>
+            The unique identifier of the payer.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.PaymentTitle">
+            <summary>
+            The title of the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.PaymentDate">
+            <summary>
+            The date of the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.PublicBiddingGuid">
+            <summary>
+            The unique identifier of the public bidding.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.Payment.PaymentWarrant">
+            <summary>
+            The payment warrant associated with the payment.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Entities.Payment.#ctor">
+            <summary>
+            Default constructor for Payment class.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Entities.Payment.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the Payment object using the specified context.
+            </summary>
+            <param name="validationContext">The context to use for validation.</param>
+            <returns>An enumerable collection of ValidationResult objects.</returns>
+        </member>
+        <member name="T:Payment.API.Entities.PaymentWarrant">
+            <summary>
+            Represents a payment warrant entity.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.PaymentWarrant.Guid">
+            <summary>
+            Gets or sets the unique identifier for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.PaymentWarrant.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.PaymentWarrant.PayerGuid">
+            <summary>
+            Gets or sets the unique identifier of the payer.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.PaymentWarrant.TotalAmount">
+            <summary>
+            Gets or sets the total amount for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.PaymentWarrant.PublicBiddingGuid">
+            <summary>
+            Gets or sets the unique identifier of the public bidding.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Entities.PaymentWarrant.Payments">
+            <summary>
+            Gets or sets the list of payments associated with this payment warrant.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Entities.PaymentWarrant.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Entities.PaymentWarrant"/> class.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Entities.PaymentWarrant.#ctor(System.Guid,System.String,System.Guid,System.Decimal,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Entities.PaymentWarrant"/> class with specified parameters.
+            </summary>
+            <param name="paymentWarrantGuid">The unique identifier for the payment warrant.</param>
+            <param name="referenceNumber">The reference number for the payment warrant.</param>
+            <param name="payerGuid">The unique identifier of the payer.</param>
+            <param name="totalAmount">The total amount for the payment warrant.</param>
+            <param name="publicBiddingGuid">The unique identifier of the public bidding.</param>
+        </member>
+        <member name="M:Payment.API.Entities.PaymentWarrant.#ctor(System.String,System.Guid,System.Decimal,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Entities.PaymentWarrant"/> class with specified parameters.
+            </summary>
+            <param name="referenceNumber">The reference number for the payment warrant.</param>
+            <param name="payerGuid">The unique identifier of the payer.</param>
+            <param name="totalAmount">The total amount for the payment warrant.</param>
+            <param name="publicBiddingGuid">The unique identifier of the public bidding.</param>
+        </member>
+        <member name="M:Payment.API.Entities.PaymentWarrant.#ctor(System.Guid,System.Guid,System.Decimal,System.Guid)">
+            <summary>
+            Constructor for creating a new PaymentWarrant object with a specified paymentWarrantGuid, payerGuid, totalAmount, and publicBiddingGuid.
+            </summary>
+            <param name="paymentWarrantGuid">The GUID of the payment warrant.</param>
+            <param name="payerGuid">The GUID of the payer.</param>
+            <param name="totalAmount">The total amount of the payment.</param>
+            <param name="publicBiddingGuid">The GUID of the public bidding.</param>
+        </member>
+        <member name="M:Payment.API.Entities.PaymentWarrant.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the PaymentWarrant object.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>An IEnumerable of ValidationResult objects.</returns>
+        </member>
+        <member name="T:Payment.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Payment.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Payment.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Payment.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Payment.API.Models.PaymentModel.PaymentRequestModel">
+            <summary>
+            Represents a payment request model.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModel.PaymentRequestModel.AccountNumber">
+            <summary>
+            Gets or sets the account number for the payment request.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModel.PaymentRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number for the payment request.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModel.PaymentRequestModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount for the payment request.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModel.PaymentRequestModel.PayerGuid">
+            <summary>
+            Gets or sets the payer GUID for the payment request.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModel.PaymentRequestModel.PaymentTitle">
+            <summary>
+            Gets or sets the payment title for the payment request.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModel.PaymentRequestModel.PaymentDate">
+            <summary>
+            Gets or sets the payment date for the payment request.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModel.PaymentRequestModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the public bidding GUID for the payment request.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Models.PaymentModel.PaymentRequestModel.#ctor(System.String,System.String,System.Decimal,System.Guid,System.String,System.DateTime,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Models.PaymentModel.PaymentRequestModel"/> class.
+            </summary>
+            <param name="accountNumber">The account number for the payment request.</param>
+            <param name="referenceNumber">The reference number for the payment request.</param>
+            <param name="totalAmount">The total amount for the payment request.</param>
+            <param name="payerGuid">The payer GUID for the payment request.</param>
+            <param name="paymentTitle">The payment title for the payment request.</param>
+            <param name="paymentDate">The payment date for the payment request.</param>
+            <param name="publicBiddingGuid">The public bidding GUID for the payment request.</param>
+        </member>
+        <member name="T:Payment.API.Models.PaymentModels.PaymentResponseModel">
+            <summary>
+            Data contract for a Payment response.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.Guid">
+            <summary>
+            Gets or sets the GUID of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.AccountNumber">
+            <summary>
+            Gets or sets the account number of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.PayerGuid">
+            <summary>
+            Gets or sets the payer GUID of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.PaymentTitle">
+            <summary>
+            Gets or sets the payment title of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.PaymentDate">
+            <summary>
+            Gets or sets the payment date of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the public bidding GUID of the Payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentResponseModel.PaymentWarrant">
+            <summary>
+            Gets or sets the PaymentWarrant associated with the Payment.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Models.PaymentModels.PaymentResponseModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Models.PaymentModels.PaymentResponseModel"/> class.
+            </summary>
+        </member>
+        <member name="T:Payment.API.Models.PaymentModels.PaymentUpdateModel">
+            <summary>
+            Represents a model for updating a payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentUpdateModel.AccountNumber">
+            <summary>
+            Gets or sets the account number associated with the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentUpdateModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number associated with the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentUpdateModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount of the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentUpdateModel.PayerGuid">
+            <summary>
+            Gets or sets the payer's unique identifier associated with the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentUpdateModel.PaymentTitle">
+            <summary>
+            Gets or sets the title associated with the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentUpdateModel.PaymentDate">
+            <summary>
+            Gets or sets the payment date associated with the payment.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentModels.PaymentUpdateModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the public bidding's unique identifier associated with the payment.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Models.PaymentModels.PaymentUpdateModel.#ctor(System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Guid},System.String,System.Nullable{System.DateTime},System.Nullable{System.Guid})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Models.PaymentModels.PaymentUpdateModel"/> class with the specified properties.
+            </summary>
+            <param name="accountNumber">The account number associated with the payment.</param>
+            <param name="referenceNumber">The reference number associated with the payment.</param>
+            <param name="totalAmount">The total amount of the payment.</param>
+            <param name="payerGuid">The payer's unique identifier associated with the payment.</param>
+            <param name="paymentTitle">The title associated with the payment.</param>
+            <param name="paymentDate">The payment date associated with the payment.</param>
+            <param name="publicBiddingGuid">The public bidding's unique identifier associated with the payment.</param>
+        </member>
+        <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel">
+            <summary>
+            Represents a payment warrant payment response model.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.Guid">
+            <summary>
+            Gets or sets the unique identifier for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.PayerGuid">
+            <summary>
+            Gets or sets the unique identifier of the payer associated with the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantPaymentResponseModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the unique identifier for the public bidding associated with the payment warrant.
+            </summary>
+        </member>
+        <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel">
+            <summary>
+            Represents a payment warrant request model.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel.PayerGuid">
+            <summary>
+            Gets or sets the payer GUID for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the public bidding GUID for the payment warrant.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel.#ctor(System.String,System.Guid,System.Decimal,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantRequestModel"/> class with the specified values.
+            </summary>
+            <param name="referenceNumber">The reference number for the payment warrant.</param>
+            <param name="payerGuid">The payer GUID for the payment warrant.</param>
+            <param name="totalAmount">The total amount for the payment warrant.</param>
+            <param name="publicBiddingGuid">The public bidding GUID for the payment warrant.</param>
+        </member>
+        <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel">
+            <summary>
+            Represents the response model for a payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.Guid">
+            <summary>
+            Gets or sets the GUID of the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.ReferenceNumber">
+            <summary>
+            Gets or sets the reference number of the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.PayerGuid">
+            <summary>
+            Gets or sets the GUID of the payer associated with the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount of the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the GUID of the public bidding associated with the payment warrant.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Models.PaymentWarrantModel.PaymentWarrantResponseModel.#ctor(System.String,System.Guid,System.Decimal,System.Guid)">
+            <summary>
+            Initializes a new instance of the PaymentWarrantResponseModel class with the specified values.
+            </summary>
+            <param name="referenceNumber">The reference number of the payment warrant.</param>
+            <param name="payerGuid">The GUID of the payer associated with the payment warrant.</param>
+            <param name="totalAmount">The total amount of the payment warrant.</param>
+            <param name="publicBiddingGuid">The GUID of the public bidding associated with the payment warrant.</param>
+        </member>
+        <member name="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel">
+            <summary>
+            Represents a model for updating a payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel.PayerGuid">
+            <summary>
+            Gets or sets the payer GUID for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel.TotalAmount">
+            <summary>
+            Gets or sets the total amount for the payment warrant.
+            </summary>
+        </member>
+        <member name="P:Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel.PublicBiddingGuid">
+            <summary>
+            Gets or sets the public bidding GUID for the payment warrant.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel.#ctor(System.Nullable{System.Guid},System.Nullable{System.Decimal},System.Nullable{System.Guid})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Payment.API.Models.PaymentWarrantModel.PaymentWarrantUpdateModel"/> class with the specified parameters.
+            </summary>
+            <param name="payerGuid">The payer GUID for the payment warrant.</param>
+            <param name="totalAmount">The total amount for the payment warrant.</param>
+            <param name="publicBiddingGuid">The public bidding GUID for the payment warrant.</param>
+        </member>
+        <member name="T:Payment.API.Models.PaymentWarrantModel.PWResponseForPaymentcs">
+            <summary>
+            Represents a model for updating a payment warrant.
+            </summary>
+        </member>
+        <member name="T:Payment.API.Models.PaymentWarrantPaymentModel.PaymentWarrantPaymentRequestcs">
+            <summary>
+            Represents a model for request a payment warrant.
+            </summary>
+        </member>
+        <member name="T:Payment.API.Profiles.PaymentProfile">
+            <summary>
+            AutoMapper profile for Payment related classes.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Profiles.PaymentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the PaymentProfile class.
+            </summary>
+        </member>
+        <member name="T:Payment.API.Profiles.PaymentWarrantPaymentProfile">
+            <summary>
+            AutoMapper profile for PaymentWarrant related classes.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Profiles.PaymentWarrantPaymentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the PaymentWarrantPaymentProfile class.
+            </summary>
+        </member>
+        <member name="T:Payment.API.Profiles.PaymentWarrantProfile">
+            <summary>
+            AutoMapper profile for PaymentWarrant related classes.
+            </summary>
+        </member>
+        <member name="M:Payment.API.Profiles.PaymentWarrantProfile.#ctor">
+            <summary>
+            Initializes a new instance of the PaymentWarrantPaymentProfile class.
+            </summary>
+        </member>
     </members>
 </doc>
