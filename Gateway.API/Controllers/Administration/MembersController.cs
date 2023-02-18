@@ -52,7 +52,7 @@ public class MembersController : ControllerBase
     /// <returns> A no content response. </returns>
     /// <response code="204"> The member was successfully updated. </response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PatchMember(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -64,7 +64,7 @@ public class MembersController : ControllerBase
     /// <response code="201"> The member was successfully created. </response>
     /// <response code="400"> The member data was invalid. </response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> PostMember(object postModel)
         => serviceProxy.Post(postModel);
 
@@ -76,7 +76,7 @@ public class MembersController : ControllerBase
     /// <response code="204"> The member was successfully deleted. </response>
     /// <response code="404"> The member with the specified ID was not found. </response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> DeleteMember(string id)
         => serviceProxy.Delete(id);
 }
