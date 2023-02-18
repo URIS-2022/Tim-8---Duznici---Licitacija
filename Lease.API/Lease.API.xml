@@ -118,16 +118,16 @@
             <param name="id">The identifier of the document to delete.</param>
             <returns>The deleted document.</returns>
         </member>
-        <member name="T:Lease.API.Migrations.FinalMigration">
+        <member name="T:Lease.API.Migrations.update4">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.FinalMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lease.API.Migrations.update4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.FinalMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Lease.API.Migrations.update4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Lease.API.Migrations.FinalMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Lease.API.Migrations.update4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:Lease.API.Models.DocumentGetResponseModel">

@@ -20,7 +20,7 @@ public class LeaseAgreementPatchRequestModel
 
     public DateTime? DateOfSigning { get; set; }
 
-    public Guid? BiddingGuid { get; set; }
+    public Guid? PublicBiddingGuid { get; set; }
 
     public Guid? PersonGuid { get; set; }
 
@@ -41,7 +41,7 @@ public class LeaseAgreementPatchRequestModel
         DeadlineLandReturn = deadlineLandReturn;
         PlaceOfSigning = placeOfSigning;
         DateOfSigning = dateOfSigning;
-        BiddingGuid = biddingGuid;
+        PublicBiddingGuid = biddingGuid;
         PersonGuid = personGuid;
         DocumentStatus = documentStatus;
         DueDateGuid = dueDateGuid;

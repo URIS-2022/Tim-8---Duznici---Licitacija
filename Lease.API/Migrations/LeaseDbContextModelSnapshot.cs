@@ -55,9 +55,24 @@ namespace Lease.API.Migrations
 
                     b.HasKey("Guid");
 
-                    b.HasIndex("PersonGuid");
+                    b.HasIndex("PersonGuid")
+                        .IsUnique();
 
                     b.ToTable("Buyers");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("600f70cc-2384-4ea7-95fa-9ef269736e3f"),
+                            Ban = false,
+                            BanDuration = 0,
+                            BanEndDate = new DateTime(2023, 2, 17, 16, 33, 22, 979, DateTimeKind.Local),
+                            BiddingGuid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            PersonGuid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            Priorities = "[2,1]",
+                            RealisedArea = 20,
+                            StartDateOfBan = new DateTime(2023, 2, 17, 16, 33, 22, 979, DateTimeKind.Local)
+                        });
                 });
 
             modelBuilder.Entity("Lease.API.Entities.Document", b =>
@@ -94,6 +109,18 @@ namespace Lease.API.Migrations
                         .IsUnique();
 
                     b.ToTable("Documents");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            DateCertified = new DateTime(2023, 2, 17, 15, 35, 11, 651, DateTimeKind.Utc),
+                            DateSubbmitted = new DateTime(2023, 2, 17, 15, 35, 11, 651, DateTimeKind.Utc),
+                            LeaseAgreementGuid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            ReferenceNumber = "lll",
+                            Template = "SV obrazac",
+                            Type = 1
+                        });
                 });
 
             modelBuilder.Entity("Lease.API.Entities.DueDate", b =>
@@ -108,15 +135,19 @@ namespace Lease.API.Migrations
                     b.HasKey("Guid");
 
                     b.ToTable("DueDates");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("b415d4f5-6342-41f3-9935-08db10fc223b"),
+                            Date = new DateTime(2023, 1, 17, 15, 32, 2, 236, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Lease.API.Entities.LeaseAgreement", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BiddingGuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateOfSigning")
@@ -147,6 +178,9 @@ namespace Lease.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("PublicBiddingGuid")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ReferenceNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -159,6 +193,23 @@ namespace Lease.API.Migrations
                         .IsUnique();
 
                     b.ToTable("LeaseAgreements");
+
+                    b.HasData(
+                        new
+                        {
+                            Guid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            DateOfSigning = new DateTime(2023, 2, 18, 17, 18, 11, 961, DateTimeKind.Local),
+                            DateRecording = new DateTime(2023, 2, 18, 17, 18, 11, 961, DateTimeKind.Local),
+                            DeadlineLandReturn = new DateTime(2023, 2, 18, 17, 18, 11, 961, DateTimeKind.Local),
+                            DocumentStatus = 0,
+                            DueDateGuid = new Guid("b415d4f5-6342-41f3-9935-08db10fc223b"),
+                            GuaranteeType = 0,
+                            MinisterGuid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            PersonGuid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            PlaceOfSigning = "string",
+                            PublicBiddingGuid = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                            ReferenceNumber = "string"
+                        });
                 });
 
             modelBuilder.Entity("Lease.API.Entities.Buyer", b =>

@@ -23,6 +23,7 @@ namespace Bidding.API.Models
         public int DepositReplenishmentAmount { get; set; }
 
         public Guid Round { get; set; }
+
         [JsonConverter(typeof(BiddingStatusConverter))]
 
         public BiddingStatus biddingStatus { get; set; }

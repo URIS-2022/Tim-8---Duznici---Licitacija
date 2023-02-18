@@ -2,6 +2,7 @@
 using Lease.API.Data.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Lease.API.Models.LeaseAgreementModels;
+using Lease.API.RabbitMQ;
 
 namespace Lease.API.Controllers;
 
@@ -18,18 +19,22 @@ public class LeaseAgreementController : ControllerBase
     {
         _LeaseAgreementRepository = LeaseAgreementRepository;
         this.mapper = mapper;
+        
     }
 
     // GET: api/LeaseAgreements
     [HttpGet]
     public async Task<ActionResult<IEnumerable<LeaseAgreementGetResponseModel>>> GetLeaseAgreement()
     {
+        
         var LeaseAgreements = await _LeaseAgreementRepository.GetAll();
         if (!LeaseAgreements.Any())
         {
             return NoContent();
         }
         var responseModel = mapper.Map<IEnumerable<LeaseAgreementGetResponseModel>>(LeaseAgreements);
+        
+        
         return Ok(responseModel);
     }
 

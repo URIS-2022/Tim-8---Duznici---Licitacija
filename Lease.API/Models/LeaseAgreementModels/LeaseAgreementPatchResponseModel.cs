@@ -24,7 +24,7 @@ public class LeaseAgreementPatchResponseModel
     [DataMember]
     public DateTime DateOfSigning { get; set; }
     [DataMember]
-    public Guid PublicBiddingGuid { get; set; }
+    public Guid? PublicBiddingGuid { get; set; }
     [DataMember]
     public Guid PersonGuid { get; set; }
     [DataMember]

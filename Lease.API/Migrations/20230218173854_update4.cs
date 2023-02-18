@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Lease.API.Migrations
 {
     /// <inheritdoc />
-    public partial class FinalMigration : Migration
+    public partial class update4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,7 +35,7 @@ namespace Lease.API.Migrations
                     DeadlineLandReturn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PlaceOfSigning = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfSigning = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PublicBiddingGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     PersonGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DocumentStatus = table.Column<int>(type: "int", nullable: false),
                     DueDateGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
@@ -99,10 +100,31 @@ namespace Lease.API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "DueDates",
+                columns: new[] { "Guid", "Date" },
+                values: new object[] { new Guid("b415d4f5-6342-41f3-9935-08db10fc223b"), new DateTime(2023, 1, 17, 15, 32, 2, 236, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "LeaseAgreements",
+                columns: new[] { "Guid", "DateOfSigning", "DateRecording", "DeadlineLandReturn", "DocumentStatus", "DueDateGuid", "GuaranteeType", "MinisterGuid", "PersonGuid", "PlaceOfSigning", "PublicBiddingGuid", "ReferenceNumber" },
+                values: new object[] { new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), new DateTime(2023, 2, 18, 17, 18, 11, 961, DateTimeKind.Local), new DateTime(2023, 2, 18, 17, 18, 11, 961, DateTimeKind.Local), new DateTime(2023, 2, 18, 17, 18, 11, 961, DateTimeKind.Local), 0, new Guid("b415d4f5-6342-41f3-9935-08db10fc223b"), 0, new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), "string", new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), "string" });
+
+            migrationBuilder.InsertData(
+                table: "Buyers",
+                columns: new[] { "Guid", "Ban", "BanDuration", "BanEndDate", "BiddingGuid", "PersonGuid", "Priorities", "RealisedArea", "StartDateOfBan" },
+                values: new object[] { new Guid("600f70cc-2384-4ea7-95fa-9ef269736e3f"), false, 0, new DateTime(2023, 2, 17, 16, 33, 22, 979, DateTimeKind.Local), new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), "[2,1]", 20, new DateTime(2023, 2, 17, 16, 33, 22, 979, DateTimeKind.Local) });
+
+            migrationBuilder.InsertData(
+                table: "Documents",
+                columns: new[] { "Guid", "DateCertified", "DateSubbmitted", "LeaseAgreementGuid", "ReferenceNumber", "Template", "Type" },
+                values: new object[] { new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), new DateTime(2023, 2, 17, 15, 35, 11, 651, DateTimeKind.Utc), new DateTime(2023, 2, 17, 15, 35, 11, 651, DateTimeKind.Utc), new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6"), "lll", "SV obrazac", 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Buyers_PersonGuid",
                 table: "Buyers",
-                column: "PersonGuid");
+                column: "PersonGuid",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Documents_LeaseAgreementGuid",

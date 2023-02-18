@@ -17,7 +17,7 @@ public partial class LeaseAgreement : IValidatableObject
     public DateTime DeadlineLandReturn { get; set; }
     public string PlaceOfSigning { get; set; }
     public DateTime DateOfSigning { get; set; }
-    public Guid BiddingGuid { get; set; }
+    public Guid? PublicBiddingGuid { get; set; }
     public Guid PersonGuid { get; set; }
 
     public virtual Buyer Buyer { get; set; }
@@ -34,7 +34,7 @@ public partial class LeaseAgreement : IValidatableObject
 
     public LeaseAgreement() {  }
 
-    public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, Guid dueDateguid)
+    public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid? BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, Guid dueDateguid)
     {
         this.Guid = Guid;
         this.GuaranteeType = GuaranteeType;
@@ -44,7 +44,7 @@ public partial class LeaseAgreement : IValidatableObject
         this.DeadlineLandReturn = DeadlineLandReturn;
         this.PlaceOfSigning = PlaceOfSigning;
         this.DateOfSigning = DateOfSigning;
-        this.BiddingGuid = BiddingGuid;
+        this.PublicBiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
         DueDateGuid=dueDateguid;
@@ -62,7 +62,7 @@ public partial class LeaseAgreement : IValidatableObject
         this.DeadlineLandReturn = DeadlineLandReturn;
         this.PlaceOfSigning = PlaceOfSigning;
         this.DateOfSigning = DateOfSigning;
-        this.BiddingGuid = BiddingGuid;
+        this.PublicBiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
         DueDateGuid = dueDateGuid;
@@ -78,10 +78,7 @@ public partial class LeaseAgreement : IValidatableObject
             results.Add(new ValidationResult("Lease Agreement Guid cannot be empty."));
         }
 
-        if (BiddingGuid == Guid.Empty)
-        {
-            results.Add(new ValidationResult("Bidding Guid cannot be empty."));
-        }
+     
 
         if (MinisterGuid == Guid.Empty)
         {

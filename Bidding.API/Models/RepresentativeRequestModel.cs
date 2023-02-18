@@ -11,6 +11,7 @@
 
         public int NumberOfBoard { get; set; }
 
+        
         public Guid PublicBiddingGuid { get; set; }
 
         

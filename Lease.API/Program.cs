@@ -1,5 +1,6 @@
 ﻿using Lease.API.Data;
 using Lease.API.Data.Repository;
+using Lease.API.RabbitMQ;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -113,7 +114,30 @@ builder.Services.AddDbContext<LeaseDbContext>(options =>
 
 builder.Services.AddControllers();
 
+
+
+RabbitMQListener listener = new RabbitMQListener("localhost", "my_queue", "guest", "guest");
+listener.StartListening(message => Console.WriteLine(message));
+
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+/* builder.Services.AddSingleton<RabbitMQListener>(sp =>
+{
+ // Get the configuration values for RabbitMQ host and queue name
+   var configuration = sp.GetRequiredService<IConfiguration>();
+
+   var hostName = builder.Configuration.GetValue<string>("RabbitMQ:HostName");
+   var queueName = builder.Configuration.GetValue<string>("RabbitMQ:QueueName");
+
+   // Create and return a new instance of RabbitMQListener
+   return new RabbitMQListener(
+       sp.GetRequiredService<ILogger<RabbitMQListener>>(),
+       hostName,
+       queueName
+   );
+});
+ */
 
 builder.Services.AddScoped<ILeaseAgreementRepository, LeaseAgreementRepository>();
 builder.Services.AddScoped<IDueDateRepository, DueDateRepository>();
@@ -131,22 +155,22 @@ app.UseCors("CorsPolicy");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    _ = app.UseSwagger();
-    _ = app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-    });
+   _ = app.UseSwagger();
+   _ = app.UseSwaggerUI(options =>
+   {
+       options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+   });
 }
 else // Ukoliko se nalazimo u Production modu postavljamo default poruku za greške koje nastaju na servisu
 {
-    _ = app.UseExceptionHandler(appBuilder =>
-    {
-        appBuilder.Run(async context =>
-        {
-            context.Response.StatusCode = 500;
-            await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
-        });
-    });
+   _ = app.UseExceptionHandler(appBuilder =>
+   {
+       appBuilder.Run(async context =>
+       {
+           context.Response.StatusCode = 500;
+           await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
+       });
+   });
 }
 
 

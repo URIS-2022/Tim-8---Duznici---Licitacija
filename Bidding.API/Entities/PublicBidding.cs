@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using Bidding.API.Enums;
@@ -6,6 +7,7 @@ using Bidding.API.Enums;
 
 namespace Bidding.API.Entities
 {
+    [DataContract(IsReference = true)]
     public partial class PublicBidding : IValidatableObject
     {
         public Guid Guid { get; set; }
@@ -18,7 +20,8 @@ namespace Bidding.API.Entities
         [JsonConverter(typeof(MunicipalityConverter))]
         public Municipality municipality { get; set; }
         public int AuctionedPrice { get; set; }
-        public Guid BestBuyerGuid { get; set; }
+        public Guid? BestBuyerGuid { get; set; }
+
         [JsonConverter(typeof(PublicBiddingTypeConverter))]
         public PublicBiddingType public_bidding_type { get; set; }
         public Guid AddresGuid { get; set; }
@@ -34,11 +37,11 @@ namespace Bidding.API.Entities
 
         public Address Address { get; set; }
 
-        public ICollection<PublicBiddingLot> PublicBiddingLots { get; set; }
+        public virtual ICollection<PublicBiddingLot> PublicBiddingLots { get; set; }
 
-        public ICollection<Document> Documents { get; set; }
+        public virtual ICollection<Document> Documents { get; set; }
 
-        public ICollection<BiddingOffer> BiddingOffers { get; set; }
+        public virtual ICollection<BiddingOffer> BiddingOffers { get; set; }
 
         public PublicBidding() { }
         public PublicBidding(
@@ -50,7 +53,7 @@ namespace Bidding.API.Entities
          string expected,
          Municipality municipality,
          int auctionedPrice,
-         Guid bestBuyerGuid,
+         Guid? bestBuyerGuid,
          PublicBiddingType public_bidding_type,
          Guid addressGuid,
          int leasePeriod,
@@ -85,7 +88,7 @@ namespace Bidding.API.Entities
          string expected,
          Municipality municipality,
          int auctionedPrice,
-         Guid bestBuyerGuid,
+         Guid? bestBuyerGuid,
          PublicBiddingType public_bidding_type,
          Guid addressGuid,
          int leasePeriod,
@@ -169,21 +172,13 @@ namespace Bidding.API.Entities
             }
 
 
-            if (BestBuyerGuid == Guid.Empty)
-            {
-                results.Add(new ValidationResult("Guid cannot be empty."));
-            }
-
+         
 
             return results;
         }
 
 
 
-
-
-        [GeneratedRegex("^[a-zA-Z0-9._-]+$")]
-        private static partial Regex usernameValidationRegex();
 
     }
 }
