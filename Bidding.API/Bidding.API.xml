@@ -4,6 +4,264 @@
         <name>Bidding.API</name>
     </assembly>
     <members>
+        <member name="T:Bidding.API.Controllers.AddressController">
+            <summary>
+            Controller for managing address data.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Controllers.AddressController.#ctor(Bidding.API.Data.Repository.IAddressRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructs a new instance of the AddressController class.
+            </summary>
+            <param name="addressRepository">The repository for working with address data.</param>
+            <param name="mapper">The AutoMapper instance used for mapping between address models and entities.</param>
+        </member>
+        <member name="M:Bidding.API.Controllers.AddressController.GetAddresses">
+            <summary>
+            Gets all addresses.
+            </summary>
+            <returns>A list of all addresses in the form of AddressNewResponseModel.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.AddressController.GetAddress(System.Guid)">
+            <summary>
+            Gets an address by its unique identifier.
+            </summary>
+            <param name="guid">The unique identifier of the address to retrieve.</param>
+            <returns>The requested address in the form of AddressNewResponseModel.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.AddressController.PostAddress(Bidding.API.Models.AddressRequestModel)">
+            <summary>
+            Adds a new address.
+            </summary>
+            <param name="requestModel">The model representing the new address to add.</param>
+            <returns>The newly created address in the form of AddressNewResponseModel.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.AddressController.PatchAddress(System.Guid,Bidding.API.Models.AddressUpdateModel)">
+            <summary>
+            Updates an existing address.
+            </summary>
+            <param name="guid">The unique identifier of the address to update.</param>
+            <param name="addressUpdate">The model representing the updated address data.</param>
+            <returns>A status code indicating the result of the update operation.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.AddressController.DeleteAddress(System.Guid)">
+            <summary>
+            Deletes an address with the specified GUID.
+            </summary>
+            <param name="guid">The GUID of the address to delete.</param>
+            <returns>A NoContentResult if the address was successfully deleted.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BiddingOfferController.#ctor(Bidding.API.Data.Repository.IBiddingOfferRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bidding.API.Controllers.BiddingOfferController"/> class.
+            </summary>
+            <param name="biddingOfferRepository">The repository for accessing bidding offers.</param>
+            <param name="mapper">The mapper for mapping between models and entities.</param>
+        </member>
+        <member name="M:Bidding.API.Controllers.BiddingOfferController.GetBiddingOffers">
+            <summary>
+            Gets all bidding offers.
+            </summary>
+            <returns>A collection of BiddingOfferResponseModel objects.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BiddingOfferController.GetBiddingOffer(System.Guid)">
+            <summary>
+            Gets a specific bidding offer by its unique identifier.
+            </summary>
+            <param name="guid">The unique identifier of the bidding offer to retrieve.</param>
+            <returns>A BiddingOfferResponseModel object.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BiddingOfferController.PostBiddingOffer(Bidding.API.Models.BiddingOfferRequestModel)">
+            <summary>
+            Creates a new bidding offer.
+            </summary>
+            <param name="requestModel">The BiddingOfferRequestModel object containing the data to create the bidding offer.</param>
+            <returns>A  representing the newly created bidding offer.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BiddingOfferController.PatchBiddingOffer(System.Guid,Bidding.API.Models.BiddingOfferUpdateModel)">
+            <summary>
+            Updates a specific bidding offer with the given GUID.
+            </summary>
+            <param name="guid">The GUID of the bidding offer to update.</param>
+            <param name="biddingOfferUpdate">The updated information for the bidding offer.</param>
+            <returns>An IActionResult representing the result of the update operation.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BiddingOfferController.DeleteBiddingOffer(System.Guid)">
+            <summary>
+            Deletes a specific bidding offer with the given GUID.
+            </summary>
+            <param name="guid">The GUID of the bidding offer to delete.</param>
+            <returns>An IActionResult representing the result of the delete operation.</returns>
+        </member>
+        <member name="T:Bidding.API.Controllers.BuyerApplicationController">
+            <summary>
+            Controller for managing buyer applications.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Controllers.BuyerApplicationController.GetBuyerApplications">
+            <summary>
+            Retrieves all buyer applications.
+            </summary>
+            <returns>A list of all buyer applications.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BuyerApplicationController.GetBuyerApplication(System.Guid)">
+            <summary>
+            Retrieves a single buyer application by its GUID.
+            </summary>
+            <param name="guid">The GUID of the buyer application to retrieve.</param>
+            <returns>The specified buyer application.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BuyerApplicationController.PostBuyerApplication(Bidding.API.Models.BuyerApplicationRequestModel)">
+            <summary>
+            Creates a new buyer application.
+            </summary>
+            <param name="requestModel">The details of the buyer application to create.</param>
+            <returns>The created buyer application.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BuyerApplicationController.PatchBuyerApplication(System.Guid,Bidding.API.Models.BuyerApplicationUpdateModel)">
+            <summary>
+            Updates an existing buyer application.
+            </summary>
+            <param name="guid">The GUID of the buyer application to update.</param>
+            <param name="buyerApplicationUpdate">The details to update the buyer application with.</param>
+            <returns>A status code indicating the result of the operation.</returns>
+        </member>
+        <member name="M:Bidding.API.Controllers.BuyerApplicationController.DeleteBuyerApplication(System.Guid)">
+            <summary>
+            Deletes the buyer application with the specified GUID.
+            </summary>
+            <param name="guid">The GUID of the buyer application to delete.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the HTTP action result indicating success or failure of the operation.</returns>
+        </member>
+        <member name="T:Bidding.API.Data.Repository.AddressRepository">
+            <summary>
+            A repository for managing addresses in the database.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.AddressRepository.#ctor(Bidding.API.Data.BiddingDBContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bidding.API.Data.Repository.AddressRepository"/> class.
+            </summary>
+            <param name="context">The bidding database context.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.AddressRepository.GetAllAddresses">
+            <summary>
+            Retrieves all addresses in the database.
+            </summary>
+            <returns>An asynchronous operation that returns an address.</returns>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.AddressRepository.AddAddress(Bidding.API.Entities.Address)">
+            <summary>
+            Adds a new address to the database.
+            </summary>
+            <param name="address">The address to add.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.AddressRepository.DeleteAddress(System.Guid)">
+            <summary>
+            Deletes an address from the database by its GUID.
+            </summary>
+            <param name="guid">The GUID of the address to delete.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.AddressRepository.GetAddressByGuid(System.Guid)">
+            <summary>
+            Retrieves an address from the database by its GUID.
+            </summary>
+            <param name="guid">The GUID of the address to retrieve.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.AddressRepository.UpdateAddress(Bidding.API.Entities.Address)">
+            <summary>
+            Updates an existing address in the database.
+            </summary>
+            <param name="address">The updated address to save.</param>
+            <returns>An asynchronous operation that returns the updated address or null if the address was not found.</returns>
+        </member>
+        <member name="T:Bidding.API.Data.Repository.BiddingOfferRepository">
+            <summary>
+            Represents a repository for managing BiddingOffers in the database.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BiddingOfferRepository.GetAllBiddingOffers">
+            <summary>
+            Gets all BiddingOffers from the database.
+            </summary>
+            <returns>An enumerable collection of all BiddingOffers.</returns>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BiddingOfferRepository.GetBiddingOfferByGuid(System.Guid)">
+            <summary>
+            Gets a BiddingOffer by its GUID.
+            </summary>
+            <param name="guid">The GUID of the BiddingOffer to retrieve.</param>
+            <returns>The BiddingOffer with the specified GUID, or null if not found.</returns>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BiddingOfferRepository.GetBiddingOfferByOffer(System.Single)">
+            <summary>
+            Gets a BiddingOffer by its offer value.
+            </summary>
+            <param name="offer">The offer value of the BiddingOffer to retrieve.</param>
+            <returns>The BiddingOffer with the specified offer value, or null if not found.</returns>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BiddingOfferRepository.AddBiddingOffer(Bidding.API.Entities.BiddingOffer)">
+            <summary>
+            Adds a new BiddingOffer to the database.
+            </summary>
+            <param name="biddingOffer">The BiddingOffer to add.</param>
+            <returns>The added BiddingOffer.</returns>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BiddingOfferRepository.DeleteBiddingOffer(System.Guid)">
+            <summary>
+            Deletes a BiddingOffer from the database.
+            </summary>
+            <param name="guid">The GUID of the BiddingOffer to delete.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BiddingOfferRepository.UpdateBiddingOffer(Bidding.API.Entities.BiddingOffer)">
+            <summary>
+            Updates a BiddingOffer in the database.
+            </summary>
+            <param name="biddingOffer">The updated BiddingOffer.</param>
+            <returns>The updated BiddingOffer, or null if it does not exist in the database.</returns>
+        </member>
+        <member name="T:Bidding.API.Data.Repository.BuyerApplicationRepository">
+            <summary>
+            Represents a repository for handling BuyerApplication entities.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BuyerApplicationRepository.GetAllBuyerApplications">
+            <summary>
+            Gets all BuyerApplication entities from the database, including their representative.
+            </summary>
+            <returns>An IEnumerable of all BuyerApplication entities with their representative.</returns>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BuyerApplicationRepository.GetBuyerApplicationByGuid(System.Guid)">
+            <summary>
+            Gets a BuyerApplication entity from the database by its ID, including its representative.
+            </summary>
+            <param name="guid">The GUID of the BuyerApplication to retrieve.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BuyerApplicationRepository.GetBuyerApplicationByAmount(System.Int32)">
+            <summary>
+            Gets a BuyerApplication entity from the database by its amount, including its representative.
+            </summary>
+            <param name="amount">The amount of the BuyerApplication to retrieve.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BuyerApplicationRepository.AddBuyerApplication(Bidding.API.Entities.BuyerApplication)">
+            <summary>
+            Adds a new BuyerApplication entity to the database.
+            </summary>
+            <param name="buyerApplication">The BuyerApplication entity to add.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BuyerApplicationRepository.DeleteBuyerApplication(System.Guid)">
+            <summary>
+            Deletes a BuyerApplication entity from the database by its ID.
+            </summary>
+            <param name="guid">The ID of the BuyerApplication entity to delete.</param>
+        </member>
+        <member name="M:Bidding.API.Data.Repository.BuyerApplicationRepository.UpdateBuyerApplication(Bidding.API.Entities.BuyerApplication)">
+            <summary>
+            Updates an existing BuyerApplication entity in the database.
+            </summary>
+            <param name="buyerApplication">The updated BuyerApplication entity.</param>
+        </member>
         <member name="M:Bidding.API.Entities.Address.usernameValidationRegex">
             <remarks>
             Pattern explanation:<br/>
@@ -23,6 +281,72 @@
             ○ Match if at the end of the string or if before an ending newline.<br/>
             </code>
             </remarks>
+        </member>
+        <member name="T:Bidding.API.Enums.BiddingStatus">
+            <summary>
+            Enumeration of possible bidding statuses.
+            </summary>
+        </member>
+        <member name="F:Bidding.API.Enums.BiddingStatus.None">
+            <summary>
+            Default value for undefined bidding status.
+            </summary>
+        </member>
+        <member name="F:Bidding.API.Enums.BiddingStatus.FirstRound">
+            <summary>
+            First round bidding status.
+            </summary>
+        </member>
+        <member name="F:Bidding.API.Enums.BiddingStatus.SecondRoundOldConditions">
+            <summary>
+            Second round bidding status with old conditions.
+            </summary>
+        </member>
+        <member name="F:Bidding.API.Enums.BiddingStatus.SecondRoundNewConditions">
+            <summary>
+            Second round bidding status with new conditions.
+            </summary>
+        </member>
+        <member name="T:Bidding.API.Enums.BiddingStatusConverter">
+            <summary>
+            Json converter for the BiddingStatus enumeration.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Enums.BiddingStatusConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Reads and maps a string value to a BiddingStatus enumeration value.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Enums.BiddingStatusConverter.Write(System.Text.Json.Utf8JsonWriter,Bidding.API.Enums.BiddingStatus,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Writes a BiddingStatus enumeration value as a string value using the mapped string value.
+            </summary>
+        </member>
+        <member name="T:Bidding.API.Enums.DocumentType">
+            <summary>
+            Enumeration of document types.
+            </summary>
+        </member>
+        <member name="F:Bidding.API.Enums.DocumentType.None">
+            <summary>
+            No document type assigned.
+            </summary>
+        </member>
+        <member name="F:Bidding.API.Enums.DocumentType.Report">
+            <summary>
+            Report document type.
+            </summary>
+        </member>
+        <member name="T:Bidding.API.Enums.DocumentTypeConverter">
+            <summary>
+            A custom JSON converter for serializing and deserializing .
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Enums.DocumentTypeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bidding.API.Enums.DocumentTypeConverter.Write(System.Text.Json.Utf8JsonWriter,Bidding.API.Enums.DocumentType,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
         </member>
         <member name="T:Bidding.API.Migrations.InitialCreate">
             <inheritdoc />
@@ -324,6 +648,42 @@
             <param name="date">The date when the offer was made.</param>
             <param name="offer">The value of the offer.</param>
             <param name="buyerGuid">The unique identifier of the buyer associated with the bidding offer.</param>
+        </member>
+        <member name="T:Bidding.API.Profiles.AddressProfile">
+            <summary>
+            Profile for mapping between <see cref="T:Bidding.API.Entities.Address"/> and its related models.
+            </summary>
+        </member>
+        <member name="T:Bidding.API.Profiles.BiddingOfferProfile">
+            <summary>
+            Profile for mapping BiddingOffer entities to and from BiddingOffer response/request models.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Profiles.BiddingOfferProfile.#ctor">
+            <summary>
+            Initializes a new instance of the  class.
+            </summary>
+        </member>
+        <member name="T:Bidding.API.Profiles.BuyerApplicationProfile">
+            <summary>
+            Profile for mapping BuyerApplication entities to and from BiddingOffer response/request models.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Profiles.BuyerApplicationProfile.#ctor">
+            <summary>
+            Initializes a new instance of the  class.
+            </summary>
+        </member>
+        <member name="M:Bidding.API.Profiles.DocumentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the  class.
+            Configures mapping between  classes.
+            </summary>
+        </member>
+        <member name="T:Bidding.API.Profiles.PublicBiddingLotProfile">
+            <summary>
+            Mapping profile for  entities and their corresponding models.
+            </summary>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.usernameValidationRegex_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the usernameValidationRegex method.</summary>

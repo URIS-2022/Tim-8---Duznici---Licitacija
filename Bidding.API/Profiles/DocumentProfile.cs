@@ -16,16 +16,12 @@ namespace Bidding.API.Profiles
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid != Guid.Empty))
                  .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
 
-            /// <summary>
-            /// Configures mapping from  class.
-            /// </summary>
+           
             CreateMap<DocumentRequestModel, Document>()
                  .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid != Guid.Empty))
                  .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
 
-            /// <summary>
-            /// Configures mapping from  class.
-            /// </summary>
+           
             CreateMap<DocumentUpdateModel,Document>()
                 .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty))
                 .ForMember(dest => dest.documentType, opt => opt.Condition(src => src.documentType.HasValue))

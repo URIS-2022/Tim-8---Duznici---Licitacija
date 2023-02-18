@@ -15,13 +15,13 @@ namespace Bidding.API.Profiles
         /// </summary>
         public BiddingOfferProfile()
         {
-            // Map BiddingOffer entity to BiddingOffer response model
+            
             CreateMap<BiddingOffer, BiddingOfferResponseModel>();
 
-            // Map BiddingOffer request model to BiddingOffer entity
+            
             CreateMap<BiddingOfferRequestModel, BiddingOffer>();
 
-            // Map BiddingOffer update model to BiddingOffer entity
+            
             CreateMap<BiddingOfferUpdateModel, BiddingOffer>()
                 .ForMember(dest => dest.RepresentativeGuid, opt => opt.Condition(src => src.RepresentativeGuid != Guid.Empty))
                 .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty))
