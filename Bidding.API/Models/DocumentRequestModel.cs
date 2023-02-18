@@ -20,7 +20,7 @@ namespace Bidding.API.Models
 
         public DocumentRequestModel(Guid guid, Guid publicBidding, DocumentType documentType, string referenceNumber, string template)
         {
-           
+
             this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
             ReferenceNumber = referenceNumber;

@@ -45,7 +45,7 @@ public class LicitationDBContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         modelBuilder.Entity<Entities.Licitation>()
             .HasData(
                new Entities.Licitation

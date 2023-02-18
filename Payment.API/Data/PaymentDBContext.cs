@@ -32,7 +32,7 @@ public class PaymentDBContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         modelBuilder.Entity<Entities.Payment>()
             .HasData(
                new Entities.Payment
@@ -61,7 +61,7 @@ public class PaymentDBContext : DbContext
 
             }
            );
-        
+
 
         modelBuilder.Entity<Entities.Payment>(entity =>
         {

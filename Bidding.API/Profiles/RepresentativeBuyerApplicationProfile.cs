@@ -1,6 +1,6 @@
-﻿using Bidding.API.Entities;
+﻿using AutoMapper;
+using Bidding.API.Entities;
 using Bidding.API.Models;
-using AutoMapper;
 
 
 namespace Bidding.API.Profiles

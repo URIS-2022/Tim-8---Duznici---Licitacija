@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
+﻿using Lease.API.Enums;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Lease.API.Enums;
+using System.Text.Json;
 
 namespace Lease.API.Entities;
 

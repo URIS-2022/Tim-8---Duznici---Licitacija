@@ -139,22 +139,22 @@ app.UseCors("CorsPolicy");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-   _ = app.UseSwagger();
-   _ = app.UseSwaggerUI(options =>
-   {
-       options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-   });
+    _ = app.UseSwagger();
+    _ = app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    });
 }
 else // Ukoliko se nalazimo u Production modu postavljamo default poruku za greške koje nastaju na servisu
 {
-   _ = app.UseExceptionHandler(appBuilder =>
-   {
-       appBuilder.Run(async context =>
-       {
-           context.Response.StatusCode = 500;
-           await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
-       });
-   });
+    _ = app.UseExceptionHandler(appBuilder =>
+    {
+        appBuilder.Run(async context =>
+        {
+            context.Response.StatusCode = 500;
+            await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
+        });
+    });
 }
 
 

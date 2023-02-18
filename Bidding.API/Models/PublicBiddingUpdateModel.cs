@@ -41,9 +41,9 @@ namespace Bidding.API.Models
         [JsonConverter(typeof(BiddingStatusConverter))]
         [DataMember]
         public BiddingStatus? biddingStatus { get; set; }
-    
+
         public PublicBiddingUpdateModel() { }
-        
+
         public PublicBiddingUpdateModel(
 
        DateTime? date,
@@ -81,6 +81,6 @@ namespace Bidding.API.Models
             this.biddingStatus = biddingStatus;
 
         }
-        
+
     }
 }

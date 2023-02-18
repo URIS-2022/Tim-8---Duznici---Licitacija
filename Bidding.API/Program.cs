@@ -1,5 +1,4 @@
-﻿using Bidding.API.Controllers;
-using Bidding.API.Data;
+﻿using Bidding.API.Data;
 using Bidding.API.Data.Repository;
 using Bidding.API.Enums;
 using Bidding.API.RabbitMQ;

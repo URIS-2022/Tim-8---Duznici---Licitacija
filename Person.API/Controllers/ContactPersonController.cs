@@ -1,8 +1,8 @@
-﻿using Person.API.Data.Repository;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Person.API.Data.Repository;
 using Person.API.Entities;
 using Person.API.Models;
-using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Person.API.Controllers;
 /// <summary>

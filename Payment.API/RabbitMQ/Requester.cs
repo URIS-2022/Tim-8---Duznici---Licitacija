@@ -1,13 +1,10 @@
 ﻿
 using Payment.API.Models.PaymentWarrantModel;
-using System;
-using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Payment.API.RabbitMQ;
- class Requester
+class Requester
 {
     public async Task PostNewPaymentWarrant(PaymentWarrantRequestModel paymentWarrant)
     {

@@ -159,7 +159,7 @@ public partial class LeaseAgreement : IValidatableObject
             results.Add(new ValidationResult("Lease Agreement Guid cannot be empty."));
         }
 
-     
+
 
         if (MinisterGuid == Guid.Empty)
         {

@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Bidding.API.Entities;
+﻿using Bidding.API.Entities;
 using Bidding.API.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bidding.API.Data
 {

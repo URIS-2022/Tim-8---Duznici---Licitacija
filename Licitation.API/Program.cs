@@ -1,12 +1,12 @@
 ﻿using Licitation.API.Data;
 using Licitation.API.Data.Repository;
+using Licitation.API.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using Licitation.API.Enums;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using Landlot.API.Enums;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using Landlot.API.Enums;
 
 namespace Landlot.API.Models
 {

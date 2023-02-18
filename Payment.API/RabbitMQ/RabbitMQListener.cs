@@ -1,10 +1,9 @@
 ﻿
-using System.Text;
+using Payment.API.Models.PaymentWarrantModel;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System.Text;
 using System.Text.Json;
-using Payment.API.Models.PaymentWarrantModel;
-using System.Threading.Channels;
 
 namespace Payment.API.RabbitMQ;
 
@@ -37,40 +36,40 @@ public class RabbitMQListener : IDisposable
     public async Task StartListening(Action<string> handleMessage)
     {
 
-       _consumer.Received += async (model, ea) =>
-        {
-            var body = ea.Body.ToArray();
-            var json = Encoding.UTF8.GetString(body);
-            Console.WriteLine("Received message: {0}", json);
-            var message = JsonSerializer.Deserialize<ConsumerMessageFormatPayment>(json);
-            
-
-
-            Random random = new Random();
-            string referenceNumber = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 9)
-          .Select(s => s[random.Next(s.Length)]).ToArray());
+        _consumer.Received += async (model, ea) =>
+         {
+             var body = ea.Body.ToArray();
+             var json = Encoding.UTF8.GetString(body);
+             Console.WriteLine("Received message: {0}", json);
+             var message = JsonSerializer.Deserialize<ConsumerMessageFormatPayment>(json);
 
 
 
-            PaymentWarrantRequestModel paymentWarrentPostRequestModel = new PaymentWarrantRequestModel()
-            {
-                ReferenceNumber = referenceNumber,
-                PayerGuid = Guid.NewGuid(),
-                TotalAmount = message.auctionedPrice,
-                PublicBiddingGuid = message.Guid
-            
+             Random random = new Random();
+             string referenceNumber = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 9)
+           .Select(s => s[random.Next(s.Length)]).ToArray());
 
-            };
 
-           
 
-        
+             PaymentWarrantRequestModel paymentWarrentPostRequestModel = new PaymentWarrantRequestModel()
+             {
+                 ReferenceNumber = referenceNumber,
+                 PayerGuid = Guid.NewGuid(),
+                 TotalAmount = message.auctionedPrice,
+                 PublicBiddingGuid = message.Guid
 
-            var requester = new Requester();
-            await requester.PostNewPaymentWarrant(paymentWarrentPostRequestModel);
 
-            _channel.BasicAck(ea.DeliveryTag, false);
-        };
+             };
+
+
+
+
+
+             var requester = new Requester();
+             await requester.PostNewPaymentWarrant(paymentWarrentPostRequestModel);
+
+             _channel.BasicAck(ea.DeliveryTag, false);
+         };
         _channel.BasicConsume(queue: queueName, autoAck: false, consumer: _consumer);
     }
 

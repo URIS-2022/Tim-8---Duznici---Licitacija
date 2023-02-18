@@ -1,5 +1,5 @@
-﻿using Person.API.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Person.API.Entities;
 
 namespace Person.API.Data.Repository
 

@@ -1,6 +1,6 @@
-﻿using Bidding.API.Entities;
+﻿using AutoMapper;
+using Bidding.API.Entities;
 using Bidding.API.Models;
-using AutoMapper;
 
 namespace Bidding.API.Profiles
 {
@@ -20,14 +20,14 @@ namespace Bidding.API.Profiles
     .ForMember(dest => dest.Expected, opt => opt.Condition(src => src.Expected != null))
     .ForMember(dest => dest.municipality, opt => opt.Condition(src => src.municipality != null))
     .ForMember(dest => dest.AuctionedPrice, opt => opt.Condition(src => src.AuctionedPrice != null))
-    .ForMember(dest => dest.BestBuyerGuid, opt => opt.Condition(src => src.BestBuyerGuid !=null ))
+    .ForMember(dest => dest.BestBuyerGuid, opt => opt.Condition(src => src.BestBuyerGuid != null))
     .ForMember(dest => dest.public_bidding_type, opt => opt.Condition(src => src.public_bidding_type != null))
-    .ForMember(dest => dest.AddresGuid, opt => opt.Condition(src => src.AddressGuid !=null)) // ne valja
+    .ForMember(dest => dest.AddresGuid, opt => opt.Condition(src => src.AddressGuid != null)) // ne valja
     .ForMember(dest => dest.LeasePeriod, opt => opt.Condition(src => src.LeasePeriod != null))
     .ForMember(dest => dest.DepositReplenishmentAmount, opt => opt.Condition(src => src.DepositReplenishmentAmount != null))
     .ForMember(dest => dest.Round, opt => opt.Condition(src => src.Round != null))
     .ForMember(dest => dest.biddingStatus, opt => opt.Condition(src => src.biddingStatus != null));
-     
+
 
 
 

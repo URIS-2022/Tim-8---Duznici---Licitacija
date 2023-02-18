@@ -79,7 +79,7 @@ public class ComplaintsController : ControllerBase
             return NotFound();
         }
 
-        if(patchModel.SubjectGuid != null)
+        if (patchModel.SubjectGuid != null)
         {
             using var personApiClient = new HttpClient();
             var biddingApiUrl = Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING");

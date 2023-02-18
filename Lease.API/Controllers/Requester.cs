@@ -1,13 +1,9 @@
-﻿using Lease.API.Entities;
-using Lease.API.Models.LeaseAgreementModels;
-using System;
-using System.Net.Http;
+﻿using Lease.API.Models.LeaseAgreementModels;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Lease.API.Controllers;
- class Requester
+class Requester
 {
     public async Task PostNewLeaseAgreement(LeaseAgreementPostRequestModel leaseAgreement)
     {

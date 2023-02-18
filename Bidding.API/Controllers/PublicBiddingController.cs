@@ -1,10 +1,10 @@
-﻿using Bidding.API.Data.Repository;
+﻿using AutoMapper;
+using Bidding.API.Data.Repository;
 using Bidding.API.Entities;
 using Bidding.API.Models;
-using AutoMapper;
+using Bidding.API.RabbitMQ;
 using Microsoft.AspNetCore.Mvc;
 using ServiceStack.Messaging;
-using Bidding.API.RabbitMQ;
 
 namespace Bidding.API.Controllers
 {
@@ -87,7 +87,7 @@ namespace Bidding.API.Controllers
 
             }
             return NoContent();
-    }
+        }
 
         [HttpDelete("{guid}")]
         public async Task<IActionResult> DeletePublicBidding(Guid guid)

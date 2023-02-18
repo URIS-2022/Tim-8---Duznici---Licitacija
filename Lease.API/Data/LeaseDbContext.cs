@@ -120,7 +120,7 @@ public class LeaseDbContext : DbContext
         BanEndDate = DateTime.Parse("2023-02-17T15:33:22.979Z"),
         BiddingGuid = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
         PersonGuid = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
-        Priorities = new List<PriorityType> { PriorityType.Border, PriorityType.Irrigation}
+        Priorities = new List<PriorityType> { PriorityType.Border, PriorityType.Irrigation }
     }
 );
         modelBuilder.Entity<LeaseAgreement>().HasData(

@@ -1,9 +1,9 @@
 ﻿
 using Lease.API.Controllers;
-using System.Text;
+using Lease.API.Models.LeaseAgreementModels;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Lease.API.Models.LeaseAgreementModels;
+using System.Text;
 using System.Text.Json;
 
 namespace Lease.API.RabbitMQ;
@@ -36,25 +36,25 @@ public class RabbitMQListener : IDisposable
     public async Task StartListening(Action<string> handleMessage)
     {
 
-       _consumer.Received += async (model, ea) =>
-        {
-            var body = ea.Body.ToArray();
-            var json = Encoding.UTF8.GetString(body);
-            Console.WriteLine("Received message: {0}", json);
-            var message = JsonSerializer.Deserialize<ConsumerMessageFormat>(json);
+        _consumer.Received += async (model, ea) =>
+         {
+             var body = ea.Body.ToArray();
+             var json = Encoding.UTF8.GetString(body);
+             Console.WriteLine("Received message: {0}", json);
+             var message = JsonSerializer.Deserialize<ConsumerMessageFormat>(json);
 
 
-            Random random = new Random();
-            string referenceNumber = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 9)
-          .Select(s => s[random.Next(s.Length)]).ToArray());
+             Random random = new Random();
+             string referenceNumber = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 9)
+           .Select(s => s[random.Next(s.Length)]).ToArray());
 
-            LeaseAgreementPostRequestModel leaseAgreementPostRequestModel = new LeaseAgreementPostRequestModel( referenceNumber, Enums.GuaranteeType.None, DateTime.UtcNow, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"), DateTime.UtcNow.AddYears(5), "Opstina Subotica", DateTime.UtcNow,  Guid.Parse(message.Guid), Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), Enums.DocumentStatus.None, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"));
+             LeaseAgreementPostRequestModel leaseAgreementPostRequestModel = new LeaseAgreementPostRequestModel(referenceNumber, Enums.GuaranteeType.None, DateTime.UtcNow, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"), DateTime.UtcNow.AddYears(5), "Opstina Subotica", DateTime.UtcNow, Guid.Parse(message.Guid), Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"), Enums.DocumentStatus.None, Guid.Parse("b415d4f5-6342-41f3-9935-08db10fc223b"));
 
-            var requester = new Requester();
-            await requester.PostNewLeaseAgreement(leaseAgreementPostRequestModel);
+             var requester = new Requester();
+             await requester.PostNewLeaseAgreement(leaseAgreementPostRequestModel);
 
-            _channel.BasicAck(ea.DeliveryTag, false);
-        };
+             _channel.BasicAck(ea.DeliveryTag, false);
+         };
         _channel.BasicConsume(queue: queueName, autoAck: false, consumer: _consumer);
     }
 

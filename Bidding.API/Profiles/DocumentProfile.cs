@@ -1,6 +1,6 @@
-﻿using Bidding.API.Entities;
+﻿using AutoMapper;
+using Bidding.API.Entities;
 using Bidding.API.Models;
-using AutoMapper;
 
 namespace Bidding.API.Profiles
 {
@@ -18,9 +18,9 @@ namespace Bidding.API.Profiles
             CreateMap<DocumentRequestModel, Document>()
                  .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
 
-           
+
             CreateMap<DocumentRequestModel, Document>()
-                 
+
                  .ForMember(dest => dest.documentType, opt => opt.MapFrom(src => src.documentType));
 
             CreateMap<DocumentUpdateModel, Document>()

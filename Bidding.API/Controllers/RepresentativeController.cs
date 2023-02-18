@@ -1,7 +1,7 @@
-﻿using Bidding.API.Data.Repository;
+﻿using AutoMapper;
+using Bidding.API.Data.Repository;
 using Bidding.API.Entities;
 using Bidding.API.Models;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bidding.API.Controllers

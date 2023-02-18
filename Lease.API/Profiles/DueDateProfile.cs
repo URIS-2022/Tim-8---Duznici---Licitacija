@@ -1,6 +1,6 @@
-﻿using Lease.API.Entities;
+﻿using AutoMapper;
+using Lease.API.Entities;
 using Lease.API.Models;
-using AutoMapper;
 
 namespace Lease.API.Profiles;
 

@@ -1,6 +1,6 @@
-﻿using Bidding.API.Entities;
+﻿using AutoMapper;
+using Bidding.API.Entities;
 using Bidding.API.Models;
-using AutoMapper;
 
 namespace Bidding.API.Profiles
 {
@@ -15,15 +15,15 @@ namespace Bidding.API.Profiles
         /// </summary>
         public BiddingOfferProfile()
         {
-            
+
             CreateMap<BiddingOffer, BiddingOfferResponseModel>();
             CreateMap<BiddingOfferRequestModel, BiddingOffer>();
 
 
-            
+
             CreateMap<BiddingOfferRequestModel, BiddingOffer>();
 
-            
+
             CreateMap<BiddingOfferUpdateModel, BiddingOffer>()
                 .ForMember(dest => dest.RepresentativeGuid, opt => opt.Condition(src => src.RepresentativeGuid != Guid.Empty))
                 .ForMember(dest => dest.PublicBiddingGuid, opt => opt.Condition(src => src.PublicBiddingGuid != Guid.Empty))

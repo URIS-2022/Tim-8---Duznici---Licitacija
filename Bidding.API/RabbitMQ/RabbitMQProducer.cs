@@ -1,9 +1,6 @@
-﻿using Bidding.API.Entities;
-using Bidding.API.RabbitMQ;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RabbitMQ.Client;
 using ServiceStack.Messaging;
-using System;
 using System.Text;
 
 namespace Bidding.API.RabbitMQ;
@@ -11,13 +8,13 @@ public class RabbitMQMessageProducer : IMessageProducer
 {
     private IConnection _connection;
     private IModel _channel;
-    
+
 
     public RabbitMQMessageProducer(string hostname, string queueName)
     {
 
         var _queueName = queueName;
-        
+
         // Create a connection factory
         var factory = new ConnectionFactory() { HostName = hostname };
 
@@ -32,7 +29,7 @@ public class RabbitMQMessageProducer : IMessageProducer
                               durable: false,
                               exclusive: false,
                               autoDelete: false,
-                              arguments: null); 
+                              arguments: null);
     }
 
     public void Publish<T>(T messageBody)
@@ -73,5 +70,5 @@ public class RabbitMQMessageProducer : IMessageProducer
         _connection.Dispose();
     }
 
-    
+
 }

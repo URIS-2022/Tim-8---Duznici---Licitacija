@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Lease.API.Data.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace Lease.API.Controllers;

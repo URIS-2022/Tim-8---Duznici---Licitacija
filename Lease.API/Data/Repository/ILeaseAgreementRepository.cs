@@ -26,7 +26,7 @@ public interface ILeaseAgreementRepository
     /// </summary>
     /// <returns></returns>
     Task<List<LeaseAgreement>> GetAll();
-    
+
     /// <summary>
     /// Adds a new lease agreement.
     /// </summary>
