@@ -1180,6 +1180,11 @@
             Initializes a new instance of the MemberPatchRequestModel class.
             </summary>
         </member>
+        <member name="T:Administration.API.Models.Member.MemberPatchResponseModel">
+            <summary>
+            Represents a patch request model for the member retrieval operation.
+            </summary>
+        </member>
         <member name="P:Administration.API.Models.Member.MemberPatchResponseModel.FirstName">
             <summary>
             Gets or sets the first name of the member.
@@ -1200,6 +1205,11 @@
             Initializes a new instance of the MemberPatchRequestModel class.
             </summary>
         </member>
+        <member name="T:Administration.API.Models.Member.MemberPostRequestModel">
+            <summary>
+            Represents a post request model for the member retrieval operation.
+            </summary>
+        </member>
         <member name="P:Administration.API.Models.Member.MemberPostRequestModel.FirstName">
             <summary>
             Gets or sets the first name of the member.
@@ -1213,6 +1223,11 @@
         <member name="M:Administration.API.Models.Member.MemberPostRequestModel.#ctor">
             <summary>
             Initializes a new instance of the MemberPatchRequestModel class.
+            </summary>
+        </member>
+        <member name="T:Administration.API.Models.Member.MemberPostResponseModel">
+            <summary>
+            Represents a post response model for the member retrieval operation.
             </summary>
         </member>
         <member name="P:Administration.API.Models.Member.MemberPostResponseModel.FirstName">

@@ -21,7 +21,7 @@ public class DocumentPatchRequestModel
     /// Gets or sets the unique identifier of the committee that the document belongs to.
     /// </summary>
     [DataMember]
-    public Guid? CommitteeGuid { get; set; }
+    public Guid CommitteeGuid { get; set; }
 
     /// <summary>
     /// Gets or sets the reference number of the document.

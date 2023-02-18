@@ -71,7 +71,7 @@ namespace Preparation.API.Models
         /// <param name="dateSubmitted">The date the document was submitted.</param>
         /// <param name="dateCertified">The date the document was certified.</param>
         /// <param name="template">The template of the document.</param>
-        public DocumentGetResponseModel(Guid guid,Guid announcementGuid, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
+        public DocumentGetResponseModel(Guid guid, Guid announcementGuid, DocumentType documentType, DocumentStatus documentStatus, string referenceNumber, DateTime dateSubmitted, DateTime dateCertified, string template)
         {
             Guid = guid;
             AnnouncementGuid = announcementGuid;

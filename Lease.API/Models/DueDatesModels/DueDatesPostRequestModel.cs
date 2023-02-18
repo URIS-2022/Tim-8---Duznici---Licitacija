@@ -14,7 +14,7 @@ public class DueDatePostRequestModel
 
     public DueDatePostRequestModel(DateTime date)
     {
-       
+
         Date = date;
     }
 }

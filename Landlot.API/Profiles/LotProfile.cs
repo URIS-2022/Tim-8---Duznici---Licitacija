@@ -12,7 +12,7 @@ namespace Landlot.API.Profiles
         /// <summary>
         /// Initializes a new instance of the <see cref="LotProfile"/> class.
         /// </summary>
-        public LotProfile() 
+        public LotProfile()
         {
             CreateMap<Lot, LotGetResponseModel>();
             CreateMap<Lot, LotPostResponseModel>();

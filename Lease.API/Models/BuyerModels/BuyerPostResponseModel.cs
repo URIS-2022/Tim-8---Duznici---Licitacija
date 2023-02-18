@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace Lease.API.Models.Buyer;
 public class BuyerPostResponseModel
 {
-    public Guid Guid {get; set;}
+    public Guid Guid { get; set; }
     public int RealisedArea { get; set; }
 
     public bool Ban { get; set; }
@@ -21,7 +21,7 @@ public class BuyerPostResponseModel
     [JsonConverter(typeof(PriorityTypeListJsonConverter))]
     public List<PriorityType> Priorities { get; set; }
 
-   
+
 
 
 

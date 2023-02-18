@@ -11,7 +11,7 @@ namespace Bidding.API.Models
 
         [DataMember]
         public Guid LotGuid { get; set; }
-        
+
 
         [DataMember]
         public int LotNumber { get; set; }

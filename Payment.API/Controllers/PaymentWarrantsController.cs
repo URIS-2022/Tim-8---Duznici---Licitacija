@@ -6,6 +6,9 @@ using Payment.API.Models.PaymentWarrantModel;
 
 namespace Payment.API.Controllers
 {
+    /// <summary>
+    /// Controller for managing payment warrants.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json", "application/xml")]
@@ -15,12 +18,21 @@ namespace Payment.API.Controllers
         private readonly IPaymentWarrantRepository _paymentWarrantRepository;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Initializes a new instance of the PaymentWarrantsController class with the specified dependencies.
+        /// </summary>
+        /// <param name="paymentWarrantRepository">An object that implements the IPaymentWarrantRepository interface for accessing payment warrant data.</param>
+        /// <param name="mapper">An IMapper object used to map between domain model objects and response/request model objects.</param>
         public PaymentWarrantsController(IPaymentWarrantRepository paymentWarrantRepository, IMapper mapper)
         {
             _paymentWarrantRepository = paymentWarrantRepository;
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Returns a collection of all payment warrants.
+        /// </summary>
+        /// <returns>An ActionResult object containing a collection of PaymentWarrantResponseModel objects, or a 204 No Content response if there are no payment warrants.</returns>
         // GET: api/PaymentWarrants
         [HttpGet]
         public async Task<ActionResult<IEnumerable<IPaymentWarrantRepository>>> GetAllPaymentWarrants()
@@ -34,6 +46,12 @@ namespace Payment.API.Controllers
             return Ok(responseModels);
         }
 
+
+        /// <summary>
+        /// Returns a payment warrant with the specified reference number.
+        /// </summary>
+        /// <param name="referenceNumber">The reference number of the payment warrant to retrieve.</param>
+        /// <returns>An ActionResult object containing a PaymentWarrantResponseModel object if the payment warrant is found, or a 404 Not Found response if it is not found.</returns>
         // GET: api/PaymentWarrants/referenceNumber
         [HttpGet("reference/{referenceNumber}")]
         public async Task<ActionResult<PaymentWarrantResponseModel>> GetByReferenceNumber(string referenceNumber)
@@ -47,6 +65,12 @@ namespace Payment.API.Controllers
             return Ok(responseModel);
         }
 
+
+        /// <summary>
+        /// Returns a payment warrant with the specified GUID.
+        /// </summary>
+        /// <param name="id">The GUID of the payment warrant to retrieve.</param>
+        /// <returns>An ActionResult object containing a PaymentWarrantResponseModel object if the payment warrant is found, or a 404 Not Found response if it is not found.</returns>
         // GET: api/PaymentWarrants/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PaymentWarrantResponseModel>> GetPaymentWarrantByGuid(Guid id)
@@ -60,19 +84,13 @@ namespace Payment.API.Controllers
             return responseModel;
         }
 
-        /*//GET: api/PaymentWarrants/referenceNumber
-        [HttpGet("{referenceNumber}")]
-        public async Task<ActionResult<PaymentWarrantResponseModel>> GetByReferenceNumber(string referenceNumber)
-        {
-            PaymentWarrant? paymentWarrant = await _paymentWarrantRepository.GetByReferenceNumber(referenceNumber);
-            if (paymentWarrant == null)
-            {
-                return NotFound();
-            }
-            PaymentWarrantResponseModel responseModel = mapper.Map<PaymentWarrantResponseModel>(paymentWarrant);
-            return Ok(responseModel);
-        }*/
-
+        /**
+        * Updates a payment warrant by reference number.
+        * 
+        * @param referenceNumber The reference number of the payment warrant to update.
+        * @param paymentWarrantUpdateModel The PaymentWarrantUpdateModel representing the updated payment warrant.
+        * @return NoContent if successful, BadRequest if the payment warrant or update model is null.
+        */
         // PUT: api/PaymentWarrants/referenceNumber
         [HttpPatch("{referenceNumber}")]
         public async Task<IActionResult> UpdatePaymentWarrant(string referenceNumber, PaymentWarrantUpdateModel paymentWarrantUpdateModel)
@@ -88,6 +106,11 @@ namespace Payment.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Creates a new payment warrant and adds it to the payment warrants repository.
+        /// </summary>
+        /// <param name="requestModel">The payment warrant request model containing the payment warrant data.</param>
+        /// <returns>An ActionResult of PaymentWarrantResponseModel representing the created payment warrant.</returns>
         // POST: api/PaymentWarrants
         [HttpPost]
         public async Task<ActionResult<PaymentWarrantResponseModel>> AddPaymentWarrant(PaymentWarrantRequestModel requestModel)
@@ -103,6 +126,11 @@ namespace Payment.API.Controllers
         }
 
 
+        /// <summary>
+        /// Deletes a payment warrant by its unique identifier.
+        /// </summary>
+        /// <param name="referenceNumber">The unique identifier of the payment warrant to be deleted.</param>
+        /// <returns>A NoContentResult if the payment warrant was successfully deleted, otherwise a NotFoundResult.</returns>
         // DELETE: api/PaymentWarrants/referenceNumber
         [HttpDelete("reference/{referenceNumber}")]
         public async Task<IActionResult> DeletePaymentWarrantByReferenceNumber(string referenceNumber)
@@ -112,11 +140,20 @@ namespace Payment.API.Controllers
             {
                 return NotFound();
             }
+            if (paymentWarrant.ReferenceNumber == null)
+            {
+                return BadRequest();
+            }
             await _paymentWarrantRepository.DeletePaymentWarrantByReferenceNumber(paymentWarrant.ReferenceNumber);
 
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletes a payment warrant by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the payment warrant to be deleted.</param>
+        /// <returns>A NoContentResult if the payment warrant was successfully deleted, otherwise a NotFoundResult.</returns>
         // DELETE: api/PaymentWarrants/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePaymentWarrant(Guid id)
@@ -130,10 +167,5 @@ namespace Payment.API.Controllers
 
             return NoContent();
         }
-
-        /*private bool PaymentWarrantExists(string id)
-        {
-            return (_context.PaymentWarrants?.Any(e => e.ReferenceNumber == id)).GetValueOrDefault();
-        }*/
     }
 }

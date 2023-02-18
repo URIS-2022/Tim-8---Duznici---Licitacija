@@ -66,7 +66,7 @@ builder.Services.AddControllers(setup =>
 builder.Services.AddEndpointsApiExplorer(); // zagrada iznad
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy",  builder => builder.WithOrigins("https://localhost:7000")
+    options.AddPolicy("CorsPolicy", builder => builder.WithOrigins("https://localhost:7000")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
@@ -97,9 +97,9 @@ builder.Services.AddSwaggerGen(options =>
             TermsOfService = new Uri("https://opensource.org/licenses/MIT")
         });
 
-    
 
-   
+
+
 
 
     string xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

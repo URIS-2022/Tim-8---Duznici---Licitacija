@@ -9,11 +9,11 @@ public class LeaseAgreementPatchRequestModel
 
     [JsonConverter(typeof(GuaranteeTypeConverter))]
     public GuaranteeType? GuaranteeType { get; set; }
- 
+
     public DateTime? DateRecording { get; set; }
 
     public Guid? MinisterGuid { get; set; }
-   
+
     public DateTime? DeadlineLandReturn { get; set; }
 
     public string? PlaceOfSigning { get; set; }
@@ -26,14 +26,14 @@ public class LeaseAgreementPatchRequestModel
 
     [JsonConverter(typeof(DocumentStatusConverter))]
     public DocumentStatus? DocumentStatus { get; set; }
-    
+
     public Guid? DueDateGuid { get; set; }
 
-    public LeaseAgreementPatchRequestModel( string? referenceNumber, GuaranteeType? guaranteeType, DateTime? dateRecording, Guid? ministerGuid,
+    public LeaseAgreementPatchRequestModel(string? referenceNumber, GuaranteeType? guaranteeType, DateTime? dateRecording, Guid? ministerGuid,
         DateTime? deadlineLandReturn, string? placeOfSigning, DateTime? dateOfSigning, Guid? biddingGuid,
         Guid? personGuid, DocumentStatus? documentStatus, Guid? dueDateGuid)
     {
-      
+
         ReferenceNumber = referenceNumber;
         GuaranteeType = guaranteeType;
         DateRecording = dateRecording;

@@ -60,12 +60,12 @@ namespace Person.API.Data.Repository
         public async Task DeletePhysicalPerson(Guid PhysicalPersonId)
         {
             var physicalPerson = await GetPhysicalPersonByGuid(PhysicalPersonId);
-             if (physicalPerson != null)
+            if (physicalPerson != null)
             {
                 context.PhysicalPersons.Remove(physicalPerson);
                 await context.SaveChangesAsync();
             }
-            
+
         }
         /// <summary>
         /// Updates an existing physical person in the database.

@@ -84,7 +84,7 @@ namespace Landlot.API.Models
         /// <param name="property">The property type of the land.</param>
         /// <param name="drainage">The drainage information of the land.</param>
 
-        public LandPostResponseModel (decimal totalArea, LandlotMunicipality municipality, string realEstateNumber, LandlotCulture culture, LandlotClass landClass, LandlotProcessing processing, LandlotProtectedZone zone, LandlotPropertyType property, LandlotDrainage drainage)
+        public LandPostResponseModel(decimal totalArea, LandlotMunicipality municipality, string realEstateNumber, LandlotCulture culture, LandlotClass landClass, LandlotProcessing processing, LandlotProtectedZone zone, LandlotPropertyType property, LandlotDrainage drainage)
         {
             TotalArea = totalArea;
             Municipality = municipality;

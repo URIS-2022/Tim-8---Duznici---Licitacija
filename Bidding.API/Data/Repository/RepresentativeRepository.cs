@@ -9,13 +9,13 @@ namespace Bidding.API.Data.Repository
 
         public RepresentativeRepository(BiddingDBContext context)
         {
-            _context = context; 
+            _context = context;
         }
 
         public async Task<IEnumerable<Representative>> GetAllRepresentatives()
         {
             return await _context.Representatives
-                .Include(c=>c.address)
+                .Include(c => c.address)
                 .Include(c => c.publicBidding)
                 .Include(c => c.BuyerApplications)
                 .ToListAsync();
@@ -25,7 +25,7 @@ namespace Bidding.API.Data.Repository
 
         public async Task<Representative> GetRepresentativeByGuid(Guid guid)
         {
-            var representative= await _context.Representatives
+            var representative = await _context.Representatives
                 .Include(c => c.address)
                 .Include(c => c.publicBidding)
                 .Include(c => c.BuyerApplications).SingleOrDefaultAsync(x => x.Guid == guid);
@@ -42,7 +42,7 @@ namespace Bidding.API.Data.Repository
         public async Task<Representative> AddRepresentative(Representative representative)
         {
             _context.Representatives.Add(representative);
-           
+
             await _context.SaveChangesAsync();
             return representative;
         }

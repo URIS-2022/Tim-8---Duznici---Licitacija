@@ -5,6 +5,7 @@ namespace Administration.API.Models.Member;
 /// <summary>
 /// Represents a patch request model for the member retrieval operation.
 /// </summary>
+[DataContract(Name = "Member", Namespace = "")]
 public class MemberPatchRequestModel
 {
     /// <summary>

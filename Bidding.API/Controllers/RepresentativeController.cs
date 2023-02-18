@@ -44,7 +44,7 @@ namespace Bidding.API.Controllers
             RepresentativeResponseModel responseModel = _mapper.Map<RepresentativeResponseModel>(representative);
             return Ok(responseModel);
         }
-        
+
         [HttpPost]
         public async Task<ActionResult<RepresentativeResponseModel>> PostRepresentative(RepresentativeRequestModel requestModel)
         {

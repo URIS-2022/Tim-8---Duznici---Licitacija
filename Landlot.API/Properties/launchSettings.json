@@ -5,7 +5,8 @@
       "launchBrowser": false,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SERVICE_ENDPOINT_PERSON": "https://localhost:7090"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7050;http://localhost:5050"

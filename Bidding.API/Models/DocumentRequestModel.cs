@@ -6,7 +6,6 @@ namespace Bidding.API.Models
 {
     public class DocumentRequestModel
     {
-        public Guid Guid { get; set; }
         public Guid PublicBiddingGuid { get; set; }
         [JsonConverter(typeof(DocumentTypeConverter))]
         public DocumentType documentType { get; set; }
@@ -19,12 +18,12 @@ namespace Bidding.API.Models
 
         public DocumentRequestModel() { }
 
-        public DocumentRequestModel(Guid guid,Guid publicBidding, DocumentType documentType, string referenceNumber,string template)
+        public DocumentRequestModel(Guid guid, Guid publicBidding, DocumentType documentType, string referenceNumber, string template)
         {
-            Guid = guid;
+           
             this.PublicBiddingGuid = publicBidding;
             this.documentType = documentType;
-            ReferenceNumber = referenceNumber; 
+            ReferenceNumber = referenceNumber;
             Template = template;
         }
     }

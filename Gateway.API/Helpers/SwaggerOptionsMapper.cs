@@ -39,7 +39,7 @@ static class SwaggerOptionsMapper
     }
     private static void GenerateEndpoint(SwaggerUIOptions options, string serviceName)
     {
-        options.SwaggerEndpoint($"/swagger/{serviceName}/swagger.json", $"Gateway {serviceName} Service API");
+        options.SwaggerEndpoint($"/swagger/{serviceName}/swagger.json", $"{serviceName} Service API Gateway");
     }
     private static void AddAdministrationSwaggerDoc(SwaggerGenOptions options)
     {
@@ -134,7 +134,7 @@ static class SwaggerOptionsMapper
             {
                 Title = "Landlot Service API",
                 Version = "v1.0.0",
-                Description = "Landlot.API is a microservice that provides auction lot management services. It allows you to create, update, and delete parcels, as well as generate JSON Web Tokens (JVTs) for use in securing subsequent API requests.",
+                Description = "Landlot.API is a microservice that provides auction lot management services. It allows you to create, update, and delete parcels.",
                 Contact = new OpenApiContact
                 {
                     Name = "Andrea Ilić",

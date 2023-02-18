@@ -25,14 +25,14 @@ public partial class LeaseAgreement : IValidatableObject
     [JsonConverter(typeof(DocumentStatusConverter))]
     public DocumentStatus DocumentStatus { get; set; }
 
-    
+
     public virtual DueDate DueDate { get; set; }
 
     public virtual ICollection<Document> Documents { get; set; }
 
     public Guid DueDateGuid { get; internal set; }
 
-    public LeaseAgreement() {  }
+    public LeaseAgreement() { }
 
     public LeaseAgreement(Guid Guid, GuaranteeType GuaranteeType, string ReferenceNumber, DateTime DateRecording, Guid MinisterGuid, DateTime DeadlineLandReturn, string PlaceOfSigning, DateTime DateOfSigning, Guid? BiddingGuid, Guid PersonGuid, DocumentStatus DocumentStatus, Guid dueDateguid)
     {
@@ -47,8 +47,8 @@ public partial class LeaseAgreement : IValidatableObject
         this.PublicBiddingGuid = BiddingGuid;
         this.PersonGuid = PersonGuid;
         this.DocumentStatus = DocumentStatus;
-        DueDateGuid=dueDateguid;
-        
+        DueDateGuid = dueDateguid;
+
 
     }
 

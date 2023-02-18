@@ -22,9 +22,9 @@
         /// Updates a specific document.
         /// </summary>
         /// <param name="id">The identifier of the document to update.</param>
-        /// <param name="patchDocument">The updated values for the document.</param>
+        /// <param name="updateModel">The updated values for the document.</param>
         /// <returns>The updated document.</returns>
-        Task<Entities.Document?> UpdateDocument(Guid id, Entities.Document patchDocument);
+        Task<Entities.Document?> UpdateDocument(Guid id, Entities.Document updateModel);
 
         /// <summary>
         /// Adds a new document.

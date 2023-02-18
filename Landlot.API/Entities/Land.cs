@@ -142,4 +142,3 @@ namespace Landlot.API.Entities
 }
 
 
-    

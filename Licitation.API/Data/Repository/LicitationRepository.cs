@@ -19,7 +19,7 @@ public class LicitationRepository : ILicitationRepository
         this.context = context;
     }
 
-    /// <inheritdoc cref="IComplaintRepository.GetAll"/>
+    /// <inheritdoc cref="ILicitationRepository.GetAll"/>
     public async Task<IEnumerable<Entities.Licitation>> GetAll()
     {
         return await context.LicitationEntities.Include(l => l.LicitationLands).Include(l => l.PublicBiddings).ToListAsync();
@@ -30,7 +30,13 @@ public class LicitationRepository : ILicitationRepository
     {
         return await context.LicitationEntities.Include(l => l.LicitationLands).Include(l => l.PublicBiddings).FirstOrDefaultAsync(c => c.Guid == id);
     }
-   
+
+    /// <inheritdoc cref="ILicitationRepository.GetByYear "/>
+    public async Task<Entities.Licitation?> GetByYear(int year)
+    {
+        return await context.LicitationEntities.Where(c => c.Date.Year == year).OrderBy(c => c.Date).LastOrDefaultAsync();
+    }
+
     /// <inheritdoc cref="ILicitationRepository.Delete"/>
     public async Task Delete(Guid id)
     {

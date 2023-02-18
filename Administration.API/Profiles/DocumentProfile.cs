@@ -21,7 +21,7 @@ public class DocumentProfile : Profile
         CreateMap<DocumentPostRequestModel, Document>();
         CreateMap<DocumentPatchRequestModel, Document>()
             .ForMember(dest => dest.Type, opt => opt.Condition(src => src.Type.HasValue))
-            .ForMember(dest => dest.CommitteeGuid, opt => opt.Condition(src => src.CommitteeGuid != null))
+            .ForMember(dest => dest.CommitteeGuid, opt => opt.Condition(src => src.CommitteeGuid != Guid.Empty))
             .ForMember(dest => dest.ReferenceNumber, opt => opt.Condition(src => src.ReferenceNumber != null))
             .ForMember(dest => dest.DateSubbmitted, opt => opt.Condition(src => src.DateSubbmitted != null))
             .ForMember(dest => dest.DateCertified, opt => opt.Condition(src => src.DateCertified != null))

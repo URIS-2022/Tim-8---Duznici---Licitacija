@@ -647,11 +647,11 @@
             <summary>The phone number of the contact person.</summary>
         </member>
         <member name="M:Person.API.Entities.ContactPerson.#ctor(System.String,System.String,System.String,System.String)">
-                        <summary>Initializes a new instance of the ContactPerson class.</summary>
-                        <param name="firstName">The first name of the contact person.</param>
-                        <param name="lastName">The last name of the contact person.</param>
-                        <param name="function">The function or role of the contact person.</param>
-                        <param name="phoneNumber">The phone number of the contact person.</param>
+                 <summary>Initializes a new instance of the ContactPerson class.</summary>
+                 <param name="firstName">The first name of the contact person.</param>
+                 <param name="lastName">The last name of the contact person.</param>
+                 <param name="function">The function or role of the contact person.</param>
+                 <param name="phoneNumber">The phone number of the contact person.</param>
         </member>
         <member name="M:Person.API.Entities.ContactPerson.#ctor">
             <summary>Initializes a new instance of the ContactPerson class.</summary>

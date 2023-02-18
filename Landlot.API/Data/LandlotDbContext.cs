@@ -96,7 +96,7 @@ namespace Landlot.API.Data
                     LotGuid = Guid.Parse("67e0bcc7-db55-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2ba"),
                     LotArea = 1234.56M,
-                    LotUser = Guid.Parse("3f84c3a3-34c2-48a0-93a1-f00af6c9b2bc"),
+                    LotUser = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                     LotNumber = 1,
                     CultureState = Enums.LandlotCulture.Vrtovi,
                     ClassState = Enums.LandlotClass.II,
@@ -106,12 +106,12 @@ namespace Landlot.API.Data
                 });
 
             modelBuilder.Entity<Lot>()
-                .HasData(new 
+                .HasData(new
                 {
                     LotGuid = Guid.Parse("61e0bcc1-db15-4726-8b3d-ee0dabed6de3"),
                     LandGuid = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
                     LotArea = 4321.12M,
-                    LotUser = Guid.Parse("1f14c3a3-34c2-48a0-03a1-f00af6c9b2bb"),
+                    LotUser = Guid.Parse("8de0c01b-b7b0-4df2-9009-3df21b91a0bb"),
                     LotNumber = 13,
                     CultureState = Enums.LandlotCulture.Njive,
                     ClassState = Enums.LandlotClass.III,

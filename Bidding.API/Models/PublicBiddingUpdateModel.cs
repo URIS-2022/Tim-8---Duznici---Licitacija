@@ -45,7 +45,7 @@ namespace Bidding.API.Models
         public PublicBiddingUpdateModel() { }
         
         public PublicBiddingUpdateModel(
-       
+
        DateTime? date,
        DateTime? startDate,
        DateTime? endDate,
@@ -60,11 +60,11 @@ namespace Bidding.API.Models
        int? depositReplenishmentAmount,
        Guid? round,
        BiddingStatus? biddingStatus
-       
+
 
         )
         {
-            
+
             Date = date;
             StartDate = startDate;
             EndDate = endDate;
@@ -79,7 +79,7 @@ namespace Bidding.API.Models
             DepositReplenishmentAmount = depositReplenishmentAmount;
             this.Round = round;
             this.biddingStatus = biddingStatus;
-            
+
         }
         
     }

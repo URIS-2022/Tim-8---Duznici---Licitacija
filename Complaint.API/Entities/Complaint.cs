@@ -4,24 +4,73 @@ using System.Text.Json.Serialization;
 
 namespace Complaint.API.Entities;
 
+/// <summary>
+/// Represents a complaint
+/// </summary>
 public class Complaint : IValidatableObject
 {
+    /// <summary>
+    /// Unique identifier for the complaint
+    /// </summary>
     [Key]
     public Guid Guid { get; set; }
+
+    /// <summary>
+    /// Type of the complaint
+    /// </summary>
     [JsonConverter(typeof(ComplaintTypeConverter))]
     public ComplaintType Type { get; set; }
+
+    /// <summary>
+    /// Date the complaint was submitted
+    /// </summary>
     public DateTime DateSubmitted { get; set; }
+
+    /// <summary>
+    /// Guid of the buyer
+    /// </summary>
     public Guid BuyerGuid { get; set; }
+
+    /// <summary>
+    /// Reason for the complaint
+    /// </summary>
     public string Reason { get; set; }
+
+    /// <summary>
+    /// Rationale for the complaint
+    /// </summary>
     public string Rationale { get; set; }
+
+    /// <summary>
+    /// Date the complaint was resolved
+    /// </summary>
     public DateTime ResolutionDate { get; set; }
+
+    /// <summary>
+    /// Resolution code for the complaint
+    /// </summary>
     public string ResolutionCode { get; set; }
+
+    /// <summary>
+    /// Status of the complaint
+    /// </summary>
     [JsonConverter(typeof(ComplaintStatusConverter))]
     public ComplaintStatus Status { get; set; }
+
+    /// <summary>
+    /// Guid of the subject of the complaint
+    /// </summary>
     public Guid SubjectGuid { get; set; }
+
+    /// <summary>
+    /// Action taken for the complaint
+    /// </summary>
     [JsonConverter(typeof(ComplaintActionConverter))]
     public ComplaintAction Action { get; set; }
 
+    /// <summary>
+    /// Constructor for Complaint
+    /// </summary>
     public Complaint(Guid guid, ComplaintType type, DateTime dateSubmitted, Guid buyerGuid, string reason, string rationale,
     DateTime resolutionDate, string resolutionCode, ComplaintStatus status, Guid subjectGuid, ComplaintAction action)
     {
@@ -38,6 +87,9 @@ public class Complaint : IValidatableObject
         Action = action;
     }
 
+    /// <summary>
+    /// Constructor for Complaint with Guid generated
+    /// </summary>
     public Complaint(ComplaintType type, DateTime dateSubmitted, Guid buyerGuid, string reason, string rationale,
     DateTime resolutionDate, string resolutionCode, ComplaintStatus status, Guid subjectGuid, ComplaintAction action)
     {
@@ -54,10 +106,14 @@ public class Complaint : IValidatableObject
         Action = action;
     }
 
-
+    /// <summary>
+    /// Validates the complaint
+    /// </summary>
+    /// <param name="validationContext"> ValidationContext for the complaint</param>
+    /// <returns> IEnumerable of ValidationResult</returns>
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-        List<ValidationResult> results = new List<ValidationResult>();
+        List<ValidationResult> results = new();
 
         if (DateSubmitted > DateTime.Now)
         {
@@ -86,5 +142,4 @@ public class Complaint : IValidatableObject
 
         return results;
     }
-
 }

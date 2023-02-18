@@ -3,6 +3,9 @@ using Payment.API.Entities;
 
 namespace Payment.API.Data.Repository;
 
+/// <summary>
+/// Repository class for managing payment warrants in the database.
+/// </summary>
 public class PaymentWarrantRepository : IPaymentWarrantRepository
 {
     private readonly PaymentDBContext context;
@@ -23,8 +26,8 @@ public class PaymentWarrantRepository : IPaymentWarrantRepository
     }
 
 
-    /// <inheritdoc cref="IPaymentWarrantRepository.AddPaymetWarrant"/>
-    public async Task<PaymentWarrant> AddPaymentWarrant(PaymentWarrant paymentWarrant)
+    /// <inheritdoc cref="IPaymentWarrantRepository.AddPaymentWarrant(PaymentWarrant)"/>
+    public async Task<PaymentWarrant?> AddPaymentWarrant(PaymentWarrant paymentWarrant)
     {
         context.PaymentWarrants.Add(paymentWarrant);
         await context.SaveChangesAsync();
@@ -75,7 +78,7 @@ public class PaymentWarrantRepository : IPaymentWarrantRepository
     /// <inheritdoc cref="IPaymentWarrantRepository.UpdatePaymentWarrant(PaymentWarrant)"/>
     public async Task<PaymentWarrant?> UpdatePaymentWarrant(PaymentWarrant paymentWarrant)
     {
-        var existingPaymentWarrant = await context.PaymentWarrants.FirstOrDefaultAsync(c => c.Guid== paymentWarrant.Guid);
+        var existingPaymentWarrant = await context.PaymentWarrants.FirstOrDefaultAsync(c => c.Guid == paymentWarrant.Guid);
         if (existingPaymentWarrant == null)
         {
             throw new InvalidOperationException($"The PaymentWarrant with ID '{paymentWarrant.Guid}' was not found.");
