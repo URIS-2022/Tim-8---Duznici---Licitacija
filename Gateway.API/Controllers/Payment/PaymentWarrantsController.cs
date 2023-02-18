@@ -62,7 +62,7 @@ public class PaymentWarrantsController : ControllerBase
     /// <returns> The updated payment warrant object.</returns>
     /// <response code="204"> NoContent if the Payment warrant is successfully updated.</response>
     [HttpPatch("{referenceNumber}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator")]
     public Task<IActionResult> UpdatePaymentWarrant(string referenceNumber, object requestModel)
         => serviceProxy.Patch(referenceNumber, requestModel);
 
@@ -73,7 +73,7 @@ public class PaymentWarrantsController : ControllerBase
     /// <returns> The newly created Payment warrant.</returns>
     /// <response code="201">Returns the newly created Payment warrant</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator")]
     public Task<IActionResult> AddPaymentWarrant(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -86,7 +86,7 @@ public class PaymentWarrantsController : ControllerBase
     /// <response code="204">NoContent if the Payment warrant is successfully deleted</response>
     /// <response code="404">If the Payment warrant is not found</response>
     [HttpDelete("reference/{referenceNumber}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator")]
     public Task<IActionResult> DeletePaymentWarrantByReferenceNumber(string referenceNumber)
         => serviceProxy.Delete($"reference/{referenceNumber}");
 
@@ -98,7 +98,7 @@ public class PaymentWarrantsController : ControllerBase
     /// <response code="204">NoContent if the Payment warrant is successfully deleted</response>
     /// <response code="404">If the Payment warrant is not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator")]
     public Task<IActionResult> DeletePaymentWarrant(string id)
         => serviceProxy.Delete(id);
 }

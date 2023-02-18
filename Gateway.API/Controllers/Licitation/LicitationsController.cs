@@ -52,7 +52,7 @@ public class LicitationsController : ControllerBase
     /// <response code="204">NoContent if the licitation is successfully deleted</response>
     /// <response code="404">If the licitation is not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> Delete(string id)
         => serviceProxy.Delete(id);
 
@@ -63,7 +63,7 @@ public class LicitationsController : ControllerBase
     /// <returns>The created Licitation model, with a location header pointing to the URL of the newly created Licitation</returns>
     /// <response code="201">Created if the Licitation is successfully created</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PostLicitation(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -75,7 +75,7 @@ public class LicitationsController : ControllerBase
     /// <returns>A no content response</returns>
     ///  <response code="204">Ok if the Licitation is successfully updated</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PatchLicitation(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -87,7 +87,7 @@ public class LicitationsController : ControllerBase
     /// <returns> Licitation land model</returns>
     /// <response code="204">Ok if the Licitation land is successfully updated</response>
     [HttpPost("{id}/licitationLands")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PostLicitationLand(Guid id, object postModel)
         => serviceProxy.Post(postModel, $"{id}/licitationLands");
 
@@ -99,7 +99,7 @@ public class LicitationsController : ControllerBase
     /// <returns> Licitation public bidding model</returns>
     /// <response code="201"> Created if the Licitation public bidding is successfully updated</response>
     [HttpPost("{id}/publicBiddings")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PostPublicBidding(string id, object postModel)
         => serviceProxy.Post(postModel, $"{id}/publicBiddings");
 
@@ -113,7 +113,7 @@ public class LicitationsController : ControllerBase
     /// <response code="204"> NoContent if the licitation land is successfully deleted</response>
     /// <response code="404"> If the licitation land is not found</response>
     [HttpDelete("{id}/licitationLands/{licitationLandId}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> DeleteLicitationLand(string id, string licitationLandId)
         => serviceProxy.Delete($"{id}/licitationLands/{licitationLandId}");
 
@@ -126,7 +126,7 @@ public class LicitationsController : ControllerBase
     /// <response code="204"> NoContent if the public bidding is successfully deleted</response>
     /// <response code="404"> If the public bidding is not found</response>
     [HttpDelete("{id}/publicBiddings/{publicBiddingId}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> DeletePublicBidding(Guid id, Guid publicBiddingId)
         => serviceProxy.Delete($"{id}/publicBiddings/{publicBiddingId}");
 }

@@ -51,7 +51,7 @@ public class AddressController : ControllerBase
     /// <param name="requestModel"> The Address to be posted </param>
     /// <response code="201">Returns the newly created Address</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Bidder,Operator")]
     public Task<IActionResult> PostAddress(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -63,6 +63,7 @@ public class AddressController : ControllerBase
     /// <param name="requestModel"> The Address to be patched </param>
     /// <response code="204">Returns the patched Address</response>
     [HttpPatch("{id}")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Operator")]
     public Task<IActionResult> PatchAddress(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -74,6 +75,7 @@ public class AddressController : ControllerBase
     /// <response code="204">Returns a no content response</response>
     /// <response code="404">Returns a not found response</response>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Operator")]
     public Task<IActionResult> DeleteAddress(string id)
         => serviceProxy.Delete(id);
 }

@@ -51,7 +51,7 @@ public class BiddingDocumentsController : ControllerBase
     /// <returns> A newly created Document </returns>
     /// <response code="201">Returns the newly created Document</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Bidder,Operator")]
     public Task<IActionResult> PostDocument(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -63,7 +63,7 @@ public class BiddingDocumentsController : ControllerBase
     /// <returns> An updated Document </returns>
     /// <response code="200">Returns the updated Document</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Operator")]
     public Task<IActionResult> PatchDocument(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -75,7 +75,7 @@ public class BiddingDocumentsController : ControllerBase
     /// <response code="204">Returns no content</response>
     /// <response code="404">If the Document is not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Operator")]
     public Task<IActionResult> DeleteDocument(string id)
         => serviceProxy.Delete(id);
 }

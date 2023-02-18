@@ -51,7 +51,7 @@ public class PublicBiddingController : ControllerBase
     /// <returns> A newly created public bidding </returns>
     /// <response code="201">Returns the newly created public bidding</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Operator")]
     public Task<IActionResult> PostPublicBidding(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -63,7 +63,7 @@ public class PublicBiddingController : ControllerBase
     /// <returns> A newly updated public bidding </returns>
     /// <response code="200">Returns the newly updated public bidding</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Operator")]
     public Task<IActionResult> PatchPublicBidding(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -75,7 +75,7 @@ public class PublicBiddingController : ControllerBase
     /// <response code="204">Returns no content</response>
     /// <response code="404">Returns not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Operator")]
     public Task<IActionResult> DeletePublicBidding(string id)
         => serviceProxy.Delete(id);
 }

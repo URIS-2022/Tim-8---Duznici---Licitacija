@@ -33,7 +33,7 @@ public class ComplaintsController : ControllerBase
     /// <response code="204">Returns no content</response>
     /// <response code="404">If the SystemUser is not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser,Admin")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> DeleteSystemUser(string id)
         => serviceProxy.Delete(id);
 
@@ -63,7 +63,7 @@ public class ComplaintsController : ControllerBase
     /// <returns>IActionResult indicating the status of the operation</returns>
     /// <response code="201">Returns the newly created complaint</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser,Admin")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PostComplaint(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -76,7 +76,7 @@ public class ComplaintsController : ControllerBase
     /// <response code="204">Returns no content</response>
     /// <response code="404">If the system user is not found</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser,Admin")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PatchComplaint(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 }

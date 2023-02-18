@@ -51,7 +51,7 @@ public class PaymentsController : ControllerBase
     /// <returns> The newly created payment.</returns>
     /// <response code="201">Returns the newly created payment</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator,Bidder")]
     public Task<IActionResult> AddPayment(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -63,7 +63,7 @@ public class PaymentsController : ControllerBase
     /// <response code="204">NoContent if the Payment is successfully deleted</response>
     /// <response code="404">If the payment is not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator")]
     public Task<IActionResult> DeletePayment(string id)
         => serviceProxy.Delete(id);
 
@@ -75,7 +75,7 @@ public class PaymentsController : ControllerBase
     /// <returns> The updated payment.</returns>
     /// <response code="204"> NoContent if the payment is successfully updated.</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "Superuser,BiddingOperator")]
     public Task<IActionResult> PatchPayment(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 }

@@ -51,7 +51,7 @@ public class LandsController : ControllerBase
     /// <returns>An <see cref="IActionResult"/> representing the result of the update operation.</returns>
     /// <response code="204">Returns no content</response>
     [HttpPatch("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PatchLand(string id, object requestModel)
         => serviceProxy.Patch(id, requestModel);
 
@@ -62,7 +62,7 @@ public class LandsController : ControllerBase
     /// <returns>An <see cref="IActionResult"/> representing the result of the create operation.</returns>
     /// <response code="201">Returns the newly created land</response>
     [HttpPost]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> PostLand(object requestModel)
         => serviceProxy.Post(requestModel);
 
@@ -74,7 +74,7 @@ public class LandsController : ControllerBase
     /// <response code="204">Returns no content</response>
     /// <response code="404">Returns not found</response>
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Superuser")]
+    [Authorize(Roles = "FirstCommission")]
     public Task<IActionResult> DeleteLand(string id)
         => serviceProxy.Delete(id);
 }
