@@ -22,7 +22,7 @@ public class RepresentativeController : ControllerBase
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
     public RepresentativeController(HttpClient httpClient)
     {
-        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING")}/api/Address");
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING")}/api/Representative");
     }
 
     /// <summary>

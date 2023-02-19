@@ -22,7 +22,7 @@ public class PublicBiddingController : ControllerBase
     /// <param name="httpClient">Instance of HttpClient to be used for making requests</param>
     public PublicBiddingController(HttpClient httpClient)
     {
-        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING")}/api/Address");
+        serviceProxy = new(httpClient, $"{Environment.GetEnvironmentVariable("SERVICE_ENDPOINT_BIDDING")}/api/PublicBidding");
     }
 
     /// <summary>
